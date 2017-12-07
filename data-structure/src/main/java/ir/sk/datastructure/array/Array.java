@@ -17,7 +17,7 @@ public class Array<T> {
 
     public boolean find(T searchKey) {
         int j;
-        for(j = 0; j < num; j++)            // for each element,
+        for(j = 0; j < num; j++)            // for each element, Linear Search
             if(a[j] == searchKey)           // found item?
                 break;                      // exit loop before end
         if(j == num)                        // gone to end?
