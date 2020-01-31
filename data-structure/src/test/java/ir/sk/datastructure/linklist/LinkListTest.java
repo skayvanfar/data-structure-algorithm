@@ -1,5 +1,6 @@
 package ir.sk.datastructure.linklist;
 
+import ir.sk.datastructure.ListIterator;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -56,5 +57,14 @@ public class LinkListTest {
             System.out.println("Found link with key " + link.data);
         else
             System.out.println("Can't find link");
+    }
+
+    @Test
+    public void getIterator() {
+        ListIterator listIterator = theList.getIterator();
+        while (listIterator.getCurrent() != null) {
+            System.out.println(listIterator.getCurrent().data);
+            listIterator.nextLink();
+        }
     }
 }

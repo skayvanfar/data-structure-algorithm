@@ -1,5 +1,7 @@
 package ir.sk.datastructure.linklist;
 
+import ir.sk.datastructure.ListIterator;
+
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
@@ -76,5 +78,19 @@ public class LinkList<T> {
             current = current.next;  // move to next link
         }
         System.out.println("");
+    }
+
+    public Link getFirst()         // get value of first
+    { return first; }
+
+    public void setFirst(Link f)   // set first to new link
+    { first = f; }
+
+    /**
+     * return iterator
+     * @return
+     */
+    public ListIterator<T> getIterator() {
+        return new ListIterator(this);  // initialized with
     }
 }
