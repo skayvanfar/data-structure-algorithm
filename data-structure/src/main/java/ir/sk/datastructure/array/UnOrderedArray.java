@@ -1,16 +1,18 @@
 package ir.sk.datastructure.array;
 
+import java.util.List;
+
 /**
- * Unordered array data structure like Set in java. Duplicate isn't allowed.
- * When duplicate is allowed, It's like ArrayList in java
+ * Unordered array data structure like ArrayList in java without using index. Duplicate is allowed.
+ * When duplicate is not allowed, It's like Set in java
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 12/7/2017.
  */
-public class Array<T> {
+public class UnOrderedArray<T> {
 
     private Object[] a;                     // ref to array a
     private int num;                        // number of data items
 
-    public Array(int max) {
+    public UnOrderedArray(int max) {
         a = new Object[max];                // create the array
         num = 0;                            // no items yet
     }
@@ -26,7 +28,11 @@ public class Array<T> {
             return true;                    // no, found it
     }
 
-    public void insert(T value) {           // put element into array
+    /**
+     * put element into array
+     * @param value
+     */
+    public void insert(T value) {
         a[num] = value;                     // insert it
         num++;                              // increment size
     }
@@ -46,7 +52,10 @@ public class Array<T> {
         }
     }
 
-    public void display() {                 // displays array contents
+    /**
+     * displays array contents
+     */
+    public void display() {
         for(int j=0; j<num; j++)            // for each element,
             System.out.print(a[j] + " ");   // display it
         System.out.println("");
