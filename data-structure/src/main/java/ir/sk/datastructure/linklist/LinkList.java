@@ -56,6 +56,16 @@ public class LinkList<T> {
         return current;
     }
 
+    public T deleteFirst()      // delete first item
+    {                           // (assumes list not empty)
+        Link<T> temp = first;          // save reference to link
+        first = first.next;         // delete it: first-->old next
+        return temp.data;                // return deleted link
+    }
+
+    public boolean isEmpty()       // true if list is empty
+    { return (first==null); }
+
     public void displayList()      // display the list
     {
         System.out.print("List (first-->last): ");

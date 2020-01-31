@@ -7,15 +7,15 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 12/10/2017.
+ * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
-public class StackTest {
+public class LinkStackTest {
 
-    Stack<Integer> theStack;
+    LinkStack<Integer> theStack;
 
     @Before
     public void setUp() throws Exception {
-        theStack = new Stack<>(10); // make new stack
+        theStack = new LinkStack<>(); // make new stack
         theStack.push(20); // push items onto stack
         theStack.push(40);
         theStack.push(60);
@@ -26,14 +26,14 @@ public class StackTest {
     }
 
     @Test
-    public void push() throws Exception {
+    public void push() {
         theStack.display();
         theStack.push(80);
         theStack.display();
     }
 
     @Test
-    public void pop() throws Exception {
+    public void pop() {
         theStack.display();
         long value = theStack.pop();
         System.out.print(value);
@@ -41,17 +41,10 @@ public class StackTest {
     }
 
     @Test
-    public void peek() throws Exception {
+    public void isEmpty() {
     }
 
     @Test
-    public void isEmpty() throws Exception {
-        System.out.println(theStack.isEmpty());
+    public void display() {
     }
-
-    @Test
-    public void isFull() throws Exception {
-        System.out.println(theStack.isFull());
-    }
-
 }
