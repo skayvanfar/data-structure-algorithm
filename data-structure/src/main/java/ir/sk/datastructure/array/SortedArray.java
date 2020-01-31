@@ -3,12 +3,12 @@ package ir.sk.datastructure.array;
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 12/7/2017.
  */
-public class OrderedArray<T extends Comparable>  {
+public class SortedArray<T extends Comparable>  {
 
     private Comparable[] a;                 // ref to array a
     private int num;               // number of data items
 
-    public OrderedArray(int max) {
+    public SortedArray(int max) {
         a = new Comparable[max];             // create array
         num = 0;
     }

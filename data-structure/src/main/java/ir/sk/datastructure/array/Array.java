@@ -7,12 +7,12 @@ import java.util.List;
  * When duplicate is not allowed, It's like Set in java
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 12/7/2017.
  */
-public class UnOrderedArray<T> {
+public class Array<T> {
 
     private Object[] a;                     // ref to array a
     private int num;                        // number of data items
 
-    public UnOrderedArray(int max) {
+    public Array(int max) {
         a = new Object[max];                // create the array
         num = 0;                            // no items yet
     }

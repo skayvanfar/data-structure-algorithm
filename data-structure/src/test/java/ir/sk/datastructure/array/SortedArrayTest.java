@@ -7,14 +7,14 @@ import org.junit.Test;
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 12/7/2017.
  */
-public class UnOrderedArrayTest {
+public class SortedArrayTest {
 
-    UnOrderedArray<Integer> array;
+    SortedArray<Integer> array;
 
     @Before
     public void setUp() throws Exception {
         int maxSize = 100;
-        array = new UnOrderedArray<>(maxSize);
+        array = new SortedArray<>(maxSize);
 
         // insert 10 items
         array.insert(77);
@@ -35,29 +35,29 @@ public class UnOrderedArrayTest {
 
     @Test
     public void find() throws Exception {
-        int searchKey = 66; // search for item
-        if(array.find(searchKey))
+        int searchKey = 55; // search for item
+        if(array.find(searchKey) != array.size())
             System.out.println("Found " + searchKey);
         else
-            System.out.println("Can't find " + searchKey);
+            System.out.println("Can’t find " + searchKey);
     }
 
     @Test
     public void insert() throws Exception {
-        array.display();
-        array.insert(39);
-        array.display();
+        array.display(); // display items
+        array.insert(33);
+        array.display(); // display items
     }
 
     @Test
     public void delete() throws Exception {
         array.delete(00); // delete 3 items
-        array.display();
+        array.display(); // display items
     }
 
     @Test
     public void display() throws Exception {
-        array.display();
+        array.display(); // display items
     }
 
 }

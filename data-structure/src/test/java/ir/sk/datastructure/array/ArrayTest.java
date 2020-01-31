@@ -4,19 +4,17 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 12/7/2017.
  */
-public class OrderedUnOrderedArrayTest {
+public class ArrayTest {
 
-    OrderedArray<Integer> array;
+    Array<Integer> array;
 
     @Before
     public void setUp() throws Exception {
         int maxSize = 100;
-        array = new OrderedArray<>(maxSize);
+        array = new Array<>(maxSize);
 
         // insert 10 items
         array.insert(77);
@@ -37,29 +35,29 @@ public class OrderedUnOrderedArrayTest {
 
     @Test
     public void find() throws Exception {
-        int searchKey = 55; // search for item
-        if(array.find(searchKey) != array.size())
+        int searchKey = 66; // search for item
+        if(array.find(searchKey))
             System.out.println("Found " + searchKey);
         else
-            System.out.println("Can’t find " + searchKey);
+            System.out.println("Can't find " + searchKey);
     }
 
     @Test
     public void insert() throws Exception {
-        array.display(); // display items
-        array.insert(33);
-        array.display(); // display items
+        array.display();
+        array.insert(39);
+        array.display();
     }
 
     @Test
     public void delete() throws Exception {
         array.delete(00); // delete 3 items
-        array.display(); // display items
+        array.display();
     }
 
     @Test
     public void display() throws Exception {
-        array.display(); // display items
+        array.display();
     }
 
 }
