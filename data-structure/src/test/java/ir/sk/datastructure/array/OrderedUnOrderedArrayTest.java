@@ -16,7 +16,7 @@ public class OrderedUnOrderedArrayTest {
     @Before
     public void setUp() throws Exception {
         int maxSize = 100;
-        array = new OrderedArray(maxSize);
+        array = new OrderedArray<>(maxSize);
 
         // insert 10 items
         array.insert(77);

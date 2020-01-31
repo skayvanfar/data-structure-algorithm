@@ -11,11 +11,11 @@ import static org.junit.Assert.*;
  */
 public class StackTest {
 
-    Stack theStack;
+    Stack<Integer> theStack;
 
     @Before
     public void setUp() throws Exception {
-        theStack = new Stack(10); // make new stack
+        theStack = new Stack<>(10); // make new stack
         theStack.push(20); // push items onto stack
         theStack.push(40);
         theStack.push(60);
@@ -32,8 +32,10 @@ public class StackTest {
 
     @Test
     public void pop() throws Exception {
+        theStack.display();
         long value = theStack.pop();
         System.out.print(value); // display it
+        theStack.display();
     }
 
     @Test
