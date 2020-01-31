@@ -9,14 +9,14 @@ import static org.junit.Assert.*;
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
-public class InFixToPostFixTest {
+public class ParsePostFixTest {
 
-    InFixToPostFix inFixToPostFix;
-    String input = "(D+C(A*B))";
+    ParsePostFix parsePostFix;
+    String input = "345+*612+/-";
 
     @Before
     public void setUp() throws Exception {
-        inFixToPostFix = new InFixToPostFix(input);
+        parsePostFix = new ParsePostFix(input);
     }
 
     @After
@@ -24,17 +24,9 @@ public class InFixToPostFixTest {
     }
 
     @Test
-    public void doTrans() {
+    public void doParse() {
         System.out.println(input);
-        String output = inFixToPostFix.doTrans(); // do the translation
+        int output = parsePostFix.doParse();
         System.out.println(output);
-    }
-
-    @Test
-    public void gotOper() {
-    }
-
-    @Test
-    public void gotParen() {
     }
 }
