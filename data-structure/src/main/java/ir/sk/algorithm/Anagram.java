@@ -10,7 +10,6 @@ public class Anagram {
     static char[] arrChar = new char[100];
 
     public static void doAnagram(int newSize) {
-        int limit;
         if (newSize == 1)                     // if too small,
             return;                           // go no further
 
