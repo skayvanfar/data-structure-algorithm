@@ -7,6 +7,7 @@ public class Matrix {
 
     static final int N = 4;
     static final int M = 4;
+    static final int P = 4;
 
     /**
      * This function adds A[][] and B[][], and stores
@@ -32,9 +33,9 @@ public class Matrix {
         int [][] C = new int [N][M];
         int i, j, k;
         for (i = 0; i < N; i++) {
-            for (j = 0; j < N; j++) {
+            for (j = 0; j < M; j++) {
                 C[i][j] = 0;
-                for (k = 0; k < N; k++)
+                for (k = 0; k < P; k++)
                     C[i][j] += A[i][k] * B[k][j];
             }
         }
