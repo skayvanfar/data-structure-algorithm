@@ -11,6 +11,20 @@ public class Search {
      * @param <T>
      * @return
      */
+    public static <T> int linerSearch(T array[], T searchKey) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].equals(searchKey))
+                return i;
+        }
+        return -1;
+    }
+
+    /**
+     * @param array
+     * @param searchKey
+     * @param <T>
+     * @return
+     */
     public static <T extends Comparable> int binarySearchByLoop(T array[], T searchKey) {
 
         int lowerBound = 0;
