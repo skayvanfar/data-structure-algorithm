@@ -8,10 +8,5 @@ package ir.sk.algorithm;
  */
 public class Power {
 
-    public static int powerByRecursive(int n, int m) {
-        if(m==1)
-            return n;
-        else
-            return (n * powerByRecursive(n, m - 1) );
-    }
+
 }

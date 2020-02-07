@@ -8,15 +8,5 @@ package ir.sk.algorithm;
  */
 public class Factorial {
 
-    /**
-     * @param n
-     * @return
-     */
-    public static int factorialByRecursive(int n)
-    {
-        if(n==0)
-            return 1;
-        else
-            return (n * factorialByRecursive(n-1) );
-    }
+
 }
