@@ -11,6 +11,16 @@ import static org.junit.Assert.*;
  */
 public class MatrixTest {
 
+    int A[][] = { {1, 1, 1, 1},
+            {2, 2, 2, 2},
+            {3, 3, 3, 3},
+            {4, 4, 4, 4}};
+
+    int B[][] = { {1, 1, 1, 1},
+            {2, 2, 2, 2},
+            {3, 3, 3, 3},
+            {4, 4, 4, 4}};
+
     @Before
     public void setUp() throws Exception {
     }
@@ -21,21 +31,23 @@ public class MatrixTest {
 
     @Test
     public void addMatrix() {
-        int A[][] = { {1, 1, 1, 1},
-                {2, 2, 2, 2},
-                {3, 3, 3, 3},
-                {4, 4, 4, 4}};
-
-        int B[][] = { {1, 1, 1, 1},
-                {2, 2, 2, 2},
-                {3, 3, 3, 3},
-                {4, 4, 4, 4}};
-
         int C[][] = Matrix.addMatrix(A, B);
 
         System.out.print("Result matrix is \n");
         for (int i = 0; i < Matrix.N; i++) {
-            for (int j = 0; j < Matrix.N; j++)
+            for (int j = 0; j < Matrix.M; j++)
+                System.out.print(C[i][j] + " ");
+            System.out.print("\n");
+        }
+    }
+
+    @Test
+    public void multiplyMatrix() {
+        int C[][] = Matrix.multiplyMatrix(A, B);
+
+        System.out.print("Result matrix is \n");
+        for (int i = 0; i < Matrix.N; i++) {
+            for (int j = 0; j < Matrix.M; j++)
                 System.out.print(C[i][j] + " ");
             System.out.print("\n");
         }
