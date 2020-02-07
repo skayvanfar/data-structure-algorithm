@@ -52,4 +52,16 @@ public class MatrixTest {
             System.out.print("\n");
         }
     }
+
+    @Test
+    public void transposeMatrix() {
+        int C[][] = Matrix.transposeMatrix(A);
+
+        System.out.print("Result matrix is \n");
+        for (int i = 0; i < Matrix.N; i++) {
+            for (int j = 0; j < Matrix.M; j++)
+                System.out.print(C[i][j] + " ");
+            System.out.print("\n");
+        }
+    }
 }

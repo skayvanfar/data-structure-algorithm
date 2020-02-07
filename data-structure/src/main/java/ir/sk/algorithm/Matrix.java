@@ -17,9 +17,8 @@ public class Matrix {
      */
     public static int[][] addMatrix(int A[][], int B[][]) {
         int [][] C = new int [N][M];
-        int i, j;
-        for (i = 0; i < N; i++) {
-            for (j = 0; j < M; j++)
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++)
                 C[i][j] = A[i][j] + B[i][j];
         }
         return C;
@@ -31,12 +30,25 @@ public class Matrix {
      */
     public static int[][] multiplyMatrix(int A[][], int B[][]) {
         int [][] C = new int [N][M];
-        int i, j, k;
-        for (i = 0; i < N; i++) {
-            for (j = 0; j < M; j++) {
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++) {
                 C[i][j] = 0;
-                for (k = 0; k < P; k++)
+                for (int k = 0; k < P; k++)
                     C[i][j] += A[i][k] * B[k][j];
+            }
+        }
+        return C;
+    }
+
+    /**
+     * @param A
+     * @return
+     */
+    public static int[][] transposeMatrix(int A[][]) {
+        int [][] C = new int [N][M];
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++) {
+                C[j][i] =  A[i][j];
             }
         }
         return C;
