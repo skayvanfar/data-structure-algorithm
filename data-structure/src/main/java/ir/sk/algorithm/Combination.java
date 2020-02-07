@@ -5,6 +5,12 @@ package ir.sk.algorithm;
  */
 public class Combination {
 
+    /**
+     * Pascal
+     * @param n
+     * @param m
+     * @return
+     */
     public static int combinationByRecursive(int n, int m) {
         if(n == m || m == 0)
             return 1;
