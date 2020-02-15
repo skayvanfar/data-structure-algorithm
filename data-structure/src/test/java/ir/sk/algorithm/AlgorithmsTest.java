@@ -72,4 +72,16 @@ public class AlgorithmsTest {
     @Test
     public void doTowers() {
     }
+
+    @Test
+    public void magicSquare() {
+        int[][] magicSquare = Algorithms.magicSquare(3);
+
+        for (int i = 0; i < magicSquare.length; i++) {
+            for (int j = 0; j < magicSquare.length; j++) {
+                System.out.print(magicSquare[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
 }

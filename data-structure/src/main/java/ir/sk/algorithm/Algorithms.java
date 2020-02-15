@@ -1,5 +1,7 @@
 package ir.sk.algorithm;
 
+import java.util.Arrays;
+
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 2/7/2020.
  */
@@ -112,6 +114,53 @@ public class Algorithms {
                     " from " + src + " to " + dest);
             doTowers(topN - 1, inter, src, dest);   // inter to dest
         }
+
+    }
+
+    /**
+     *
+     * @param n the number of people standing in the circle
+     * @return the safe position who will survive the execution
+     *   f(N) = 2L + 1 where N =2^M + L and 0 <= L < 2^M
+     */
+    public int getSafePosition(int n) {
+        // find value of L for the equation
+        int valueOfL = n - Integer.highestOneBit(n);
+        int safePosition = 2 * valueOfL  + 1;
+
+        return safePosition;
+    }
+
+    public static int[][] magicSquare (int n) {
+        int[][] magicSquare = new int[n][n];
+
+        int number = 1;
+        int row = 0;
+        int column = n / 2;
+        int curr_row;
+        int curr_col;
+        while (number <= n * n) {
+            magicSquare[row][column] = number;
+            number++;
+            curr_row = row;
+            curr_col = column;
+            row -= 1;
+            column += 1;
+            if (row == -1) {
+                row = n - 1;
+            }
+            if (column == n) {
+                column = 0;
+            }
+            if (magicSquare[row][column] != 0) {
+                row = curr_row + 1;
+                column = curr_col;
+                if (row == -1) {
+                    row = n - 1;
+                }
+            }
+        }
+        return magicSquare;
     }
 
 }
