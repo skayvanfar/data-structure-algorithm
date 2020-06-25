@@ -42,10 +42,6 @@ public class AlgorithmsTest {
     }
 
     @Test
-    public void fibonacciByRecursive() {
-    }
-
-    @Test
     public void div() {
     }
 

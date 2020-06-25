@@ -47,13 +47,6 @@ public class Algorithms {
             return  ( n + triangleByRecursive(n-1) );
     }
 
-    public static int fibonacciByRecursive(int n) {
-        if(n == 0 || n == 1)
-            return n;
-        else
-            return fibonacciByRecursive(n -1 ) + fibonacciByRecursive(n - 2);
-    }
-
     public static int div(int a, int b) {
         if (a < b)
             return 0;
