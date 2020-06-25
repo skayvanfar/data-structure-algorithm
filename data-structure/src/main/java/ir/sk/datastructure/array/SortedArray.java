@@ -3,13 +3,13 @@ package ir.sk.datastructure.array;
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 12/7/2017.
  */
-public class SortedArray<T extends Comparable>  {
+public class SortedArray  {
 
-    private Comparable[] a;                 // ref to array a
+    private int[] a;                 // ref to array a
     private int num;               // number of data items
 
     public SortedArray(int max) {
-        a = new Comparable[max];             // create array
+        a = new int[max];             // create array
         num = 0;
     }
 
@@ -22,19 +22,19 @@ public class SortedArray<T extends Comparable>  {
      * @param searchKey
      * @return
      */
-    public int find(T searchKey) {
+    public int find(int searchKey) {
         int lowerBound = 0;
         int upperBound = num-1;
         int curIn;
 
         while(true) {
             curIn = (lowerBound + upperBound ) / 2;
-            if(a[curIn].equals(searchKey))
+            if(a[curIn] == searchKey)
                 return curIn;              // found it
             else if(lowerBound > upperBound)
                 return num;             // can't find it
             else                          // divide range{
-                if(a[curIn].compareTo(searchKey) < 0)
+                if(a[curIn] < searchKey)
                     lowerBound = curIn + 1; // it's in upper half
                 else
                     upperBound = curIn - 1; // it's in lower half
@@ -42,10 +42,10 @@ public class SortedArray<T extends Comparable>  {
     }  // end while
 
 
-    public void insert(T value) {// put element into array
+    public void insert(int value) {// put element into array
         int j;
         for(j = 0; j < num; j++) // find where it goes
-            if(a[j].compareTo(value) > 0) // (linear search)
+            if(a[j] > (value)) // (linear search)
                 break;
         for(int k = num; k > j; k--) // move bigger ones up
             a[k] = a[k - 1];
@@ -53,7 +53,7 @@ public class SortedArray<T extends Comparable>  {
         num++; // increment size
     }
 
-    public boolean delete(T value) {
+    public boolean delete(int value) {
         int j = find(value);
         if(j == num) // can’t find it
             return false;

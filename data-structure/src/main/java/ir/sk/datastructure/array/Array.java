@@ -7,17 +7,17 @@ import java.util.List;
  * When duplicate is not allowed, It's like Set in java
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 12/7/2017.
  */
-public class Array<T> {
+public class Array {
 
-    private Object[] a;                     // ref to array a
+    private int[] a;                     // ref to array a
     private int num;                        // number of data items
 
     public Array(int max) {
-        a = new Object[max];                // create the array
+        a = new int[max];                // create the array
         num = 0;                            // no items yet
     }
 
-    public boolean find(T searchKey) {
+    public boolean find(int searchKey) {
         int j;
         for(j = 0; j < num; j++)            // for each element, Linear Search
             if(a[j] == searchKey)           // found item?
@@ -32,12 +32,12 @@ public class Array<T> {
      * put element into array
      * @param value
      */
-    public void insert(T value) {
+    public void insert(int value) {
         a[num] = value;                     // insert it
         num++;                              // increment size
     }
 
-    public boolean delete(T value) {
+    public boolean delete(int value) {
         int j;
         for(j = 0; j < num; j++)            // look for it
             if(value == a[j])

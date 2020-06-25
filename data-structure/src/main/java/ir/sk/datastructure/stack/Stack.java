@@ -6,35 +6,35 @@ import java.util.NoSuchElementException;
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 12/10/2017.
  */
-public class Stack<T> {
+public class Stack {
 
     private int maxSize; // size of stack array
-    private Object[] stackArray;
+    private int[] stackArray;
     private int top; // top of stack
 
     public Stack(int s) {
         maxSize = s; // set array size
-        stackArray = new Object[maxSize]; // create array
+        stackArray = new int[maxSize]; // create array
         top = -1; // no items yet
     }
 
-    public void push(T j) { // put item on top of stack
+    public void push(int j) { // put item on top of stack
         if(top >= stackArray.length)
             throw new IndexOutOfBoundsException("Overflow Exception");
 
         stackArray[++top] = j; // increment top, insert item
     }
 
-    public T pop() { // take item from top of stack
+    public int pop() { // take item from top of stack
         if(isEmpty())
             throw new NoSuchElementException("Underflow Exception");
-        return (T) stackArray[top--]; // access item, decrement top
+        return stackArray[top--]; // access item, decrement top
     }
 
-    public T peek() { // peek at top of stack
+    public int peek() { // peek at top of stack
         if( isEmpty() )
             throw new NoSuchElementException("Underflow Exception");
-        return (T) stackArray[top];
+        return stackArray[top];
     }
 
     public boolean isEmpty() { // true if stack is empty
