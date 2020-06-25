@@ -62,6 +62,11 @@ public class Sort {
         return args[0];
     }
 
+    /**
+     * Divide-and-conquer algorithm
+     * @param array
+     * @param <T>
+     */
     public <T extends Comparable> void mergeSort(T[] array) {
         // provides workspace
         T[] workSpace = (T[]) new Object[array.length];

@@ -65,6 +65,9 @@ public class Algorithms {
      * the Euclidean algorithm, or Euclid's algorithm, is an efficient method for
      * computing the greatest common divisor (GCD) of two numbers, the largest number
      * that divides both of them without leaving a remainder.
+     *
+     * decrease-and-conquer (Divide-and-conquer algorithm) algorithm and recursive
+     *
      * @param a
      * @param b
      * @return
@@ -96,6 +99,13 @@ public class Algorithms {
             return combinationByRecursive(n - 1, m) + combinationByRecursive(n - 1, m - 1);
     }
 
+    /**
+     * Divide-and-conquer algorithm and recursive
+     * @param topN
+     * @param src
+     * @param inter
+     * @param dest
+     */
     public static void doTowers(int topN,
                                 char src, char inter, char dest) {
         if (topN == 1)
