@@ -9,12 +9,12 @@ import org.junit.Test;
  */
 public class SortedArrayTest {
 
-    SortedArray<Integer> array;
+    SortedArray array;
 
     @Before
     public void setUp() throws Exception {
         int maxSize = 100;
-        array = new SortedArray<>(maxSize);
+        array = new SortedArray(maxSize);
 
         // insert 10 items
         array.insert(77);

@@ -7,7 +7,7 @@ import ir.sk.datastructure.stack.Stack;
  */
 public class ParsePostFix {
 
-    private Stack<Integer> theStack;
+    private Stack theStack;
     private String input;
 
     public ParsePostFix(String s) {
@@ -15,7 +15,7 @@ public class ParsePostFix {
     }
 
     public int doParse() {
-        theStack = new Stack<>(20); // make new stack
+        theStack = new Stack(20); // make new stack
         char ch;
         int j;
         int num1, num2, interAns;

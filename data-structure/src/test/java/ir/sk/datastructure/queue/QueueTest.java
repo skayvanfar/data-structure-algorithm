@@ -11,11 +11,11 @@ import static org.junit.Assert.*;
  */
 public class QueueTest {
 
-    Queue<Integer> theQueue;
+    Queue theQueue;
 
     @Before
     public void setUp() throws Exception {
-        theQueue = new Queue<>(10);
+        theQueue = new Queue(10);
         theQueue.insert(10); // insert 4 items
         theQueue.insert(20);
         theQueue.insert(30);

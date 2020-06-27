@@ -9,7 +9,7 @@ import ir.sk.datastructure.stack.Stack;
  */
 public class InFixToPostFix {
 
-    private Stack<Character> theStack;
+    private Stack theStack;
     private String input;
     private String output = "";
 
@@ -59,7 +59,7 @@ public class InFixToPostFix {
     //--------------------------------------------------------------
     public void gotOper(char opThis, int prec1) { // got operator from input
         while (!theStack.isEmpty()) {
-            char opTop = theStack.pop();
+            char opTop = (char) theStack.pop();
             if (opTop == '(') // if it’s a ‘(‘
             {
                 theStack.push(opTop); // restore ‘(‘
@@ -85,7 +85,7 @@ public class InFixToPostFix {
     //--------------------------------------------------------------
     public void gotParen(char ch) { // got right paren from input
         while (!theStack.isEmpty()) {
-            char chx = theStack.pop();
+            char chx = (char) theStack.pop();
             if (chx == '(') // if popped ‘(‘
                 break; // we’re done
             else // if popped operator

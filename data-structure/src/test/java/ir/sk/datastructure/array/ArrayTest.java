@@ -9,12 +9,12 @@ import org.junit.Test;
  */
 public class ArrayTest {
 
-    Array<Integer> array;
+    Array array;
 
     @Before
     public void setUp() throws Exception {
         int maxSize = 100;
-        array = new Array<>(maxSize);
+        array = new Array(maxSize);
 
         // insert 10 items
         array.insert(77);
