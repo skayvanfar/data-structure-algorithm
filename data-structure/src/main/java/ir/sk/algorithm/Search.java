@@ -69,7 +69,7 @@ public class Search {
                 // Tail recursive call
                 return binarySearchByRecursive(array, key, low, mid - 1);
             else
-                // // Tail recursive call
+                // Tail recursive call
                 return binarySearchByRecursive(array, key, mid + 1, high);
         }
     }
