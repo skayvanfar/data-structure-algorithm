@@ -63,17 +63,16 @@ public class Sort {
     }
 
     /**
-     * Divide-and-conquer algorithm
+     * Divide-and-conquer algorithm and recursive
      * @param array
-     * @param <T>
      */
-    public <T extends Comparable> void mergeSort(T[] array) {
+    public void mergeSort(int[] array) {
         // provides workspace
-        T[] workSpace = (T[]) new Object[array.length];
+        int[] workSpace = new int[array.length];
         recMergeSort(array, workSpace, 0, array.length-1);
     }
 
-    private <T extends Comparable> void recMergeSort(T[] array, T[] workSpace, int lowerBound,
+    private void recMergeSort(int[] array, int[] workSpace, int lowerBound,
                               int upperBound) {
         if (lowerBound == upperBound)            // if range is 1,
             return;                              // no use sorting
@@ -89,7 +88,7 @@ public class Sort {
     }  // end recMergeSort()
 
     //-----------------------------------------------------------
-    private <T extends Comparable> void merge(T[] array, T[] workSpace, int lowPtr,
+    private void merge(int[] array, int[] workSpace, int lowPtr,
                        int highPtr, int upperBound) {
         int j = 0;                             // workspace index
         int lowerBound = lowPtr;
@@ -97,7 +96,7 @@ public class Sort {
         int n = upperBound - lowerBound + 1;       // # of items
 
         while (lowPtr <= mid && highPtr <= upperBound)
-            if (array[lowPtr].compareTo(array[highPtr]) < 0)
+            if (array[lowPtr]< array[highPtr])
                 workSpace[j++] = array[lowPtr++];
             else
                 workSpace[j++] = array[highPtr++];
@@ -110,5 +109,5 @@ public class Sort {
 
         for (j = 0; j < n; j++)
             array[lowerBound + j] = workSpace[j];
-    }  // end merge()
+    }
 }
