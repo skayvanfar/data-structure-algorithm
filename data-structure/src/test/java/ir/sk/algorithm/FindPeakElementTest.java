@@ -51,4 +51,18 @@ public class FindPeakElementTest {
         System.out.println("time duration for findPeakIn2DArrayByLoop by array size: "+array.length + " = "+(endTime-startTime)+ " nano");
         Assert.assertEquals(expectedValue, result);
     }
+
+    @Test
+    public void greedyAscentAlgorithmByRecursive() {
+        int[][] array = new int[][] {{1,5,6},
+                                     {2,4,1},
+                                     {6,4,6}};
+        int expectedValue = 6;
+        long startTime = System.nanoTime();
+        int result = FindPeakElement.greedyAscentAlgorithmByRecursive(array, 0, 0);
+        long endTime = System.nanoTime();
+        System.out.println("time duration for greedyAscentAlgorithmByRecursive by array size: "+array.length + " = "+(endTime-startTime)+ " nano");
+        Assert.assertEquals(expectedValue, result);
+
+    }
 }

@@ -56,6 +56,7 @@ public class FindPeakElement {
     }
 
     /**
+     * Time Complexity: O(mn)
      * @param array
      * @param low
      * @param high
@@ -88,5 +89,25 @@ public class FindPeakElement {
             }
         }
         return false;
+    }
+
+    /**
+     * Greedy Ascent Algorithm works on the principle, that it selects a particular element to start with.
+     * Then it begins traversing across the array, by selecting the neighbour with higher value.
+     * If there is no neighbour with a higher value than the current element, it just returns the current element.
+     *
+     * Time Complexity: O(mn)
+     *
+     * @param array
+     * @param i
+     * @param j
+     * @return
+     */
+    public static int greedyAscentAlgorithmByRecursive(int [][] array, int i, int j) {
+        if (i > 0 && array[i - 1][j] > array[i][j]) return greedyAscentAlgorithmByRecursive(array, i - 1, j);
+        else if (i < array.length - 1 && array[i + 1][j] > array[i][j]) return greedyAscentAlgorithmByRecursive(array, i + 1, j);
+        else if (j > 0 && array[i][j - 1] > array[i][j]) return greedyAscentAlgorithmByRecursive(array, i, j - 1);
+        else if (j < array.length - 1 && array[i][j + 1] > array[i][j]) return greedyAscentAlgorithmByRecursive(array, i, j + 1);
+        else return array[i][j];
     }
 }
