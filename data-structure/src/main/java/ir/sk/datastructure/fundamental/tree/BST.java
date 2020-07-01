@@ -5,7 +5,7 @@ import java.util.Queue;
 import java.util.Stack;
 
 /**
- * Binary Search Tree
+ * Binary Search Tree is Binary tree with ordering and all operation have almost log n time Complexity
  * A binary tree is a recursive data structure where each node can have 2 children at most.
  *
  * A common type of binary tree is a binary search tree, in which every node has a value that is greater than or equal
@@ -95,6 +95,12 @@ public class BST {
      * a node has exactly one child – in the parent node, we replace this node with its only child.
      * a node has two children – this is the most complex case because it requires a tree reorganization:
      * First, we need to find the node that will replace the deleted node. We'll use the smallest node of the node to be deleted's right sub-tree
+     *
+     * Then we have to find the smallest node in the right sub-tree and swap with it.
+     * After this exchange the node will have one sub-tree at most and then we remove it grounded on some of the above two rules.
+     * Here we have to say that it can be done analogical swap,
+     * just that we get the left sub-tree and it is the biggest element
+     *
      * @param current
      * @param value
      * @return
@@ -293,20 +299,20 @@ public class BST {
         }
     }
 
+}
 
-    /**
-     * store int values and keep a reference to each child
-     */
-    class Node {
-        int value;
-        Node left;
-        Node right;
+/**
+ * store int values and keep a reference to each child
+ */
+class Node {
 
-        Node(int value) {
-            this.value = value;
-            right = null;
-            left = null;
-        }
+    int value;
+    Node left;
+    Node right;
+
+    Node(int value) {
+        this.value = value;
+        right = null;
+        left = null;
     }
-
 }
