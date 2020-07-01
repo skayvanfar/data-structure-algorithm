@@ -1,7 +1,7 @@
 package ir.sk.datastructure;
 
-import ir.sk.datastructure.linklist.Link;
-import ir.sk.datastructure.linklist.LinkList;
+import ir.sk.datastructure.fundamental.linklist.Link;
+import ir.sk.datastructure.fundamental.linklist.LinkList;
 
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.

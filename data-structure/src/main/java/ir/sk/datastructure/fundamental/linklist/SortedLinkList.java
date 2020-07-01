@@ -1,4 +1,4 @@
-package ir.sk.datastructure.linklist;
+package ir.sk.datastructure.fundamental.linklist;
 
 /**
  * In a sorted list, the items are arranged in sorted order by key value.

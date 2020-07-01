@@ -1,4 +1,4 @@
-package ir.sk.datastructure.array;
+package ir.sk.datastructure.fundamental.array;
 
 import org.junit.After;
 import org.junit.Before;

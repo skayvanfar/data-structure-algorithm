@@ -1,4 +1,4 @@
-package ir.sk.datastructure.linklist;
+package ir.sk.datastructure.fundamental.linklist;
 
 import ir.sk.datastructure.ListIterator;
 

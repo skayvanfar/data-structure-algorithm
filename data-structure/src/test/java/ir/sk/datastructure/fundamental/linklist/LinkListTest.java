@@ -1,11 +1,9 @@
-package ir.sk.datastructure.linklist;
+package ir.sk.datastructure.fundamental.linklist;
 
 import ir.sk.datastructure.ListIterator;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.

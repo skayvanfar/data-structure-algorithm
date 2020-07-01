@@ -1,10 +1,11 @@
-package ir.sk.datastructure.tree;
+package ir.sk.datastructure.fundamental.tree;
 
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
 /**
+ * Binary Search Tree
  * A binary tree is a recursive data structure where each node can have 2 children at most.
  *
  * A common type of binary tree is a binary search tree, in which every node has a value that is greater than or equal
@@ -12,6 +13,13 @@ import java.util.Stack;
  * Created by sad.keyvanfar on 6/28/2020.
  */
 public class BST {
+
+    public BST() {
+    }
+
+    public BST(Node root) {
+        this.root = root;
+    }
 
     Node root;
 
@@ -273,7 +281,7 @@ public class BST {
 
             Node node = nodes.remove();
 
-            System.out.print(" " + node.value);
+            visit(node.value);
 
             if (node.left != null) {
                 nodes.add(node.left);

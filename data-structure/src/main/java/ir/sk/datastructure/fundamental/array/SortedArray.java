@@ -1,4 +1,4 @@
-package ir.sk.datastructure.array;
+package ir.sk.datastructure.fundamental.array;
 
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 12/7/2017.

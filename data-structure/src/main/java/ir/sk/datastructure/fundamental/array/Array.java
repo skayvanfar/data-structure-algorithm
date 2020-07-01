@@ -1,6 +1,4 @@
-package ir.sk.datastructure.array;
-
-import java.util.List;
+package ir.sk.datastructure.fundamental.array;
 
 /**
  * Unordered array data structure like ArrayList in java without using index. Duplicate is allowed.

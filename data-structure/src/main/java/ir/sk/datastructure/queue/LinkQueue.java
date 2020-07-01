@@ -1,6 +1,6 @@
 package ir.sk.datastructure.queue;
 
-import ir.sk.datastructure.linklist.FirstLastList;
+import ir.sk.datastructure.fundamental.linklist.FirstLastList;
 
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.

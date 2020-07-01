@@ -1,4 +1,4 @@
-package ir.sk.datastructure.tree;
+package ir.sk.datastructure.fundamental.tree;
 
 import org.junit.After;
 import org.junit.Before;

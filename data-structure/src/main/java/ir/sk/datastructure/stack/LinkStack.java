@@ -1,6 +1,6 @@
 package ir.sk.datastructure.stack;
 
-import ir.sk.datastructure.linklist.LinkList;
+import ir.sk.datastructure.fundamental.linklist.LinkList;
 
 /**
  * Stack Implemented by a Linked List
