@@ -7,6 +7,9 @@ import java.util.Queue;
 
 /**
  * General Tree
+ * Time Complexity: O(n)
+ * Main Operations: insert-delete-traverse
+ * traverse: DFS-BFS
  * Created by sad.keyvanfar on 7/1/2020.
  */
 public class GeneralTree<T> {

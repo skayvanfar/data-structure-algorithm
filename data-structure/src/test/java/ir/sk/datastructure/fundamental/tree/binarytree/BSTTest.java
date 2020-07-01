@@ -1,5 +1,6 @@
-package ir.sk.datastructure.fundamental.tree;
+package ir.sk.datastructure.fundamental.tree.binarytree;
 
+import ir.sk.datastructure.fundamental.tree.binarytree.BST;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
