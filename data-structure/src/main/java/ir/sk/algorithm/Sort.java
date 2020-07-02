@@ -9,6 +9,7 @@ public class Sort {
 
     /**
      * compare and swap
+     * Stable: Yes
      *
      * @param array
      */
@@ -46,6 +47,7 @@ public class Sort {
      * <p>
      * compare and copy
      * twice faster than bubble sort and faster than selection sort
+     * Stable: Yes
      *
      * @param array
      */
@@ -58,7 +60,7 @@ public class Sort {
                greater than key, to one position ahead
                of their current position */
             while (j >= 0 && array[j] > key) {
-                // using shift, no swap, since shifting has better performance than swap
+                // using rotate by condition(array[j] > key), no swap, since shifting has better performance than swap
                 array[j + 1] = array[j];
                 j = j - 1;
             }
@@ -67,6 +69,12 @@ public class Sort {
     }
 
     /**
+     * better performance when comparing is costly for example for record data
+     * using binary search instead of comparing fro finding the place of an item
+     *
+     * Time Complexity: O(n*2)
+     * Auxiliary Space: O(1)
+     *
      * @param array
      */
     public static void binaryInsertionSort(int[] array) {
@@ -77,32 +85,72 @@ public class Sort {
             int loc = Math.abs(Arrays.binarySearch(array, 0, i, key) + 1);
 
             // Move all elements after location to create space
-            int j = i - 1;
-            while (j >= loc) {
-                array[j + 1] = array[j];
-                j--;
-            }
-
-            //Shifting array to one location right
-            System.arraycopy(array, loc, array, loc + 1, i - loc);
-
-            //Placing element at its correct location
-            array[loc] = key;
+            // Shifting array to one location right
+            Utils.rotate(array, loc, i);
+            // System.arraycopy(array, loc, array, loc + 1, i - loc);
+            // Placing element at its correct location
+            // array[loc] = key;
         }
+    }
+
+    /**
+     * T(n) = 2T(n/2) + O(n)
+     * Time Complexity: O(n * log n)
+     * Auxiliary Space: O(n)
+     * Stable: Yes
+     *
+     * @param a
+     * @param n
+     */
+    public static void mergeSort(int[] a, int n) {
+
+        // base case
+        if (n < 2)
+            return;
+
+        int mid = n / 2;
+        int[] l = new int[mid];
+        int[] r = new int[n - mid];
+
+        for (int i = 0; i < mid; i++) {
+            l[i] = a[i];
+        }
+        for (int i = mid; i < n; i++) {
+            r[i - mid] = a[i];
+        }
+        mergeSort(l, mid);
+        mergeSort(r, n - mid);
+
+        merge(a, l, r, mid, n - mid);
+    }
+
+    /**
+     * @param a
+     * @param l
+     * @param r
+     * @param left
+     * @param right
+     */
+    private static void merge(
+            int[] a, int[] l, int[] r, int left, int right) {
+        Utils.twoFingerAlgorithm(a, l, r, left, right);
     }
 
     /**
      * Divide-and-conquer algorithm and recursive
      *
+     * Time Complexity: O(n * log n)
+     * Auxiliary Space: O(1) improved over normal merge sort O(n)
+     *
      * @param array
      */
-    public void mergeSort(int[] array) {
+    public static void inPlaceMergeSort(int[] array) {
         // provides workspace
         int[] workSpace = new int[array.length];
         recMergeSort(array, workSpace, 0, array.length - 1);
     }
 
-    private void recMergeSort(int[] array, int[] workSpace, int lowerBound,
+    private static void recMergeSort(int[] array, int[] workSpace, int lowerBound,
                               int upperBound) {
         if (lowerBound == upperBound)            // if range is 1,
             return;                              // no use sorting
@@ -118,7 +166,7 @@ public class Sort {
     }  // end recMergeSort()
 
     //-----------------------------------------------------------
-    private void merge(int[] array, int[] workSpace, int lowPtr,
+    private static void merge(int[] array, int[] workSpace, int lowPtr,
                        int highPtr, int upperBound) {
         int j = 0;                             // workspace index
         int lowerBound = lowPtr;

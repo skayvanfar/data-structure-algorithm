@@ -14,12 +14,14 @@ import static org.junit.Assert.*;
  */
 public class SortTest {
 
-    private int[] array;
+    private int[] actual;
+    private int[] expected;
 
     @Before
     public void setUp() throws Exception {
-           array = new int[] {1,5,2,4,9,7};
-     //   array = new Random().ints(10000, 0, 100000).toArray();
+        actual = new int[] {1, 5, 2, 4, 9, 7};
+        expected = new int[] {1, 2, 4, 5, 7, 9};
+     //   actual = new Random().ints(10000, 0, 100000).toArray();
     }
 
     @After
@@ -29,39 +31,55 @@ public class SortTest {
     @Test
     public void bubbleSort() throws Exception {
         long start = System.currentTimeMillis();
-        Sort.bubbleSort(array);
+        Sort.bubbleSort(actual);
         long end = System.currentTimeMillis();
         System.out.println("Logic bubbleSort took " + (end - start) + " MilliSeconds");
-        System.out.println(Arrays.toString(array));
-
+        assertArrayEquals(expected, actual);
     }
 
     @Test
     public void selectionSort() throws Exception {
         long start = System.currentTimeMillis();
-        Sort.selectionSort(array);
+        Sort.selectionSort(actual);
         long end = System.currentTimeMillis();
         System.out.println("Logic selectionSort took " + (end - start) + " MilliSeconds");
-        System.out.println(Arrays.toString(array));
+        assertArrayEquals(expected, actual);
     }
 
 
     @Test
     public void insertionSort() throws Exception {
         long start = System.currentTimeMillis();
-        Sort.insertionSort(array);
+        Sort.insertionSort(actual);
         long end = System.currentTimeMillis();
         System.out.println("Logic insertionSort took " + (end - start) + " MilliSeconds");
-        System.out.println(Arrays.toString(array));
+        assertArrayEquals(expected, actual);
     }
 
     @Test
     public void binaryInsertionSort() {
         long start = System.currentTimeMillis();
-        Sort.binaryInsertionSort(array);
+        Sort.binaryInsertionSort(actual);
         long end = System.currentTimeMillis();
         System.out.println("Logic binaryInsertionSort took " + (end - start) + " MilliSeconds");
-        System.out.println(Arrays.toString(array));
+        assertArrayEquals(expected, actual);
     }
 
+    @Test
+    public void mergeSort() {
+        long start = System.currentTimeMillis();
+        Sort.mergeSort(actual, actual.length);
+        long end = System.currentTimeMillis();
+        System.out.println("Logic mergeSort took " + (end - start) + " MilliSeconds");
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void inPlaceMergeSort() {
+        long start = System.currentTimeMillis();
+        Sort.inPlaceMergeSort(actual);
+        long end = System.currentTimeMillis();
+        System.out.println("Logic inPlaceMergeSort took " + (end - start) + " MilliSeconds");
+        assertArrayEquals(actual, actual);
+    }
 }
