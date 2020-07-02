@@ -15,10 +15,11 @@ import static org.junit.Assert.*;
 public class SortTest {
 
     private int[] array;
+
     @Before
     public void setUp() throws Exception {
-        //   array = new int[] {1,5,2,4,9,7};
-        array = new Random().ints(10000, 0, 100000).toArray();
+           array = new int[] {1,5,2,4,9,7};
+     //   array = new Random().ints(10000, 0, 100000).toArray();
     }
 
     @After
@@ -55,9 +56,12 @@ public class SortTest {
     }
 
     @Test
-    public void swap() throws Exception {
-        int a = 4, b = 5;
-        b = Sort.swap(a, a = b);
-        System.out.println("a = " + a + " and b = " + b);
+    public void binaryInsertionSort() {
+        long start = System.currentTimeMillis();
+        Sort.binaryInsertionSort(array);
+        long end = System.currentTimeMillis();
+        System.out.println("Logic binaryInsertionSort took " + (end - start) + " MilliSeconds");
+        System.out.println(Arrays.toString(array));
     }
+
 }

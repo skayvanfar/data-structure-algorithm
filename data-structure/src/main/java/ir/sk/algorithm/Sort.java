@@ -1,5 +1,7 @@
 package ir.sk.algorithm;
 
+import java.util.Arrays;
+
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 12/7/2017.
  */
@@ -15,7 +17,7 @@ public class Sort {
         for (int out = 0; out < n; out++) {
             for (int in = 1; in < (n - out); in++)
                 if (array[in - 1] > array[in])
-                    array[in] = swap(array[in - 1], array[in - 1] = array[in]); // swap them A[j], A[j - 1]
+                    array[in] = Utils.gSwap(array[in - 1], array[in - 1] = array[in]); // swap them A[j], A[j - 1]
         }
     }
 
@@ -34,42 +36,70 @@ public class Sort {
             for (in = out + 1; in < array.length; in++) // inner loop
                 if (array[in] < array[min]) // if min greater,
                     min = in; // we have a new min
-            array[out] = swap(array[min], array[min] = array[out]); // swap them
+            array[out] = Utils.gSwap(array[min], array[min] = array[out]); // swap them
         } // end for(out)
     }
 
     /**
+     * Time Complexity: O(n*2)
+     * Auxiliary Space: O(1)
+     * <p>
      * compare and copy
      * twice faster than bubble sort and faster than selection sort
      *
      * @param array
      */
     public static void insertionSort(int[] array) {
-        int in, out;
-        for (out = 1; out < array.length; out++) // out is dividing line
-        {
-            int temp = array[out]; // remove marked item
-            in = out; // start shifts at out
-            while (in > 0 && array[in - 1] >= temp) { // until one is smaller,
-                array[in] = array[in - 1]; // shift item right,
-                --in; // go left one position
+        for (int i = 1; i < array.length; ++i) {
+            int key = array[i];
+            int j = i - 1;
+
+            /* Move elements of arr[0..i-1], that are
+               greater than key, to one position ahead
+               of their current position */
+            while (j >= 0 && array[j] > key) {
+                // using shift, no swap, since shifting has better performance than swap
+                array[j + 1] = array[j];
+                j = j - 1;
             }
-            array[in] = temp; // insert marked item
-        } // end for
+            array[j + 1] = key;
+        }
     }
 
-    static <T> T swap(T... args) {   // usage: z = swap(a, a=b, b=c, ... y=z);
-        return args[0];
+    /**
+     * @param array
+     */
+    public static void binaryInsertionSort(int[] array) {
+        for (int i = 1; i < array.length; i++) {
+            int key = array[i];
+
+            // Find location to insert using binary search
+            int loc = Math.abs(Arrays.binarySearch(array, 0, i, key) + 1);
+
+            // Move all elements after location to create space
+            int j = i - 1;
+            while (j >= loc) {
+                array[j + 1] = array[j];
+                j--;
+            }
+
+            //Shifting array to one location right
+            System.arraycopy(array, loc, array, loc + 1, i - loc);
+
+            //Placing element at its correct location
+            array[loc] = key;
+        }
     }
 
     /**
      * Divide-and-conquer algorithm and recursive
+     *
      * @param array
      */
     public void mergeSort(int[] array) {
         // provides workspace
         int[] workSpace = new int[array.length];
-        recMergeSort(array, workSpace, 0, array.length-1);
+        recMergeSort(array, workSpace, 0, array.length - 1);
     }
 
     private void recMergeSort(int[] array, int[] workSpace, int lowerBound,
@@ -96,7 +126,7 @@ public class Sort {
         int n = upperBound - lowerBound + 1;       // # of items
 
         while (lowPtr <= mid && highPtr <= upperBound)
-            if (array[lowPtr]< array[highPtr])
+            if (array[lowPtr] < array[highPtr])
                 workSpace[j++] = array[lowPtr++];
             else
                 workSpace[j++] = array[highPtr++];
