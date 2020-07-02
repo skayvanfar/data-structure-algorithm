@@ -4,9 +4,9 @@ package ir.sk.datastructure.fundamental.tree.binarytree;
  * binary heap is an complete Binary tree
  * The heap is one maximally efficient implementation of an abstract data type called a priority queue.
  * The heap property:
- *  Min-heap: a parent has a lower key than its childs.
- *  Max-heap: a parent has a upper key than its childs.
- *
+ * Min-heap: a parent has a lower key than its childs.
+ * Max-heap: a parent has a upper key than its childs.
+ * <p>
  * It's usually implemented by Arrays because a binary heap is always a complete binary tree
  *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 7/2/2020.
@@ -23,7 +23,7 @@ public class MaxBinaryHeap {
 
     public MaxBinaryHeap(int[] array) {
         this.array = array;
-        this.heapSize= array.length - 1;
+        this.heapSize = array.length - 1;
     }
 
     public int getHeapSize() {
@@ -59,10 +59,31 @@ public class MaxBinaryHeap {
     }
 
     /**
+     * O(1)
+     * as the maximum element is the root element in the max heap
+     *
+     * @return
+     */
+    public int max() {
+        return array[0];
+    }
+
+    /**
+     * @return
+     */
+    public int extractMax() {
+        int max = array[0];
+        swap(0, array.length - 1);
+        maxHeapify(0);
+        return max;
+    }
+
+    /**
      * We can insert an element with the following steps:
      * 1. create a new leaf which is the rightmost available slot on the deepest level and store the item in that node
-     *      if the element is less than it's parent, we swap them
+     * if the element is less than it's parent, we swap them
      * 2. continue with step 2, until the element is less than it's parent or it becomes the new root
+     *
      * @param element
      */
     public void insert(int element) {
@@ -88,6 +109,7 @@ public class MaxBinaryHeap {
      * Time Complexity: O(log n)
      * Assume that the trees rooted at left(i) and right(i)
      * are max-heaps
+     *
      * @param index
      */
     public void maxHeapify(int index) {
@@ -98,7 +120,7 @@ public class MaxBinaryHeap {
         if (left <= heapSize && array[left] > array[index])
             max = left;
         else
-            max=index;
+            max = index;
 
         if (right <= heapSize && array[right] > array[max])
             max = right;
@@ -110,8 +132,10 @@ public class MaxBinaryHeap {
     }
 
     /**
-     * Time Complexity: O(n)
+     * Converts A[1…n] to a max heap
      * Why start at n/2? Because elements A[n/2 + 1 … n] are all leaves of the tree 2i > n, for i > n/2 + 1
+     * <p>
+     * Time Complexity: O(n)
      */
     public void buildMaxHeap() {
         for (int i = heapSize / 2; i >= 0; i--) {
@@ -121,8 +145,8 @@ public class MaxBinaryHeap {
 
     public void printArray() {
         int n = array.length;
-        for (int i=0; i<n; ++i)
-            System.out.print(array[i]+" ");
+        for (int i = 0; i < n; ++i)
+            System.out.print(array[i] + " ");
         System.out.println();
     }
 }

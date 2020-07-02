@@ -4,9 +4,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Arrays;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 7/2/2020.
@@ -45,6 +44,23 @@ public class MaxBinaryHeapTest {
         int[] unOrderedArray = new int[] {16, 4, 10, 14, 7, 9, 3, 2, 8, 1};
         maxBinaryHeap = new MaxBinaryHeap(unOrderedArray);
         maxBinaryHeap.buildMaxHeap();
+        maxBinaryHeap.printArray();
+    }
+
+    @Test
+    public void max() {
+        maxBinaryHeap.insert(4);
+        maxBinaryHeap.insert(10);
+        maxBinaryHeap.insert(1);
+        assertEquals(10, maxBinaryHeap.max());
+    }
+
+    @Test
+    public void extractMaximum() {
+        maxBinaryHeap.insert(4);
+        maxBinaryHeap.insert(10);
+        maxBinaryHeap.insert(1);
+        assertEquals(10, maxBinaryHeap.extractMax());
         maxBinaryHeap.printArray();
     }
 }

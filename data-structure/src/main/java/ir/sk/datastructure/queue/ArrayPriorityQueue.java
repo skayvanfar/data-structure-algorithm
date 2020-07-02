@@ -10,14 +10,14 @@ import java.util.Arrays;
  *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
-public class PriorityQueue<T extends Comparable> {
+public class ArrayPriorityQueue<T extends Comparable> {
 
     // array in sorted order, from max at 0 to min at size-1
     private int maxSize;
     private Comparable[] queArray;
     private int nItems;
 
-    public PriorityQueue(int s) {
+    public ArrayPriorityQueue(int s) {
         maxSize = s;
         queArray = new Comparable[maxSize];
         nItems = 0;

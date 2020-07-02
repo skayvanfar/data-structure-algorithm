@@ -4,18 +4,16 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
-public class PriorityQueueTest {
+public class ArrayPriorityQueueTest {
 
-    PriorityQueue<Integer> theQueue;
+    ArrayPriorityQueue<Integer> theQueue;
 
     @Before
     public void setUp() throws Exception {
-        theQueue = new PriorityQueue<>(10);
+        theQueue = new ArrayPriorityQueue<>(10);
         theQueue.insert(10); // insert 4 items
         theQueue.insert(20);
         theQueue.insert(30);

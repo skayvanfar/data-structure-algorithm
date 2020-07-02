@@ -195,7 +195,19 @@ public class Sort {
     }
 
     /**
+     * 1. Build Max Heap from unordered array;
+     * 2. Find maximum element A[1];
+     * 3. Swap elements A[n] and A[1]:
+     * now max element is at the end of the array!
+     * 4. Discard node n from heap
+     * (by decrementing heap-size variable)
+     * 5. New root may violate max heap property, but its
+     * children are max heaps. Run max_heapify to fix this.
+     * 6. Go to Step 2 unless heap is empty
+     *
      * Time Complexity: O(n * log n)
+     * Auxiliary Space: O(1)
+     * Sorting In Place: Yes
      *
      * @param array
      */
