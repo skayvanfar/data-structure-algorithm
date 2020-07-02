@@ -1,5 +1,7 @@
 package ir.sk.algorithm;
 
+import ir.sk.datastructure.fundamental.tree.binarytree.MaxBinaryHeap;
+
 import java.util.Arrays;
 
 /**
@@ -48,6 +50,7 @@ public class Sort {
      * compare and copy
      * twice faster than bubble sort and faster than selection sort
      * Stable: Yes
+     * Sorting In Place: Yes
      *
      * @param array
      */
@@ -71,7 +74,7 @@ public class Sort {
     /**
      * better performance when comparing is costly for example for record data
      * using binary search instead of comparing fro finding the place of an item
-     *
+     * <p>
      * Time Complexity: O(n*2)
      * Auxiliary Space: O(1)
      *
@@ -98,6 +101,7 @@ public class Sort {
      * Time Complexity: O(n * log n)
      * Auxiliary Space: O(n)
      * Stable: Yes
+     * Sorting In Place: No
      *
      * @param a
      * @param n
@@ -138,9 +142,10 @@ public class Sort {
 
     /**
      * Divide-and-conquer algorithm and recursive
-     *
+     * <p>
      * Time Complexity: O(n * log n)
      * Auxiliary Space: O(1) improved over normal merge sort O(n)
+     * Sorting In Place: Yes
      *
      * @param array
      */
@@ -151,7 +156,7 @@ public class Sort {
     }
 
     private static void recMergeSort(int[] array, int[] workSpace, int lowerBound,
-                              int upperBound) {
+                                     int upperBound) {
         if (lowerBound == upperBound)            // if range is 1,
             return;                              // no use sorting
         else {                                    // find midpoint
@@ -167,7 +172,7 @@ public class Sort {
 
     //-----------------------------------------------------------
     private static void merge(int[] array, int[] workSpace, int lowPtr,
-                       int highPtr, int upperBound) {
+                              int highPtr, int upperBound) {
         int j = 0;                             // workspace index
         int lowerBound = lowPtr;
         int mid = highPtr - 1;
@@ -187,5 +192,26 @@ public class Sort {
 
         for (j = 0; j < n; j++)
             array[lowerBound + j] = workSpace[j];
+    }
+
+    /**
+     * Time Complexity: O(n * log n)
+     *
+     * @param array
+     */
+    public static void heapSort(int[] array) {
+
+        // Build heap (rearrange array)
+        MaxBinaryHeap heap = new MaxBinaryHeap(array);
+        heap.buildMaxHeap();
+
+        // One by one extract an element from heap
+        for (int i = heap.getHeapSize(); i > 0; i--) {
+            // Move current root to end, swap
+            array[0] = Utils.gSwap(array[i], array[i] = array[0]);
+            heap.setHeapSize(heap.getHeapSize() - 1);
+            // call max heapify on the reduced heap
+            heap.maxHeapify(0);
+        }
     }
 }

@@ -80,6 +80,15 @@ public class SortTest {
         Sort.inPlaceMergeSort(actual);
         long end = System.currentTimeMillis();
         System.out.println("Logic inPlaceMergeSort took " + (end - start) + " MilliSeconds");
-        assertArrayEquals(actual, actual);
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void heapSort() {
+        long start = System.currentTimeMillis();
+        Sort.heapSort(actual);
+        long end = System.currentTimeMillis();
+        System.out.println("Logic heapSort took " + (end - start) + " MilliSeconds");
+        assertArrayEquals(expected, actual);
     }
 }

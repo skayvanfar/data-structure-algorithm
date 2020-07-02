@@ -144,4 +144,33 @@ public class FindPeakElement {
         return integers.indexOf(integers.stream().max(Integer::compareTo).get());
     }
 
+    /**
+     * @param array
+     * @param row1
+     * @param col1
+     * @param row2
+     * @param col2
+     * @return
+     */
+    public static int decreaseAndConquerBestByRecursive(int[][] array, int row1, int col1, int row2, int col2) {
+        int midRow = (row1 + row2) / 2;
+        int midCol = (col1 + col2) / 2;
+        int max = findMaxIndex(array, midRow);
+   //    int max = array[]
+        /*if (col1 == col2)
+            return array[max][mid];
+        if (array[max][mid] < array[max][mid+1])
+            return decreaseAndConquerByRecursive(array, mid + 1, col2);
+        else if (array[max][mid] > array[max][mid-1])
+            return decreaseAndConquerByRecursive(array, col1, mid + 1);
+        else
+            return array[max][mid];*/
+        return 0;
+    }
+
+    private static int findMaxIndex(int[][] array, int row, int col) {
+        List<Integer> integers = Arrays.stream(array).map(ints -> ints[col]).collect(Collectors.toList());
+        return integers.indexOf(integers.stream().max(Integer::compareTo).get());
+    }
+
 }

@@ -76,4 +76,14 @@ public class FindPeakElementTest {
         System.out.println("time duration for decreaseAndConquerByRecursive by array size: " + array2D.length + " = " + (endTime - startTime) + " nano");
         Assert.assertEquals(expectedValue, result);
     }
+
+    @Test
+    public void decreaseAndConquerBestByRecursive() {
+        int expectedValue = 6;
+        long startTime = System.nanoTime();
+        int result = FindPeakElement.decreaseAndConquerBestByRecursive(array2D, 0, 0, array2D[0].length - 1, array2D.length - 1);
+        long endTime = System.nanoTime();
+        System.out.println("time duration for decreaseAndConquerBestByRecursive by array size: " + array2D.length + " = " + (endTime - startTime) + " nano");
+        Assert.assertEquals(expectedValue, result);
+    }
 }
