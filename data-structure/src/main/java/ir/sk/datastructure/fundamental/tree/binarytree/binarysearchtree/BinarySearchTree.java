@@ -1,10 +1,11 @@
-package ir.sk.datastructure.fundamental.tree.binarytree;
+package ir.sk.datastructure.fundamental.tree.binarytree.binarysearchtree;
 
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
 /**
+ * Vanilla BST is used as basic data structure when you need O(log n) time
  * Time Complexity: O(h) where h is height of Binary Search Tree, if tree is balanced it becomes O(log n)
  * it's between ordered array and ordered list. benefit of both. binary search of ordered array and fast insert of linked list.
  *
@@ -18,6 +19,7 @@ import java.util.Stack;
  *
  * Main Operations: insert-delete-traverse
  * traverse: DFS(In-order,Pre-order,Post-order)-BFS
+ *
  * Created by sad.keyvanfar on 6/28/2020.
  */
 public class BinarySearchTree {
@@ -25,11 +27,11 @@ public class BinarySearchTree {
     public BinarySearchTree() {
     }
 
-    public BinarySearchTree(Node root) {
+    public BinarySearchTree(BSTNode root) {
         this.root = root;
     }
 
-    Node root;
+    BSTNode root;
 
     /**
      * Time Complexity: O(h)
@@ -53,10 +55,10 @@ public class BinarySearchTree {
      * @param value
      * @return
      */
-    private Node addRecursive(Node current, int value) {
+    private BSTNode addRecursive(BSTNode current, int value) {
 
         if (current == null) {
-            return new Node(value);
+            return new BSTNode(value);
         }
 
         if (value < current.value) {
@@ -76,7 +78,7 @@ public class BinarySearchTree {
         return getSizeRecursive(root);
     }
 
-    private int getSizeRecursive(Node current) {
+    private int getSizeRecursive(BSTNode current) {
         return current == null ? 0 : getSizeRecursive(current.left) + 1 + getSizeRecursive(current.right);
     }
 
@@ -94,7 +96,7 @@ public class BinarySearchTree {
      * @param value
      * @return
      */
-    private boolean containsNodeRecursive(Node current, int value) {
+    private boolean containsNodeRecursive(BSTNode current, int value) {
         if (current == null) {
             return false;
         }
@@ -132,7 +134,7 @@ public class BinarySearchTree {
      * @param value
      * @return
      */
-    private Node deleteRecursive(Node current, int value) {
+    private BSTNode deleteRecursive(BSTNode current, int value) {
         if (current == null) {
             return null;
         }
@@ -167,7 +169,7 @@ public class BinarySearchTree {
         return current;
     }
 
-    private int findSmallestValue(Node root) {
+    private int findSmallestValue(BSTNode root) {
         return root.left == null ? root.value : findSmallestValue(root.left);
     }
 
@@ -175,34 +177,34 @@ public class BinarySearchTree {
     /**
      * Time Complexity: O(n)
      * Space Complexity: O(n)
-     * @param node
+     * @param BSTNode
      */
-    public void traverseInOrder(Node node) {
-        if (node != null) {
-            traverseInOrder(node.left);
-            visit(node.value);
-            traverseInOrder(node.right);
+    public void traverseInOrder(BSTNode BSTNode) {
+        if (BSTNode != null) {
+            traverseInOrder(BSTNode.left);
+            visit(BSTNode.value);
+            traverseInOrder(BSTNode.right);
         }
     }
 
     /**
      * Time Complexity: O(n)
      * Space Complexity: O(n)
-     * @param node
+     * @param BSTNode
      */
-    public void traversePreOrder(Node node) {
-        if (node != null) {
-            visit(node.value);
-            traversePreOrder(node.left);
-            traversePreOrder(node.right);
+    public void traversePreOrder(BSTNode BSTNode) {
+        if (BSTNode != null) {
+            visit(BSTNode.value);
+            traversePreOrder(BSTNode.left);
+            traversePreOrder(BSTNode.right);
         }
     }
 
-    public void traversePostOrder(Node node) {
-        if (node != null) {
-            traversePostOrder(node.left);
-            traversePostOrder(node.right);
-            visit(node.value);
+    public void traversePostOrder(BSTNode BSTNode) {
+        if (BSTNode != null) {
+            traversePostOrder(BSTNode.left);
+            traversePostOrder(BSTNode.right);
+            visit(BSTNode.value);
         }
     }
 
@@ -214,8 +216,8 @@ public class BinarySearchTree {
      * Space Complexity: O(n)
      */
     public void traversePreOrderWithoutRecursion() {
-        Stack<Node> stack = new Stack<>();
-        Node current = root;
+        Stack<BSTNode> stack = new Stack<>();
+        BSTNode current = root;
         stack.push(root);
         while(! stack.isEmpty()) {
             current = stack.pop();
@@ -234,8 +236,8 @@ public class BinarySearchTree {
      * Space Complexity: O(n)
      */
     public void traverseInOrderWithoutRecursion() {
-        Stack<Node> stack = new Stack<Node>();
-        Node current = root;
+        Stack<BSTNode> stack = new Stack<BSTNode>();
+        BSTNode current = root;
         stack.push(root);
         while(! stack.isEmpty()) {
             while(current.left != null) {
@@ -259,9 +261,9 @@ public class BinarySearchTree {
      * Space Complexity: O(n)
      */
     public void traversePostOrderWithoutRecursion() {
-        Stack<Node> stack = new Stack<Node>();
-        Node prev = root;
-        Node current = root;
+        Stack<BSTNode> stack = new Stack<BSTNode>();
+        BSTNode prev = root;
+        BSTNode current = root;
         stack.push(root);
 
         while (!stack.isEmpty()) {
@@ -307,21 +309,21 @@ public class BinarySearchTree {
             return;
         }
 
-        Queue<Node> nodes = new LinkedList<>();
-        nodes.add(root);
+        Queue<BSTNode> BSTNodes = new LinkedList<>();
+        BSTNodes.add(root);
 
-        while (!nodes.isEmpty()) {
+        while (!BSTNodes.isEmpty()) {
 
-            Node node = nodes.remove();
+            BSTNode BSTNode = BSTNodes.remove();
 
-            visit(node.value);
+            visit(BSTNode.value);
 
-            if (node.left != null) {
-                nodes.add(node.left);
+            if (BSTNode.left != null) {
+                BSTNodes.add(BSTNode.left);
             }
 
-            if (node.right != null) {
-                nodes.add(node.right);
+            if (BSTNode.right != null) {
+                BSTNodes.add(BSTNode.right);
             }
         }
     }
@@ -331,13 +333,13 @@ public class BinarySearchTree {
 /**
  * store int values and keep a reference to each child
  */
-class Node {
+class BSTNode {
 
     int value;
-    Node left;
-    Node right;
+    BSTNode left;
+    BSTNode right;
 
-    Node(int value) {
+    BSTNode(int value) {
         this.value = value;
         right = null;
         left = null;

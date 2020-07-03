@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Queue;
 
 /**
- * General Tree
+ * General Tree is used to show real models like organization tree
  * Time Complexity: O(n)
  * Main Operations: insert-delete-traverse
  * traverse: DFS-BFS
@@ -14,7 +14,7 @@ import java.util.Queue;
  */
 public class GeneralTree<T> {
 
-    private  TreeNode<T> root;
+    private GeneralNode<T> root;
 
     public GeneralTree() {
     }
@@ -22,37 +22,37 @@ public class GeneralTree<T> {
     public GeneralTree(T value) {
         if (value == null)
             throw new IllegalArgumentException("Cannot insert null value!");
-        this.root = new TreeNode<>(value);
+        this.root = new GeneralNode<>(value);
     }
 
     public GeneralTree(T value, GeneralTree<T>... children) {
         if (value == null)
             throw new IllegalArgumentException("Cannot insert null value!");
-        this.root = new TreeNode<>(value);
+        this.root = new GeneralNode<>(value);
         for (GeneralTree<T> child : children) {
             this.root.addChild(child.root);
         }
     }
 
-    public TreeNode<T> getRoot() {
+    public GeneralNode<T> getRoot() {
         return root;
     }
 
     /**
      * Depth-First Search (DFS) manner
      *
-     * @param treeNode
+     * @param generalNode
      */
-    public void traverseDFS(TreeNode<T> treeNode) {
-        if (treeNode == null) {
+    public void traverseDFS(GeneralNode<T> generalNode) {
+        if (generalNode == null) {
             return;
         }
 
-        visit(treeNode.getValue());
+        visit(generalNode.getValue());
 
-        TreeNode<T> child;
-        for (int i = 0; i < treeNode.childrenCount(); i++) {
-            child = treeNode.getChild(i);
+        GeneralNode<T> child;
+        for (int i = 0; i < generalNode.childrenCount(); i++) {
+            child = generalNode.getChild(i);
             traverseDFS(child);
         }
     }
@@ -71,24 +71,24 @@ public class GeneralTree<T> {
      * Time Complexity: O(n)
      * Space Complexity: O(n)
      *
-     * @param treeNode
+     * @param generalNode
      */
-    public void traverseLevelOrder(TreeNode<T> treeNode) {
-        if (treeNode == null) {
+    public void traverseLevelOrder(GeneralNode<T> generalNode) {
+        if (generalNode == null) {
             return;
         }
 
-        Queue<TreeNode<T>> nodes = new LinkedList<>();
-        nodes.add(treeNode);
+        Queue<GeneralNode<T>> nodes = new LinkedList<>();
+        nodes.add(generalNode);
 
         while (!nodes.isEmpty()) {
 
-            TreeNode<T> node = nodes.remove();
+            GeneralNode<T> node = nodes.remove();
 
             visit(node.getValue());
 
-            for (TreeNode treeNode1 : nodes) {
-                nodes.add(treeNode1);
+            for (GeneralNode generalNode1 : nodes) {
+                nodes.add(generalNode1);
             }
         }
     }
@@ -99,13 +99,13 @@ public class GeneralTree<T> {
 }
 
 
-class TreeNode<T> {
+class GeneralNode<T> {
 
     private T value;
 
-    private List<TreeNode> children;
+    private List<GeneralNode> children;
 
-    public TreeNode(T value) {
+    public GeneralNode(T value) {
         this.value = value;
         this.children = new ArrayList<>();
     }
@@ -122,14 +122,14 @@ class TreeNode<T> {
         return this.children.size();
     }
 
-    public void addChild(TreeNode<T> child) {
+    public void addChild(GeneralNode<T> child) {
         if (child == null)
             throw new IllegalArgumentException("Cannot insert null value!");
 
         this.children.add(child);
     }
 
-    public TreeNode<T> getChild(int index) {
+    public GeneralNode<T> getChild(int index) {
         return this.children.get(index);
     }
 
