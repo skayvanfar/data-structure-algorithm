@@ -91,4 +91,12 @@ public class SortTest {
         System.out.println("Logic heapSort took " + (end - start) + " MilliSeconds");
         assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void treeSort() {
+        long start = System.currentTimeMillis();
+        Sort.treeSort(actual);
+        long end = System.currentTimeMillis();
+        System.out.println("Logic heapSort took " + (end - start) + " MilliSeconds");
+    }
 }

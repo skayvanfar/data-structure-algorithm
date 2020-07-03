@@ -33,6 +33,10 @@ public class BinarySearchTree {
 
     BSTNode root;
 
+    public BSTNode getRoot() {
+        return root;
+    }
+
     /**
      * Time Complexity: O(h)
      * @param value

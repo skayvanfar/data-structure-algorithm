@@ -1,6 +1,7 @@
 package ir.sk.algorithm;
 
 import ir.sk.datastructure.fundamental.tree.binarytree.MaxBinaryHeap;
+import ir.sk.datastructure.fundamental.tree.binarytree.binarysearchtree.BinarySearchTree;
 
 import java.util.Arrays;
 
@@ -225,5 +226,29 @@ public class Sort {
             // call max heapify on the reduced heap
             heap.maxHeapify(0);
         }
+    }
+
+    /**
+     * Tree sort is a sorting algorithm that is based on Binary Search Tree data structure
+     *  It first creates a binary search tree from the elements of the input list or array
+     *  and then performs an in-order traversal on the created binary search tree to get the elements in sorted order.
+     *
+     * Time Complexity: O(n * log h) - h is height o tree and if tree is balanced(AVL,Red Black Tree,...), h = Log n
+     * Auxiliary Space : O(n). heapsort is better
+     * Sorting In Place: No
+     *
+     * @param array
+     */
+    public static void treeSort(int[] array) {
+        // Build BST
+        BinarySearchTree bst = new BinarySearchTree();
+
+        // fill it
+        for (int value: array) {
+            bst.add(value);
+        }
+
+        // traverse in-order
+        bst.traverseInOrder(bst.getRoot());
     }
 }
