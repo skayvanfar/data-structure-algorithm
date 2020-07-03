@@ -99,4 +99,26 @@ public class SortTest {
         long end = System.currentTimeMillis();
         System.out.println("Logic heapSort took " + (end - start) + " MilliSeconds");
     }
+
+    @Test
+    public void countElements_GivenAnArray_ShouldCalculateTheFrequencyArrayAsExpected() {
+        int k = 5;
+        int[] input = { 4, 3, 2, 5, 4, 3, 5, 1, 0, 2, 5 };
+
+        int[] c = Sort.countElements(input, k);
+        int[] expected = { 1, 2, 4, 6, 8, 11 };
+        assertArrayEquals(expected, c);
+    }
+
+    @Test
+    public void sort_GivenAnArray_ShouldSortTheInputAsExpected() {
+        int k = 5;
+        int[] input = { 4, 3, 2, 5, 4, 3, 5, 1, 0, 2, 5 };
+
+        int[] sorted = Sort.countSort(input, k);
+
+        // Our sorting algorithm and Java's should return the same result
+        Arrays.sort(input);
+        assertArrayEquals(input, sorted);
+    }
 }

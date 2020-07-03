@@ -4,6 +4,7 @@ import ir.sk.datastructure.fundamental.tree.binarytree.MaxBinaryHeap;
 import ir.sk.datastructure.fundamental.tree.binarytree.binarysearchtree.BinarySearchTree;
 
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 12/7/2017.
@@ -250,5 +251,64 @@ public class Sort {
 
         // traverse in-order
         bst.traverseInOrder(bst.getRoot());
+    }
+
+    /**
+     *
+     * Time Complexity: O(n + k) + O(n) = O(2n + k) = O(n + k) where n is the number of elements in input array and k is the range of input.
+     * Auxiliary Space: O(n+k)
+     *
+     * @param input
+     * @param k
+     * @return
+     */
+    public static int[] countSort(int[] input, int k) {
+        int[] c = countElements(input, k);
+
+        int[] sorted = new int[input.length];
+        for (int i = input.length - 1; i >= 0; i--) {
+            int current = input[i];
+            sorted[c[current] - 1] = current;
+            c[current] -= 1;
+        }
+
+        return sorted;
+    }
+
+    /**
+     * @param input
+     * @param k
+     * @return
+     */
+    public static int[] countElements(int[] input, int k) {
+        int[] c = new int[k + 1];
+        Arrays.fill(c, 0);
+
+        for (int i : input) {
+            c[i] += 1;
+        }
+
+        for (int i = 1; i < c.length; i++) {
+            c[i] += c[i - 1];
+        }
+
+        return c;
+    }
+
+    /**
+     * @param input
+     * @param k
+     */
+    private static void verifyPreconditions(int[] input, int k) {
+        if (input == null) {
+            throw new IllegalArgumentException("Input is required");
+        }
+
+        int min = IntStream.of(input).min().getAsInt();
+        int max = IntStream.of(input).max().getAsInt();
+
+        if (min < 0 || max > k) {
+            throw new IllegalArgumentException("The input numbers should be between zero and " + k);
+        }
     }
 }

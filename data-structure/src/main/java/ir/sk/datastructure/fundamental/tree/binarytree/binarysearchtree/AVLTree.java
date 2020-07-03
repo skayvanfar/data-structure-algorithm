@@ -46,6 +46,10 @@ public class AVLTree {
         return (n == null) ? 0 : height(n.right) - height(n.left);
     }
 
+    /**
+     * @param y
+     * @return
+     */
     private AVLNode rotateRight(AVLNode y) {
         AVLNode x = y.left;
         AVLNode z = x.right;
@@ -56,6 +60,10 @@ public class AVLTree {
         return x;
     }
 
+    /**
+     * @param y
+     * @return
+     */
     private AVLNode rotateLeft(AVLNode y) {
         AVLNode x = y.right;
         AVLNode z = x.left;
