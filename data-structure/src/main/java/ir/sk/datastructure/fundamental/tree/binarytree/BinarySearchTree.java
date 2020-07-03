@@ -5,8 +5,10 @@ import java.util.Queue;
 import java.util.Stack;
 
 /**
- * Time Complexity: O(log n)
- * Binary Search Tree is Binary tree with ordering and all operation have almost O(log n) time Complexity
+ * Time Complexity: O(h) where h is height of Binary Search Tree, if tree is balanced it becomes O(log n)
+ * it's between ordered array and ordered list. benefit of both. binary search of ordered array and fast insert of linked list.
+ *
+ * Binary Search Tree is Binary tree with ordering and all operation have almost O(log n) time Complexity for balanced ones.
  * A binary tree is a recursive data structure where each node can have 2 children at most.
  *
  * BST Property: A common type of binary tree is a binary search tree, in which every node has a value that is greater than or equal
@@ -29,16 +31,23 @@ public class BinarySearchTree {
 
     Node root;
 
+    /**
+     * Time Complexity: O(h)
+     * @param value
+     */
     public void add(int value) {
         root = addRecursive(root, value);
     }
 
     /**
+     * (Binary search)
      * First, we have to find the place where we want to add a new node in order to keep the tree sorted. We'll follow these rules starting from the root node:
      *
      * if the new node's value is lower than the current node's, we go to the left child
      * if the new node's value is greater than the current node's, we go to the right child
      * when the current node is null, we've reached a leaf node and we can insert the new node in that position
+     *
+     * Time Complexity: O(h)
      *
      * @param current
      * @param value
@@ -71,10 +80,20 @@ public class BinarySearchTree {
         return current == null ? 0 : getSizeRecursive(current.left) + 1 + getSizeRecursive(current.right);
     }
 
+    /**
+     * @param value
+     * @return
+     */
     public boolean containsNode(int value) {
         return containsNodeRecursive(root, value);
     }
 
+    /**
+     * Time Complexity: O(h)
+     * @param current
+     * @param value
+     * @return
+     */
     private boolean containsNodeRecursive(Node current, int value) {
         if (current == null) {
             return false;
@@ -106,6 +125,8 @@ public class BinarySearchTree {
      * After this exchange the node will have one sub-tree at most and then we remove it grounded on some of the above two rules.
      * Here we have to say that it can be done analogical swap,
      * just that we get the left sub-tree and it is the biggest element
+     *
+     * Time Complexity: O(h)
      *
      * @param current
      * @param value
