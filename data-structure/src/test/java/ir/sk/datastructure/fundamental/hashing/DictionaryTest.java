@@ -41,6 +41,12 @@ public class DictionaryTest {
 
     @Test
     public void add() {
-        dictionary.get("coder");
+        dictionary.add("That", 6);
     }
+
+    @Test
+    public void remove() {
+        dictionary.remove("coder");
+    }
+
 }

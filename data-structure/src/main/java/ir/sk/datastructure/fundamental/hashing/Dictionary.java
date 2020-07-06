@@ -103,6 +103,8 @@ public class Dictionary<K, V> {
      * <p>
      * Time Complexity on average is o(n) since reHash() when need more space
      * but Amortized Time Complexity is O(1)
+     * size of new array = 2 * numBuckets (Table Doubling): It's the best size for growing the size of array
+     * it operates on log n cost;, when m = 1,2,4,8,16,32,64,... 2^n
      *
      * @param key
      * @param value
@@ -131,18 +133,17 @@ public class Dictionary<K, V> {
         //  when Load Factor (n/m) is 1, Time Complexity is exact O(1)
         double loadFactor = ((1.0 * size) / numBuckets);
         if (loadFactor >= this.maxLoadFactor) {
-            reHash();
+            // size of new array = 2 * numBuckets (Table Doubling): It's the best size for growing the size of array
+            reHash(2 * numBuckets);
         }
     }
 
     /**
      * If load factor goes beyond threshold, then double hash table size
-     * size of new array = 2 * numBuckets (Table Doubling): It's the best size for growing the size of array
-     * it operates on log n cost;, when m = 1,2,4,8,16,32,64,... 2^n
      * Time Complexity: O(n + m + m') = O(n)
      */
-    private void reHash() {
-        numBuckets = 2 * numBuckets;
+    private void reHash(int m) {
+        numBuckets = m;
         size = 0;
         HashNode<K, V>[] temp = bucketArray;
         bucketArray = new HashNode[numBuckets];
@@ -195,6 +196,13 @@ public class Dictionary<K, V> {
             prev.next = head.next;
         else
             bucketArray[bucketIndex] = head.next;
+
+        // Shrink
+        double loadFactor = ((1.0 * size) / numBuckets);
+        if (loadFactor <= this.maxLoadFactor) {
+            // size of new array = numBuckets / 4 (Table Shrink): It's the best size for shrinking the size of array
+            reHash(numBuckets / 4);
+        }
 
         return head.value;
     }
