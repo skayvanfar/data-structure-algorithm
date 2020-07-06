@@ -59,7 +59,7 @@ public class MaxBinaryHeap {
     }
 
     /**
-     * O(1)
+     * Time Complexity: O(1)
      * as the maximum element is the root element in the max heap
      *
      * @return

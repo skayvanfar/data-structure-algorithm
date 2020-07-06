@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Hashtable;
 
 /**
- * Dictionary ADT (HashTable ADT) (HashMap ADT)
+ * Dictionary ADT (HashTable ADT) (HashMap ADT), Symbol table
  * Hash table is a generalization of array. With an array, we store the element whose key is k at a
  * position k of the array.That means, given a key k, we find the element whose key is k by just
  * looking in the kth position of the array. This is called direct addressing.
@@ -14,6 +14,10 @@ import java.util.Hashtable;
  * Hash table or hash map is a data structure that
  * stores the keys and their associated values, and hash table uses a hash function to map keys to
  * their associated values.
+ *
+ * There are only three basic operations on Dictionary: searching, inserting, and deleting.
+ *
+ * deal with collisions by Chaining
  *
  * Created by sad.keyvanfar on 7/6/2020.
  */
@@ -76,6 +80,8 @@ public class Dictionary<K, V> {
     /**
      * Returns value for a key
      *
+     * Time Complexity: O(1)
+     *
      * @param key
      * @return
      */
@@ -97,6 +103,8 @@ public class Dictionary<K, V> {
 
     /**
      * Adds a key value pair to hash
+     *
+     * Time Complexity: O(1)
      *
      * @param key
      * @param value
@@ -126,8 +134,9 @@ public class Dictionary<K, V> {
     }
 
     /**
-     * If load factor goes beyond threshold, then
-     * double hash table size
+     * If load factor goes beyond threshold, then double hash table size
+     *
+     * Time Complexity: O(n)
      */
     private void reHash() {
         if ((1.0 * size) / numBuckets >= this.loadFactor) {
@@ -147,6 +156,8 @@ public class Dictionary<K, V> {
 
     /**
      * Method to remove a given key
+     *
+     * Time Complexity: O(1)
      *
      * @param key
      * @return
