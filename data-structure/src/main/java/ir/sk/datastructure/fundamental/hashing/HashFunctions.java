@@ -1,6 +1,7 @@
 package ir.sk.datastructure.fundamental.hashing;
 
 /**
+ * for (n = tableSize) transform key into 0, 1, 2, ..., n-1
  * Created by sad.keyvanfar on 7/6/2020.
  */
 public class HashFunctions {

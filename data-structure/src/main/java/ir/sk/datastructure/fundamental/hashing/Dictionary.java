@@ -1,8 +1,5 @@
 package ir.sk.datastructure.fundamental.hashing;
 
-import java.util.HashMap;
-import java.util.Hashtable;
-
 /**
  * Dictionary ADT (HashTable ADT) (HashMap ADT), Symbol table
  * Hash table is a generalization of array. With an array, we store the element whose key is k at a
@@ -10,15 +7,15 @@ import java.util.Hashtable;
  * looking in the kth position of the array. This is called direct addressing.
  * Direct addressing is applicable when we can afford to allocate an array with one position for
  * every possible key.
- *
+ * <p>
  * Hash table or hash map is a data structure that
  * stores the keys and their associated values, and hash table uses a hash function to map keys to
  * their associated values.
- *
+ * <p>
  * There are only three basic operations on Dictionary: searching, inserting, and deleting.
- *
+ * <p>
  * deal with collisions by Chaining
- *
+ * <p>
  * Created by sad.keyvanfar on 7/6/2020.
  */
 public class Dictionary<K, V> {
@@ -29,27 +26,27 @@ public class Dictionary<K, V> {
     // bucketArray is used to store array of chains
     private HashNode<K, V>[] bucketArray;
 
-    // Current capacity of array list
+    // Current capacity of array list (m) (n <= m <= 4n) (constant load factor)
     private int numBuckets;
 
-    // Current size of array list
+    // Current size of array list (n)
     private int size;
 
-    private final float loadFactor;
+    private final float maxLoadFactor;
 
     public Dictionary() {
-        this.loadFactor = DEFAULT_LOAD_FACTOR;
+        this.maxLoadFactor = DEFAULT_LOAD_FACTOR;
         this.numBuckets = DEFAULT_CAPACITY;
         this.size = 0;
         bucketArray = new HashNode[numBuckets];
     }
 
-    public Dictionary(int initialCapacity, float loadFactor) {
+    public Dictionary(int initialCapacity, float maxLoadFactor) {
         if (initialCapacity < 0)
             throw new IllegalArgumentException("Illegal initial capacity: " + initialCapacity);
-        if (loadFactor <= 0 || Float.isNaN(loadFactor))
-            throw new IllegalArgumentException("Illegal load factor: " + loadFactor);
-        this.loadFactor = loadFactor;
+        if (maxLoadFactor <= 0 || Float.isNaN(maxLoadFactor))
+            throw new IllegalArgumentException("Illegal load factor: " + maxLoadFactor);
+        this.maxLoadFactor = maxLoadFactor;
         this.numBuckets = initialCapacity;
         this.size = 0;
         bucketArray = new HashNode[numBuckets];
@@ -79,7 +76,7 @@ public class Dictionary<K, V> {
 
     /**
      * Returns value for a key
-     *
+     * <p>
      * Time Complexity: O(1)
      *
      * @param key
@@ -103,8 +100,9 @@ public class Dictionary<K, V> {
 
     /**
      * Adds a key value pair to hash
-     *
-     * Time Complexity: O(1)
+     * <p>
+     * Time Complexity on average is o(n) since reHash() when need more space
+     * but Amortized Time Complexity is O(1)
      *
      * @param key
      * @param value
@@ -130,34 +128,38 @@ public class Dictionary<K, V> {
         newNode.next = head;
         bucketArray[bucketIndex] = newNode;
 
-        reHash();
+        //  when Load Factor (n/m) is 1, Time Complexity is exact O(1)
+        double loadFactor = ((1.0 * size) / numBuckets);
+        if (loadFactor >= this.maxLoadFactor) {
+            reHash();
+        }
     }
 
     /**
      * If load factor goes beyond threshold, then double hash table size
-     *
-     * Time Complexity: O(n)
+     * size of new array = 2 * numBuckets (Table Doubling): It's the best size for growing the size of array
+     * it operates on log n cost;, when m = 1,2,4,8,16,32,64,... 2^n
+     * Time Complexity: O(n + m + m') = O(n)
      */
     private void reHash() {
-        if ((1.0 * size) / numBuckets >= this.loadFactor) {
-            numBuckets = 2 * numBuckets;
-            size = 0;
-            HashNode<K, V>[] temp = bucketArray;
-            bucketArray = new HashNode[numBuckets];
+        numBuckets = 2 * numBuckets;
+        size = 0;
+        HashNode<K, V>[] temp = bucketArray;
+        bucketArray = new HashNode[numBuckets];
 
-            for (HashNode<K, V> headNode : temp) {
-                while (headNode != null) {
-                    add(headNode.key, headNode.value);
-                    headNode = headNode.next;
-                }
+        for (HashNode<K, V> headNode : temp) {
+            while (headNode != null) {
+                add(headNode.key, headNode.value);
+                headNode = headNode.next;
             }
         }
     }
 
     /**
      * Method to remove a given key
-     *
-     * Time Complexity: O(1)
+     * <p>
+     * Time Complexity on average is o(n) since shrink() when need more space
+     * but Amortized Time Complexity is O(1)
      *
      * @param key
      * @return
