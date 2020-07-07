@@ -33,4 +33,11 @@ public class StringMatchingTest {
         boolean actual = StringMatching.naiveStringSearch(text, pattern);
         Assert.assertEquals(expectedValue, actual);
     }
+
+    @Test
+    public void rabinKarp() {
+        boolean expectedValue = true;
+        boolean actual = StringMatching.rabinKarp(text, pattern, 101);
+        Assert.assertEquals(expectedValue, actual);
+    }
 }
