@@ -1,7 +1,7 @@
 package ir.sk.datastructure.fundamental.hashing;
 
 /**
- * Dictionary ADT (HashTable ADT) (HashMap ADT), Symbol table
+ * ChainingDictionary ADT (HashTable ADT) (HashMap ADT), Symbol table
  * Hash table is a generalization of array. With an array, we store the element whose key is k at a
  * position k of the array.That means, given a key k, we find the element whose key is k by just
  * looking in the kth position of the array. This is called direct addressing.
@@ -14,17 +14,17 @@ package ir.sk.datastructure.fundamental.hashing;
  * <p>
  * There are only three basic operations on Dictionary: searching, inserting, and deleting.
  * <p>
- * deal with collisions by Chaining
+ * deals with collisions by Chaining
  * <p>
  * Created by sad.keyvanfar on 7/6/2020.
  */
-public class Dictionary<K, V> {
+public class ChainingDictionary<K, V> {
 
     private static final float DEFAULT_LOAD_FACTOR = 0.75f;
     private static final int DEFAULT_CAPACITY = 10;
 
     // bucketArray is used to store array of chains
-    private HashNode<K, V>[] bucketArray;
+    private ChainingHashNode<K, V>[] bucketArray;
 
     // Current capacity of array list (m) (n <= m <= 4n) (constant load factor)
     private int numBuckets;
@@ -34,14 +34,14 @@ public class Dictionary<K, V> {
 
     private final float maxLoadFactor;
 
-    public Dictionary() {
+    public ChainingDictionary() {
         this.maxLoadFactor = DEFAULT_LOAD_FACTOR;
         this.numBuckets = DEFAULT_CAPACITY;
         this.size = 0;
-        bucketArray = new HashNode[numBuckets];
+        bucketArray = new ChainingHashNode[numBuckets];
     }
 
-    public Dictionary(int initialCapacity, float maxLoadFactor) {
+    public ChainingDictionary(int initialCapacity, float maxLoadFactor) {
         if (initialCapacity < 0)
             throw new IllegalArgumentException("Illegal initial capacity: " + initialCapacity);
         if (maxLoadFactor <= 0 || Float.isNaN(maxLoadFactor))
@@ -49,7 +49,7 @@ public class Dictionary<K, V> {
         this.maxLoadFactor = maxLoadFactor;
         this.numBuckets = initialCapacity;
         this.size = 0;
-        bucketArray = new HashNode[numBuckets];
+        bucketArray = new ChainingHashNode[numBuckets];
     }
 
     public int size() {
@@ -86,7 +86,7 @@ public class Dictionary<K, V> {
 
         // Find head of chain for given key
         int bucketIndex = hashFuntion(key);
-        HashNode<K, V> head = bucketArray[bucketIndex];
+        ChainingHashNode<K, V> head = bucketArray[bucketIndex];
 
         // Search key in chain
         while (head != null) {
@@ -112,7 +112,7 @@ public class Dictionary<K, V> {
     public void add(K key, V value) {
         // Find head of chain for given key
         int bucketIndex = hashFuntion(key);
-        HashNode<K, V> head = bucketArray[bucketIndex];
+        ChainingHashNode<K, V> head = bucketArray[bucketIndex];
 
         // Check if key is already present
         while (head != null) {
@@ -126,7 +126,7 @@ public class Dictionary<K, V> {
         // Insert key in chain
         size++;
         head = bucketArray[bucketIndex];
-        HashNode<K, V> newNode = new HashNode<>(key, value);
+        ChainingHashNode<K, V> newNode = new ChainingHashNode<>(key, value);
         newNode.next = head;
         bucketArray[bucketIndex] = newNode;
 
@@ -145,10 +145,10 @@ public class Dictionary<K, V> {
     private void reHash(int m) {
         numBuckets = m;
         size = 0;
-        HashNode<K, V>[] temp = bucketArray;
-        bucketArray = new HashNode[numBuckets];
+        ChainingHashNode<K, V>[] temp = bucketArray;
+        bucketArray = new ChainingHashNode[numBuckets];
 
-        for (HashNode<K, V> headNode : temp) {
+        for (ChainingHashNode<K, V> headNode : temp) {
             while (headNode != null) {
                 add(headNode.key, headNode.value);
                 headNode = headNode.next;
@@ -170,10 +170,10 @@ public class Dictionary<K, V> {
         int bucketIndex = hashFuntion(key);
 
         // Get head of chain
-        HashNode<K, V> head = bucketArray[bucketIndex];
+        ChainingHashNode<K, V> head = bucketArray[bucketIndex];
 
         // Search for key in its chain
-        HashNode<K, V> prev = null;
+        ChainingHashNode<K, V> prev = null;
         while (head != null) {
             // If Key found
             if (head.key.equals(key))
@@ -208,15 +208,18 @@ public class Dictionary<K, V> {
     }
 }
 
-class HashNode<K, V> {
+class ChainingHashNode<K, V> {
 
     K key;
     V value;
 
     // Reference to next node
-    HashNode<K, V> next;
+    ChainingHashNode<K, V> next;
 
-    public HashNode(K key, V value) {
+    public ChainingHashNode() {
+    }
+
+    public ChainingHashNode(K key, V value) {
         this.key = key;
         this.value = value;
     }
