@@ -1,17 +1,17 @@
 package ir.sk.datastructure.fundamental.hashing;
 
 /**
- * deals with collisions by Open Addressing - Linear Probing
+ * Double hashing is a collision resolving technique in Open Addressed Hash tables.
+ * Double hashing uses the idea of applying a second hash function to key when a collision occurs.
+ * it protect from clustering problem in Linear Probing
  *
- * In Open Addressing, all elements are stored in the hash table itself.
- * So at any point, size of table must be greater than or equal to total number of keys (M>=n)
- *
- * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 7/7/2020.
+ * Created by sad.keyvanfar on 7/8/2020.
  */
-public class LinearProbingDictionary<K, V> {
+public class DoubleHashingDictionary<K, V> {
 
     private static final float DEFAULT_LOAD_FACTOR = 0.5f;
     private static final int DEFAULT_CAPACITY = 10;
+    private static final int PRIME = 7;
 
     // bucketArray is used to store array
     private OpenAddressingHashNode<K, V>[] array;
@@ -27,7 +27,7 @@ public class LinearProbingDictionary<K, V> {
     // dummy node as deleted flag
     OpenAddressingHashNode<K, V> deletedNode;
 
-    public LinearProbingDictionary() {
+    public DoubleHashingDictionary() {
         this.maxLoadFactor = DEFAULT_LOAD_FACTOR;
         this.capacity = DEFAULT_CAPACITY;
         this.size = 0;
@@ -35,7 +35,7 @@ public class LinearProbingDictionary<K, V> {
         deletedNode = new OpenAddressingHashNode<>();
     }
 
-    public LinearProbingDictionary(int initialCapacity, float maxLoadFactor) {
+    public DoubleHashingDictionary(int initialCapacity, float maxLoadFactor) {
         if (initialCapacity < 0)
             throw new IllegalArgumentException("Illegal initial capacity: " + initialCapacity);
         if (maxLoadFactor <= 0 || Float.isNaN(maxLoadFactor))
@@ -56,17 +56,29 @@ public class LinearProbingDictionary<K, V> {
     }
 
     /**
-     * This implements hash function to find index for a key
+     * function to calculate first hash
      *
      * @param key
      * @return
      */
-    private int hashFuntion(K key) {
+    private int hashFuntion1(K key) {
         // prehashing
         int hashCode = key.hashCode();
         // hashing
         int index = hashCode % capacity;
         return index;
+    }
+
+    /**
+     * function to calculate second hash
+     *
+     * @param key
+     * @return
+     */
+    private int hashFuntion2(K key) {
+        // prehashing
+        int hashCode = key.hashCode();
+        return (PRIME - (hashCode % PRIME));
     }
 
     /**
@@ -76,18 +88,28 @@ public class LinearProbingDictionary<K, V> {
      */
     public void add(K key, V value) {
         OpenAddressingHashNode<K, V> newNode = new OpenAddressingHashNode<>(key, value);
-        int hashIndex = hashFuntion(key);
+        int hashIndex = hashFuntion1(key);
 
-        //find next free space
-        while (array[hashIndex] != null && array[hashIndex].key != key) {
-            hashIndex++;
-            hashIndex %= capacity;
-        }
+        // if collision occurs
+        if (array[hashIndex] != null && array[hashIndex].key != key) {
+            // get index2 from second hash
+            int hashIndex2 = hashFuntion2(key);
+            int i = 1;
+            while (true) {
+                // get newIndex
+                int newIndex = (hashIndex + i * hashIndex2) % capacity;
 
-        //if new node to be inserted increase the current size
-        if (array[hashIndex] == null)
-            size++;
-        array[hashIndex] = newNode;
+                // if no collision occurs, store
+                // the key
+                if (array[hashIndex] != null && array[hashIndex].key != key) {
+                    array[newIndex] = newNode;
+                    break;
+                }
+                i++;
+            }
+        } else
+            array[hashIndex] = newNode;
+        size++;
 
         //  when Load Factor (n/m) is 1, Time Complexity is exact O(1)
         double loadFactor = ((1.0 * size) / capacity);
@@ -99,22 +121,22 @@ public class LinearProbingDictionary<K, V> {
 
     /**
      * Keep probing until slot’s key doesn’t become equal to k or an empty slot is reached.
+     *
      * @param key
      * @return
      */
     public V get(K key) {
         // Apply hash function to find index for given key
-        int hashIndex = hashFuntion(key);
-        int counter = 0;
+        int hashIndex = hashFuntion1(key);
+        int hashIndex2 = hashFuntion2(key);
+
+        int i = 0;
         //finding the node with given key
-        while (array[hashIndex] != null) {
-            if (counter++ > capacity)  //to avoid infinite loop
-                return null;
+        while (array[(hashIndex + i * hashIndex2) % capacity] != null) {
             //if node found return its value
             if (array[hashIndex].key == key)
                 return array[hashIndex].value;
-            hashIndex++;
-            hashIndex %= capacity;
+            i++;
         }
 
         //If not found return null
@@ -129,12 +151,14 @@ public class LinearProbingDictionary<K, V> {
      */
     public V remove(K key) {
         // Apply hash function to find index for given key
-        int hashIndex = hashFuntion(key);
+        int hashIndex = hashFuntion1(key);
+        int hashIndex2 = hashFuntion2(key);
 
+        int i = 0;
         //finding the node with given key
-        while (array[hashIndex] != null) {
+        while (array[(hashIndex + i * hashIndex2) % capacity] != null) {
             //if node found
-            if (array[hashIndex].key == key) {
+            if (array[(hashIndex + i * hashIndex2) % capacity].key == key) {
                 OpenAddressingHashNode<K, V> temp = array[hashIndex];
 
                 //Insert dummy node here for further use
@@ -152,9 +176,7 @@ public class LinearProbingDictionary<K, V> {
 
                 return temp.value;
             }
-            hashIndex++;
-            hashIndex %= capacity;
-
+            i++;
         }
 
         //If not found return null
@@ -172,23 +194,9 @@ public class LinearProbingDictionary<K, V> {
         array = new OpenAddressingHashNode[capacity];
 
         for (OpenAddressingHashNode<K, V> headNode : temp) {
-            while (headNode != null) {
+            if (headNode != null) {
                 add(headNode.key, headNode.value);
             }
         }
-    }
-}
-
-class OpenAddressingHashNode<K, V> {
-
-    K key;
-    V value;
-
-    public OpenAddressingHashNode() {
-    }
-
-    public OpenAddressingHashNode(K key, V value) {
-        this.key = key;
-        this.value = value;
     }
 }

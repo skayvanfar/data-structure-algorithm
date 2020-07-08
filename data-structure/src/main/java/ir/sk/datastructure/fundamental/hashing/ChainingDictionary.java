@@ -208,19 +208,3 @@ public class ChainingDictionary<K, V> {
     }
 }
 
-class ChainingHashNode<K, V> {
-
-    K key;
-    V value;
-
-    // Reference to next node
-    ChainingHashNode<K, V> next;
-
-    public ChainingHashNode() {
-    }
-
-    public ChainingHashNode(K key, V value) {
-        this.key = key;
-        this.value = value;
-    }
-}

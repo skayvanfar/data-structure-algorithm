@@ -9,6 +9,7 @@ public class Fibonacci {
      * Use recursion
      * Time Complexity: T(n) = T(n-1) + T(n-2) which is exponential.
      * t(n) = 2 ^ (n/2)
+     * Time Complexity:O(2^n) exponential
      * Extra Space: O(n) if we consider the function call stack size, otherwise O(1).
      *
      * @param n
@@ -22,8 +23,9 @@ public class Fibonacci {
     }
 
     /**
-     * Use Dynamic Programming
+     * Use Dynamic Programming The Top-Down Approach
      * Time Complexity:O(n)
+     * space complexity: O(n)
      *
      * @param n
      * @return
@@ -41,7 +43,7 @@ public class Fibonacci {
     }
 
     /**
-     * Use Dynamic Programming using Space Optimized fibonacciByArray
+     * Use Dynamic Programming using Space Optimized fibonacciByArray The Bottom-Up Algorithm
      * Time Complexity:O(n)
      * Extra Space: O(1)
      *

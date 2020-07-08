@@ -5,16 +5,18 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-/**
- * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 7/7/2020.
- */
-public class LinearProbingDictionaryTest {
+import static org.junit.Assert.*;
 
-    private LinearProbingDictionary<String, Integer> dictionary;
+/**
+ * Created by sad.keyvanfar on 7/8/2020.
+ */
+public class DoubleHashingDictionaryTest {
+
+    private DoubleHashingDictionary<String, Integer> dictionary;
 
     @Before
     public void setUp() throws Exception {
-        dictionary = new LinearProbingDictionary<>(10, 0.5f);
+        dictionary = new DoubleHashingDictionary<>(10, 0.5f);
         dictionary.add("a",1 );
         dictionary.add("b",2 );
         dictionary.add("c",3 );
