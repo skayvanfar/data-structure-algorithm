@@ -3,6 +3,8 @@ package ir.sk.datastructure.queue;
 import ir.sk.datastructure.fundamental.linklist.FirstLastList;
 
 /**
+ * 2-ended list
+ *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
 public class LinkQueue<T> {
@@ -11,16 +13,29 @@ public class LinkQueue<T> {
 
     public LinkQueue() {
         theList = new FirstLastList();
-    }  // make a 2-ended list
+    }
 
-    public boolean isEmpty()          // true if queue is empty
-    { return theList.isEmpty(); }
+    public boolean isEmpty() {
+        return theList.isEmpty();
+    }
 
-    public void insert(T j)        // insert, rear of queue
-    { theList.insertLast(j); }
+    /**
+     * insert, rear of queue
+     *
+     * @param j
+     */
+    public void insert(T j) {
+        theList.insertLast(j);
+    }
 
-    public T remove()              // remove, front of queue
-    {  return theList.deleteFirst();  }
+    /**
+     * remove, front of queue
+     *
+     * @return
+     */
+    public T remove() {
+        return theList.deleteFirst();
+    }
 
     public void display() {
         System.out.print("Queue (front-->rear): ");

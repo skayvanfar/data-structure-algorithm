@@ -23,42 +23,55 @@ public class ArrayPriorityQueue<T extends Comparable> {
         nItems = 0;
     }
 
-    public void insert(T item) // insert item
-    {
+    /**
+     * Time Complexity: O(n)
+     *
+     * @param item
+     */
+    public void insert(T item) {
         int j;
-        if (nItems == 0) // if no items,
+        if (nItems == 0)
             queArray[nItems++] = item; // insert at 0
-        else // if items,
-        {
-            for (j = nItems - 1; j >= 0; j--) // start at end,
-            {
+        else {
+            // start at end,
+            for (j = nItems - 1; j >= 0; j--) {
                 if (item.compareTo(queArray[j]) > 0) // if new item larger,
                     queArray[j + 1] = queArray[j]; // shift upward
                 else // if smaller,
                     break; // done shifting
-            } // end for
-            queArray[j + 1] = item; // insert it
+            }
+            queArray[j + 1] = item;
             nItems++;
-        } // end else (nItems > 0)
-    } // end insert()
+        }
+    }
 
-    public T remove() // remove minimum item
-    {
+    /**
+     * remove minimum item
+     *
+     * Time Complexity: O(1)
+     *
+     * @return
+     */
+    public T remove() {
         return (T) queArray[--nItems];
     }
 
-    public T peekMin() // peek at minimum item
-    {
+    /**
+     * peek at minimum item
+     *
+     * Time Complexity: O(1)
+     *
+     * @return
+     */
+    public T peekMin() {
         return (T) queArray[nItems - 1];
     }
 
-    public boolean isEmpty() // true if queue is empty
-    {
+    public boolean isEmpty() {
         return (nItems == 0);
     }
 
-    public boolean isFull() // true if queue is full
-    {
+    public boolean isFull() {
         return (nItems == maxSize);
     }
 

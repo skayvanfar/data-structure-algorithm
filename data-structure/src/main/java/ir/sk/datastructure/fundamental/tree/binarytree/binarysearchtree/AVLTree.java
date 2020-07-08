@@ -47,6 +47,8 @@ public class AVLTree {
     }
 
     /**
+     * Time Complexity: O(n)
+     *
      * @param y
      * @return
      */
@@ -61,6 +63,8 @@ public class AVLTree {
     }
 
     /**
+     * Time Complexity: O(n)
+     *
      * @param y
      * @return
      */
@@ -104,11 +108,12 @@ public class AVLTree {
 
     /**
      * Time Complexity: O(log n)
+     *
      * @param node
      * @param key
      * @return
      */
-    AVLNode insert(AVLNode node, int key) {
+    public AVLNode insert(AVLNode node, int key) {
         if (node == null) {
             return new AVLNode(key);
         } else if (node.key > key) {
@@ -121,7 +126,12 @@ public class AVLTree {
         return reBalance(node);
     }
 
-    AVLNode delete(AVLNode node, int key) {
+    /**
+     * Time Complexity: O(log n)
+     *
+     * @return
+     */
+    public AVLNode delete(AVLNode node, int key) {
         if (node == null) {
             return node;
         } else if (node.key > key) {
@@ -152,7 +162,12 @@ public class AVLTree {
         return current;
     }
 
-    AVLNode find(int key) {
+    /**
+     * Time Complexity: O(log n)
+     *
+     * @return
+     */
+    public AVLNode find(int key) {
         AVLNode current = root;
         while (current != null) {
             if (current.key == key) {

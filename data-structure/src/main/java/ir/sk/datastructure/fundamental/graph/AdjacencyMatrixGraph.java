@@ -28,10 +28,21 @@ public class AdjacencyMatrixGraph {
                 adjMat[j][k] = 0;
     }
 
+    /**
+     * Time Complexity: O(1)
+     *
+     * @param label
+     */
     public void addVertex(char label) {
         vertexList[nVerts++] = new VertexM(label);
     }
 
+    /**
+     * Time Complexity: O(n)
+     *
+     * @param start
+     * @param end
+     */
     public void addEdge(int start, int end) {
         adjMat[start][end] = 1;
         adjMat[end][start] = 1;
@@ -41,6 +52,9 @@ public class AdjacencyMatrixGraph {
         System.out.print(vertexList[v].label);
     }
 
+    /**
+     *
+     */
     public void dfs() {
         vertexList[0].wasVisited = true; // mark it
         displayVertex(0); // display it

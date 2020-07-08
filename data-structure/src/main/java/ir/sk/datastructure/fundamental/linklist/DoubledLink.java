@@ -5,13 +5,15 @@ package ir.sk.datastructure.fundamental.linklist;
  */
 public class DoubledLink<T> {
 
-    public T data;                 // data item
-    public DoubledLink<T> next;                  // next link in list
-    public DoubledLink<T> previous;              // previous link in list
-    // -------------------------------------------------------------
-    public DoubledLink(T d)                // constructor
-    { data = d; }
-    // -------------------------------------------------------------
-    public void displayLink()          // display this link
-    { System.out.print(data + " "); }
+    public T data;
+    public DoubledLink<T> next;
+    public DoubledLink<T> previous;
+
+    public DoubledLink(T d) {
+        data = d;
+    }
+
+    public void displayLink() {
+        System.out.print(data + " ");
+    }
 }

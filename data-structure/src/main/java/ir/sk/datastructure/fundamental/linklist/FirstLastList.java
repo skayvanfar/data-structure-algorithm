@@ -19,21 +19,24 @@ package ir.sk.datastructure.fundamental.linklist;
  */
 public class FirstLastList<T> {
 
-    private Link<T> first;               // ref to first link
-    private Link<T> last;                // ref to last link
+    private Link<T> first;
+    private Link<T> last;
 
     public FirstLastList() {
-        first = null;                  // no links on list yet
+        first = null;
         last = null;
     }
 
-    public boolean isEmpty()          // true if no links
-    {
+    public boolean isEmpty() {
         return first == null;
     }
 
-    public void insertFirst(T dd)  // insert at front of list
-    {
+    /**
+     * insert at front of list
+     *
+     * @param dd
+     */
+    public void insertFirst(T dd) {
         Link<T> newLink = new Link<T>(dd);   // make new link
 
         if (isEmpty())                // if empty list,
@@ -42,8 +45,12 @@ public class FirstLastList<T> {
         first = newLink;               // first --> newLink
     }
 
-    public void insertLast(T dd)   // insert at end of list
-    {
+    /**
+     * insert at end of list
+     *
+     * @param dd
+     */
+    public void insertLast(T dd) {
         Link<T> newLink = new Link<T>(dd);   // make new link
         if (isEmpty())                // if empty list,
             first = newLink;            // first --> newLink
@@ -52,8 +59,13 @@ public class FirstLastList<T> {
         last = newLink;                // newLink <-- last
     }
 
-    public T deleteFirst()         // delete first link
-    {                              // (assumes non-empty list)
+    /**
+     * delete first link
+     *
+     * @return
+     */
+    public T deleteFirst() {
+        // (assumes non-empty list)
         T temp = first.data;
         if (first.next == null)         // if only one item
             last = null;                // null <-- last

@@ -59,8 +59,9 @@ public class MaxBinaryHeap {
     }
 
     /**
+     * It returns the root element of Max Heap.
+     *
      * Time Complexity: O(1)
-     * as the maximum element is the root element in the max heap
      *
      * @return
      */
@@ -69,6 +70,11 @@ public class MaxBinaryHeap {
     }
 
     /**
+     * Removes the maximum element from MaxHeap.
+     * this operation needs to maintain the heap property (by calling heapify()) after removing root.
+     *
+     * Time Complexity: O(Log n)
+     *
      * @return
      */
     public int extractMax() {
@@ -83,6 +89,8 @@ public class MaxBinaryHeap {
      * 1. create a new leaf which is the rightmost available slot on the deepest level and store the item in that node
      * if the element is less than it's parent, we swap them
      * 2. continue with step 2, until the element is less than it's parent or it becomes the new root
+     *
+     * Time Complexity: O(Log n)
      *
      * @param element
      */

@@ -17,30 +17,48 @@ public class ListIterator<T> {
         reset();
     }
 
-    public void reset()            // start at 'first'
-    {
+    /**
+     * start at 'first'
+     */
+    public void reset() {
         current = ourList.getFirst();
         previous = null;
     }
 
-    public boolean atEnd()         // true if last link
-    {
+    /**
+     * true if last link
+     *
+     * @return
+     */
+    public boolean atEnd() {
         return (current.next == null);
     }
 
-    public void nextLink()         // go to next link
+    /**
+     * go to next link
+     */
+    public void nextLink()
     {
         previous = current;
         current = current.next;
     }
 
-    public Link getCurrent()       // get current link
-    {
+    /**
+     * get current link
+     *
+     * @return
+     */
+    public Link getCurrent() {
         return current;
     }
 
-    public void insertAfter(long dd)     // insert after
-    {                                 // current link
+    /**
+     * insert after
+     *
+     * @param dd
+     */
+    public void insertAfter(long dd) {
+        // current link
         Link newLink = new Link(dd);
 
         if (ourList.isEmpty())     // empty list
@@ -55,8 +73,12 @@ public class ListIterator<T> {
         }
     }
 
-    public void insertBefore(long dd)    // insert before
-    {                                 // current link
+    /**
+     * insert before
+     * @param dd
+     */
+    public void insertBefore(long dd) {
+        // current link
         Link newLink = new Link(dd);
 
         if (previous == null)        // beginning of list
@@ -72,8 +94,12 @@ public class ListIterator<T> {
         }
     }
 
-    public T deleteCurrent()    // delete item at current
-    {
+    /**
+     * delete item at current
+     *
+     * @return
+     */
+    public T deleteCurrent() {
         T value = current.data;
         if (previous == null)        // beginning of list
         {

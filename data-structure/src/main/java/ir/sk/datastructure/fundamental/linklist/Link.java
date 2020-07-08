@@ -5,12 +5,12 @@ package ir.sk.datastructure.fundamental.linklist;
  */
 public class Link<T> {
 
-    public T data; // data item
+    public T data;
 
-    public Link next; // next link in list
+    public Link next;
 
     public Link(T id) {
-        data = id; // initialize data
+        data = id;
     }
 
     public void displayLink() {

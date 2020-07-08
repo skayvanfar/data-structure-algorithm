@@ -4,6 +4,7 @@ import ir.sk.datastructure.fundamental.linklist.LinkList;
 
 /**
  * Stack Implemented by a Linked List
+ *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
 public class LinkStack<T> {
@@ -14,23 +15,29 @@ public class LinkStack<T> {
         theList = new LinkList();
     }
 
-    public void push(T j)     // put item on top of stack
-    {
+    /**
+     * put item on top of stack
+     *
+     * @param j
+     */
+    public void push(T j) {
         theList.insertFirst(j);
     }
 
-    public T pop()            // take item from top of stack
-    {
+    /**
+     * take item from top of stack
+     *
+     * @return
+     */
+    public T pop() {
         return theList.deleteFirst();
     }
 
-    public boolean isEmpty()       // true if stack is empty
-    {
+    public boolean isEmpty() {
         return ( theList.isEmpty() );
     }
 
-    public void display()
-    {
+    public void display() {
         System.out.print("Stack (top-->bottom): ");
         theList.displayList();
     }

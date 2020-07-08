@@ -96,6 +96,7 @@ public class BinarySearchTree {
 
     /**
      * Time Complexity: O(h)
+     *
      * @param current
      * @param value
      * @return
@@ -177,8 +178,9 @@ public class BinarySearchTree {
         return root.left == null ? root.value : findSmallestValue(root.left);
     }
 
-    // Depth-First Search is a type of traversal that goes deep as much as possible in every child before exploring the next sibling.
     /**
+     * Depth-First Search is a type of traversal that goes deep as much as possible in every child before exploring the next sibling.
+     *
      * Time Complexity: O(n)
      * Space Complexity: O(n)
      * @param BSTNode
@@ -194,6 +196,7 @@ public class BinarySearchTree {
     /**
      * Time Complexity: O(n)
      * Space Complexity: O(n)
+     *
      * @param BSTNode
      */
     public void traversePreOrder(BSTNode BSTNode) {

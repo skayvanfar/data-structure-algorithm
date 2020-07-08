@@ -3,6 +3,9 @@ package ir.sk.datastructure.fundamental.array;
 /**
  * Unordered array data structure like ArrayList in java without using index. Duplicate is allowed.
  * When duplicate is not allowed, It's like Set in java
+ *
+ * Unordered arrays offer fast insertion but slow searching and deletion.
+ *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 12/7/2017.
  */
 public class Array {
@@ -15,6 +18,11 @@ public class Array {
         num = 0;                            // no items yet
     }
 
+    /**
+     * Time Complexity: O(n)
+     * @param searchKey
+     * @return
+     */
     public boolean find(int searchKey) {
         int j;
         for(j = 0; j < num; j++)            // for each element, Linear Search
@@ -28,6 +36,9 @@ public class Array {
 
     /**
      * put element into array
+     *
+     * Time Complexity: O(1)
+     *
      * @param value
      */
     public void insert(int value) {
@@ -35,6 +46,11 @@ public class Array {
         num++;                              // increment size
     }
 
+    /**
+     * Time Complexity: O(n)
+     * @param value
+     * @return
+     */
     public boolean delete(int value) {
         int j;
         for(j = 0; j < num; j++)            // look for it
@@ -43,6 +59,7 @@ public class Array {
         if(j == num)                        // can't find it
             return false;
         else {                              // found it
+            //shifting
             for(int k = j; k < num; k++)    // move higher ones down
                 a[k] = a[k+1];
             num--;                          // decrement size

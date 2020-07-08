@@ -7,19 +7,22 @@ package ir.sk.datastructure.fundamental.linklist;
  */
 public class SortedLinkList<T extends Comparable> {
 
-    private Link<T> first;                 // ref to first item
+    private Link<T> first;
 
     public SortedLinkList() {
         first = null;
     }
 
-    public boolean isEmpty()            // true if no links
-    {
+    public boolean isEmpty() {
         return (first == null);
     }
 
-    public void insert(T key)        // insert, in order
-    {
+    /**
+     * insert, in order
+     *
+     * @param key
+     */
+    public void insert(T key) {
         Link<T> newLink = new Link(key);    // make new link
         Link<T> previous = null;            // start at first
         Link<T> current = first;
@@ -35,8 +38,13 @@ public class SortedLinkList<T extends Comparable> {
         newLink.next = current;          // newLink --> old currnt
     }  // end insert()
 
-    public Link<T> remove()           // return & delete first link
-    {                           // (assumes non-empty list)
+    /**
+     * return & delete first link
+     *
+     * @return
+     */
+    public Link<T> remove() {
+        // (assumes non-empty list)
         Link<T> temp = first;               // save first
         first = first.next;              // delete first
         return temp;                     // return value

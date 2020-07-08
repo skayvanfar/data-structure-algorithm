@@ -19,6 +19,9 @@ public class SortedArray  {
 
     /**
      * Binary Search
+     *
+     * Time Complexity: O(Log n)
+     *
      * @param searchKey
      * @return
      */
@@ -42,23 +45,38 @@ public class SortedArray  {
     }  // end while
 
 
-    public void insert(int value) {// put element into array
+    /**
+     * put element into array
+     *
+     * Time Complexity: O(n)
+     *
+     * @param value
+     */
+    public void insert(int value) {
         int j;
-        for(j = 0; j < num; j++) // find where it goes
+        // find where it goes
+        for(j = 0; j < num; j++)
             if(a[j] > (value)) // (linear search)
                 break;
-        for(int k = num; k > j; k--) // move bigger ones up
+
+        // Shifting
+        for(int k = num; k > j; k--)
             a[k] = a[k - 1];
-        a[j] = value; // insert it
-        num++; // increment size
+        a[j] = value;
+        num++;
     }
 
+    /**
+     * Time Complexity: O(n)
+     * @param value
+     * @return
+     */
     public boolean delete(int value) {
         int j = find(value);
         if(j == num) // can’t find it
             return false;
-        else // found it
-        {
+        else {
+            // Shifting
             for(int k = j; k < num; k++) // move bigger ones down
                 a[k] = a[k + 1];
             num--; // decrement size

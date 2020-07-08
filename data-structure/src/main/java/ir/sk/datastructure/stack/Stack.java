@@ -8,9 +8,9 @@ import java.util.NoSuchElementException;
  */
 public class Stack {
 
-    private int maxSize; // size of stack array
+    private int maxSize;
     private int[] stackArray;
-    private int top; // top of stack
+    private int top;
 
     public Stack(int s) {
         maxSize = s; // set array size
@@ -18,20 +18,35 @@ public class Stack {
         top = -1; // no items yet
     }
 
-    public void push(int j) { // put item on top of stack
+    /**
+     * put item on top of stack
+     *
+     * @param j
+     */
+    public void push(int j) {
         if(top >= stackArray.length)
             throw new IndexOutOfBoundsException("Overflow Exception");
 
         stackArray[++top] = j; // increment top, insert item
     }
 
-    public int pop() { // take item from top of stack
+    /**
+     * take item from top of stack
+     *
+     * @return
+     */
+    public int pop() {
         if(isEmpty())
             throw new NoSuchElementException("Underflow Exception");
         return stackArray[top--]; // access item, decrement top
     }
 
-    public int peek() { // peek at top of stack
+    /**
+     * peek at top of stack
+     *
+     * @return
+     */
+    public int peek() {
         if( isEmpty() )
             throw new NoSuchElementException("Underflow Exception");
         return stackArray[top];

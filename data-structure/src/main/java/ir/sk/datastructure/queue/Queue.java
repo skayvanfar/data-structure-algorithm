@@ -19,19 +19,31 @@ public class Queue {
         rear = -1;
     }
 
-    public void insert(int j) { // put item at rear of queue
+    /**
+     * put item at rear of queue
+     * @param j
+     */
+    public void insert(int j) {
         if(rear == maxSize-1) // deal with wraparound
             rear = -1;
         queArray[++rear] = j; // increment rear and insert
     }
 
-    public int remove() { // take item from front of queue
+    /**
+     * take item from front of queue
+     *
+     * @return
+     */
+    public int remove() {
         int temp = queArray[front++]; // get value and incr front
         if(front == maxSize) // deal with wraparound
             front = 0;
         return temp;
     }
 
+    /**
+     * @return
+     */
     public int peekFront() { // peek at front of queue
         return queArray[front];
     }
