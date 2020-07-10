@@ -47,4 +47,15 @@ public class MultiplicationTest {
     }
 
 
+    @Test
+    public void karatsuba2ByBigInteger() {
+        BigInteger n = new BigInteger("1234");
+        BigInteger m = new BigInteger("4321");
+        long expectedValue = 5332114;
+        long startTime = System.nanoTime();
+        BigInteger result = Multiplication.karatsuba2ByBigInteger(n, m);
+        long endTime = System.nanoTime();
+        System.out.println("time duration for Multiplication.karatsuba2ByBigInteger by n: " + n + " m: " + m + " = " + (endTime - startTime) + " nano");
+        Assert.assertEquals(expectedValue, result.longValue());
+    }
 }
