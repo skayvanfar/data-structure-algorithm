@@ -10,6 +10,7 @@ import java.math.BigInteger;
 public class Multiplication {
 
     /**
+     *  Naive Multiplication
      *  multiplying numbers is taught in schools as long multiplication, sometimes called grade-school multiplication,
      *  sometimes called Standard Algorithm:
      *  multiply the multiplicand by each digit of the multiplier and then add up all the properly shifted results.
@@ -140,6 +141,34 @@ public class Multiplication {
         BigInteger abcd  = karatsuba2ByBigInteger(a.add(b), c.add(d));
 
         return ac.add(abcd.subtract(ac).subtract(bd).shiftLeft(N)).add(bd.shiftLeft(2*N));
+    }
+
+    /**
+     * @param i
+     * @param j
+     * @return
+     */
+    public static long karatsuba2(long i, long j){
+        if (i < 10 || j < 10)
+            return i*j;
+        double n = getLength(Math.max(i,j));
+        if (n%2 == 1)
+            n++;
+        long a = (long) (i/Math.pow(10,(n/2)));
+        long b = (long) (i%Math.pow(10,(n/2)));
+        long c = (long) (j/Math.pow(10,(n/2)));
+        long d = (long) (j%Math.pow(10,(n/2)));
+
+        long first = karatsuba2(a, c);
+        long second = karatsuba2(b, d);
+        long third = karatsuba2(a + b, c + d);
+
+        return ((long) ((first * Math.pow(10, n)) + ((third - first - second) * Math.pow(10, (n/2))) + second));
+    }
+
+    public static int getLength( long a){
+        String b = Long.toString(a);
+        return b.length();
     }
 
 }
