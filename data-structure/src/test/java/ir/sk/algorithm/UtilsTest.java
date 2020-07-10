@@ -51,11 +51,31 @@ public class UtilsTest {
         int b = 5;
         int c = 7;
         long start = System.currentTimeMillis();
-        c = Utils.gSwap(a, a=b, b=c);
+        c = Utils.gSwap(a, a = b, b = c);
         long end = System.currentTimeMillis();
         System.out.println("Logic gSwap took " + (end - start) + " MilliSeconds");
         Assert.assertEquals(a, 5);
         Assert.assertEquals(b, 7);
         Assert.assertEquals(c, 4);
+    }
+
+    @Test
+    public void reverse() {
+        System.out.println(Arrays.toString(array));
+        long start = System.currentTimeMillis();
+        int[] result = Utils.reverse(array);
+        long end = System.currentTimeMillis();
+        System.out.println("Logic shift took " + (end - start) + " MilliSeconds");
+        System.out.println(Arrays.toString(result));
+    }
+
+    @Test
+    public void inPlaceReverse() {
+        System.out.println(Arrays.toString(array));
+        long start = System.currentTimeMillis();
+        Utils.inPlaceReverse(array);
+        long end = System.currentTimeMillis();
+        System.out.println("Logic shift took " + (end - start) + " MilliSeconds");
+        System.out.println(Arrays.toString(array));
     }
 }
