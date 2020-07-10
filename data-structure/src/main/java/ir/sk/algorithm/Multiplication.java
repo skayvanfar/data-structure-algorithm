@@ -10,6 +10,32 @@ import java.math.BigInteger;
 public class Multiplication {
 
     /**
+     *  multiplying numbers is taught in schools as long multiplication, sometimes called grade-school multiplication,
+     *  sometimes called Standard Algorithm:
+     *  multiply the multiplicand by each digit of the multiplier and then add up all the properly shifted results.
+     *
+     *  Time complexity: O(n^2) n: a array length
+     *  Space complexity: O(n+m) m: b array length
+     *
+     * @param a
+     * @param b
+     * @return
+     */
+    public static int[] nativeMultiply(int[] a, int[] b, int base) {
+        int[] product = new int[a.length + b.length];
+        for (int j = 0; j < b.length; j++) {
+            int carry = 0;
+            for (int i = 0; i < a.length; i++) {
+                product[i + j] += carry + a[i] * b[j];
+                carry = product[i + j] / base;
+                product[i + j] = product[i + j] % base;
+            }
+            product[j + a.length] = carry;
+        }
+        return product;
+    }
+
+    /**
      * Karatsuba algorithm for fast multiplication using Divide and Conquer algorithm
      *
      * Time complexity: (n^log3) = O(n^1.59)
@@ -83,6 +109,4 @@ public class Multiplication {
         return numAndSum;
 
     }
-
-
 }
