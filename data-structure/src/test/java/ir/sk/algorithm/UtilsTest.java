@@ -65,7 +65,7 @@ public class UtilsTest {
         long start = System.currentTimeMillis();
         int[] result = Utils.reverse(array);
         long end = System.currentTimeMillis();
-        System.out.println("Logic shift took " + (end - start) + " MilliSeconds");
+        System.out.println("reverse took " + (end - start) + " MilliSeconds");
         System.out.println(Arrays.toString(result));
     }
 
@@ -75,7 +75,16 @@ public class UtilsTest {
         long start = System.currentTimeMillis();
         Utils.inPlaceReverse(array);
         long end = System.currentTimeMillis();
-        System.out.println("Logic shift took " + (end - start) + " MilliSeconds");
+        System.out.println("inPlaceReverse took " + (end - start) + " MilliSeconds");
         System.out.println(Arrays.toString(array));
+    }
+
+    @Test
+    public void recursiveReverse() {
+        long start = System.currentTimeMillis();
+        String result = Utils.recursiveReverse("test");
+        long end = System.currentTimeMillis();
+        System.out.println("recursiveReverse took " + (end - start) + " MilliSeconds");
+        Assert.assertEquals("tset", result);
     }
 }

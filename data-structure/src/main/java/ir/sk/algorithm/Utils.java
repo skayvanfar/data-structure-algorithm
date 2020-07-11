@@ -117,4 +117,18 @@ public class Utils {
             array[array.length - i - 1] = temp;
         }
     }
+
+    /**
+     * Time Complexity: O(n)
+     *
+     * @param str
+     * @return
+     */
+    public static String recursiveReverse(String str) {
+        if (str.length() == 1)
+            return str;
+        else
+            return str.charAt(str.length() - 1) + recursiveReverse(str.substring(0, str.length() - 1));
+
+    }
 }
