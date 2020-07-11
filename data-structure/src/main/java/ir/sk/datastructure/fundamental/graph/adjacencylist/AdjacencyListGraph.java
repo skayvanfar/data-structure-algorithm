@@ -1,14 +1,19 @@
-package ir.sk.datastructure.fundamental.graph;
+package ir.sk.datastructure.fundamental.graph.adjacencylist;
 
 import java.util.*;
 
 /**
  * An adjacency list is nothing but an array of lists. The size of the array is equivalent to the number of vertices in the graph.
  * The list at a specific index of the array represents the adjacent vertices of the vertex represented by that array index.
+ * <p>
+ * Space Complexity: O(V+E)
  * Created by sad.keyvanfar on 7/1/2020.
  */
 public class AdjacencyListGraph {
 
+    /**
+     * Could be replaced by array
+     */
     private Map<Vertex, List<Vertex>> adjVertices;
 
     public AdjacencyListGraph() {
@@ -49,7 +54,7 @@ public class AdjacencyListGraph {
 
     public String printGraph() {
         StringBuffer sb = new StringBuffer();
-        for(Vertex v : adjVertices.keySet()) {
+        for (Vertex v : adjVertices.keySet()) {
             sb.append(v);
             sb.append(adjVertices.get(v));
         }
@@ -102,7 +107,7 @@ class Vertex {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-      //  result = prime * result + getOuterType().hashCode();
+        //  result = prime * result + getOuterType().hashCode();
         result = prime * result + ((label == null) ? 0 : label.hashCode());
         return result;
     }

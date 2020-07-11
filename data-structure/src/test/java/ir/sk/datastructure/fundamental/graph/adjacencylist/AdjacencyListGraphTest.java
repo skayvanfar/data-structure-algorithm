@@ -1,6 +1,6 @@
-package ir.sk.datastructure.fundamental.graph;
+package ir.sk.datastructure.fundamental.graph.adjacencylist;
 
-import com.sun.corba.se.impl.orbutil.graph.Graph;
+import ir.sk.datastructure.fundamental.graph.adjacencylist.AdjacencyListGraph;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
