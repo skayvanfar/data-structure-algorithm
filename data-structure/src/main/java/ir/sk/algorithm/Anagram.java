@@ -1,6 +1,10 @@
 package ir.sk.algorithm;
 
+import java.util.Arrays;
+
 /**
+ * an anagram of a string is another string with exactly the same quantity of each character in it, in any order
+ * "Listen = Silent"
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
 public class Anagram {
@@ -13,8 +17,7 @@ public class Anagram {
         if (newSize == 1)                     // if too small,
             return;                           // go no further
 
-        for (int j = 0; j < newSize; j++)         // for each position,
-        {
+        for (int j = 0; j < newSize; j++) {
             doAnagram(newSize - 1);             // anagram remaining
             if (newSize == 2)                    // if innermost,
                 displayWord();                 // display it
@@ -44,5 +47,26 @@ public class Anagram {
         System.out.flush();
         if (count % 6 == 0)
             System.out.println("");
+    }
+
+
+    /**
+     * rearrange the characters of each string by sorting their characters, which will produce two normalized arrays of characters.
+     *
+     * If two strings are anagrams, their normalized forms should be the same.
+     *
+     * @param string1
+     * @param string2
+     * @return
+     */
+    public static boolean isAnagramSort(String string1, String string2) {
+        if (string1.length() != string2.length()) {
+            return false;
+        }
+        char[] a1 = string1.toCharArray();
+        char[] a2 = string2.toCharArray();
+        Arrays.sort(a1);
+        Arrays.sort(a2);
+        return Arrays.equals(a1, a2);
     }
 }

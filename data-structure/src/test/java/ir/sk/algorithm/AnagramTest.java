@@ -38,4 +38,17 @@ public class AnagramTest {
     @Test
     public void displayWord() {
     }
+
+    @Test
+    public void isAnagramSort() {
+        String str1 = "silent";
+        String str2 = "listen";
+        boolean expectedValue = true;
+        long startTime = System.nanoTime();
+        boolean result = Anagram.isAnagramSort(str1, str2);
+        long endTime = System.nanoTime();
+        System.out.println("time duration for isAnagramSort for str.length: " + str1.length() + " length = " + (endTime - startTime) + " nano");
+        Assert.assertEquals(expectedValue, result);
+
+    }
 }
