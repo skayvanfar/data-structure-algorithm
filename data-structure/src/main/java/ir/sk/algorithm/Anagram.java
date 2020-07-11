@@ -9,6 +9,8 @@ import java.util.Arrays;
  */
 public class Anagram {
 
+    private final static int CHARACTER_RANGE= 256;
+
     static int size;
     static int count;
     static char[] arrChar = new char[100];
@@ -52,8 +54,10 @@ public class Anagram {
 
     /**
      * rearrange the characters of each string by sorting their characters, which will produce two normalized arrays of characters.
-     *
      * If two strings are anagrams, their normalized forms should be the same.
+     *
+     * Time Complexity: O(nlogn) because sorting an array of n characters takes O(n log n) time.
+     * Space Complexity: O(n+n)
      *
      * @param string1
      * @param string2
@@ -68,5 +72,35 @@ public class Anagram {
         Arrays.sort(a1);
         Arrays.sort(a2);
         return Arrays.equals(a1, a2);
+    }
+
+    /**
+     * (like CountingSort)
+     * We'll increment the counts for each character in the first string, and decrement the count for each character in the second.
+     * If the two strings are anagrams,
+     * then the result will be that everything balances to 0.
+     *
+     * time complexity: O(n)
+     * Space Complexity: O(CHARACTER_RANGE)
+     *
+     * @param string1
+     * @param string2
+     * @return
+     */
+    public static boolean isAnagramCounting(String string1, String string2) {
+        if (string1.length() != string2.length()) {
+            return false;
+        }
+        int count[] = new int[CHARACTER_RANGE];
+        for (int i = 0; i < string1.length(); i++) {
+            count[string1.charAt(i)]++;
+            count[string2.charAt(i)]--;
+        }
+        for (int i = 0; i < CHARACTER_RANGE; i++) {
+            if (count[i] != 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }

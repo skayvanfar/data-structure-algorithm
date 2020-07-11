@@ -51,4 +51,16 @@ public class AnagramTest {
         Assert.assertEquals(expectedValue, result);
 
     }
+
+    @Test
+    public void isAnagramCounting() {
+        String str1 = "silent";
+        String str2 = "listen";
+        boolean expectedValue = true;
+        long startTime = System.nanoTime();
+        boolean result = Anagram.isAnagramCounting(str1, str2);
+        long endTime = System.nanoTime();
+        System.out.println("time duration for isAnagramCounting for str.length: " + str1.length() + " length = " + (endTime - startTime) + " nano");
+        Assert.assertEquals(expectedValue, result);
+    }
 }
