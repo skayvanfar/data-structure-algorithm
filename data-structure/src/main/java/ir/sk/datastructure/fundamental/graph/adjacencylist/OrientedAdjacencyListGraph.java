@@ -8,6 +8,14 @@ import java.util.*;
  *  simple oriented graph as part of an exercise in both Object Oriented Programming
  *  and Data Structures.
  *
+ *  The object oriented incidence list structure suggested by Goodrich and Tamassia has special classes of vertex objects and edge objects.
+ *  Each vertex object has an instance variable pointing to a collection object that lists the neighboring edge objects.
+ *  In turn, each edge object points to the two vertex objects at its endpoints.
+ *  This version of the adjacency list uses more memory than the version in which adjacent vertices are listed directly,
+ *  but the existence of explicit edge objects allows it extra flexibility in storing additional information about edges.
+ *
+ *  It represents Directed Wighted graph
+ *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 7/11/2020.
  */
 public class OrientedAdjacencyListGraph<T> implements Graph<T> {
@@ -160,7 +168,7 @@ class OrientedVertex<T> implements Iterable<OrientedVertex<T>> {
 
     OrientedVertex(T info) {
         this.info = info;
-        neighbors = new ArrayList<Edge<T>>();
+        neighbors = new ArrayList<>();
     }
 
     private Edge<T> getEdgeTo(OrientedVertex<T> target) {
@@ -247,9 +255,10 @@ class OrientedVertex<T> implements Iterable<OrientedVertex<T>> {
 }
 
 class Edge<T> {
-    OrientedVertex<T> from;
-    OrientedVertex<T> to;
-    int weight;
+
+    private OrientedVertex<T> from;
+    private OrientedVertex<T> to;
+    private int weight;
 
     Edge(OrientedVertex<T> from, OrientedVertex<T> to, int weight) {
         this.from = from;

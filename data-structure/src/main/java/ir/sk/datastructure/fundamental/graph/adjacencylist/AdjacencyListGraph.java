@@ -5,7 +5,11 @@ import java.util.*;
 /**
  * An adjacency list is nothing but an array of lists. The size of the array is equivalent to the number of vertices in the graph.
  * The list at a specific index of the array represents the adjacent vertices of the vertex represented by that array index.
- * <p>
+ *
+ * An implementation suggested by Guido van Rossum uses a hash table to associate each vertex in a graph with an array of adjacent vertices.
+ * In this representation, a vertex may be represented by any hashable object.
+ * There is no explicit representation of edges as objects.
+ *
  * Space Complexity: O(V+E)
  * Created by sad.keyvanfar on 7/1/2020.
  */
@@ -20,16 +24,32 @@ public class AdjacencyListGraph {
         this.adjVertices = new HashMap<>();
     }
 
+    /**
+     * Time Complexity: O(1)
+     *
+     * @param label
+     */
     public void addVertex(String label) {
         adjVertices.putIfAbsent(new Vertex(label), new ArrayList<>());
     }
 
+    /**
+     * Time Complexity: O(|E|)
+     *
+     * @param label
+     */
     public void removeVertex(String label) {
         Vertex v = new Vertex(label);
         adjVertices.values().stream().forEach(e -> e.remove(v));
         adjVertices.remove(new Vertex(label));
     }
 
+    /**
+     * Time Complexity: O(1)
+     *
+     * @param label1
+     * @param label2
+     */
     public void addEdge(String label1, String label2) {
         Vertex v1 = new Vertex(label1);
         Vertex v2 = new Vertex(label2);
@@ -37,6 +57,12 @@ public class AdjacencyListGraph {
         adjVertices.get(v2).add(v1);
     }
 
+    /**
+     * Time Complexity: O(|V|)
+     *
+     * @param label1
+     * @param label2
+     */
     public void removeEdge(String label1, String label2) {
         Vertex v1 = new Vertex(label1);
         Vertex v2 = new Vertex(label2);

@@ -6,6 +6,11 @@ import java.util.Queue;
 import java.util.Stack;
 
 /**
+ * Adjacency Matrix is a 2D array of size V x V where V is the number of vertices in a graph.
+ * Let the 2D array be adj[][], a slot adj[i][j] = 1 indicates that there is an edge from vertex i to vertex j.
+ * Adjacency matrix for undirected graph is always symmetric. Adjacency Matrix is also used to represent weighted graphs.
+ * If adj[i][j] = w, then there is an edge from vertex i to vertex j with weight w.
+ *
  * Created by sad.keyvanfar on 7/1/2020.
  */
 public class AdjacencyMatrixGraph {
@@ -23,8 +28,8 @@ public class AdjacencyMatrixGraph {
         vertexList = new VertexM[MAX_VERTS];
         adjMat = new int[MAX_VERTS][MAX_VERTS];
         nVerts = 0;
-        for(int j=0; j<MAX_VERTS; j++) // set adjacency
-            for(int k=0; k<MAX_VERTS; k++) // matrix to 0
+        for (int j = 0; j < MAX_VERTS; j++) // set adjacency
+            for (int k = 0; k < MAX_VERTS; k++) // matrix to 0
                 adjMat[j][k] = 0;
     }
 
@@ -43,9 +48,9 @@ public class AdjacencyMatrixGraph {
      * @param start
      * @param end
      */
-    public void addEdge(int start, int end) {
-        adjMat[start][end] = 1;
-        adjMat[end][start] = 1;
+    public void addEdge(int start, int end, int weight) {
+        adjMat[start][end] = weight;
+        adjMat[end][start] = weight;
     }
 
     public void displayVertex(int v) {
@@ -59,11 +64,11 @@ public class AdjacencyMatrixGraph {
         vertexList[0].wasVisited = true; // mark it
         displayVertex(0); // display it
         theStack.push(0); // push it
-        while( !theStack.isEmpty() ) // until stack empty,
+        while (!theStack.isEmpty()) // until stack empty,
         {
 // get an unvisited vertex adjacent to stack top
-            int v = getAdjUnvisitedVertex( theStack.peek() );
-            if(v == -1) // if no such vertex,
+            int v = getAdjUnvisitedVertex(theStack.peek());
+            if (v == -1) // if no such vertex,
                 theStack.pop();
             else // if it exists,
             {
@@ -73,7 +78,7 @@ public class AdjacencyMatrixGraph {
             }
         } // end while
         // stack is empty, so we’re done
-        for(int j=0; j<nVerts; j++) // reset flags
+        for (int j = 0; j < nVerts; j++) // reset flags
             vertexList[j].wasVisited = false;
     }
 
@@ -82,25 +87,24 @@ public class AdjacencyMatrixGraph {
         displayVertex(0); // display it
         theQueue.add(0); // insert at tail
         int v2;
-        while( !theQueue.isEmpty() ) // until queue empty,
+        while (!theQueue.isEmpty()) // until queue empty,
         {
             int v1 = theQueue.remove(); // remove vertex at head
             // until it has no unvisited neighbors
-            while( (v2=getAdjUnvisitedVertex(v1)) != -1 )
-            { // get one,
+            while ((v2 = getAdjUnvisitedVertex(v1)) != -1) { // get one,
                 vertexList[v2].wasVisited = true; // mark it
                 displayVertex(v2); // display it
                 theQueue.add(v2); // insert it
             } // end while(unvisited neighbors)
         } // end while(queue not empty)
         // queue is empty, so we’re done
-        for(int j=0; j<nVerts; j++) // reset flags
+        for (int j = 0; j < nVerts; j++) // reset flags
             vertexList[j].wasVisited = false;
     }
 
     public int getAdjUnvisitedVertex(int v) {
-        for(int j=0; j<nVerts; j++)
-            if(adjMat[v][j]==1 && vertexList[j].wasVisited==false)
+        for (int j = 0; j < nVerts; j++)
+            if (adjMat[v][j] >= 1 && vertexList[j].wasVisited == false) // for unweighted graph is adjMat[v][j] == 1
                 return j;
         return -1;
     }

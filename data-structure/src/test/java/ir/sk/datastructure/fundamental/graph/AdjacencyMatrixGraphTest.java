@@ -1,6 +1,5 @@
 package ir.sk.datastructure.fundamental.graph;
 
-import com.sun.corba.se.impl.orbutil.graph.Graph;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,10 +21,10 @@ public class AdjacencyMatrixGraphTest {
         theGraph.addVertex('C'); // 2
         theGraph.addVertex('D'); // 3
         theGraph.addVertex('E'); // 4
-        theGraph.addEdge(0, 1); // AB
-        theGraph.addEdge(1, 2); // BC
-        theGraph.addEdge(0, 3); // AD
-        theGraph.addEdge(3, 4); // DE
+        theGraph.addEdge(0, 1, 1); // AB
+        theGraph.addEdge(1, 2, 1); // BC
+        theGraph.addEdge(0, 3, 1); // AD
+        theGraph.addEdge(3, 4, 1); // DE
     }
 
     @After
