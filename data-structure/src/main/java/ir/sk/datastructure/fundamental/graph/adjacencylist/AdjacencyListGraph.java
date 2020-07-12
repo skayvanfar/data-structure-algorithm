@@ -1,6 +1,9 @@
 package ir.sk.datastructure.fundamental.graph.adjacencylist;
 
+import ir.sk.datastructure.fundamental.graph.Graph;
+
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * An adjacency list is nothing but an array of lists. The size of the array is equivalent to the number of vertices in the graph.
@@ -13,46 +16,56 @@ import java.util.*;
  * Space Complexity: O(V+E)
  * Created by sad.keyvanfar on 7/1/2020.
  */
-public class AdjacencyListGraph {
+public class AdjacencyListGraph<T> implements Graph<T> {
 
     /**
      * Could be replaced by array
      */
-    private Map<Vertex, List<Vertex>> adjVertices;
+    private Map<Vertex<T>, List<Vertex<T>>> adjVertices;
 
     public AdjacencyListGraph() {
         this.adjVertices = new HashMap<>();
     }
 
+    public boolean contains(T vertex) {
+        return adjVertices.containsKey(vertex);
+    }
+
     /**
      * Time Complexity: O(1)
      *
-     * @param label
+     * @param info
      */
-    public void addVertex(String label) {
-        adjVertices.putIfAbsent(new Vertex(label), new ArrayList<>());
+    public void addVertex(T info) {
+        adjVertices.putIfAbsent(new Vertex(info), new ArrayList<>());
+    }
+
+    @Override
+    public boolean areAdjacent(T src, T dest) throws Exception {
+
+        return adjVertices.get(src).contains(dest);
     }
 
     /**
      * Time Complexity: O(|E|)
      *
-     * @param label
+     * @param info
      */
-    public void removeVertex(String label) {
-        Vertex v = new Vertex(label);
+    public void removeVertex(T info) {
+        Vertex<T> v = new Vertex<>(info);
         adjVertices.values().stream().forEach(e -> e.remove(v));
-        adjVertices.remove(new Vertex(label));
+        adjVertices.remove(new Vertex<>(info));
     }
 
     /**
      * Time Complexity: O(1)
      *
-     * @param label1
-     * @param label2
+     * @param from
+     * @param to
      */
-    public void addEdge(String label1, String label2) {
-        Vertex v1 = new Vertex(label1);
-        Vertex v2 = new Vertex(label2);
+    public void addEdge(T from, T to, int weight) { // TODO: 7/12/2020
+        Vertex<T> v1 = new Vertex<>(from);
+        Vertex<T> v2 = new Vertex<>(to);
         adjVertices.get(v1).add(v2);
         adjVertices.get(v2).add(v1);
     }
@@ -60,60 +73,66 @@ public class AdjacencyListGraph {
     /**
      * Time Complexity: O(|V|)
      *
-     * @param label1
-     * @param label2
+     * @param from
+     * @param to
      */
-    public void removeEdge(String label1, String label2) {
-        Vertex v1 = new Vertex(label1);
-        Vertex v2 = new Vertex(label2);
-        List<Vertex> eV1 = adjVertices.get(v1);
-        List<Vertex> eV2 = adjVertices.get(v2);
+    public void removeEdge(T from, T to) {
+        Vertex v1 = new Vertex(from);
+        Vertex v2 = new Vertex(to);
+        List<Vertex<T>> eV1 = adjVertices.get(v1);
+        List<Vertex<T>> eV2 = adjVertices.get(v2);
         if (eV1 != null)
             eV1.remove(v2);
         if (eV2 != null)
             eV2.remove(v1);
     }
 
-    public List<Vertex> getAdjVertices(String label) {
-        return adjVertices.get(new Vertex(label));
+    @Override
+    public List<T> getNeighborsFor(T info) throws Exception {
+
+        return adjVertices.get(new Vertex(info)).stream().map(tVertex -> tVertex.info).collect(Collectors.toList());
+    }
+
+    public List<Vertex<T>> getAdjVertices(T info) {
+        return adjVertices.get(new Vertex(info));
     }
 
     public String printGraph() {
         StringBuffer sb = new StringBuffer();
-        for (Vertex v : adjVertices.keySet()) {
+        for (Vertex<T> v : adjVertices.keySet()) {
             sb.append(v);
             sb.append(adjVertices.get(v));
         }
         return sb.toString();
     }
 
-    static Set<String> depthFirstTraversal(AdjacencyListGraph graph, String root) {
-        Set<String> visited = new LinkedHashSet<>();
-        Stack<String> stack = new Stack<>();
-        stack.push(root);
+    public Collection<T> depthFirstSearch(T start) {
+        Collection<T> visited = new LinkedHashSet<>();
+        Stack<T> stack = new Stack<>();
+        stack.push(start);
         while (!stack.isEmpty()) {
-            String vertex = stack.pop();
-            if (!visited.contains(vertex)) {
-                visited.add(vertex);
-                for (Vertex v : graph.getAdjVertices(vertex)) {
-                    stack.push(v.label);
+            T info = stack.pop();
+            if (!visited.contains(info)) {
+                visited.add(info);
+                for (Vertex<T> v : getAdjVertices(info)) {
+                    stack.push(v.info);
                 }
             }
         }
         return visited;
     }
 
-    static Set<String> breadthFirstTraversal(AdjacencyListGraph graph, String root) {
-        Set<String> visited = new LinkedHashSet<>();
-        Queue<String> queue = new LinkedList<>();
-        queue.add(root);
-        visited.add(root);
+    public Collection<T> breathFirstSearch(T start) {
+        Collection<T> visited = new LinkedHashSet<>();
+        Queue<T> queue = new LinkedList<>();
+        queue.add(start);
+        visited.add(start);
         while (!queue.isEmpty()) {
-            String vertex = queue.poll();
-            for (Vertex v : graph.getAdjVertices(vertex)) {
-                if (!visited.contains(v.label)) {
-                    visited.add(v.label);
-                    queue.add(v.label);
+            T info = queue.poll();
+            for (Vertex<T> v : getAdjVertices(info)) {
+                if (!visited.contains(v.info)) {
+                    visited.add(v.info);
+                    queue.add(v.info);
                 }
             }
         }
@@ -121,12 +140,12 @@ public class AdjacencyListGraph {
     }
 }
 
-class Vertex {
+class Vertex<T> {
 
-    String label;
+    T info;
 
-    Vertex(String label) {
-        this.label = label;
+    Vertex(T info) {
+        this.info = info;
     }
 
     @Override
@@ -134,7 +153,7 @@ class Vertex {
         final int prime = 31;
         int result = 1;
         //  result = prime * result + getOuterType().hashCode();
-        result = prime * result + ((label == null) ? 0 : label.hashCode());
+        result = prime * result + ((info == null) ? 0 : info.hashCode());
         return result;
     }
 
@@ -149,17 +168,17 @@ class Vertex {
         Vertex other = (Vertex) obj;
        /* if (!getOuterType().equals(other.getOuterType()))
             return false;*/
-        if (label == null) {
-            if (other.label != null)
+        if (info == null) {
+            if (other.info != null)
                 return false;
-        } else if (!label.equals(other.label))
+        } else if (!info.equals(other.info))
             return false;
         return true;
     }
 
     @Override
     public String toString() {
-        return label;
+        return info.toString();
     }
 
 

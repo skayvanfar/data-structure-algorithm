@@ -1,6 +1,7 @@
 package ir.sk.datastructure.fundamental.graph;
 
 import java.util.Collection;
+import java.util.Set;
 
 /**
  *
@@ -14,6 +15,6 @@ public interface Graph<T> {
     void addEdge(T from, T to, int weight) throws Exception;
     void removeEdge(T from, T to) throws Exception;
     Collection<T> getNeighborsFor(T vertex) throws Exception;
-    void depthSearch(T start) throws Exception;
-    void breathSearch(T start) throws Exception;
+    Collection<T> depthFirstSearch(T start) throws Exception;
+    Collection<T> breathFirstSearch(T start) throws Exception;
 }

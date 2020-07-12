@@ -22,12 +22,12 @@ public class AdjacencyListGraphTest {
         graph.addVertex("Mark");
         graph.addVertex("Rob");
         graph.addVertex("Maria");
-        graph.addEdge("Bob", "Alice");
-        graph.addEdge("Bob", "Rob");
-        graph.addEdge("Alice", "Mark");
-        graph.addEdge("Rob", "Mark");
-        graph.addEdge("Alice", "Maria");
-        graph.addEdge("Rob", "Maria");
+        graph.addEdge("Bob", "Alice", 1);
+        graph.addEdge("Bob", "Rob", 1);
+        graph.addEdge("Alice", "Mark", 1);
+        graph.addEdge("Rob", "Mark", 1);
+        graph.addEdge("Alice", "Maria", 1);
+        graph.addEdge("Rob", "Maria", 1);
     }
 
     @After
@@ -37,23 +37,23 @@ public class AdjacencyListGraphTest {
     @Test
     public void givenAGraph_whenTraversingDepthFirst_thenExpectedResult() {
         assertEquals("[Bob, Rob, Maria, Alice, Mark]",
-                graph.depthFirstTraversal(graph, "Bob").toString());
+                graph.depthFirstSearch("Bob").toString());
     }
 
     @Test
     public void givenAGraph_whenTraversingBreadthFirst_thenExpectedResult() {
         assertEquals("[Bob, Alice, Rob, Mark, Maria]",
-                graph.breadthFirstTraversal(graph, "Bob").toString());
+                graph.breathFirstSearch("Bob").toString());
     }
 
     @Test
     public void givenAGraph_whenRemoveVertex_thenVertedNotFound() {
         assertEquals("[Bob, Alice, Rob, Mark, Maria]",
-                graph.breadthFirstTraversal(graph, "Bob").toString());
+                graph.breathFirstSearch("Bob").toString());
 
         graph.removeVertex("Maria");
         assertEquals("[Bob, Alice, Rob, Mark]",
-                graph.breadthFirstTraversal(graph, "Bob").toString());
+                graph.breathFirstSearch("Bob").toString());
     }
 
 }

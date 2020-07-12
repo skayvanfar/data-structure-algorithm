@@ -43,13 +43,13 @@ public class OrientedAdjacencyListGraph<T> implements Graph<T> {
         return srcVertex.hasNeighbor(destVertex);
     }
 
-    public void addVertex(T vertex) {
-        OrientedVertex<T> vertexNode = new OrientedVertex<>(vertex);
-        graph.put(vertex, vertexNode);
+    public void addVertex(T info) {
+        OrientedVertex<T> vertexNode = new OrientedVertex<>(info);
+        graph.put(info, vertexNode);
     }
 
-    public void removeVertex(T vertex) throws NoSuchVertexException {
-        OrientedVertex<T> vertexNode = graph.get(vertex);
+    public void removeVertex(T info) throws NoSuchVertexException {
+        OrientedVertex<T> vertexNode = graph.get(info);
 
         if (vertexNode == null)
             throw new NoSuchVertexException();
@@ -60,7 +60,7 @@ public class OrientedAdjacencyListGraph<T> implements Graph<T> {
             possibleLink.removeEdgeTo(vertexNode);
         }
 
-        graph.remove(vertex);
+        graph.remove(info);
     }
 
     public void addEdge(T from, T to, int weight) throws NoSuchVertexException {
@@ -97,7 +97,7 @@ public class OrientedAdjacencyListGraph<T> implements Graph<T> {
      * @param start
      * @throws NoSuchVertexException
      */
-    public void depthSearch(T start) throws NoSuchVertexException {
+    public Collection<T> depthFirstSearch(T start) throws NoSuchVertexException {
         if (graph.get(start) == null)
             throw new NoSuchVertexException();
 
@@ -127,13 +127,14 @@ public class OrientedAdjacencyListGraph<T> implements Graph<T> {
                 stack.pop();
             }
         }
+        return visited;
     }
 
     /**
      * @param start
      * @throws NoSuchVertexException
      */
-    public void breathSearch(T start) throws NoSuchVertexException {
+    public Collection<T> breathFirstSearch(T start) throws NoSuchVertexException {
         if (graph.get(start) == null)
             throw new NoSuchVertexException();
 
@@ -158,6 +159,7 @@ public class OrientedAdjacencyListGraph<T> implements Graph<T> {
                 }
             }
         }
+        return visited;
     }
 
 }
