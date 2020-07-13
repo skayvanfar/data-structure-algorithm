@@ -106,22 +106,15 @@ public class AdjacencyListGraph<T> implements Graph<T> {
         return sb.toString();
     }
 
-    public Collection<T> depthFirstSearch(T start) {
-        Collection<T> visited = new LinkedHashSet<>();
-        Stack<T> stack = new Stack<>();
-        stack.push(start);
-        while (!stack.isEmpty()) {
-            T info = stack.pop();
-            if (!visited.contains(info)) {
-                visited.add(info);
-                for (Vertex<T> v : getAdjVertices(info)) {
-                    stack.push(v.info);
-                }
-            }
-        }
-        return visited;
-    }
-
+    /**
+     *
+     * Time Complexity: O(|V|+|E|) Linear Time
+     * Space Complexity: O(w) w is the maximum width of the tree
+     *
+     * @param start
+     * @return
+     */
+    @Override
     public Collection<T> breathFirstSearch(T start) {
         Collection<T> visited = new LinkedHashSet<>();
         Queue<T> queue = new LinkedList<>();
@@ -138,6 +131,31 @@ public class AdjacencyListGraph<T> implements Graph<T> {
         }
         return visited;
     }
+
+    /**
+     * Time Complexity: O(|V|+|E|) Linear Time
+     * Space Complexity: O(h) h is the maximum height of the tree
+     *
+     * @param start
+     * @return
+     */
+    @Override
+    public Collection<T> depthFirstSearch(T start) {
+        Collection<T> visited = new LinkedHashSet<>();
+        Stack<T> stack = new Stack<>();
+        stack.push(start);
+        while (!stack.isEmpty()) {
+            T info = stack.pop();
+            if (!visited.contains(info)) {
+                visited.add(info);
+                for (Vertex<T> v : getAdjVertices(info)) {
+                    stack.push(v.info);
+                }
+            }
+        }
+        return visited;
+    }
+
 }
 
 class Vertex<T> {

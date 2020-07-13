@@ -82,6 +82,9 @@ public class AdjacencyMatrixGraph {
             vertexList[j].wasVisited = false;
     }
 
+    /**
+     *
+     */
     public void bfs() { // begin at vertex 0
         vertexList[0].wasVisited = true; // mark it
         displayVertex(0); // display it

@@ -97,6 +97,40 @@ public class OrientedAdjacencyListGraph<T> implements Graph<T> {
      * @param start
      * @throws NoSuchVertexException
      */
+    @Override
+    public Collection<T> breathFirstSearch(T start) throws NoSuchVertexException {
+        if (graph.get(start) == null)
+            throw new NoSuchVertexException();
+
+        Collection<T> visited = new HashSet<>();
+        visited.add(start);
+
+        Queue<T> queue = new ArrayDeque<>();
+        queue.add(start);
+
+        System.out.println(start);
+        while (!queue.isEmpty()) {
+            T current = queue.remove();
+            T neighbor = null;
+            Iterator<T> iterator = getNeighborsFor(current).iterator();
+
+            while (iterator.hasNext()) {
+                neighbor = iterator.next();
+                if (!visited.contains(neighbor)) {
+                    visited.add(neighbor);
+                    System.out.println(neighbor);
+                    queue.add(neighbor);
+                }
+            }
+        }
+        return visited;
+    }
+
+    /**
+     * @param start
+     * @throws NoSuchVertexException
+     */
+    @Override
     public Collection<T> depthFirstSearch(T start) throws NoSuchVertexException {
         if (graph.get(start) == null)
             throw new NoSuchVertexException();
@@ -125,38 +159,6 @@ public class OrientedAdjacencyListGraph<T> implements Graph<T> {
                 stack.push(neighbor);
             } else {
                 stack.pop();
-            }
-        }
-        return visited;
-    }
-
-    /**
-     * @param start
-     * @throws NoSuchVertexException
-     */
-    public Collection<T> breathFirstSearch(T start) throws NoSuchVertexException {
-        if (graph.get(start) == null)
-            throw new NoSuchVertexException();
-
-        Collection<T> visited = new HashSet<>();
-        visited.add(start);
-
-        Queue<T> queue = new ArrayDeque<>();
-        queue.add(start);
-
-        System.out.println(start);
-        while (!queue.isEmpty()) {
-            T current = queue.remove();
-            T neighbor = null;
-            Iterator<T> iterator = getNeighborsFor(current).iterator();
-
-            while (iterator.hasNext()) {
-                neighbor = iterator.next();
-                if (!visited.contains(neighbor)) {
-                    visited.add(neighbor);
-                    System.out.println(neighbor);
-                    queue.add(neighbor);
-                }
             }
         }
         return visited;
