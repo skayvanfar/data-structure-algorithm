@@ -11,23 +11,22 @@ public class Algorithms {
      * @param n
      * @return
      */
-    public static int factorialByRecursive(int n)
-    {
-        if(n==0)
+    public static int factorialByRecursive(int n) {
+        if (n == 0)
             return 1;
         else
-            return (n * factorialByRecursive(n-1) );
+            return (n * factorialByRecursive(n - 1));
     }
 
     /**
      * Using loop
+     *
      * @param n
      * @return
      */
-    public static int triangleByLoop(int n)
-    {
+    public static int triangleByLoop(int n) {
         int total = 0;
-        while(n > 0) // until n is 1
+        while (n > 0) // until n is 1
         {
             total = total + n; // add n (column height) to total
             --n; // decrement column height
@@ -37,14 +36,15 @@ public class Algorithms {
 
     /**
      * Using Recursion
+     *
      * @param n
      * @return
      */
     public static int triangleByRecursive(int n) {
-        if(n==1)
+        if (n == 1)
             return 1;
         else
-            return  ( n + triangleByRecursive(n-1) );
+            return (n + triangleByRecursive(n - 1));
     }
 
     public static int div(int a, int b) {
@@ -65,7 +65,7 @@ public class Algorithms {
      * the Euclidean algorithm, or Euclid's algorithm, is an efficient method for
      * computing the greatest common divisor (GCD) of two numbers, the largest number
      * that divides both of them without leaving a remainder.
-     *
+     * <p>
      * decrease-and-conquer (Divide-and-conquer algorithm) algorithm and recursive
      *
      * @param a
@@ -76,24 +76,25 @@ public class Algorithms {
         if (b == 0)
             return a;
         else
-            return gcdByEuclidean(b, mod(a,  b));
+            return gcdByEuclidean(b, mod(a, b));
     }
 
     public static int powerByRecursive(int n, int m) {
-        if(m==1)
+        if (m == 1)
             return n;
         else
-            return (n * powerByRecursive(n, m - 1) );
+            return (n * powerByRecursive(n, m - 1));
     }
 
     /**
      * Pascal
+     *
      * @param n
      * @param m
      * @return
      */
     public static int combinationByRecursive(int n, int m) {
-        if(n == m || m == 0)
+        if (n == m || m == 0)
             return 1;
         else
             return combinationByRecursive(n - 1, m) + combinationByRecursive(n - 1, m - 1);
@@ -101,6 +102,7 @@ public class Algorithms {
 
     /**
      * Divide-and-conquer algorithm and recursive
+     *
      * @param topN
      * @param src
      * @param inter
@@ -121,20 +123,19 @@ public class Algorithms {
     }
 
     /**
-     *
      * @param n the number of people standing in the circle
      * @return the safe position who will survive the execution
-     *   f(N) = 2L + 1 where N =2^M + L and 0 <= L < 2^M
+     * f(N) = 2L + 1 where N =2^M + L and 0 <= L < 2^M
      */
     public int getSafePosition(int n) {
         // find value of L for the equation
         int valueOfL = n - Integer.highestOneBit(n);
-        int safePosition = 2 * valueOfL  + 1;
+        int safePosition = 2 * valueOfL + 1;
 
         return safePosition;
     }
 
-    public static int[][] magicSquare (int n) {
+    public static int[][] magicSquare(int n) {
         int[][] magicSquare = new int[n][n];
 
         int number = 1;

@@ -7,23 +7,104 @@ public class Utils {
 
 
     /**
-     * shifting - rotation
+     * shifting - right rotation just one unit
      * <p>
      * Time Complexity: O(n)
      * Auxiliary Space: O(1)
      *
      * @param array the source array.
-     * @param i     starting position
-     * @param j     finishing position
+     * @param startIndex     starting position
+     * @param endIndex     finishing position
      */
-    public static void rotate(int[] array, int i, int j) {
-        int temp = array[j];
-        int k = j - 1;
-        while (k >= i) {
+    public static void rightRotate(int[] array, int startIndex, int endIndex) {
+        int temp = array[endIndex];
+        int k = endIndex - 1;
+        while (k >= startIndex) {
             array[k + 1] = array[k];
             k--;
         }
-        array[i] = temp;
+        array[startIndex] = temp;
+    }
+
+    /**
+     * shifting - left rotation just one unit
+     * <p>
+     * Time Complexity: O(n)
+     * Auxiliary Space: O(1)
+     *
+     * @param array the source array.
+     * @param startIndex     starting position
+     * @param endIndex     finishing position
+     */
+    public static void leftRotate(int[] array, int startIndex, int endIndex) {
+        int temp = array[startIndex];
+        int k = startIndex;
+        while (k < endIndex) {
+            array[k] = array[k + 1];
+            k++;
+        }
+        array[endIndex] = temp;
+    }
+
+    /**
+     * shifting - right rotation unit number
+     *
+     * Time Complexity: O(n)
+     * Auxiliary Space: O(unit)
+     *
+     * @param array the source array.
+     * @param startEndex     starting position
+     * @param endIndex     finishing position
+     * @param unit  the number of rotations
+     */
+    public static void rightRotate(int[] array, int startEndex, int endIndex, int unit) { // TODO: 7/14/2020 incorrect
+        int m = startEndex;
+        int[] temp = new int[unit];
+        for (int k = endIndex + 1 - unit; k <= endIndex; k++) {
+            temp[m] = array[k];
+            m++;
+        }
+
+        int k = endIndex - unit;
+        while (k >= startEndex) {
+            array[k + unit] = array[k];
+            k--;
+        }
+        for (int l = 0; l < unit; l++) {
+            array[l] = temp[l];
+        }
+    }
+
+    /**
+     * shifting - left rotation unit number
+     *
+     * Time Complexity: O(n)
+     * Auxiliary Space: O(unit)
+     *
+     * @param array the source array.
+     * @param startIndex     starting position
+     * @param endIndex     finishing position
+     * @param unit  the number of rotations
+     */
+    public static void leftRotate(int[] array, int startIndex, int endIndex, int unit) {
+        int[] temp = new int[unit];
+
+        // move unit number from startIndex of array into a temp array
+        for (int k = 0; k < unit; k++) {
+            temp[k] = array[startIndex + k];
+        }
+
+        // shift other elements by unit
+        int k = startIndex;
+        while ((k + unit) <= endIndex) {
+            array[k] = array[k + unit];
+            k++;
+        }
+
+        // move all elements from temp into a latest elements array until endIndex
+        for (int l = 0; l < unit; l++) {
+            array[k + l] = temp[l];
+        }
     }
 
     /**
@@ -89,6 +170,7 @@ public class Utils {
     /**
      * Time Complexity: O(n)
      * Space Complexity: O(n)
+     *
      * @param a
      */
     public static int[] reverse(int a[]) {
@@ -104,7 +186,7 @@ public class Utils {
     /**
      * This algorithm iterate over an array and swap elements until you reach the midpoint.
      * This is also known as reversing an array in-place because no additional buffer is used.
-     *
+     * <p>
      * Time Complexity: O(n/2)=O(n)
      * Space Complexity: O(1)
      *

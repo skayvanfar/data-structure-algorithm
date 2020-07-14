@@ -16,7 +16,7 @@ public class UtilsTest {
 
     @Before
     public void setUp() throws Exception {
-        array = new int[]{1, 5, 2, 4, 9, 7};
+        array = new int[]{1, 2, 3, 4, 5, 6};
     }
 
     @After
@@ -24,14 +24,51 @@ public class UtilsTest {
     }
 
     @Test
-    public void rotate() {
+    public void rightRotate() {
+        int[] expected = new int[]{1, 5, 2, 3, 4, 6};
         System.out.println(Arrays.toString(array));
         long start = System.currentTimeMillis();
-        Utils.rotate(array, 1, 4);
+        Utils.rightRotate(array, 1, 4);
+        long end = System.currentTimeMillis();
+        System.out.println("rightRotate took " + (end - start) + " MilliSeconds");
+        System.out.println(Arrays.toString(array));
+        Assert.assertArrayEquals(expected, array);
+    }
+
+    @Test
+    public void leftRotate() {
+        int[] expected = new int[]{1, 3, 4, 5, 2, 6};
+        System.out.println(Arrays.toString(array));
+        long start = System.currentTimeMillis();
+        Utils.leftRotate(array, 1, 4);
+        long end = System.currentTimeMillis();
+        System.out.println("leftRotate took " + (end - start) + " MilliSeconds");
+        System.out.println(Arrays.toString(array));
+        Assert.assertArrayEquals(expected, array);
+    }
+
+    @Test
+    public void testRightRotate() { // TODO: 7/14/2020
+        System.out.println(Arrays.toString(array));
+        long start = System.currentTimeMillis();
+        Utils.rightRotate(array, 1, 4, 2);
+        long end = System.currentTimeMillis();
+        System.out.println("rightRotate took " + (end - start) + " MilliSeconds");
+        System.out.println(Arrays.toString(array));
+    }
+
+    @Test
+    public void testLeftRotate() {
+        int[] expected = new int[]{1, 4, 5, 2, 3, 6};
+        System.out.println(Arrays.toString(array));
+        long start = System.currentTimeMillis();
+        Utils.leftRotate(array, 1, 4, 2);
         long end = System.currentTimeMillis();
         System.out.println("Logic shift took " + (end - start) + " MilliSeconds");
         System.out.println(Arrays.toString(array));
+        Assert.assertArrayEquals(expected, array);
     }
+
 
     @Test
     public void testSwap() {
@@ -87,4 +124,5 @@ public class UtilsTest {
         System.out.println("recursiveReverse took " + (end - start) + " MilliSeconds");
         Assert.assertEquals("tset", result);
     }
+
 }

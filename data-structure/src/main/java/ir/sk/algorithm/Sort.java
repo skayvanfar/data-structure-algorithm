@@ -1,12 +1,9 @@
 package ir.sk.algorithm;
 
-import ir.sk.datastructure.fundamental.graph.Graph;
 import ir.sk.datastructure.fundamental.tree.binarytree.MaxBinaryHeap;
 import ir.sk.datastructure.fundamental.tree.binarytree.binarysearchtree.BinarySearchTree;
 
 import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.stream.IntStream;
 
 /**
@@ -94,7 +91,7 @@ public class Sort {
 
             // Move all elements after location to create space
             // Shifting array to one location right
-            Utils.rotate(array, loc, i);
+            Utils.rightRotate(array, loc, i);
             // System.arraycopy(array, loc, array, loc + 1, i - loc);
             // Placing element at its correct location
             // array[loc] = key;
