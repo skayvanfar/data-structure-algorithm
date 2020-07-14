@@ -182,7 +182,7 @@ public class BinarySearchTree {
      * Depth-First Search is a type of traversal that goes deep as much as possible in every child before exploring the next sibling.
      *
      * Time Complexity: O(n)
-     * Space Complexity: O(n)
+     * Space Complexity: O(h) h is the maximum height of the tree
      * @param BSTNode
      */
     public void traverseInOrder(BSTNode BSTNode) {
@@ -195,7 +195,7 @@ public class BinarySearchTree {
 
     /**
      * Time Complexity: O(n)
-     * Space Complexity: O(n)
+     * Space Complexity: O(h) h is the maximum height of the tree
      *
      * @param BSTNode
      */
@@ -207,6 +207,11 @@ public class BinarySearchTree {
         }
     }
 
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(h) h is the maximum height of the tree
+     * @param BSTNode
+     */
     public void traversePostOrder(BSTNode BSTNode) {
         if (BSTNode != null) {
             traversePostOrder(BSTNode.left);
@@ -220,7 +225,7 @@ public class BinarySearchTree {
      * completing the left subtree we can go to the right subtree.
      *
      * Time Complexity: O(n)
-     * Space Complexity: O(n)
+     * Space Complexity: O(h) h is the maximum height of the tree
      */
     public void traversePreOrderWithoutRecursion() {
         Stack<BSTNode> stack = new Stack<>();
@@ -240,7 +245,7 @@ public class BinarySearchTree {
 
     /**
      * Time Complexity: O(n)
-     * Space Complexity: O(n)
+     * Space Complexity: O(h) h is the maximum height of the tree
      */
     public void traverseInOrderWithoutRecursion() {
         Stack<BSTNode> stack = new Stack<BSTNode>();
@@ -265,7 +270,7 @@ public class BinarySearchTree {
      * same vertex again. But in postorder traversal, each node is visited twice.
      *
      * Time Complexity: O(n)
-     * Space Complexity: O(n)
+     * Space Complexity: O(h) h is the maximum height of the tree
      */
     public void traversePostOrderWithoutRecursion() {
         Stack<BSTNode> stack = new Stack<BSTNode>();
@@ -309,7 +314,7 @@ public class BinarySearchTree {
      * • Repeat this until all levels are completed.
      *
      * Time Complexity: O(n)
-     * Space Complexity: O(n)
+     * Space Complexity: O(w) w is the maximum width of the tree
      */
     public void traverseLevelOrder() {
         if (root == null) {

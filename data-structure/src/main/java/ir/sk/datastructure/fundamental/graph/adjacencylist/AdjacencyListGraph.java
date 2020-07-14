@@ -88,7 +88,7 @@ public class AdjacencyListGraph<T> implements Graph<T> {
     }
 
     @Override
-    public List<T> getNeighborsFor(T info) throws Exception {
+    public List<T> getNeighborsFor(T info) {
 
         return adjVertices.get(new Vertex(info)).stream().map(tVertex -> tVertex.info).collect(Collectors.toList());
     }
@@ -154,6 +154,49 @@ public class AdjacencyListGraph<T> implements Graph<T> {
             }
         }
         return visited;
+    }
+
+    /**
+     * @param start
+     */
+    public void depthFirstSearchRecursive(T start) {
+        Collection<T> visited = new LinkedHashSet<>();
+        dfsRecursive(start, visited);
+    }
+
+    private void dfsRecursive(T current, Collection<T> visited) {
+        visited.add(current);
+        System.out.println(current);
+        for (T dest : getNeighborsFor(current)) {
+            if (!visited.contains(dest))
+                dfsRecursive(dest, visited);
+        }
+    }
+
+    /**
+     * One of the famous applications for DFS is Topological Sort.
+     * Topological Sort for a directed graph is a linear ordering of its vertices so that for every edge the source node comes before the destination.
+     *
+     * Time Complexity: O(|V|+|E|)
+     * Auxiliary space: O(|V|)
+     *
+     * @param start
+     * @return
+     */
+    public List<T> topologicalSort(T start) {
+        LinkedList<T> result = new LinkedList<>();
+        Collection<T> visited = new LinkedHashSet<>();
+        topologicalSortRecursive(start, visited, result);
+        return result;
+    }
+
+    private void topologicalSortRecursive(T current, Collection<T> visited, LinkedList<T> result) {
+        visited.add(current);
+        for (T dest : getNeighborsFor(current)) {
+            if (!visited.contains(dest))
+                topologicalSortRecursive(dest, visited, result);
+        }
+        result.addFirst(current);
     }
 
 }
