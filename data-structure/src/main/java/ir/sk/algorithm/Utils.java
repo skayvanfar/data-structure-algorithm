@@ -122,6 +122,25 @@ public class Utils {
     }
 
     /**
+     * @param arr
+     * @param init
+     * @return
+     */
+    public static int[] rotateArray(int[] arr, int init){
+        // Because the constraints state d < n, we need not concern ourselves with shifting > n units.
+        int n = arr.length;
+
+        // Create new array for rotated elements:
+        int[] rotated = new int[n];
+
+        // Copy segments of shifted elements to rotated array:
+        System.arraycopy(arr, init, rotated, 0, n - init);
+        System.arraycopy(arr, 0, rotated, n - init, init);
+
+        return rotated;
+    }
+
+    /**
      * @param a
      * @param b
      */
