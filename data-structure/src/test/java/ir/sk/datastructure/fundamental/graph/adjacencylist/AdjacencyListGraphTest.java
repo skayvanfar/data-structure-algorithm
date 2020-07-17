@@ -1,11 +1,11 @@
 package ir.sk.datastructure.fundamental.graph.adjacencylist;
 
-import ir.sk.datastructure.fundamental.graph.Graph;
-import ir.sk.datastructure.fundamental.graph.adjacencylist.AdjacencyListGraph;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -19,7 +19,7 @@ public class AdjacencyListGraphTest {
 
     @Before
     public void setUp() throws Exception {
-        graph = new AdjacencyListGraph();
+        graph = new AdjacencyListGraph(false);
         graph.addVertex("Bob");
         graph.addVertex("Alice");
         graph.addVertex("Mark");
@@ -62,7 +62,7 @@ public class AdjacencyListGraphTest {
     @Test
     public void depthFirstSearchRecursive() {
         AdjacencyListGraph<Integer> graph = createDirectedGraph();
-        graph.depthFirstSearchRecursive(0);
+        System.out.println(Arrays.toString(new Collection[]{graph.depthFirstSearchRecursive(0)}));
     }
 
     @Test
@@ -73,7 +73,7 @@ public class AdjacencyListGraphTest {
     }
 
     private AdjacencyListGraph<Integer> createDirectedGraph() {
-        AdjacencyListGraph<Integer> graph = new AdjacencyListGraph<>();
+        AdjacencyListGraph<Integer> graph = new AdjacencyListGraph<>(true);
         graph.addVertex(0);
         graph.addVertex(1);
         graph.addVertex(2);
@@ -88,4 +88,5 @@ public class AdjacencyListGraphTest {
         graph.addEdge(4, 5, 1);
         return graph;
     }
+
 }

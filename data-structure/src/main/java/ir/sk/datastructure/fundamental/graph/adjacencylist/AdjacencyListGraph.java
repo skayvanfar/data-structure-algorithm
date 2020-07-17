@@ -23,8 +23,11 @@ public class AdjacencyListGraph<T> implements Graph<T> {
      */
     private Map<Vertex<T>, List<Vertex<T>>> adjVertices;
 
-    public AdjacencyListGraph() {
+    private boolean directed;
+
+    public AdjacencyListGraph(boolean directed) {
         this.adjVertices = new HashMap<>();
+        this.directed = directed;
     }
 
     public boolean contains(T vertex) {
@@ -67,7 +70,8 @@ public class AdjacencyListGraph<T> implements Graph<T> {
         Vertex<T> v1 = new Vertex<>(from);
         Vertex<T> v2 = new Vertex<>(to);
         adjVertices.get(v1).add(v2);
-        adjVertices.get(v2).add(v1);
+        if (!directed)
+            adjVertices.get(v2).add(v1);
     }
 
     /**
@@ -80,16 +84,17 @@ public class AdjacencyListGraph<T> implements Graph<T> {
         Vertex v1 = new Vertex(from);
         Vertex v2 = new Vertex(to);
         List<Vertex<T>> eV1 = adjVertices.get(v1);
-        List<Vertex<T>> eV2 = adjVertices.get(v2);
         if (eV1 != null)
             eV1.remove(v2);
-        if (eV2 != null)
-            eV2.remove(v1);
+        if (!directed) {
+            List<Vertex<T>> eV2 = adjVertices.get(v2);
+            if (eV2 != null)
+                eV2.remove(v1);
+        }
     }
 
     @Override
     public List<T> getNeighborsFor(T info) {
-
         return adjVertices.get(new Vertex(info)).stream().map(tVertex -> tVertex.info).collect(Collectors.toList());
     }
 
@@ -159,22 +164,29 @@ public class AdjacencyListGraph<T> implements Graph<T> {
     /**
      * @param start
      */
-    public void depthFirstSearchRecursive(T start) {
+    public Collection<T> depthFirstSearchRecursive(T start) {
+        // parents
         Collection<T> visited = new LinkedHashSet<>();
-        dfsRecursive(start, visited);
+        dfsVisit(start, visited);
+        return visited;
     }
 
-    private void dfsRecursive(T current, Collection<T> visited) {
+    /**
+     * @param current
+     * @param visited
+     */
+    private void dfsVisit(T current, Collection<T> visited) {
         visited.add(current);
-        System.out.println(current);
         for (T dest : getNeighborsFor(current)) {
-            if (!visited.contains(dest))
-                dfsRecursive(dest, visited);
+            if (!visited.contains(dest)) {
+                dfsVisit(dest, visited);
+            }
         }
     }
 
     /**
-     * One of the famous applications for DFS is Topological Sort.
+     * One of the famous applications for DFS is Topological Sort. it sorts vertices in dependency order
+     * if the graph can be topological-sorted, it is a DAG(directed acyclic graph) and DAG can be topological sorted.
      * Topological Sort for a directed graph is a linear ordering of its vertices so that for every edge the source node comes before the destination.
      *
      * Time Complexity: O(|V|+|E|)
