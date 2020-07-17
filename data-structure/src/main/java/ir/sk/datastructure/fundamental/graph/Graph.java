@@ -42,6 +42,8 @@ public interface Graph<T> {
      *
      * can run on directed or undirected graph. It doesn't care about weight
      *
+     * it finds shortest paths in an unweighted graph.
+     *
      * @param start
      * @return
      * @throws Exception

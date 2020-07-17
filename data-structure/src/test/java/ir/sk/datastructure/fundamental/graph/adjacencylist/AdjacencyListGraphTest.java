@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.*;
 
@@ -89,4 +90,40 @@ public class AdjacencyListGraphTest {
         return graph;
     }
 
+    @Test
+    public void dagShortestPath() {
+        AdjacencyListGraph<Character> graph = createDirectedWeightedGraph();
+        Map<Vertex<Character>, Vertex<Character>> map = graph.dagShortestPath('B');
+        System.out.println(map);
+        printDistance(map);
+    }
+
+    private AdjacencyListGraph<Character> createDirectedWeightedGraph() {
+        AdjacencyListGraph<Character> graph = new AdjacencyListGraph<>(true);
+        graph.addVertex('A');
+        graph.addVertex('B');
+        graph.addVertex('C');
+        graph.addVertex('D');
+        graph.addVertex('E');
+        graph.addVertex('F');
+        graph.addEdge('A', 'B', 5);
+        graph.addEdge('A', 'C', 3);
+        graph.addEdge('B', 'C', 2);
+        graph.addEdge('B', 'D', 6);
+        graph.addEdge('C', 'D', 7);
+        graph.addEdge('C', 'E', 4);
+        graph.addEdge('C', 'F', 2);
+        graph.addEdge('D', 'E', -1);
+        graph.addEdge('D', 'F', 1);
+        graph.addEdge('E', 'F', -2);
+
+        return graph;
+    }
+
+    private <T> void printDistance(Map<Vertex<T>, Vertex<T>> vertexMap) {
+        for (Vertex<T> key : vertexMap.keySet()) {
+            Vertex<T> value = vertexMap.get(key);
+            System.out.println(key.toString() + "->" + value);
+        }
+    }
 }

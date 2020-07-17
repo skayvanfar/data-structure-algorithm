@@ -215,12 +215,94 @@ public class AdjacencyListGraph<T> implements Graph<T> {
         result.addFirst(current);
     }
 
+
+    // every shortest paths algorithm basically repeats the edge relaxation and designs the relaxing order depending on the graph’s nature
+    // (positive or negative weights, DAG, …, etc).
+    // In other words, we should look for the way how to choose and relax the edges by observing the graph’s nature.
+    // 1. Initialize d and Π in the graph
+    // 2. Choose the edge somehow (it depends on the algorithm) and Relax it.
+
+    /**
+     * It can have negative edges
+     * We initialize distances to all vertices as infinite and distance to source as 0, then we find a topological sorting of the graph
+     *
+     * 1. Initialize the d value of the starting vertex as 0 and the other vertices as ∞
+     * 2. Relax the out-going edges in topological order
+     *
+     * Time Complexity: O(|V|+|E|) the best for ShortestPath
+     *
+     * @param start
+     * @return
+     */
+    public Map<Vertex<T>, Vertex<T>> dagShortestPath(T start) {
+        Map<Vertex<T>, Integer> distances = new HashMap<>();
+        for (Vertex<T> vertex : adjVertices.keySet()) {
+            distances.put(vertex, Integer.MAX_VALUE);
+        }
+
+        Vertex<T> sVertex = getVertex(start);
+        List<Vertex<T>> topologicallySorted = topologicalSortForDagShortestPath(sVertex);
+
+        // the initialization as follow: Set the d of the starting vertex as 0, the other vertices as ∞.
+        // Also, these lines initialize the Π to reconstruct the path.
+        distances.put(sVertex, 0);
+        Map<Vertex<T>, Vertex<T>> pi = new HashMap<>();
+        pi.put(sVertex, null);
+        for (Vertex<T> uVertex : topologicallySorted) {
+            for (Vertex<T> vVertex : adjVertices.get(uVertex)) {
+                // relax(u, v)
+                int dTemp = distances.get(uVertex) + vVertex.getWeight();
+                if (dTemp < distances.get(vVertex)) {
+                    distances.put(vVertex, dTemp);
+                    pi.put(vVertex, uVertex);
+                }
+            }
+        }
+
+        for (Vertex<T> vertex : distances.keySet()) {
+            System.out.println(vertex.info + " distance: " + distances.get(vertex));
+        }
+
+        return pi;
+    }
+
+    /**
+     * ths same as topologicalSort but return LinkedList<Vertex<T>>
+     * @param start
+     * @return
+     */
+    private LinkedList<Vertex<T>> topologicalSortForDagShortestPath(Vertex<T> start) {
+        LinkedList<Vertex<T>> result = new LinkedList<>();
+        Collection<Vertex<T>> visited = new LinkedHashSet<>();
+        topologicalSortRecursiveDagShortestPath(start, visited, result);
+        return result;
+    }
+
+    private void topologicalSortRecursiveDagShortestPath(Vertex<T> current, Collection<Vertex<T>> visited, LinkedList<Vertex<T>> result) {
+        visited.add(current);
+        for (Vertex<T> dest : adjVertices.get(current)) {
+            if (!visited.contains(dest))
+                topologicalSortRecursiveDagShortestPath(dest, visited, result);
+        }
+        result.addFirst(current);
+    }
+
+    private Vertex<T> getVertex(T info) {
+        return adjVertices.keySet().stream().filter(tVertex -> tVertex.info.equals(info)).findFirst().get();
+    }
+
+
 }
 
 class Vertex<T> {
 
     T info;
     private int weight;
+
+    /**
+     * current weight
+     */
+    private Integer distance = Integer.MAX_VALUE;
 
     Vertex(T info) {
         this.info = info;
@@ -238,6 +320,14 @@ class Vertex<T> {
 
     public void setWeight(int weight) {
         this.weight = weight;
+    }
+
+    public Integer getDistance() {
+        return distance;
+    }
+
+    public void setDistance(Integer distance) {
+        this.distance = distance;
     }
 
     @Override
