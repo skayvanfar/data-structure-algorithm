@@ -13,6 +13,8 @@ import java.util.stream.Collectors;
  * In this representation, a vertex may be represented by any hashable object.
  * There is no explicit representation of edges as objects.
  *
+ * it can represent a weighted and directed graph
+ *
  * Space Complexity: O(V+E)
  * Created by sad.keyvanfar on 7/1/2020.
  */
@@ -67,8 +69,8 @@ public class AdjacencyListGraph<T> implements Graph<T> {
      * @param to
      */
     public void addEdge(T from, T to, int weight) { // TODO: 7/12/2020
-        Vertex<T> v1 = new Vertex<>(from);
-        Vertex<T> v2 = new Vertex<>(to);
+        Vertex<T> v1 = new Vertex<>(from, weight);
+        Vertex<T> v2 = new Vertex<>(to, weight);
         adjVertices.get(v1).add(v2);
         if (!directed)
             adjVertices.get(v2).add(v1);
@@ -218,9 +220,24 @@ public class AdjacencyListGraph<T> implements Graph<T> {
 class Vertex<T> {
 
     T info;
+    private int weight;
 
     Vertex(T info) {
         this.info = info;
+        this.weight = 1;
+    }
+
+    Vertex(T info, int weight) {
+        this.info = info;
+        this.weight = weight;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
     }
 
     @Override

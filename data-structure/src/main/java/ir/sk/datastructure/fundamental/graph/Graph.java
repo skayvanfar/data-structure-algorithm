@@ -40,6 +40,8 @@ public interface Graph<T> {
      * Examines bipartite graph, connected component and shortest path present in a graph.
      * Optimal for finding the shortest distance, not in cost.
      *
+     * can run on directed or undirected graph. It doesn't care about weight
+     *
      * @param start
      * @return
      * @throws Exception
@@ -53,6 +55,8 @@ public interface Graph<T> {
      * DFS traverses according to tree depth. Narrow and long
      * It requires less memory as compare to BFS. Efficient
      * Examines two-edge connected graph, strongly connected graph, acyclic graph and topological order.
+     *
+     * can run on directed or undirected graph. It doesn't care about weight
      *
      * @param start
      * @return
