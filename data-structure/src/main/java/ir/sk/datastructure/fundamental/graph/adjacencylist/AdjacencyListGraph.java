@@ -187,7 +187,9 @@ public class AdjacencyListGraph<T> implements Graph<T> {
     /**
      * One of the famous applications for DFS is Topological Sort. it sorts vertices in dependency order
      * if the graph can be topological-sorted, it is a DAG(directed acyclic graph) and DAG can be topological sorted.
+     * it implements Depth First Search to process all nodes in a backtracking way
      * Topological Sort for a directed graph is a linear ordering of its vertices so that for every edge the source node comes before the destination.
+     * Topological Sorting is mainly used for scheduling jobs from the given dependencies among jobs.
      *
      * Time Complexity: O(|V|+|E|)
      * Auxiliary space: O(|V|)
