@@ -229,7 +229,7 @@ public class AdjacencyListGraph<T> implements Graph<T> {
      * 1. Initialize the d value of the starting vertex as 0 and the other vertices as ∞
      * 2. Relax the out-going edges in topological order
      *
-     * Time Complexity: O(|V|+|E|) the best for ShortestPath
+     * Time Complexity: O(|V|+|E|) the best for ShortestPath linear time
      *
      * @param start
      * @return
@@ -290,7 +290,6 @@ public class AdjacencyListGraph<T> implements Graph<T> {
     private Vertex<T> getVertex(T info) {
         return adjVertices.keySet().stream().filter(tVertex -> tVertex.info.equals(info)).findFirst().get();
     }
-
 
 }
 
