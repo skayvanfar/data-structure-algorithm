@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="1.8">
       <module name="algorithm_main" target="1.8" />
       <module name="algorithm_test" target="1.8" />
       <module name="data-structure-algorithm.algorithm.main" target="1.8" />
       <module name="data-structure-algorithm.algorithm.test" target="1.8" />
-      <module name="data-structure-algorithm.data-structure.main" target="1.8" />
-      <module name="data-structure-algorithm.data-structure.test" target="1.8" />
-      <module name="data-structure-algorithm.main" target="1.8" />
-      <module name="data-structure-algorithm.test" target="1.8" />
       <module name="data-structure-algorithm_main" target="1.8" />
       <module name="data-structure-algorithm_test" target="1.8" />
       <module name="data-structure_main" target="1.8" />
