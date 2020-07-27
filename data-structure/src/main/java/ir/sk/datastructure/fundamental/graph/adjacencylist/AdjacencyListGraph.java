@@ -8,13 +8,13 @@ import java.util.stream.Collectors;
 /**
  * An adjacency list is nothing but an array of lists. The size of the array is equivalent to the number of vertices in the graph.
  * The list at a specific index of the array represents the adjacent vertices of the vertex represented by that array index.
- *
+ * <p>
  * An implementation suggested by Guido van Rossum uses a hash table to associate each vertex in a graph with an array of adjacent vertices.
  * In this representation, a vertex may be represented by any hashable object.
  * There is no explicit representation of edges as objects.
- *
+ * <p>
  * it can represent a weighted and directed graph
- *
+ * <p>
  * Space Complexity: O(V+E)
  * Created by sad.keyvanfar on 7/1/2020.
  */
@@ -114,7 +114,6 @@ public class AdjacencyListGraph<T> implements Graph<T> {
     }
 
     /**
-     *
      * Time Complexity: O(|V|+|E|) Linear Time
      * Space Complexity: O(w) w is the maximum width of the tree
      *
@@ -192,7 +191,7 @@ public class AdjacencyListGraph<T> implements Graph<T> {
      * it implements Depth First Search to process all nodes in a backtracking way
      * Topological Sort for a directed graph is a linear ordering of its vertices so that for every edge the source node comes before the destination.
      * Topological Sorting is mainly used for scheduling jobs from the given dependencies among jobs.
-     *
+     * <p>
      * Time Complexity: O(|V|+|E|)
      * Auxiliary space: O(|V|)
      *
@@ -225,10 +224,10 @@ public class AdjacencyListGraph<T> implements Graph<T> {
     /**
      * It can have negative edges
      * We initialize distances to all vertices as infinite and distance to source as 0, then we find a topological sorting of the graph
-     *
+     * <p>
      * 1. Initialize the d value of the starting vertex as 0 and the other vertices as ∞
      * 2. Relax the out-going edges in topological order
-     *
+     * <p>
      * Time Complexity: O(|V|+|E|) the best for ShortestPath linear time
      *
      * @param start
@@ -268,6 +267,7 @@ public class AdjacencyListGraph<T> implements Graph<T> {
 
     /**
      * ths same as topologicalSort but return LinkedList<Vertex<T>>
+     *
      * @param start
      * @return
      */
@@ -291,6 +291,14 @@ public class AdjacencyListGraph<T> implements Graph<T> {
         return adjVertices.keySet().stream().filter(tVertex -> tVertex.info.equals(info)).findFirst().get();
     }
 
+    private int getSizeOfEdges() {
+        int count = 0;
+        for (Vertex<T> v : adjVertices.keySet())
+            count += adjVertices.get(v).size();
+        if (!directed)
+            count /= 2;
+        return count;
+    }
 }
 
 class Vertex<T> {
