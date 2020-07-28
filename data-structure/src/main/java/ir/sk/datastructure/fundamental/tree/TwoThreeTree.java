@@ -4,6 +4,16 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /**
+ * 2-3 tree is a tree data structure in which every internal node (non-leaf node)
+ * has either one data element and two children or two data elements and three children.
+ * If a node contains one data element leftVal, it has two subtrees (children) namely left and middle.
+ * Whereas if a node contains two data elements leftVal and rightVal,
+ * it has three subtrees namely left, middle and right.
+ *
+ * The main advantage with 2-3 trees is that it is balanced in nature as opposed to a binary search tree whose height in the worst case can be O(n).
+ * Due to this, the worst case time-complexity of operations such as search,
+ * insertion and deletion is O(log(n)) as the height of a 2-3 tree is O(log(n))
+ *
  * Created by sad.keyvanfar on 7/28/2020.
  */
 public class TwoThreeTree {
