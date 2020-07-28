@@ -167,4 +167,36 @@ public class Algorithms {
         return magicSquare;
     }
 
+    /**
+     * Time Complexity: O(n)
+     * @param a
+     * @return
+     */
+    public static double mean(int a[]) {
+        int sum = 0;
+        for (int i = 0; i < a.length; i++)
+            sum += a[i];
+
+        return (double)sum / (double)a.length;
+    }
+
+    /**
+     * "the middle" value
+     *
+     * Time Complexity: O(n Log n)
+     *
+     * @param a
+     * @return
+     */
+    public static double median(int a[]) {
+        // First we sort the array
+        Arrays.sort(a);
+
+        // check for even case
+        if (a.length % 2 != 0)
+            return (double)a[a.length / 2];
+
+        return (double)(a[(a.length - 1) / 2] + a[a.length / 2]) / 2.0;
+    }
+
 }
