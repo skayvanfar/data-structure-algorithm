@@ -87,4 +87,8 @@ public class OrientedAdjacencyListGraph2Test {
             }
         }
     }
+
+    @Test
+    public void dijkstraShortestPathSingleSourceSingleTarget() {
+    }
 }

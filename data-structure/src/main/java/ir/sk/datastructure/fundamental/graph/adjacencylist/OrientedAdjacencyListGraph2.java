@@ -64,6 +64,44 @@ public class OrientedAdjacencyListGraph2 {
     }
 
     /**
+     * DIJKSTRA single-source, single-target
+     *
+     * @param source
+     * @param target
+     */
+    public void dijkstraShortestPathSingleSourceSingleTarget(Node source, Node target) {
+
+        source.setDistance(0);
+
+        Set<Node> settledNodes = new HashSet<>();
+        // it must be priority Queue
+        Set<Node> unsettledNodes = new HashSet<>();
+        unsettledNodes.add(source);
+
+        while (unsettledNodes.size() != 0) {
+            Node currentNode = getLowestDistanceNode(unsettledNodes);
+            unsettledNodes.remove(currentNode);
+
+            for (Map.Entry<Node, Integer> adjacencyPair : currentNode.getAdjacentNodes().entrySet()) {
+                // relaxation
+                Node adjacentNode = adjacencyPair.getKey();
+                Integer edgeWeigh = adjacencyPair.getValue();
+
+                if (!settledNodes.contains(adjacentNode)) {
+                    CalculateMinimumDistance(adjacentNode, edgeWeigh, currentNode);
+                    unsettledNodes.add(adjacentNode);
+                }
+            }
+            settledNodes.add(currentNode);
+
+            // If only shortest path from s to t is required, stop when t is removedfrom Q, i.e., when u = t
+            if (currentNode == target) {
+                break;
+            }
+        }
+    }
+
+    /**
      * compares the actual distance with the newly calculated one while following the newly explored path
      *
      * @param evaluationNode
