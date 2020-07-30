@@ -65,6 +65,8 @@ public class OrientedAdjacencyListGraph2 {
 
     /**
      * DIJKSTRA single-source, single-target
+     * Speedup techniques covered here do not change worst-case behavior, but reduce
+     * the number of visited vertices in practice.
      *
      * @param source
      * @param target
