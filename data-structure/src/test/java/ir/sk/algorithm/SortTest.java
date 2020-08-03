@@ -5,7 +5,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Arrays;
-import java.util.Random;
 
 import static org.junit.Assert.*;
 
@@ -19,9 +18,9 @@ public class SortTest {
 
     @Before
     public void setUp() throws Exception {
-        actual = new int[] {1, 5, 2, 4, 9, 7};
-        expected = new int[] {1, 2, 4, 5, 7, 9};
-     //   actual = new Random().ints(10000, 0, 100000).toArray();
+        actual = new int[]{1, 5, 2, 4, 9, 7};
+        expected = new int[]{1, 2, 4, 5, 7, 9};
+        //   actual = new Random().ints(10000, 0, 100000).toArray();
     }
 
     @After
@@ -101,24 +100,22 @@ public class SortTest {
     }
 
     @Test
-    public void countElements_GivenAnArray_ShouldCalculateTheFrequencyArrayAsExpected() {
-        int k = 5;
-        int[] input = { 4, 3, 2, 5, 4, 3, 5, 1, 0, 2, 5 };
-
-        int[] c = Sort.countElements(input, k);
-        int[] expected = { 1, 2, 4, 6, 8, 11 };
-        assertArrayEquals(expected, c);
+    public void countingSort() {
+        long start = System.currentTimeMillis();
+        Sort.countingSort(actual);
+        long end = System.currentTimeMillis();
+        System.out.println("Logic heapSort took " + (end - start) + " MilliSeconds");
+        assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void sort_GivenAnArray_ShouldSortTheInputAsExpected() {
-        int k = 5;
-        int[] input = { 4, 3, 2, 5, 4, 3, 5, 1, 0, 2, 5 };
-
-        int[] sorted = Sort.countSort(input, k);
-
-        // Our sorting algorithm and Java's should return the same result
-        Arrays.sort(input);
-        assertArrayEquals(input, sorted);
+    public void countingSortWithNegative() {
+        int[] arr = new int[]{-3, 2, 1, 5, 5, 6};
+        int[] expected = new int[]{-3, 1, 2, 5, 5, 6};
+        long start = System.currentTimeMillis();
+        Sort.countingSortWithNegative(arr);
+        long end = System.currentTimeMillis();
+        System.out.println("Logic heapSort took " + (end - start) + " MilliSeconds");
+        assertArrayEquals(expected, arr);
     }
 }

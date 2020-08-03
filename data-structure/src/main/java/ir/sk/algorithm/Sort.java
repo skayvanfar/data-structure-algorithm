@@ -206,7 +206,7 @@ public class Sort {
      * 5. New root may violate max heap property, but its
      * children are max heaps. Run max_heapify to fix this.
      * 6. Go to Step 2 unless heap is empty
-     *
+     * <p>
      * Time Complexity: O(n * log n)
      * Auxiliary Space: O(1)
      * Sorting In Place: Yes
@@ -231,9 +231,9 @@ public class Sort {
 
     /**
      * Tree sort is a sorting algorithm that is based on Binary Search Tree data structure
-     *  It first creates a binary search tree from the elements of the input list or array
-     *  and then performs an in-order traversal on the created binary search tree to get the elements in sorted order.
-     *
+     * It first creates a binary search tree from the elements of the input list or array
+     * and then performs an in-order traversal on the created binary search tree to get the elements in sorted order.
+     * <p>
      * Time Complexity: O(n * log h) - h is height o tree and if tree is balanced(AVL,Red Black Tree,...), h = Log n
      * Auxiliary Space : O(n). heapsort is better
      * Sorting In Place: No
@@ -245,7 +245,7 @@ public class Sort {
         BinarySearchTree bst = new BinarySearchTree();
 
         // fill it
-        for (int value: array) {
+        for (int value : array) {
             bst.add(value);
         }
 
@@ -254,45 +254,89 @@ public class Sort {
     }
 
     /**
+     * It works by counting the number of objects having distinct key values (kind of hashing).
+     * Then doing some arithmetic to calculate the position of each object in the output sequence.
+     *
+     * we could not sort the elements if we have negative numbers in it. Because there are no negative array indices.
      *
      * Time Complexity: O(n + k) + O(n) = O(2n + k) = O(n + k) where n is the number of elements in input array and k is the range of input.
      * Auxiliary Space: O(n+k)
      *
-     * @param input
-     * @param k
-     * @return
+     * Counting sort is efficient if the range of input data is not significantly greater than the number of objects to be sorted. Consider the situation where the input sequence is between range 1 to 10K and the data is 10, 5, 10K, 5K.
+     * It is not a comparison based sorting. It running time complexity is O(n) with space proportional to the range of data.
+     * It is often used as a sub-routine to another sorting algorithm like radix sort.
+     * Counting sort uses a partial hashing to count the occurrence of the data object in O(1).
+     * Counting sort can be extended to work for negative inputs also.
+     *
+     * @param array
      */
-    public static int[] countSort(int[] input, int k) {
-        int[] c = countElements(input, k);
+    public static void countingSort(int[] array) {
+        int n = array.length;
+        int max = Arrays.stream(array).max().getAsInt();
 
-        int[] sorted = new int[input.length];
-        for (int i = input.length - 1; i >= 0; i--) {
-            int current = input[i];
-            sorted[c[current] - 1] = current;
-            c[current] -= 1;
+        // The output character array that will have sorted arr
+        int output[] = new int[n];
+
+        // Create a count array to store count of inidividul
+        // items and initialize count array as 0
+        // Frequency Array
+        int count[] = new int[max + 1];
+
+        // store count of each character
+        for (int i = 0; i < n; ++i)
+            ++count[array[i]];
+
+        // Change count[i] so that count[i] now contains actual
+        // position of this character in output array
+        for (int i = 1; i <= max; ++i)
+            count[i] += count[i - 1];
+
+        // Build the output array
+        // To make it stable we are operating in reverse order.
+        for (int i = n - 1; i >= 0; i--) {
+            output[count[array[i]] - 1] = array[i];
+            --count[array[i]];
         }
 
-        return sorted;
+        // Copy the output array to arr, so that arr now
+        // contains sorted characters
+        for (int i = 0; i < n; ++i)
+            array[i] = output[i];
     }
 
     /**
-     * @param input
-     * @param k
-     * @return
+     * Counting sort which takes negative numbers as well
+     * We find the minimum element and we will store count of that minimum element at zero index.
+     *
+     * Time Complexity: O(n + k) + O(n) = O(2n + k) = O(n + k) where n is the number of elements in input array and k is the range of input.
+     * Auxiliary Space: O(n+k)
+     *
+     * @param arr
      */
-    public static int[] countElements(int[] input, int k) {
-        int[] c = new int[k + 1];
-        Arrays.fill(c, 0);
+    public static void countingSortWithNegative(int[] arr) {
+        int max = Arrays.stream(arr).max().getAsInt();
+        int min = Arrays.stream(arr).min().getAsInt();
 
-        for (int i : input) {
-            c[i] += 1;
+        int range = max - min + 1;
+
+        int count[] = new int[range];
+        int output[] = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            count[arr[i] - min]++;
         }
 
-        for (int i = 1; i < c.length; i++) {
-            c[i] += c[i - 1];
+        for (int i = 1; i < count.length; i++) {
+            count[i] += count[i - 1];
         }
 
-        return c;
+        for (int i = arr.length - 1; i >= 0; i--) {
+            output[count[arr[i] - min] - 1] = arr[i];
+            count[arr[i] - min]--;
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = output[i];
+        }
     }
 
     /**
