@@ -96,7 +96,7 @@ public class SortTest {
         long start = System.currentTimeMillis();
         Sort.treeSort(actual);
         long end = System.currentTimeMillis();
-        System.out.println("Logic heapSort took " + (end - start) + " MilliSeconds");
+        System.out.println("Logic treeSort took " + (end - start) + " MilliSeconds");
     }
 
     @Test
@@ -104,7 +104,7 @@ public class SortTest {
         long start = System.currentTimeMillis();
         Sort.countingSort(actual);
         long end = System.currentTimeMillis();
-        System.out.println("Logic heapSort took " + (end - start) + " MilliSeconds");
+        System.out.println("Logic countingSort took " + (end - start) + " MilliSeconds");
         assertArrayEquals(expected, actual);
     }
 
@@ -115,7 +115,7 @@ public class SortTest {
         long start = System.currentTimeMillis();
         Sort.countingSortWithNegative(arr);
         long end = System.currentTimeMillis();
-        System.out.println("Logic heapSort took " + (end - start) + " MilliSeconds");
+        System.out.println("Logic countingSortWithNegative took " + (end - start) + " MilliSeconds");
         assertArrayEquals(expected, arr);
     }
 }
