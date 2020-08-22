@@ -1,6 +1,9 @@
 package ir.sk.algorithm;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Given an array of distinct integer values, count the number of pairs of integers that
@@ -15,7 +18,7 @@ public class CountPairsWithDiffK {
      * A simple solution is to consider all pairs one by one and check difference between every pair
      * We run two loops: the outer loop picks the first element of pair, the inner loop looks for the other element.
      * This solution doesn’t work if there are duplicates in array as the requirement is to count only distinct pairs.
-     *
+     * <p>
      * Time Complexity: O(n2)
      * Space Complexity: O(1)
      *
@@ -28,8 +31,7 @@ public class CountPairsWithDiffK {
         int count = 0;
 
         // Pick all elements one by one
-        for (int i = 0; i < n; i++)
-        {
+        for (int i = 0; i < n; i++) {
             // See if there is a pair
             // of this picked element
             for (int j = i + 1; j < n; j++)
@@ -42,7 +44,7 @@ public class CountPairsWithDiffK {
 
     /**
      * We can find the count in O(nLogn) time using a O(nLogn) sorting algorithm like Merge Sort, Heap Sort, etc.
-     *
+     * <p>
      * The first step (sorting) takes O(nLogn) time. The second step runs binary search n times,
      * so the time complexity of second step is also O(nLogn).
      * Therefore, overall time complexity is O(nLogn).
@@ -51,7 +53,7 @@ public class CountPairsWithDiffK {
      * @param k
      * @return
      */
-    public static int countPairsWithDiffK(int arr[], int k) {
+    public static int countPairsWithDiffK1(int arr[], int k) {
         int n = arr.length;
         int count = 0, i;
 
@@ -81,5 +83,45 @@ public class CountPairsWithDiffK {
                         (mid - 1), x);
         }
         return -1;
+    }
+
+    /**
+     * 1) Initialize count as 0.
+     * 2) Insert all distinct elements of arr[] in a hash map.  While inserting,
+     *    ignore an element if already present in the hash map.
+     * 3) Do following for each element arr[i].
+     *    a) Look for arr[i] + k in the hash map, if found then increment count.
+     *    b) Look for arr[i] - k in the hash map, if found then increment count.
+     *    c) Remove arr[i] from hash table.
+     *
+     * Time complexity: O(n)
+     * Space Complexity: O(n+k)
+     *
+     * @param arr
+     * @param k
+     * @return
+     */
+    public static int countPairsWithDiffKByHashing(int arr[], int k) {
+        int n = arr.length;
+        int count = 0;  // Initialize count
+
+        int max = Arrays.stream(arr).max().getAsInt();
+
+        // When key and value are the same we can use this method. using boolean array.
+        boolean[] hashtable = new boolean[max + 1];
+
+        for (int i = 0; i < n; i++) {
+            hashtable[arr[i]] = true;
+        }
+
+        for (int i = 0; i < n; i++) {
+            int x = arr[i];
+            if (x - k >= 0 && hashtable[x - k])
+                count++;
+            if (x + k <= max && hashtable[x + k])
+                count++;
+            hashtable[x] = false;
+        }
+        return count;
     }
 }

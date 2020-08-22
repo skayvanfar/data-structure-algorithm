@@ -28,9 +28,17 @@ public class CountPairsWithDiffKTest {
     }
 
     @Test
-    public void countPairsWithDiffK() {
+    public void countPairsWithDiffK1() {
         int arr[] = { 1, 5, 3, 4, 2 };
         int expectedValue = 2;
-        Assert.assertEquals(expectedValue, CountPairsWithDiffK.countPairsWithDiffKNative(arr, 3));
+        Assert.assertEquals(expectedValue, CountPairsWithDiffK.countPairsWithDiffK1(arr, 3));
     }
+
+    @Test
+    public void countPairsWithDiffKByHashing() {
+        int arr[] = { 1, 5, 3, 4, 2 };
+        int expectedValue = 2;
+        Assert.assertEquals(expectedValue, CountPairsWithDiffK.countPairsWithDiffKByHashing(arr, 3));
+    }
+
 }
