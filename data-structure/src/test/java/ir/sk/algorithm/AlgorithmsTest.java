@@ -28,6 +28,13 @@ public class AlgorithmsTest {
     }
 
     @Test
+    public void factorialByLoop() {
+        int number = 6;
+        int expectedValue = 720;
+        Assert.assertEquals(expectedValue, Algorithms.factorialByLoop(number));
+    }
+
+    @Test
     public void triangleByLoop() {
         int number = 1000;
         int expectedValue = 500500;
@@ -108,5 +115,4 @@ public class AlgorithmsTest {
         String expectedValue = "4.5";
         Assert.assertEquals(expectedValue, Algorithms.medianUsingCountingSort(a) + "");
     }
-
 }

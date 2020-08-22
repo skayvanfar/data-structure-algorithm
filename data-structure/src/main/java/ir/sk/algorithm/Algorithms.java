@@ -19,6 +19,19 @@ public class Algorithms {
     }
 
     /**
+     * Time Complexity: O(n)
+     *
+     * @param n
+     * @return
+     */
+    public static int factorialByLoop(int n) {
+        int res = 1, i;
+        for (i = 2; i <= n; i++)
+            res *= i;
+        return res;
+    }
+
+    /**
      * Using loop
      *
      * @param n
