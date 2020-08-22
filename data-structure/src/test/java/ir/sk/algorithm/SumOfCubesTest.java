@@ -25,4 +25,22 @@ public class SumOfCubesTest {
         int number = 10;
         SumOfCubes.sumOfCubesNative(number);
     }
+
+    @Test
+    public void sumOfCubesNativeOptimize() {
+        int number = 10;
+        SumOfCubes.sumOfCubesNativeOptimize(number);
+    }
+
+    @Test
+    public void sumOfCubesNativeOptimize2() {
+        int number = 10;
+        SumOfCubes.sumOfCubesNativeOptimize2(number);
+    }
+
+    @Test
+    public void sumOfCubesOptimizeByHashing() {
+        int number = 10;
+        SumOfCubes.sumOfCubesOptimizeByHashing(number);
+    }
 }
