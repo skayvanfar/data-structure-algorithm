@@ -91,6 +91,10 @@ public class SumOfCubes {
     }
 
     /**
+     * Duplicated Work
+     *
+     * Time Complexity: O(n2)
+     *
      * @param n
      * @return
      */
