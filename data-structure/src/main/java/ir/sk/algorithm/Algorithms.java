@@ -1,35 +1,12 @@
 package ir.sk.algorithm;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 2/7/2020.
  */
 public class Algorithms {
-
-    /**
-     * @param n
-     * @return
-     */
-    public static int factorialByRecursive(int n) {
-        if (n == 0)
-            return 1;
-        else
-            return (n * factorialByRecursive(n - 1));
-    }
-
-    /**
-     * Time Complexity: O(n)
-     *
-     * @param n
-     * @return
-     */
-    public static int factorialByLoop(int n) {
-        int res = 1, i;
-        for (i = 2; i <= n; i++)
-            res *= i;
-        return res;
-    }
 
     /**
      * Using loop

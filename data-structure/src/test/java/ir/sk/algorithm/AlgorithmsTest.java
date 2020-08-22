@@ -21,20 +21,6 @@ public class AlgorithmsTest {
     }
 
     @Test
-    public void factorialByRecursive() {
-        int number = 6;
-        int expectedValue = 720;
-        Assert.assertEquals(expectedValue, Algorithms.factorialByRecursive(number));
-    }
-
-    @Test
-    public void factorialByLoop() {
-        int number = 6;
-        int expectedValue = 720;
-        Assert.assertEquals(expectedValue, Algorithms.factorialByLoop(number));
-    }
-
-    @Test
     public void triangleByLoop() {
         int number = 1000;
         int expectedValue = 500500;
