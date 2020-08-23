@@ -17,6 +17,23 @@ import java.util.Collections;
  */
 public class Permutation {
 
+    /**
+     * print all permutations of a string
+     * If we had the answer to P ("ab"), how could we generate P ("abc")?
+     * Well, the additional letter is "c," so we can just stick c in at every possible point. That is:
+     * P("abc")
+     * P("abc")
+     * P("abc")
+     * P("abc")
+     * insert "c" into all locations of all strings in P("ab")
+     * insert "c" into all locations of all strings in {"ab","ba"}
+     * merge({"cab", ""acb", "abc"}, {"cba", abca", bac"})
+     * {"cab", "acb", "abc", "cba", "bca", bac"}
+     *
+     * @param elements
+     * @param delimiter
+     * @param <T>
+     */
     public static <T> void heapGenerateRecursive(T[] elements, char delimiter) {
         heapGenerateRecursive(elements.length, elements, delimiter);
     }

@@ -192,6 +192,12 @@ public class Anagram {
      * there will be a notice. The next day, our trailing expenditures are  and the expenditures are .
      * This is less than  so no notice will be sent. Over the period, there was one notice sent.
      *
+     * time complexity: O(n * max number in the array)
+     *
+     * 2 thoughts that help:
+     * 1.) Counting sort
+     * 2.) A Queue
+     *
      * @param expenditure
      * @param d
      * @return
