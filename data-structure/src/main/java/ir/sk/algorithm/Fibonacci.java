@@ -1,5 +1,7 @@
 package ir.sk.algorithm;
 
+import ir.sk.helper.BruteForce;
+
 /**
  * Created by sad.keyvanfar on 6/25/2020.
  */
@@ -16,6 +18,7 @@ public class Fibonacci {
      * @param n
      * @return
      */
+    @BruteForce
     public static long naiveFibonacciByRecursive(long n) {
         if (n == 0 || n == 1)
             return n;

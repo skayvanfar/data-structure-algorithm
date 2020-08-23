@@ -1,5 +1,7 @@
 package ir.sk.algorithm;
 
+import ir.sk.helper.BruteForce;
+
 import java.math.BigInteger;
 
 /**
@@ -17,6 +19,7 @@ public class Factorial {
      * @param n
      * @return
      */
+    @BruteForce
     public static int factorialByRecursive(int n) {
         if (n == 0)
             return 1;

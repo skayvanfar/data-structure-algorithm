@@ -1,5 +1,7 @@
 package ir.sk.algorithm;
 
+import ir.sk.helper.BruteForce;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,6 +20,7 @@ public class SumOfCubes {
      *
      * @param n
      */
+    @BruteForce
     public static void sumOfCubesNative(int n) {
         for (int a = 1; a <= n; a++) {
             for (int b = 1; b <= n; b++) {

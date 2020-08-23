@@ -1,5 +1,7 @@
 package ir.sk.algorithm;
 
+import ir.sk.helper.BruteForce;
+
 import java.util.Arrays;
 
 /**
@@ -19,6 +21,7 @@ public class DifferentDesignMethods {
      * @param array
      * @return
      */
+    @BruteForce
     public static char firstRepeatedCharByTwoLoops(char[] array) {
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array.length; j++) {
@@ -58,6 +61,7 @@ public class DifferentDesignMethods {
      * @param array
      * @return
      */
+    @BruteForce
     public static char maximumRepeatedCharByTwoLoops(char[] array) {
         char maxChar = '\u0000';
         int count = 0;

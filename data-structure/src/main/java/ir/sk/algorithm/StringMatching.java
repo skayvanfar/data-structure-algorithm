@@ -1,5 +1,7 @@
 package ir.sk.algorithm;
 
+import ir.sk.helper.BruteForce;
+
 /**
  * string-searching algorithms, sometimes called string-matching algorithms, are an important class of string algorithms
  * that try to find a place where one or several strings (also called patterns) are found within a larger string or text.
@@ -22,6 +24,7 @@ public class StringMatching {
      * @param text
      * @param pattern
      */
+    @BruteForce
     public static boolean naiveStringSearch(String text, String pattern) {
         int textLength = text.length();
         int patternLength = pattern.length();

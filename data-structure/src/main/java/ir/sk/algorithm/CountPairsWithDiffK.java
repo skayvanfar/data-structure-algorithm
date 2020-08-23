@@ -1,5 +1,7 @@
 package ir.sk.algorithm;
 
+import ir.sk.helper.BruteForce;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -28,6 +30,7 @@ public class CountPairsWithDiffK {
      * @param k
      * @return
      */
+    @BruteForce
     public static int countPairsWithDiffKNative(int arr[], int k) {
         int n = arr.length;
         int count = 0;

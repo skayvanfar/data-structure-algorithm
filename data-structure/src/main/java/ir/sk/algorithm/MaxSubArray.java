@@ -1,5 +1,7 @@
 package ir.sk.algorithm;
 
+import ir.sk.helper.BruteForce;
+
 /**
  * Created by sad.keyvanfar on 8/23/2020.
  */
@@ -13,6 +15,7 @@ public class MaxSubArray {
      * @param nums
      * @return
      */
+    @BruteForce
     public static int maxSubArraySumBruteForce(int[] nums) {
 
         int n = nums.length;
