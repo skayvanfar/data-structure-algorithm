@@ -5,8 +5,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 2/6/2020.
  */
@@ -62,5 +60,12 @@ public class AnagramTest {
         long endTime = System.nanoTime();
         System.out.println("time duration for isAnagramCounting for str.length: " + str1.length() + " length = " + (endTime - startTime) + " nano");
         Assert.assertEquals(expectedValue, result);
+    }
+
+    @Test
+    public void searchAnagrams() {
+        String txt = "BACDGABCDA";
+        String pat = "ABCD";
+        Anagram.searchAnagramsInTextByHashing(pat, txt);
     }
 }
