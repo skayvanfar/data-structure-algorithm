@@ -309,7 +309,7 @@ public class Sort {
      * We find the minimum element and we will store count of that minimum element at zero index.
      *
      * Time Complexity: O(n + k) + O(n) = O(2n + k) = O(n + k) where n is the number of elements in input array and k is the range of input.
-     * Auxiliary Space: O(n+k)
+     * Auxiliary Space: O(n + k)
      *
      * @param arr
      */
