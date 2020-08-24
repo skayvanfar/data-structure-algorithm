@@ -5,10 +5,12 @@ import ir.sk.helper.BruteForce;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
+import java.util.Arrays;
+
 /**
  * Given two sorted arrays, find the number of elements in common. The arrays are the same length
  * and each has all distinct elements.
- *
+ * <p>
  * Created by sad.keyvanfar on 8/24/2020.
  */
 @BCR(bigOTime = "n", bigOSpace = "1")
@@ -24,13 +26,29 @@ public class IntersectionOfTwoSortedArrays {
     @BruteForce
     @TimeComplexity("O(n2)")
     @SpaceComplexity("O(1)")
-    public static int countOfCommonItems(int [] arr1, int [] arr2) {
+    public static int countOfCommonItems(int[] arr1, int[] arr2) {
         int count = 0;
         for (int i = 0; i < arr1.length; i++) {
             for (int j = 0; j < arr2.length; j++) {
-                if (arr1[i]==arr2[2])
+                if (arr1[i] == arr2[j])
                     count++;
             }
+        }
+        return count;
+    }
+
+    /**
+     * @param arr1
+     * @param arr2
+     * @return
+     */
+    @TimeComplexity("O(n2)")
+    @SpaceComplexity("O(1)")
+    public static int countOfCommonItemsBinary(int[] arr1, int[] arr2) {
+        int count = 0;
+        for (int i = 0; i < arr1.length; i++) {
+            if (Search.binarySearchByRecursive(arr2, arr1[i]) != -1)
+                count++;
         }
         return count;
     }

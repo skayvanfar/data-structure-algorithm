@@ -45,7 +45,11 @@ public class Search {
             else
                 low = mid + 1;
         }
-        return 0;
+        return -1;
+    }
+
+    public static int binarySearchByRecursive(int array[], int key) {
+        return binarySearchByRecursive(array, key,0, array.length - 1);
     }
 
     /**
@@ -60,7 +64,7 @@ public class Search {
      */
     public static int binarySearchByRecursive(int array[], int key, int low, int high) {
         if (low > high)
-            return 0;
+            return -1;
         else {
             int mid = (low + high) / 2;
             if (key == array[mid])

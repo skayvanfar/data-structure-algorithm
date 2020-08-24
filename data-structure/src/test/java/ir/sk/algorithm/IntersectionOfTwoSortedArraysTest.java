@@ -1,13 +1,13 @@
 package ir.sk.algorithm;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 /**
- *
  * Created by sad.keyvanfar on 8/24/2020.
  */
 public class IntersectionOfTwoSortedArraysTest {
@@ -22,5 +22,17 @@ public class IntersectionOfTwoSortedArraysTest {
 
     @Test
     public void countOfCommonItems() {
+        int[] arr1 = new int[]{1, 2, 4, 9};
+        int[] arr2 = new int[]{2, 4, 5, 7};
+
+        Assert.assertEquals(2, IntersectionOfTwoSortedArrays.countOfCommonItems(arr1, arr2));
+    }
+
+    @Test
+    public void countOfCommonItemsBinary() {
+        int[] arr1 = new int[]{1, 2, 4, 9};
+        int[] arr2 = new int[]{2, 4, 5, 7};
+
+        Assert.assertEquals(2, IntersectionOfTwoSortedArrays.countOfCommonItemsBinary(arr1, arr2));
     }
 }
