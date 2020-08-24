@@ -46,7 +46,7 @@ public class PairsCountWithGivenSum {
      * @param sum
      * @return
      */
-    @Point(description = "Using hashtable is trade off between time and space" +
+    @Point("Using hashtable is trade off between time and space" +
             "change Multiply O(n)*O(n) into O(n)+O(n) by using hashtable")
     public static int getPairsCountByHashing(int[] arr, int sum) {
 
@@ -58,7 +58,7 @@ public class PairsCountWithGivenSum {
         // for negative numbers
         int range = max - min + 1;
 
-        @Point(description = "When you want to use array as hashtable use like below")
+        @Point("When you want to use array as hashtable use like below")
         boolean []counting = new boolean[range];
 
         // O(n)

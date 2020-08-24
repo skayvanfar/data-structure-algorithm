@@ -2,6 +2,8 @@ package ir.sk.algorithm;
 
 import ir.sk.helper.BCR;
 import ir.sk.helper.BruteForce;
+import ir.sk.helper.SpaceComplexity;
+import ir.sk.helper.TimeComplexity;
 
 /**
  * Given two sorted arrays, find the number of elements in common. The arrays are the same length
@@ -15,14 +17,13 @@ public class IntersectionOfTwoSortedArrays {
     /**
      * A brute force algorithm for this problem is to start with each element in A and search for it in B.
      *
-     * Time Complexity O(n2)
-     * Space Complexity O(1)
-     *
      * @param arr1
      * @param arr2
      * @return
      */
     @BruteForce
+    @TimeComplexity("O(n2)")
+    @SpaceComplexity("O(1)")
     public static int countOfCommonItems(int [] arr1, int [] arr2) {
         int count = 0;
         for (int i = 0; i < arr1.length; i++) {

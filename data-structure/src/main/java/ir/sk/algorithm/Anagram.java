@@ -209,7 +209,7 @@ public class Anagram {
 
         int notificationCount = 0;
 
-        @Point(description = "using count array window (frame)")
+        @Point("using count array window (frame)")
         int[] data = new int[201];
         for (int i = 0; i < d; i++) {
             data[expenditure[i]]++;

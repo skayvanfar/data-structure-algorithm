@@ -1,5 +1,8 @@
 package ir.sk.algorithm;
 
+import ir.sk.helper.SpaceComplexity;
+import ir.sk.helper.TimeComplexity;
+
 import java.math.BigInteger;
 import java.util.Arrays;
 
@@ -162,6 +165,7 @@ public class Algorithms {
      * @param a
      * @return
      */
+    @TimeComplexity("O(n)")
     public static double mean(int a[]) {
         int sum = 0;
         for (int i = 0; i < a.length; i++)
@@ -171,12 +175,12 @@ public class Algorithms {
     }
 
     /**
-     * Time Complexity = O(n + p) = O(n)
-     * Space Complexity = O(p) where P is the size of auxiliary array
      *
      * @param array
      * @return
      */
+    @TimeComplexity("O(n + p) = O(n)")
+    @SpaceComplexity("O(p) where P is the size of auxiliary array")
     public static double meanUsingCountingSort(int array[]) {
         int n = array.length;
 
@@ -206,11 +210,10 @@ public class Algorithms {
     /**
      * "the middle" value
      *
-     * Time Complexity: O(n Log n) as we need to sort the array first
-     *
      * @param a
      * @return
      */
+    @TimeComplexity("O(n Log n) as we need to sort the array first")
     public static double median(int a[]) {
         // First we sort the array
         Arrays.sort(a);
@@ -223,12 +226,12 @@ public class Algorithms {
     }
 
     /**
-     * Time Complexity = O(n + p) = O(n)
-     * Space Complexity = O(p) where P is the size of auxiliary array
      *
      * @param array
      * @return
      */
+    @TimeComplexity("O(n + p) = O(n)")
+    @SpaceComplexity("O(p) where P is the size of auxiliary array")
     public static double medianUsingCountingSort(int[] array) {
         int n = array.length;
 
