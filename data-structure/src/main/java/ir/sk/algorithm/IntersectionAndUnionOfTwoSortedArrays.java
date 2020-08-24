@@ -1,9 +1,6 @@
 package ir.sk.algorithm;
 
-import ir.sk.helper.BCR;
-import ir.sk.helper.BruteForce;
-import ir.sk.helper.SpaceComplexity;
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -104,6 +101,7 @@ public class IntersectionAndUnionOfTwoSortedArrays {
      */
     @TimeComplexity("O(n + m)")
     @SpaceComplexity("O(1)")
+    @Best
     public static int countOfCommonItemsByTwoFinger(int[] arr1, int[] arr2) {
         int i = 0, j = 0, count = 0;
         while (i < arr1.length && j < arr2.length) {
