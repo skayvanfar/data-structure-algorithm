@@ -13,7 +13,7 @@ import java.util.Arrays;
  * <p>
  * Created by sad.keyvanfar on 8/24/2020.
  */
-@BCR(bigOTime = "n", bigOSpace = "1")
+@BCR(bigOTime = "O(n)", bigOSpace = "O(1)")
 public class IntersectionOfTwoSortedArrays {
 
     /**
@@ -28,8 +28,8 @@ public class IntersectionOfTwoSortedArrays {
     @SpaceComplexity("O(1)")
     public static int countOfCommonItems(int[] arr1, int[] arr2) {
         int count = 0;
-        for (int i = 0; i < arr1.length; i++) {
-            for (int j = 0; j < arr2.length; j++) {
+        for (int i = 0; i < arr1.length; i++) { // O(n)
+            for (int j = 0; j < arr2.length; j++) { // O(n)
                 if (arr1[i] == arr2[j])
                     count++;
             }
@@ -38,16 +38,18 @@ public class IntersectionOfTwoSortedArrays {
     }
 
     /**
+     * We can use binary search to find an element in a sorted array in 0( log N) time
+     *
      * @param arr1
      * @param arr2
      * @return
      */
-    @TimeComplexity("O(n2)")
+    @TimeComplexity("O(n log n)")
     @SpaceComplexity("O(1)")
     public static int countOfCommonItemsBinary(int[] arr1, int[] arr2) {
         int count = 0;
-        for (int i = 0; i < arr1.length; i++) {
-            if (Search.binarySearchByRecursive(arr2, arr1[i]) != -1)
+        for (int i = 0; i < arr1.length; i++) { // O(n)
+            if (Search.binarySearchByRecursive(arr2, arr1[i]) != -1) // O(log n)
                 count++;
         }
         return count;
