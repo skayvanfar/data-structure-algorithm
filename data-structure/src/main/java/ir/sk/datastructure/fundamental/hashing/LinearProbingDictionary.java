@@ -1,5 +1,7 @@
 package ir.sk.datastructure.fundamental.hashing;
 
+import ir.sk.helper.TimeComplexity;
+
 /**
  * deals with collisions by Open Addressing - Linear Probing
  *
@@ -166,8 +168,8 @@ public class LinearProbingDictionary<K, V> implements Dictionary<K, V> {
 
     /**
      * If load factor goes beyond threshold, then double hash table size
-     * Time Complexity: O(n + m + m') = O(n)
      */
+    @TimeComplexity("O(n + m + m') = O(n)")
     private void reHash(int m) {
         capacity = m;
         size = 0;
@@ -182,16 +184,3 @@ public class LinearProbingDictionary<K, V> implements Dictionary<K, V> {
     }
 }
 
-class OpenAddressingHashNode<K, V> {
-
-    K key;
-    V value;
-
-    public OpenAddressingHashNode() {
-    }
-
-    public OpenAddressingHashNode(K key, V value) {
-        this.key = key;
-        this.value = value;
-    }
-}

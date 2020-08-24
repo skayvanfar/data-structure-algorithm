@@ -1,5 +1,7 @@
 package ir.sk.datastructure.fundamental.hashing;
 
+import ir.sk.helper.TimeComplexity;
+
 /**
  * Double hashing is a collision resolving technique in Open Addressed Hash tables.
  * Double hashing uses the idea of applying a second hash function to key when a collision occurs.
@@ -188,8 +190,8 @@ public class DoubleHashingDictionary<K, V> implements Dictionary<K, V> {
 
     /**
      * If load factor goes beyond threshold, then double hash table size
-     * Time Complexity: O(n + m + m') = O(n)
      */
+    @TimeComplexity("O(n + m + m') = O(n)")
     private void reHash(int m) {
         capacity = m;
         size = 0;

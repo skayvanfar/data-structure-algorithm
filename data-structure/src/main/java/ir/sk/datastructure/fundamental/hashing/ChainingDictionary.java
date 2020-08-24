@@ -78,16 +78,12 @@ public class ChainingDictionary<K, V> implements Dictionary<K, V> {
     }
 
     /**
-     * search
+     * Search
      * Returns value for a key
-     * <p>
-     * Time Complexity: O(1)
      *
      * @param key
      * @return
      */
-    @Point("the best time complexity for search, others: linear:O(n), Binary:O(log n)")
-    @TimeComplexity("O(1)")
     @Override
     public V get(K key) {
 
@@ -107,7 +103,7 @@ public class ChainingDictionary<K, V> implements Dictionary<K, V> {
 
     /**
      * Adds a key value pair to hash
-     * <p>
+     *
      * Time Complexity on average is o(n) since reHash() when need more space
      * but Amortized Time Complexity is O(1)
      * size of new array = 2 * numBuckets (Table Doubling): It's the best size for growing the size of array
@@ -148,8 +144,8 @@ public class ChainingDictionary<K, V> implements Dictionary<K, V> {
 
     /**
      * If load factor goes beyond threshold, then double hash table size
-     * Time Complexity: O(n + m + m') = O(n)
      */
+    @TimeComplexity("O(n + m + m') = O(n)")
     private void reHash(int m) {
         numBuckets = m;
         size = 0;
