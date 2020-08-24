@@ -28,7 +28,9 @@ public class PairsCountWithGivenSum {
         int count = 0;// Initialize result
 
         // Consider all possible pairs and check their sums
+        // O(n)
         for (int i = 0; i < arr.length; i++)
+            // O(n)
             for (int j = i + 1; j < arr.length; j++)
                 if ((arr[i] + arr[j]) == sum)
                     count++;
@@ -44,7 +46,8 @@ public class PairsCountWithGivenSum {
      * @param sum
      * @return
      */
-    @Point(description = "Using hashtable is trade off between time and space")
+    @Point(description = "Using hashtable is trade off between time and space" +
+            "change Multiply O(n)*O(n) into O(n)+O(n) by using hashtable")
     public static int getPairsCountByHashing(int[] arr, int sum) {
 
         int count = 0;// Initialize result
@@ -57,12 +60,16 @@ public class PairsCountWithGivenSum {
 
         @Point(description = "When you want to use array as hashtable use like below")
         boolean []counting = new boolean[range];
+
+        // O(n)
         for (int i = 0; i < arr.length; i++) {
             counting[arr[i] - min] = true;
         }
 
+        // O(n)
         for (int i = 0; i < arr.length; i++) {
             int b = sum - arr[i];
+            // O(1)
             if (counting[b - min] && b > arr[i])
                 count++;
         }
