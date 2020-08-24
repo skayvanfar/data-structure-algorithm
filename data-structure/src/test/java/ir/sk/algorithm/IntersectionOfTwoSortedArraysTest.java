@@ -43,4 +43,14 @@ public class IntersectionOfTwoSortedArraysTest {
 
         Assert.assertEquals(3, IntersectionOfTwoSortedArrays.countOfCommonItemsByHashing(arr1, arr2));
     }
+
+    @Test
+    public void twoFingerAlgorithm() {
+
+        int[] foo = { 3, 7 };
+        int[] bar = { 4, 8, 11 };
+        int[] merged = { 3, 4, 7, 8, 11 };
+
+        assertArrayEquals(merged, IntersectionOfTwoSortedArrays.twoFingerAlgorithm(foo, bar));
+    }
 }

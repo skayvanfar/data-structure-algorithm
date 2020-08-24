@@ -139,7 +139,7 @@ public class Sort {
      */
     private static void merge(
             int[] a, int[] l, int[] r, int left, int right) {
-        Utils.twoFingerAlgorithm(a, l, r, left, right);
+        IntersectionOfTwoSortedArrays.twoFingerAlgorithm(a, l, r, left, right);
     }
 
     /**
