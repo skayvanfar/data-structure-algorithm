@@ -7,7 +7,7 @@ package ir.sk.datastructure.fundamental.hashing;
  *
  * Created by sad.keyvanfar on 7/8/2020.
  */
-public class DoubleHashingDictionary<K, V> {
+public class DoubleHashingDictionary<K, V> implements Dictionary<K, V> {
 
     private static final float DEFAULT_LOAD_FACTOR = 0.5f;
     private static final int DEFAULT_CAPACITY = 10;
@@ -86,6 +86,7 @@ public class DoubleHashingDictionary<K, V> {
      * @param key
      * @param value
      */
+    @Override
     public void add(K key, V value) {
         OpenAddressingHashNode<K, V> newNode = new OpenAddressingHashNode<>(key, value);
         int hashIndex = hashFuntion1(key);
@@ -125,6 +126,7 @@ public class DoubleHashingDictionary<K, V> {
      * @param key
      * @return
      */
+    @Override
     public V get(K key) {
         // Apply hash function to find index for given key
         int hashIndex = hashFuntion1(key);
@@ -149,6 +151,7 @@ public class DoubleHashingDictionary<K, V> {
      * @param key
      * @return
      */
+    @Override
     public V remove(K key) {
         // Apply hash function to find index for given key
         int hashIndex = hashFuntion1(key);

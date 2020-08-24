@@ -1,5 +1,8 @@
 package ir.sk.datastructure.fundamental.hashing;
 
+import ir.sk.helper.Point;
+import ir.sk.helper.TimeComplexity;
+
 /**
  * ChainingDictionary ADT (HashTable ADT) (HashMap ADT), Symbol table
  * Hash table is a generalization of array. With an array, we store the element whose key is k at a
@@ -18,7 +21,7 @@ package ir.sk.datastructure.fundamental.hashing;
  * <p>
  * Created by sad.keyvanfar on 7/6/2020.
  */
-public class ChainingDictionary<K, V> {
+public class ChainingDictionary<K, V> implements Dictionary<K, V> {
 
     private static final float DEFAULT_LOAD_FACTOR = 0.75f;
     private static final int DEFAULT_CAPACITY = 10;
@@ -75,6 +78,7 @@ public class ChainingDictionary<K, V> {
     }
 
     /**
+     * search
      * Returns value for a key
      * <p>
      * Time Complexity: O(1)
@@ -82,6 +86,9 @@ public class ChainingDictionary<K, V> {
      * @param key
      * @return
      */
+    @Point("the best time complexity for search, others: linear:O(n), Binary:O(log n)")
+    @TimeComplexity("O(1)")
+    @Override
     public V get(K key) {
 
         // Find head of chain for given key
@@ -109,6 +116,7 @@ public class ChainingDictionary<K, V> {
      * @param key
      * @param value
      */
+    @Override
     public void add(K key, V value) {
         // Find head of chain for given key
         int bucketIndex = hashFuntion(key);
@@ -165,6 +173,7 @@ public class ChainingDictionary<K, V> {
      * @param key
      * @return
      */
+    @Override
     public V remove(K key) {
         // Apply hash function to find index for given key
         int bucketIndex = hashFuntion(key);
