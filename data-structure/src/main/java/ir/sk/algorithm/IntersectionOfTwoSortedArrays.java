@@ -54,4 +54,37 @@ public class IntersectionOfTwoSortedArrays {
         }
         return count;
     }
+
+    /**
+     * we can just throw everything in B into a hash table
+     * This will take O ( N) time. Then, we just go
+     * through A and look up each element in the hash table. This look up (or search) is 0(1), so our runtime is
+     * O(N).
+     *
+     * @param arr1
+     * @param arr2
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
+    public static int countOfCommonItemsByHashing(int[] arr1, int[] arr2) {
+        int max = Arrays.stream(arr2).max().getAsInt();
+        int min = Arrays.stream(arr2).min().getAsInt();
+
+        int range = max - min + 1;
+        boolean[] hashtable = new boolean[range];
+
+        for (int i = 0; i < arr2.length; i++) {
+            hashtable[arr2[i] - min] = true;
+        }
+
+        int count = 0;
+        for (int i = 0; i < arr1.length; i++) { // O(n)
+            boolean inBounds = (arr1[i] - min >= 0) && (arr1[i] - min < hashtable.length);
+            if (inBounds && hashtable[arr1[i] - min]) // O(1)
+                count++;
+        }
+        return count;
+    }
+
 }

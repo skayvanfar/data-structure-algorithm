@@ -35,4 +35,12 @@ public class IntersectionOfTwoSortedArraysTest {
 
         Assert.assertEquals(2, IntersectionOfTwoSortedArrays.countOfCommonItemsBinary(arr1, arr2));
     }
+
+    @Test
+    public void countOfCommonItemsByHashing() {
+        int[] arr1 = new int[]{-1, 2, 4, 9};
+        int[] arr2 = new int[]{-1, 2, 4, 5};
+
+        Assert.assertEquals(3, IntersectionOfTwoSortedArrays.countOfCommonItemsByHashing(arr1, arr2));
+    }
 }
