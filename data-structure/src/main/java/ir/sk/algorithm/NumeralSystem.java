@@ -28,4 +28,24 @@ public class NumeralSystem {
         for (int j = i - 1; j >= 0; j--)
             System.out.print(num[j]);
     }
+
+    /**
+     * @param binary
+     * @return
+     */
+    public static int convertToBase(int binary, int base){
+        int decimal = 0;
+        int n = 0;
+        while(true){
+            if(binary == 0){
+                break;
+            } else {
+                int temp = binary%10;
+                decimal += temp*Math.pow(base, n);
+                binary = binary/10;
+                n++;
+            }
+        }
+        return decimal;
+    }
 }
