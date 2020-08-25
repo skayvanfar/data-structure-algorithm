@@ -1,5 +1,6 @@
 package ir.sk.algorithm;
 
+import ir.sk.helper.InPlace;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
@@ -19,6 +20,7 @@ public class ReplaceSpaces {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
+    @InPlace
     public static char[] replaceSpaces(char[] str) {
 
         // count spaces and find current length
