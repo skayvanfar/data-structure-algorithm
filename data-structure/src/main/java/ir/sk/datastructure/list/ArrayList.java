@@ -57,6 +57,8 @@ public class ArrayList<T> implements List<T> {
     /**
      * Add item to the List in position pos (moving items over to the right to make room).
      *
+     * random access operation
+     *
      * @param pos
      * @param item
      */
@@ -95,6 +97,8 @@ public class ArrayList<T> implements List<T> {
 
     /**
      * delete item from the List in position pos (moving items over to the left to shrink).
+     *
+     * random access operation
      *
      * @param pos
      * @return
