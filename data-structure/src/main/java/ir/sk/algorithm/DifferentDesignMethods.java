@@ -1,6 +1,8 @@
 package ir.sk.algorithm;
 
 import ir.sk.helper.BruteForce;
+import ir.sk.helper.SpaceComplexity;
+import ir.sk.helper.TimeComplexity;
 
 import java.util.Arrays;
 
@@ -15,13 +17,13 @@ public class DifferentDesignMethods {
      * an algorithm for printing the first repeated character if there are duplicated elements in it.
      *
      * using two loops like BubbleSort, InsertionSort, SelectionSort, ...
-     * Time Complexity (n^2)
-     * Space Complexity (1)
      *
      * @param array
      * @return
      */
     @BruteForce
+    @TimeComplexity("O(n2)")
+    @SpaceComplexity("O(1)")
     public static char firstRepeatedCharByTwoLoops(char[] array) {
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array.length; j++) {
@@ -34,12 +36,12 @@ public class DifferentDesignMethods {
 
     /**
      * using hash like CountSort, Hashtable,  ...
-     * Time Complexity (n)
-     * Space Complexity (256) = O(1)
      *
      * @param array
      * @return
      */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(256) = O(1)")
     public static char firstRepeatedCharByHash(char[] array) {
         int[] counter = new int[256];
 
@@ -56,12 +58,12 @@ public class DifferentDesignMethods {
 
     /**
      * an algorithm for printing the max repeated character.
-     * Time Complexity (n^2)
-     * Space Complexity (1)
      * @param array
      * @return
      */
     @BruteForce
+    @TimeComplexity("O(n2)")
+    @SpaceComplexity("O(1)")
     public static char maximumRepeatedCharByTwoLoops(char[] array) {
         char maxChar = '\u0000';
         int count = 0;
@@ -85,6 +87,8 @@ public class DifferentDesignMethods {
      * @param array
      * @return
      */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(256) = O(1)")
     public static char maximumRepeatedCharByHash(char[] array) {
         int[] counter = new int[256];
 

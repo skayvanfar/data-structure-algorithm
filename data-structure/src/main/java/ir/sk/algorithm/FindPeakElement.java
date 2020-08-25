@@ -1,5 +1,8 @@
 package ir.sk.algorithm;
 
+import ir.sk.helper.SpaceComplexity;
+import ir.sk.helper.TimeComplexity;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,14 +14,14 @@ public class FindPeakElement {
 
     /**
      * to find peak element by linear traverse and iterative
-     * Time complexity: O(n)
-     * Space Complexity: O(1)
      *
      * @param array
      * @param low
      * @param high
      * @return
      */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
     public static boolean findPeakByLoop(int array[], int low, int high) {
         // first or last element is peak element
         if (array.length == 1)
@@ -39,14 +42,14 @@ public class FindPeakElement {
 
     /**
      * to find peak element by decrease-and-conquer (Divide-and-conquer algorithm) and recursive
-     * Time Complexity: O(Logn)
-     * Space complexity: O(1)
      *
      * @param array
      * @param low
      * @param high
      * @return
      */
+    @TimeComplexity("O(log n)")
+    @SpaceComplexity("O(1)")
     public static boolean findPeakByRecursive(int array[], int low, int high) {
         if (low > high)
             return false;
@@ -60,13 +63,13 @@ public class FindPeakElement {
     }
 
     /**
-     * Time Complexity: O(mn)
      *
      * @param array
      * @param low
      * @param high
      * @return
      */
+    @TimeComplexity("O(mn)")
     public static boolean findPeakIn2DArrayByLoop(int array[][], int low, int high) {
         // first or last element is peak element
         if (array.length == 1)
@@ -100,14 +103,13 @@ public class FindPeakElement {
      * Greedy Ascent Algorithm works on the principle, that it selects a particular element to start with.
      * Then it begins traversing across the array, by selecting the neighbour with higher value.
      * If there is no neighbour with a higher value than the current element, it just returns the current element.
-     * <p>
-     * Time Complexity: O(mn)
      *
      * @param array
      * @param i
      * @param j
      * @return
      */
+    @TimeComplexity("O(mn)")
     public static int greedyAscentAlgorithmByRecursive(int[][] array, int i, int j) {
         if (i > 0 && array[i - 1][j] > array[i][j]) return greedyAscentAlgorithmByRecursive(array, i - 1, j);
         else if (i < array.length - 1 && array[i + 1][j] > array[i][j])
@@ -119,13 +121,14 @@ public class FindPeakElement {
     }
 
     /**
-     * Time Complexity : O(rows * log(columns))
-     * Auxiliary Space: O(columns/2) for Recursion Call Stack
+     *
      * @param array
      * @param col1
      * @param col2
      * @return
      */
+    @TimeComplexity("O(rows * log(columns))")
+    @SpaceComplexity("O(columns/2) for Recursion Call Stack")
     public static int decreaseAndConquerByRecursive(int[][] array, int col1, int col2) {
         int mid = (col1 + col2) / 2;
         int max = findMaxIndex(array, mid);

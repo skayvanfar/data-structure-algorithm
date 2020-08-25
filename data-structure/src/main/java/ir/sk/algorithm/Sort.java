@@ -2,6 +2,9 @@ package ir.sk.algorithm;
 
 import ir.sk.datastructure.fundamental.tree.binarytree.MaxBinaryHeap;
 import ir.sk.datastructure.fundamental.tree.binarytree.binarysearchtree.BinarySearchTree;
+import ir.sk.helper.InPlace;
+import ir.sk.helper.SpaceComplexity;
+import ir.sk.helper.TimeComplexity;
 
 import java.util.Arrays;
 import java.util.stream.IntStream;
@@ -46,9 +49,6 @@ public class Sort {
     }
 
     /**
-     * Time Complexity: O(n*2)
-     * Auxiliary Space: O(1)
-     * <p>
      * compare and copy
      * twice faster than bubble sort and faster than selection sort
      * Stable: Yes
@@ -56,6 +56,8 @@ public class Sort {
      *
      * @param array
      */
+    @TimeComplexity("O(n * 2)")
+    @SpaceComplexity("O(1)")
     public static void insertionSort(int[] array) {
         for (int i = 1; i < array.length; ++i) {
             int key = array[i];
@@ -76,12 +78,11 @@ public class Sort {
     /**
      * better performance when comparing is costly for example for record data
      * using binary search instead of comparing fro finding the place of an item
-     * <p>
-     * Time Complexity: O(n*2)
-     * Auxiliary Space: O(1)
      *
      * @param array
      */
+    @TimeComplexity("O(n * 2)")
+    @SpaceComplexity("O(1)")
     public static void binaryInsertionSort(int[] array) {
         for (int i = 1; i < array.length; i++) {
             int key = array[i];
@@ -100,14 +101,14 @@ public class Sort {
 
     /**
      * T(n) = 2T(n/2) + O(n)
-     * Time Complexity: O(n * log n)
-     * Auxiliary Space: O(n)
      * Stable: Yes
      * Sorting In Place: No
      *
      * @param a
      * @param n
      */
+    @TimeComplexity("O(n * Log n)")
+    @SpaceComplexity("O(n)")
     public static void mergeSort(int[] a, int n) {
 
         // base case
@@ -144,13 +145,13 @@ public class Sort {
 
     /**
      * Divide-and-conquer algorithm and recursive
-     * <p>
-     * Time Complexity: O(n * log n)
-     * Auxiliary Space: O(1) improved over normal merge sort O(n)
+     *
      * Sorting In Place: Yes
      *
      * @param array
      */
+    @TimeComplexity("O(n * Log n)")
+    @SpaceComplexity("O(1) improved over normal merge sort O(n)")
     public static void inPlaceMergeSort(int[] array) {
         // provides workspace
         int[] workSpace = new int[array.length];
@@ -206,13 +207,14 @@ public class Sort {
      * 5. New root may violate max heap property, but its
      * children are max heaps. Run max_heapify to fix this.
      * 6. Go to Step 2 unless heap is empty
-     * <p>
-     * Time Complexity: O(n * log n)
-     * Auxiliary Space: O(1)
+     *
      * Sorting In Place: Yes
      *
      * @param array
      */
+    @TimeComplexity("O(n * Log n)")
+    @SpaceComplexity("O(1)")
+    @InPlace
     public static void heapSort(int[] array) {
 
         // Build heap (rearrange array)
@@ -233,13 +235,13 @@ public class Sort {
      * Tree sort is a sorting algorithm that is based on Binary Search Tree data structure
      * It first creates a binary search tree from the elements of the input list or array
      * and then performs an in-order traversal on the created binary search tree to get the elements in sorted order.
-     * <p>
-     * Time Complexity: O(n * log h) - h is height o tree and if tree is balanced(AVL,Red Black Tree,...), h = Log n
-     * Auxiliary Space : O(n). heapsort is better
+     *
      * Sorting In Place: No
      *
      * @param array
      */
+    @TimeComplexity("O(n * log h) - h is height o tree and if tree is balanced(AVL,Red Black Tree,...), h = Log n")
+    @SpaceComplexity("O(n) heapsort is better")
     public static void treeSort(int[] array) {
         // Build BST
         BinarySearchTree bst = new BinarySearchTree();
@@ -256,12 +258,12 @@ public class Sort {
     /**
      * It works by counting the number of objects having distinct key values (kind of hashing).
      * Then doing some arithmetic to calculate the position of each object in the output sequence.
-     *
+     * <p>
      * we could not sort the elements if we have negative numbers in it. Because there are no negative array indices.
-     *
+     * <p>
      * Time Complexity: O(n + k) + O(n) = O(2n + k) = O(n + k) where n is the number of elements in input array and k is the range of input.
      * Auxiliary Space: O(n+k)
-     *
+     * <p>
      * Counting sort is efficient if the range of input data is not significantly greater than the number of objects to be sorted. Consider the situation where the input sequence is between range 1 to 10K and the data is 10, 5, 10K, 5K.
      * It is not a comparison based sorting. It running time complexity is O(n) with space proportional to the range of data.
      * It is often used as a sub-routine to another sorting algorithm like radix sort.
@@ -270,6 +272,8 @@ public class Sort {
      *
      * @param array
      */
+    @TimeComplexity("O(n + k) + O(n) = O(2n + k) = O(n + k) where n is the number of elements in input array and k is the range of input.")
+    @SpaceComplexity("nO(n + k)")
     public static void countingSort(int[] array) {
         int n = array.length;
         int max = Arrays.stream(array).max().getAsInt();
@@ -308,11 +312,10 @@ public class Sort {
      * Counting sort which takes negative numbers as well
      * We find the minimum element and we will store count of that minimum element at zero index.
      *
-     * Time Complexity: O(n + k) + O(n) = O(2n + k) = O(n + k) where n is the number of elements in input array and k is the range of input.
-     * Auxiliary Space: O(n + k)
-     *
      * @param arr
      */
+    @TimeComplexity("O(n + k) + O(n) = O(2n + k) = O(n + k) where n is the number of elements in input array and k is the range of input.")
+    @SpaceComplexity("nO(n + k)")
     public static void countingSortWithNegative(int[] arr) {
         int max = Arrays.stream(arr).max().getAsInt();
         int min = Arrays.stream(arr).min().getAsInt();

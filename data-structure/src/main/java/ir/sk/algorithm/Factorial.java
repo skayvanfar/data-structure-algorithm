@@ -1,6 +1,8 @@
 package ir.sk.algorithm;
 
 import ir.sk.helper.BruteForce;
+import ir.sk.helper.SpaceComplexity;
+import ir.sk.helper.TimeComplexity;
 
 import java.math.BigInteger;
 
@@ -33,6 +35,7 @@ public class Factorial {
      * @param n
      * @return
      */
+    @TimeComplexity("O(n)")
     public static int factorialByLoop(int n) {
         int res = 1, i;
         for (i = 2; i <= n; i++)

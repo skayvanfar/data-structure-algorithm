@@ -1,6 +1,8 @@
 package ir.sk.algorithm;
 
 import ir.sk.helper.BruteForce;
+import ir.sk.helper.SpaceComplexity;
+import ir.sk.helper.TimeComplexity;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -22,15 +24,14 @@ public class CountPairsWithDiffK {
      * A simple solution is to consider all pairs one by one and check difference between every pair
      * We run two loops: the outer loop picks the first element of pair, the inner loop looks for the other element.
      * This solution doesn’t work if there are duplicates in array as the requirement is to count only distinct pairs.
-     * <p>
-     * Time Complexity: O(n2)
-     * Space Complexity: O(1)
      *
      * @param arr
      * @param k
      * @return
      */
     @BruteForce
+    @TimeComplexity("O(n2)")
+    @SpaceComplexity("O(1)")
     public static int countPairsWithDiffKNative(int arr[], int k) {
         int n = arr.length;
         int count = 0;
@@ -99,13 +100,12 @@ public class CountPairsWithDiffK {
      *    b) Look for arr[i] - k in the hash map, if found then increment count.
      *    c) Remove arr[i] from hash table.
      *
-     * Time complexity: O(n)
-     * Space Complexity: O(n+k)
-     *
      * @param arr
      * @param k
      * @return
      */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n+k)")
     public static int countPairsWithDiffKByHashing(int arr[], int k) {
         int n = arr.length;
         int count = 0;  // Initialize count

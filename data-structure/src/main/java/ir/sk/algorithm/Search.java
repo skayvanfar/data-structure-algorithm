@@ -1,5 +1,8 @@
 package ir.sk.algorithm;
 
+import ir.sk.helper.SpaceComplexity;
+import ir.sk.helper.TimeComplexity;
+
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
@@ -33,6 +36,7 @@ public class Search {
      * @param key
      * @return
      */
+    @TimeComplexity("O(Log n)")
     public static int binarySearchByLoop(int array[], int key) {
         int low = 0;
         int high = array.length - 1;
@@ -62,6 +66,7 @@ public class Search {
      * @param high
      * @return
      */
+    @TimeComplexity("O(Log n)")
     public static int binarySearchByRecursive(int array[], int key, int low, int high) {
         if (low > high)
             return -1;

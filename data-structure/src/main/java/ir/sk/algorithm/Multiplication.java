@@ -1,5 +1,8 @@
 package ir.sk.algorithm;
 
+import ir.sk.helper.SpaceComplexity;
+import ir.sk.helper.TimeComplexity;
+
 import java.math.BigInteger;
 
 /**
@@ -15,13 +18,12 @@ public class Multiplication {
      *  sometimes called Standard Algorithm:
      *  multiply the multiplicand by each digit of the multiplier and then add up all the properly shifted results.
      *
-     *  Time complexity: O(n^2) n: a array length
-     *  Space complexity: O(n+m) m: b array length
-     *
      * @param a
      * @param b
      * @return
      */
+    @TimeComplexity("O(n2) n: a array length")
+    @SpaceComplexity("O(n+m) m: b array length")
     public static int[] nativeMultiply(int[] a, int[] b, int base) {
         int[] product = new int[a.length + b.length];
         for (int j = 0; j < b.length; j++) {
@@ -39,12 +41,11 @@ public class Multiplication {
     /**
      * Karatsuba algorithm for fast multiplication using Divide and Conquer algorithm
      *
-     * Time complexity: (n^log3) = O(n^1.59)
-     *
      * @param n
      * @param m
      * @return
      */
+    @TimeComplexity("O(n^log3) = O(n^1.59)")
     public static BigInteger karatsubaMultiplyByBigInteger(BigInteger n, BigInteger m) {
         if (isSingle(n) && isSingle(m)) {
             return n.multiply(m);
@@ -120,6 +121,7 @@ public class Multiplication {
      * @param y
      * @return
      */
+    @TimeComplexity("O(n^log3) = O(n^1.59)")
     public static BigInteger karatsuba2ByBigInteger(BigInteger x, BigInteger y) {
 
         // cutoff to brute force

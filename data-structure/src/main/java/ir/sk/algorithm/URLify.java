@@ -20,6 +20,8 @@ public class URLify {
      * @return
      */
     @BruteForce
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
     public static String replaceSpacesBruteForce(char[] str) {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < str.length; i++) {
