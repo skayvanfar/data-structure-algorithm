@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by sad.kayvanfar on 8/25/2020.
  */
-public class ReplaceSpaces {
+public class URLify {
 
     private final static int MAX = 1000;
 
