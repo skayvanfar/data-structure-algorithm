@@ -1,5 +1,8 @@
 package ir.sk.algorithm;
 
+import ir.sk.helper.SpaceComplexity;
+import ir.sk.helper.TimeComplexity;
+
 import java.util.Arrays;
 import java.util.Collections;
 
@@ -16,6 +19,8 @@ import java.util.Collections;
  * Created by sad.keyvanfar on 8/23/2020.
  */
 public class Permutation {
+
+    private final static int MAX_CHAR = 256;
 
     /**
      * print all permutations of a string
@@ -160,4 +165,69 @@ public class Permutation {
         System.out.print('\n');
     }
 
+
+    /**
+     * Check if two strings are permutation of each other
+     * @param str1
+     * @param str2
+     * @return
+     */
+    @TimeComplexity("O(n Log n)")
+    public static boolean arePermutationUseSorting(char[] str1, char[] str2) {
+        // Get lenghts of both strings
+        int n1 = str1.length;
+        int n2 = str2.length;
+
+        // If length of both strings is not same,
+        // then they cannot be Permutation
+        if (n1 != n2)
+            return false;
+
+        // Sort both strings
+        Arrays.sort(str1);
+        Arrays.sort(str2);
+
+        // Compare sorted strings
+        for (int i = 0; i < n1; i++)
+            if (str1[i] != str2[i])
+                return false;
+
+        return true;
+    }
+
+    /**
+     * @param str1
+     * @param str2
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(2n)=O(n)")
+    public static boolean arePermutationByHashing(char[] str1, char[] str2) {
+
+        // If both strings are of different length.
+        // Removing this condition will make the program
+        // fail for strings like "aaca" and "aca"
+        if (str1.length != str2.length)
+            return false;
+
+        // Create 2 count arrays and initialize
+        // all values as 0
+        int count1[] = new int [MAX_CHAR];
+        int count2[] = new int [MAX_CHAR];
+
+        // For each character in input strings,
+        // increment count in the corresponding
+        // count array
+        for (int i = 0; i <str1.length && i < str2.length; i++) {
+            count1[str1[i]]++;
+            count2[str2[i]]++;
+        }
+
+        // Compare count arrays
+        for (int i = 0; i < MAX_CHAR; i++)
+            if (count1[i] != count2[i])
+                return false;
+
+        return true;
+    }
 }

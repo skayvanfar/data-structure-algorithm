@@ -1,6 +1,7 @@
 package ir.sk.algorithm;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -39,5 +40,17 @@ public class PermutationTest {
     public void printAllOrdered() {
         Integer[] arr = new Integer[]{1, 5, 2};
         Permutation.printAllOrdered(arr, ',');
+    }
+
+    @Test
+    public void arePermutationUseSorting() {
+        boolean expectedValue = true;
+        Assert.assertEquals(expectedValue, Permutation.arePermutationUseSorting("abcdd".toCharArray(), "acdbd".toCharArray()));
+    }
+
+    @Test
+    public void arePermutationByHashing() {
+        boolean expectedValue = true;
+        Assert.assertEquals(expectedValue, Permutation.arePermutationByHashing("abcdd".toCharArray(), "acdbd".toCharArray()));
     }
 }
