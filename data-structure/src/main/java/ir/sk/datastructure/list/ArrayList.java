@@ -17,6 +17,7 @@ public class ArrayList<T> implements List<T> {
 
     public ArrayList() {
         items = new Object[DEFAULT_CAPACITY];
+        size = 0;
     }
 
     /**
@@ -54,6 +55,8 @@ public class ArrayList<T> implements List<T> {
     }
 
     /**
+     * Add item to the List in position pos (moving items over to the right to make room).
+     *
      * @param pos
      * @param item
      */
@@ -90,6 +93,12 @@ public class ArrayList<T> implements List<T> {
         return (T) items[pos];
     }
 
+    /**
+     * delete item from the List in position pos (moving items over to the left to shrink).
+     *
+     * @param pos
+     * @return
+     */
     @TimeComplexity("O(n)")
     @SuppressWarnings("unchecked")
     @Override

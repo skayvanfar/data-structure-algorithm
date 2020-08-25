@@ -21,13 +21,24 @@ public interface List<T> {
     void add(T item);
 
     /**
-     * Add item to the List in position pos (moving items over to the right to make room).
-     * @param pos
+     * Add item to the List in position pos
+     *
+     * @param pos must be lower than size
      * @param item
      */
     void add(int pos, T item);
 
+    /**
+     * @param pos must be lower than size
+     * @return
+     */
     T get(int pos);
 
+    /**
+     * delete item from the List in position pos
+     *
+     * @param pos
+     * @return
+     */
     T remove(int pos);
 }
