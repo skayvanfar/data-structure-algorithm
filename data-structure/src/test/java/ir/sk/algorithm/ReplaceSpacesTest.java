@@ -20,6 +20,12 @@ public class ReplaceSpacesTest {
     }
 
     @Test
+    public void replaceSpacesBruteForce() {
+        char[] str = "Saeed Kayvanfar    ".toCharArray();
+        System.out.println(ReplaceSpaces.replaceSpacesBruteForce(str));
+    }
+
+    @Test
     public void replaceSpaces() {
         char[] str = "Saeed Kayvanfar    ".toCharArray();
 
@@ -28,4 +34,5 @@ public class ReplaceSpacesTest {
         for (int i = 0; i < str.length; i++)
             System.out.print(str[i]);
     }
+
 }
