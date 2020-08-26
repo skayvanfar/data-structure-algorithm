@@ -53,4 +53,11 @@ public class PermutationTest {
         boolean expectedValue = true;
         Assert.assertEquals(expectedValue, Permutation.arePermutationByHashing("abcdd".toCharArray(), "acdbd".toCharArray()));
     }
+
+    @Test
+    public void palindromePermutationByHashing() {
+        boolean expectedValue = true;
+        Assert.assertEquals(expectedValue, Permutation.palindromePermutationByHashing("tactcoa".toCharArray()));
+
+    }
 }
