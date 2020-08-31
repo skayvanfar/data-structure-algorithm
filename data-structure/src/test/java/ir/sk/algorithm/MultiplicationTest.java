@@ -70,4 +70,9 @@ public class MultiplicationTest {
         System.out.println("time duration for Multiplication.karatsubaMultiplyByBigInteger by n: " + n + " m: " + m + " = " + (endTime - startTime) + " nano");
         Assert.assertEquals(expectedValue, result);
     }
+
+    @Test
+    public void product() {
+        Assert.assertEquals(2000, Multiplication.product(20, 100));
+    }
 }

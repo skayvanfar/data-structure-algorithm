@@ -6,7 +6,7 @@ import ir.sk.helper.TimeComplexity;
  * There are few methods to compute Big O of alghoritms. In this class we show the m by examples.
  * 1. Counting the Iterations
  * 2. What It Means: thinking about what the code "means:
- * 3. What It Does: Visualizing
+ * 3. What It Does: Visualizing. for instance in recursion tree can help
  * 4. Recursive Pattern: O(branches ^ depth). Only for recursive alghoritm. the runtime of a recursive function with multiple branches is typically O( branchesdepth).
  * <p>
  * Created by sad.kayvanfar on 8/31/2020.

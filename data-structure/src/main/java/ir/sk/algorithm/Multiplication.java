@@ -13,10 +13,10 @@ import java.math.BigInteger;
 public class Multiplication {
 
     /**
-     *  Naive Multiplication
-     *  multiplying numbers is taught in schools as long multiplication, sometimes called grade-school multiplication,
-     *  sometimes called Standard Algorithm:
-     *  multiply the multiplicand by each digit of the multiplier and then add up all the properly shifted results.
+     * Naive Multiplication
+     * multiplying numbers is taught in schools as long multiplication, sometimes called grade-school multiplication,
+     * sometimes called Standard Algorithm:
+     * multiply the multiplicand by each digit of the multiplier and then add up all the properly shifted results.
      *
      * @param a
      * @param b
@@ -114,7 +114,7 @@ public class Multiplication {
 
     /**
      * Karatsuba algorithm for fast multiplication using Divide and Conquer algorithm
-     *
+     * <p>
      * Time complexity: (n^log3) = O(n^1.59)
      *
      * @param x
@@ -138,11 +138,11 @@ public class Multiplication {
         BigInteger c = y.subtract(d.shiftLeft(N));
 
         // compute sub-expressions
-        BigInteger ac    = karatsuba2ByBigInteger(a, c);
-        BigInteger bd    = karatsuba2ByBigInteger(b, d);
-        BigInteger abcd  = karatsuba2ByBigInteger(a.add(b), c.add(d));
+        BigInteger ac = karatsuba2ByBigInteger(a, c);
+        BigInteger bd = karatsuba2ByBigInteger(b, d);
+        BigInteger abcd = karatsuba2ByBigInteger(a.add(b), c.add(d));
 
-        return ac.add(abcd.subtract(ac).subtract(bd).shiftLeft(N)).add(bd.shiftLeft(2*N));
+        return ac.add(abcd.subtract(ac).subtract(bd).shiftLeft(N)).add(bd.shiftLeft(2 * N));
     }
 
     /**
@@ -150,27 +150,44 @@ public class Multiplication {
      * @param j
      * @return
      */
-    public static long karatsuba2(long i, long j){
+    public static long karatsuba2(long i, long j) {
         if (i < 10 || j < 10)
-            return i*j;
-        double n = getLength(Math.max(i,j));
-        if (n%2 == 1)
+            return i * j;
+        double n = getLength(Math.max(i, j));
+        if (n % 2 == 1)
             n++;
-        long a = (long) (i/Math.pow(10,(n/2)));
-        long b = (long) (i%Math.pow(10,(n/2)));
-        long c = (long) (j/Math.pow(10,(n/2)));
-        long d = (long) (j%Math.pow(10,(n/2)));
+        long a = (long) (i / Math.pow(10, (n / 2)));
+        long b = (long) (i % Math.pow(10, (n / 2)));
+        long c = (long) (j / Math.pow(10, (n / 2)));
+        long d = (long) (j % Math.pow(10, (n / 2)));
 
         long first = karatsuba2(a, c);
         long second = karatsuba2(b, d);
         long third = karatsuba2(a + b, c + d);
 
-        return ((long) ((first * Math.pow(10, n)) + ((third - first - second) * Math.pow(10, (n/2))) + second));
+        return ((long) ((first * Math.pow(10, n)) + ((third - first - second) * Math.pow(10, (n / 2))) + second));
     }
 
-    public static int getLength( long a){
+    public static int getLength(long a) {
         String b = Long.toString(a);
         return b.length();
+    }
+
+    /**
+     * computes the product of a and b
+     *
+     * @param a
+     * @param b
+     * @return
+     */
+    @TimeComplexity("O(b)")
+    @SpaceComplexity("O(1)")
+    public static int product(int a, int b) {
+        int sum = 0;
+        for (int i = 0; i < b; i++) {
+            sum += a;
+        }
+        return sum;
     }
 
 }
