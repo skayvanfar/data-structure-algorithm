@@ -64,4 +64,16 @@ public class MatrixTest {
             System.out.print("\n");
         }
     }
+
+    @Test
+    public void rotateMatrix90Degree() {
+        Matrix.rotateMatrix90Degree(A);
+
+        System.out.print("Result matrix is \n");
+        for (int i = 0; i < Matrix.N; i++) {
+            for (int j = 0; j < Matrix.M; j++)
+                System.out.print(A[i][j] + " ");
+            System.out.print("\n");
+        }
+    }
 }
