@@ -65,6 +65,12 @@ public class AlgorithmsTest {
     }
 
     @Test
+    public void sqrtByIteration() {
+        int expectedValue = 8;
+        Assert.assertEquals(expectedValue, Algorithms.sqrtByIteration(64));
+    }
+
+    @Test
     public void gcdByEuclidean() {
     }
 

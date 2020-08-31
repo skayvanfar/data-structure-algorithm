@@ -84,7 +84,6 @@ public class Algorithms {
     }
 
     /**
-     *
      * @param a
      * @param b
      * @return
@@ -100,9 +99,10 @@ public class Algorithms {
     }
 
     /**
-     * computes the [integer] square root of a number. If the number is not
-     * a perfect square (there is no integer square root), then it returns -1. It does this by trying
-     * increasingly large numbers until it finds the right value (or is too high).
+     * computes the [integer] square root of a number. If the number is not a
+     * perfect square (there is no integer square root) , then it returns -1. It does this by successive
+     * guessing. If n is 100, it first guesses SO. Too high? Try something lower - halfway between 1
+     * and SO.
      *
      * @param n
      * @return
@@ -115,13 +115,24 @@ public class Algorithms {
     private static int sqrt_helper(int n, int min, int max) {
         if (max < min) return -1; // no square root
         int guess = (min + max) / 2;
-        if (guess *guess == n) { // found it!
+        if (guess * guess == n) { // found it!
             return guess;
         } else if (guess * guess < n) { // too low
             return sqrt_helper(n, guess + 1, max); // try higher
         } else { // too high
             return sqrt_helper(n, min, guess - 1); // try lower
         }
+    }
+
+    @TimeComplexity("O(sqrt(n))")
+    @SpaceComplexity("O(1)")
+    public static int sqrtByIteration(int n) {
+        for (int guess = 1; guess * guess <= n; guess++) {
+            if (guess * guess == n) {
+                return guess;
+            }
+        }
+        return -1;
     }
 
     /**
