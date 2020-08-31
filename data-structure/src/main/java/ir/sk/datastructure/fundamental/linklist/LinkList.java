@@ -1,6 +1,7 @@
 package ir.sk.datastructure.fundamental.linklist;
 
 import ir.sk.datastructure.ListIterator;
+import ir.sk.helper.TimeComplexity;
 
 /**
  * A linked list is a linear data structure,
@@ -12,89 +13,126 @@ import ir.sk.datastructure.ListIterator;
 public class LinkList<T> {
 
     // ref to first link on list
-    private Link<T> first;
+    private Link<T> head;
 
     public LinkList() {
-        first = null;
+        head = null;
     }
 
     /**
-     * Time Complexity: O(1)
-     *
      * @param id
      */
+    @TimeComplexity("O(1)")
     public void insertFirst(T id) {
         Link<T> newLink = new Link<>(id);
-        newLink.next = first;       // it points to old first link
-        first = newLink;            // now first points to this
+        newLink.next = head;
+        head = newLink;
+    }
+
+    /**
+     * @param value
+     */
+    @TimeComplexity("O(n)")
+    public void add(T value) {
+        Link<T> current = head;
+        Link<T> newLink = new Link<>(value);
+
+        if (current == null) {
+            this.head = newLink;
+            return;
+        }
+
+        while (current.next != null) {
+            current = current.next;
+        }
+        current.next = newLink;
     }
 
     /**
      * find link with given key
-     *
-     * Time Complexity: O(n)
+     * (assumes non-empty list)
      *
      * @param key
      * @return
      */
+    @TimeComplexity("O(n)")
     public Link find(int key) {
-        // (assumes non-empty list)
-        Link<T> current = first;              // start at 'first'
-        while(!current.data.equals(key)) {
-            if(current.next == null)        // if end of list,
-                return null;                 // didn't find it
-            else                            // not end of list,
-                current = current.next;      // go to next link
+        Link<T> current = head;
+        while (!current.data.equals(key)) {
+            if (current.next == null)
+                return null;
+            else
+                current = current.next;
         }
-        return current;                    // found it
+        return current;
     }
 
     /**
+     * @param nodeNum
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    public T get(int nodeNum) {
+        if (nodeNum <= 0) {
+            return null;
+        }
+        Link<T> current = head;
+        for(int i = 1; i < nodeNum; i++) {
+            current = current.next;
+        }
+        return current.data;
+    }
+
+    /**
+     * delete link with given key
+     * (assumes non-empty list)
+     *
      * @param key
      * @return
      */
-    public Link delete(int key)    // delete link with given key
-    {                           // (assumes non-empty list)
-        Link current = first;              // search for link
-        Link previous = first;
-        while(!current.data.equals(key)) {
-            if(current.next == null)
-                return null;                 // didn't find it
+    @TimeComplexity("O(n)")
+    public Link delete(int key) {
+        Link current = head;
+        Link previous = head;
+        while (!current.data.equals(key)) {
+            if (current.next == null)
+                return null;
             else {
-                previous = current;          // go to next link
+                previous = current;
                 current = current.next;
             }
-        }                               // found it
-        if(current == first)               // if first link,
-            first = first.next;             //    change first
-        else                               // otherwise,
-            previous.next = current.next;   //    bypass it
+        }
+        if (current == head)
+            head = head.next;
+        else
+            previous.next = current.next;
         return current;
     }
 
     /**
      * delete first item
+     * (assumes list not empty)
      *
      * @return
      */
+    @TimeComplexity("O(1)")
     public T deleteFirst() {
-        // (assumes list not empty)
-        Link<T> temp = first;          // save reference to link
-        first = first.next;         // delete it: first-->old next
-        return temp.data;                // return deleted link
+        Link<T> temp = head;
+        head = head.next;
+        return temp.data;
     }
 
     public boolean isEmpty() {
-        return (first==null);
+        return head == null;
     }
 
     public void displayList() {
         System.out.print("List (first-->last): ");
-        Link<T> current = first;       // start at beginning of list
-        // until end of list
-        while(current != null) {
-            current.displayLink();   // print data
-            current = current.next;  // move to next link
+        Link<T> current = head;
+
+        while (current != null) {
+            current.displayLink();
+            current = current.next;
         }
         System.out.println("");
     }
@@ -104,8 +142,8 @@ public class LinkList<T> {
      *
      * @return
      */
-    public Link getFirst() {
-        return first;
+    public Link<T> getHead() {
+        return head;
     }
 
     /**
@@ -113,15 +151,16 @@ public class LinkList<T> {
      *
      * @param f
      */
-    public void setFirst(Link f) {
-        first = f;
+    public void setHead(Link<T> f) {
+        head = f;
     }
 
     /**
      * return iterator
+     *
      * @return
      */
     public ListIterator<T> getIterator() {
-        return new ListIterator(this);  // initialized with
+        return new ListIterator(this);
     }
 }

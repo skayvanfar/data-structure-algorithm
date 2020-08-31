@@ -21,7 +21,7 @@ public class ListIterator<T> {
      * start at 'first'
      */
     public void reset() {
-        current = ourList.getFirst();
+        current = ourList.getHead();
         previous = null;
     }
 
@@ -63,7 +63,7 @@ public class ListIterator<T> {
 
         if (ourList.isEmpty())     // empty list
         {
-            ourList.setFirst(newLink);
+            ourList.setHead(newLink);
             current = newLink;
         } else                        // not empty
         {
@@ -83,8 +83,8 @@ public class ListIterator<T> {
 
         if (previous == null)        // beginning of list
         {                        // (or empty list)
-            newLink.next = ourList.getFirst();
-            ourList.setFirst(newLink);
+            newLink.next = ourList.getHead();
+            ourList.setHead(newLink);
             reset();
         } else                        // not beginning
         {
@@ -103,7 +103,7 @@ public class ListIterator<T> {
         T value = current.data;
         if (previous == null)        // beginning of list
         {
-            ourList.setFirst(current.next);
+            ourList.setHead(current.next);
             reset();
         } else                        // not beginning
         {

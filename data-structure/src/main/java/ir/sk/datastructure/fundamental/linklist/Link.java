@@ -9,8 +9,13 @@ public class Link<T> {
 
     public Link next;
 
-    public Link(T id) {
-        data = id;
+    public Link(T data) {
+        this.data = data;
+    }
+
+    public Link(T data, Link next) {
+        this.data = data;
+        this.next = next;
     }
 
     public void displayLink() {
