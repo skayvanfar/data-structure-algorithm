@@ -124,6 +124,14 @@ public class Algorithms {
         }
     }
 
+    /**
+     * computes the [integer] square root of a number. If the number is not
+     * a perfect square (there is no integer square root), then it returns -1. It does this by trying
+     * increasingly large numbers until it finds the right value (or is too high)
+     *
+     * @param n
+     * @return
+     */
     @TimeComplexity("O(sqrt(n))")
     @SpaceComplexity("O(1)")
     public static int sqrtByIteration(int n) {
@@ -359,6 +367,26 @@ public class Algorithms {
             }
         }
         return median;
+    }
+
+
+    /**
+     * sums the digits in a number
+     *
+     * The runtime will be the number of digits in the number. A number with d digits can have a
+     * value up to 10d. If n = 10d , then d = log n. Therefore, the runtime is 0( log n).
+     *
+     * @param n
+     * @return
+     */
+    @TimeComplexity("O(log n)")
+    public static int sumDigits(int n) {
+        int sum = 0;
+        while (n > 0) {
+            sum += n % 10;
+            n /= 10;
+        }
+        return sum;
     }
 
 }

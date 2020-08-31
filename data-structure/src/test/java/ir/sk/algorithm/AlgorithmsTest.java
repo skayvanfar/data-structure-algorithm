@@ -129,4 +129,10 @@ public class AlgorithmsTest {
         String expectedValue = "4.5";
         Assert.assertEquals(expectedValue, Algorithms.medianUsingCountingSort(a) + "");
     }
+
+    @Test
+    public void sumDigits() {
+        String expectedValue = "27";
+        Assert.assertEquals(expectedValue, Algorithms.sumDigits(999) + "");
+    }
 }
