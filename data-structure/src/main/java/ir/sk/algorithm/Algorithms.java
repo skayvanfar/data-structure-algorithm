@@ -48,6 +48,23 @@ public class Algorithms {
     }
 
     /**
+     * @param a
+     * @param b
+     * @return
+     */
+    @TimeComplexity("O(a/b)")
+    @SpaceComplexity("O(1)")
+    public static int div2(int a, int b) {
+        int count = 0;
+        int sum = b;
+        while (sum <= a) {
+            sum += b;
+            count++;
+        }
+        return count;
+    }
+
+    /**
      * computes a % b
      *
      * @param a

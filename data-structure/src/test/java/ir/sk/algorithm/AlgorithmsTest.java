@@ -36,6 +36,14 @@ public class AlgorithmsTest {
 
     @Test
     public void div() {
+        int expectedValue = 3;
+        Assert.assertEquals(expectedValue, Algorithms.div(10, 3));
+    }
+
+    @Test
+    public void div2() {
+        int expectedValue = 3;
+        Assert.assertEquals(expectedValue, Algorithms.div2(10, 3));
     }
 
     @Test
