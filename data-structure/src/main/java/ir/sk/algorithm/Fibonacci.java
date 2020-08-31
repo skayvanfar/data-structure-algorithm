@@ -91,4 +91,16 @@ public class Fibonacci {
         return low;
     }
 
+    /**
+     * prints all Fibonacci numbers from Oto n
+     *
+     * @param n
+     */
+    @TimeComplexity("O(2^1 + 2^2 + 2^3 + 2^4 + , , , + 2^n)=O(2n)")
+    public static void allFibonacci(int n) {
+        for (int i = 0; i < n; i++) {
+            System.out.println(i + ": " + naiveFibonacciByRecursive(i));
+        }
+    }
+
 }

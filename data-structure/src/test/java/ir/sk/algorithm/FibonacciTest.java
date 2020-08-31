@@ -63,4 +63,8 @@ public class FibonacciTest {
         Assert.assertEquals(expectedValue, result);
     }
 
+    @Test
+    public void allFibonacci() {
+        Fibonacci.allFibonacci(20);
+    }
 }
