@@ -125,4 +125,10 @@ public class UtilsTest {
         Assert.assertEquals("tset", result);
     }
 
+    @Test
+    public void isPrime() {
+        boolean expectedValue = false;
+        boolean actual = Utils.isPrime(33);
+        Assert.assertEquals(expectedValue, actual);
+    }
 }

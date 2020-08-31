@@ -1,5 +1,9 @@
 package ir.sk.algorithm;
 
+import ir.sk.helper.InPlace;
+import ir.sk.helper.SpaceComplexity;
+import ir.sk.helper.TimeComplexity;
+
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 7/2/2020.
  */
@@ -8,14 +12,13 @@ public class Utils {
 
     /**
      * shifting - right rotation just one unit
-     * <p>
-     * Time Complexity: O(n)
-     * Auxiliary Space: O(1)
      *
-     * @param array the source array.
-     * @param startIndex     starting position
-     * @param endIndex     finishing position
+     * @param array      the source array.
+     * @param startIndex starting position
+     * @param endIndex   finishing position
      */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
     public static void rightRotate(int[] array, int startIndex, int endIndex) {
         int temp = array[endIndex];
         int k = endIndex - 1;
@@ -28,14 +31,13 @@ public class Utils {
 
     /**
      * shifting - left rotation just one unit
-     * <p>
-     * Time Complexity: O(n)
-     * Auxiliary Space: O(1)
      *
-     * @param array the source array.
-     * @param startIndex     starting position
-     * @param endIndex     finishing position
+     * @param array      the source array.
+     * @param startIndex starting position
+     * @param endIndex   finishing position
      */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
     public static void leftRotate(int[] array, int startIndex, int endIndex) {
         int temp = array[startIndex];
         int k = startIndex;
@@ -49,14 +51,13 @@ public class Utils {
     /**
      * shifting - right rotation unit number
      *
-     * Time Complexity: O(n)
-     * Auxiliary Space: O(unit)
-     *
-     * @param array the source array.
-     * @param startEndex     starting position
-     * @param endIndex     finishing position
-     * @param unit  the number of rotations
+     * @param array      the source array.
+     * @param startEndex starting position
+     * @param endIndex   finishing position
+     * @param unit       the number of rotations
      */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(unit)")
     public static void rightRotate(int[] array, int startEndex, int endIndex, int unit) { // TODO: 7/14/2020 incorrect
         int m = startEndex;
         int[] temp = new int[unit];
@@ -78,14 +79,13 @@ public class Utils {
     /**
      * shifting - left rotation unit number
      *
-     * Time Complexity: O(n)
-     * Auxiliary Space: O(unit)
-     *
-     * @param array the source array.
-     * @param startIndex     starting position
-     * @param endIndex     finishing position
-     * @param unit  the number of rotations
+     * @param array      the source array.
+     * @param startIndex starting position
+     * @param endIndex   finishing position
+     * @param unit       the number of rotations
      */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(unit)")
     public static void leftRotate(int[] array, int startIndex, int endIndex, int unit) {
         int[] temp = new int[unit];
 
@@ -107,7 +107,7 @@ public class Utils {
         }
     }
 
-    public static int[] leftRotateArray(int[] arr, int d){
+    public static int[] leftRotateArray(int[] arr, int d) {
         // Because the constraints state d < n, we need not concern ourselves with shifting > n units.
         int n = arr.length;
 
@@ -126,7 +126,7 @@ public class Utils {
      * @param init
      * @return
      */
-    public static int[] rotateArray(int[] arr, int init){
+    public static int[] rotateArray(int[] arr, int init) {
         // Because the constraints state d < n, we need not concern ourselves with shifting > n units.
         int n = arr.length;
 
@@ -165,11 +165,10 @@ public class Utils {
     }
 
     /**
-     * Time Complexity: O(n)
-     * Space Complexity: O(n)
-     *
      * @param a
      */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
     public static int[] reverse(int a[]) {
         int[] b = new int[a.length];
         int j = a.length;
@@ -183,12 +182,12 @@ public class Utils {
     /**
      * This algorithm iterate over an array and swap elements until you reach the midpoint.
      * This is also known as reversing an array in-place because no additional buffer is used.
-     * <p>
-     * Time Complexity: O(n/2)=O(n)
-     * Space Complexity: O(1)
      *
      * @param array
      */
+    @TimeComplexity("O(n/2)=O(n)")
+    @SpaceComplexity("O(1)")
+    @InPlace
     public static void inPlaceReverse(int[] array) {
         for (int i = 0; i < array.length / 2; i++) {
             int temp = array[i];
@@ -209,5 +208,18 @@ public class Utils {
         else
             return str.charAt(str.length() - 1) + recursiveReverse(str.substring(0, str.length() - 1));
 
+    }
+
+    /**
+     * @param n
+     * @return
+     */
+    public static boolean isPrime(int n) {
+        for (int x = 2; x * x <= n; x++) {
+            if (n % x == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }
