@@ -40,6 +40,11 @@ public class Algorithms {
             return (n + triangleByRecursive(n - 1));
     }
 
+    /**
+     * @param a
+     * @param b
+     * @return
+     */
     public static int div(int a, int b) {
         if (a < b)
             return 0;
@@ -92,6 +97,31 @@ public class Algorithms {
         }
         int div = a / b;
         return a - div * b;
+    }
+
+    /**
+     * computes the [integer] square root of a number. If the number is not
+     * a perfect square (there is no integer square root), then it returns -1. It does this by trying
+     * increasingly large numbers until it finds the right value (or is too high).
+     *
+     * @param n
+     * @return
+     */
+    public static int sqrtByBinarySearch(int n) {
+        return sqrt_helper(n, 1, n);
+    }
+
+    @TimeComplexity("O(log n)")
+    private static int sqrt_helper(int n, int min, int max) {
+        if (max < min) return -1; // no square root
+        int guess = (min + max) / 2;
+        if (guess *guess == n) { // found it!
+            return guess;
+        } else if (guess * guess < n) { // too low
+            return sqrt_helper(n, guess + 1, max); // try higher
+        } else { // too high
+            return sqrt_helper(n, min, guess - 1); // try lower
+        }
     }
 
     /**

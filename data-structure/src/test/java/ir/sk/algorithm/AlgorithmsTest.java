@@ -59,6 +59,12 @@ public class AlgorithmsTest {
     }
 
     @Test
+    public void sqrtByBinarySearch() {
+        int expectedValue = 8;
+        Assert.assertEquals(expectedValue, Algorithms.sqrtByBinarySearch(64));
+    }
+
+    @Test
     public void gcdByEuclidean() {
     }
 
@@ -117,5 +123,4 @@ public class AlgorithmsTest {
         String expectedValue = "4.5";
         Assert.assertEquals(expectedValue, Algorithms.medianUsingCountingSort(a) + "");
     }
-
 }
