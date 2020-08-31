@@ -5,10 +5,11 @@ import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
 import java.util.Arrays;
+import java.util.BitSet;
 
 /**
  * Determine if a string has all Unique Characters
- *
+ * <p>
  * Created by sad.kayvanfar on 8/25/2020.
  */
 public class UniqueCharacters {
@@ -18,7 +19,7 @@ public class UniqueCharacters {
     @BruteForce
     @TimeComplexity("O(n2)")
     @SpaceComplexity("O(1)")
-    public static boolean uniqueCharactersBruteForce(char [] chars) {
+    public static boolean uniqueCharactersBruteForce(char[] chars) {
         for (int i = 0; i < chars.length; i++) {
             for (int j = i + 1; j < chars.length; j++) {
                 if (chars[i] == chars[j])
@@ -37,7 +38,7 @@ public class UniqueCharacters {
      */
     @TimeComplexity("O(n Log n)")
     @SpaceComplexity("O(1)")
-    public static boolean uniqueCharactersBySorting(char [] chars) {
+    public static boolean uniqueCharactersBySorting(char[] chars) {
         // Using sorting
         // Arrays.sort() uses binarySort in the background
         // for non-primitives which is of O(nlogn) time complexity
@@ -58,13 +59,14 @@ public class UniqueCharacters {
     }
 
     /**
-     *  Unique Characters using hashtable data structure ( also can use frequency array(counting))
+     * Unique Characters using hashtable data structure ( also can use frequency array(counting))
+     *
      * @param chars
      * @return
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
-    public static boolean uniqueCharactersByHashing(char [] chars) {
+    public static boolean uniqueCharactersByHashing(char[] chars) {
         // If length is greater than 256,
         // some characters must have been repeated
         if (chars.length > MAX_CHAR)
@@ -84,6 +86,44 @@ public class UniqueCharacters {
         }
 
         /* No duplicates encountered, return true */
+        return true;
+    }
+
+    /**
+     * reduce our space usage by a factor of eight by using a bit vector. We will assume, in the below code,
+     * that the string only uses the lowercase letters a through z. This will allow us to use just a single int
+     *
+     * Note that the solution is used for lower characters a-z, meaning that we are using it for finding duplicacy for 26 characters.
+     * So, int taking 32 bits can be used here.
+     * If the range had been bigger, then the solution will not work
+     *
+     * @param str
+     * @return
+     */
+    public static boolean uniqueCharactersByHashing2(String str) {
+        int hashtable = 0;
+        for (int i = 0; i < str.length(); ++i) {
+            int val = str.charAt(i) - 'a';
+            if ((hashtable & (1 << val)) > 0)
+                return false;
+            hashtable |= (1 << val);
+        }
+        return true;
+    }
+
+    /**
+     * Using BitSet as bit vector
+     * @param str
+     * @return
+     */
+    public static boolean uniqueCharactersByHashing3(String str) {
+        BitSet hashtable = new BitSet(MAX_CHAR);
+        for (int i = 0; i < str.length(); ++i) {
+            int charVal = str.charAt(i);
+            if (hashtable.get(charVal))
+                return false;
+            hashtable.set(charVal);
+        }
         return true;
     }
 }
