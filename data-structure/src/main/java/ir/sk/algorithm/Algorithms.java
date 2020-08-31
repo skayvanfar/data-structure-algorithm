@@ -47,11 +47,34 @@ public class Algorithms {
             return mod(a - b, b) + 1;
     }
 
+    /**
+     * computes a % b
+     *
+     * @param a
+     * @param b
+     * @return
+     */
     public static int mod(int a, int b) {
         if (a < b)
             return a;
         else
             return mod(a - b, b);
+    }
+
+    /**
+     *
+     * @param a
+     * @param b
+     * @return
+     */
+    @TimeComplexity("O(1)")
+    @SpaceComplexity("O(1)")
+    public static int mod2(int a, int b) {
+        if (b <= 0) {
+            return -1;
+        }
+        int div = a / b;
+        return a - div * b;
     }
 
     /**
@@ -72,6 +95,13 @@ public class Algorithms {
             return gcdByEuclidean(b, mod(a, b));
     }
 
+    /**
+     * @param n
+     * @param m
+     * @return
+     */
+    @TimeComplexity("O(m)")
+    @SpaceComplexity("O(1)")
     public static int powerByRecursive(int n, int m) {
         if (m == 1)
             return n;
@@ -162,6 +192,7 @@ public class Algorithms {
 
     /**
      * Time Complexity: O(n)
+     *
      * @param a
      * @return
      */
@@ -171,11 +202,10 @@ public class Algorithms {
         for (int i = 0; i < a.length; i++)
             sum += a[i];
 
-        return (double)sum / (double)a.length;
+        return (double) sum / (double) a.length;
     }
 
     /**
-     *
      * @param array
      * @return
      */
@@ -222,11 +252,10 @@ public class Algorithms {
         if (a.length % 2 != 0)
             return a[a.length / 2];
 
-        return (double)(a[(a.length - 1) / 2] + a[a.length / 2]) / 2.0;
+        return (double) (a[(a.length - 1) / 2] + a[a.length / 2]) / 2.0;
     }
 
     /**
-     *
      * @param array
      * @return
      */
@@ -252,10 +281,10 @@ public class Algorithms {
             int count = 0;
             for (int j = 0; j < counting.length; j++) {
                 count += counting[j];
-                if (m1 == null && count >= n/2) {
+                if (m1 == null && count >= n / 2) {
                     m1 = j;
                 }
-                if (m2 == null && count >= n/2 + 1) {
+                if (m2 == null && count >= n / 2 + 1) {
                     m2 = j;
                     break;
                 }
@@ -265,7 +294,7 @@ public class Algorithms {
             int count = 0;
             for (int j = 0; j < counting.length; j++) {
                 count += counting[j];
-                if (count > n/2) {
+                if (count > n / 2) {
                     median = j;
                     break;
                 }

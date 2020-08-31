@@ -40,6 +40,14 @@ public class AlgorithmsTest {
 
     @Test
     public void mod() {
+        int expectedValue = 1;
+        Assert.assertEquals(expectedValue, Algorithms.mod(10, 3));
+    }
+
+    @Test
+    public void mod2() {
+        int expectedValue = 1;
+        Assert.assertEquals(expectedValue, Algorithms.mod2(10, 3));
     }
 
     @Test
@@ -101,4 +109,5 @@ public class AlgorithmsTest {
         String expectedValue = "4.5";
         Assert.assertEquals(expectedValue, Algorithms.medianUsingCountingSort(a) + "");
     }
+
 }
