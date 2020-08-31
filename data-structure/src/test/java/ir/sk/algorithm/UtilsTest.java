@@ -127,8 +127,8 @@ public class UtilsTest {
 
     @Test
     public void isPrime() {
-        boolean expectedValue = false;
-        boolean actual = Utils.isPrime(33);
+        boolean expectedValue = true;
+        boolean actual = Utils.isPrime(7);
         Assert.assertEquals(expectedValue, actual);
     }
 }

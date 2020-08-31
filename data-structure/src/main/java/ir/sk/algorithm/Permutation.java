@@ -23,6 +23,29 @@ public class Permutation {
     private final static int MAX_CHAR = 256;
 
     /**
+     * @param str
+     */
+    public static void permutation(String str) {
+        permutation(str, "");
+    }
+
+    /**
+     * @param str
+     * @param prefix
+     */
+    @TimeComplexity("O (n2 * n!)=O(n!)")
+    private static void permutation(String str, String prefix) {
+        if (str.length() == 0) {
+            System.out.println(prefix);
+        } else {
+            for (int i = 0; i < str.length(); i++) {
+                String rem = str.substring(0, i) + str.substring(i + 1);
+                permutation(rem, prefix + str.charAt(i));
+            }
+        }
+    }
+
+    /**
      * print all permutations of a string
      * If we had the answer to P ("ab"), how could we generate P ("abc")?
      * Well, the additional letter is "c," so we can just stick c in at every possible point. That is:

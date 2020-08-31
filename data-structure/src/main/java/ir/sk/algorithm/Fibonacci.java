@@ -12,15 +12,12 @@ public class Fibonacci {
     /**
      * Use recursion
      *
-     * Time Complexity: T(n) = T(n-1) + T(n-2) which is exponential.
-     * t(n) = 2 ^ (n/2)
-     * Time Complexity:O(2^n) exponential
-     * Extra Space: O(n) if we consider the function call stack size, otherwise O(1).
-     *
      * @param n
      * @return
      */
     @BruteForce
+    @TimeComplexity("T(n-1) + T(n-2) which is exponential. t(n) = 2 ^ (n/2). O(2^n) exponential. O(branches ^ depth)")
+    @SpaceComplexity(" O(n) if we consider the function call stack size, otherwise O(1)")
     public static long naiveFibonacciByRecursive(long n) {
         if (n == 0 || n == 1)
             return n;

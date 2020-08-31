@@ -60,4 +60,9 @@ public class PermutationTest {
         Assert.assertEquals(expectedValue, Permutation.palindromePermutationByHashing("tactcoa".toCharArray()));
 
     }
+
+    @Test
+    public void permutation() {
+        Permutation.permutation("ali");
+    }
 }

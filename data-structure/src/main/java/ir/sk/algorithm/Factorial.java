@@ -22,6 +22,8 @@ public class Factorial {
      * @return
      */
     @BruteForce
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
     public static int factorialByRecursive(int n) {
         if (n == 0)
             return 1;
@@ -30,12 +32,12 @@ public class Factorial {
     }
 
     /**
-     * Time Complexity: O(n)
      *
      * @param n
      * @return
      */
     @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
     public static int factorialByLoop(int n) {
         int res = 1, i;
         for (i = 2; i <= n; i++)
