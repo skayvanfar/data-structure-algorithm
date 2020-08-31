@@ -374,7 +374,7 @@ public class Algorithms {
      * sums the digits in a number
      *
      * The runtime will be the number of digits in the number. A number with d digits can have a
-     * value up to 10d. If n = 10d , then d = log n. Therefore, the runtime is 0( log n).
+     * value up to 10 ^ d. If n = 10 ^ d , then d = log n. Therefore, the runtime is 0( log n).
      *
      * @param n
      * @return
