@@ -1,15 +1,37 @@
 package ir.sk.algorithm;
 
+import ir.sk.helper.BruteForce;
 import ir.sk.helper.InPlace;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by sad.kayvanfar on 8/25/2020.
  */
-public class ReplaceSpaces {
+public class URLify {
 
     private final static int MAX = 1000;
+
+    /**
+     * @param str
+     * @return
+     */
+    @BruteForce
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
+    public static String replaceSpacesBruteForce(char[] str) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < str.length; i++) {
+            if (str[i] == ' ')
+                stringBuilder.append("%20");
+            else
+                stringBuilder.append(str[i]);
+        }
+        return stringBuilder.toString();
+    }
 
     /**
      * replace all spaces in a string with '%20'.You may assume that the string

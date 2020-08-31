@@ -9,13 +9,13 @@ import java.util.Collections;
 /**
  * A permutation of a set is a rearrangement of its elements. A set which consists of n elements has n! permutations.
  * Here n! is the factorial, which is the product of all positive integers smaller or equal to n.
- *
+ * <p>
  * The array of integers [3,4,7] has three elements and six permutations:
- *
+ * <p>
  * n! = 3! = 1 x 2 x 3 = 6
- *
+ * <p>
  * Permutations: [3,4,7]; [3,7,4]; [4,7,3]; [4,3,7]; [7,3,4]; [7,4,3]
- *
+ * <p>
  * Created by sad.keyvanfar on 8/23/2020.
  */
 public class Permutation {
@@ -45,7 +45,7 @@ public class Permutation {
 
     /**
      * Described recursively as a decrease and conquer method
-     *
+     * <p>
      * It's a recursive algorithm which produces all permutations by swapping one element per iteration
      *
      * @param n
@@ -55,15 +55,15 @@ public class Permutation {
      */
     public static <T> void heapGenerateRecursive(int n, T[] elements, char delimiter) {
 
-        if(n == 1) {
+        if (n == 1) {
             printArray(elements, delimiter);
         } else {
-            for(int i = 0; i < n-1; i++) {
+            for (int i = 0; i < n - 1; i++) {
                 heapGenerateRecursive(n - 1, elements, delimiter);
-                if(n % 2 == 0) {
-                    swap(elements, i, n-1);
+                if (n % 2 == 0) {
+                    swap(elements, i, n - 1);
                 } else {
-                    swap(elements, 0, n-1);
+                    swap(elements, 0, n - 1);
                 }
             }
             heapGenerateRecursive(n - 1, elements, delimiter);
@@ -88,12 +88,11 @@ public class Permutation {
         int i = 0;
         while (i < n) {
             if (indexes[i] < i) {
-                swap(elements, i % 2 == 0 ?  0: indexes[i], i);
+                swap(elements, i % 2 == 0 ? 0 : indexes[i], i);
                 printArray(elements, delimiter);
                 indexes[i]++;
                 i = 0;
-            }
-            else {
+            } else {
                 indexes[i] = 0;
                 i++;
             }
@@ -112,7 +111,7 @@ public class Permutation {
         Arrays.sort(elements);
         boolean hasNext = true;
 
-        while(hasNext) {
+        while (hasNext) {
             printArray(elements, delimiter);
             int k = 0, l = 0;
             hasNext = false;
@@ -159,7 +158,7 @@ public class Permutation {
     private static <T> void printArray(T[] elements, char delimiter) {
 
         String delimiterSpace = delimiter + " ";
-        for(int i = 0; i < elements.length; i++) {
+        for (int i = 0; i < elements.length; i++) {
             System.out.print(elements[i] + delimiterSpace);
         }
         System.out.print('\n');
@@ -168,6 +167,7 @@ public class Permutation {
 
     /**
      * Check if two strings are permutation of each other
+     *
      * @param str1
      * @param str2
      * @return
@@ -212,13 +212,13 @@ public class Permutation {
 
         // Create 2 count arrays and initialize
         // all values as 0
-        int count1[] = new int [MAX_CHAR];
-        int count2[] = new int [MAX_CHAR];
+        int count1[] = new int[MAX_CHAR];
+        int count2[] = new int[MAX_CHAR];
 
         // For each character in input strings,
         // increment count in the corresponding
         // count array
-        for (int i = 0; i <str1.length && i < str2.length; i++) {
+        for (int i = 0; i < str1.length && i < str2.length; i++) {
             count1[str1[i]]++;
             count2[str2[i]]++;
         }
@@ -229,5 +229,31 @@ public class Permutation {
                 return false;
 
         return true;
+    }
+
+    /**
+     * check if it is a permutation of a palindrome.
+     * A palindrome is a word or phrase that is the same forwards and backwards. A permutation
+     * is a rearrangement of letters. The palindrome does not need to be limited to just dictionary words
+     *
+     * @param str
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(256) = O(1)")
+    public static boolean palindromePermutationByHashing(char[] str) {
+        int[] counting = new int[MAX_CHAR];
+
+        for (int i = 0; i < str.length; i++) {
+            counting[str[i]]++;
+        }
+
+        int odd = 0;
+        for (int i = 0; i < counting.length; i++) {
+            if (counting[i] % 2 != 0)
+                odd++;
+        }
+
+        return odd > 1 ? false : true;
     }
 }

@@ -1,6 +1,8 @@
 package ir.sk.algorithm;
 
 import ir.sk.helper.BruteForce;
+import ir.sk.helper.SpaceComplexity;
+import ir.sk.helper.TimeComplexity;
 
 /**
  * Created by sad.keyvanfar on 6/25/2020.
@@ -35,13 +37,12 @@ public class Fibonacci {
      * memoized Dynamic Programming algorithm, remember, Top-Down Approach = Recursive + Memoization
      * time = subproblems * time/subproblem = n*O(1) = O(n)
      *
-     * Time Complexity:O(n)
-     * space complexity: O(n)
-     *
      * @param n
      * @param memo
      * @return
      */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
     private static int memoizedDPFibonacciByRecursive(int n, int[] memo) {
         if (memo[n] != 0) return memo[n];
 
@@ -57,12 +58,11 @@ public class Fibonacci {
     /**
      * Use Dynamic Programming The Top-Down Approach
      *
-     * Time Complexity:O(n)
-     * space complexity: O(n)
-     *
      * @param n
      * @return
      */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
     public static int memoizedDPFibonacciByIterative(int n) {
         int[] array = new int[n + 1];
         array[0] = 0;
@@ -79,12 +79,11 @@ public class Fibonacci {
      * Use Dynamic Programming using Space Optimized fibonacciByArray The Bottom-Up Algorithm
      * Topological sort of subproblem dependency DAG
      *
-     * Time Complexity:O(n)
-     * Extra Space: O(1)
-     *
      * @param n
      * @return
      */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
     public static int bottomUpDPFibonacci(int n) {
         int low = 0;
         int high = 1;

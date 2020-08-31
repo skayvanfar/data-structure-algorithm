@@ -1,5 +1,8 @@
 package ir.sk.algorithm;
 
+import ir.sk.helper.SpaceComplexity;
+import ir.sk.helper.TimeComplexity;
+
 /**
  *
  * 1 1 2 5 14 42 132 429 1430 4862
@@ -10,12 +13,11 @@ public class CatalanNumber {
     /**
      * Divide-and-conquer algorithm and recursive
      *
-     * Time Complexity: O(n^3)
-     * Space Complexity: O(1)
-     *
      * @param n
      * @return
      */
+    @TimeComplexity("O(n3)")
+    @SpaceComplexity("O(1)")
     public static long catalanByRecursive(int n) {
         // base case
         if (n <= 1)
@@ -29,12 +31,11 @@ public class CatalanNumber {
     /**
      * Dynamic Programing
      *
-     * Time Complexity: O(n^2)
-     * Space Complexity: O(n)
-     *
      * @param n
      * @return
      */
+    @TimeComplexity("O(n2)")
+    @SpaceComplexity("O(n)")
     public static long catalanDynamic(int n) {
         // Table to store results of subproblems
         int catalan[] = new int[n + 2];

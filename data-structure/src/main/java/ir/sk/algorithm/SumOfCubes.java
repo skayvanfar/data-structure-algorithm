@@ -1,6 +1,7 @@
 package ir.sk.algorithm;
 
 import ir.sk.helper.BruteForce;
+import ir.sk.helper.TimeComplexity;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,12 +16,11 @@ public class SumOfCubes {
 
     /**
      * A brute force solution will just have four nested for loops
-     * <p>
-     * Time Complexity: O(n4)
      *
      * @param n
      */
     @BruteForce
+    @TimeComplexity("O(n4)")
     public static void sumOfCubesNative(int n) {
         for (int a = 1; a <= n; a++) {
             for (int b = 1; b <= n; b++) {
@@ -39,11 +39,10 @@ public class SumOfCubes {
      * <p>
      * It's unnecessary to continue checking for other possible values of d. Only one could work. We should at least
      * break after we find a valid solution.
-     * <p>
-     * Time Complexity: O(n4)
      *
      * @param n
      */
+    @TimeComplexity("O(n4)")
     public static void sumOfCubesNativeOptimize(int n) {
         for (int a = 1; a <= n; a++) {
             for (int b = 1; b <= n; b++) {
@@ -64,11 +63,10 @@ public class SumOfCubes {
      * <p>
      * Is there anything else that is unnecessary? Yes. If there's onl one valid d value for each (a, b, c), then we can
      * just compute it.
-     * <p>
-     * Time Complexity: O(n3)
      *
      * @param n
      */
+    @TimeComplexity("O(n3)")
     public static void sumOfCubesNativeOptimize2(int n) {
         for (int a = 1; a <= n; a++) {
             for (int b = 1; b <= n; b++) {
@@ -96,11 +94,10 @@ public class SumOfCubes {
     /**
      * Duplicated Work
      *
-     * Time Complexity: O(n2)
-     *
      * @param n
      * @return
      */
+    @TimeComplexity("O(n2)")
     public static void sumOfCubesOptimizeByHashing(int n) {
         // Create an empty Hash to store mapping from sum to
         // pair indexes

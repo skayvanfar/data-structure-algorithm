@@ -1,6 +1,7 @@
 package ir.sk.algorithm;
 
 import ir.sk.helper.BruteForce;
+import ir.sk.helper.TimeComplexity;
 
 /**
  * string-searching algorithms, sometimes called string-matching algorithms, are an important class of string algorithms
@@ -18,13 +19,12 @@ public class StringMatching {
      * Naive pattern searching is the simplest method among other pattern searching algorithms. It checks for all character of the main string to the pattern.
      * Naive algorithm is exact string matching(means finding one or all exact occurrences of a pattern in a text) algorithm.
      * This algorithm is helpful for smaller texts. It does not need any pre-processing phases. We can find substring by checking once for the string. It also does not occupy extra space to perform the operation
-     * <p>
-     * Time Complexity: O(m*(n-m+1)) (n: text length, m: pattern length) = O(n*m)
      *
      * @param text
      * @param pattern
      */
     @BruteForce
+    @TimeComplexity("O(m*(n-m+1)) (n: text length, m: pattern length) = O(n*m)")
     public static boolean naiveStringSearch(String text, String pattern) {
         int textLength = text.length();
         int patternLength = pattern.length();
@@ -53,12 +53,11 @@ public class StringMatching {
      * it finds the hash value. When the hash value is matched, then only it tries to check each character.
      * This procedure makes the algorithm more efficient
      *
-     * Time Complexity: O(m(n-m+1)) = O(n+m)
-     *
      * @param pattern pattern
      * @param text    text
      * @param q       A prime number
      */
+    @TimeComplexity("O(m(n-m+1)) = O(n+m)")
     public static boolean rabinKarp(String text, String pattern, int q) {
         int patternLength = pattern.length();
         int textLength = text.length();

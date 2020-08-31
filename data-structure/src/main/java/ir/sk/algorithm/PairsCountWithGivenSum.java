@@ -2,6 +2,8 @@ package ir.sk.algorithm;
 
 import ir.sk.helper.BruteForce;
 import ir.sk.helper.Point;
+import ir.sk.helper.SpaceComplexity;
+import ir.sk.helper.TimeComplexity;
 
 import java.util.Arrays;
 
@@ -16,13 +18,12 @@ public class PairsCountWithGivenSum {
     /**
      * A simple solution is be traverse each element and check if there’s another number in the array which can be added to it to give sum.
      *
-     * Time Complexity: O(n2)
-     * Auxiliary Space: O(1)
-     *
      * @param arr
      * @param sum
      */
     @BruteForce
+    @TimeComplexity("O(n2)")
+    @SpaceComplexity("O(1)")
     public static int getPairsCount(int[] arr, int sum) {
 
         int count = 0;// Initialize result
@@ -39,13 +40,13 @@ public class PairsCountWithGivenSum {
     }
 
     /**
-     * Time Complexity: O(n)
-     * Auxiliary Space: O(n + k)
      *
      * @param arr
      * @param sum
      * @return
      */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n + k)")
     @Point("Using hashtable is trade off between time and space" +
             "change Multiply O(n)*O(n) into O(n)+O(n) by using hashtable")
     public static int getPairsCountByHashing(int[] arr, int sum) {

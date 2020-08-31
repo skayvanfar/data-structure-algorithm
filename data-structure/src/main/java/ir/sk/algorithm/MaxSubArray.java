@@ -1,6 +1,8 @@
 package ir.sk.algorithm;
 
 import ir.sk.helper.BruteForce;
+import ir.sk.helper.SpaceComplexity;
+import ir.sk.helper.TimeComplexity;
 
 /**
  * Created by sad.keyvanfar on 8/23/2020.
@@ -9,13 +11,12 @@ public class MaxSubArray {
 
     /**
      * we'll find all subarrays starting at every index from 0 to n-1
-     * <p>
-     * Time Complexity: O(n2)
      *
      * @param nums
      * @return
      */
     @BruteForce
+    @TimeComplexity("O(n2)")
     public static int maxSubArraySumBruteForce(int[] nums) {
 
         int n = nums.length;
@@ -46,11 +47,10 @@ public class MaxSubArray {
      *
      * The most important challenge in solving a dynamic programming problem is to find the optimal subproblems
      *
-     * Time Complexity: O(n)
-     *
      * @param arr
      * @return
      */
+    @TimeComplexity("O(n)")
     public static int maxSubArraySumKadanes(int[] arr) {
 
         int size = arr.length;
