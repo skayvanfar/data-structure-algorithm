@@ -67,4 +67,9 @@ public class FibonacciTest {
     public void allFibonacci() {
         Fibonacci.allFibonacci(20);
     }
+
+    @Test
+    public void allFibonacciMemoized() {
+        Fibonacci.allFibonacciMemoized(20);
+    }
 }

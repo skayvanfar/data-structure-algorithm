@@ -92,14 +92,25 @@ public class Fibonacci {
     }
 
     /**
-     * prints all Fibonacci numbers from Oto n
+     * prints all Fibonacci numbers from O to n
      *
      * @param n
      */
-    @TimeComplexity("O(2^1 + 2^2 + 2^3 + 2^4 + , , , + 2^n)=O(2n)")
+    @TimeComplexity("O(2^1 + 2^2 + 2^3 + 2^4 + , , , + 2^n)=O(2^n). exponential")
     public static void allFibonacci(int n) {
         for (int i = 0; i < n; i++) {
             System.out.println(i + ": " + naiveFibonacciByRecursive(i));
+        }
+    }
+
+    /**
+     * @param n
+     */
+    @TimeComplexity("O(n)")
+    public static void allFibonacciMemoized(int n) {
+        int[] memo = new int[n + 1];
+        for (int i = 0; i < n; i++) {
+            System.out.println(i + ": " + memoizedDPFibonacciByRecursive(i, memo));
         }
     }
 
