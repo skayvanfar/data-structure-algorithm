@@ -1,8 +1,5 @@
 package ir.sk.datastructure.stack;
 
-import ir.sk.helper.TimeComplexity;
-
-import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 /**
@@ -21,14 +18,14 @@ public class ArrayStack<T> implements Stack<T> {
     }
 
     /**
-     * @param j
+     * @param item
      */
     @Override
-    public void push(T j) {
+    public void push(T item) {
         if(top >= stackArray.length)
             throw new IndexOutOfBoundsException("Overflow Exception");
 
-        stackArray[++top] = j; // increment top, insert item
+        stackArray[++top] = item; // increment top, insert item
     }
 
     /**

@@ -16,11 +16,11 @@ public class LinkStack<T> implements Stack<T> {
     }
 
     /**
-     * @param j
+     * @param item
      */
     @Override
-    public void push(T j) {
-        theList.insertFirst(j);
+    public void push(T item) {
+        theList.insertFirst(item);
     }
 
     /**
