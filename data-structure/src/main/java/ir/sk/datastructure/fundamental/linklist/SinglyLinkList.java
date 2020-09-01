@@ -10,12 +10,12 @@ import ir.sk.helper.TimeComplexity;
  *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
-public class LinkList<T> {
+public class SinglyLinkList<T> {
 
     // ref to first link on list
-    private Link<T> head;
+    private SinglyLink<T> head;
 
-    public LinkList() {
+    public SinglyLinkList() {
         head = null;
     }
 
@@ -24,9 +24,9 @@ public class LinkList<T> {
      */
     @TimeComplexity("O(1)")
     public void insertFirst(T id) {
-        Link<T> newLink = new Link<>(id);
-        newLink.next = head;
-        head = newLink;
+        SinglyLink<T> newSinglyLink = new SinglyLink<>(id);
+        newSinglyLink.next = head;
+        head = newSinglyLink;
     }
 
     /**
@@ -34,18 +34,18 @@ public class LinkList<T> {
      */
     @TimeComplexity("O(n)")
     public void add(T value) {
-        Link<T> current = head;
-        Link<T> newLink = new Link<>(value);
+        SinglyLink<T> current = head;
+        SinglyLink<T> newSinglyLink = new SinglyLink<>(value);
 
         if (current == null) {
-            this.head = newLink;
+            this.head = newSinglyLink;
             return;
         }
 
         while (current.next != null) {
             current = current.next;
         }
-        current.next = newLink;
+        current.next = newSinglyLink;
     }
 
     /**
@@ -56,8 +56,8 @@ public class LinkList<T> {
      * @return
      */
     @TimeComplexity("O(n)")
-    public Link find(int key) {
-        Link<T> current = head;
+    public SinglyLink find(int key) {
+        SinglyLink<T> current = head;
         while (!current.data.equals(key)) {
             if (current.next == null)
                 return null;
@@ -76,7 +76,7 @@ public class LinkList<T> {
         if (nodeNum <= 0) {
             return null;
         }
-        Link<T> current = head;
+        SinglyLink<T> current = head;
         for(int i = 1; i < nodeNum; i++) {
             current = current.next;
         }
@@ -91,9 +91,9 @@ public class LinkList<T> {
      * @return
      */
     @TimeComplexity("O(n)")
-    public Link delete(int key) {
-        Link current = head;
-        Link previous = head;
+    public SinglyLink delete(int key) {
+        SinglyLink current = head;
+        SinglyLink previous = head;
         while (!current.data.equals(key)) {
             if (current.next == null)
                 return null;
@@ -117,7 +117,7 @@ public class LinkList<T> {
      */
     @TimeComplexity("O(1)")
     public T deleteFirst() {
-        Link<T> temp = head;
+        SinglyLink<T> temp = head;
         head = head.next;
         return temp.data;
     }
@@ -134,7 +134,7 @@ public class LinkList<T> {
 
     public void displayList() {
         System.out.print("List (first-->last): ");
-        Link<T> current = head;
+        SinglyLink<T> current = head;
 
         while (current != null) {
             current.displayLink();
@@ -148,7 +148,7 @@ public class LinkList<T> {
      *
      * @return
      */
-    public Link<T> getHead() {
+    public SinglyLink<T> getHead() {
         return head;
     }
 
@@ -157,7 +157,7 @@ public class LinkList<T> {
      *
      * @param f
      */
-    public void setHead(Link<T> f) {
+    public void setHead(SinglyLink<T> f) {
         head = f;
     }
 

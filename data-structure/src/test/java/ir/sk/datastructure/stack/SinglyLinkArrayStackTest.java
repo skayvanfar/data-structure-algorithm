@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
-public class LinkArrayStackTest {
+public class SinglyLinkArrayStackTest {
 
     LinkStack<Integer> theStack;
 

@@ -1,6 +1,6 @@
 package ir.sk.algorithm.linklist;
 
-import ir.sk.datastructure.fundamental.linklist.Link;
+import ir.sk.datastructure.fundamental.linklist.SinglyLink;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
@@ -21,10 +21,10 @@ public class LinkListAlgorithms {
      */
     @TimeComplexity("O(n^2)")
     @SpaceComplexity("O(1)")
-    public static void deleteDuplicatesByRunner(Link head) {
-        Link current = head;
+    public static void deleteDuplicatesByRunner(SinglyLink head) {
+        SinglyLink current = head;
         while (current != null) {
-            Link runner = head;
+            SinglyLink runner = head;
             while (runner.next != null) {
                 if (current.data.equals(runner.next.data)) {
                     runner.next = runner.next.next;
@@ -43,9 +43,9 @@ public class LinkListAlgorithms {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
-    public static void deleteDuplicatesByHashing(Link<Integer> head) {
+    public static void deleteDuplicatesByHashing(SinglyLink<Integer> head) {
         HashSet<Integer> hashTable = new HashSet<>();
-        Link<Integer> previous = null;
+        SinglyLink<Integer> previous = null;
 
         while (head != null) {
             if (hashTable.contains(head.data))
@@ -70,7 +70,7 @@ public class LinkListAlgorithms {
      * @param k
      * @return
      */
-    public static Link<Integer> kthToLastRecursive(Link<Integer> head, int k) {
+    public static SinglyLink<Integer> kthToLastRecursive(SinglyLink<Integer> head, int k) {
         Index idx = new Index();
         return kthToLastRecursive(head, k, idx);
     }
@@ -87,11 +87,11 @@ public class LinkListAlgorithms {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
-    private static Link<Integer> kthToLastRecursive(Link<Integer> head, int k, Index idx) {
+    private static SinglyLink<Integer> kthToLastRecursive(SinglyLink<Integer> head, int k, Index idx) {
         if (head == null)
             return null;
 
-        Link<Integer> node = kthToLastRecursive(head.next, k, idx);
+        SinglyLink<Integer> node = kthToLastRecursive(head.next, k, idx);
         idx.value = idx.value + 1;
         if (idx.value == k)
             return head;
@@ -111,9 +111,9 @@ public class LinkListAlgorithms {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
-    private static Link<Integer> nthToLastByRunner(Link<Integer> head, int k) {
-        Link<Integer> pl = head;
-        Link<Integer> p2 = head;
+    private static SinglyLink<Integer> nthToLastByRunner(SinglyLink<Integer> head, int k) {
+        SinglyLink<Integer> pl = head;
+        SinglyLink<Integer> p2 = head;
 
         /* Move pl k nodes into the list.*/
         for (int i = 0; i < k; i++) {
@@ -142,11 +142,11 @@ public class LinkListAlgorithms {
      * @param n
      * @return
      */
-    private static boolean deleteNode(Link<Integer> n) {
+    private static boolean deleteNode(SinglyLink<Integer> n) {
         if (n == null || n.next == null)
             return false; // Failure
 
-        Link<Integer> next = n.next;
+        SinglyLink<Integer> next = n.next;
         n.data = next.data;
         n.next = next.next;
         return true;
@@ -159,11 +159,11 @@ public class LinkListAlgorithms {
      */
     @TimeComplexity("O(m+n)")
     @SpaceComplexity("O(m+n)")
-    public static Link<Integer> sumRevertedLists(Link<Integer> list1, Link<Integer> list2, int carry) {
+    public static SinglyLink<Integer> sumRevertedLists(SinglyLink<Integer> list1, SinglyLink<Integer> list2, int carry) {
         if (list1 == null && list2 == null && carry == 0)
             return null;
 
-        Link<Integer> result = new Link<>();
+        SinglyLink<Integer> result = new SinglyLink<>();
 
         int value = carry;
         if (list1 != null)
@@ -175,7 +175,7 @@ public class LinkListAlgorithms {
         result.data = value % 10; /* Second digit of number */
 
         if (list1 != null || list2 != null) {
-            Link<Integer> more = sumRevertedLists(list1 == null ? null : list1.next,
+            SinglyLink<Integer> more = sumRevertedLists(list1 == null ? null : list1.next,
                     list2 == null ? null : list2.next,
                     value >= 10 ? 1 : 0);
             result.next = more;

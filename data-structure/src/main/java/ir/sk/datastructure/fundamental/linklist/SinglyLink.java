@@ -3,20 +3,20 @@ package ir.sk.datastructure.fundamental.linklist;
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
-public class Link<T> {
+public class SinglyLink<T> {
 
     public T data;
 
-    public Link next;
+    public SinglyLink next;
 
-    public Link() {
+    public SinglyLink() {
     }
 
-    public Link(T data) {
+    public SinglyLink(T data) {
         this.data = data;
     }
 
-    public Link(T data, Link next) {
+    public SinglyLink(T data, SinglyLink next) {
         this.data = data;
         this.next = next;
     }

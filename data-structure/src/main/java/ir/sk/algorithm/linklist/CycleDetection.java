@@ -1,6 +1,6 @@
 package ir.sk.algorithm.linklist;
 
-import ir.sk.datastructure.fundamental.linklist.Link;
+import ir.sk.datastructure.fundamental.linklist.SinglyLink;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
@@ -24,8 +24,8 @@ public class CycleDetection {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
-    public static boolean detectCycleByHashing(Link<Integer> head) {
-        HashSet<Link<Integer>> s = new HashSet<>();
+    public static boolean detectCycleByHashing(SinglyLink<Integer> head) {
+        HashSet<SinglyLink<Integer>> s = new HashSet<>();
         while (head != null) {
             // If we have already has this node
             // in hashmap it means their is a cycle
@@ -56,8 +56,8 @@ public class CycleDetection {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
-    public static boolean floydsCycleFinding(Link<Integer> head) {
-        Link<Integer> slow = head, fast = head;
+    public static boolean floydsCycleFinding(SinglyLink<Integer> head) {
+        SinglyLink<Integer> slow = head, fast = head;
         while (slow != null && fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;

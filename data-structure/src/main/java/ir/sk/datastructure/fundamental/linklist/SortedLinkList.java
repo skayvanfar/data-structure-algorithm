@@ -9,7 +9,7 @@ import ir.sk.helper.TimeComplexity;
  */
 public class SortedLinkList<T extends Comparable> {
 
-    private Link<T> head;
+    private SinglyLink<T> head;
 
     public SortedLinkList() {
         head = null;
@@ -26,19 +26,19 @@ public class SortedLinkList<T extends Comparable> {
      */
     @TimeComplexity("O(n)")
     public void insert(T key) {
-        Link<T> newLink = new Link(key);    // make new link
-        Link<T> previous = null;            // start at first
-        Link<T> current = head;
+        SinglyLink<T> newSinglyLink = new SinglyLink(key);    // make new link
+        SinglyLink<T> previous = null;            // start at first
+        SinglyLink<T> current = head;
         // until end of list,
         while (current != null && key.compareTo(current.data) > 0) {                             // or key > current,
             previous = current;
             current = current.next;       // go to next item
         }
         if (previous == null)               // at beginning of list
-            head = newLink;              // first --> newLink
+            head = newSinglyLink;              // first --> newLink
         else                             // not at beginning
-            previous.next = newLink;      // old prev --> newLink
-        newLink.next = current;          // newLink --> old currnt
+            previous.next = newSinglyLink;      // old prev --> newLink
+        newSinglyLink.next = current;          // newLink --> old currnt
     }  // end insert()
 
     /**
@@ -47,16 +47,16 @@ public class SortedLinkList<T extends Comparable> {
      * @return
      */
     @TimeComplexity("O(1)")
-    public Link<T> remove() {
+    public SinglyLink<T> remove() {
         // (assumes non-empty list)
-        Link<T> temp = head;               // save first
+        SinglyLink<T> temp = head;               // save first
         head = head.next;              // delete first
         return temp;                     // return value
     }
 
     public void displayList() {
         System.out.print("List (first-->last): ");
-        Link current = head;       // start at beginning of list
+        SinglyLink current = head;       // start at beginning of list
         while (current != null)      // until end of list,
         {
             current.displayLink();   // print data

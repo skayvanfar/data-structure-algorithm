@@ -1,6 +1,6 @@
 package ir.sk.datastructure.stack;
 
-import ir.sk.datastructure.fundamental.linklist.LinkList;
+import ir.sk.datastructure.fundamental.linklist.SinglyLinkList;
 
 /**
  * Stack Implemented by a Linked List
@@ -9,10 +9,10 @@ import ir.sk.datastructure.fundamental.linklist.LinkList;
  */
 public class LinkStack<T> implements Stack<T> {
 
-    private LinkList<T> theList;
+    private SinglyLinkList<T> theList;
 
     public LinkStack() {
-        theList = new LinkList();
+        theList = new SinglyLinkList();
     }
 
     /**

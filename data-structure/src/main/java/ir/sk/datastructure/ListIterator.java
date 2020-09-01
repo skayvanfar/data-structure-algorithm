@@ -1,18 +1,18 @@
 package ir.sk.datastructure;
 
-import ir.sk.datastructure.fundamental.linklist.Link;
-import ir.sk.datastructure.fundamental.linklist.LinkList;
+import ir.sk.datastructure.fundamental.linklist.SinglyLink;
+import ir.sk.datastructure.fundamental.linklist.SinglyLinkList;
 
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
 public class ListIterator<T> {
 
-    private Link<T> current;          // current link
-    private Link<T> previous;         // previous link
-    private LinkList<T> ourList;      // our linked list
+    private SinglyLink<T> current;          // current link
+    private SinglyLink<T> previous;         // previous link
+    private SinglyLinkList<T> ourList;      // our linked list
 
-    public ListIterator(LinkList list) {
+    public ListIterator(SinglyLinkList list) {
         ourList = list;
         reset();
     }
@@ -48,7 +48,7 @@ public class ListIterator<T> {
      *
      * @return
      */
-    public Link getCurrent() {
+    public SinglyLink getCurrent() {
         return current;
     }
 
@@ -59,16 +59,16 @@ public class ListIterator<T> {
      */
     public void insertAfter(long dd) {
         // current link
-        Link newLink = new Link(dd);
+        SinglyLink newSinglyLink = new SinglyLink(dd);
 
         if (ourList.isEmpty())     // empty list
         {
-            ourList.setHead(newLink);
-            current = newLink;
+            ourList.setHead(newSinglyLink);
+            current = newSinglyLink;
         } else                        // not empty
         {
-            newLink.next = current.next;
-            current.next = newLink;
+            newSinglyLink.next = current.next;
+            current.next = newSinglyLink;
             nextLink();              // point to new link
         }
     }
@@ -79,18 +79,18 @@ public class ListIterator<T> {
      */
     public void insertBefore(long dd) {
         // current link
-        Link newLink = new Link(dd);
+        SinglyLink newSinglyLink = new SinglyLink(dd);
 
         if (previous == null)        // beginning of list
         {                        // (or empty list)
-            newLink.next = ourList.getHead();
-            ourList.setHead(newLink);
+            newSinglyLink.next = ourList.getHead();
+            ourList.setHead(newSinglyLink);
             reset();
         } else                        // not beginning
         {
-            newLink.next = previous.next;
-            previous.next = newLink;
-            current = newLink;
+            newSinglyLink.next = previous.next;
+            previous.next = newSinglyLink;
+            current = newSinglyLink;
         }
     }
 

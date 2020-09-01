@@ -8,13 +8,13 @@ import org.junit.Test;
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
-public class LinkListTest {
+public class SinglySinglyLinkListTest {
 
-    LinkList<Integer> theList;
+    SinglyLinkList<Integer> theList;
 
     @Before
     public void setUp() throws Exception {
-        theList = new LinkList<>(); // make new list
+        theList = new SinglyLinkList<>(); // make new list
         theList.insertFirst(22); // insert four items
         theList.insertFirst(44);
         theList.insertFirst(66);
@@ -50,9 +50,9 @@ public class LinkListTest {
 
     @Test
     public void find() {
-        Link link = theList.find(44);
-        if( link != null)
-            System.out.println("Found link with key " + link.data);
+        SinglyLink singlyLink = theList.find(44);
+        if( singlyLink != null)
+            System.out.println("Found link with key " + singlyLink.data);
         else
             System.out.println("Can't find link");
     }

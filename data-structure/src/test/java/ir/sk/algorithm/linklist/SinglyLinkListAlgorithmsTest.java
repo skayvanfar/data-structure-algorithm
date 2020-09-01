@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 /**
  * Created by sad.kayvanfar on 9/1/2020.
  */
-public class LinkListAlgorithmsTest {
+public class SinglyLinkListAlgorithmsTest {
 
     @Before
     public void setUp() throws Exception {

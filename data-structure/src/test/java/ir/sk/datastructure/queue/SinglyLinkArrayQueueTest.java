@@ -10,17 +10,17 @@ import static org.junit.Assert.*;
  * demonstrates queue implemented as double-ended list
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
-public class LinkArrayQueueTest {
+public class SinglyLinkArrayQueueTest {
 
     LinkQueue<Integer> theQueue;
 
     @Before
     public void setUp() throws Exception {
         theQueue = new LinkQueue<>();
-        theQueue.insert(10); // insert 4 items
-        theQueue.insert(20);
-        theQueue.insert(30);
-        theQueue.insert(40);
+        theQueue.add(10); // insert 4 items
+        theQueue.add(20);
+        theQueue.add(30);
+        theQueue.add(40);
     }
 
     @After
@@ -34,7 +34,7 @@ public class LinkArrayQueueTest {
     @Test
     public void insert() {
         theQueue.display();
-        theQueue.insert(50);
+        theQueue.add(50);
         theQueue.display();
     }
 

@@ -20,8 +20,8 @@ import ir.sk.helper.TimeComplexity;
  */
 public class FirstLastList<T> {
 
-    private Link<T> head;
-    private Link<T> tail;
+    private SinglyLink<T> head;
+    private SinglyLink<T> tail;
 
     public FirstLastList() {
         head = null;
@@ -40,12 +40,12 @@ public class FirstLastList<T> {
      */
     @TimeComplexity("O(1)")
     public void insertFirst(T dd) {
-        Link<T> newLink = new Link<T>(dd);   // make new link
+        SinglyLink<T> newSinglyLink = new SinglyLink<T>(dd);   // make new link
 
         if (isEmpty())                // if empty list,
-            tail = newLink;             // newLink <-- last
-        newLink.next = head;          // newLink --> old first
-        head = newLink;               // first --> newLink
+            tail = newSinglyLink;             // newLink <-- last
+        newSinglyLink.next = head;          // newLink --> old first
+        head = newSinglyLink;               // first --> newLink
     }
 
     /**
@@ -55,12 +55,12 @@ public class FirstLastList<T> {
      */
     @TimeComplexity("O(1)")
     public void insertLast(T dd) {
-        Link<T> newLink = new Link<T>(dd);   // make new link
+        SinglyLink<T> newSinglyLink = new SinglyLink<T>(dd);   // make new link
         if (isEmpty())                // if empty list,
-            head = newLink;            // first --> newLink
+            head = newSinglyLink;            // first --> newLink
         else
-            tail.next = newLink;        // old last --> newLink
-        tail = newLink;                // newLink <-- last
+            tail.next = newSinglyLink;        // old last --> newLink
+        tail = newSinglyLink;                // newLink <-- last
     }
 
     /**
@@ -85,7 +85,7 @@ public class FirstLastList<T> {
 
     public void displayList() {
         System.out.print("List (first-->last): ");
-        Link current = head;          // start at beginning
+        SinglyLink current = head;          // start at beginning
         while (current != null)         // until end of list,
         {
             current.displayLink();      // print data
