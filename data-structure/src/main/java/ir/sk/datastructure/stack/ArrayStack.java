@@ -1,5 +1,7 @@
 package ir.sk.datastructure.stack;
 
+import ir.sk.helper.TimeComplexity;
+
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 
@@ -19,8 +21,6 @@ public class ArrayStack<T> implements Stack<T> {
     }
 
     /**
-     * put item on top of stack
-     *
      * @param j
      */
     @Override
@@ -32,8 +32,6 @@ public class ArrayStack<T> implements Stack<T> {
     }
 
     /**
-     * take item from top of stack
-     *
      * @return
      */
     @Override
@@ -45,8 +43,6 @@ public class ArrayStack<T> implements Stack<T> {
     }
 
     /**
-     * peek at top of stack
-     *
      * @return
      */
     @Override

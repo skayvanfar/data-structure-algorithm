@@ -16,8 +16,6 @@ public class LinkStack<T> implements Stack<T> {
     }
 
     /**
-     * put item on top of stack
-     *
      * @param j
      */
     @Override
@@ -26,8 +24,6 @@ public class LinkStack<T> implements Stack<T> {
     }
 
     /**
-     * take item from top of stack
-     *
      * @return
      */
     @Override
