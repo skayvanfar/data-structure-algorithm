@@ -1,6 +1,6 @@
 package ir.sk.algorithm.stackusage.parsingarithmeticexpression;
 
-import ir.sk.datastructure.stack.Stack;
+import ir.sk.datastructure.stack.ArrayStack;
 
 /**
  * infix to postfix conversion
@@ -9,14 +9,14 @@ import ir.sk.datastructure.stack.Stack;
  */
 public class InFixToPostFix {
 
-    private Stack theStack;
+    private ArrayStack theArrayStack;
     private String input;
     private String output = "";
 
     public InFixToPostFix(String in) {
         input = in;
         int stackSize = input.length();
-        theStack = new Stack(stackSize);
+        theArrayStack = new ArrayStack(stackSize);
     }
 
     public String doTrans() // do translation to postfix
@@ -24,7 +24,7 @@ public class InFixToPostFix {
         for (int j = 0; j < input.length(); j++) {
             char ch = input.charAt(j);
             System.out.println("For " + ch);
-            theStack.display(); // *diagnostic*
+            theArrayStack.display(); // *diagnostic*
             switch (ch) {
                 case '+': // it’s + or -
                 case '-':
@@ -35,7 +35,7 @@ public class InFixToPostFix {
                     gotOper(ch, 2); // go pop operators
                     break; // (precedence 2)
                 case '(': // it’s a left paren
-                    theStack.push(ch); // push it
+                    theArrayStack.push(ch); // push it
                     break;
                 case ')': // it’s a right paren
                     gotParen(ch); // go pop operators
@@ -45,24 +45,24 @@ public class InFixToPostFix {
                     break;
             } // end switch
         } // end for
-        while (!theStack.isEmpty()) // pop remaining opers
+        while (!theArrayStack.isEmpty()) // pop remaining opers
         {
             System.out.println("While");
-            theStack.display(); // *diagnostic*
-            output = output + theStack.pop(); // write to output
+            theArrayStack.display(); // *diagnostic*
+            output = output + theArrayStack.pop(); // write to output
         }
         System.out.println("End");
-        theStack.display(); // *diagnostic*
+        theArrayStack.display(); // *diagnostic*
         return output; // return postfix
     } // end doTrans()
 
     //--------------------------------------------------------------
     public void gotOper(char opThis, int prec1) { // got operator from input
-        while (!theStack.isEmpty()) {
-            char opTop = (char) theStack.pop();
+        while (!theArrayStack.isEmpty()) {
+            char opTop = (char) theArrayStack.pop();
             if (opTop == '(') // if it’s a ‘(‘
             {
-                theStack.push(opTop); // restore ‘(‘
+                theArrayStack.push(opTop); // restore ‘(‘
                 break;
             } else // it’s an operator
             {
@@ -73,19 +73,19 @@ public class InFixToPostFix {
                     prec2 = 2;
                 if (prec2 < prec1) // if prec of new op less
                 { // than prec of old
-                    theStack.push(opTop); // save newly-popped op
+                    theArrayStack.push(opTop); // save newly-popped op
                     break;
                 } else // prec of new not less
                     output = output + opTop; // than prec of old
             } // end else (it’s an operator)
         } // end while
-        theStack.push(opThis); // push new operator
+        theArrayStack.push(opThis); // push new operator
     } // end gotOp()
 
     //--------------------------------------------------------------
     public void gotParen(char ch) { // got right paren from input
-        while (!theStack.isEmpty()) {
-            char chx = (char) theStack.pop();
+        while (!theArrayStack.isEmpty()) {
+            char chx = (char) theArrayStack.pop();
             if (chx == '(') // if popped ‘(‘
                 break; // we’re done
             else // if popped operator

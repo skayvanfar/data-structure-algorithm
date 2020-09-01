@@ -7,7 +7,7 @@ import ir.sk.datastructure.fundamental.linklist.LinkList;
  *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
-public class LinkStack<T> {
+public class LinkStack<T> implements Stack<T> {
 
     private LinkList<T> theList;
 
@@ -20,6 +20,7 @@ public class LinkStack<T> {
      *
      * @param j
      */
+    @Override
     public void push(T j) {
         theList.insertFirst(j);
     }
@@ -29,10 +30,17 @@ public class LinkStack<T> {
      *
      * @return
      */
+    @Override
     public T pop() {
         return theList.deleteFirst();
     }
 
+    @Override
+    public T peek() {
+        return theList.peakFirst();
+    }
+
+    @Override
     public boolean isEmpty() {
         return ( theList.isEmpty() );
     }

@@ -4,21 +4,19 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 12/10/2017.
  */
-public class StackTest {
+public class ArrayStackTest {
 
-    Stack theStack;
+    ArrayStack theArrayStack;
 
     @Before
     public void setUp() throws Exception {
-        theStack = new Stack(10); // make new stack
-        theStack.push(20); // push items onto stack
-        theStack.push(40);
-        theStack.push(60);
+        theArrayStack = new ArrayStack(10); // make new stack
+        theArrayStack.push(20); // push items onto stack
+        theArrayStack.push(40);
+        theArrayStack.push(60);
     }
 
     @After
@@ -27,17 +25,17 @@ public class StackTest {
 
     @Test
     public void push() throws Exception {
-        theStack.display();
-        theStack.push(80);
-        theStack.display();
+        theArrayStack.display();
+        theArrayStack.push(80);
+        theArrayStack.display();
     }
 
     @Test
     public void pop() throws Exception {
-        theStack.display();
-        long value = theStack.pop();
+        theArrayStack.display();
+        long value = theArrayStack.pop();
         System.out.print(value);
-        theStack.display();
+        theArrayStack.display();
     }
 
     @Test
@@ -46,12 +44,12 @@ public class StackTest {
 
     @Test
     public void isEmpty() throws Exception {
-        System.out.println(theStack.isEmpty());
+        System.out.println(theArrayStack.isEmpty());
     }
 
     @Test
     public void isFull() throws Exception {
-        System.out.println(theStack.isFull());
+        System.out.println(theArrayStack.isFull());
     }
 
 }

@@ -1,13 +1,13 @@
 package ir.sk.algorithm.stackusage.parsingarithmeticexpression;
 
-import ir.sk.datastructure.stack.Stack;
+import ir.sk.datastructure.stack.ArrayStack;
 
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
 public class ParsePostFix {
 
-    private Stack theStack;
+    private ArrayStack theArrayStack;
     private String input;
 
     public ParsePostFix(String s) {
@@ -15,7 +15,7 @@ public class ParsePostFix {
     }
 
     public int doParse() {
-        theStack = new Stack(20); // make new stack
+        theArrayStack = new ArrayStack(20); // make new stack
         char ch;
         int j;
         int num1, num2, interAns;
@@ -23,13 +23,13 @@ public class ParsePostFix {
         {
             ch = input.charAt(j); // read from input
             System.out.println("For " + ch);
-            theStack.display(); // *diagnostic*
+            theArrayStack.display(); // *diagnostic*
             if (ch >= '0' && ch <= '9') // if it’s a number
-                theStack.push((int) (ch - '0')); // push it
+                theArrayStack.push((int) (ch - '0')); // push it
             else // it’s an operator
             {
-                num2 = theStack.pop(); // pop operands
-                num1 = theStack.pop();
+                num2 = theArrayStack.pop(); // pop operands
+                num1 = theArrayStack.pop();
                 switch (ch) // do arithmetic
                 {
                     case '+':
@@ -47,10 +47,10 @@ public class ParsePostFix {
                     default:
                         interAns = 0;
                 } // end switch
-                theStack.push(interAns); // push result
+                theArrayStack.push(interAns); // push result
             } // end else
         } // end for
-        interAns = theStack.pop(); // get answer
+        interAns = theArrayStack.pop(); // get answer
         return interAns;
     }
 }

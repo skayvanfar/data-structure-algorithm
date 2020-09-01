@@ -122,6 +122,10 @@ public class LinkList<T> {
         return temp.data;
     }
 
+    public T peakFirst() {
+        return head.data;
+    }
+
     public boolean isEmpty() {
         return head == null;
     }
