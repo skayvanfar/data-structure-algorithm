@@ -39,5 +39,6 @@ public interface Stack<T> {
      *
      * @return
      */
+    @TimeComplexity("O(1)")
     boolean isEmpty();
 }

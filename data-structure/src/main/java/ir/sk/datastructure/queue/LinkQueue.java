@@ -21,8 +21,6 @@ public class LinkQueue<T> implements Queue<T> {
     }
 
     /**
-     * insert, rear of queue
-     *
      * @param j
      */
     @Override
@@ -31,8 +29,6 @@ public class LinkQueue<T> implements Queue<T> {
     }
 
     /**
-     * remove, front of queue
-     *
      * @return
      */
     @Override
