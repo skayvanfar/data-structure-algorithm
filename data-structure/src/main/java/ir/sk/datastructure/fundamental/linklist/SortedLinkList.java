@@ -9,14 +9,14 @@ import ir.sk.helper.TimeComplexity;
  */
 public class SortedLinkList<T extends Comparable> {
 
-    private Link<T> first;
+    private Link<T> head;
 
     public SortedLinkList() {
-        first = null;
+        head = null;
     }
 
     public boolean isEmpty() {
-        return (first == null);
+        return (head == null);
     }
 
     /**
@@ -28,14 +28,14 @@ public class SortedLinkList<T extends Comparable> {
     public void insert(T key) {
         Link<T> newLink = new Link(key);    // make new link
         Link<T> previous = null;            // start at first
-        Link<T> current = first;
+        Link<T> current = head;
         // until end of list,
         while (current != null && key.compareTo(current.data) > 0) {                             // or key > current,
             previous = current;
             current = current.next;       // go to next item
         }
         if (previous == null)               // at beginning of list
-            first = newLink;              // first --> newLink
+            head = newLink;              // first --> newLink
         else                             // not at beginning
             previous.next = newLink;      // old prev --> newLink
         newLink.next = current;          // newLink --> old currnt
@@ -49,14 +49,14 @@ public class SortedLinkList<T extends Comparable> {
     @TimeComplexity("O(1)")
     public Link<T> remove() {
         // (assumes non-empty list)
-        Link<T> temp = first;               // save first
-        first = first.next;              // delete first
+        Link<T> temp = head;               // save first
+        head = head.next;              // delete first
         return temp;                     // return value
     }
 
     public void displayList() {
         System.out.print("List (first-->last): ");
-        Link current = first;       // start at beginning of list
+        Link current = head;       // start at beginning of list
         while (current != null)      // until end of list,
         {
             current.displayLink();   // print data

@@ -13,17 +13,17 @@ import ir.sk.helper.TimeComplexity;
  */
 public class DoublyLinkedList<T> {
 
-    private DoubledLink<T> first;
-    private DoubledLink<T> last;
+    private DoubledLink<T> head;
+    private DoubledLink<T> tail;
 
     public DoublyLinkedList() {
-        first = null;
-        last = null;
+        head = null;
+        tail = null;
     }
 
     @TimeComplexity("O(n)")
     public boolean isEmpty() {
-        return first == null;
+        return head == null;
     }
 
     /**
@@ -36,11 +36,11 @@ public class DoublyLinkedList<T> {
         DoubledLink<T> newLink = new DoubledLink<>(dd);   // make new link
 
         if (isEmpty())                // if empty list,
-            last = newLink;             // newLink <-- last
+            tail = newLink;             // newLink <-- last
         else
-            first.previous = newLink;   // newLink <-- old first
-        newLink.next = first;          // newLink --> old first
-        first = newLink;               // first --> newLink
+            head.previous = newLink;   // newLink <-- old first
+        newLink.next = head;          // newLink --> old first
+        head = newLink;               // first --> newLink
     }
 
     /**
@@ -52,12 +52,12 @@ public class DoublyLinkedList<T> {
     public void insertLast(T dd) {
         DoubledLink newLink = new DoubledLink(dd);   // make new link
         if (isEmpty())                // if empty list,
-            first = newLink;            // first --> newLink
+            head = newLink;            // first --> newLink
         else {
-            last.next = newLink;        // old last --> newLink
-            newLink.previous = last;    // old last <-- newLink
+            tail.next = newLink;        // old last --> newLink
+            newLink.previous = tail;    // old last <-- newLink
         }
-        last = newLink;                // newLink <-- last
+        tail = newLink;                // newLink <-- last
     }
 
     /**
@@ -68,12 +68,12 @@ public class DoublyLinkedList<T> {
     @TimeComplexity("O(1)")
     public DoubledLink<T> deleteFirst() {
         // (assumes non-empty list)
-        DoubledLink<T> temp = first;
-        if (first.next == null)         // if only one item
-            last = null;                // null <-- last
+        DoubledLink<T> temp = head;
+        if (head.next == null)         // if only one item
+            tail = null;                // null <-- last
         else
-            first.next.previous = null; // null <-- old next
-        first = first.next;            // first --> old next
+            head.next.previous = null; // null <-- old next
+        head = head.next;            // first --> old next
         return temp;
     }
 
@@ -85,12 +85,12 @@ public class DoublyLinkedList<T> {
     @TimeComplexity("O(1)")
     public DoubledLink<T> deleteLast() {
         // (assumes non-empty list)
-        DoubledLink<T> temp = last;
-        if (first.next == null)         // if only one item
-            first = null;               // first --> null
+        DoubledLink<T> temp = tail;
+        if (head.next == null)         // if only one item
+            head = null;               // first --> null
         else
-            last.previous.next = null;  // old previous --> null
-        last = last.previous;          // old previous <-- last
+            tail.previous.next = null;  // old previous --> null
+        tail = tail.previous;          // old previous <-- last
         return temp;
     }
 
@@ -104,7 +104,7 @@ public class DoublyLinkedList<T> {
     @TimeComplexity("O(n)")
     public boolean insertAfter(T key, T dd) {
         // (assumes non-empty list)
-        DoubledLink<T> current = first;          // start at beginning
+        DoubledLink<T> current = head;          // start at beginning
         while (current.data != key) {  // until match is found,
 
             current = current.next;     // move to next link
@@ -113,10 +113,10 @@ public class DoublyLinkedList<T> {
         }
         DoubledLink<T> newLink = new DoubledLink<>(dd);   // make new link
 
-        if (current == last) {             // if last link,
+        if (current == tail) {             // if last link,
 
             newLink.next = null;        // newLink --> null
-            last = newLink;             // newLink <-- last
+            tail = newLink;             // newLink <-- last
         } else { // not last link,
             newLink.next = current.next; // newLink --> old next
             // newLink <-- old next
@@ -136,21 +136,21 @@ public class DoublyLinkedList<T> {
     @TimeComplexity("O(n)")
     public DoubledLink<T> deleteKey(T key) {
         // (assumes non-empty list)
-        DoubledLink current = first;          // start at beginning
+        DoubledLink current = head;          // start at beginning
         while (current.data != key)    // until match is found,
         {
             current = current.next;     // move to next link
             if (current == null)
                 return null;             // didn't find it
         }
-        if (current == first)             // found it; first item?
-            first = current.next;       // first --> old next
+        if (current == head)             // found it; first item?
+            head = current.next;       // first --> old next
         else                           // not first
             // old previous --> old next
             current.previous.next = current.next;
 
-        if (current == last)              // last item?
-            last = current.previous;    // old previous <-- last
+        if (current == tail)              // last item?
+            tail = current.previous;    // old previous <-- last
         else                           // not last
             // old previous <-- old next
             current.next.previous = current.previous;
@@ -159,7 +159,7 @@ public class DoublyLinkedList<T> {
 
     public void displayForward() {
         System.out.print("List (first-->last): ");
-        DoubledLink current = first;          // start at beginning
+        DoubledLink current = head;          // start at beginning
         while (current != null)         // until end of list,
         {
             current.displayLink();      // display data
@@ -170,7 +170,7 @@ public class DoublyLinkedList<T> {
 
     public void displayBackward() {
         System.out.print("List (last-->first): ");
-        DoubledLink current = last;           // start at end
+        DoubledLink current = tail;           // start at end
         while (current != null)         // until start of list,
         {
             current.displayLink();      // display data

@@ -14,24 +14,23 @@ import ir.sk.helper.TimeComplexity;
  * <p>
  * Access to the end of the list as well as the beginning makes the double-ended list
  * suitable for certain situations that a single-ended list can’t handle efficiently. One
- * such situation is implementing a queue; we’ll see how this technique works in the
- * next section.
+ * such situation is implementing a queue;
  *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
 public class FirstLastList<T> {
 
-    private Link<T> first;
-    private Link<T> last;
+    private Link<T> head;
+    private Link<T> tail;
 
     public FirstLastList() {
-        first = null;
-        last = null;
+        head = null;
+        tail = null;
     }
 
     @TimeComplexity("O(1)")
     public boolean isEmpty() {
-        return first == null;
+        return head == null;
     }
 
     /**
@@ -44,9 +43,9 @@ public class FirstLastList<T> {
         Link<T> newLink = new Link<T>(dd);   // make new link
 
         if (isEmpty())                // if empty list,
-            last = newLink;             // newLink <-- last
-        newLink.next = first;          // newLink --> old first
-        first = newLink;               // first --> newLink
+            tail = newLink;             // newLink <-- last
+        newLink.next = head;          // newLink --> old first
+        head = newLink;               // first --> newLink
     }
 
     /**
@@ -58,10 +57,10 @@ public class FirstLastList<T> {
     public void insertLast(T dd) {
         Link<T> newLink = new Link<T>(dd);   // make new link
         if (isEmpty())                // if empty list,
-            first = newLink;            // first --> newLink
+            head = newLink;            // first --> newLink
         else
-            last.next = newLink;        // old last --> newLink
-        last = newLink;                // newLink <-- last
+            tail.next = newLink;        // old last --> newLink
+        tail = newLink;                // newLink <-- last
     }
 
     /**
@@ -72,21 +71,21 @@ public class FirstLastList<T> {
     @TimeComplexity("O(1)")
     public T deleteFirst() {
         // (assumes non-empty list)
-        T temp = first.data;
-        if (first.next == null)         // if only one item
-            last = null;                // null <-- last
-        first = first.next;            // first --> old next
+        T temp = head.data;
+        if (head.next == null)         // if only one item
+            tail = null;                // null <-- last
+        head = head.next;            // first --> old next
         return temp;
     }
 
     @TimeComplexity("O(1)")
     public T peakFirst() {
-        return first.data;
+        return head.data;
     }
 
     public void displayList() {
         System.out.print("List (first-->last): ");
-        Link current = first;          // start at beginning
+        Link current = head;          // start at beginning
         while (current != null)         // until end of list,
         {
             current.displayLink();      // print data
