@@ -34,4 +34,8 @@ public class LinkListAlgorithmsTest {
     @Test
     public void nthToLastByRunner() {
     }
+
+    @Test
+    public void deleteNode() {
+    }
 }

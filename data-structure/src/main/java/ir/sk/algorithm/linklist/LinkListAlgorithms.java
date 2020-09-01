@@ -111,7 +111,7 @@ public class LinkListAlgorithms {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
-    Link<Integer> nthToLastByRunner(Link<Integer> head, int k) {
+    private static Link<Integer> nthToLastByRunner(Link<Integer> head, int k) {
         Link<Integer> pl = head;
         Link<Integer> p2 = head;
 
@@ -128,5 +128,27 @@ public class LinkListAlgorithms {
             p2 = p2.next;
         }
         return p2;
+    }
+
+    /**
+     * delete a node in the middle (i.e., any node but
+     * the first and last node, not necessarily the exact middle) of a singly linked list, given only access to
+     * that node.
+     *
+     * You only have access to that node.
+     * The solution is simply to copy the data from the next node over to the current node, and then to delete the
+     * next node.
+     *
+     * @param n
+     * @return
+     */
+    private static boolean deleteNode(Link<Integer> n) {
+        if (n == null || n.next == null)
+            return false; // Failure
+
+        Link<Integer> next = n.next;
+        n.data = next.data;
+        n.next = next.next;
+        return true;
     }
 }
