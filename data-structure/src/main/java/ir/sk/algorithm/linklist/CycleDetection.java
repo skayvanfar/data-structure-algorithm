@@ -24,8 +24,8 @@ public class CycleDetection {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
-    public static boolean detectCycleByHashing(Link head) {
-        HashSet<Link> s = new HashSet<>();
+    public static boolean detectCycleByHashing(Link<Integer> head) {
+        HashSet<Link<Integer>> s = new HashSet<>();
         while (head != null) {
             // If we have already has this node
             // in hashmap it means their is a cycle
@@ -56,8 +56,8 @@ public class CycleDetection {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
-    public static boolean floydsCycleFinding(Link head) {
-        Link slow = head, fast = head;
+    public static boolean floydsCycleFinding(Link<Integer> head) {
+        Link<Integer> slow = head, fast = head;
         while (slow != null && fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
