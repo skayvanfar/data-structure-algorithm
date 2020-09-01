@@ -1,5 +1,7 @@
 package ir.sk.datastructure.fundamental.linklist;
 
+import ir.sk.helper.TimeComplexity;
+
 /**
  * he doubly linked list (not to be
  * confused with the double-ended list)
@@ -19,6 +21,7 @@ public class DoublyLinkedList<T> {
         last = null;
     }
 
+    @TimeComplexity("O(n)")
     public boolean isEmpty() {
         return first == null;
     }
@@ -28,6 +31,7 @@ public class DoublyLinkedList<T> {
      *
      * @param dd
      */
+    @TimeComplexity("O(1)")
     public void insertFirst(T dd) {
         DoubledLink<T> newLink = new DoubledLink<>(dd);   // make new link
 
@@ -44,6 +48,7 @@ public class DoublyLinkedList<T> {
      *
      * @param dd
      */
+    @TimeComplexity("O(1)")
     public void insertLast(T dd) {
         DoubledLink newLink = new DoubledLink(dd);   // make new link
         if (isEmpty())                // if empty list,
@@ -60,6 +65,7 @@ public class DoublyLinkedList<T> {
      *
      * @return
      */
+    @TimeComplexity("O(1)")
     public DoubledLink<T> deleteFirst() {
         // (assumes non-empty list)
         DoubledLink<T> temp = first;
@@ -76,6 +82,7 @@ public class DoublyLinkedList<T> {
      *
      * @return
      */
+    @TimeComplexity("O(1)")
     public DoubledLink<T> deleteLast() {
         // (assumes non-empty list)
         DoubledLink<T> temp = last;
@@ -94,6 +101,7 @@ public class DoublyLinkedList<T> {
      * @param dd
      * @return
      */
+    @TimeComplexity("O(n)")
     public boolean insertAfter(T key, T dd) {
         // (assumes non-empty list)
         DoubledLink<T> current = first;          // start at beginning
@@ -125,6 +133,7 @@ public class DoublyLinkedList<T> {
      * @param key
      * @return
      */
+    @TimeComplexity("O(n)")
     public DoubledLink<T> deleteKey(T key) {
         // (assumes non-empty list)
         DoubledLink current = first;          // start at beginning

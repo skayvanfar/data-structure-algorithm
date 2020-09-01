@@ -1,5 +1,7 @@
 package ir.sk.datastructure.fundamental.linklist;
 
+import ir.sk.helper.TimeComplexity;
+
 /**
  * In a sorted list, the items are arranged in sorted order by key value.
  *
@@ -22,6 +24,7 @@ public class SortedLinkList<T extends Comparable> {
      *
      * @param key
      */
+    @TimeComplexity("O(n)")
     public void insert(T key) {
         Link<T> newLink = new Link(key);    // make new link
         Link<T> previous = null;            // start at first
@@ -43,6 +46,7 @@ public class SortedLinkList<T extends Comparable> {
      *
      * @return
      */
+    @TimeComplexity("O(1)")
     public Link<T> remove() {
         // (assumes non-empty list)
         Link<T> temp = first;               // save first

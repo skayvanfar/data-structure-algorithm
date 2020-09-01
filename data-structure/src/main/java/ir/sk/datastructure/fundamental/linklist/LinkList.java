@@ -127,6 +127,7 @@ public class LinkList<T> {
         return head.data;
     }
 
+    @TimeComplexity("O(1)")
     public boolean isEmpty() {
         return head == null;
     }

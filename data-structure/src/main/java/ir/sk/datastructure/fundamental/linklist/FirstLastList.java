@@ -1,5 +1,7 @@
 package ir.sk.datastructure.fundamental.linklist;
 
+import ir.sk.helper.TimeComplexity;
+
 /**
  * Double-Ended List
  * A double-ended list is similar to an ordinary linked list, but it has one additional
@@ -27,6 +29,7 @@ public class FirstLastList<T> {
         last = null;
     }
 
+    @TimeComplexity("O(1)")
     public boolean isEmpty() {
         return first == null;
     }
@@ -36,6 +39,7 @@ public class FirstLastList<T> {
      *
      * @param dd
      */
+    @TimeComplexity("O(1)")
     public void insertFirst(T dd) {
         Link<T> newLink = new Link<T>(dd);   // make new link
 
@@ -50,6 +54,7 @@ public class FirstLastList<T> {
      *
      * @param dd
      */
+    @TimeComplexity("O(1)")
     public void insertLast(T dd) {
         Link<T> newLink = new Link<T>(dd);   // make new link
         if (isEmpty())                // if empty list,
@@ -64,6 +69,7 @@ public class FirstLastList<T> {
      *
      * @return
      */
+    @TimeComplexity("O(1)")
     public T deleteFirst() {
         // (assumes non-empty list)
         T temp = first.data;
@@ -73,6 +79,7 @@ public class FirstLastList<T> {
         return temp;
     }
 
+    @TimeComplexity("O(1)")
     public T peakFirst() {
         return first.data;
     }
