@@ -11,7 +11,7 @@ import ir.sk.helper.TimeComplexity;
 public interface Queue<T> {
 
     /**
-     * Add an item to the end of the list.
+     * Add an item to the end of the list. (enqueue)
      *
      * @param item
      */
@@ -19,7 +19,7 @@ public interface Queue<T> {
     void add(T item);
 
     /**
-     * Remove the first item in the list.
+     * Remove the first item in the list. (dequeue)
      *
      * @return
      */

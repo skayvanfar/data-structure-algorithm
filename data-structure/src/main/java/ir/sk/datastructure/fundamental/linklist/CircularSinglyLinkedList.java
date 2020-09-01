@@ -1,10 +1,13 @@
 package ir.sk.datastructure.fundamental.linklist;
 
+import ir.sk.datastructure.queue.Queue;
+import ir.sk.helper.TimeComplexity;
+
 /**
  * A circular linked list is a variation of a linked list in which the last node points to the first node, completing a full circle of node
  * Any node in the circular linked list can be a starting point
  * Consequently, the whole list can be traversed starting from any node
- * Since the last node of the circular linked list has the pointer to the first node, it's easy to perform enqueue and dequeue operations
+ * Since the last node of the circular linked list has the pointer to the first node, it's easy to perform enqueue and dequeue operations like (FirstLastList)
  *
  * Created by sad.kayvanfar on 9/1/2020.
  */
@@ -13,6 +16,10 @@ public class CircularSinglyLinkedList<T> {
     private SinglyLink<T> head = null;
     private SinglyLink<T> tail = null;
 
+    /**
+     * @param value
+     */
+    @TimeComplexity("O(1)")
     public void add(T value) {
 
         SinglyLink<T> newNode = new SinglyLink<T>(value);
@@ -27,6 +34,11 @@ public class CircularSinglyLinkedList<T> {
         tail.next = head;
     }
 
+    /**
+     * @param searchValue
+     * @return
+     */
+    @TimeComplexity("O(n)")
     public SinglyLink<T> find(T searchValue) {
 
         SinglyLink<T> currentNode = head;
@@ -43,6 +55,7 @@ public class CircularSinglyLinkedList<T> {
         }
     }
 
+    @TimeComplexity("O(1)")
     public void delete(T valueToDelete) {
         SinglyLink<T> currentNode = head;
 
