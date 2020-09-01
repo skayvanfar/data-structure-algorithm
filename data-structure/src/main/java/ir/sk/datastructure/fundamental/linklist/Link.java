@@ -9,6 +9,9 @@ public class Link<T> {
 
     public Link next;
 
+    public Link() {
+    }
+
     public Link(T data) {
         this.data = data;
     }

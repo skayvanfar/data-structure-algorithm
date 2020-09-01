@@ -134,7 +134,7 @@ public class LinkListAlgorithms {
      * delete a node in the middle (i.e., any node but
      * the first and last node, not necessarily the exact middle) of a singly linked list, given only access to
      * that node.
-     *
+     * <p>
      * You only have access to that node.
      * The solution is simply to copy the data from the next node over to the current node, and then to delete the
      * next node.
@@ -150,5 +150,36 @@ public class LinkListAlgorithms {
         n.data = next.data;
         n.next = next.next;
         return true;
+    }
+
+    /**
+     * You have two numbers represented by a linked list, where each node contains a single
+     * digit. The digits are stored in reverse order, such that the 1 's digit is at the head of the list. this
+     * function adds the two numbers and returns the sum as a linked list.
+     */
+    @TimeComplexity("O(m+n)")
+    @SpaceComplexity("O(m+n)")
+    public static Link<Integer> sumRevertedLists(Link<Integer> list1, Link<Integer> list2, int carry) {
+        if (list1 == null && list2 == null && carry == 0)
+            return null;
+
+        Link<Integer> result = new Link<>();
+
+        int value = carry;
+        if (list1 != null)
+            value += list1.data;
+
+        if (list2 != null)
+            value += list1.data;
+
+        result.data = value % 10; /* Second digit of number */
+
+        if (list1 != null || list2 != null) {
+            Link<Integer> more = sumRevertedLists(list1 == null ? null : list1.next,
+                    list2 == null ? null : list2.next,
+                    value >= 10 ? 1 : 0);
+            result.next = more;
+        }
+        return result;
     }
 }
