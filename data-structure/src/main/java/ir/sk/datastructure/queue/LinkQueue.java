@@ -7,7 +7,7 @@ import ir.sk.datastructure.fundamental.linklist.FirstLastList;
  *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
-public class LinkQueue<T> {
+public class LinkQueue<T> implements Queue<T> {
 
     private FirstLastList<T> theList;
 
@@ -15,6 +15,7 @@ public class LinkQueue<T> {
         theList = new FirstLastList();
     }
 
+    @Override
     public boolean isEmpty() {
         return theList.isEmpty();
     }
@@ -24,7 +25,8 @@ public class LinkQueue<T> {
      *
      * @param j
      */
-    public void insert(T j) {
+    @Override
+    public void add(T j) {
         theList.insertLast(j);
     }
 
@@ -33,8 +35,14 @@ public class LinkQueue<T> {
      *
      * @return
      */
+    @Override
     public T remove() {
         return theList.deleteFirst();
+    }
+
+    @Override
+    public T peek() {
+        return theList.peakFirst();
     }
 
     public void display() {

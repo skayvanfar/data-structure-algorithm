@@ -4,22 +4,20 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 12/10/2017.
  */
-public class QueueTest {
+public class ArrayQueueTest {
 
-    Queue theQueue;
+    ArrayQueue theArrayQueue;
 
     @Before
     public void setUp() throws Exception {
-        theQueue = new Queue(10);
-        theQueue.insert(10); // insert 4 items
-        theQueue.insert(20);
-        theQueue.insert(30);
-        theQueue.insert(40);
+        theArrayQueue = new ArrayQueue(10);
+        theArrayQueue.insert(10); // insert 4 items
+        theArrayQueue.insert(20);
+        theArrayQueue.insert(30);
+        theArrayQueue.insert(40);
     }
 
     @After
@@ -28,16 +26,16 @@ public class QueueTest {
 
     @Test
     public void insert() throws Exception {
-        theQueue.display();
-        theQueue.insert(50);
-        theQueue.display();
+        theArrayQueue.display();
+        theArrayQueue.insert(50);
+        theArrayQueue.display();
     }
 
     @Test
     public void remove() throws Exception {
-        theQueue.display();
-        theQueue.remove();
-        theQueue.display();
+        theArrayQueue.display();
+        theArrayQueue.remove();
+        theArrayQueue.display();
     }
 
     @Test

@@ -122,6 +122,7 @@ public class LinkList<T> {
         return temp.data;
     }
 
+    @TimeComplexity("O(1)")
     public T peakFirst() {
         return head.data;
     }

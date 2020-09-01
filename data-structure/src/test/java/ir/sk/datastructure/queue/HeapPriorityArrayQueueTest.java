@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 7/2/2020.
  */
-public class HeapPriorityQueueTest {
+public class HeapPriorityArrayQueueTest {
 
     @Before
     public void setUp() throws Exception {

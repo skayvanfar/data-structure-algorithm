@@ -73,6 +73,10 @@ public class FirstLastList<T> {
         return temp;
     }
 
+    public T peakFirst() {
+        return first.data;
+    }
+
     public void displayList() {
         System.out.print("List (first-->last): ");
         Link current = first;          // start at beginning
