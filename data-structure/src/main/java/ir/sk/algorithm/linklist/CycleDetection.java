@@ -25,7 +25,7 @@ public class CycleDetection {
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
     public static boolean detectCycleByHashing(Link head) {
-        HashSet<Link> s = new HashSet<Link>();
+        HashSet<Link> s = new HashSet<>();
         while (head != null) {
             // If we have already has this node
             // in hashmap it means their is a cycle
