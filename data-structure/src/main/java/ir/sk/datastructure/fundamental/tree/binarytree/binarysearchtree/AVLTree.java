@@ -5,10 +5,10 @@ import ir.sk.helper.TimeComplexity;
 /**
  * AVLTree is a self-balancing binary search tree (BST).
  * A self-balancing tree is a binary search tree that balances the height after insertion and deletion according to some balancing rules.
- *
+ * <p>
  * The balance factor of node N is height(right(N)) – height(left(N)).
  * In an AVL Tree, the balance factor of a node could be only one of 1, 0, or -1 values.
- *
+ * <p>
  * Time Complexity: O(Log n)
  *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 7/3/2020.
@@ -81,9 +81,9 @@ public class AVLTree {
         updateHeight(z);
         int balance = getBalance(z);
         if (balance > 1) {
-            if (height(z.right.right) > height(z.right.left)) {
+            if (height(z.right.right) > height(z.right.left))
                 z = rotateLeft(z);
-            } else {
+            else {
                 z.right = rotateRight(z.right);
                 z = rotateLeft(z);
             }
@@ -100,47 +100,47 @@ public class AVLTree {
 
     @TimeComplexity("O(log n)")
     public AVLNode insert(AVLNode node, int key) {
-        if (node == null) {
+        if (node == null)
             return new AVLNode(key);
-        } else if (node.key > key) {
+        else if (node.value > key)
             node.left = insert(node.left, key);
-        } else if (node.key < key) {
+        else if (node.value < key)
             node.right = insert(node.right, key);
-        } else {
+        else
             throw new RuntimeException("duplicate Key!");
-        }
+
         return reBalance(node);
     }
 
     @TimeComplexity("O(log n)")
     public AVLNode delete(AVLNode node, int key) {
-        if (node == null) {
+        if (node == null)
             return node;
-        } else if (node.key > key) {
+        else if (node.value > key)
             node.left = delete(node.left, key);
-        } else if (node.key < key) {
+        else if (node.value < key)
             node.right = delete(node.right, key);
-        } else {
-            if (node.left == null || node.right == null) {
+        else {
+            if (node.left == null || node.right == null)
                 node = (node.left == null) ? node.right : node.left;
-            } else {
+            else {
                 AVLNode mostLeftChild = mostLeftChild(node.right);
-                node.key = mostLeftChild.key;
-                node.right = delete(node.right, node.key);
+                node.value = mostLeftChild.value;
+                node.right = delete(node.right, node.value);
             }
         }
-        if (node != null) {
+        if (node != null)
             node = reBalance(node);
-        }
+
         return node;
     }
 
     private AVLNode mostLeftChild(AVLNode node) {
         AVLNode current = node;
         /* loop down to find the leftmost leaf */
-        while (current.left != null) {
+        while (current.left != null)
             current = current.left;
-        }
+
         return current;
     }
 
@@ -148,22 +148,22 @@ public class AVLTree {
     public AVLNode search(int key) {
         AVLNode current = root;
         while (current != null) {
-            if (current.key == key) {
+            if (current.value == key)
                 break;
-            }
-            current = current.key < key ? current.right : current.left;
+
+            current = current.value < key ? current.right : current.left;
         }
         return current;
     }
 }
 
 class AVLNode {
-    int key;
+    int value;
     int height;
     AVLNode left;
     AVLNode right;
 
-    AVLNode(int key) {
-        this.key = key;
+    AVLNode(int value) {
+        this.value = value;
     }
 }

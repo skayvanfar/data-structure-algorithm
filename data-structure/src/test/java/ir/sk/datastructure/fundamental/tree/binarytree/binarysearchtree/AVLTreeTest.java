@@ -54,7 +54,7 @@ public class AVLTreeTest {
     public void givenSampleTree_whenFindExistingKeyCalled_shouldReturnMatchedNode() {
         int existingKey = 2;
         AVLNode result = avlTree.search(existingKey);
-        Assert.assertEquals(result.key, existingKey);
+        Assert.assertEquals(result.value, existingKey);
     }
 
     @Test
