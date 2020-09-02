@@ -1,5 +1,9 @@
 package ir.sk.datastructure.fundamental.tree.binarytree.binarysearchtree;
 
+import ir.sk.helper.Point;
+import ir.sk.helper.SpaceComplexity;
+import ir.sk.helper.TimeComplexity;
+
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
@@ -19,6 +23,8 @@ import java.util.Stack;
  *
  * Main Operations: insert-delete-traverse
  * traverse: DFS(In-order,Pre-order,Post-order)-BFS
+ *
+ * h is the maximum height of the tree
  *
  * Created by sad.keyvanfar on 6/28/2020.
  */
@@ -53,12 +59,11 @@ public class BinarySearchTree {
      * if the new node's value is greater than the current node's, we go to the right child
      * when the current node is null, we've reached a leaf node and we can insert the new node in that position
      *
-     * Time Complexity: O(h)
-     *
      * @param current
      * @param value
      * @return
      */
+    @TimeComplexity("O(h)")
     private BSTNode addRecursive(BSTNode current, int value) {
 
         if (current == null) {
@@ -95,12 +100,12 @@ public class BinarySearchTree {
     }
 
     /**
-     * Time Complexity: O(h)
      *
      * @param current
      * @param value
      * @return
      */
+    @TimeComplexity("O(h)")
     private boolean containsNodeRecursive(BSTNode current, int value) {
         if (current == null) {
             return false;
@@ -133,12 +138,11 @@ public class BinarySearchTree {
      * Here we have to say that it can be done analogical swap,
      * just that we get the left sub-tree and it is the biggest element
      *
-     * Time Complexity: O(h)
-     *
      * @param current
      * @param value
      * @return
      */
+    @TimeComplexity("O(h)")
     private BSTNode deleteRecursive(BSTNode current, int value) {
         if (current == null) {
             return null;
@@ -181,10 +185,10 @@ public class BinarySearchTree {
     /**
      * Depth-First Search is a type of traversal that goes deep as much as possible in every child before exploring the next sibling.
      *
-     * Time Complexity: O(n)
-     * Space Complexity: O(h) h is the maximum height of the tree
      * @param BSTNode
      */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(h)")
     public void traverseInOrder(BSTNode BSTNode) {
         if (BSTNode != null) {
             traverseInOrder(BSTNode.left);
@@ -194,11 +198,11 @@ public class BinarySearchTree {
     }
 
     /**
-     * Time Complexity: O(n)
-     * Space Complexity: O(h) h is the maximum height of the tree
      *
      * @param BSTNode
      */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(h)")
     public void traversePreOrder(BSTNode BSTNode) {
         if (BSTNode != null) {
             visit(BSTNode.value);
@@ -208,10 +212,10 @@ public class BinarySearchTree {
     }
 
     /**
-     * Time Complexity: O(n)
-     * Space Complexity: O(h) h is the maximum height of the tree
      * @param BSTNode
      */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(h)")
     public void traversePostOrder(BSTNode BSTNode) {
         if (BSTNode != null) {
             traversePostOrder(BSTNode.left);
@@ -224,9 +228,10 @@ public class BinarySearchTree {
      * In the recursive version, a stack is required as we need to remember the current node so that after
      * completing the left subtree we can go to the right subtree.
      *
-     * Time Complexity: O(n)
-     * Space Complexity: O(h) h is the maximum height of the tree
      */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(h)")
+    @Point("transform recursive into iterative approach by using Stack")
     public void traversePreOrderWithoutRecursion() {
         Stack<BSTNode> stack = new Stack<>();
         BSTNode current = root;
@@ -244,9 +249,9 @@ public class BinarySearchTree {
     }
 
     /**
-     * Time Complexity: O(n)
-     * Space Complexity: O(h) h is the maximum height of the tree
      */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(h)")
     public void traverseInOrderWithoutRecursion() {
         Stack<BSTNode> stack = new Stack<BSTNode>();
         BSTNode current = root;
@@ -269,9 +274,9 @@ public class BinarySearchTree {
      * In preorder and inorder traversals, after popping the stack element we do not need to visit the
      * same vertex again. But in postorder traversal, each node is visited twice.
      *
-     * Time Complexity: O(n)
-     * Space Complexity: O(h) h is the maximum height of the tree
      */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(h)")
     public void traversePostOrderWithoutRecursion() {
         Stack<BSTNode> stack = new Stack<BSTNode>();
         BSTNode prev = root;
@@ -313,9 +318,9 @@ public class BinarySearchTree {
      * • Go to the next level and visit all the nodes at that level.
      * • Repeat this until all levels are completed.
      *
-     * Time Complexity: O(n)
-     * Space Complexity: O(w) w is the maximum width of the tree
      */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(w) w is the maximum width of the tree")
     public void traverseLevelOrder() {
         if (root == null) {
             return;

@@ -1,5 +1,8 @@
 package ir.sk.datastructure.fundamental.tree;
 
+import ir.sk.helper.SpaceComplexity;
+import ir.sk.helper.TimeComplexity;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -7,6 +10,7 @@ import java.util.Queue;
 
 /**
  * General Tree is used to show real models like organization tree
+ *
  * Time Complexity: O(n)
  * Main Operations: insert-delete-traverse
  * traverse: DFS-BFS
@@ -43,6 +47,8 @@ public class GeneralTree<T> {
      *
      * @param generalNode
      */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
     public void traverseDFS(GeneralNode<T> generalNode) {
         if (generalNode == null) {
             return;
@@ -68,11 +74,10 @@ public class GeneralTree<T> {
      * • Go to the next level and visit all the nodes at that level.
      * • Repeat this until all levels are completed.
      *
-     * Time Complexity: O(n)
-     * Space Complexity: O(n)
-     *
      * @param generalNode
      */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
     public void traverseLevelOrder(GeneralNode<T> generalNode) {
         if (generalNode == null) {
             return;
@@ -99,6 +104,9 @@ public class GeneralTree<T> {
 }
 
 
+/**
+ * @param <T>
+ */
 class GeneralNode<T> {
 
     private T value;
