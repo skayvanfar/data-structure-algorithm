@@ -4,8 +4,8 @@ package ir.sk.datastructure.fundamental.tree.binarytree;
  * binary heap is an complete Binary tree
  * The heap is one maximally efficient implementation of an abstract data type called a priority queue.
  * The heap property:
- * Min-heap: a parent has a lower key than its childs.
- * Max-heap: a parent has a upper key than its childs.
+ * Min-heap: a parent has a lower key than its children.
+ * Max-heap: a parent has a upper key than its children.
  * <p>
  * It's usually implemented by Arrays because a binary heap is always a complete binary tree
  *
@@ -60,7 +60,7 @@ public class MaxBinaryHeap {
 
     /**
      * It returns the root element of Max Heap.
-     *
+     * <p>
      * Time Complexity: O(1)
      *
      * @return
@@ -72,7 +72,7 @@ public class MaxBinaryHeap {
     /**
      * Removes the maximum element from MaxHeap.
      * this operation needs to maintain the heap property (by calling heapify()) after removing root.
-     *
+     * <p>
      * Time Complexity: O(Log n)
      *
      * @return
@@ -89,15 +89,15 @@ public class MaxBinaryHeap {
      * 1. create a new leaf which is the rightmost available slot on the deepest level and store the item in that node
      * if the element is less than it's parent, we swap them
      * 2. continue with step 2, until the element is less than it's parent or it becomes the new root
-     *
+     * <p>
      * Time Complexity: O(Log n)
      *
      * @param element
      */
     public void insert(int element) {
-        if (heapSize >= array.length) {
+        if (heapSize >= array.length)
             return;
-        }
+
         array[++heapSize] = element;
         int current = heapSize;
 
@@ -146,9 +146,8 @@ public class MaxBinaryHeap {
      * Time Complexity: O(n)
      */
     public void buildMaxHeap() {
-        for (int i = heapSize / 2; i >= 0; i--) {
+        for (int i = heapSize / 2; i >= 0; i--)
             maxHeapify(i);
-        }
     }
 
     public void printArray() {

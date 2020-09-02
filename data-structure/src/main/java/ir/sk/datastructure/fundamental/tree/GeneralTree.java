@@ -10,7 +10,7 @@ import java.util.Queue;
 
 /**
  * General Tree is used to show real models like organization tree
- *
+ * <p>
  * Time Complexity: O(n)
  * Main Operations: insert-delete-traverse
  * traverse: DFS-BFS
@@ -65,9 +65,9 @@ public class GeneralTree<T> {
 
     /**
      * Breadth-First Search(BFS) visits all the nodes of a level before going to the next level.
-     *
+     * <p>
      * This kind of traversal is also called level-order and visits all the levels of the tree starting from the root, and from left to right.
-     *
+     * <p>
      * Level order traversal is defined as follows:
      * • Visit the root.
      * • While traversing level 1, keep all the elements at level 1+1 in queue.
