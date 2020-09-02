@@ -1,5 +1,7 @@
 package ir.sk.datastructure.fundamental.tree.binarytree.binarysearchtree;
 
+import ir.sk.helper.TimeComplexity;
+
 /**
  * AVLTree is a self-balancing binary search tree (BST).
  * A self-balancing tree is a binary search tree that balances the height after insertion and deletion according to some balancing rules.
@@ -46,12 +48,7 @@ public class AVLTree {
         return (n == null) ? 0 : height(n.right) - height(n.left);
     }
 
-    /**
-     * Time Complexity: O(n)
-     *
-     * @param y
-     * @return
-     */
+    @TimeComplexity("O(n)")
     private AVLNode rotateRight(AVLNode y) {
         AVLNode x = y.left;
         AVLNode z = x.right;
@@ -62,12 +59,7 @@ public class AVLTree {
         return x;
     }
 
-    /**
-     * Time Complexity: O(n)
-     *
-     * @param y
-     * @return
-     */
+    @TimeComplexity("O(n)")
     private AVLNode rotateLeft(AVLNode y) {
         AVLNode x = y.right;
         AVLNode z = x.left;
@@ -106,13 +98,7 @@ public class AVLTree {
         return z;
     }
 
-    /**
-     * Time Complexity: O(log n)
-     *
-     * @param node
-     * @param key
-     * @return
-     */
+    @TimeComplexity("O(log n)")
     public AVLNode insert(AVLNode node, int key) {
         if (node == null) {
             return new AVLNode(key);
@@ -126,11 +112,7 @@ public class AVLTree {
         return reBalance(node);
     }
 
-    /**
-     * Time Complexity: O(log n)
-     *
-     * @return
-     */
+    @TimeComplexity("O(log n)")
     public AVLNode delete(AVLNode node, int key) {
         if (node == null) {
             return node;
@@ -162,12 +144,8 @@ public class AVLTree {
         return current;
     }
 
-    /**
-     * Time Complexity: O(log n)
-     *
-     * @return
-     */
-    public AVLNode find(int key) {
+    @TimeComplexity("O(log n)")
+    public AVLNode search(int key) {
         AVLNode current = root;
         while (current != null) {
             if (current.key == key) {

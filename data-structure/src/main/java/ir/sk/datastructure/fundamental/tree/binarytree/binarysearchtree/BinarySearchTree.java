@@ -345,6 +345,18 @@ public class BinarySearchTree {
         }
     }
 
+    @TimeComplexity("O(h)")
+    public BSTNode search(int key) {
+        BSTNode current = root;
+        while (current != null) {
+            if (current.value == key) {
+                break;
+            }
+            current = current.value < key ? current.right : current.left;
+        }
+        return current;
+    }
+
 }
 
 /**

@@ -5,8 +5,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 7/3/2020.
  */
@@ -55,14 +53,14 @@ public class AVLTreeTest {
     @Test
     public void givenSampleTree_whenFindExistingKeyCalled_shouldReturnMatchedNode() {
         int existingKey = 2;
-        AVLNode result = avlTree.find(existingKey);
+        AVLNode result = avlTree.search(existingKey);
         Assert.assertEquals(result.key, existingKey);
     }
 
     @Test
     public void givenSampleTree_whenFindNotExistingKeyCalled_shouldReturnNull() {
         int notExistingKey = 11;
-        AVLNode result = avlTree.find(notExistingKey);
+        AVLNode result = avlTree.search(notExistingKey);
         Assert.assertNull(result);
     }
 
