@@ -1,5 +1,7 @@
 package ir.sk.datastructure.fundamental.tree.binarytree;
 
+import ir.sk.helper.TimeComplexity;
+
 /**
  * binary heap is an complete Binary tree
  * The heap is one maximally efficient implementation of an abstract data type called a priority queue.
@@ -60,11 +62,10 @@ public class MaxBinaryHeap {
 
     /**
      * It returns the root element of Max Heap.
-     * <p>
-     * Time Complexity: O(1)
      *
      * @return
      */
+    @TimeComplexity("O(1)")
     public int max() {
         return array[0];
     }
@@ -72,11 +73,10 @@ public class MaxBinaryHeap {
     /**
      * Removes the maximum element from MaxHeap.
      * this operation needs to maintain the heap property (by calling heapify()) after removing root.
-     * <p>
-     * Time Complexity: O(Log n)
      *
      * @return
      */
+    @TimeComplexity("O(Log n)")
     public int extractMax() {
         int max = array[0];
         swap(0, array.length - 1);
@@ -89,11 +89,10 @@ public class MaxBinaryHeap {
      * 1. create a new leaf which is the rightmost available slot on the deepest level and store the item in that node
      * if the element is less than it's parent, we swap them
      * 2. continue with step 2, until the element is less than it's parent or it becomes the new root
-     * <p>
-     * Time Complexity: O(Log n)
      *
      * @param element
      */
+    @TimeComplexity("O(Log n)")
     public void insert(int element) {
         if (heapSize >= array.length)
             return;
@@ -114,12 +113,12 @@ public class MaxBinaryHeap {
     }
 
     /**
-     * Time Complexity: O(log n)
      * Assume that the trees rooted at left(i) and right(i)
      * are max-heaps
      *
      * @param index
      */
+    @TimeComplexity("O(Log n)")
     public void maxHeapify(int index) {
         int left = leftChildIndex(index);
         int right = rightChildIndex(index);
@@ -142,9 +141,8 @@ public class MaxBinaryHeap {
     /**
      * Converts A[1…n] to a max heap
      * Why start at n/2? Because elements A[n/2 + 1 … n] are all leaves of the tree 2i > n, for i > n/2 + 1
-     * <p>
-     * Time Complexity: O(n)
      */
+    @TimeComplexity("O(n)")
     public void buildMaxHeap() {
         for (int i = heapSize / 2; i >= 0; i--)
             maxHeapify(i);
