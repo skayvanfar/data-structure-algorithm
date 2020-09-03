@@ -14,6 +14,9 @@ import java.util.Queue;
  * Time Complexity: O(n)
  * Main Operations: insert-delete-traverse
  * traverse: DFS-BFS
+ *
+ * Tree can be: Balanced- Unbalanced, Complete, Full, Perfect(Full+Complete)
+ *
  * Created by sad.keyvanfar on 7/1/2020.
  */
 public class GeneralTree<T> {

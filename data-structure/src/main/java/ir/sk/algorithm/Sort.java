@@ -227,7 +227,7 @@ public class Sort {
             array[0] = Utils.gSwap(array[i], array[i] = array[0]);
             heap.setHeapSize(heap.getHeapSize() - 1);
             // call max heapify on the reduced heap
-            heap.maxHeapify(0);
+            heap.heapifyDown(0);
         }
     }
 

@@ -3,13 +3,17 @@ package ir.sk.datastructure.fundamental.tree.binarytree;
 import ir.sk.helper.TimeComplexity;
 
 /**
- * binary heap is an complete Binary tree
+ * two properties of a heap:
+ * 1. binary heap is an complete Binary tree
+ * 2. a heap must either be greater than or equal to the value of its children nodes, or less than or equal to the value of its children nodes
+ * <p>
  * The heap is one maximally efficient implementation of an abstract data type called a priority queue.
  * The heap property:
  * Min-heap: a parent has a lower key than its children.
  * Max-heap: a parent has a upper key than its children.
  * <p>
  * It's usually implemented by Arrays because a binary heap is always a complete binary tree
+ * A binary heap must be a complete tree,children are added at each level from left to right,and usually implemented as arrays.
  *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 7/2/2020.
  */
@@ -37,30 +41,37 @@ public class MaxBinaryHeap {
     }
 
     /**
+     * in complete binary trees we can get parent item  using this formula: floor((i — 1) / 2)
+     *
      * @param index
      * @return
      */
-    private int parentIndex(int index) {
+    private int getParentIndex(int index) {
         return (index - 1) / 2;
     }
 
     /**
+     * in complete binary trees we can get left child using this formula: (2i + 1)
+     *
      * @param index
      * @return
      */
-    private int leftChildIndex(int index) {
+    private int getLeftChildIndex(int index) {
         return 2 * index + 1;
     }
 
     /**
+     * in complete binary trees we can get left child using this formula: (2i + 2)
+     *
      * @param index
      * @return
      */
-    private int rightChildIndex(int index) {
+    private int getRightChildIndex(int index) {
         return 2 * index + 2;
     }
 
     /**
+     * peek operation
      * It returns the root element of Max Heap.
      *
      * @return
@@ -71,6 +82,7 @@ public class MaxBinaryHeap {
     }
 
     /**
+     * poll operation
      * Removes the maximum element from MaxHeap.
      * this operation needs to maintain the heap property (by calling heapify()) after removing root.
      *
@@ -80,8 +92,34 @@ public class MaxBinaryHeap {
     public int extractMax() {
         int max = array[0];
         swap(0, array.length - 1);
-        maxHeapify(0);
+        heapifyDown(0);
         return max;
+    }
+
+    /**
+     * Assume that the trees rooted at left(i) and right(i)
+     * are max-heaps
+     *
+     * @param index
+     */
+    @TimeComplexity("O(Log n)")
+    private void heapifyDown(int index) {
+        int left = getLeftChildIndex(index);
+        int right = getRightChildIndex(index);
+        int max;
+
+        if (left <= heapSize && array[left] > array[index])
+            max = left;
+        else
+            max = index;
+
+        if (right <= heapSize && array[right] > array[max])
+            max = right;
+
+        if (max != index) {
+            swap(index, max);
+            heapifyDown(max);
+        }
     }
 
     /**
@@ -98,11 +136,19 @@ public class MaxBinaryHeap {
             return;
 
         array[++heapSize] = element;
+        heapifyUp();
+    }
+
+    /**
+     *
+     */
+    @TimeComplexity("O(Log n)")
+    private void heapifyUp() {
         int current = heapSize;
 
-        while (array[current] > array[parentIndex(current)]) {
-            swap(current, parentIndex(current));
-            current = parentIndex(current);
+        while (array[current] > array[getParentIndex(current)]) {
+            swap(current, getParentIndex(current));
+            current = getParentIndex(current);
         }
     }
 
@@ -112,31 +158,6 @@ public class MaxBinaryHeap {
         array[index2] = tmp;
     }
 
-    /**
-     * Assume that the trees rooted at left(i) and right(i)
-     * are max-heaps
-     *
-     * @param index
-     */
-    @TimeComplexity("O(Log n)")
-    public void maxHeapify(int index) {
-        int left = leftChildIndex(index);
-        int right = rightChildIndex(index);
-        int max;
-
-        if (left <= heapSize && array[left] > array[index])
-            max = left;
-        else
-            max = index;
-
-        if (right <= heapSize && array[right] > array[max])
-            max = right;
-
-        if (max != index) {
-            swap(index, max);
-            maxHeapify(max);
-        }
-    }
 
     /**
      * Converts A[1…n] to a max heap
@@ -145,7 +166,7 @@ public class MaxBinaryHeap {
     @TimeComplexity("O(n)")
     public void buildMaxHeap() {
         for (int i = heapSize / 2; i >= 0; i--)
-            maxHeapify(i);
+            heapifyDown(i);
     }
 
     public void printArray() {

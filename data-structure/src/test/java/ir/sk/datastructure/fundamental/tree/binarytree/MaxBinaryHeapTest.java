@@ -35,7 +35,7 @@ public class MaxBinaryHeapTest {
     public void maxHeapify() {
         int[] unOrderedArray = new int[] {16, 4, 10, 14, 7, 9, 3, 2, 8, 1};
         maxBinaryHeap = new MaxBinaryHeap(unOrderedArray);
-        maxBinaryHeap.maxHeapify(1);
+        maxBinaryHeap.heapifyDown(1);
         maxBinaryHeap.printArray();
     }
 
