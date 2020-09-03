@@ -84,7 +84,7 @@ public class AVLTreeTest {
     private boolean isAVL(AVLTree tree, AVLNode node) {
         if ( node == null )
             return true;
-        int balance = tree.getBalance(node);
+        int balance = tree.getBalanceFactor(node);
         return (balance <= 1 && balance >= -1) && isAVL(tree, node.left) && isAVL(tree, node.right);
     }
 }

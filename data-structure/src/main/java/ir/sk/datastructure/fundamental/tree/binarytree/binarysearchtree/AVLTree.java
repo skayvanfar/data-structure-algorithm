@@ -44,7 +44,16 @@ public class AVLTree {
         return root == null ? -1 : root.height;
     }
 
-    public int getBalance(AVLNode n) {
+    /**
+     * The balance factor of a node (N) in a binary tree is defined as the height difference.
+     * BalanceFactor(N) belongs to the set {-1,0,1}
+     * If the balance factor doesn’t equal -1,0, or 1 then our tree is unbalanced, and we need to perform certain operations to balance the tree.
+     * Specifically we need to do one or more of 4 tree rotations (Left Rotation, Right Rotation, Left Right Rotation, Right Left Rotation).
+     *
+     * @param n
+     * @return
+     */
+    public int getBalanceFactor(AVLNode n) {
         return (n == null) ? 0 : height(n.right) - height(n.left);
     }
 
@@ -79,7 +88,7 @@ public class AVLTree {
      */
     private AVLNode reBalance(AVLNode z) {
         updateHeight(z);
-        int balance = getBalance(z);
+        int balance = getBalanceFactor(z);
         if (balance > 1) {
             if (height(z.right.right) > height(z.right.left))
                 z = rotateLeft(z);
@@ -112,6 +121,11 @@ public class AVLTree {
         return reBalance(node);
     }
 
+    /**
+     * @param node
+     * @param key
+     * @return
+     */
     @TimeComplexity("O(log n)")
     public AVLNode delete(AVLNode node, int key) {
         if (node == null)
