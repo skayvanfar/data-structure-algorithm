@@ -1,6 +1,8 @@
 package ir.sk.datastructure.fundamental.graph.adjacencylist;
 
 import ir.sk.datastructure.fundamental.graph.Graph;
+import ir.sk.helper.SpaceComplexity;
+import ir.sk.helper.TimeComplexity;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -52,10 +54,9 @@ public class AdjacencyListGraph<T> implements Graph<T> {
     }
 
     /**
-     * Time Complexity: O(|E|)
-     *
      * @param info
      */
+    @TimeComplexity("O(|E|)")
     public void removeVertex(T info) {
         Vertex<T> v = new Vertex<>(info);
         adjVertices.values().stream().forEach(e -> e.remove(v));
@@ -68,6 +69,7 @@ public class AdjacencyListGraph<T> implements Graph<T> {
      * @param from
      * @param to
      */
+    @TimeComplexity("O(1)")
     public void addEdge(T from, T to, int weight) { // TODO: 7/12/2020
         Vertex<T> v1 = new Vertex<>(from, weight);
         Vertex<T> v2 = new Vertex<>(to, weight);
@@ -82,6 +84,7 @@ public class AdjacencyListGraph<T> implements Graph<T> {
      * @param from
      * @param to
      */
+    @TimeComplexity("O(|V|)")
     public void removeEdge(T from, T to) {
         Vertex v1 = new Vertex(from);
         Vertex v2 = new Vertex(to);
@@ -114,13 +117,12 @@ public class AdjacencyListGraph<T> implements Graph<T> {
     }
 
     /**
-     * Time Complexity: O(|V|+|E|) Linear Time
-     * Space Complexity: O(w) w is the maximum width of the tree
-     *
      * @param start
      * @return
      */
     @Override
+    @TimeComplexity("O(|V|+|E|) Linear Time")
+    @SpaceComplexity("O(w) w is the maximum width of the tree")
     public Collection<T> breathFirstSearch(T start) {
         Collection<T> visited = new LinkedHashSet<>();
         Queue<T> queue = new LinkedList<>();
@@ -139,13 +141,12 @@ public class AdjacencyListGraph<T> implements Graph<T> {
     }
 
     /**
-     * Time Complexity: O(|V|+|E|) Linear Time
-     * Space Complexity: O(h) h is the maximum height of the tree
-     *
      * @param start
      * @return
      */
     @Override
+    @TimeComplexity("O(|V|+|E|) Linear Time")
+    @SpaceComplexity("O(h) h is the maximum width of the tree")
     public Collection<T> depthFirstSearch(T start) {
         Collection<T> visited = new LinkedHashSet<>();
         Stack<T> stack = new Stack<>();
@@ -192,12 +193,11 @@ public class AdjacencyListGraph<T> implements Graph<T> {
      * Topological Sort for a directed graph is a linear ordering of its vertices so that for every edge the source node comes before the destination.
      * Topological Sorting is mainly used for scheduling jobs from the given dependencies among jobs.
      * <p>
-     * Time Complexity: O(|V|+|E|)
-     * Auxiliary space: O(|V|)
-     *
      * @param start
      * @return
      */
+    @TimeComplexity("O(|V|+|E|)")
+    @SpaceComplexity("O(|V|)")
     public List<T> topologicalSort(T start) {
         LinkedList<T> result = new LinkedList<>();
         Collection<T> visited = new LinkedHashSet<>();
@@ -227,12 +227,11 @@ public class AdjacencyListGraph<T> implements Graph<T> {
      * <p>
      * 1. Initialize the d value of the starting vertex as 0 and the other vertices as ∞
      * 2. Relax the out-going edges in topological order
-     * <p>
-     * Time Complexity: O(|V|+|E|) the best for ShortestPath linear time
      *
      * @param start
      * @return
      */
+    @TimeComplexity("O(|V|+|E|) the best for ShortestPath linear time")
     public Map<Vertex<T>, Vertex<T>> dagShortestPath(T start) {
         Map<Vertex<T>, Integer> distances = new HashMap<>();
         for (Vertex<T> vertex : adjVertices.keySet()) {
