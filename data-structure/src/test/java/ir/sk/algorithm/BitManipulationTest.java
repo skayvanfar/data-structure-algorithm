@@ -28,4 +28,14 @@ public class BitManipulationTest {
     public void repeatedLogicalShift() {
         System.out.println(BitManipulation.repeatedLogicalShift(-40, 1));
     }
+
+    @Test
+    public void getBit() {
+        System.out.println(BitManipulation.getBit(40, 1));
+    }
+
+    @Test
+    public void setBit() {
+        System.out.println(BitManipulation.setBit(40, 1));
+    }
 }
