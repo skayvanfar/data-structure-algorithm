@@ -9,11 +9,11 @@ import org.junit.Test;
  */
 public class ArrayStackTest {
 
-    ArrayStack theArrayStack;
+    ArrayStack<Integer> theArrayStack;
 
     @Before
     public void setUp() throws Exception {
-        theArrayStack = new ArrayStack(10); // make new stack
+        theArrayStack = new ArrayStack<>(10); // make new stack
         theArrayStack.push(20); // push items onto stack
         theArrayStack.push(40);
         theArrayStack.push(60);

@@ -9,15 +9,15 @@ import org.junit.Test;
  */
 public class ArrayQueueTest {
 
-    ArrayQueue theArrayQueue;
+    ArrayQueue<Integer> theArrayQueue;
 
     @Before
     public void setUp() throws Exception {
-        theArrayQueue = new ArrayQueue(10);
-        theArrayQueue.insert(10); // insert 4 items
-        theArrayQueue.insert(20);
-        theArrayQueue.insert(30);
-        theArrayQueue.insert(40);
+        theArrayQueue = new ArrayQueue<>(10);
+        theArrayQueue.add(10); // insert 4 items
+        theArrayQueue.add(20);
+        theArrayQueue.add(30);
+        theArrayQueue.add(40);
     }
 
     @After
@@ -27,7 +27,7 @@ public class ArrayQueueTest {
     @Test
     public void insert() throws Exception {
         theArrayQueue.display();
-        theArrayQueue.insert(50);
+        theArrayQueue.add(50);
         theArrayQueue.display();
     }
 
