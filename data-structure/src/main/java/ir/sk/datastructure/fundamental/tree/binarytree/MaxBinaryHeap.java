@@ -103,7 +103,7 @@ public class MaxBinaryHeap {
      * @param index
      */
     @TimeComplexity("O(Log n)")
-    private void heapifyDown(int index) {
+    public void heapifyDown(int index) {
         int left = getLeftChildIndex(index);
         int right = getRightChildIndex(index);
         int max;

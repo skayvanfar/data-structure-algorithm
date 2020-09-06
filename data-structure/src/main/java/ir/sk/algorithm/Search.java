@@ -1,5 +1,6 @@
 package ir.sk.algorithm;
 
+import ir.sk.helper.DivideAndConquer;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
@@ -13,6 +14,7 @@ public class Search {
      * @param searchKey
      * @return
      */
+    @TimeComplexity("O(n)")
     public static int linerSearch(int array[], int searchKey) {
         for (int i = 0; i < array.length; i++) {
             if (array[i] == searchKey)
@@ -30,7 +32,6 @@ public class Search {
      * If the search ends with the remaining half being empty, the target is not in the array
      *
      * decrease-and-conquer (Divide-and-conquer algorithm) algorithm and iterative
-     * Time Complexity (Log n)
      *
      * @param array
      * @param key
@@ -58,7 +59,6 @@ public class Search {
 
     /**
      * decrease-and-conquer (Divide-and-conquer algorithm) algorithm and recursive
-     * Time Complexity (Log n)
      *
      * @param array
      * @param key
@@ -67,6 +67,7 @@ public class Search {
      * @return
      */
     @TimeComplexity("O(Log n)")
+    @DivideAndConquer
     public static int binarySearchByRecursive(int array[], int key, int low, int high) {
         if (low > high)
             return -1;
