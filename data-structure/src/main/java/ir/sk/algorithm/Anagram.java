@@ -1,6 +1,7 @@
 package ir.sk.algorithm;
 
 import ir.sk.helper.Point;
+import ir.sk.helper.SlidingWindowPattern;
 
 import java.util.Arrays;
 
@@ -145,6 +146,7 @@ public class Anagram {
      * @param pat
      * @param txt
      */
+    @SlidingWindowPattern
    public static void searchAnagramsInTextByHashing(String pat, String txt) {
         int M = pat.length();
         int N = txt.length();
