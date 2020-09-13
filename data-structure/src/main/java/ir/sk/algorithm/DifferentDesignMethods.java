@@ -1,10 +1,11 @@
 package ir.sk.algorithm;
 
 import ir.sk.helper.BruteForce;
+import ir.sk.helper.SlidingWindowPattern;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * different Design Method: Twoloop, hash
@@ -105,6 +106,55 @@ public class DifferentDesignMethods {
         }
 
         return maxChar;
+    }
+
+    /**
+     *  find the length of the longest substring
+     *  without repeating characters
+     * @param input
+     * @return
+     */
+    @TimeComplexity("O(n^2)")
+    public String getUniqueCharacterSubstringBruteForce(String input) {
+        String output = "";
+        for (int start = 0; start < input.length(); start++) {
+            Set<Character> visited = new HashSet<>();
+            int end = start;
+            for (; end < input.length(); end++) {
+                char currChar = input.charAt(end);
+                if (visited.contains(currChar)) {
+                    break;
+                } else {
+                    visited.add(currChar);
+                }
+            }
+            if (output.length() < end - start + 1) {
+                output = input.substring(start, end);
+            }
+        }
+        return output;
+    }
+
+    /**
+     * @param input
+     * @return
+     */
+    @SlidingWindowPattern
+    @TimeComplexity("O(n)")
+    public String getUniqueCharacterSubstring(String input) {
+        Map<Character, Integer> visited = new HashMap<>();
+        String output = "";
+        for (int start = 0, end = 0; end < input.length(); end++) {
+            char currChar = input.charAt(end);
+            if (visited.containsKey(currChar)) {
+                start = Math.max(visited.get(currChar)+1, start);
+            }
+            if (output.length() < end - start + 1) {
+                output = input.substring(start, end + 1);
+            }
+            visited.put(currChar, end);
+        }
+        return output;
     }
 
 }

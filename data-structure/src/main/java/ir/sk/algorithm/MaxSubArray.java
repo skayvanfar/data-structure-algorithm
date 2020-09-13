@@ -1,6 +1,7 @@
 package ir.sk.algorithm;
 
 import ir.sk.helper.BruteForce;
+import ir.sk.helper.SlidingWindowPattern;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
@@ -51,6 +52,7 @@ public class MaxSubArray {
      * @return
      */
     @TimeComplexity("O(n)")
+    @SlidingWindowPattern
     public static int maxSubArraySumKadanes(int[] arr) {
 
         int size = arr.length;
