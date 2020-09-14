@@ -39,6 +39,7 @@ public interface Graph<T> {
      * It requires more memory as compare to DFS. Inefficient
      * Examines bipartite graph, connected component and shortest path present in a graph.
      * Optimal for finding the shortest distance, not in cost.
+     * to find out whether there is a route between two nodes.
      *
      * can run on directed or undirected graph. It doesn't care about weight
      *

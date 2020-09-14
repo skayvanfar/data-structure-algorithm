@@ -124,6 +124,7 @@ public class AdjacencyListGraph<T> implements Graph<T> {
     @TimeComplexity("O(|V|+|E|) Linear Time")
     @SpaceComplexity("O(w) w is the maximum width of the tree")
     public Collection<T> breathFirstSearch(T start) {
+        // we can add a property as state into Node instead of this
         Collection<T> visited = new LinkedHashSet<>();
         Queue<T> queue = new LinkedList<>();
         queue.add(start);
