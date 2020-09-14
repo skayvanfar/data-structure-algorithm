@@ -1,6 +1,7 @@
 package ir.sk.algorithm;
 
 import ir.sk.helper.BruteForce;
+import ir.sk.helper.Memoization;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
@@ -40,6 +41,7 @@ public class Fibonacci {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
+    @Memoization
     private static int memoizedDPFibonacciByRecursive(int n, int[] memo) {
         if (memo[n] != 0) return memo[n];
 
@@ -60,6 +62,7 @@ public class Fibonacci {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
+    @Memoization
     public static int memoizedDPFibonacciByIterative(int n) {
         int[] array = new int[n + 1];
         array[0] = 0;
@@ -107,6 +110,7 @@ public class Fibonacci {
      * @param n
      */
     @TimeComplexity("O(n)")
+    @Memoization
     public static void allFibonacciMemoized(int n) {
         int[] memo = new int[n + 1];
         for (int i = 0; i < n; i++) {

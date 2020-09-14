@@ -58,6 +58,7 @@ public interface Graph<T> {
      * DFS traverses according to tree depth. Narrow and long
      * It requires less memory as compare to BFS. Efficient
      * Examines two-edge connected graph, strongly connected graph, acyclic graph and topological order.
+     * to find out whether there is a route between two nodes.
      *
      * can run on directed or undirected graph. It doesn't care about weight
      *
