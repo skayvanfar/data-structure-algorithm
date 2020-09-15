@@ -12,19 +12,6 @@ import java.util.Map;
  */
 public class TreeIsBalanced {
 
-    class TreeNode {
-
-        int value;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int value) {
-            this.value = value;
-            right = null;
-            left = null;
-        }
-    }
-
     /**
      * @param root
      * @return
@@ -119,4 +106,17 @@ public class TreeIsBalanced {
         return checkHeight(root) != Integer.MIN_VALUE;
     }
 
+}
+
+class TreeNode {
+
+    int value;
+    TreeNode left;
+    TreeNode right;
+
+    TreeNode(int value) {
+        this.value = value;
+        right = null;
+        left = null;
+    }
 }
