@@ -187,35 +187,6 @@ public class AdjacencyListGraph<T> implements Graph<T> {
         }
     }
 
-    /**
-     * One of the famous applications for DFS is Topological Sort. it sorts vertices in dependency order
-     * if the graph can be topological-sorted, it is a DAG(directed acyclic graph) and DAG can be topological sorted.
-     * it implements Depth First Search to process all nodes in a backtracking way
-     * Topological Sort for a directed graph is a linear ordering of its vertices so that for every edge the source node comes before the destination.
-     * Topological Sorting is mainly used for scheduling jobs from the given dependencies among jobs.
-     * <p>
-     * @param start
-     * @return
-     */
-    @TimeComplexity("O(|V|+|E|)")
-    @SpaceComplexity("O(|V|)")
-    public List<T> topologicalSort(T start) {
-        LinkedList<T> result = new LinkedList<>();
-        Collection<T> visited = new LinkedHashSet<>();
-        topologicalSortRecursive(start, visited, result);
-        return result;
-    }
-
-    private void topologicalSortRecursive(T current, Collection<T> visited, LinkedList<T> result) {
-        visited.add(current);
-        for (T dest : getNeighborsFor(current)) {
-            if (!visited.contains(dest))
-                topologicalSortRecursive(dest, visited, result);
-        }
-        result.addFirst(current);
-    }
-
-
     // every shortest paths algorithm basically repeats the edge relaxation and designs the relaxing order depending on the graph’s nature
     // (positive or negative weights, DAG, …, etc).
     // In other words, we should look for the way how to choose and relax the edges by observing the graph’s nature.
