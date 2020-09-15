@@ -22,4 +22,8 @@ public class TreeGraphAlgorithmsTest {
     @Test
     public void createMinimalBSTByOrderedArray() {
     }
+
+    @Test
+    public void checkBST() {
+    }
 }
