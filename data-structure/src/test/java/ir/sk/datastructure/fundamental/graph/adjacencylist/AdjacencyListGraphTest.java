@@ -66,13 +66,6 @@ public class AdjacencyListGraphTest {
         System.out.println(Arrays.toString(new Collection[]{graph.depthFirstSearchRecursive(0)}));
     }
 
-    @Test
-    public void topologicalSort() {
-        AdjacencyListGraph<Integer> graph = createDirectedGraph();
-        List<Integer> list = graph.topologicalSort(0);
-        System.out.println(list);
-    }
-
     private AdjacencyListGraph<Integer> createDirectedGraph() {
         AdjacencyListGraph<Integer> graph = new AdjacencyListGraph<>(true);
         graph.addVertex(0);

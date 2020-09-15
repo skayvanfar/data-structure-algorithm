@@ -10,10 +10,10 @@ import java.util.*;
  * For example, in a scheduling problem, there is a set of tasks and a set of constraints specifying the order of these tasks.
  * We can construct a DAG to represent tasks.
  * The directed edges of the DAG represent the order of the tasks.
- *
+ * <p>
  * A topological sort of a DAG G is a linear ordering of all its vertices such that if G contains an edge (u, v), then u appears before v in the ordering.
  * For a DAG, we can construct a topological sort with running time linear to the number of vertices plus the number of edges, which is O(V+E).
- *
+ * <p>
  * Created by sad.kayvanfar on 9/15/2020.
  */
 public class TopologicalSort {
@@ -79,7 +79,7 @@ public class TopologicalSort {
     @TimeComplexity("O(|V|+|E|)")
     @SpaceComplexity("O(|V|)")
     public List<Integer> topologicalSortByDFS(int start) {
-        LinkedList<Integer> result = new LinkedList<Integer>();
+        LinkedList<Integer> result = new LinkedList<>();
         boolean[] isVisited = new boolean[adjVertices.size()];
         topologicalSortByDFS(start, isVisited, result);
         return result;
@@ -92,5 +92,79 @@ public class TopologicalSort {
                 topologicalSortByDFS(dest, isVisited, result);
         }
         result.addFirst(current);
+    }
+
+
+    /**
+     * Kahn’s algorithm for Topological Sorting
+     *
+     */
+    @TimeComplexity("O(|V|+|E|)")
+    @SpaceComplexity("O(|V|)")
+    public void topologicalSortByKahn() {
+        int V = adjVertices.size();
+        // Create a array to store
+        // indegrees of all
+        // vertices. Initialize all
+        // indegrees as 0.
+        int indegree[] = new int[V];
+
+        // Traverse adjacency lists
+        // to fill indegrees of
+        // vertices. This step takes
+        // O(V+E) time
+        for (int i = 0; i < V; i++) {
+            ArrayList<Integer> temp = (ArrayList<Integer>) adjVertices.get(i);
+            for (int node : temp) {
+                indegree[node]++;
+            }
+        }
+
+        // Create a queue and enqueue
+        // all vertices with indegree 0
+        Queue<Integer> q = new LinkedList<>();
+        for (int i = 0; i < V; i++) {
+            if (indegree[i] == 0)
+                q.add(i);
+        }
+
+        // Initialize count of visited vertices
+        int cnt = 0;
+
+        // Create a vector to store result
+        // (A topological ordering of the vertices)
+        Vector<Integer> topOrder = new Vector<>();
+        while (!q.isEmpty()) {
+            // Extract front of queue
+            // (or perform dequeue)
+            // and add it to topological order
+            int u = q.poll();
+            topOrder.add(u);
+
+            // Iterate through all its
+            // neighbouring nodes
+            // of dequeued node u and
+            // decrease their in-degree
+            // by 1
+            for (int node : adjVertices.get(u)) {
+                // If in-degree becomes zero,
+                // add it to queue
+                if (--indegree[node] == 0)
+                    q.add(node);
+            }
+            cnt++;
+        }
+
+        // Check if there was a cycle
+        if (cnt != V) {
+            System.out.println(
+                    "There exists a cycle in the graph");
+            return;
+        }
+
+        // Print topological order
+        for (int i : topOrder) {
+            System.out.print(i + " ");
+        }
     }
 }

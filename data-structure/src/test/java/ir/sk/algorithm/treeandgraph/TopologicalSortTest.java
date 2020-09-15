@@ -50,4 +50,10 @@ public class TopologicalSortTest {
         graph.addEdge(4, 5);
         return graph;
     }
+
+    @Test
+    public void topologicalSortByKahn() {
+        TopologicalSort graph = createDirectedGraph();
+        graph.topologicalSortByKahn();
+    }
 }
