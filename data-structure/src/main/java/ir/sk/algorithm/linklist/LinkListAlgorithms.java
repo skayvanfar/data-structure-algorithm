@@ -1,6 +1,7 @@
 package ir.sk.algorithm.linklist;
 
 import ir.sk.datastructure.fundamental.linklist.SinglyLink;
+import ir.sk.helper.MultiplePointerPattern;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
@@ -21,6 +22,7 @@ public class LinkListAlgorithms {
      */
     @TimeComplexity("O(n^2)")
     @SpaceComplexity("O(1)")
+    @MultiplePointerPattern
     public static void deleteDuplicatesByRunner(SinglyLink head) {
         SinglyLink current = head;
         while (current != null) {
@@ -111,6 +113,7 @@ public class LinkListAlgorithms {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
+    @MultiplePointerPattern
     private static SinglyLink<Integer> nthToLastByRunner(SinglyLink<Integer> head, int k) {
         SinglyLink<Integer> pl = head;
         SinglyLink<Integer> p2 = head;
