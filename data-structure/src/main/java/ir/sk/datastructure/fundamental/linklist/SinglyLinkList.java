@@ -77,7 +77,7 @@ public class SinglyLinkList<T> {
             return null;
         }
         SinglyLink<T> current = head;
-        for(int i = 1; i < nodeNum; i++) {
+        for (int i = 1; i < nodeNum; i++) {
             current = current.next;
         }
         return current.data;
@@ -159,6 +159,20 @@ public class SinglyLinkList<T> {
      */
     public void setHead(SinglyLink<T> f) {
         head = f;
+    }
+
+    /**
+     * @param n
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    public int length(SinglyLink<T> n) {
+        int size = 0;
+        while (n != null) {
+            size++;
+            n = n.next;
+        }
+        return size;
     }
 
     /**
