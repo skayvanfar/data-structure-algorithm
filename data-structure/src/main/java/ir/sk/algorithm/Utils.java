@@ -215,6 +215,8 @@ public class Utils {
     /**
      * @param array
      */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
     public static void reverseByStack(int[] array) {
         Stack<Integer> stack = new Stack<>();
 
