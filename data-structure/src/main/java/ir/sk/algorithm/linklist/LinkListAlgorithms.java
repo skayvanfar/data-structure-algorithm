@@ -185,4 +185,46 @@ public class LinkListAlgorithms {
         }
         return result;
     }
+
+    /**
+     * first solution is to reverse the linked list and compare the reversed list to the original list. If they're the
+     * same, the lists are identical.
+     *
+     * when we compare the linked list to the reversed list, we only actually need to compare the first
+     * half of the list. If the first half of the normal list matches the first half of the reversed list, then the second half
+     * of the normal list must match the second half of the reversed list.
+     *
+     * @param head
+     * @return
+     */
+    public static boolean isPalindrome(SinglyLink head) {
+        SinglyLink reversed = reverseAndClone(head);
+        return isEqual(head, reversed);
+    }
+
+    /**
+     * @param node
+     * @return
+     */
+    public static SinglyLink reverseAndClone(SinglyLink node) {
+        SinglyLink head = null;
+        while (node != null) {
+            SinglyLink n = new SinglyLink(node.data); // Clone
+            n.next = head;
+            head = n;
+            node = node.next;
+        }
+        return head;
+    }
+
+    private static boolean isEqual(SinglyLink one, SinglyLink two) {
+        while (one != null && two != null) {
+            if (one.data != two.data)
+                return false;
+
+            one = one.next;
+            two = two.next;
+        }
+        return one == null && two == null;
+    }
 }

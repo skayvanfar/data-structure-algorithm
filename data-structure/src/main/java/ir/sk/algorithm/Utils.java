@@ -4,6 +4,8 @@ import ir.sk.helper.InPlace;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
+import java.util.Stack;
+
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 7/2/2020.
  */
@@ -165,6 +167,7 @@ public class Utils {
     }
 
     /**
+     * reverse by using another array
      * @param a
      */
     @TimeComplexity("O(n)")
@@ -197,17 +200,29 @@ public class Utils {
     }
 
     /**
-     * Time Complexity: O(n)
-     *
      * @param str
      * @return
      */
+    @TimeComplexity("O(n)")
     public static String recursiveReverse(String str) {
         if (str.length() == 1)
             return str;
         else
             return str.charAt(str.length() - 1) + recursiveReverse(str.substring(0, str.length() - 1));
 
+    }
+
+    /**
+     * @param array
+     */
+    public static void reverseByStack(int[] array) {
+        Stack<Integer> stack = new Stack<>();
+
+        for (int a : array)
+            stack.push(a);
+
+        for (int i = 0; i < array.length; i++)
+            array[i] = stack.pop();
     }
 
     /**

@@ -34,4 +34,8 @@ public class LinkListAlgorithmsTest {
     @Test
     public void sumRevertedLists() {
     }
+
+    @Test
+    public void isPalindrome() {
+    }
 }

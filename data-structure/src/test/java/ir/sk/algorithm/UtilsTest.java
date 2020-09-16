@@ -125,10 +125,21 @@ public class UtilsTest {
         Assert.assertEquals("tset", result);
     }
 
+
+    @Test
+    public void reverseByStack() {
+        long start = System.currentTimeMillis();
+        Utils.reverseByStack(array);
+        long end = System.currentTimeMillis();
+        System.out.println("recursiveReverse took " + (end - start) + " MilliSeconds");
+        System.out.println(Arrays.toString(array));
+    }
+
     @Test
     public void isPrime() {
         boolean expectedValue = true;
         boolean actual = Utils.isPrime(7);
         Assert.assertEquals(expectedValue, actual);
     }
+
 }
