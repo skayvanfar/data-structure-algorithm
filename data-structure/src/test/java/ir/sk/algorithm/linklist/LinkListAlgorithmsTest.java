@@ -51,4 +51,8 @@ public class LinkListAlgorithmsTest {
     @Test
     public void isPalindromeByRecurse() {
     }
+
+    @Test
+    public void findIntersection() {
+    }
 }

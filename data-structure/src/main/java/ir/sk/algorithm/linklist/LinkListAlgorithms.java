@@ -333,4 +333,89 @@ public class LinkListAlgorithms {
         return size;
     }
 
+    /**
+     * 1. Run through each linked list to get the lengths and the tails.
+     * 2. Compare the tails. If they are different (by reference, not by value), return immediately. There is no intersection.
+     * 3. Set two pointers to the start of each linked list.
+     * 4. On the longer linked list, advance its pointer by the difference in lengths.
+     * 5. Now, traverse on each linked list until the pointers are the same.
+     *
+     * @param listl
+     * @param list2
+     * @return
+     */
+    @TimeComplexity("O(A+B) where A and Bare the lengths of the two linked lists")
+    @SpaceComplexity("O(1)")
+    public static SinglyLink<Integer> findIntersection(SinglyLink<Integer> listl, SinglyLink<Integer> list2) {
+        if (listl == null || list2 == null) return null;
+
+
+        /* Get tail and sizes. */
+        Result2 resultl = getTailAndSize(listl);
+        Result2 result2 = getTailAndSize(list2);
+
+        /* If different tail nodes, then there's no intersection. */
+        if (resultl.tail != result2.tail) {
+            return null;
+        }
+        /* Set pointers to the start of each linked list. */
+        SinglyLink<Integer> shorter = resultl.size < result2.size ? listl : list2;
+        SinglyLink<Integer> longer = resultl.size < result2.size ? list2 : listl;
+
+        /* Advance the pointer for the longer linked list by difference in lengths. */
+        longer = getKthNode(longer, Math.abs(resultl.size - result2.size));
+
+        /* Move both pointers until you have a collision. */
+        while (shorter != longer) {
+            shorter = shorter.next;
+            longer = longer.next;
+        }
+        /* Return either one. */
+        return longer;
+    }
+
+    /**
+     * a wrapper class
+     */
+    private static class Result2 {
+        public SinglyLink tail;
+        public int size;
+
+        public Result2(SinglyLink tail, int size) {
+            this.tail = tail;
+            this.size = size;
+        }
+    }
+
+    /**
+     * @param list
+     * @return
+     */
+    private static Result2 getTailAndSize(SinglyLink<Integer> list) {
+        if (list == null) return null;
+
+        int size = 1;
+        SinglyLink<Integer> current = list;
+        while (current.next != null) {
+            size++;
+            current = current.next;
+        }
+        return new Result2(current, size);
+    }
+
+    /**
+     * return kth node.
+     * @param head
+     * @param k
+     * @return
+     */
+    private static SinglyLink<Integer> getKthNode(SinglyLink<Integer> head, int k) {
+        SinglyLink<Integer> current = head;
+        while (k > 0 && current != null) {
+            current = current.next;
+            k--;
+        }
+        return current;
+    }
+
 }
