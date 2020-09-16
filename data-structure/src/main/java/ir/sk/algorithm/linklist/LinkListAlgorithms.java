@@ -6,6 +6,7 @@ import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
 import java.util.HashSet;
+import java.util.Stack;
 
 /**
  * Created by sad.kayvanfar on 9/1/2020.
@@ -189,7 +190,7 @@ public class LinkListAlgorithms {
     /**
      * first solution is to reverse the linked list and compare the reversed list to the original list. If they're the
      * same, the lists are identical.
-     *
+     * <p>
      * when we compare the linked list to the reversed list, we only actually need to compare the first
      * half of the list. If the first half of the normal list matches the first half of the reversed list, then the second half
      * of the normal list must match the second half of the reversed list.
@@ -197,7 +198,7 @@ public class LinkListAlgorithms {
      * @param head
      * @return
      */
-    public static boolean isPalindrome(SinglyLink head) {
+    public static boolean isPalindrome(SinglyLink<Integer> head) {
         SinglyLink reversed = reverseAndClone(head);
         return isEqual(head, reversed);
     }
@@ -206,10 +207,10 @@ public class LinkListAlgorithms {
      * @param node
      * @return
      */
-    public static SinglyLink reverseAndClone(SinglyLink node) {
-        SinglyLink head = null;
+    public static SinglyLink reverseAndClone(SinglyLink<Integer> node) {
+        SinglyLink<Integer> head = null;
         while (node != null) {
-            SinglyLink n = new SinglyLink(node.data); // Clone
+            SinglyLink<Integer> n = new SinglyLink<>(node.data); // Clone
             n.next = head;
             head = n;
             node = node.next;
@@ -217,7 +218,7 @@ public class LinkListAlgorithms {
         return head;
     }
 
-    private static boolean isEqual(SinglyLink one, SinglyLink two) {
+    private static boolean isEqual(SinglyLink<Integer> one, SinglyLink<Integer> two) {
         while (one != null && two != null) {
             if (one.data != two.data)
                 return false;
@@ -226,5 +227,49 @@ public class LinkListAlgorithms {
             two = two.next;
         }
         return one == null && two == null;
+    }
+
+    /**
+     * We need to push the first half of the elements onto a stack
+     * If we don't know the size of the linked list, we can iterate through the linked list, using the fast runner/ slow
+     * runner technique
+     * At each step in the loop, we push the data from
+     * the slow runner onto a stack. When the fast runner hits the end of the list, the slow runner will have reached
+     * the middle of the linked list. By this point, the stack will have all the elements from the front of the linked
+     * list, but in reverse order.
+     *
+     * @param head
+     * @return
+     */
+    @MultiplePointerPattern
+    public static boolean isPalindromeByStack(SinglyLink<Integer> head) {
+        SinglyLink<Integer> fast = head;
+        SinglyLink<Integer> slow = head;
+
+        Stack<Integer> stack = new Stack<>();
+
+        /* Push elements from first half of linked list onto stack. When fast runner
+         * (which is moving at 2x speed) reaches the end of the linked list, then we
+         * know we're at the middle*/
+        while (fast != null && fast.next != null) {
+            stack.push(slow.data);
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        /* Has odd number of elements, so skip the middle element*/
+        if (fast != null)
+            slow = slow.next;
+
+        while (slow != null) {
+            int top = stack.pop().intValue();
+
+            /* If values are different, then it's not a palindrome*/
+            if (top != slow.data)
+                return false;
+
+            slow = slow.next;
+        }
+        return true;
     }
 }

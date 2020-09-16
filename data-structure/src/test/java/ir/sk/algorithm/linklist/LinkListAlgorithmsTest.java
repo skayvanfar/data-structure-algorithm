@@ -38,4 +38,13 @@ public class LinkListAlgorithmsTest {
     @Test
     public void isPalindrome() {
     }
+
+    @Test
+    public void reverseAndClone() {
+    }
+
+    @Test
+    public void isPalindromeByStack() {
+
+    }
 }
