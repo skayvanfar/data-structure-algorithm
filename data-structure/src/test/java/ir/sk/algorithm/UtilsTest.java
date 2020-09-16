@@ -1,5 +1,7 @@
 package ir.sk.algorithm;
 
+import ir.sk.algorithm.basic.Reverse;
+import ir.sk.algorithm.basic.Utils;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -94,45 +96,6 @@ public class UtilsTest {
         Assert.assertEquals(a, 5);
         Assert.assertEquals(b, 7);
         Assert.assertEquals(c, 4);
-    }
-
-    @Test
-    public void reverse() {
-        System.out.println(Arrays.toString(array));
-        long start = System.currentTimeMillis();
-        int[] result = Utils.reverse(array);
-        long end = System.currentTimeMillis();
-        System.out.println("reverse took " + (end - start) + " MilliSeconds");
-        System.out.println(Arrays.toString(result));
-    }
-
-    @Test
-    public void inPlaceReverse() {
-        System.out.println(Arrays.toString(array));
-        long start = System.currentTimeMillis();
-        Utils.inPlaceReverse(array);
-        long end = System.currentTimeMillis();
-        System.out.println("inPlaceReverse took " + (end - start) + " MilliSeconds");
-        System.out.println(Arrays.toString(array));
-    }
-
-    @Test
-    public void recursiveReverse() {
-        long start = System.currentTimeMillis();
-        String result = Utils.recursiveReverse("test");
-        long end = System.currentTimeMillis();
-        System.out.println("recursiveReverse took " + (end - start) + " MilliSeconds");
-        Assert.assertEquals("tset", result);
-    }
-
-
-    @Test
-    public void reverseByStack() {
-        long start = System.currentTimeMillis();
-        Utils.reverseByStack(array);
-        long end = System.currentTimeMillis();
-        System.out.println("recursiveReverse took " + (end - start) + " MilliSeconds");
-        System.out.println(Arrays.toString(array));
     }
 
     @Test

@@ -1,17 +1,10 @@
 package ir.sk.datastructure.fundamental.tree;
 
-import ir.sk.algorithm.Algorithms;
-import ir.sk.algorithm.Utils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by sad.keyvanfar on 7/28/2020.
