@@ -272,4 +272,65 @@ public class LinkListAlgorithms {
         }
         return true;
     }
+
+    static class Result {
+        public SinglyLink<Integer> node;
+        public boolean result;
+
+        public Result(SinglyLink<Integer> node, boolean result) {
+            this.node = node;
+            this.result = result;
+        }
+    }
+
+    /**
+     * we first need to know when we've reached the middle element, as this will
+     * form our base case. We can do this by passing in length - 2 for the length each time. When the length
+     * equals 0 or 1, we're at the center of the linked list. This is because the length is reduced by 2 each time. Once
+     * we've recursed Yi times, length will be down to 0
+     *
+     * @param head
+     * @return
+     */
+    public static boolean isPalindromeByRecurse(SinglyLink<Integer> head) {
+        int length = lengthOfList(head);
+        Result p = isPalindromeRecurse(head, length);
+        return p.result;
+    }
+
+    private static Result isPalindromeRecurse(SinglyLink<Integer> head, int length) {
+        if (head == null || length <= 0) {
+            // Even number of nodes
+            return new Result(head, true);
+        } else if (length == 1) {
+            // Odd number of nodes
+            return new Result(head.next, true);
+        }
+
+        // Recurse on sublist.
+        Result res = isPalindromeRecurse(head.next, length - 2);
+
+        // If child calls are not a palindrome, pass back up a failure.
+        if (!res.result || res.node == null) {
+            return res;
+        }
+
+        // Check if matches corresponding node on other side.
+        res.result = (head.data == res.node.data);
+
+        // Return corresponding node.
+        res.node = res.node.next;
+
+        return res;
+    }
+
+    private static int lengthOfList(SinglyLink<Integer> n) {
+        int size = 0;
+        while (n != null) {
+            size++;
+            n = n.next;
+        }
+        return size;
+    }
+
 }
