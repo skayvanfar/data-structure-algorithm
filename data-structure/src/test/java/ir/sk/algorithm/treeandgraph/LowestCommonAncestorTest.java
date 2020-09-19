@@ -22,4 +22,8 @@ public class LowestCommonAncestorTest {
     @Test
     public void lowestCommonAncestorForBST() {
     }
+
+    @Test
+    public void commonAncestorByParentForbt() {
+    }
 }
