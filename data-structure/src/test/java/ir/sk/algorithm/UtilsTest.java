@@ -1,6 +1,5 @@
 package ir.sk.algorithm;
 
-import ir.sk.algorithm.basic.Rotation;
 import ir.sk.algorithm.basic.Utils;
 import org.junit.After;
 import org.junit.Assert;
@@ -58,4 +57,8 @@ public class UtilsTest {
         Assert.assertEquals(expectedValue, actual);
     }
 
+    @Test
+    public void sieveOfEratosthenes() {
+        System.out.println(Arrays.toString(Utils.sieveOfEratosthenesFindPrimes(100)));
+    }
 }
