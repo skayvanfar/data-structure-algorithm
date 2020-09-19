@@ -31,7 +31,7 @@ public class BitManipulationTest {
 
     @Test
     public void getBit() {
-        System.out.println(BitManipulation.getBit(40, 1));
+        System.out.println(BitManipulation.getBit(40, 3));
     }
 
     @Test
