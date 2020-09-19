@@ -5,6 +5,14 @@ package ir.sk.algorithm;
  */
 public class BitManipulation {
 
+    /**
+     * In an arithmetic right shift, we shift values to the right but fill in the new bits with the value of the sign bit.
+     * This has the effect of (roughly) dividing by two. It is indicated by a > > operator.
+     *
+     * @param x
+     * @param count
+     * @return
+     */
     public static int repeatedArithmeticShift(int x, int count) {
         for (int i = 0; i < count; i++) {
             x >>= 1; // Arithmetic shift by 1
@@ -12,6 +20,13 @@ public class BitManipulation {
         return x;
     }
 
+    /**
+     * With the logical shift, we would get 0 because we are shifting a zero into the most significant bit repeatedly.
+     *
+     * @param x
+     * @param count
+     * @return
+     */
     public static int repeatedLogicalShift(int x, int count) {
         for (int i = 0; i < count; i++) {
             x >>>= 1; // Logical shift by 1
