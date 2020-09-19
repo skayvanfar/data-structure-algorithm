@@ -51,6 +51,7 @@ public class LowestCommonAncestor {
      * @param q
      * @return
      */
+    @TimeComplexity("0(d) time, where d is the depth of the deeper node")
     public static TreeNode commonAncestorByParentForBT(TreeNode p, TreeNode q) {
         int delta = depth(p) - depth(q); // get difference in depths
         TreeNode first = delta > 0 ? q : p; // get shallower node
