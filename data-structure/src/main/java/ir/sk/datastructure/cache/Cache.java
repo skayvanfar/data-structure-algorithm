@@ -1,8 +1,11 @@
 package ir.sk.datastructure.cache;
 
+import ir.sk.helper.TimeComplexity;
+
 import java.util.HashMap;
 
 /**
+ * LRU eviction cache (Least Recently Used eviction)
  * designing the cache, we know we'll need to support two primary functions:
  * Efficient lookups given a key.
  * Expiration of old data so that it can be replaced with new data.
@@ -96,6 +99,7 @@ public class Cache {
      * @param query
      * @return
      */
+    @TimeComplexity("O(1)")
     public String[] getResults(String query) {
         if (map.containsKey(query)) {
             Node node = map.get(query);
@@ -111,6 +115,7 @@ public class Cache {
      * @param query
      * @param results
      */
+    @TimeComplexity("O(1)")
     public void insertResults(String query, String[] results) {
         if (map.containsKey(query)) {
             Node node = map.get(query);
