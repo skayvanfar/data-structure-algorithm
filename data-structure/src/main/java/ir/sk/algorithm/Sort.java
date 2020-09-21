@@ -6,6 +6,7 @@ import ir.sk.datastructure.fundamental.tree.binarytree.MaxBinaryHeap;
 import ir.sk.datastructure.fundamental.tree.binarytree.binarysearchtree.BinarySearchTree;
 import ir.sk.helper.InPlace;
 import ir.sk.helper.SpaceComplexity;
+import ir.sk.helper.Stability;
 import ir.sk.helper.TimeComplexity;
 
 import java.util.Arrays;
@@ -17,11 +18,18 @@ import java.util.stream.IntStream;
 public class Sort {
 
     /**
+     * In bubble sort, we start at the beginning of the array and swap the first two elements if the first is greater
+     * than the second. Then, we go to the next pair, and so on, continuously making sweeps of the array until it is
+     * sorted. In doing so, the smaller items slowly"bubble" up to the beginning of the list.
+     * <p>
      * compare and swap
-     * Stable: Yes
      *
      * @param array
      */
+    @TimeComplexity("O(n^2)")
+    @SpaceComplexity("O(1)")
+    @InPlace
+    @Stability
     public static void bubbleSort(int[] array) {
         int n = array.length;
         for (int out = 0; out < n; out++) {
@@ -33,33 +41,56 @@ public class Sort {
 
 
     /**
+     * Selection sort is a simple sorting algorithm. This sorting algorithm is
+     * an in-place comparison-based algorithm in which the list is divided into two parts,
+     * the sorted part at the left end and the unsorted part at the right end. Initially,
+     * the sorted part is empty and the unsorted part is the entire list.
+     * The smallest element is selected from the unsorted array and swapped with the leftmost element,
+     * and that element becomes a part of the sorted array.
+     * This process continues moving unsorted array boundary by one element to the right.
+     * <p>
      * compare and swap
      * The selection sort performs the same number of comparisons as the bubble sort.
      * but lower swap
      *
      * @param array
      */
+    @TimeComplexity("O(n^2)")
+    @SpaceComplexity("O(1)")
+    @InPlace
+    @Stability(value = false)
     public static void selectionSort(int[] array) {
-        int out, in, min;
-        for (out = 0; out < array.length - 1; out++) { // outer loop
-            min = out; // minimum
-            for (in = out + 1; in < array.length; in++) // inner loop
-                if (array[in] < array[min]) // if min greater,
-                    min = in; // we have a new min
-            array[out] = Utils.gSwap(array[min], array[min] = array[out]); // swap them
-        } // end for(out)
+        // One by one move boundary of unsorted subarray
+        for (int i = 0; i < array.length - 1; i++) {
+            // Find the minimum element in unsorted array
+            int min = i;
+            for (int j = i + 1; j < array.length; j++)
+                if (array[j] < array[min])
+                    min = j;
+            // Swap the found minimum element with the first element
+            array[i] = Utils.gSwap(array[min], array[min] = array[i]); // swap them
+        }
     }
 
     /**
      * compare and copy
-     * twice faster than bubble sort and faster than selection sort
-     * Stable: Yes
-     * Sorting In Place: Yes
+     *
+     *  an in-place comparison-based algorithm in which the list is divided into two parts,
+     *  the partly sorted part at the left end and the unsorted part at the right end.
+     *
+     * a few advantages: simple implementation, efficient for small data sets,
+     * more efficient than selection sort or bubble sort, does not need much memory.
+     *
+     * Insertion sort: inserts the next element at the correct position;
+     *
+     * Selection sort: selects the smallest element and exchange it with the current item;
      *
      * @param array
      */
-    @TimeComplexity("O(n * 2)")
+    @TimeComplexity("O(n ^ 2)")
     @SpaceComplexity("O(1)")
+    @InPlace
+    @Stability
     public static void insertionSort(int[] array) {
         for (int i = 1; i < array.length; ++i) {
             int key = array[i];
@@ -147,7 +178,7 @@ public class Sort {
 
     /**
      * Divide-and-conquer algorithm and recursive
-     *
+     * <p>
      * Sorting In Place: Yes
      *
      * @param array
@@ -209,7 +240,7 @@ public class Sort {
      * 5. New root may violate max heap property, but its
      * children are max heaps. Run max_heapify to fix this.
      * 6. Go to Step 2 unless heap is empty
-     *
+     * <p>
      * Sorting In Place: Yes
      *
      * @param array
@@ -237,7 +268,7 @@ public class Sort {
      * Tree sort is a sorting algorithm that is based on Binary Search Tree data structure
      * It first creates a binary search tree from the elements of the input list or array
      * and then performs an in-order traversal on the created binary search tree to get the elements in sorted order.
-     *
+     * <p>
      * Sorting In Place: No
      *
      * @param array
