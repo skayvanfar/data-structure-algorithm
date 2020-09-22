@@ -3,7 +3,7 @@ package ir.sk.algorithm;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
-import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -372,7 +372,7 @@ public class Algorithms {
 
     /**
      * sums the digits in a number
-     *
+     * <p>
      * The runtime will be the number of digits in the number. A number with d digits can have a
      * value up to 10 ^ d. If n = 10 ^ d , then d = log n. Therefore, the runtime is 0( log n).
      *
@@ -387,6 +387,33 @@ public class Algorithms {
             n /= 10;
         }
         return sum;
+    }
+
+    /**
+     * Power Set: a method to return all subsets of a set.
+     * @param set
+     * @param index
+     * @return
+     */
+    @SpaceComplexity("O(n2^n)")
+    public static ArrayList<ArrayList<Integer>> getSubsets(ArrayList<Integer> set, int index) {
+        ArrayList<ArrayList<Integer>> allSubsets;
+        if (set.size() == index) {//Base case - add empty set
+            allSubsets = new ArrayList<>();
+            allSubsets.add(new ArrayList<>()); // Empty set
+        } else {
+            allSubsets = getSubsets(set, index + 1);
+            int item = set.get(index);
+            ArrayList<ArrayList<Integer>> moresubsets = new ArrayList<>();
+            for (ArrayList<Integer> subset : allSubsets) {
+                ArrayList<Integer> newsubset = new ArrayList<>();
+                newsubset.addAll(subset); //
+                newsubset.add(item);
+                moresubsets.add(newsubset);
+            }
+            allSubsets.addAll(moresubsets);
+        }
+        return allSubsets;
     }
 
 }

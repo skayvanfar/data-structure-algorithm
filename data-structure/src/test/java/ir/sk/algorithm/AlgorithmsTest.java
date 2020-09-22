@@ -135,4 +135,8 @@ public class AlgorithmsTest {
         String expectedValue = "27";
         Assert.assertEquals(expectedValue, Algorithms.sumDigits(999) + "");
     }
+
+    @Test
+    public void getSubsets() {
+    }
 }
