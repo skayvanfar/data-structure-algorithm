@@ -1,5 +1,6 @@
 package ir.sk.algorithm;
 
+import ir.sk.helper.BinarySearch;
 import ir.sk.helper.DivideAndConquer;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
@@ -68,6 +69,7 @@ public class Search {
      */
     @TimeComplexity("O(Log n)")
     @DivideAndConquer
+    @BinarySearch
     public static int binarySearchByRecursive(int array[], int key, int low, int high) {
         if (low > high)
             return -1;

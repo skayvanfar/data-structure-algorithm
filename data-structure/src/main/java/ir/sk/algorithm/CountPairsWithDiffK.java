@@ -1,5 +1,6 @@
 package ir.sk.algorithm;
 
+import ir.sk.helper.BinarySearch;
 import ir.sk.helper.BruteForce;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
@@ -76,6 +77,7 @@ public class CountPairsWithDiffK {
         return count;
     }
 
+    @BinarySearch
     private static int binarySearch(int arr[], int low, int high, int x) {
         if (high >= low) {
             int mid = low + (high - low) / 2;

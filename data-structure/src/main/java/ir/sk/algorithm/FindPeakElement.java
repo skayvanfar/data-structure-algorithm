@@ -1,5 +1,6 @@
 package ir.sk.algorithm;
 
+import ir.sk.helper.BinarySearch;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
@@ -50,6 +51,7 @@ public class FindPeakElement {
      */
     @TimeComplexity("O(log n)")
     @SpaceComplexity("O(1)")
+    @BinarySearch
     public static boolean findPeakByRecursive(int array[], int low, int high) {
         if (low > high)
             return false;
