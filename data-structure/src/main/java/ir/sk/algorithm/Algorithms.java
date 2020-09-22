@@ -192,21 +192,25 @@ public class Algorithms {
     /**
      * Divide-and-conquer algorithm and recursive
      *
+     * (1) Only one disk can be moved at a time.
+     * (2) A disk is slid off the top of one tower onto another tower.
+     * (3) A disk cannot be placed on top of a smaller disk.
+     *
      * @param topN
      * @param src
-     * @param inter
+     * @param buffer
      * @param dest
      */
     public static void doTowers(int topN,
-                                char src, char inter, char dest) {
+                                char src, char buffer, char dest) {
         if (topN == 1)
             System.out.println("Disk 1 from " + src + " to " + dest);
         else {
-            doTowers(topN - 1, src, dest, inter);   // src to inter
+            doTowers(topN - 1, src, dest, buffer);   // src to buffer
 
             System.out.println("Disk " + topN +   // move bottom
                     " from " + src + " to " + dest);
-            doTowers(topN - 1, inter, src, dest);   // inter to dest
+            doTowers(topN - 1, buffer, src, dest);   // buffer to dest
         }
 
     }
