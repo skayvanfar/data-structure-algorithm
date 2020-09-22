@@ -4,10 +4,7 @@ import ir.sk.algorithm.basic.Rotation;
 import ir.sk.algorithm.basic.Utils;
 import ir.sk.datastructure.fundamental.tree.binarytree.MaxBinaryHeap;
 import ir.sk.datastructure.fundamental.tree.binarytree.binarysearchtree.BinarySearchTree;
-import ir.sk.helper.InPlace;
-import ir.sk.helper.SpaceComplexity;
-import ir.sk.helper.Stability;
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.*;
 
 import java.util.Arrays;
 import java.util.stream.IntStream;
@@ -74,15 +71,15 @@ public class Sort {
 
     /**
      * compare and copy
-     *
-     *  an in-place comparison-based algorithm in which the list is divided into two parts,
-     *  the partly sorted part at the left end and the unsorted part at the right end.
-     *
+     * <p>
+     * an in-place comparison-based algorithm in which the list is divided into two parts,
+     * the partly sorted part at the left end and the unsorted part at the right end.
+     * <p>
      * a few advantages: simple implementation, efficient for small data sets,
      * more efficient than selection sort or bubble sort, does not need much memory.
-     *
+     * <p>
      * Insertion sort: inserts the next element at the correct position;
-     *
+     * <p>
      * Selection sort: selects the smallest element and exchange it with the current item;
      *
      * @param array
@@ -228,6 +225,49 @@ public class Sort {
 
         for (j = 0; j < n; j++)
             array[lowerBound + j] = workSpace[j];
+    }
+
+    /**
+     * In quick sort we pick a random element and partition the array, such that all numbers that are less than the
+     * partitioning element come before all elements that are greater than it. The partitioning can be performed
+     * efficiently through a series of swaps
+     *
+     * @param arr
+     * @param left
+     * @param right
+     */
+    @TimeComplexity("O(n * Log n)")
+    @SpaceComplexity("O(1)")
+    @InPlace
+    @Stability(false)
+    @DivideAndConquer
+    public static void quickSort(int[] arr, int left, int right) {
+        int index = partition(arr, left, right);
+        if (left < index - 1) { // Sort left half
+            quickSort(arr, left, index - 1);
+        }
+        if (index < right) { // Sort right half
+            quickSort(arr, index, right);
+        }
+    }
+
+    public static int partition(int[] arr, int left, int right) {
+        int pivot = arr[(left + right) / 2]; // Pick pivot point
+        while (left <= right) {
+            // Find element on left that should be on right
+            while (arr[left] < pivot) left++;
+
+            // Find element on right that should be on left
+            while (arr[right] > pivot) right--;
+
+            // Swap elements, and move left and right indices
+            if (left <= right) {
+                Utils.gSwap(arr[left], arr[left] = arr[right]); // swaps elements
+                left++;
+                right--;
+            }
+        }
+        return left;
     }
 
     /**

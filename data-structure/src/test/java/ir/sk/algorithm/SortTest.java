@@ -118,4 +118,8 @@ public class SortTest {
         System.out.println("Logic countingSortWithNegative took " + (end - start) + " MilliSeconds");
         assertArrayEquals(expected, arr);
     }
+
+    @Test
+    public void quickSort() {
+    }
 }
