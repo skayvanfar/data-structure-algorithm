@@ -433,8 +433,14 @@ public class Sort {
     }
 
     /**
+     * The radix sorting algorithm is an integer sorting algorithm, that sorts by grouping numbers by their individual digits (or by their radix).
+     * It uses each radix/digit as a key, and implements counting sort or bucket sort under the hood in order to do the work of sorting.
+     *
      * @param numbers
      */
+    @TimeComplexity("O(kn) where n is the number of elements in input array and k represented this number of digits of maximum value.")
+    @SpaceComplexity("nO(n + k)")
+    @Stability
     public static void radixSort(int numbers[]) {
         int maximumNumber = findMaximumNumberIn(numbers);
 
@@ -452,6 +458,7 @@ public class Sort {
         int range = 10; // radix or the base
 
         int length = numbers.length;
+        // Using count sort
         int[] frequency = new int[range];
         int[] sortedValues = new int[length];
 
