@@ -17,6 +17,8 @@ import java.util.HashMap;
  *
  * By merging the two data structures
  *
+ * alternatively ou can use LinkedHashMap
+ *
  * Created by sad.kayvanfar on 9/21/2020.
  */
 public class Cache {
