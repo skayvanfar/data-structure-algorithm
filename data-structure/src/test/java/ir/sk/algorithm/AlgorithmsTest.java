@@ -87,7 +87,8 @@ public class AlgorithmsTest {
     }
 
     @Test
-    public void doTowers() {
+    public void towerOfHanoi() {
+        Algorithms.towerOfHanoi(4, 'A', 'C', 'B');
     }
 
     @Test
@@ -138,5 +139,9 @@ public class AlgorithmsTest {
 
     @Test
     public void getSubsets() {
+    }
+
+    @Test
+    public void testDoTowers() {
     }
 }

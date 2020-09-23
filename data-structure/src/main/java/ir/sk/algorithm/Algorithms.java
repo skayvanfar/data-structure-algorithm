@@ -190,27 +190,29 @@ public class Algorithms {
     }
 
     /**
+     * The Towers of Hanoi
      * Divide-and-conquer algorithm and recursive
      *
      * (1) Only one disk can be moved at a time.
      * (2) A disk is slid off the top of one tower onto another tower.
      * (3) A disk cannot be placed on top of a smaller disk.
      *
-     * @param topN
-     * @param src
-     * @param buffer
-     * @param dest
+     * @param n the number of disks
+     * @param src the name of the source rod
+     * @param buffer the name of the auxiliary rod
+     * @param dest is the name of the destination rod
      */
-    public static void doTowers(int topN,
-                                char src, char buffer, char dest) {
-        if (topN == 1)
+    @TimeComplexity("O(2^n)")
+    @SpaceComplexity("O(n)")
+    public static void towerOfHanoi(int n, char src, char buffer, char dest) {
+        if (n == 1)
             System.out.println("Disk 1 from " + src + " to " + dest);
         else {
-            doTowers(topN - 1, src, dest, buffer);   // src to buffer
+            towerOfHanoi(n - 1, src, dest, buffer);   // src to buffer
 
-            System.out.println("Disk " + topN +   // move bottom
+            System.out.println("Disk " + n +   // move bottom
                     " from " + src + " to " + dest);
-            doTowers(topN - 1, buffer, src, dest);   // buffer to dest
+            towerOfHanoi(n - 1, buffer, src, dest);   // buffer to dest
         }
 
     }
@@ -399,7 +401,7 @@ public class Algorithms {
      * @param index
      * @return
      */
-    @SpaceComplexity("O(n2^n)")
+    @SpaceComplexity("O(n*2^n)")
     public static ArrayList<ArrayList<Integer>> getSubsets(ArrayList<Integer> set, int index) {
         ArrayList<ArrayList<Integer>> allSubsets;
         if (set.size() == index) {//Base case - add empty set

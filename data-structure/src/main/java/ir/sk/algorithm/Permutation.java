@@ -4,6 +4,7 @@ import ir.sk.helper.BCR;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
@@ -22,6 +23,50 @@ import java.util.Collections;
 public class Permutation {
 
     private final static int MAX_CHAR = 256;
+
+    /**
+     * a method to compute all permutations of a string of unique characters.
+     * Building from permutations of first n-1 characters.
+     * we took all the permutations of a1 a2 a3 and added a4 into all possible locations, we would get all permutations of a1 a2 a3 a4.
+     *
+     * @param str
+     * @return
+     */
+    @TimeComplexity("O(n!)")
+    public static ArrayList<String> getPerms(String str) {
+        if (str == null) return null;
+
+        ArrayList<String> permutations = new ArrayList<>();
+        if (str.length() == 0) { //base case
+            permutations.add("");
+            return permutations;
+        }
+
+        char first = str.charAt(0); // get the first char
+        String remainder = str.substring(1); // remove the first char
+        ArrayList<String> words = getPerms(remainder);
+        for (String word : words) {
+            for (int j = 0; j <= word.length(); j++) {
+                String s = insertCharAt(word, first, j);
+                permutations.add(s);
+            }
+        }
+        return permutations;
+    }
+
+    /**
+     * Insert char c at index i in word
+     *
+     * @param word
+     * @param c
+     * @param i
+     * @return
+     */
+    private static String insertCharAt(String word, char c, int i) {
+        String start = word.substring(0, i);
+        String end = word.substring(i);
+        return start + c + end;
+    }
 
     /**
      * @param str
