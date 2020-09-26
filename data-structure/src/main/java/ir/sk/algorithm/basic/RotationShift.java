@@ -6,7 +6,7 @@ import ir.sk.helper.TimeComplexity;
 /**
  * Created by sad.kayvanfar on 9/16/2020.
  */
-public class Rotation {
+public class RotationShift {
     /**
      * shifting - right rotation just one unit
      *
@@ -18,12 +18,28 @@ public class Rotation {
     @SpaceComplexity("O(1)")
     public static void rightRotate(int[] array, int startIndex, int endIndex) {
         int temp = array[endIndex];
-        int k = endIndex - 1;
-        while (k >= startIndex) {
-            array[k + 1] = array[k];
-            k--;
-        }
+        rightShift(array, startIndex, endIndex);
         array[startIndex] = temp;
+    }
+
+    /**
+     * @param array
+     * @param startIndex
+     * @param endIndex
+     */
+    public static void rightShift(int[] array, int startIndex, int endIndex) {
+        for (int i = endIndex - 1; i >= startIndex; i--)
+            array[i + 1] = array[i];
+    }
+
+    /**
+     * @param array
+     * @param startIndex
+     * @param endIndex
+     */
+    public static void leftShift(int[] array, int startIndex, int endIndex) {
+        for (int i = startIndex; i < endIndex; i++)
+            array[i] = array[i+1];
     }
 
     /**
@@ -37,11 +53,7 @@ public class Rotation {
     @SpaceComplexity("O(1)")
     public static void leftRotate(int[] array, int startIndex, int endIndex) {
         int temp = array[startIndex];
-        int k = startIndex;
-        while (k < endIndex) {
-            array[k] = array[k + 1];
-            k++;
-        }
+        leftShift(array, startIndex, endIndex);
         array[endIndex] = temp;
     }
 

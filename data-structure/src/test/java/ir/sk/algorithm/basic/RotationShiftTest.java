@@ -7,12 +7,10 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by sad.kayvanfar on 9/16/2020.
  */
-public class RotationTest {
+public class RotationShiftTest {
 
     private int[] array;
 
@@ -30,7 +28,7 @@ public class RotationTest {
         int[] expected = new int[]{1, 5, 2, 3, 4, 6};
         System.out.println(Arrays.toString(array));
         long start = System.currentTimeMillis();
-        Rotation.rightRotate(array, 1, 4);
+        RotationShift.rightRotate(array, 1, 4);
         long end = System.currentTimeMillis();
         System.out.println("rightRotate took " + (end - start) + " MilliSeconds");
         System.out.println(Arrays.toString(array));
@@ -42,7 +40,7 @@ public class RotationTest {
         int[] expected = new int[]{1, 3, 4, 5, 2, 6};
         System.out.println(Arrays.toString(array));
         long start = System.currentTimeMillis();
-        Rotation.leftRotate(array, 1, 4);
+        RotationShift.leftRotate(array, 1, 4);
         long end = System.currentTimeMillis();
         System.out.println("leftRotate took " + (end - start) + " MilliSeconds");
         System.out.println(Arrays.toString(array));
@@ -53,7 +51,7 @@ public class RotationTest {
     public void testRightRotate() { // TODO: 7/14/2020
         System.out.println(Arrays.toString(array));
         long start = System.currentTimeMillis();
-        Rotation.rightRotate(array, 1, 4, 2);
+        RotationShift.rightRotate(array, 1, 4, 2);
         long end = System.currentTimeMillis();
         System.out.println("rightRotate took " + (end - start) + " MilliSeconds");
         System.out.println(Arrays.toString(array));
@@ -64,7 +62,7 @@ public class RotationTest {
         int[] expected = new int[]{1, 4, 5, 2, 3, 6};
         System.out.println(Arrays.toString(array));
         long start = System.currentTimeMillis();
-        Rotation.leftRotate(array, 1, 4, 2);
+        RotationShift.leftRotate(array, 1, 4, 2);
         long end = System.currentTimeMillis();
         System.out.println("Logic shift took " + (end - start) + " MilliSeconds");
         System.out.println(Arrays.toString(array));

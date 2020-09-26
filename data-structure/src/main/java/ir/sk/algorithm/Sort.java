@@ -1,6 +1,6 @@
 package ir.sk.algorithm;
 
-import ir.sk.algorithm.basic.Rotation;
+import ir.sk.algorithm.basic.RotationShift;
 import ir.sk.algorithm.basic.Utils;
 import ir.sk.datastructure.fundamental.tree.binarytree.MaxBinaryHeap;
 import ir.sk.datastructure.fundamental.tree.binarytree.binarysearchtree.BinarySearchTree;
@@ -122,7 +122,7 @@ public class Sort {
 
             // Move all elements after location to create space
             // Shifting array to one location right
-            Rotation.rightRotate(array, loc, i);
+            RotationShift.rightRotate(array, loc, i);
             // System.arraycopy(array, loc, array, loc + 1, i - loc);
             // Placing element at its correct location
             // array[loc] = key;
