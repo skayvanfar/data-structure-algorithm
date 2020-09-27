@@ -1,6 +1,7 @@
 package ir.sk.datastructure.queue;
 
 import ir.sk.datastructure.fundamental.tree.binarytree.MaxBinaryHeap;
+import ir.sk.helper.TimeComplexity;
 
 /**
  * It's just a wrapper for BinaryHeap
@@ -21,28 +22,28 @@ public class HeapPriorityQueue {
     }
 
     /**
-     * Time Complexity: O(Log n)
      *
      * @param value
      */
+    @TimeComplexity("O(Log n)")
     public void insert(int value) {
         this.binaryHeap.insert(value);
     }
 
     /**
-     * Time Complexity: O(1)
      *
      * @return
      */
+    @TimeComplexity("O(1)")
     public int max() {
         return this.binaryHeap.max();
     }
 
     /**
-     * Time Complexity: O(Log n)
      *
      * @return
      */
+    @TimeComplexity("O(Log n)")
     public int extractMax() {
         return this.binaryHeap.extractMax();
     }

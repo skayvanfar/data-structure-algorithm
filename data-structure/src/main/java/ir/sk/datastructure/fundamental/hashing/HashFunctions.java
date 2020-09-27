@@ -1,5 +1,7 @@
 package ir.sk.datastructure.fundamental.hashing;
 
+import ir.sk.helper.Remainder;
+
 /**
  * for (n = tableSize) transform key into 0, 1, 2, ..., n-1
  * Created by sad.keyvanfar on 7/6/2020.
@@ -11,6 +13,7 @@ public class HashFunctions {
      * @param tableSize
      * @return
      */
+    @Remainder
     public static int division(int key, int tableSize) {
         return key % tableSize;
     }

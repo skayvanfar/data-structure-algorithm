@@ -1,6 +1,6 @@
 package ir.sk.datastructure.fundamental.hashing;
 
-import ir.sk.helper.Point;
+import ir.sk.helper.Remainder;
 import ir.sk.helper.TimeComplexity;
 
 /**
@@ -30,7 +30,7 @@ public class ChainingDictionary<K, V> implements Dictionary<K, V> {
     private ChainingHashNode<K, V>[] bucketArray;
 
     // Current capacity of array list (m) (n <= m <= 4n) (constant load factor)
-    private int numBuckets;
+    private int capacity;
 
     // Current size of array list (n)
     private int size;
@@ -39,9 +39,9 @@ public class ChainingDictionary<K, V> implements Dictionary<K, V> {
 
     public ChainingDictionary() {
         this.maxLoadFactor = DEFAULT_LOAD_FACTOR;
-        this.numBuckets = DEFAULT_CAPACITY;
+        this.capacity = DEFAULT_CAPACITY;
         this.size = 0;
-        bucketArray = new ChainingHashNode[numBuckets];
+        bucketArray = new ChainingHashNode[capacity];
     }
 
     public ChainingDictionary(int initialCapacity, float maxLoadFactor) {
@@ -50,9 +50,9 @@ public class ChainingDictionary<K, V> implements Dictionary<K, V> {
         if (maxLoadFactor <= 0 || Float.isNaN(maxLoadFactor))
             throw new IllegalArgumentException("Illegal load factor: " + maxLoadFactor);
         this.maxLoadFactor = maxLoadFactor;
-        this.numBuckets = initialCapacity;
+        this.capacity = initialCapacity;
         this.size = 0;
-        bucketArray = new ChainingHashNode[numBuckets];
+        bucketArray = new ChainingHashNode[capacity];
     }
 
     public int size() {
@@ -73,7 +73,8 @@ public class ChainingDictionary<K, V> implements Dictionary<K, V> {
         // prehashing
         int hashCode = key.hashCode();
         // hashing
-        int index = hashCode % numBuckets;
+        @Remainder
+        int index = hashCode % capacity;
         return index;
     }
 
@@ -135,10 +136,10 @@ public class ChainingDictionary<K, V> implements Dictionary<K, V> {
         bucketArray[bucketIndex] = newNode;
 
         //  when Load Factor (n/m) is 1, Time Complexity is exact O(1)
-        double loadFactor = ((1.0 * size) / numBuckets);
+        double loadFactor = ((1.0 * size) / capacity);
         if (loadFactor >= this.maxLoadFactor) {
             // size of new array = 2 * numBuckets (Table Doubling): It's the best size for growing the size of array
-            reHash(2 * numBuckets);
+            reHash(2 * capacity);
         }
     }
 
@@ -147,10 +148,10 @@ public class ChainingDictionary<K, V> implements Dictionary<K, V> {
      */
     @TimeComplexity("O(n + m + m') = O(n)")
     private void reHash(int m) {
-        numBuckets = m;
+        capacity = m;
         size = 0;
         ChainingHashNode<K, V>[] temp = bucketArray;
-        bucketArray = new ChainingHashNode[numBuckets];
+        bucketArray = new ChainingHashNode[capacity];
 
         for (ChainingHashNode<K, V> headNode : temp) {
             while (headNode != null) {
@@ -203,10 +204,10 @@ public class ChainingDictionary<K, V> implements Dictionary<K, V> {
             bucketArray[bucketIndex] = head.next;
 
         // Shrink
-        double loadFactor = ((1.0 * size) / numBuckets);
+        double loadFactor = ((1.0 * size) / capacity);
         if (loadFactor <= this.maxLoadFactor) {
             // size of new array = numBuckets / 4 (Table Shrink): It's the best size for shrinking the size of array
-            reHash(numBuckets / 4);
+            reHash(capacity / 4);
         }
 
         return head.value;
