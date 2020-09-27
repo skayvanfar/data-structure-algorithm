@@ -51,8 +51,9 @@ public class SortedArrayTest {
 
     @Test
     public void delete() throws Exception {
+        array.display();
         array.delete(00); // delete 3 items
-        array.display(); // display items
+        array.display();
     }
 
     @Test
