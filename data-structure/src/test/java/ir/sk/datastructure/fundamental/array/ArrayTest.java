@@ -51,6 +51,7 @@ public class ArrayTest {
 
     @Test
     public void delete() throws Exception {
+        array.display();
         array.delete(00); // delete 3 items
         array.display();
     }
@@ -60,4 +61,10 @@ public class ArrayTest {
         array.display();
     }
 
+    @Test
+    public void testInsert() {
+        array.display();
+        array.insert(2,39);
+        array.display();
+    }
 }
