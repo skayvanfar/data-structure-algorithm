@@ -31,14 +31,14 @@ public class TwoThreeTreeTest {
 
     @Test
     public void search() {
-        System.out.println(activityNotifications2(new int[]{2 ,3 ,4, 2 ,3, 6, 8, 4, 5}, 5));
+        System.out.println(activityNotifications2(new int[]{2, 3, 4, 2, 3, 6, 8, 4, 5}, 5));
     }
 
     static int activityNotifications(int[] expenditure, int d) {
 
-        int count=0;
+        int count = 0;
         for (int i = d; i < expenditure.length; i++) {
-            double median = median(Arrays.copyOfRange(expenditure,i-d,i));
+            double median = median(Arrays.copyOfRange(expenditure, i - d, i));
             if (expenditure[i] >= median * 2)
                 count++;
             expenditure[i]++;
@@ -51,12 +51,13 @@ public class TwoThreeTreeTest {
 
         // check for even case
         if (a.length % 2 != 0)
-            return (double)a[a.length / 2];
+            return (double) a[a.length / 2];
 
-        return (double)(a[(a.length - 1) / 2] + a[a.length / 2]) / 2.0;
+        return (double) (a[(a.length - 1) / 2] + a[a.length / 2]) / 2.0;
     }
 
-    static int activityNotifications2(int[] expenditure, int d) {;
+    static int activityNotifications2(int[] expenditure, int d) {
+        ;
 
         int notificationCount = 0;
 
@@ -91,10 +92,10 @@ public class TwoThreeTreeTest {
             int count = 0;
             for (int j = 0; j < data.length; j++) {
                 count += data[j];
-                if (m1 == null && count >= d/2) {
+                if (m1 == null && count >= d / 2) {
                     m1 = j;
                 }
-                if (m2 == null && count >= d/2 + 1) {
+                if (m2 == null && count >= d / 2 + 1) {
                     m2 = j;
                     break;
                 }
@@ -104,7 +105,7 @@ public class TwoThreeTreeTest {
             int count = 0;
             for (int j = 0; j < data.length; j++) {
                 count += data[j];
-                if (count > d/2) {
+                if (count > d / 2) {
                     median = j;
                     break;
                 }

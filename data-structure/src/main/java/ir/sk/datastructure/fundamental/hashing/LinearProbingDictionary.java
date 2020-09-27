@@ -4,7 +4,7 @@ import ir.sk.helper.TimeComplexity;
 
 /**
  * deals with collisions by Open Addressing - Linear Probing
- *
+ * <p>
  * In Open Addressing, all elements are stored in the hash table itself.
  * So at any point, size of table must be greater than or equal to total number of keys (M>=n)
  *
@@ -73,6 +73,7 @@ public class LinearProbingDictionary<K, V> implements Dictionary<K, V> {
 
     /**
      * Keep probing until an empty slot is found. Once an empty slot is found, insert k.
+     *
      * @param key
      * @param value
      */
@@ -102,6 +103,7 @@ public class LinearProbingDictionary<K, V> implements Dictionary<K, V> {
 
     /**
      * Keep probing until slot’s key doesn’t become equal to k or an empty slot is reached.
+     *
      * @param key
      * @return
      */
@@ -128,6 +130,7 @@ public class LinearProbingDictionary<K, V> implements Dictionary<K, V> {
     /**
      * Delete operation is interesting. If we simply delete a key, then search may fail.
      * So slots of deleted keys are marked specially as “deleted”
+     *
      * @param key
      * @return
      */

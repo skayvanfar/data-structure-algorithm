@@ -14,7 +14,6 @@ import java.util.HashSet;
 public class CycleDetection {
 
     /**
-     *
      * Traverse the list one by one and keep putting the node addresses in a Hash Table. At any point,
      * if NULL is reached then return false and if next of current node points to any of the previously
      * stored nodes in Hash then return true

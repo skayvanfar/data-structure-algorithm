@@ -23,7 +23,7 @@ public class OrientedAdjacencyListGraph2 {
     /**
      * The code can be used for undirected graph as well as directed graph
      * it cannot be used for negative weights
-     *
+     * <p>
      * Set distance to startNode to zero.
      * Set all other distances to an infinite value.
      * We add the startNode to the unsettled nodes set.
@@ -31,7 +31,7 @@ public class OrientedAdjacencyListGraph2 {
      * Choose an evaluation node from the unsettled nodes set, the evaluation node should be the one with the lowest distance from the source.
      * Calculate new distances to direct neighbors by keeping the lowest distance at each evaluation.
      * Add neighbors that are not yet settled to the unsettled nodes set.
-     *
+     * <p>
      * Time complexity: O(v2), if using ArrayPriorityQueue
      * Time complexity: O(e log v), if using MinHeapPriorityQueue
      *
@@ -122,7 +122,7 @@ public class OrientedAdjacencyListGraph2 {
 
     /**
      * returns the node with the lowest distance from the unsettled nodes set
-     *
+     * <p>
      * It's better to use MinHeapPriorityQueue
      *
      * @param unsettledNodes

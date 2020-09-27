@@ -97,7 +97,6 @@ public class TopologicalSort {
 
     /**
      * Kahn’s algorithm for Topological Sorting
-     *
      */
     @TimeComplexity("O(|V|+|E|)")
     @SpaceComplexity("O(|V|)")

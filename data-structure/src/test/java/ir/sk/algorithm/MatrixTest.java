@@ -4,19 +4,17 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 2/7/2020.
  */
 public class MatrixTest {
 
-    int A[][] = { {1, 1, 1, 1},
+    int A[][] = {{1, 1, 1, 1},
             {2, 2, 2, 2},
             {3, 3, 3, 3},
             {4, 4, 4, 4}};
 
-    int B[][] = { {1, 1, 1, 1},
+    int B[][] = {{1, 1, 1, 1},
             {2, 2, 2, 2},
             {3, 3, 3, 3},
             {4, 4, 4, 4}};

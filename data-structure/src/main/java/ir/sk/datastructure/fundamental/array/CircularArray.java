@@ -7,7 +7,7 @@ import java.util.Iterator;
 /**
  * CircularArray class that supports an array-like data structure which
  * can be efficiently rotated.
- *
+ * <p>
  * Created by sad.kayvanfar on 9/20/2020.
  */
 public class CircularArray<T> implements Iterable<T> {
@@ -25,6 +25,7 @@ public class CircularArray<T> implements Iterable<T> {
 
     /**
      * convert the raw index to the rotated index.
+     *
      * @param index
      * @return
      */
@@ -58,7 +59,8 @@ public class CircularArray<T> implements Iterable<T> {
     private class CircularArrayIterator implements Iterator<T> {
         private int _current = -1;
 
-        public CircularArrayIterator() { }
+        public CircularArrayIterator() {
+        }
 
         @Override
         public boolean hasNext() {

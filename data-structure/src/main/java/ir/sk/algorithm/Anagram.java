@@ -112,8 +112,9 @@ public class Anagram {
     static final int MAX = 256;
 
     /**
-     *  time complexity to compare two count arrays is O(1)
-     *  as the number of elements in them are fixed
+     * time complexity to compare two count arrays is O(1)
+     * as the number of elements in them are fixed
+     *
      * @param arr1
      * @param arr2
      * @return
@@ -133,21 +134,21 @@ public class Anagram {
      * of the shorter string within the longer one. Print the location of each permutation
      * This function search for all permutations
      * of pat[] in txt[]
-     *
+     * <p>
      * time complexity: O(n)
-     *
+     * <p>
      * size is fixed which is typically true as we have maximum 256 possible characters in ASCII. The idea is to use two count arrays:
-     *
+     * <p>
      * 1) The first count array store frequencies of characters in pattern.
      * 2) The second count array stores frequencies of characters in current window of text.
-     *
+     * <p>
      * using count array window (frame)
      *
      * @param pat
      * @param txt
      */
     @SlidingWindowPattern
-   public static void searchAnagramsInTextByHashing(String pat, String txt) {
+    public static void searchAnagramsInTextByHashing(String pat, String txt) {
         int M = pat.length();
         int N = txt.length();
 
@@ -186,18 +187,17 @@ public class Anagram {
     }
 
     /**
-     *
      * using count array window (frame)
-     *
+     * <p>
      * Given the number of trailing days  and a client's total daily expenditures for a period of  days, find and print the number of times the client will receive a notification over all  days.
-     *
+     * <p>
      * For example,  and . On the first three days, they just collect spending data. At day ,
      * we have trailing expenditures of . The median is  and the day's expenditure is . Because ,
      * there will be a notice. The next day, our trailing expenditures are  and the expenditures are .
      * This is less than  so no notice will be sent. Over the period, there was one notice sent.
-     *
+     * <p>
      * time complexity: O(n * max number in the array)
-     *
+     * <p>
      * 2 thoughts that help:
      * 1.) Counting sort
      * 2.) A Queue
@@ -207,7 +207,8 @@ public class Anagram {
      * @return
      */
     ///////////////////////////////////////////////////////////////////////////////////////
-    static int activityNotificationsByHashing(int[] expenditure, int d) {;
+    static int activityNotificationsByHashing(int[] expenditure, int d) {
+        ;
 
         int notificationCount = 0;
 
@@ -234,6 +235,7 @@ public class Anagram {
         return notificationCount;
 
     }
+
     private static double getMedianByCountArray(int d, int[] data) {
         double median = 0;
         if (d % 2 == 0) {
@@ -242,10 +244,10 @@ public class Anagram {
             int count = 0;
             for (int j = 0; j < data.length; j++) {
                 count += data[j];
-                if (m1 == null && count >= d/2) {
+                if (m1 == null && count >= d / 2) {
                     m1 = j;
                 }
-                if (m2 == null && count >= d/2 + 1) {
+                if (m2 == null && count >= d / 2 + 1) {
                     m2 = j;
                     break;
                 }
@@ -255,7 +257,7 @@ public class Anagram {
             int count = 0;
             for (int j = 0; j < data.length; j++) {
                 count += data[j];
-                if (count > d/2) {
+                if (count > d / 2) {
                     median = j;
                     break;
                 }

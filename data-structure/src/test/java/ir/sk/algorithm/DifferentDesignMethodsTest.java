@@ -20,45 +20,45 @@ public class DifferentDesignMethodsTest {
 
     @Test
     public void firstRepeatedCharByTwoLoops() {
-        char[] array = new char[] {'a', 'b', 'l', 'b', 'x'};
+        char[] array = new char[]{'a', 'b', 'l', 'b', 'x'};
         char expectedValue = 'b';
         long startTime = System.nanoTime();
         char result = DifferentDesignMethods.firstRepeatedCharByTwoLoops(array);
         long endTime = System.nanoTime();
-        System.out.println("time duration for firstRepeatedCharByTwoLoops by n= "+ array.length + " = "+(endTime-startTime)+ " nano");
+        System.out.println("time duration for firstRepeatedCharByTwoLoops by n= " + array.length + " = " + (endTime - startTime) + " nano");
         Assert.assertEquals(expectedValue, result);
     }
 
     @Test
     public void firstRepeatedCharByHash() {
-        char[] array = new char[] {'a', 'b', 'l', 'b', 'x'};
+        char[] array = new char[]{'a', 'b', 'l', 'b', 'x'};
         char expectedValue = 'b';
         long startTime = System.nanoTime();
         char result = DifferentDesignMethods.firstRepeatedCharByHash(array);
         long endTime = System.nanoTime();
-        System.out.println("time duration for firstRepeatedCharByHash by n= "+ array.length + " = "+(endTime-startTime)+ " nano");
+        System.out.println("time duration for firstRepeatedCharByHash by n= " + array.length + " = " + (endTime - startTime) + " nano");
         Assert.assertEquals(expectedValue, result);
     }
 
     @Test
     public void firstMaximumRepeatedCharByTwoLoops() {
-        char[] array = new char[] {'a', 'b', 'l', 'b', 'x'};
+        char[] array = new char[]{'a', 'b', 'l', 'b', 'x'};
         char expectedValue = 'b';
         long startTime = System.nanoTime();
         char result = DifferentDesignMethods.maximumRepeatedCharByTwoLoops(array);
         long endTime = System.nanoTime();
-        System.out.println("time duration for maximumRepeatedCharByTwoLoops by n= "+ array.length + " = "+(endTime-startTime)+ " nano");
+        System.out.println("time duration for maximumRepeatedCharByTwoLoops by n= " + array.length + " = " + (endTime - startTime) + " nano");
         Assert.assertEquals(expectedValue, result);
     }
 
     @Test
     public void maximumRepeatedCharByHash() {
-        char[] array = new char[] {'a', 'b', 'l', 'b', 'x'};
+        char[] array = new char[]{'a', 'b', 'l', 'b', 'x'};
         char expectedValue = 'b';
         long startTime = System.nanoTime();
         char result = DifferentDesignMethods.maximumRepeatedCharByHash(array);
         long endTime = System.nanoTime();
-        System.out.println("time duration for maximumRepeatedCharByHash by n= "+ array.length + " = "+(endTime-startTime)+ " nano");
+        System.out.println("time duration for maximumRepeatedCharByHash by n= " + array.length + " = " + (endTime - startTime) + " nano");
         Assert.assertEquals(expectedValue, result);
     }
 }

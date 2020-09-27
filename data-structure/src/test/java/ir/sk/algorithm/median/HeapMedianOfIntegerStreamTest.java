@@ -7,7 +7,7 @@ import org.junit.Test;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by sad.keyvanfar on 8/23/2020.

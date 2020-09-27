@@ -15,7 +15,7 @@ public class RedBlackTreeTest {
     public void setUp() throws Exception {
         redBlackTree = new RedBlackTree();
         for (int i = 0; i < 10; i++) {
-            RedBlackTree.Node  node= new RedBlackTree.Node(i);
+            RedBlackTree.Node node = new RedBlackTree.Node(i);
             redBlackTree.add(node);
         }
     }

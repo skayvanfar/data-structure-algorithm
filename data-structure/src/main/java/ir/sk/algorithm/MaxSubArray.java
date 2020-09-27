@@ -2,7 +2,6 @@ package ir.sk.algorithm;
 
 import ir.sk.helper.BruteForce;
 import ir.sk.helper.SlidingWindowPattern;
-import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
 /**
@@ -45,7 +44,7 @@ public class MaxSubArray {
 
     /**
      * Kadane's algorithm is a popular solution to the maximum subarray problem and this solution is based on dynamic programming
-     *
+     * <p>
      * The most important challenge in solving a dynamic programming problem is to find the optimal subproblems
      *
      * @param arr

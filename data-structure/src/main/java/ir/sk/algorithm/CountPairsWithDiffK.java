@@ -6,15 +6,12 @@ import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Given an array of distinct integer values, count the number of pairs of integers that
  * have difference k. For example, given the array { 1, 7, 5, 9, 2, 12, 3} and the difference
  * k = 2,there are four pairs with difference2: (1, 3), (3, 5), (5, 7), (7, 9).
- *
+ * <p>
  * Optimize & Solve Technique: 1. Bottlenecks
  *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 8/22/2020.
@@ -96,11 +93,11 @@ public class CountPairsWithDiffK {
     /**
      * 1) Initialize count as 0.
      * 2) Insert all distinct elements of arr[] in a hash map.  While inserting,
-     *    ignore an element if already present in the hash map.
+     * ignore an element if already present in the hash map.
      * 3) Do following for each element arr[i].
-     *    a) Look for arr[i] + k in the hash map, if found then increment count.
-     *    b) Look for arr[i] - k in the hash map, if found then increment count.
-     *    c) Remove arr[i] from hash table.
+     * a) Look for arr[i] + k in the hash map, if found then increment count.
+     * b) Look for arr[i] - k in the hash map, if found then increment count.
+     * c) Remove arr[i] from hash table.
      *
      * @param arr
      * @param k

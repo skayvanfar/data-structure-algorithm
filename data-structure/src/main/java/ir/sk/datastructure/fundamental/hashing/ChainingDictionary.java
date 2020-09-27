@@ -104,7 +104,7 @@ public class ChainingDictionary<K, V> implements Dictionary<K, V> {
 
     /**
      * Adds a key value pair to hash
-     *
+     * <p>
      * Time Complexity on average is o(n) since reHash() when need more space
      * but Amortized Time Complexity is O(1)
      * size of new array = 2 * numBuckets (Table Doubling): It's the best size for growing the size of array

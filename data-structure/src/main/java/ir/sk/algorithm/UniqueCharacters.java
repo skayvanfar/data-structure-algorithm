@@ -92,7 +92,7 @@ public class UniqueCharacters {
     /**
      * reduce our space usage by a factor of eight by using a bit vector. We will assume, in the below code,
      * that the string only uses the lowercase letters a through z. This will allow us to use just a single int
-     *
+     * <p>
      * Note that the solution is used for lower characters a-z, meaning that we are using it for finding duplicacy for 26 characters.
      * So, int taking 32 bits can be used here.
      * If the range had been bigger, then the solution will not work
@@ -115,6 +115,7 @@ public class UniqueCharacters {
 
     /**
      * Using BitSet as bit vector
+     *
      * @param str
      * @return
      */

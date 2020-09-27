@@ -22,7 +22,7 @@ public class ArrayStack<T> implements Stack<T> {
      */
     @Override
     public void push(T item) {
-        if(top >= stackArray.length)
+        if (top >= stackArray.length)
             throw new IndexOutOfBoundsException("Overflow Exception");
 
         stackArray[++top] = item; // increment top, insert item
@@ -34,7 +34,7 @@ public class ArrayStack<T> implements Stack<T> {
     @Override
     @SuppressWarnings("unchecked")
     public T pop() {
-        if(isEmpty())
+        if (isEmpty())
             throw new NoSuchElementException("Underflow Exception");
         return (T) stackArray[top--]; // access item, decrement top
     }
@@ -45,7 +45,7 @@ public class ArrayStack<T> implements Stack<T> {
     @Override
     @SuppressWarnings("unchecked")
     public T peek() {
-        if( isEmpty() )
+        if (isEmpty())
             throw new NoSuchElementException("Underflow Exception");
         return (T) stackArray[top];
     }
@@ -56,7 +56,7 @@ public class ArrayStack<T> implements Stack<T> {
     }
 
     public boolean isFull() {// true if stack is full
-        return (top == maxSize-1);
+        return (top == maxSize - 1);
     }
 
     public void display() {

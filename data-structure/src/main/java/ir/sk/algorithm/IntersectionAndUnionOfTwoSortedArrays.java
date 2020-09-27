@@ -2,9 +2,7 @@ package ir.sk.algorithm;
 
 import ir.sk.helper.*;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Given two sorted arrays, find the number of elements in common.
@@ -16,7 +14,7 @@ public class IntersectionAndUnionOfTwoSortedArrays {
 
     /**
      * A brute force algorithm for this problem is to start with each element in A and search for it in B.
-     *
+     * <p>
      * The arrays are the same length
      * and each has all distinct elements
      *
@@ -40,7 +38,7 @@ public class IntersectionAndUnionOfTwoSortedArrays {
 
     /**
      * We can use binary search to find an element in a sorted array in 0( log N) time
-     *
+     * <p>
      * The arrays are the same length
      * and each has all distinct elements
      *
@@ -64,7 +62,7 @@ public class IntersectionAndUnionOfTwoSortedArrays {
      * This will take O (N) time. Then, we just go
      * through A and look up each element in the hash table. This look up (or search) is 0(1), so our runtime is
      * O(N).
-     *
+     * <p>
      * The arrays are the same length
      * and each has all distinct elements
      *
@@ -120,7 +118,7 @@ public class IntersectionAndUnionOfTwoSortedArrays {
 
     public static int[] mergeByTwoFinger(int[] l, int[] r) {
         int a[] = new int[l.length + r.length];
-        mergeByTwoFinger(a,l,r, l.length, r.length);
+        mergeByTwoFinger(a, l, r, l.length, r.length);
         return a;
     }
 
@@ -166,7 +164,7 @@ public class IntersectionAndUnionOfTwoSortedArrays {
      * @return
      */
     public static int[] intersectByTwoFinger(int[] l, int[] r) {
-        int [] intersection = new int[l.length];
+        int[] intersection = new int[l.length];
         int i = 0, j = 0, k = 0;
         while (i < l.length && j < r.length) {
             if (l[i] < r[j])

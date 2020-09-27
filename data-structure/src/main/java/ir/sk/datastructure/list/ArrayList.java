@@ -5,7 +5,7 @@ import ir.sk.helper.TimeComplexity;
 
 /**
  * Use dynamic array logic
- *
+ * <p>
  * Created by sad.keyvanfar on 8/25/2020.
  */
 public class ArrayList<T> implements List<T> {
@@ -56,7 +56,7 @@ public class ArrayList<T> implements List<T> {
 
     /**
      * Add item to the List in position pos (moving items over to the right to make room).
-     *
+     * <p>
      * random access operation
      *
      * @param pos
@@ -75,7 +75,7 @@ public class ArrayList<T> implements List<T> {
 
         // move items over and insert new item
         for (int k = size; k > pos; k--) {
-            items[k] = items[k-1];
+            items[k] = items[k - 1];
         }
         items[pos] = item;
         size++;
@@ -89,15 +89,15 @@ public class ArrayList<T> implements List<T> {
     @SuppressWarnings("unchecked")
     @Override
     public T get(int pos) {
-        if (pos>= size || pos <0)
-            throw new IndexOutOfBoundsException("Index: " + pos + ", Size " + pos );
+        if (pos >= size || pos < 0)
+            throw new IndexOutOfBoundsException("Index: " + pos + ", Size " + pos);
 
         return (T) items[pos];
     }
 
     /**
      * delete item from the List in position pos (moving items over to the left to shrink).
-     *
+     * <p>
      * random access operation
      *
      * @param pos
@@ -107,15 +107,15 @@ public class ArrayList<T> implements List<T> {
     @SuppressWarnings("unchecked")
     @Override
     public T remove(int pos) {
-        if (pos>= size || pos <0)
-            throw new IndexOutOfBoundsException("Index: " + pos + ", Size " + pos );
+        if (pos >= size || pos < 0)
+            throw new IndexOutOfBoundsException("Index: " + pos + ", Size " + pos);
         Object object = items[pos];
         items[pos] = null;
         int tmp = pos;
         // shrink
-        while(tmp < size){
-            items[tmp] = items[tmp+1];
-            items[tmp+1] = null;
+        while (tmp < size) {
+            items[tmp] = items[tmp + 1];
+            items[tmp + 1] = null;
             tmp++;
         }
         size--;

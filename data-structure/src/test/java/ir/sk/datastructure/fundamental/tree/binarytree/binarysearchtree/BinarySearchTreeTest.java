@@ -1,6 +1,5 @@
 package ir.sk.datastructure.fundamental.tree.binarytree.binarysearchtree;
 
-import ir.sk.datastructure.fundamental.tree.binarytree.binarysearchtree.BinarySearchTree;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

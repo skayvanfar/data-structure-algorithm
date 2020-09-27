@@ -1,7 +1,6 @@
 package ir.sk.datastructure.fundamental.graph;
 
 import java.util.Collection;
-import java.util.Set;
 
 /**
  * Edge classification:
@@ -15,6 +14,7 @@ import java.util.Set;
  */
 public interface Graph<T> {
     boolean contains(T item);
+
     void addVertex(T vertex);
 
     /**
@@ -26,9 +26,13 @@ public interface Graph<T> {
      * @throws Exception
      */
     boolean areAdjacent(T a, T b) throws Exception;
+
     void removeVertex(T vertex) throws Exception;
+
     void addEdge(T from, T to, int weight) throws Exception;
+
     void removeEdge(T from, T to) throws Exception;
+
     Collection<T> getNeighborsFor(T vertex) throws Exception;
 
     /**
@@ -40,9 +44,9 @@ public interface Graph<T> {
      * Examines bipartite graph, connected component and shortest path present in a graph.
      * Optimal for finding the shortest distance, not in cost.
      * to find out whether there is a route between two nodes.
-     *
+     * <p>
      * can run on directed or undirected graph. It doesn't care about weight
-     *
+     * <p>
      * it finds shortest paths in an unweighted graph.
      *
      * @param start
@@ -59,7 +63,7 @@ public interface Graph<T> {
      * It requires less memory as compare to BFS. Efficient
      * Examines two-edge connected graph, strongly connected graph, acyclic graph and topological order.
      * to find out whether there is a route between two nodes.
-     *
+     * <p>
      * can run on directed or undirected graph. It doesn't care about weight
      *
      * @param start

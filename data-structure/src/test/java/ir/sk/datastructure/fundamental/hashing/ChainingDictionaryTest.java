@@ -15,17 +15,17 @@ public class ChainingDictionaryTest {
     @Before
     public void setUp() throws Exception {
         dictionary = new ChainingDictionary<>(10, 0.5f);
-        dictionary.add("a",1 );
-        dictionary.add("b",2 );
-        dictionary.add("c",3 );
-        dictionary.add("d",4 );
-        dictionary.add("e",5 );
-        dictionary.add("f",6 );
-        dictionary.add("g",7 );
-        dictionary.add("h",8 );
-        dictionary.add("l",9 );
-        dictionary.add("m",10 );
-        dictionary.add("c",30 );
+        dictionary.add("a", 1);
+        dictionary.add("b", 2);
+        dictionary.add("c", 3);
+        dictionary.add("d", 4);
+        dictionary.add("e", 5);
+        dictionary.add("f", 6);
+        dictionary.add("g", 7);
+        dictionary.add("h", 8);
+        dictionary.add("l", 9);
+        dictionary.add("m", 10);
+        dictionary.add("c", 30);
     }
 
     @After

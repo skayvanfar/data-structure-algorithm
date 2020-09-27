@@ -1,6 +1,5 @@
 package ir.sk.datastructure.fundamental.linklist;
 
-import ir.sk.datastructure.queue.Queue;
 import ir.sk.helper.TimeComplexity;
 
 /**
@@ -8,7 +7,7 @@ import ir.sk.helper.TimeComplexity;
  * Any node in the circular linked list can be a starting point
  * Consequently, the whole list can be traversed starting from any node
  * Since the last node of the circular linked list has the pointer to the first node, it's easy to perform enqueue and dequeue operations like (FirstLastList)
- *
+ * <p>
  * Created by sad.kayvanfar on 9/1/2020.
  */
 public class CircularSinglyLinkedList<T> {

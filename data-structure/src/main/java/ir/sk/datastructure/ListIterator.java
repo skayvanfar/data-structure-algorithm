@@ -37,8 +37,7 @@ public class ListIterator<T> {
     /**
      * go to next link
      */
-    public void nextLink()
-    {
+    public void nextLink() {
         previous = current;
         current = current.next;
     }
@@ -75,6 +74,7 @@ public class ListIterator<T> {
 
     /**
      * insert before
+     *
      * @param dd
      */
     public void insertBefore(long dd) {

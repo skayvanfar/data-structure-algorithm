@@ -22,7 +22,6 @@ public class HeapPriorityQueue {
     }
 
     /**
-     *
      * @param value
      */
     @TimeComplexity("O(Log n)")
@@ -31,7 +30,6 @@ public class HeapPriorityQueue {
     }
 
     /**
-     *
      * @return
      */
     @TimeComplexity("O(1)")
@@ -40,7 +38,6 @@ public class HeapPriorityQueue {
     }
 
     /**
-     *
      * @return
      */
     @TimeComplexity("O(Log n)")

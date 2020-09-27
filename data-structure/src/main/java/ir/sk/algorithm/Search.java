@@ -2,7 +2,6 @@ package ir.sk.algorithm;
 
 import ir.sk.helper.BinarySearch;
 import ir.sk.helper.DivideAndConquer;
-import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
 /**
@@ -31,7 +30,7 @@ public class Search {
      * If they are not equal, the half in which the target cannot lie is eliminated and the search continues on the remaining half,
      * again taking the middle element to compare to the target value, and repeating this until the target value is found.
      * If the search ends with the remaining half being empty, the target is not in the array
-     *
+     * <p>
      * decrease-and-conquer (Divide-and-conquer algorithm) algorithm and iterative
      *
      * @param array
@@ -55,7 +54,7 @@ public class Search {
     }
 
     public static int binarySearchByRecursive(int array[], int key) {
-        return binarySearchByRecursive(array, key,0, array.length - 1);
+        return binarySearchByRecursive(array, key, 0, array.length - 1);
     }
 
     /**

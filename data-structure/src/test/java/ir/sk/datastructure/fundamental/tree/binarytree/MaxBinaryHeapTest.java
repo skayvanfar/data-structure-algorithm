@@ -4,7 +4,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -33,7 +32,7 @@ public class MaxBinaryHeapTest {
 
     @Test
     public void maxHeapify() {
-        int[] unOrderedArray = new int[] {16, 4, 10, 14, 7, 9, 3, 2, 8, 1};
+        int[] unOrderedArray = new int[]{16, 4, 10, 14, 7, 9, 3, 2, 8, 1};
         maxBinaryHeap = new MaxBinaryHeap(unOrderedArray);
         maxBinaryHeap.heapifyDown(1);
         maxBinaryHeap.printArray();
@@ -41,7 +40,7 @@ public class MaxBinaryHeapTest {
 
     @Test
     public void buildMaxHeap() {
-        int[] unOrderedArray = new int[] {16, 4, 10, 14, 7, 9, 3, 2, 8, 1};
+        int[] unOrderedArray = new int[]{16, 4, 10, 14, 7, 9, 3, 2, 8, 1};
         maxBinaryHeap = new MaxBinaryHeap(unOrderedArray);
         maxBinaryHeap.buildMaxHeap();
         maxBinaryHeap.printArray();
