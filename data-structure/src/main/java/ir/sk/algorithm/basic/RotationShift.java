@@ -39,7 +39,18 @@ public class RotationShift {
      */
     public static void leftShift(int[] array, int startIndex, int endIndex) {
         for (int i = startIndex; i < endIndex; i++)
-            array[i] = array[i+1];
+            array[i] = array[i + 1];
+    }
+
+    /**
+     * @param array
+     * @param startIndex
+     * @param endIndex
+     * @param unit
+     */
+    public static void leftShift(int[] array, int startIndex, int endIndex, int unit) {
+        for (int i = startIndex; i + unit < endIndex; i++)
+            array[i] = array[i + unit];
     }
 
     /**
@@ -80,6 +91,7 @@ public class RotationShift {
             array[k + unit] = array[k];
             k--;
         }
+
         for (int l = 0; l < unit; l++) {
             array[l] = temp[l];
         }
@@ -104,11 +116,14 @@ public class RotationShift {
         }
 
         // shift other elements by unit
+        leftShift(array, startIndex, endIndex, unit);
         int k = startIndex;
+
         while ((k + unit) <= endIndex) {
             array[k] = array[k + unit];
             k++;
         }
+
 
         // move all elements from temp into a latest elements array until endIndex
         for (int l = 0; l < unit; l++) {
