@@ -1,5 +1,7 @@
 package ir.sk.datastructure.fundamental.array;
 
+import ir.sk.helper.Remainder;
+
 import java.util.Iterator;
 
 /**
@@ -11,6 +13,7 @@ import java.util.Iterator;
 public class CircularArray<T> implements Iterable<T> {
 
     private T[] items;
+
     // create a member variable head which points to what should be conceptually viewed
     // as the start of the circular array. Rather than shifting around the elements in the array, we just increment
     // head by shift Right.
@@ -25,10 +28,11 @@ public class CircularArray<T> implements Iterable<T> {
      * @param index
      * @return
      */
+    @Remainder
     private int convert(int index) {
-        if (index < 0) {
+        if (index < 0)
             index += items.length;
-        }
+
         return (head + index) % items.length;
     }
 
