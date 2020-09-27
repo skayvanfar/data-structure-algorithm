@@ -44,8 +44,8 @@ public class Array {
      */
     @TimeComplexity("O(1)")
     public void insert(int value) {
-        array[size] = value;                     // insert it
-        size++;                              // increment size
+        array[size] = value;
+        size++;
     }
 
     /**
@@ -83,8 +83,8 @@ public class Array {
      * displays array contents
      */
     public void display() {
-        for (int j = 0; j < size; j++)            // for each element,
-            System.out.print(array[j] + " ");   // display it
+        for (int j = 0; j < size; j++)
+            System.out.print(array[j] + " ");
         System.out.println("");
     }
 }

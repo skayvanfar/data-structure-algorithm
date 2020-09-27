@@ -73,12 +73,12 @@ public class SortedArray {
     @TimeComplexity("O(n)")
     public boolean delete(int value) {
         int j = find(value);
-        if (j == size) // can’t find it
+        if (j == size)
             return false;
         else {
             RotationShift.leftShift(array, j, size);
 
-            size--; // decrement size
+            size--;
             return true;
         }
     }
@@ -87,8 +87,8 @@ public class SortedArray {
      * displays array contents
      */
     public void display() {
-        for (int j = 0; j < size; j++) // for each element,
-            System.out.print(array[j] + " "); // display it
+        for (int j = 0; j < size; j++)
+            System.out.print(array[j] + " ");
         System.out.println("");
     }
 }
