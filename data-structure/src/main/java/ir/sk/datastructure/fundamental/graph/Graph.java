@@ -5,7 +5,7 @@ import java.util.Set;
 
 /**
  * Edge classification:
- * 1. tree edge: wisit new vertex via edge
+ * 1. tree edge: visit new vertex via edge
  * 2. forward edge: node->descendant in tree (just in  weighted graph)
  * 3. backward edge: node->ancestor in tree
  * 4. cross edge: between two none-ancestor-related subtrees (just in  weighted graph)
