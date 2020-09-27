@@ -1,5 +1,6 @@
 package ir.sk.datastructure.fundamental.tree.binarytree.binarysearchtree;
 
+import ir.sk.helper.BinarySearch;
 import ir.sk.helper.Point;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
@@ -44,7 +45,6 @@ public class BinarySearchTree {
     }
 
     /**
-     * Time Complexity: O(h)
      *
      * @param value
      */
@@ -65,6 +65,7 @@ public class BinarySearchTree {
      * @return
      */
     @TimeComplexity("O(h)")
+    @BinarySearch
     private BSTNode addRecursive(BSTNode current, int value) {
 
         if (current == null)
@@ -104,6 +105,7 @@ public class BinarySearchTree {
      * @return
      */
     @TimeComplexity("O(h)")
+    @BinarySearch
     private boolean containsNodeRecursive(BSTNode current, int value) {
         if (current == null)
             return false;
