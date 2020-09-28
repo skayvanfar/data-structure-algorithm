@@ -43,9 +43,9 @@ public class TreeGraphAlgorithms {
      * We've used an Integer instead of int so that we can know when last_printed has been set to a value.
      * If you don't like the use of static variables, then you can tweak this code to use a wrapper class for the
      * integer, as shown below.
-     *  class Wraplnt {
-     *      public int value;
-     *  }
+     * class Wraplnt {
+     * public int value;
+     * }
      */
     private static Integer last_printed = null;
 

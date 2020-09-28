@@ -5,8 +5,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 7/10/2020.
  */
@@ -27,7 +25,7 @@ public class CatalanNumberTest {
         long startTime = System.nanoTime();
         long result = CatalanNumber.catalanByRecursive(number);
         long endTime = System.nanoTime();
-        System.out.println("time duration for catalanByRecursive by n= "+number + " = "+(endTime-startTime)+ " nano");
+        System.out.println("time duration for catalanByRecursive by n= " + number + " = " + (endTime - startTime) + " nano");
         Assert.assertEquals(expectedValue, result);
     }
 
@@ -38,7 +36,7 @@ public class CatalanNumberTest {
         long startTime = System.nanoTime();
         long result = CatalanNumber.catalanDynamic(number);
         long endTime = System.nanoTime();
-        System.out.println("time duration for catalanDynamic by n= "+number + " = "+(endTime-startTime)+ " nano");
+        System.out.println("time duration for catalanDynamic by n= " + number + " = " + (endTime - startTime) + " nano");
         Assert.assertEquals(expectedValue, result);
     }
 }

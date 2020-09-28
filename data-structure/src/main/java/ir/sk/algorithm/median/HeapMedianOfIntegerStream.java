@@ -6,17 +6,17 @@ import java.util.Queue;
 
 /**
  * Heap-based Approach
- *
+ * <p>
  * A min-heap that contains the larger half of the elements, with the minimum element at the root
  * A max-heap that contains the smaller half of the elements, with the maximum element at the root
- *
+ * <p>
  * had two heaps, you could keep track of the bigger half and the smaller half of the
  * elements. The bigger half is kept in a min heap, such that the smallest element in the bigger half is at
  * the root. The smaller half is kept in a max heap, such that the biggest element of the smaller half is at the
  * root. Now, with these data structures, you have the potential median elements at the roots. If the heaps
  * are no longer the same size, you can quickly "rebalance" the heaps by popping an element off the one
  * heap and pushing it onto the other.
- *
+ * <p>
  * Created by sad.keyvanfar on 8/23/2020.
  */
 public class HeapMedianOfIntegerStream implements MedianOfIntegerStream {

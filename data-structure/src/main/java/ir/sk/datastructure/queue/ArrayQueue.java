@@ -13,7 +13,7 @@ public class ArrayQueue<T> implements Queue<T> {
     private int rear;
 
     public ArrayQueue(int s) {
-        maxSize = s+1;
+        maxSize = s + 1;
         queueArray = new Object[maxSize];
         front = 0;
         rear = -1;
@@ -24,20 +24,19 @@ public class ArrayQueue<T> implements Queue<T> {
      */
     @Override
     public void add(T j) {
-        if(rear == maxSize-1)
+        if (rear == maxSize - 1)
             rear = -1;
         queueArray[++rear] = j;
     }
 
     /**
-     *
      * @return
      */
     @Override
     @SuppressWarnings("unchecked")
     public T remove() {
         T temp = (T) queueArray[front++];
-        if(front == maxSize)
+        if (front == maxSize)
             front = 0;
         return temp;
     }
@@ -56,18 +55,18 @@ public class ArrayQueue<T> implements Queue<T> {
      */
     @Override
     public boolean isEmpty() {
-        return ( rear+1==front || (front+maxSize-1==rear) );
+        return (rear + 1 == front || (front + maxSize - 1 == rear));
     }
 
     public boolean isFull() {
-        return ( rear+2==front || (front+maxSize-2==rear) );
+        return (rear + 2 == front || (front + maxSize - 2 == rear));
     }
 
     public int size() { // (assumes queue not empty)
-        if(rear >= front) // contiguous sequence
-            return rear-front+1;
+        if (rear >= front) // contiguous sequence
+            return rear - front + 1;
         else // broken sequence
-            return (maxSize-front) + (rear+1);
+            return (maxSize - front) + (rear + 1);
     }
 
     public void display() {

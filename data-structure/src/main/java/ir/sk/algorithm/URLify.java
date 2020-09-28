@@ -5,9 +5,6 @@ import ir.sk.helper.InPlace;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by sad.kayvanfar on 8/25/2020.
  */
@@ -52,8 +49,7 @@ public class URLify {
                 space_count++;
 
         // count spaces and find current length
-        while (str[i - 1] == ' ')
-        {
+        while (str[i - 1] == ' ') {
             space_count--;
             i--;
         }
@@ -73,20 +69,15 @@ public class URLify {
         str = new char[new_length];
 
         // Fill rest of the string from end
-        for (int j = i - 1; j >= 0; j--)
-        {
+        for (int j = i - 1; j >= 0; j--) {
 
             // inserts %20 in place of space
-            if (new_str[j] == ' ')
-            {
+            if (new_str[j] == ' ') {
                 str[index] = '0';
                 str[index - 1] = '2';
                 str[index - 2] = '%';
                 index = index - 3;
-            }
-
-            else
-            {
+            } else {
                 str[index] = new_str[j];
                 index--;
             }

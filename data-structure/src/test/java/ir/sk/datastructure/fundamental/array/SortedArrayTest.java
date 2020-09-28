@@ -36,7 +36,7 @@ public class SortedArrayTest {
     @Test
     public void find() throws Exception {
         int searchKey = 55; // search for item
-        if(array.find(searchKey) != array.size())
+        if (array.find(searchKey) != array.size())
             System.out.println("Found " + searchKey);
         else
             System.out.println("Can’t find " + searchKey);

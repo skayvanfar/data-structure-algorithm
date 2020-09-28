@@ -7,8 +7,6 @@ import org.junit.Test;
 
 import java.math.BigInteger;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by sad.keyvanfar on 8/22/2020.
  */

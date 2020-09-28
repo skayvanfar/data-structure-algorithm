@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.math.BigInteger;
-import java.util.Arrays;
 
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 7/10/2020.
@@ -26,7 +25,7 @@ public class MultiplicationTest {
         int[] a = new int[]{4, 3, 2, 1};
         int[] b = new int[]{1, 2, 3, 4};
 
-        int[] expectedValue = new int[]{4,1,1,2,3,3,5,0};
+        int[] expectedValue = new int[]{4, 1, 1, 2, 3, 3, 5, 0};
         long startTime = System.nanoTime();
         int[] result = Multiplication.nativeMultiply(a, b, 10);
         long endTime = System.nanoTime();

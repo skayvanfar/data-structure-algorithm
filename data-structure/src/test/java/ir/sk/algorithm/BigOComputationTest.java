@@ -4,8 +4,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by sad.kayvanfar on 8/31/2020.
  */
@@ -21,7 +19,7 @@ public class BigOComputationTest {
 
     @Test
     public void printUnorderedPairs() {
-        int[] array = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int[] array = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         BigOComputation.printUnorderedPairs(array);
     }
 }

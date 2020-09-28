@@ -65,7 +65,6 @@ public class FindPeakElement {
     }
 
     /**
-     *
      * @param array
      * @param low
      * @param high
@@ -123,7 +122,6 @@ public class FindPeakElement {
     }
 
     /**
-     *
      * @param array
      * @param col1
      * @param col2
@@ -136,9 +134,9 @@ public class FindPeakElement {
         int max = findMaxIndex(array, mid);
         if (col1 == col2)
             return array[max][mid];
-        if (array[max][mid] < array[max][mid+1])
+        if (array[max][mid] < array[max][mid + 1])
             return decreaseAndConquerByRecursive(array, mid + 1, col2);
-        else if (array[max][mid] > array[max][mid-1])
+        else if (array[max][mid] > array[max][mid - 1])
             return decreaseAndConquerByRecursive(array, col1, mid + 1);
         else
             return array[max][mid];
@@ -161,7 +159,7 @@ public class FindPeakElement {
         int midRow = (row1 + row2) / 2;
         int midCol = (col1 + col2) / 2;
         int max = findMaxIndex(array, midRow);
-   //    int max = array[]
+        //    int max = array[]
         /*if (col1 == col2)
             return array[max][mid];
         if (array[max][mid] < array[max][mid+1])

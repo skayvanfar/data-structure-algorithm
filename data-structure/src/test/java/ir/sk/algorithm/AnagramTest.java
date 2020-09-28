@@ -23,7 +23,7 @@ public class AnagramTest {
         String text = "cats";
         Anagram.count = 0;
         Anagram.size = text.length();
-        for(int j = 0; j < text.length(); j++) // put it in array
+        for (int j = 0; j < text.length(); j++) // put it in array
             Anagram.arrChar[j] = text.charAt(j);
 
         Anagram.doAnagram(text.length());

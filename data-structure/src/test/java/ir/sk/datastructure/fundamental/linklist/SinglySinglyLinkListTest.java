@@ -51,7 +51,7 @@ public class SinglySinglyLinkListTest {
     @Test
     public void find() {
         SinglyLink singlyLink = theList.find(44);
-        if( singlyLink != null)
+        if (singlyLink != null)
             System.out.println("Found link with key " + singlyLink.data);
         else
             System.out.println("Can't find link");

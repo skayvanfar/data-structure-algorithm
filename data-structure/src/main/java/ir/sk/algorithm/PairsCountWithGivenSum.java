@@ -10,7 +10,7 @@ import java.util.Arrays;
 /**
  * find all pairs with sum k within an array (assuming
  * all distinct elements)
- *
+ * <p>
  * Created by sad.keyvanfar on 8/23/2020.
  */
 public class PairsCountWithGivenSum {
@@ -40,7 +40,6 @@ public class PairsCountWithGivenSum {
     }
 
     /**
-     *
      * @param arr
      * @param sum
      * @return
@@ -60,7 +59,7 @@ public class PairsCountWithGivenSum {
         int range = max - min + 1;
 
         @Point("When you want to use array as hashtable use like below")
-        boolean []counting = new boolean[range];
+        boolean[] counting = new boolean[range];
 
         // O(n)
         for (int i = 0; i < arr.length; i++) {

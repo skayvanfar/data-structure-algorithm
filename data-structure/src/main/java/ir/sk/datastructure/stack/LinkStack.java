@@ -38,7 +38,7 @@ public class LinkStack<T> implements Stack<T> {
 
     @Override
     public boolean isEmpty() {
-        return ( theList.isEmpty() );
+        return (theList.isEmpty());
     }
 
     public void display() {

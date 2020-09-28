@@ -5,7 +5,7 @@ import ir.sk.helper.TimeComplexity;
 /**
  * A stack uses LIFO (last-in first-out) ordering. That is, as in a stack of dinner plates, the most recent item
  * added to the stack is the first item to be removed.
- *
+ * <p>
  * Created by sad.kayvanfar on 9/1/2020.
  */
 public interface Stack<T> {

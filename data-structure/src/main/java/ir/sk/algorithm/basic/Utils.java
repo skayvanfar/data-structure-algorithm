@@ -1,10 +1,7 @@
 package ir.sk.algorithm.basic;
 
-import ir.sk.helper.InPlace;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
-
-import java.util.Stack;
 
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 7/2/2020.
@@ -58,7 +55,7 @@ public class Utils {
     /**
      * The Sieve of Eratosthenes is a highly efficient way to generate a list of primes. It works by recognizing that
      * all non-prime numbers are divisible by a prime number.
-     *
+     * <p>
      * We start with a list of all the numbers up through some value max. First, we cross off all numbers divisible by
      * 2. Then, we look for the next prime (the next non-crossed off number) and cross off all numbers divisible by
      * it. By crossing off all numbers divisible by 2, 3, 5, 7, 11, and so on, we wind up with a list of prime numbers
@@ -99,9 +96,9 @@ public class Utils {
      * @param prime
      */
     private static void crossOff(boolean[] flags, int prime) {
-         /* Cross off remaining multiples of prime. We can start with (prime*prime),
-          * because if we have a k * prime, where k < prime, this value would have
-          * already been crossed off in a prior iteration. */
+        /* Cross off remaining multiples of prime. We can start with (prime*prime),
+         * because if we have a k * prime, where k < prime, this value would have
+         * already been crossed off in a prior iteration. */
         for (int i = prime * prime; i < flags.length; i += prime) {
             flags[i] = false;
         }

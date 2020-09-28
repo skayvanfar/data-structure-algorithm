@@ -47,7 +47,7 @@ public class ArrayPriorityQueue<T extends Comparable> {
 
     /**
      * remove minimum item
-     *
+     * <p>
      * Time Complexity: O(1)
      *
      * @return
@@ -58,7 +58,7 @@ public class ArrayPriorityQueue<T extends Comparable> {
 
     /**
      * peek at minimum item
-     *
+     * <p>
      * Time Complexity: O(1)
      *
      * @return

@@ -5,7 +5,10 @@ import ir.sk.helper.SlidingWindowPattern;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * different Design Method: Twoloop, hash
@@ -16,7 +19,7 @@ public class DifferentDesignMethods {
 
     /**
      * an algorithm for printing the first repeated character if there are duplicated elements in it.
-     *
+     * <p>
      * using two loops like BubbleSort, InsertionSort, SelectionSort, ...
      *
      * @param array
@@ -59,6 +62,7 @@ public class DifferentDesignMethods {
 
     /**
      * an algorithm for printing the max repeated character.
+     *
      * @param array
      * @return
      */
@@ -85,6 +89,7 @@ public class DifferentDesignMethods {
     /**
      * Time Complexity (n)
      * Space Complexity (256) = O(1)
+     *
      * @param array
      * @return
      */
@@ -109,8 +114,9 @@ public class DifferentDesignMethods {
     }
 
     /**
-     *  find the length of the longest substring
-     *  without repeating characters
+     * find the length of the longest substring
+     * without repeating characters
+     *
      * @param input
      * @return
      */
@@ -147,7 +153,7 @@ public class DifferentDesignMethods {
         for (int start = 0, end = 0; end < input.length(); end++) {
             char currChar = input.charAt(end);
             if (visited.containsKey(currChar)) {
-                start = Math.max(visited.get(currChar)+1, start);
+                start = Math.max(visited.get(currChar) + 1, start);
             }
             if (output.length() < end - start + 1) {
                 output = input.substring(start, end + 1);

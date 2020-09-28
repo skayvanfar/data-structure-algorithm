@@ -6,7 +6,8 @@ package ir.sk.algorithm;
 public class NumeralSystem {
 
     /**
-     *  convert the given decimal number into equivalent number by different base
+     * convert the given decimal number into equivalent number by different base
+     *
      * @param number
      * @param base
      */
@@ -16,8 +17,7 @@ public class NumeralSystem {
 
         // counter for binary array
         int i = 0;
-        while (number > 0)
-        {
+        while (number > 0) {
             // storing remainder in binary array
             num[i] = number % base;
             number = number / base;
@@ -33,16 +33,16 @@ public class NumeralSystem {
      * @param binary
      * @return
      */
-    public static int convertToBase(int binary, int base){
+    public static int convertToBase(int binary, int base) {
         int decimal = 0;
         int n = 0;
-        while(true){
-            if(binary == 0){
+        while (true) {
+            if (binary == 0) {
                 break;
             } else {
-                int temp = binary%10;
-                decimal += temp*Math.pow(base, n);
-                binary = binary/10;
+                int temp = binary % 10;
+                decimal += temp * Math.pow(base, n);
+                binary = binary / 10;
                 n++;
             }
         }

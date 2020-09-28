@@ -6,7 +6,7 @@ import ir.sk.helper.TimeComplexity;
  * Double hashing is a collision resolving technique in Open Addressed Hash tables.
  * Double hashing uses the idea of applying a second hash function to key when a collision occurs.
  * it protect from clustering problem in Linear Probing
- *
+ * <p>
  * Created by sad.keyvanfar on 7/8/2020.
  */
 public class DoubleHashingDictionary<K, V> implements Dictionary<K, V> {
@@ -85,6 +85,7 @@ public class DoubleHashingDictionary<K, V> implements Dictionary<K, V> {
 
     /**
      * Keep probing until an empty slot is found. Once an empty slot is found, insert k.
+     *
      * @param key
      * @param value
      */
@@ -150,6 +151,7 @@ public class DoubleHashingDictionary<K, V> implements Dictionary<K, V> {
     /**
      * Delete operation is interesting. If we simply delete a key, then search may fail.
      * So slots of deleted keys are marked specially as “deleted”
+     *
      * @param key
      * @return
      */

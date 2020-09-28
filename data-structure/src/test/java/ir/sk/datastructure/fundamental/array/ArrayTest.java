@@ -36,7 +36,7 @@ public class ArrayTest {
     @Test
     public void find() throws Exception {
         int searchKey = 66; // search for item
-        if(array.find(searchKey))
+        if (array.find(searchKey))
             System.out.println("Found " + searchKey);
         else
             System.out.println("Can't find " + searchKey);
@@ -64,7 +64,7 @@ public class ArrayTest {
     @Test
     public void testInsert() {
         array.display();
-        array.insert(2,39);
+        array.insert(2, 39);
         array.display();
     }
 }

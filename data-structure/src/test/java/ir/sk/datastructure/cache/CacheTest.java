@@ -4,8 +4,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by sad.kayvanfar on 9/21/2020.
  */
@@ -48,7 +46,7 @@ public class CacheTest {
     }
 
     public static String[] generateResults(int i) {
-        String[] results =  {"resultA" + i, "resultB" + i, "resultC" + i};
+        String[] results = {"resultA" + i, "resultB" + i, "resultC" + i};
         return results;
     }
 }

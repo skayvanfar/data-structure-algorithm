@@ -9,16 +9,16 @@ import java.util.HashMap;
  * designing the cache, we know we'll need to support two primary functions:
  * Efficient lookups given a key.
  * Expiration of old data so that it can be replaced with new data.
- *
+ * <p>
  * A linked list would allow easy purging of old data, by moving "fresh" items to the front. We could implement
  * it to remove the last element of the linked list when the list exceeds a certain size.
- *
+ * <p>
  * A hash table allows efficient lookups of data, but it wouldn't ordinarily allow easy data purging.
- *
+ * <p>
  * By merging the two data structures
- *
+ * <p>
  * alternatively ou can use LinkedHashMap
- *
+ * <p>
  * Created by sad.kayvanfar on 9/21/2020.
  */
 public class Cache {
@@ -62,6 +62,7 @@ public class Cache {
 
     /**
      * Removes node from linked list
+     *
      * @param node
      */
     public void removeFromLinkedList(Node node) {

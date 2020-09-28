@@ -8,7 +8,7 @@ import ir.sk.helper.TimeComplexity;
  * Hash table or hash map is a data structure that
  * stores the keys and their associated values, and hash table uses a hash function to map keys to
  * their associated values.
- *
+ * <p>
  * There are only three basic operations on Dictionary: searching, inserting, and deleting.
  *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 8/24/2020.

@@ -8,8 +8,9 @@ import java.math.BigInteger;
 
 /**
  * f(n) =
- *  1             n = 1
- *  n * f(n-1)    n > 1
+ * 1             n = 1
+ * n * f(n-1)    n > 1
+ *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
 public class Factorial {
@@ -32,7 +33,6 @@ public class Factorial {
     }
 
     /**
-     *
      * @param n
      * @return
      */
@@ -48,7 +48,7 @@ public class Factorial {
     // Java Program to Calculate Factorial of Large Number
 
     /**
-     *  BigInteger has no limit it can hold large values
+     * BigInteger has no limit it can hold large values
      *
      * @param number
      * @return
@@ -95,17 +95,15 @@ public class Factorial {
 
         // One by one multiply n with individual
         // digits of res[]
-        for (int i = 0; i < res_size; i++)
-        {
+        for (int i = 0; i < res_size; i++) {
             int prod = res[i] * x + carry;
             res[i] = prod % 10; // Store last digit of
             // 'prod' in res[]
-            carry = prod/10; // Put rest in carry
+            carry = prod / 10; // Put rest in carry
         }
 
         // Put carry in res and increase result size
-        while (carry!=0)
-        {
+        while (carry != 0) {
             res[res_size] = carry % 10;
             carry = carry / 10;
             res_size++;

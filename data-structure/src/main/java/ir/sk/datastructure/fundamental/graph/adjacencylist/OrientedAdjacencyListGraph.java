@@ -5,16 +5,16 @@ import ir.sk.datastructure.fundamental.graph.Graph;
 import java.util.*;
 
 /**
- *  simple oriented graph as part of an exercise in both Object Oriented Programming
- *  and Data Structures.
- *
- *  The object oriented incidence list structure suggested by Goodrich and Tamassia has special classes of vertex objects and edge objects.
- *  Each vertex object has an instance variable pointing to a collection object that lists the neighboring edge objects.
- *  In turn, each edge object points to the two vertex objects at its endpoints.
- *  This version of the adjacency list uses more memory than the version in which adjacent vertices are listed directly,
- *  but the existence of explicit edge objects allows it extra flexibility in storing additional information about edges.
- *
- *  It represents Directed Wighted graph
+ * simple oriented graph as part of an exercise in both Object Oriented Programming
+ * and Data Structures.
+ * <p>
+ * The object oriented incidence list structure suggested by Goodrich and Tamassia has special classes of vertex objects and edge objects.
+ * Each vertex object has an instance variable pointing to a collection object that lists the neighboring edge objects.
+ * In turn, each edge object points to the two vertex objects at its endpoints.
+ * This version of the adjacency list uses more memory than the version in which adjacent vertices are listed directly,
+ * but the existence of explicit edge objects allows it extra flexibility in storing additional information about edges.
+ * <p>
+ * It represents Directed Wighted graph
  *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 7/11/2020.
  */
