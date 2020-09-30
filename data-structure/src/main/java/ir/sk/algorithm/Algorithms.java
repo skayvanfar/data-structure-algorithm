@@ -21,9 +21,8 @@ public class Algorithms {
      */
     public static int triangleByLoop(int n) {
         int total = 0;
-        while (n > 0) // until n is 1
-        {
-            total = total + n; // add n (column height) to total
+        while (n > 0) {
+            total += n; // add n (column height) to total
             --n; // decrement column height
         }
         return total;
@@ -265,7 +264,6 @@ public class Algorithms {
     }
 
     /**
-     * Time Complexity: O(n)
      *
      * @param a
      * @return
