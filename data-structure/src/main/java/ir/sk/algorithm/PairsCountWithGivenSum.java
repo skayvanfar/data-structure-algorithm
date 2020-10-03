@@ -40,6 +40,8 @@ public class PairsCountWithGivenSum {
     }
 
     /**
+     * for every element check if it can be combined with any other element (other than itself!) to give the desired sum
+     *
      * @param arr
      * @param sum
      * @return
