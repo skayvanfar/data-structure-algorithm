@@ -23,7 +23,7 @@ public class ArrayQueue<T> implements Queue<T> {
      * @param j
      */
     @Override
-    public void add(T j) {
+    public void enqueue(T j) {
         if (rear == maxSize - 1)
             rear = -1;
         queueArray[++rear] = j;
@@ -34,7 +34,7 @@ public class ArrayQueue<T> implements Queue<T> {
      */
     @Override
     @SuppressWarnings("unchecked")
-    public T remove() {
+    public T dequeue() {
         T temp = (T) queueArray[front++];
         if (front == maxSize)
             front = 0;

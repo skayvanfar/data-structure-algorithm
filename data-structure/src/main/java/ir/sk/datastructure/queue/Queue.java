@@ -16,7 +16,7 @@ public interface Queue<T> {
      * @param item
      */
     @TimeComplexity("O(1)")
-    void add(T item);
+    void enqueue(T item);
 
     /**
      * Remove the first item in the list. (dequeue)
@@ -24,7 +24,7 @@ public interface Queue<T> {
      * @return
      */
     @TimeComplexity("O(1)")
-    T remove();
+    T dequeue();
 
     /**
      * Return the top of the queue.

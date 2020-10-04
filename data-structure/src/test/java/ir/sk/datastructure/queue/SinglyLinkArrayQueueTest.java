@@ -16,10 +16,10 @@ public class SinglyLinkArrayQueueTest {
     @Before
     public void setUp() throws Exception {
         theQueue = new LinkQueue<>();
-        theQueue.add(10); // insert 4 items
-        theQueue.add(20);
-        theQueue.add(30);
-        theQueue.add(40);
+        theQueue.enqueue(10); // insert 4 items
+        theQueue.enqueue(20);
+        theQueue.enqueue(30);
+        theQueue.enqueue(40);
     }
 
     @After
@@ -33,14 +33,14 @@ public class SinglyLinkArrayQueueTest {
     @Test
     public void insert() {
         theQueue.display();
-        theQueue.add(50);
+        theQueue.enqueue(50);
         theQueue.display();
     }
 
     @Test
     public void remove() {
         theQueue.display();
-        theQueue.remove();
+        theQueue.dequeue();
         theQueue.display();
     }
 

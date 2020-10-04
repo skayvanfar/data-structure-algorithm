@@ -24,7 +24,7 @@ public class LinkQueue<T> implements Queue<T> {
      * @param j
      */
     @Override
-    public void add(T j) {
+    public void enqueue(T j) {
         theList.insertLast(j);
     }
 
@@ -32,7 +32,7 @@ public class LinkQueue<T> implements Queue<T> {
      * @return
      */
     @Override
-    public T remove() {
+    public T dequeue() {
         return theList.deleteFirst();
     }
 

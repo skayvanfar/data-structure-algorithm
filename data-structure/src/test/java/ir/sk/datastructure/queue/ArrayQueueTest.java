@@ -14,10 +14,10 @@ public class ArrayQueueTest {
     @Before
     public void setUp() throws Exception {
         theArrayQueue = new ArrayQueue<>(10);
-        theArrayQueue.add(10); // insert 4 items
-        theArrayQueue.add(20);
-        theArrayQueue.add(30);
-        theArrayQueue.add(40);
+        theArrayQueue.enqueue(10); // insert 4 items
+        theArrayQueue.enqueue(20);
+        theArrayQueue.enqueue(30);
+        theArrayQueue.enqueue(40);
     }
 
     @After
@@ -27,14 +27,14 @@ public class ArrayQueueTest {
     @Test
     public void insert() throws Exception {
         theArrayQueue.display();
-        theArrayQueue.add(50);
+        theArrayQueue.enqueue(50);
         theArrayQueue.display();
     }
 
     @Test
     public void remove() throws Exception {
         theArrayQueue.display();
-        theArrayQueue.remove();
+        theArrayQueue.dequeue();
         theArrayQueue.display();
     }
 
