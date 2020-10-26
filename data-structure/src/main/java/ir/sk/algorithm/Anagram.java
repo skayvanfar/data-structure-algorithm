@@ -1,5 +1,6 @@
 package ir.sk.algorithm;
 
+import ir.sk.helper.FrequencyCountingPattern;
 import ir.sk.helper.Point;
 import ir.sk.helper.SlidingWindowPattern;
 
@@ -148,6 +149,7 @@ public class Anagram {
      * @param txt
      */
     @SlidingWindowPattern
+    @FrequencyCountingPattern
     public static void searchAnagramsInTextByHashing(String pat, String txt) {
         int M = pat.length();
         int N = txt.length();
@@ -207,6 +209,7 @@ public class Anagram {
      * @return
      */
     ///////////////////////////////////////////////////////////////////////////////////////
+    @FrequencyCountingPattern
     static int activityNotificationsByHashing(int[] expenditure, int d) {
         ;
 

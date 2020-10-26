@@ -72,6 +72,7 @@ public class IntersectionAndUnionOfTwoSortedArrays {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
+    @FrequencyCountingPattern
     public static int countOfCommonItemsByHashing(int[] arr1, int[] arr2) {
         int max = Arrays.stream(arr2).max().getAsInt();
         int min = Arrays.stream(arr2).min().getAsInt();

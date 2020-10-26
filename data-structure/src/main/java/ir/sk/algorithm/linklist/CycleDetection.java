@@ -1,6 +1,7 @@
 package ir.sk.algorithm.linklist;
 
 import ir.sk.datastructure.fundamental.linklist.SinglyLink;
+import ir.sk.helper.FrequencyCountingPattern;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
@@ -23,6 +24,7 @@ public class CycleDetection {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
+    @FrequencyCountingPattern
     public static boolean detectCycleByHashing(SinglyLink<Integer> head) {
         HashSet<SinglyLink<Integer>> s = new HashSet<>();
         while (head != null) {

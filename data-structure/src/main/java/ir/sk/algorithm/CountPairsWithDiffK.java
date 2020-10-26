@@ -1,9 +1,6 @@
 package ir.sk.algorithm;
 
-import ir.sk.helper.BinarySearch;
-import ir.sk.helper.BruteForce;
-import ir.sk.helper.SpaceComplexity;
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.*;
 
 import java.util.Arrays;
 
@@ -105,6 +102,7 @@ public class CountPairsWithDiffK {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n+k)")
+    @FrequencyCountingPattern
     public static int countPairsWithDiffKByHashing(int arr[], int k) {
         int n = arr.length;
         int count = 0;  // Initialize count

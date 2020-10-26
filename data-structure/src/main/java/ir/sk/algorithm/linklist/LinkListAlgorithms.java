@@ -1,6 +1,7 @@
 package ir.sk.algorithm.linklist;
 
 import ir.sk.datastructure.fundamental.linklist.SinglyLink;
+import ir.sk.helper.FrequencyCountingPattern;
 import ir.sk.helper.MultiplePointerPattern;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
@@ -46,6 +47,7 @@ public class LinkListAlgorithms {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
+    @FrequencyCountingPattern
     public static void deleteDuplicatesByHashing(SinglyLink<Integer> head) {
         HashSet<Integer> hashTable = new HashSet<>();
         SinglyLink<Integer> previous = null;

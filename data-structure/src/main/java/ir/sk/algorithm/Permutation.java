@@ -1,6 +1,7 @@
 package ir.sk.algorithm;
 
 import ir.sk.helper.BCR;
+import ir.sk.helper.FrequencyCountingPattern;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
@@ -267,6 +268,7 @@ public class Permutation {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(2n)=O(n)")
+    @FrequencyCountingPattern
     public static boolean arePermutationByHashing(char[] str1, char[] str2) {
 
         // If both strings are of different length.
@@ -307,6 +309,7 @@ public class Permutation {
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(256) = O(1)")
     @BCR(bigOTime = "O(n)")
+    @FrequencyCountingPattern("Using int array")
     public static boolean palindromePermutationByHashing(char[] str) {
         int[] counting = new int[MAX_CHAR];
 

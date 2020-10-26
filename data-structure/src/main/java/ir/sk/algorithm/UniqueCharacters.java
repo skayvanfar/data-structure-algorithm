@@ -1,6 +1,7 @@
 package ir.sk.algorithm;
 
 import ir.sk.helper.BruteForce;
+import ir.sk.helper.FrequencyCountingPattern;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
@@ -66,6 +67,7 @@ public class UniqueCharacters {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(256)=O(1)")
+    @FrequencyCountingPattern("Using boolean array")
     public static boolean uniqueCharactersByHashing(char[] chars) {
         // If length is greater than 256,
         // some characters must have been repeated
@@ -102,6 +104,7 @@ public class UniqueCharacters {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
+    @FrequencyCountingPattern("Using int")
     public static boolean uniqueCharactersByHashing2(String str) {
         int hashtable = 0;
         for (int i = 0; i < str.length(); ++i) {
@@ -121,6 +124,7 @@ public class UniqueCharacters {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
+    @FrequencyCountingPattern("Using BitSet")
     public static boolean uniqueCharactersByHashing3(String str) {
         BitSet hashtable = new BitSet(MAX_CHAR);
         for (int i = 0; i < str.length(); ++i) {

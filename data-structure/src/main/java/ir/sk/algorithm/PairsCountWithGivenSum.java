@@ -1,9 +1,6 @@
 package ir.sk.algorithm;
 
-import ir.sk.helper.BruteForce;
-import ir.sk.helper.Point;
-import ir.sk.helper.SpaceComplexity;
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.*;
 
 import java.util.Arrays;
 
@@ -50,6 +47,7 @@ public class PairsCountWithGivenSum {
     @SpaceComplexity("O(n + k)")
     @Point("Using hashtable is trade off between time and space" +
             "change Multiply O(n)*O(n) into O(n)+O(n) by using hashtable")
+    @FrequencyCountingPattern
     public static int getPairsCountByHashing(int[] arr, int sum) {
 
         int count = 0;// Initialize result

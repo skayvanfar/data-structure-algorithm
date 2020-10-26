@@ -1,9 +1,6 @@
 package ir.sk.algorithm;
 
-import ir.sk.helper.BruteForce;
-import ir.sk.helper.SlidingWindowPattern;
-import ir.sk.helper.SpaceComplexity;
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.*;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -46,6 +43,7 @@ public class DifferentDesignMethods {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(256) = O(1)")
+    @FrequencyCountingPattern
     public static char firstRepeatedCharByHash(char[] array) {
         int[] counter = new int[256];
 
@@ -95,6 +93,7 @@ public class DifferentDesignMethods {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(256) = O(1)")
+    @FrequencyCountingPattern
     public static char maximumRepeatedCharByHash(char[] array) {
         int[] counter = new int[256];
 
