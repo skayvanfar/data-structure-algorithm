@@ -1,8 +1,6 @@
 package ir.sk.algorithm;
 
-import ir.sk.helper.Memoization;
-import ir.sk.helper.SpaceComplexity;
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -507,6 +505,62 @@ public class Algorithms {
         }
 
         failedPoints.add(p); // Cache result
+        return false;
+    }
+
+    /**
+     * Given a sorted array of integers, we need to see if there are two numbers in it such that their sum is equal to a specific value.
+     *
+     * @param input
+     * @param targetValue
+     * @return
+     */
+    @BruteForce
+    @TimeComplexity("O(n^2)")
+    @SpaceComplexity("O(1)")
+    public boolean isPairSum(int[] input, int targetValue) {
+
+        for (int i = 0; i < input.length; i++) {
+            for (int j = 1; j < input.length; j++) {
+                if (input[i] + input[j] == targetValue) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Given a sorted array of integers, we need to see if there are two numbers in it such that their sum is equal to a specific value.
+     *
+     * You can keep variables that point to different parts of an array.
+     * Having multiple pointers helps to avoid O(n²) time complexity if for example you wanted to calculate a target sum from a pair of numbers in a sorted array.
+     * You can have a pointer at the beginning of the array and at the end of the array and you would move the pointers on every iteration. This would reduce the time complexity to O(n).
+     *
+     * @param input
+     * @param targetValue
+     * @return
+     */
+    @MultiplePointerPattern
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
+    public boolean isPairSumEfficient(int[] input, int targetValue) {
+
+        int pointerOne = 0;
+        int pointerTwo = input.length - 1;
+
+        while (pointerOne < pointerTwo) {
+            int sum = input[pointerOne] + input[pointerTwo];
+
+            if (sum == targetValue) {
+                return true;
+            } else if (sum < targetValue) {
+                pointerOne++;
+            } else {
+                pointerTwo--;
+            }
+        }
+
         return false;
     }
 }
