@@ -1,10 +1,7 @@
 package ir.sk.algorithm.linklist;
 
 import ir.sk.datastructure.fundamental.linklist.SinglyLink;
-import ir.sk.helper.FrequencyCountingPattern;
-import ir.sk.helper.MultiplePointerPattern;
-import ir.sk.helper.SpaceComplexity;
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.*;
 
 import java.util.HashSet;
 import java.util.Stack;
@@ -24,7 +21,7 @@ public class LinkListAlgorithms {
      */
     @TimeComplexity("O(n^2)")
     @SpaceComplexity("O(1)")
-    @MultiplePointerPattern
+    @Point("Using two Loop")
     public static void deleteDuplicatesByRunner(SinglyLink head) {
         SinglyLink current = head;
         while (current != null) {

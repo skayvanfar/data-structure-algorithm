@@ -2,12 +2,13 @@ package ir.sk.algorithm;
 
 import ir.sk.helper.BruteForce;
 import ir.sk.helper.SlidingWindowPattern;
+import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
 /**
  * Created by sad.keyvanfar on 8/23/2020.
  */
-public class MaxSubArray {
+public class SubArray {
 
     /**
      * we'll find all subarrays starting at every index from 0 to n-1
@@ -76,4 +77,29 @@ public class MaxSubArray {
         System.out.printf("Found Maximum Subarray between %d and %d", start, end);
         return maxSoFar;
     }
+
+    /*  Given an unsorted array of nonnegative integers, find a continuous subarray which adds to a given number. */
+
+    /**
+     * A simple solution is to consider all subarrays one by one and check the sum of every subarray.
+     * Run two loops: the outer loop picks a starting point I and the inner loop tries all subarrays starting from i
+     *
+     * @param arr
+     * @param target
+     * @return
+     */
+    @TimeComplexity("O(n^2)")
+    @SpaceComplexity("O(1)")
+    @BruteForce
+    public static void subArraySumNaive(int arr[], int target) {
+        for (int i = 0; i < arr.length; i++) {
+            int currSum = 0;
+            for (int j = i; j < arr.length; j++) {
+                currSum += arr[j];
+                if (currSum == target)
+                    System.out.println("starting index : " + i + ", " + "Ending index : " + j);
+            }
+        }
+    }
+
 }

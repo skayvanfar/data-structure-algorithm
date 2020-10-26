@@ -6,7 +6,7 @@ import org.junit.Test;
 /**
  * Created by sad.keyvanfar on 8/23/2020.
  */
-public class MaxSubArrayTest {
+public class SubArrayTest {
 
     @Before
     public void setUp() throws Exception {
@@ -15,12 +15,12 @@ public class MaxSubArrayTest {
     @Test
     public void maxSubArraySumBruteForce() {
         int[] arr = new int[]{1, 5, 2, 4, 9, 7};
-        MaxSubArray.maxSubArraySumBruteForce(arr);
+        SubArray.maxSubArraySumBruteForce(arr);
     }
 
     @Test
     public void maxSubArraySumKadanes() {
         int[] arr = new int[]{1, 5, 2, 4, 9, 7};
-        MaxSubArray.maxSubArraySumKadanes(arr);
+        SubArray.maxSubArraySumKadanes(arr);
     }
 }
