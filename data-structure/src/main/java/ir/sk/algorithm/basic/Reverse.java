@@ -1,6 +1,7 @@
 package ir.sk.algorithm.basic;
 
 import ir.sk.helper.InPlace;
+import ir.sk.helper.MultiplePointerPattern;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
@@ -36,9 +37,12 @@ public class Reverse {
     @TimeComplexity("O(n/2)=O(n)")
     @SpaceComplexity("O(1)")
     @InPlace
+    @MultiplePointerPattern
     public static void inPlaceReverse(int[] array) {
         for (int i = 0; i < array.length / 2; i++) {
+            // i is first pointer
             int temp = array[i];
+            // array.length - i is first pointer
             array[i] = array[array.length - i - 1];
             array[array.length - i - 1] = temp;
         }
