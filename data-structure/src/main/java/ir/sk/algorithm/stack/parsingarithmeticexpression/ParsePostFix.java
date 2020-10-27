@@ -1,4 +1,4 @@
-package ir.sk.algorithm.stackusage.parsingarithmeticexpression;
+package ir.sk.algorithm.stack.parsingarithmeticexpression;
 
 import ir.sk.datastructure.stack.ArrayStack;
 
