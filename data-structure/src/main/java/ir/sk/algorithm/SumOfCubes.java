@@ -2,6 +2,7 @@ package ir.sk.algorithm;
 
 import ir.sk.helper.BruteForce;
 import ir.sk.helper.FrequencyCountingPattern;
+import ir.sk.helper.MultipleLoopsPattern;
 import ir.sk.helper.TimeComplexity;
 
 import java.util.HashMap;
@@ -21,6 +22,7 @@ public class SumOfCubes {
      * @param n
      */
     @BruteForce
+    @MultipleLoopsPattern
     @TimeComplexity("O(n4)")
     public static void sumOfCubesNative(int n) {
         for (int a = 1; a <= n; a++) {

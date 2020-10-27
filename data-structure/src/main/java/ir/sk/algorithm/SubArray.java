@@ -1,14 +1,15 @@
 package ir.sk.algorithm;
 
-import ir.sk.helper.BruteForce;
-import ir.sk.helper.SlidingWindowPattern;
-import ir.sk.helper.SpaceComplexity;
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.*;
 
 /**
  * Created by sad.keyvanfar on 8/23/2020.
  */
 public class SubArray {
+
+    /*************
+     * to find the sum of contiguous subarray within a one-dimensional array of numbers which has the largest sum.
+     *************/
 
     /**
      * we'll find all subarrays starting at every index from 0 to n-1
@@ -17,7 +18,7 @@ public class SubArray {
      * @return
      */
     @BruteForce
-    @TimeComplexity("O(n2)")
+    @TimeComplexity("O(n^2)")
     public static int maxSubArraySumBruteForce(int[] nums) {
 
         int n = nums.length;
@@ -78,7 +79,7 @@ public class SubArray {
         return maxSoFar;
     }
 
-    /*  Given an unsorted array of nonnegative integers, find a continuous subarray which adds to a given number. */
+    /*  Given an unsorted array of non negative integers, find a continuous subarray which adds to a given number. */
 
     /**
      * A simple solution is to consider all subarrays one by one and check the sum of every subarray.
@@ -91,6 +92,7 @@ public class SubArray {
     @TimeComplexity("O(n^2)")
     @SpaceComplexity("O(1)")
     @BruteForce
+    @MultipleLoopsPattern
     public static void subArraySumNaive(int arr[], int target) {
         for (int i = 0; i < arr.length; i++) {
             int currSum = 0;

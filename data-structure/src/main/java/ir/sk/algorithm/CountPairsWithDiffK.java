@@ -25,6 +25,7 @@ public class CountPairsWithDiffK {
      * @return
      */
     @BruteForce
+    @MultipleLoopsPattern
     @TimeComplexity("O(n2)")
     @SpaceComplexity("O(1)")
     public static int countPairsWithDiffKNative(int arr[], int k) {

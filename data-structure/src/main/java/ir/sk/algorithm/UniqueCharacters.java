@@ -1,9 +1,6 @@
 package ir.sk.algorithm;
 
-import ir.sk.helper.BruteForce;
-import ir.sk.helper.FrequencyCountingPattern;
-import ir.sk.helper.SpaceComplexity;
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.*;
 
 import java.util.Arrays;
 import java.util.BitSet;
@@ -18,6 +15,7 @@ public class UniqueCharacters {
     private final static int MAX_CHAR = 256;
 
     @BruteForce
+    @MultipleLoopsPattern
     @TimeComplexity("O(n2)")
     @SpaceComplexity("O(1)")
     public static boolean uniqueCharactersBruteForce(char[] chars) {

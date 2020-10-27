@@ -23,6 +23,7 @@ public class IntersectionAndUnionOfTwoSortedArrays {
      * @return
      */
     @BruteForce
+    @MultipleLoopsPattern
     @TimeComplexity("O(n2)")
     @SpaceComplexity("O(1)")
     public static int countOfCommonItems(int[] arr1, int[] arr2) {

@@ -1,6 +1,7 @@
 package ir.sk.algorithm;
 
 import ir.sk.helper.BruteForce;
+import ir.sk.helper.MultipleLoopsPattern;
 import ir.sk.helper.TimeComplexity;
 
 /**
@@ -24,6 +25,7 @@ public class StringMatching {
      * @param pattern
      */
     @BruteForce
+    @MultipleLoopsPattern
     @TimeComplexity("O(m*(n-m+1)) (n: text length, m: pattern length) = O(n*m)")
     public static boolean naiveStringSearch(String text, String pattern) {
         int textLength = text.length();
