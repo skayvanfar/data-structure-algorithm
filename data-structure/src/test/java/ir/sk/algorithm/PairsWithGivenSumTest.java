@@ -26,9 +26,15 @@ public class PairsWithGivenSumTest {
     }
 
     @Test
-    public void isPairSumEfficient() {
+    public void isPairSumTwoPonters() {
         int arr[] = {2, 3, 5, 8, 9, 10, 11, 20};
-        Assert.assertEquals(true, PairsWithGivenSum.isPairSumEfficient(arr, 17));
+        Assert.assertEquals(true, PairsWithGivenSum.isPairSumTwoPonters(arr, 17));
+    }
+
+    @Test
+    public void isPairSumByHashing() {
+        int arr[] = {2, 3, 5, 8, 9, 10, 11, 20};
+        Assert.assertEquals(true, PairsWithGivenSum.isPairSumTwoPonters(arr, 17));
     }
 
     @Test
@@ -42,4 +48,5 @@ public class PairsWithGivenSumTest {
         int arr[] = new int[]{1, 5, 7, -1};
         Assert.assertEquals(2, PairsWithGivenSum.getPairsCountByHashing(arr, 6));
     }
+
 }

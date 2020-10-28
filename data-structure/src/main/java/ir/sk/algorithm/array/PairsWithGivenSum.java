@@ -53,7 +53,7 @@ public class PairsWithGivenSum {
     @MultiplePointerPattern
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
-    public static boolean isPairSumEfficient(int[] input, int targetValue) {
+    public static boolean isPairSumTwoPonters(int[] input, int targetValue) {
 
         int pointerOne = 0;
         int pointerTwo = input.length - 1;
@@ -70,6 +70,34 @@ public class PairsWithGivenSum {
             }
         }
 
+        return false;
+    }
+
+    /**
+     * @param array
+     * @param targetValue
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n + k)")
+    @FrequencyCountingPattern
+    public static boolean isPairSumByHashing(int[] array, int targetValue) {
+        int min = Arrays.stream(array).min().getAsInt();
+        int max = Arrays.stream(array).max().getAsInt();
+
+        int range = max - min;
+
+        boolean[] counting = new boolean[range];
+
+        for (int i = 0; i < array.length; i++) {
+            counting[array[i] - min] = true;
+        }
+
+        for (int i = 0; i < array.length; i++) {
+            int value = targetValue - array[i];
+            if (counting[value - min] && value > array[i])
+                return true;
+        }
         return false;
     }
 
@@ -133,9 +161,9 @@ public class PairsWithGivenSum {
 
         // O(n)
         for (int i = 0; i < arr.length; i++) {
-            int b = sum - arr[i];
+            int value = sum - arr[i];
             // O(1)
-            if (counting[b - min] && b > arr[i])
+            if (counting[value - min] && value > arr[i])
                 count++;
         }
 
