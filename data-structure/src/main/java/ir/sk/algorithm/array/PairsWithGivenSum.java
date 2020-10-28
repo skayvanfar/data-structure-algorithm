@@ -1,4 +1,4 @@
-package ir.sk.algorithm;
+package ir.sk.algorithm.array;
 
 import ir.sk.helper.*;
 
@@ -29,7 +29,7 @@ public class PairsWithGivenSum {
     public static boolean isPairSum(int[] input, int targetValue) {
 
         for (int i = 0; i < input.length; i++) {
-            for (int j = 1; j < input.length; j++) {
+            for (int j = i + 1; j < input.length; j++) {
                 if (input[i] + input[j] == targetValue) {
                     return true;
                 }
