@@ -22,6 +22,10 @@ public class TreeGraphAlgorithmsTest {
     }
 
     @Test
-    public void checkBST() {
+    public void checkValidBSTByInorder() {
+    }
+
+    @Test
+    public void checkValidBSTByBoundaries() {
     }
 }

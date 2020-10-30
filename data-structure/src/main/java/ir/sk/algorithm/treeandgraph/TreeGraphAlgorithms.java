@@ -1,5 +1,8 @@
 package ir.sk.algorithm.treeandgraph;
 
+import ir.sk.helper.SpaceComplexity;
+import ir.sk.helper.TimeComplexity;
+
 /**
  * Created by sad.kayvanfar on 9/15/2020.
  */
@@ -47,30 +50,52 @@ public class TreeGraphAlgorithms {
      * public int value;
      * }
      */
-    private static Integer last_printed = null;
+    private static Integer lastPrinted = null;
 
     /**
-     * Implement a function to check if a binary tree is a binary search tree.
+     * Implement a function to check if a binary tree is a valid binary search tree.
      * In-Order Traversal
      *
      * @param n
      * @return
      */
-    public static boolean checkBST(TreeNode n) {
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
+    public static boolean checkValidBSTByInorder(TreeNode n) {
         if (n == null) return true;
 
         // II Check I recurse left
-        if (!checkBST(n.left)) return false;
+        if (!checkValidBSTByInorder(n.left)) return false;
 
         // II Check current
-        if (last_printed != null && n.value <= last_printed) {
+        if (lastPrinted != null && n.value <= lastPrinted) {
             return false;
         }
-        last_printed = n.value;
+        lastPrinted = n.value;
 
         // Check I recurse right
-        if (!checkBST(n.right)) return false;
+        if (!checkValidBSTByInorder(n.right)) return false;
 
         return true;
+    }
+
+    /**
+     * @param n
+     * @param low bound
+     * @param high bound
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
+    public static boolean checkValidBSTByBoundaries(TreeNode n, int low, int high) {
+        if (n == null) return true;
+
+        int value = n.value;
+        if (value >= low && value <= high
+                && checkValidBSTByBoundaries(n.left, low, value)
+                && checkValidBSTByBoundaries(n.right, value, high))
+            return true;
+        else
+            return false;
     }
 }
