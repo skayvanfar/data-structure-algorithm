@@ -1,5 +1,6 @@
 package ir.sk.algorithm;
 
+import ir.sk.algorithm.math.Factorial;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

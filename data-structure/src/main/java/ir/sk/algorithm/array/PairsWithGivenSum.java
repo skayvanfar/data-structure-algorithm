@@ -5,6 +5,8 @@ import ir.sk.helper.*;
 import java.util.Arrays;
 
 /**
+ * Given a sorted array of integers, we need to see if there are two numbers in it such that their sum is equal to a specific value.
+ *
  * <p>
  * Created by sad.keyvanfar on 8/23/2020.
  */
@@ -87,6 +89,7 @@ public class PairsWithGivenSum {
 
         int range = max - min;
 
+        // as a cash
         boolean[] counting = new boolean[range];
 
         for (int i = 0; i < array.length; i++) {
@@ -102,6 +105,7 @@ public class PairsWithGivenSum {
     }
 
     /***************
+     * variant of PairsWithGivenSum
      * find all pairs with sum k within an array (assuming all distinct elements)
      ***************/
 
