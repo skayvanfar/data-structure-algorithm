@@ -9,9 +9,9 @@ import ir.sk.helper.TimeComplexity;
  */
 public class Matrix {
 
-    static final int N = 4;
-    static final int M = 4;
-    static final int P = 4;
+    public static final int N = 4;
+    public static final int M = 4;
+    public static final int P = 4;
 
     /**
      * This function adds A[][] and B[][], and stores
