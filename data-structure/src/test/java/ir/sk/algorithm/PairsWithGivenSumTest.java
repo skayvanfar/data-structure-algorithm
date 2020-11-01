@@ -49,9 +49,4 @@ public class PairsWithGivenSumTest {
         Assert.assertEquals(2, PairsWithGivenSum.getPairsCountByHashing(arr, 6));
     }
 
-    @Test
-    public void findMaxSumSubArray() {
-        int arr[] = new int[]{4, 2, 3, 7, 5, 1};
-        Assert.assertEquals(15, PairsWithGivenSum.findMaxSumSubArray(arr, 3));
-    }
 }

@@ -79,6 +79,31 @@ public class SubArray {
         return maxSoFar;
     }
 
+    /**
+     * Given an array of integers and a number k, find maximum sum of a subarray of size k.
+     *
+     * @param array
+     * @param k size
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SlidingWindowPattern(type = SlidingWindowPatternType.STATICALLY_RESIZABLE)
+    public static int findMaxSumSubArray(int[] array, int k) {
+        int start = 0, end = k;
+        int sumSoFar, currentSum = 0;
+        for (int i = 0; i < k; i++)
+            currentSum += array[i];
+
+        sumSoFar = currentSum;
+
+        while (end < array.length) {
+            currentSum += array[end++];
+            currentSum -= array[start++];
+            sumSoFar = Math.max(sumSoFar, currentSum);
+        }
+        return sumSoFar;
+    }
+
     /*  Given an unsorted array of non negative integers, find a continuous subarray which adds to a given number. */
 
     /**
@@ -105,5 +130,30 @@ public class SubArray {
     }
 
     // TODO: 10/27/2020 SlidingWindowPattern of subArraySum
+
+    /**
+     * Smallest subarray with sum greater than a given value
+     *
+     * @param arr
+     * @param targetSum
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
+    public static int sizeOfSmallestSubArray(int arr[], int targetSum) {
+        int start = 0, end = 0;
+        int minWindowSizeSoFar = Integer.MAX_VALUE, currentWindowSum = 0;
+
+        while (end < arr.length) {
+            currentWindowSum += arr[end];
+            while (currentWindowSum >=  targetSum) {
+                minWindowSizeSoFar = Math.min(minWindowSizeSoFar, end - start + 1);
+                currentWindowSum -= arr[start];
+                start++;
+            }
+            end++;
+        }
+        return minWindowSizeSoFar;
+    }
 
 }
