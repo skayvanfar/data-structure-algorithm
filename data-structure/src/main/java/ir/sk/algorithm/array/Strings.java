@@ -1,6 +1,7 @@
 package ir.sk.algorithm.array;
 
 import ir.sk.helper.SlidingWindowPattern;
+import ir.sk.helper.SlidingWindowPatternType;
 import ir.sk.helper.TimeComplexity;
 
 /**
@@ -18,7 +19,7 @@ public class Strings {
      * @return
      */
     @TimeComplexity("O(n)")
-    @SlidingWindowPattern
+    @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
     public static String minWindow(String str, String pat) {
         if (str == null || pat == null) return "";
         int[] counting = new int[128];
