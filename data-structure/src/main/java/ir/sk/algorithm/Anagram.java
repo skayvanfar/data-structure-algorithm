@@ -1,8 +1,6 @@
 package ir.sk.algorithm;
 
-import ir.sk.helper.FrequencyCountingPattern;
-import ir.sk.helper.Point;
-import ir.sk.helper.SlidingWindowPattern;
+import ir.sk.helper.*;
 
 import java.util.Arrays;
 
@@ -136,8 +134,6 @@ public class Anagram {
      * This function search for all permutations
      * of pat[] in txt[]
      * <p>
-     * time complexity: O(n)
-     * <p>
      * size is fixed which is typically true as we have maximum 256 possible characters in ASCII. The idea is to use two count arrays:
      * <p>
      * 1) The first count array store frequencies of characters in pattern.
@@ -148,8 +144,9 @@ public class Anagram {
      * @param pat
      * @param txt
      */
-    @SlidingWindowPattern
+    @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
     @FrequencyCountingPattern
+    @TimeComplexity("O(n)")
     public static void searchAnagramsInTextByHashing(String pat, String txt) {
         int M = pat.length();
         int N = txt.length();

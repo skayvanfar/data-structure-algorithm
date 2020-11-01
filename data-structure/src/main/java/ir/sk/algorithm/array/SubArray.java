@@ -53,7 +53,7 @@ public class SubArray {
      * @return
      */
     @TimeComplexity("O(n)")
-    @SlidingWindowPattern
+    @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
     public static int maxSubArraySumKadanes(int[] arr) {
 
         int size = arr.length;

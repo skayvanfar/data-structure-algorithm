@@ -52,6 +52,10 @@ public class TreeGraphAlgorithms {
      */
     private static Integer lastPrinted = null;
 
+    /*
+    * Implement a function to check if a binary tree is a valid binary search tree.
+    * */
+
     /**
      * Implement a function to check if a binary tree is a valid binary search tree.
      * In-Order Traversal

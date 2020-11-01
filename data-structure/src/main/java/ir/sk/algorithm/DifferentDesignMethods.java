@@ -146,7 +146,7 @@ public class DifferentDesignMethods {
      * @param input
      * @return
      */
-    @SlidingWindowPattern
+    @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
     @TimeComplexity("O(n)")
     String getUniqueCharacterSubstring(String input) {
         Map<Character, Integer> visited = new HashMap<>();
