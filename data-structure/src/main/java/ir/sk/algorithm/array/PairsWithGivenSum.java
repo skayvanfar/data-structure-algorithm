@@ -55,7 +55,7 @@ public class PairsWithGivenSum {
     @MultiplePointerPattern
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
-    public static boolean isPairSumTwoPonters(int[] input, int targetValue) {
+    public static boolean isPairSumTwoPointers(int[] input, int targetValue) {
 
         int pointerOne = 0;
         int pointerTwo = input.length - 1;
@@ -172,5 +172,30 @@ public class PairsWithGivenSum {
         }
 
         return count;
+    }
+
+    /**
+     * Given an array of integers and a number k, find maximum sum of a subarray of size k.
+     *
+     * @param array
+     * @param k size
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SlidingWindowPattern(type = SlidingWindowPatternType.STATICALLY_RESIZABLE)
+    public static int findMaxSumSubArray(int[] array, int k) {
+        int start = 0, end = k;
+        int sumSoFar, currentSum = 0;
+        for (int i = 0; i < k; i++)
+            currentSum += array[i];
+
+        sumSoFar = currentSum;
+
+        while (end < array.length) {
+            currentSum += array[end++];
+            currentSum -= array[start++];
+            sumSoFar = Math.max(sumSoFar, currentSum);
+        }
+        return sumSoFar;
     }
 }

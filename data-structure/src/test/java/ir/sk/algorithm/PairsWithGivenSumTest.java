@@ -28,13 +28,13 @@ public class PairsWithGivenSumTest {
     @Test
     public void isPairSumTwoPonters() {
         int arr[] = {2, 3, 5, 8, 9, 10, 11, 20};
-        Assert.assertEquals(true, PairsWithGivenSum.isPairSumTwoPonters(arr, 17));
+        Assert.assertEquals(true, PairsWithGivenSum.isPairSumTwoPointers(arr, 17));
     }
 
     @Test
     public void isPairSumByHashing() {
         int arr[] = {2, 3, 5, 8, 9, 10, 11, 20};
-        Assert.assertEquals(true, PairsWithGivenSum.isPairSumTwoPonters(arr, 17));
+        Assert.assertEquals(true, PairsWithGivenSum.isPairSumTwoPointers(arr, 17));
     }
 
     @Test
@@ -49,4 +49,9 @@ public class PairsWithGivenSumTest {
         Assert.assertEquals(2, PairsWithGivenSum.getPairsCountByHashing(arr, 6));
     }
 
+    @Test
+    public void findMaxSumSubArray() {
+        int arr[] = new int[]{4, 2, 3, 7, 5, 1};
+        Assert.assertEquals(15, PairsWithGivenSum.findMaxSumSubArray(arr, 3));
+    }
 }

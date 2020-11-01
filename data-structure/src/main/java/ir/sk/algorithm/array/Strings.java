@@ -1,5 +1,6 @@
 package ir.sk.algorithm.array;
 
+import ir.sk.helper.FrequencyCountingPattern;
 import ir.sk.helper.SlidingWindowPattern;
 import ir.sk.helper.SlidingWindowPatternType;
 import ir.sk.helper.TimeComplexity;
@@ -20,6 +21,7 @@ public class Strings {
      */
     @TimeComplexity("O(n)")
     @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
+    @FrequencyCountingPattern
     public static String minWindow(String str, String pat) {
         if (str == null || pat == null) return "";
         int[] counting = new int[128];
