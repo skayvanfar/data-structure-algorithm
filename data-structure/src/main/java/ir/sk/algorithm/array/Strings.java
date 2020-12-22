@@ -12,7 +12,7 @@ public class Strings {
 
     /**
      * Given a string str and a string pat, find the minimum window in S which will contain all the characters in pat.
-     *
+     * <p>
      * Note:If there is no such window in S that covers all characters in T, return the empty string “”.
      *
      * @param str
@@ -45,5 +45,23 @@ public class Strings {
             }
         }
         return minLen == Integer.MAX_VALUE ? "" : str.substring(minStart, minStart + minLen);
+    }
+
+    /**
+     * inserting the frequency of each unique character after it and also eliminating all repeated characters.
+     *
+     * @param chars
+     */
+    public static String countContinuosOccurenceEachChar(char[] chars) {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < chars.length; i++) {
+            int count = 1;
+            while (i + 1 < chars.length && chars[i] == chars[i + 1]) {
+                count++;
+                i++;
+            }
+            result.append(chars[i]).append(count);
+        }
+        return result.toString();
     }
 }

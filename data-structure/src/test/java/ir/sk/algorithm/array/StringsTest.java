@@ -1,5 +1,6 @@
 package ir.sk.algorithm.array;
 
+import ir.sk.algorithm.math.Factorial;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -23,5 +24,12 @@ public class StringsTest {
     @Test
     public void minWindow() {
         Assert.assertEquals("BANC", Strings.minWindow("ADOBECODEBANC", "ABC"));
+    }
+
+    @Test
+    public void countContinuosOccurenceEachChar() {
+        String text = "ccccOddEEE";
+        String expectedValue = "c4O1d2E3";
+        Assert.assertEquals(expectedValue, Strings.countContinuosOccurenceEachChar(text.toCharArray()));
     }
 }
