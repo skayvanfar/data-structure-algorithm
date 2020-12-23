@@ -203,6 +203,25 @@ public class LinkListAlgorithms {
     }
 
     /**
+     * Given pointer to the head node of a linked list, the task is to reverse the linked list. We need to reverse the list by changing the links between nodes.
+     * @param node
+     * @return
+     */
+    public static SinglyLink reverseIterative(SinglyLink node) {
+        SinglyLink prev = null;
+        SinglyLink current = node;
+        SinglyLink next = null;
+        while (current != null) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        node = prev;
+        return node;
+    }
+
+    /**
      * @param node
      * @return
      */

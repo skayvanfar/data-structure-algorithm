@@ -1,5 +1,6 @@
 package ir.sk.algorithm.linklist;
 
+import ir.sk.datastructure.fundamental.linklist.SinglyLink;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -52,5 +53,21 @@ public class LinkListAlgorithmsTest {
 
     @Test
     public void findIntersection() {
+    }
+
+    @Test
+    public void reverseIterative() {
+        SinglyLink head =getLinkList();
+        head = LinkListAlgorithms.reverseIterative(head);
+    }
+
+    private static SinglyLink getLinkList() {
+        SinglyLink previousNode = new SinglyLink(4, null);
+
+        for (int i = 3; i > 0; i--) {
+            SinglyLink node = new SinglyLink(i, previousNode);
+            previousNode = node;
+        }
+        return previousNode;
     }
 }
