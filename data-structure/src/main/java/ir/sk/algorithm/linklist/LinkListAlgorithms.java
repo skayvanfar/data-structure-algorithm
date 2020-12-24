@@ -204,9 +204,14 @@ public class LinkListAlgorithms {
 
     /**
      * Given pointer to the head node of a linked list, the task is to reverse the linked list. We need to reverse the list by changing the links between nodes.
+     * 1->2->3->4->null
+     * 4->3->2->1->null
+     *
      * @param node
      * @return
      */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
     public static SinglyLink reverseIterative(SinglyLink node) {
         SinglyLink prev = null;
         SinglyLink current = node;
@@ -219,6 +224,31 @@ public class LinkListAlgorithms {
         }
         node = prev;
         return node;
+    }
+
+    /**
+     * 1->2->3->4->null
+     * 4->3->2->1->null
+     *
+     * @param head
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
+    public static SinglyLink reverseRecursive(SinglyLink head) {
+        if (head == null || head.next == null)
+            return head;
+
+        /* reverse the rest list and put
+        the first element at the end */
+        SinglyLink rest = reverseRecursive(head.next);
+        head.next.next = head;
+
+        /* tricky step -- see the diagram */
+        head.next = null;
+
+        /* fix the head pointer */
+        return rest;
     }
 
     /**

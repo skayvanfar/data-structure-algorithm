@@ -57,8 +57,20 @@ public class LinkListAlgorithmsTest {
 
     @Test
     public void reverseIterative() {
-        SinglyLink head =getLinkList();
+        SinglyLink head = getLinkList();
         head = LinkListAlgorithms.reverseIterative(head);
+    }
+
+    @Test
+    public void reverseRecursive() {
+        SinglyLink head = getLinkList();
+        head = LinkListAlgorithms.reverseRecursive(head);
+    }
+
+    @Test
+    public void reverseRecursive2() {
+        SinglyLink head = getLinkList();
+        head = LinkListAlgorithms.reverseRecursive2(head);
     }
 
     private static SinglyLink getLinkList() {
