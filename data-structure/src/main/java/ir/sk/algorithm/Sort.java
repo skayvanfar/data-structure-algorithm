@@ -1,5 +1,6 @@
 package ir.sk.algorithm;
 
+import ir.sk.algorithm.array.Merge;
 import ir.sk.algorithm.basic.RotationShift;
 import ir.sk.algorithm.basic.Utils;
 import ir.sk.datastructure.fundamental.tree.binarytree.MaxBinaryHeap;
@@ -170,7 +171,7 @@ public class Sort {
      */
     private static void merge(
             int[] a, int[] l, int[] r, int left, int right) {
-        IntersectionAndUnionOfTwoSortedArrays.mergeByTwoFinger(a, l, r, left, right);
+        Merge.mergeByTwoFinger(a, l, r, left, right);
     }
 
     /**

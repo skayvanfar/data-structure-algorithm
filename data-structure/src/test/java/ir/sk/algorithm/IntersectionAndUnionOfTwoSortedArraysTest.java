@@ -1,5 +1,7 @@
 package ir.sk.algorithm;
 
+import ir.sk.algorithm.array.IntersectionAndUnionOfTwoSortedArrays;
+import ir.sk.algorithm.array.Merge;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -59,7 +61,7 @@ public class IntersectionAndUnionOfTwoSortedArraysTest {
         int[] bar = {4, 8, 11};
         int[] merged = {3, 4, 7, 8, 11};
 
-        assertArrayEquals(merged, IntersectionAndUnionOfTwoSortedArrays.mergeByTwoFinger(foo, bar));
+        assertArrayEquals(merged, Merge.mergeByTwoFinger(foo, bar));
     }
 
     @Test
