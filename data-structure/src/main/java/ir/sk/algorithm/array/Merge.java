@@ -1,11 +1,17 @@
 package ir.sk.algorithm.array;
 
+import ir.sk.helper.BruteForce;
 import ir.sk.helper.MultipleFinger;
+import ir.sk.helper.SpaceComplexity;
+import ir.sk.helper.TimeComplexity;
+
+import java.util.Arrays;
 
 /**
  * Created by sad.kayvanfar on 12/26/2020.
  */
 public class Merge {
+
     public static int[] mergeByTwoFinger(int[] l, int[] r) {
         int a[] = new int[l.length + r.length];
         mergeByTwoFinger(a, l, r, l.length, r.length);
@@ -13,9 +19,8 @@ public class Merge {
     }
 
     /**
-     * twoFingerAlgorithm - merge - union - binary merge
-     * two finger algorithm that helps us merge two sorted arrays together in one sorted array.
-     * Time Complexity: O(n)
+     *  two-way merge - union - binary merge
+     * two-way algorithm that helps us merge two sorted arrays together in one sorted array.
      *
      * @param a     returned array
      * @param l     first ordered array
@@ -24,6 +29,7 @@ public class Merge {
      * @param right last index of r array to compare
      */
     @MultipleFinger
+    @TimeComplexity("O(n)")
     public static void mergeByTwoFinger(int[] a, int[] l, int[] r, int left, int right) {
 
         int i = 0, j = 0, k = 0;
@@ -47,5 +53,31 @@ public class Merge {
             a[k++] = r[j++];
         }
 
+    }
+
+    /**
+     * Create a output array of size n * k.
+     * Traverse the matrix from start to end and insert all the elements in output array.
+     * Sort and print the output array.
+     *
+     * @param arrays
+     * @return
+     */
+    @TimeComplexity("O(nk + nk * log nk)")
+    @SpaceComplexity("nk  The output array is of size n*k")
+    @BruteForce
+    public static int[] kWayMargeNaive(int[] ... arrays) {
+        int size = Arrays.stream(arrays).map(ints -> ints.length).reduce((integer, integer2) -> integer + integer2).get();
+        int[] result = new int[size];
+
+        int k = 0;
+        for(int i = 0; i < arrays.length;i++) {
+            for(int j=0; j< arrays[i].length;j++) {
+                result[k++] = arrays[i][j];
+            }
+        }
+
+        Arrays.sort(result);
+        return result;
     }
 }
