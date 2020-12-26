@@ -1,5 +1,7 @@
 package ir.sk.algorithm.array;
 
+import ir.sk.helper.MultipleFinger;
+
 /**
  * Created by sad.kayvanfar on 12/26/2020.
  */
@@ -21,6 +23,7 @@ public class Merge {
      * @param left  last index of l array to compare
      * @param right last index of r array to compare
      */
+    @MultipleFinger
     public static void mergeByTwoFinger(int[] a, int[] l, int[] r, int left, int right) {
 
         int i = 0, j = 0, k = 0;

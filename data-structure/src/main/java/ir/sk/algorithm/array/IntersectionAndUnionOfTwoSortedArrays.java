@@ -103,6 +103,7 @@ public class IntersectionAndUnionOfTwoSortedArrays {
     @TimeComplexity("O(n + m)")
     @SpaceComplexity("O(1)")
     @Best
+    @MultipleFinger
     public static int countOfCommonItemsByTwoFinger(int[] arr1, int[] arr2) {
         int i = 0, j = 0, count = 0;
         while (i < arr1.length && j < arr2.length) {
@@ -124,6 +125,7 @@ public class IntersectionAndUnionOfTwoSortedArrays {
      * @param r
      * @return
      */
+    @MultipleFinger
     public static int[] intersectByTwoFinger(int[] l, int[] r) {
         int[] intersection = new int[l.length];
         int i = 0, j = 0, k = 0;
