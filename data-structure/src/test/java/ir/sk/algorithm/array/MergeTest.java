@@ -33,4 +33,13 @@ public class MergeTest {
         int[] result = Merge.kWayMargeNaive(array1, array2, array3);
         System.out.println(Arrays.toString(result));
     }
+
+    @Test
+    public void kWayMargeRecursive() {
+        int[] array1 = new int[]{1, 2, 4, 6, 9};
+        int[] array2 = new int[]{3, 5, 6, 10};
+        int[] array3 = new int[]{7, 8, 9, 11, 14};
+        int[] result = Merge.kWayMargeRecursive(0, 2, array1, array2, array3);
+        System.out.println(Arrays.toString(result));
+    }
 }
