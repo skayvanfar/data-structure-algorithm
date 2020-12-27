@@ -1,9 +1,6 @@
 package ir.sk.algorithm.array;
 
-import ir.sk.helper.BruteForce;
-import ir.sk.helper.MultipleFinger;
-import ir.sk.helper.SpaceComplexity;
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.*;
 
 import java.util.Arrays;
 
@@ -63,7 +60,7 @@ public class Merge {
      * @param arrays
      * @return
      */
-    @TimeComplexity("O(nk + nk * log nk)")
+    @TimeComplexity("O(nk + nk * log nk) k: length of each array. n: length of arrays")
     @SpaceComplexity("nk  The output array is of size n*k")
     @BruteForce
     public static int[] kWayMargeNaive(int[]... arrays) {
@@ -86,11 +83,16 @@ public class Merge {
      * After the first merge, we have k/2 arrays. Again merge arrays in groups, now we have k/4 arrays.
      * This is similar to merge sort. Divide k arrays into two halves containing an equal number of arrays until there are two arrays in a group.
      *
+     * height of tree: log n
+     *
      * @param start
      * @param end
      * @param arrays
      * @return
      */
+    @DivideAndConquer
+    @TimeComplexity("O(nk * log n) k: length of each array. n: length of arrays")
+    @SpaceComplexity("O(nk * log n)")
     public static int[] kWayMargeRecursive(int start, int end, int[]... arrays) {
         if (start == end)
             return arrays[start];

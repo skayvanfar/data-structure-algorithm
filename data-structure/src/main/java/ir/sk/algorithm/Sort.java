@@ -134,6 +134,15 @@ public class Sort {
      * T(n) = 2T(n/2) + O(n)
      * Stable: Yes
      * Sorting In Place: No
+     *              n             n        n
+     *             / \
+     *           /    \
+     *         n/2     n/2       2 n/2     n
+     *        /  \    /  \
+     *       /    \  /    \
+     *      n/4   n/4 n/4   n/4  4 n/4     n
+     *
+     * height of tree: log n
      *
      * @param a
      * @param n
