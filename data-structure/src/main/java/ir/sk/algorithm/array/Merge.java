@@ -104,6 +104,18 @@ public class Merge {
         }
     }
 
+    static class HeapNode {
+        int value;
+        int i;
+        int j;
+
+        public HeapNode(int value, int i, int j) {
+            this.value = value;
+            this.i = i;
+            this.j = j;
+        }
+    }
+
     /**
      * Create a min Heap and insert the first element of all k arrays.
      * Run a loop until the size of MinHeap is greater than zero.
@@ -120,25 +132,21 @@ public class Merge {
         int size = Arrays.stream(arrays).map(ints -> ints.length).reduce((integer, integer2) -> integer + integer2).get();
         int[] result = new int[size];
 
-        PriorityQueue<int[]> queue = new PriorityQueue<>(Comparator.comparingInt(o -> o[0]));
+        PriorityQueue<HeapNode> queue = new PriorityQueue<>(Comparator.comparingInt(o -> o.value));
 
-        for (int i = 0; i < arrays.length; i++) {
-            queue.add(new int[]{arrays[i][0], i, 0});
-        }
+        for (int i = 0; i < arrays.length; i++)
+            queue.add(new HeapNode(arrays[i][0], i, 0));
 
-        int k = 0;
-        while (queue.size() > 0) {
-            int[] element = queue.poll();
-            if(result.length <= k)
-                break;
-            result[k++] = element[0];
+        for (int i = 0; i < size; i++) {
+            HeapNode element = queue.poll();
 
-            int[] nextElement = null;
-            if ( (element[2] + 1) < arrays[element[1]].length )
-                nextElement = new int[]{arrays[element[1]][element[2] + 1], element[1], element[2] + 1};
+            result[i] = element.value;
+
+            if (++element.j < arrays[element.i].length)
+                element.value = arrays[element.i][element.j];
             else
-                nextElement = new int[]{Integer.MAX_VALUE, element[1], element[2] + 1};
-            queue.add(nextElement);
+                element.value = Integer.MAX_VALUE;
+            queue.add(element);
         }
         return result;
     }
