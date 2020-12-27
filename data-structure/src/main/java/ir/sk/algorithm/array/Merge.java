@@ -3,6 +3,8 @@ package ir.sk.algorithm.array;
 import ir.sk.helper.*;
 
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.PriorityQueue;
 
 /**
  * Created by sad.kayvanfar on 12/26/2020.
@@ -82,7 +84,7 @@ public class Merge {
      * he process might begin with merging arrays into groups of two.
      * After the first merge, we have k/2 arrays. Again merge arrays in groups, now we have k/4 arrays.
      * This is similar to merge sort. Divide k arrays into two halves containing an equal number of arrays until there are two arrays in a group.
-     *
+     * <p>
      * height of tree: log n
      *
      * @param start
@@ -100,5 +102,43 @@ public class Merge {
             int size = (end - start) / 2;
             return mergeByTwoFinger(kWayMargeRecursive(0, size, arrays), kWayMargeRecursive(size + 1, end, arrays));
         }
+    }
+
+    /**
+     * Create a min Heap and insert the first element of all k arrays.
+     * Run a loop until the size of MinHeap is greater than zero.
+     * Remove the top element of the MinHeap and print the element.
+     * Now insert the next element from the same array in which the removed element belonged.
+     * If the array doesn’t have any more elements, then replace root with infinite.After replacing the root, heapify the tree.
+     *
+     * @param arrays
+     * @return
+     */
+    @TimeComplexity("O(nk * log k)")
+    public static int[] kWayMergeByHeap(int[]... arrays) {
+        int size = Arrays.stream(arrays).map(ints -> ints.length).reduce((integer, integer2) -> integer + integer2).get();
+        int[] result = new int[size];
+
+        PriorityQueue<int[]> queue = new PriorityQueue<>(Comparator.comparingInt(o -> o[0]));
+
+        for (int i = 0; i < arrays.length; i++) {
+            queue.add(new int[]{arrays[i][0], i, 0});
+        }
+
+        int k = 0;
+        while (queue.size() > 0) {
+            int[] element = queue.poll();
+            if(result.length <= k)
+                break;
+            result[k++] = element[0];
+
+            int[] nextElement = null;
+            if ( (element[2] + 1) < arrays[element[1]].length )
+                nextElement = new int[]{arrays[element[1]][element[2] + 1], element[1], element[2] + 1};
+            else
+                nextElement = new int[]{Integer.MAX_VALUE, element[1], element[2] + 1};
+            queue.add(nextElement);
+        }
+        return result;
     }
 }
