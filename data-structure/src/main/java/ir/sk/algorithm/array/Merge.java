@@ -114,7 +114,8 @@ public class Merge {
      * @param arrays
      * @return
      */
-    @TimeComplexity("O(nk * log k)")
+    @TimeComplexity("O(nk * log n)")
+    @SpaceComplexity("O(nk + n)")
     public static int[] kWayMergeByHeap(int[]... arrays) {
         int size = Arrays.stream(arrays).map(ints -> ints.length).reduce((integer, integer2) -> integer + integer2).get();
         int[] result = new int[size];
