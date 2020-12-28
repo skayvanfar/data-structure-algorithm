@@ -28,7 +28,7 @@ public class Merge {
      * @param right last index of r array to compare
      */
     @MultipleFinger
-    @TimeComplexity("O(n)")
+    @TimeComplexity("O(n+m)")
     public static void mergeByTwoFinger(int[] a, int[] l, int[] r, int left, int right) {
 
         int i = 0, j = 0, k = 0;
