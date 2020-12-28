@@ -1,5 +1,6 @@
 package ir.sk.algorithm;
 
+import ir.sk.algorithm.array.Merge;
 import ir.sk.algorithm.basic.RotationShift;
 import ir.sk.algorithm.basic.Utils;
 import ir.sk.datastructure.fundamental.tree.binarytree.MaxBinaryHeap;
@@ -133,6 +134,15 @@ public class Sort {
      * T(n) = 2T(n/2) + O(n)
      * Stable: Yes
      * Sorting In Place: No
+     *              n             n        n
+     *             / \
+     *           /    \
+     *         n/2     n/2       2 n/2     n
+     *        /  \    /  \
+     *       /    \  /    \
+     *      n/4   n/4 n/4   n/4  4 n/4     n
+     *
+     * height of tree: log n
      *
      * @param a
      * @param n
@@ -170,7 +180,7 @@ public class Sort {
      */
     private static void merge(
             int[] a, int[] l, int[] r, int left, int right) {
-        IntersectionAndUnionOfTwoSortedArrays.mergeByTwoFinger(a, l, r, left, right);
+        Merge.mergeByTwoFinger(a, l, r, left, right);
     }
 
     /**

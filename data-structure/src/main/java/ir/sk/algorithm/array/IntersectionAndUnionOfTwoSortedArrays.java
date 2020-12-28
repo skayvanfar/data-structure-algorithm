@@ -1,5 +1,6 @@
-package ir.sk.algorithm;
+package ir.sk.algorithm.array;
 
+import ir.sk.algorithm.Search;
 import ir.sk.helper.*;
 
 import java.util.Arrays;
@@ -102,6 +103,7 @@ public class IntersectionAndUnionOfTwoSortedArrays {
     @TimeComplexity("O(n + m)")
     @SpaceComplexity("O(1)")
     @Best
+    @MultipleFinger
     public static int countOfCommonItemsByTwoFinger(int[] arr1, int[] arr2) {
         int i = 0, j = 0, count = 0;
         while (i < arr1.length && j < arr2.length) {
@@ -118,53 +120,12 @@ public class IntersectionAndUnionOfTwoSortedArrays {
         return count++;
     }
 
-    public static int[] mergeByTwoFinger(int[] l, int[] r) {
-        int a[] = new int[l.length + r.length];
-        mergeByTwoFinger(a, l, r, l.length, r.length);
-        return a;
-    }
-
-    /**
-     * twoFingerAlgorithm - merge - union
-     * two finger algorithm that helps us merge two sorted arrays together in one sorted array.
-     * Time Complexity: O(n)
-     *
-     * @param a     returned array
-     * @param l     first ordered array
-     * @param r     second ordered array
-     * @param left  last index of l array to compare
-     * @param right last index of r array to compare
-     */
-    public static void mergeByTwoFinger(int[] a, int[] l, int[] r, int left, int right) {
-
-        int i = 0, j = 0, k = 0;
-
-        // compares the elements of both sub-arrays one by one and places the smaller element into the input array.
-        while (i < left && j < right) {
-            if (l[i] <= r[j]) {
-                a[k++] = l[i++];
-            } else {
-                a[k++] = r[j++];
-            }
-        }
-
-        // When we reach the end of one of the sub-arrays,
-        // the rest of the elements from the other array are copied into the input array
-        while (i < left) {
-            a[k++] = l[i++];
-        }
-
-        while (j < right) {
-            a[k++] = r[j++];
-        }
-
-    }
-
     /**
      * @param l
      * @param r
      * @return
      */
+    @MultipleFinger
     public static int[] intersectByTwoFinger(int[] l, int[] r) {
         int[] intersection = new int[l.length];
         int i = 0, j = 0, k = 0;

@@ -8,6 +8,8 @@ import ir.sk.helper.TimeComplexity;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
+import java.util.stream.Stream;
 
 /**
  * A permutation of a set is a rearrangement of its elements. A set which consists of n elements has n! permutations.
@@ -324,5 +326,29 @@ public class Permutation {
         }
 
         return odd > 1 ? false : true;
+    }
+
+    /**
+     * @param chars
+     * @return
+     */
+    public static List<String> permutationUnknown(char[] chars) {
+        List<String> result = new ArrayList<>();
+        if (chars.length == 1) {
+            result.add(String.valueOf(chars));
+            return result;
+        } else {
+            for (char c : chars) {
+                List<String> list = permutationUnknown(extratChar(chars, c));
+                for (String str : list) {
+                    result.add(c + str);
+                }
+            }
+            return result;
+        }
+    }
+
+    private static char[] extratChar(char[] chars, char j) {
+        return new String(chars).replace(j + "", "").toCharArray();
     }
 }
