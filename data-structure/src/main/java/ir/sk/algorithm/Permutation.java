@@ -329,26 +329,22 @@ public class Permutation {
     }
 
     /**
-     * @param chars
+     * @param str
      * @return
      */
-    public static List<String> permutationUnknown(char[] chars) {
+    public static List<String> permutationNew(String str) {
         List<String> result = new ArrayList<>();
-        if (chars.length == 1) {
-            result.add(String.valueOf(chars));
+        if (str.length() == 1) {
+            result.add(str);
             return result;
         } else {
-            for (char c : chars) {
-                List<String> list = permutationUnknown(extratChar(chars, c));
-                for (String str : list) {
-                    result.add(c + str);
+            for (char c : str.toCharArray()) {
+                List<String> subPermList = permutationNew(str.replace(c + "", ""));
+                for (String substr : subPermList) {
+                    result.add(c + substr);
                 }
             }
             return result;
         }
-    }
-
-    private static char[] extratChar(char[] chars, char j) {
-        return new String(chars).replace(j + "", "").toCharArray();
     }
 }
