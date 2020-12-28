@@ -5,6 +5,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 /**
  * Created by sad.keyvanfar on 8/23/2020.
  */
@@ -64,5 +67,10 @@ public class PermutationTest {
     @Test
     public void permutation() {
         Permutation.permutation("ali");
+    }
+
+    @Test
+    public void permutationUnknown() {
+        Permutation.permutationUnknown("abcd".toCharArray()).stream().forEach(System.out::println);
     }
 }
