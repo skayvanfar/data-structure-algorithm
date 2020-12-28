@@ -71,6 +71,6 @@ public class PermutationTest {
 
     @Test
     public void permutationUnknown() {
-        Permutation.permutationUnknown("abcd".toCharArray()).stream().forEach(System.out::println);
+        Permutation.permutationNew("abcd").stream().forEach(System.out::println);
     }
 }
