@@ -21,12 +21,6 @@ public class PermutationTest {
     }
 
     @Test
-    public void heapPermutationIterative() {
-        Integer[] arr = new Integer[]{1, 2, 3};
-        Permutation.heapPermutationIterative(arr.length, arr, ',');
-    }
-
-    @Test
     public void printRandom() {
         Integer[] arr = new Integer[]{1, 5, 2};
         Permutation.printRandom(arr, ',');
@@ -58,23 +52,19 @@ public class PermutationTest {
     }
 
     @Test
-    public void permutation() {
-        Permutation.permutation("ali");
-    }
-
-    @Test
-    public void permutationUnknown() {
+    public void permutationNew() {
         Permutation.permutationNew("abcd").stream().forEach(System.out::println);
     }
 
-    @Test
-    public void permutation2() {
-        Permutation.permutation2("abc").stream().forEach(System.out::println);
-    }
 
     @Test
     public void heapPermutationRecursive() {
         int[] arr = new int[]{1, 2, 3};
         Permutation.heapPermutationRecursive(arr, 3);
+    }
+
+    @Test
+    public void permutationIterative() {
+        Permutation.permutationIterative("abc");
     }
 }

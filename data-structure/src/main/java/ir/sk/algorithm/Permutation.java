@@ -21,81 +21,15 @@ public class Permutation {
     private final static int MAX_CHAR = 256;
 
     /**
-     * a method to compute all permutations of a string of unique characters.
-     * Building from permutations of first n-1 characters.
-     * we took all the permutations of a1 a2 a3 and added a4 into all possible locations, we would get all permutations of a1 a2 a3 a4.
-     *
-     * @param str
-     * @return
-     */
-    @TimeComplexity("O(n!)")
-    public static ArrayList<String> getPerms(String str) {
-        if (str == null) return null;
-
-        ArrayList<String> permutations = new ArrayList<>();
-        if (str.length() == 0) { //base case
-            permutations.add("");
-            return permutations;
-        }
-
-        char first = str.charAt(0); // get the first char
-        String remainder = str.substring(1); // remove the first char
-        ArrayList<String> words = getPerms(remainder);
-        for (String word : words) {
-            for (int j = 0; j <= word.length(); j++) {
-                String s = insertCharAt(word, first, j);
-                permutations.add(s);
-            }
-        }
-        return permutations;
-    }
-
-    /**
-     * Insert char c at index i in word
-     *
-     * @param word
-     * @param c
-     * @param i
-     * @return
-     */
-    private static String insertCharAt(String word, char c, int i) {
-        String start = word.substring(0, i);
-        String end = word.substring(i);
-        return start + c + end;
-    }
-
-    /**
-     * @param str
-     */
-    public static void permutation(String str) {
-        permutation(str, "");
-    }
-
-    /**
-     * @param str
-     * @param prefix
-     */
-    @TimeComplexity("O (n2 * n!)=O(n!)")
-    private static void permutation(String str, String prefix) {
-        if (str.length() == 0) {
-            System.out.println(prefix);
-        } else {
-            for (int i = 0; i < str.length(); i++) {
-                String rem = str.substring(0, i) + str.substring(i + 1);
-                permutation(rem, prefix + str.charAt(i));
-            }
-        }
-    }
-
-    /**
      * Generating permutation using Heap Algorithm (Heap’s Algorithm)
      *
      * @param array
      * @param size
      */
-    @TimeComplexity("O(n!)")
+    @TimeComplexity("O(n! * n), T(n) = n * T(n-1) = n!")
     @SpaceComplexity("O(n)")
     @DivideAndConquer
+    @Backtracking
     public static void heapPermutationRecursive(int array[], int size) {
         // if size becomes 1 then prints the obtained
         // permutation
@@ -117,32 +51,60 @@ public class Permutation {
     }
 
     /**
-     * @param n
-     * @param elements
-     * @param delimiter
-     * @param <T>
+     * @param str
+     * @return
      */
-    public static <T> void heapPermutationIterative(int n, T[] elements, char delimiter) {
-
-        int[] indexes = new int[n];
-        for (int i = 0; i < n; i++) {
-            indexes[i] = 0;
+    public static List<String> permutationNew(String str) {
+        List<String> result = new ArrayList<>();
+        if (str.length() == 1) {
+            result.add(str);
+            return result;
+        } else {
+            for (char c : str.toCharArray()) {
+                List<String> subPermList = permutationNew(str.replace(c + "", ""));
+                for (String substr : subPermList) {
+                    result.add(c + substr);
+                }
+            }
+            return result;
         }
+    }
 
-        printArray(elements, delimiter);
+    /**
+     * Iterative function to generate all permutations of a String in Java
+     * using Collections
+     *
+     * @param s
+     */
+    public static void permutationIterative(String s) {
+        // create an empty ArrayList to store (partial) permutations
+        List<String> partial = new ArrayList<>();
 
-        int i = 0;
-        while (i < n) {
-            if (indexes[i] < i) {
-                swap(elements, i % 2 == 0 ? 0 : indexes[i], i);
-                printArray(elements, delimiter);
-                indexes[i]++;
-                i = 0;
-            } else {
-                indexes[i] = 0;
-                i++;
+        // initialize the list with the first character of the string
+        partial.add(String.valueOf(s.charAt(0)));
+
+        // do for every character of the specified string
+        for (int i = 1; i < s.length(); i++) {
+            // consider previously constructed partial permutation one by one
+
+            // (iterate backwards to avoid ConcurrentModificationException)
+            for (int j = partial.size() - 1; j >= 0 ; j--) {
+                // remove current partial permutation from the ArrayList
+                String str = partial.remove(j);
+
+                // Insert next character of the specified string in all
+                // possible positions of current partial permutation. Then
+                // insert each of these newly constructed string in the list
+
+                for (int k = 0; k <= str.length(); k++) {
+                    // Advice: use StringBuilder for concatenation
+                    partial.add(str.substring(0, k) + s.charAt(i) +
+                            str.substring(k));
+                }
             }
         }
+
+        System.out.println(partial);
     }
 
     /**
@@ -307,51 +269,4 @@ public class Permutation {
         return odd > 1 ? false : true;
     }
 
-    /**
-     * @param str
-     * @return
-     */
-    public static List<String> permutationNew(String str) {
-        List<String> result = new ArrayList<>();
-        if (str.length() == 1) {
-            result.add(str);
-            return result;
-        } else {
-            for (char c : str.toCharArray()) {
-                List<String> subPermList = permutationNew(str.replace(c + "", ""));
-                for (String substr : subPermList) {
-                    result.add(c + substr);
-                }
-            }
-            return result;
-        }
-    }
-
-    /**
-     * @param str
-     * @return
-     */
-    public static Set<String> permutation2(String str) {
-        Set<String> result = new HashSet<>();
-        for (int i = 0; i < str.length(); i++) {
-            for (int j = 0; j < str.length(); j++) {
-                result.add(swap(str, i, j));
-            }
-        }
-        return result;
-    }
-
-    private static String swap(String str, int a, int b) {
-        if (a == b) return str;
-        else if (a < b) {
-            String first = str.substring(0, a) + str.substring(a + 1, b + 1);
-            String second = str.charAt(a) + str.substring(b + 1);
-            return first + second;
-        } else {
-            String first = str.substring(0, b + 1);
-            String second = str.charAt(a) + str.substring(b+1, a) + str.substring(a+1);
-            return first + second;
-        }
-
-    }
 }
