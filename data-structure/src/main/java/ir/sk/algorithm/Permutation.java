@@ -54,6 +54,7 @@ public class Permutation {
      * @param str
      * @return
      */
+    @Backtracking
     public static List<String> permutationNew(String str) {
         List<String> result = new ArrayList<>();
         if (str.length() == 1) {
