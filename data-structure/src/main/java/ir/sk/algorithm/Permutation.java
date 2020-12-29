@@ -1,15 +1,8 @@
 package ir.sk.algorithm;
 
-import ir.sk.helper.BCR;
-import ir.sk.helper.FrequencyCountingPattern;
-import ir.sk.helper.SpaceComplexity;
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Stream;
+import java.util.*;
 
 /**
  * A permutation of a set is a rearrangement of its elements. A set which consists of n elements has n! permutations.
@@ -95,50 +88,31 @@ public class Permutation {
     }
 
     /**
-     * print all permutations of a string
-     * If we had the answer to P ("ab"), how could we generate P ("abc")?
-     * Well, the additional letter is "c," so we can just stick c in at every possible point. That is:
-     * P("abc")
-     * P("abc")
-     * P("abc")
-     * P("abc")
-     * insert "c" into all locations of all strings in P("ab")
-     * insert "c" into all locations of all strings in {"ab","ba"}
-     * merge({"cab", ""acb", "abc"}, {"cba", abca", bac"})
-     * {"cab", "acb", "abc", "cba", "bca", bac"}
+     * Generating permutation using Heap Algorithm (Heap’s Algorithm)
      *
-     * @param elements
-     * @param delimiter
-     * @param <T>
+     * @param array
+     * @param size
      */
-    public static <T> void heapGenerateRecursive(T[] elements, char delimiter) {
-        heapGenerateRecursive(elements.length, elements, delimiter);
-    }
+    @TimeComplexity("O(n!)")
+    @SpaceComplexity("O(n)")
+    @DivideAndConquer
+    public static void heapPermutationRecursive(int array[], int size) {
+        // if size becomes 1 then prints the obtained
+        // permutation
+        if (size == 1)
+            System.out.println(Arrays.toString(array));
 
-    /**
-     * Described recursively as a decrease and conquer method
-     * <p>
-     * It's a recursive algorithm which produces all permutations by swapping one element per iteration
-     *
-     * @param n
-     * @param elements
-     * @param delimiter
-     * @param <T>
-     */
-    public static <T> void heapGenerateRecursive(int n, T[] elements, char delimiter) {
+        for (int i = 0; i < size; i++) {
+            heapPermutationRecursive(array, size - 1);
 
-        if (n == 1) {
-            printArray(elements, delimiter);
-        } else {
-            for (int i = 0; i < n - 1; i++) {
-                heapGenerateRecursive(n - 1, elements, delimiter);
-                if (n % 2 == 0) {
-                    swap(elements, i, n - 1);
-                } else {
-                    swap(elements, 0, n - 1);
-                }
-            }
-            heapGenerateRecursive(n - 1, elements, delimiter);
+            // if size is odd, swap 0th i.e (first) and
+            // (size-1)th i.e (last) element
+            if (size % 2 == 1)
+                swap(array, 0, size-1);
+            // If size is even, swap ith
+            // and (size-1)th i.e last element
+            else
+                swap(array, i, size-1);
         }
     }
 
@@ -148,7 +122,7 @@ public class Permutation {
      * @param delimiter
      * @param <T>
      */
-    public static <T> void heapGenerateIterative(int n, T[] elements, char delimiter) {
+    public static <T> void heapPermutationIterative(int n, T[] elements, char delimiter) {
 
         int[] indexes = new int[n];
         for (int i = 0; i < n; i++) {
@@ -221,8 +195,13 @@ public class Permutation {
     }
 
     private static <T> void swap(T[] elements, int a, int b) {
-
         T tmp = elements[a];
+        elements[a] = elements[b];
+        elements[b] = tmp;
+    }
+
+    private static void swap(int[] elements, int a, int b) {
+        int tmp = elements[a];
         elements[a] = elements[b];
         elements[b] = tmp;
     }
@@ -346,5 +325,33 @@ public class Permutation {
             }
             return result;
         }
+    }
+
+    /**
+     * @param str
+     * @return
+     */
+    public static Set<String> permutation2(String str) {
+        Set<String> result = new HashSet<>();
+        for (int i = 0; i < str.length(); i++) {
+            for (int j = 0; j < str.length(); j++) {
+                result.add(swap(str, i, j));
+            }
+        }
+        return result;
+    }
+
+    private static String swap(String str, int a, int b) {
+        if (a == b) return str;
+        else if (a < b) {
+            String first = str.substring(0, a) + str.substring(a + 1, b + 1);
+            String second = str.charAt(a) + str.substring(b + 1);
+            return first + second;
+        } else {
+            String first = str.substring(0, b + 1);
+            String second = str.charAt(a) + str.substring(b+1, a) + str.substring(a+1);
+            return first + second;
+        }
+
     }
 }
