@@ -2,6 +2,11 @@ package ir.sk.algorithm.array;
 
 import ir.sk.helper.*;
 
+import javax.swing.tree.TreeNode;
+import java.util.ArrayList;
+import java.util.List;
+
+
 /**
  * Created by sad.kayvanfar on 10/31/2020.
  */
@@ -95,5 +100,77 @@ public class Strings {
             }
         }
         return max;
+    }
+
+    public static int longestCommonPrefixByTrie(String[] array) {
+        Trie trie = new Trie();
+        for (String str : array) {
+            trie.insert(str);
+        }
+
+        return trie.findLongestPrefix();
+    }
+
+    public static class Trie {
+        TrieNode root = new TrieNode('$');
+
+        /**
+         * @param str
+         */
+        public void insert(String str) {
+            insert(root, str, 0);
+        }
+
+        public void insert(TrieNode root, String str, int index) {
+            List<TrieNode> trieNodeList = root.trieNodes;
+            boolean state = false;
+            for (TrieNode node : trieNodeList) {
+                if (node.ch == str.charAt(index)) {
+                    insert(node, str, ++index);
+                    state = true;
+                }
+            }
+            if (!state) {
+                TrieNode neww;
+                for (int i = index; i < str.length(); i++) {
+                    neww = new TrieNode(str.charAt(i));
+                    root.trieNodes.add(neww);
+                    root = neww;
+                }
+            }
+        }
+
+        public int findLongestPrefix() {
+            int max = 0;
+            for (TrieNode node : root.trieNodes) {
+                int count = findLongestPrefix(node, 1);
+                max = count > max ? count : max;
+            }
+            return max;
+
+        }
+
+        public int findLongestPrefix(TrieNode root, int count) {
+            if (root.trieNodes.size() > 1) {
+                return count;
+            } else {
+                return findLongestPrefix(root.trieNodes.get(0), ++count);
+            }
+        }
+    }
+
+    public static class TrieNode {
+        char ch;
+        List<TrieNode> trieNodes = new ArrayList<>();
+
+        public TrieNode(char ch) {
+            this.ch = ch;
+        }
+
+        public TrieNode(char ch, List<TrieNode> trieNodes) {
+            this.ch = ch;
+            this.trieNodes = trieNodes;
+        }
+
     }
 }
