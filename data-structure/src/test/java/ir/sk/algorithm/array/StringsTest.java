@@ -32,4 +32,24 @@ public class StringsTest {
         String expectedValue = "c4O1d2E3";
         Assert.assertEquals(expectedValue, Strings.countContinuosOccurenceEachChar(text.toCharArray()));
     }
+
+    @Test
+    public void longestCommonSubStringNaive() {
+        System.out.println(Strings.longestCommonSubStringNaive("babcdddfr", "aabscdfrggsb"));
+    }
+
+    @Test
+    public void insert() {
+        Strings.Trie trie = new Strings.Trie();
+
+        trie.insert("abc");
+        trie.insert("abd");
+        System.out.println();
+    }
+
+    @Test
+    public void longestCommonPrefixByTrie() {
+        String[] arrays = new String[]{"abce", "abcd", "cab", "car", "asddssaaeeert", "asddssaarr"};
+        System.out.println(Strings.longestCommonPrefixByTrie(arrays));
+    }
 }
