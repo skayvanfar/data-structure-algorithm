@@ -1,9 +1,6 @@
 package ir.sk.algorithm.array;
 
-import ir.sk.helper.FrequencyCountingPattern;
-import ir.sk.helper.SlidingWindowPattern;
-import ir.sk.helper.SlidingWindowPatternType;
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.*;
 
 /**
  * Created by sad.kayvanfar on 10/31/2020.
@@ -63,5 +60,40 @@ public class Strings {
             result.append(chars[i]).append(count);
         }
         return result.toString();
+    }
+
+    /**
+     * The longest common substring problem is to find the longest string that is a substring of two or more strings.
+     *
+     * @param str1
+     * @param str2
+     * @return
+     */
+    @BruteForce
+    @TimeComplexity("O(n * m^2)")
+    public static int longestCommonSubStringNaive(String str1, String str2) {
+        int max = 0;
+        char[] chars1 = str1.toCharArray();
+        char[] chars2 = str2.toCharArray();
+        for (int i = 0; i < chars1.length; i++) {
+            for (int j = 0; j < chars2.length; j++) {
+                if (chars1[i] == chars2[j]) {
+                    int count = 1;
+                    String str = chars1[i] + "";
+                    for (int k = i + 1, z = j + 1; k < chars1.length && z < chars2.length; k++, z++) {
+                        if (chars1[k] == chars2[z]) {
+                            count++;
+                            str += chars1[k];
+                        } else
+                            break;
+                    }
+                    if (count > max) {
+                        max = count;
+                        System.out.println(str);
+                    }
+                }
+            }
+        }
+        return max;
     }
 }

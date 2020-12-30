@@ -32,4 +32,9 @@ public class StringsTest {
         String expectedValue = "c4O1d2E3";
         Assert.assertEquals(expectedValue, Strings.countContinuosOccurenceEachChar(text.toCharArray()));
     }
+
+    @Test
+    public void longestCommonSubStringNaive() {
+        System.out.println(Strings.longestCommonSubStringNaive("babcdddfr", "aabscdfrggsb"));
+    }
 }
