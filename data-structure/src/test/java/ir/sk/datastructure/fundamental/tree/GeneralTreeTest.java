@@ -30,12 +30,12 @@ public class GeneralTreeTest {
     }
 
     @Test
-    public void traverseDFS() {
-        generalTree.traverseDFS(generalTree.getRoot());
+    public void traverseDFSRecursive() {
+        generalTree.traverseDFSRecursive(generalTree.getRoot());
     }
 
     @Test
     public void traverseLevelOrder() {
-        generalTree.traverseDFS(generalTree.getRoot());
+        generalTree.traverseDFSRecursive(generalTree.getRoot());
     }
 }
