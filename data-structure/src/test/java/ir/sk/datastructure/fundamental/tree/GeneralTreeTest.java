@@ -14,15 +14,15 @@ public class GeneralTreeTest {
     @Before
     public void setUp() throws Exception {
         generalTree =
-                new GeneralTree<>(7,
-                        new GeneralTree<>(19,
-                                new GeneralTree<>(1),
-                                new GeneralTree<>(12),
-                                new GeneralTree<>(31)),
-                        new GeneralTree<>(21),
-                        new GeneralTree<>(14,
-                                new GeneralTree<>(23),
-                                new GeneralTree<>(6)));
+                new GeneralTree<>(1,
+                        new GeneralTree<>(2,
+                                new GeneralTree<>(5),
+                                new GeneralTree<>(6),
+                                new GeneralTree<>(7)),
+                        new GeneralTree<>(3),
+                        new GeneralTree<>(4,
+                                new GeneralTree<>(8),
+                                new GeneralTree<>(9)));
     }
 
     @After
@@ -30,12 +30,17 @@ public class GeneralTreeTest {
     }
 
     @Test
-    public void traverseDFSRecursive() {
-        generalTree.traverseDFSRecursive(generalTree.getRoot());
+    public void traverseDFSTailRecursive() {
+        generalTree.traverseDFSTailRecursive(generalTree.getRoot());
+    }
+
+    @Test
+    public void traverseDFSHeadRecursive() {
+        generalTree.traverseDFSHeadRecursive(generalTree.getRoot());
     }
 
     @Test
     public void traverseLevelOrder() {
-        generalTree.traverseDFSRecursive(generalTree.getRoot());
+        generalTree.traverseLevelOrder(generalTree.getRoot());
     }
 }
