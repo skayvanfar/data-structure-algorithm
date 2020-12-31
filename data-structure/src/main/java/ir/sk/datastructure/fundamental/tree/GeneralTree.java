@@ -42,6 +42,8 @@ public class GeneralTree<T> {
         return root;
     }
 
+    ////////////////////////////// traverse
+
     /**
      * Depth-First Search (DFS) manner (Recursive)
      * TailRecursive so PreOrder
@@ -51,7 +53,7 @@ public class GeneralTree<T> {
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
     public void traverseDFSTailRecursive(GeneralNode<T> node) {
-        visit(node.getValue());
+        visit(node);
         for (int i = 0; i < node.childrenCount(); i++)
             traverseDFSTailRecursive(node.getChild(i));
     }
@@ -65,7 +67,7 @@ public class GeneralTree<T> {
     public void traverseDFSHeadRecursive(GeneralNode<T> node) {
         for (int i = 0; i < node.childrenCount(); i++)
             traverseDFSHeadRecursive(node.getChild(i));
-        visit(node.getValue());
+        visit(node);
     }
 
     /**
@@ -78,10 +80,9 @@ public class GeneralTree<T> {
         stack.push(root);
         while (!stack.isEmpty()) {
             GeneralNode<T> node = stack.pop();
-            visit(node.getValue());
-            for (GeneralNode<T> childNode : node.getChildren()) {
+            visit(node);
+            for (GeneralNode<T> childNode : node.getChildren())
                 stack.push(childNode);
-            }
         }
     }
 
@@ -107,15 +108,15 @@ public class GeneralTree<T> {
         while (!nodes.isEmpty()) {
             GeneralNode<T> childNode = nodes.remove();
 
-            visit(childNode.getValue());
+            visit(childNode);
 
             for (GeneralNode generalNode1 : nodes)
                 nodes.add(generalNode1);
         }
     }
 
-    private void visit(T value) {
-        System.out.print(" " + value);
+    private void visit(GeneralNode node) {
+        System.out.print(" " + node.getValue());
     }
 }
 
