@@ -13,12 +13,12 @@ import ir.sk.helper.TimeComplexity;
  */
 public class Array {
 
-    private int[] array;                     // ref to array a
+    private int[] array;
     private int size;                        // number of data items
 
     public Array(int max) {
-        array = new int[max];                // create the array
-        size = 0;                            // no items yet
+        array = new int[max];
+        size = 0;
     }
 
     /**
@@ -28,13 +28,13 @@ public class Array {
     @TimeComplexity("O(n)")
     public boolean find(int searchKey) {
         int j;
-        for (j = 0; j < size; j++)            // for each element, Linear Search
-            if (array[j] == searchKey)           // found item?
-                break;                      // exit loop before end
-        if (j == size)                        // gone to end?
-            return false;                   // yes, can't find it
+        for (j = 0; j < size; j++)
+            if (array[j] == searchKey)
+                break;
+        if (j == size)
+            return false;
         else
-            return true;                    // no, found it
+            return true;
     }
 
     /**
@@ -68,12 +68,12 @@ public class Array {
     @TimeComplexity("O(n)")
     public boolean delete(int value) {
         int j;
-        for (j = 0; j < size; j++)            // look for it
+        for (j = 0; j < size; j++)
             if (value == array[j])
                 break;
-        if (j == size)                        // can't find it
+        if (j == size)
             return false;
-        else {                              // found it
+        else {
             RotationShift.leftShift(array, j, size);
             return true;
         }
@@ -86,5 +86,26 @@ public class Array {
         for (int j = 0; j < size; j++)
             System.out.print(array[j] + " ");
         System.out.println("");
+    }
+
+    ////////////////////////////////////////////// traverse
+    /**
+     *
+     */
+    @TimeComplexity("O(n)")
+    public void traverseIterative() {
+        for (int i = 0; i < size; i++)
+            System.out.println(array[i]);
+    }
+
+    /**
+     * @param index
+     */
+    @TimeComplexity("O(n)")
+    public void traverseRecursive(int index) {
+        if (index == size)
+            return;
+        System.out.println(array[index]);
+        traverseRecursive(index + 1);
     }
 }

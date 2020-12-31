@@ -67,4 +67,14 @@ public class ArrayTest {
         array.insert(2, 39);
         array.display();
     }
+
+    @Test
+    public void traverseIterative() {
+        array.traverseIterative();
+    }
+
+    @Test
+    public void traverseRecursive() {
+        array.traverseRecursive(0);
+    }
 }
