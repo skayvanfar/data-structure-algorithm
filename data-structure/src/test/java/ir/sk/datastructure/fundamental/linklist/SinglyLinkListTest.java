@@ -15,10 +15,10 @@ public class SinglyLinkListTest {
     @Before
     public void setUp() throws Exception {
         theList = new SinglyLinkList<>(); // make new list
-        theList.insertFirst(22); // insert four items
-        theList.insertFirst(44);
-        theList.insertFirst(66);
-        theList.insertFirst(88);
+        theList.insertFirst(4); // insert four items
+        theList.insertFirst(3);
+        theList.insertFirst(2);
+        theList.insertFirst(1);
     }
 
     @After
@@ -72,7 +72,12 @@ public class SinglyLinkListTest {
     }
 
     @Test
-    public void traverseRecursive() {
-        theList.traverseRecursive(theList.getHead());
+    public void traverseTailRecursive() {
+        theList.traverseTailRecursive(theList.getHead());
+    }
+
+    @Test
+    public void traverseHeadRecursive() {
+        theList.traverseHeadRecursive(theList.getHead());
     }
 }

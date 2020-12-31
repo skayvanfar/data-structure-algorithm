@@ -186,27 +186,41 @@ public class SinglyLinkList<T> {
 
     //////////////////////////////////// traverse
     /**
-     *
+     * 1, 2, 3, 4
      */
     @TimeComplexity("O(n)")
     public void traverseIterative() {
         SinglyLink<T> link = head;
-        System.out.println(link.data);
+        visit(link);
         while (link.next != null) {
-            System.out.println(link.data);
+            visit(link);
             link = link.next;
         }
     }
 
     /**
+     * 1, 2, 3, 4
      * @param link
      */
     @TimeComplexity("O(n)")
-    public void traverseRecursive(SinglyLink<T> link) {
+    public void traverseTailRecursive(SinglyLink<T> link) {
+        visit(link);
+        if (link.next != null)
+            traverseTailRecursive(link.next);
+    }
+
+    /**
+     * 4, 3, 2, 1
+     * @param link
+     */
+    @TimeComplexity("O(n)")
+    public void traverseHeadRecursive(SinglyLink<T> link) {
+        if (link.next != null)
+            traverseHeadRecursive(link.next);
+        visit(link);
+    }
+
+    public void visit(SinglyLink<T> link) {
         System.out.println(link.data);
-        if (link.next == null)
-            return;
-        else
-            traverseRecursive(link.next);
     }
 }
