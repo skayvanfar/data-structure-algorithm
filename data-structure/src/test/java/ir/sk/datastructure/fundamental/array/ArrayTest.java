@@ -17,16 +17,16 @@ public class ArrayTest {
         array = new Array(maxSize);
 
         // insert 10 items
-        array.insert(77);
-        array.insert(99);
-        array.insert(44);
-        array.insert(55);
-        array.insert(22);
-        array.insert(88);
-        array.insert(11);
-        array.insert(00);
-        array.insert(66);
-        array.insert(33);
+        array.insert(1);
+        array.insert(2);
+        array.insert(3);
+        array.insert(4);
+        array.insert(5);
+        array.insert(6);
+        array.insert(7);
+        array.insert(8);
+        array.insert(9);
+        array.insert(10);
     }
 
     @After
@@ -74,7 +74,12 @@ public class ArrayTest {
     }
 
     @Test
-    public void traverseRecursive() {
-        array.traverseRecursive(0);
+    public void traverseTailRecursive() {
+        array.traverseTailRecursive(0);
+    }
+
+    @Test
+    public void traverseHeadRecursive() {
+        array.traverseHeadRecursive(0);
     }
 }

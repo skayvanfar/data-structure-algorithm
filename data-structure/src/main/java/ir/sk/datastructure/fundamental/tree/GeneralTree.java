@@ -2,6 +2,8 @@ package ir.sk.datastructure.fundamental.tree;
 
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.recursiontype.HeadRecursion;
+import ir.sk.helper.recursiontype.TailRecursion;
 
 import java.util.*;
 
@@ -52,6 +54,7 @@ public class GeneralTree<T> {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
+    @TailRecursion
     public void traverseDFSTailRecursive(GeneralNode<T> node) {
         visit(node);
         for (int i = 0; i < node.childrenCount(); i++)
@@ -64,6 +67,7 @@ public class GeneralTree<T> {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
+    @HeadRecursion
     public void traverseDFSHeadRecursive(GeneralNode<T> node) {
         for (int i = 0; i < node.childrenCount(); i++)
             traverseDFSHeadRecursive(node.getChild(i));

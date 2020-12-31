@@ -2,6 +2,8 @@ package ir.sk.datastructure.fundamental.linklist;
 
 import ir.sk.datastructure.ListIterator;
 import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.recursiontype.HeadRecursion;
+import ir.sk.helper.recursiontype.TailRecursion;
 
 /**
  * A linked list is a linear data structure,
@@ -203,6 +205,7 @@ public class SinglyLinkList<T> {
      * @param link
      */
     @TimeComplexity("O(n)")
+    @TailRecursion
     public void traverseTailRecursive(SinglyLink<T> link) {
         visit(link);
         if (link.next != null)
@@ -214,6 +217,7 @@ public class SinglyLinkList<T> {
      * @param link
      */
     @TimeComplexity("O(n)")
+    @HeadRecursion
     public void traverseHeadRecursive(SinglyLink<T> link) {
         if (link.next != null)
             traverseHeadRecursive(link.next);

@@ -2,6 +2,8 @@ package ir.sk.datastructure.fundamental.array;
 
 import ir.sk.algorithm.basic.RotationShift;
 import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.recursiontype.HeadRecursion;
+import ir.sk.helper.recursiontype.TailRecursion;
 
 /**
  * Unordered array data structure like ArrayList in java without using index. Duplicate is allowed.
@@ -102,10 +104,23 @@ public class Array {
      * @param index
      */
     @TimeComplexity("O(n)")
-    public void traverseRecursive(int index) {
+    @TailRecursion
+    public void traverseTailRecursive(int index) {
         if (index == size)
             return;
         System.out.println(array[index]);
-        traverseRecursive(index + 1);
+        traverseTailRecursive(index + 1);
+    }
+
+    /**
+     * @param index
+     */
+    @TimeComplexity("O(n)")
+    @HeadRecursion
+    public void traverseHeadRecursive(int index) {
+        if (index == size)
+            return;
+        traverseHeadRecursive(index + 1);
+        System.out.println(array[index]);
     }
 }
