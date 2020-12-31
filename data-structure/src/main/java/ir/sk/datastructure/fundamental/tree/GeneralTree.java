@@ -82,27 +82,24 @@ public class GeneralTree<T> {
      * • Go to the next level and visit all the nodes at that level.
      * • Repeat this until all levels are completed.
      *
-     * @param generalNode
+     * @param node
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
-    public void traverseLevelOrder(GeneralNode<T> generalNode) {
-        if (generalNode == null) {
+    public void traverseLevelOrder(GeneralNode<T> node) {
+        if (node == null)
             return;
-        }
 
         Queue<GeneralNode<T>> nodes = new LinkedList<>();
-        nodes.add(generalNode);
+        nodes.add(node);
 
         while (!nodes.isEmpty()) {
+            GeneralNode<T> childNode = nodes.remove();
 
-            GeneralNode<T> node = nodes.remove();
+            visit(childNode.getValue());
 
-            visit(node.getValue());
-
-            for (GeneralNode generalNode1 : nodes) {
+            for (GeneralNode generalNode1 : nodes)
                 nodes.add(generalNode1);
-            }
         }
     }
 
