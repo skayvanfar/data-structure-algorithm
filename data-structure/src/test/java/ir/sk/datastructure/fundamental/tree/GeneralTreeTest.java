@@ -43,4 +43,9 @@ public class GeneralTreeTest {
     public void traverseLevelOrder() {
         generalTree.traverseLevelOrder(generalTree.getRoot());
     }
+
+    @Test
+    public void traverseDFSIterative() {
+        generalTree.traverseDFSIterative();
+    }
 }

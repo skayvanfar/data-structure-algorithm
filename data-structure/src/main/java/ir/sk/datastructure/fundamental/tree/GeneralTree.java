@@ -3,10 +3,7 @@ package ir.sk.datastructure.fundamental.tree;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * General Tree is used to show real models like organization tree
@@ -72,6 +69,23 @@ public class GeneralTree<T> {
     }
 
     /**
+     *
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
+    public void traverseDFSIterative() {
+        Stack<GeneralNode<T>> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            GeneralNode<T> node = stack.pop();
+            visit(node.getValue());
+            for (GeneralNode<T> childNode : node.getChildren()) {
+                stack.push(childNode);
+            }
+        }
+    }
+
+    /**
      * Breadth-First Search(BFS) visits all the nodes of a level before going to the next level.
      * <p>
      * This kind of traversal is also called level-order and visits all the levels of the tree starting from the root, and from left to right.
@@ -87,9 +101,6 @@ public class GeneralTree<T> {
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
     public void traverseLevelOrder(GeneralNode<T> node) {
-        if (node == null)
-            return;
-
         Queue<GeneralNode<T>> nodes = new LinkedList<>();
         nodes.add(node);
 
