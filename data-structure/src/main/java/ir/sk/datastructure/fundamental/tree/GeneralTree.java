@@ -46,24 +46,16 @@ public class GeneralTree<T> {
     }
 
     /**
-     * Depth-First Search (DFS) manner
+     * Depth-First Search (DFS) manner (Recursive)
      *
-     * @param generalNode
+     * @param node
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
-    public void traverseDFS(GeneralNode<T> generalNode) {
-        if (generalNode == null) {
-            return;
-        }
-
-        visit(generalNode.getValue());
-
-        GeneralNode<T> child;
-        for (int i = 0; i < generalNode.childrenCount(); i++) {
-            child = generalNode.getChild(i);
-            traverseDFS(child);
-        }
+    public void traverseDFSRecursive(GeneralNode<T> node) {
+        visit(node.getValue());
+        for (int i = 0; i < node.childrenCount(); i++)
+            traverseDFSRecursive(node.getChild(i));
     }
 
     /**
@@ -127,6 +119,14 @@ class GeneralNode<T> {
 
     public void setValue(T value) {
         this.value = value;
+    }
+
+    public List<GeneralNode> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<GeneralNode> children) {
+        this.children = children;
     }
 
     public int childrenCount() {

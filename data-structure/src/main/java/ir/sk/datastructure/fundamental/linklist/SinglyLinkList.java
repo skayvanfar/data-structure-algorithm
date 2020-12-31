@@ -183,4 +183,30 @@ public class SinglyLinkList<T> {
     public ListIterator<T> getIterator() {
         return new ListIterator(this);
     }
+
+    //////////////////////////////////// traverse
+    /**
+     *
+     */
+    @TimeComplexity("O(n)")
+    public void traverseIterative() {
+        SinglyLink<T> link = head;
+        System.out.println(link.data);
+        while (link.next != null) {
+            System.out.println(link.data);
+            link = link.next;
+        }
+    }
+
+    /**
+     * @param link
+     */
+    @TimeComplexity("O(n)")
+    public void traverseRecursive(SinglyLink<T> link) {
+        System.out.println(link.data);
+        if (link.next == null)
+            return;
+        else
+            traverseRecursive(link.next);
+    }
 }

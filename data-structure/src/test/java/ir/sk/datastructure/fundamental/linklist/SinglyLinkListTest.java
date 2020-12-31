@@ -8,7 +8,7 @@ import org.junit.Test;
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
-public class SinglySinglyLinkListTest {
+public class SinglyLinkListTest {
 
     SinglyLinkList<Integer> theList;
 
@@ -64,5 +64,15 @@ public class SinglySinglyLinkListTest {
             System.out.println(listIterator.getCurrent().data);
             listIterator.nextLink();
         }
+    }
+
+    @Test
+    public void traverseIterative() {
+        theList.traverseIterative();
+    }
+
+    @Test
+    public void traverseRecursive() {
+        theList.traverseRecursive(theList.getHead());
     }
 }

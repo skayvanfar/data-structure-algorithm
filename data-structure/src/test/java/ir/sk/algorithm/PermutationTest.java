@@ -53,7 +53,7 @@ public class PermutationTest {
 
     @Test
     public void permutationNew() {
-        Permutation.permutationNew("abcd").stream().forEach(System.out::println);
+        Permutation.permutationNew("abc").stream().forEach(System.out::println);
     }
 
 
