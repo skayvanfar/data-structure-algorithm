@@ -110,17 +110,21 @@ public class TreeGraphAlgorithms {
      * <p>
      * Example:
      * <p>
-     * *
-     * / \
-     * +    +
-     * / \  / \
+     *      *
+     *     / \
+     *   +    +
+     *  / \  / \
      * 3  2  4  5
      * <p>
      * This is a representation of the expression (3 + 2) * (4 + 5), and should return 45.
      *
+     * using LRV DFS ,traversePostOrder
+     *
      * @param node
      * @return
      */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
     public static int calculateExpression(Node<Character> node) {
         if (node.left == null || node.right == null)
             return Integer.valueOf(node.value+"");

@@ -178,7 +178,7 @@ public class BinarySearchTree {
 
     /**
      * Depth-First Search is a type of traversal that goes deep as much as possible in every child before exploring the next sibling.
-     *
+     * LVR
      * @param BSTNode
      */
     @TimeComplexity("O(n)")
@@ -192,6 +192,7 @@ public class BinarySearchTree {
     }
 
     /**
+     * VLR
      * @param BSTNode
      */
     @TimeComplexity("O(n)")
@@ -205,6 +206,7 @@ public class BinarySearchTree {
     }
 
     /**
+     * LRV
      * @param BSTNode
      */
     @TimeComplexity("O(n)")
@@ -224,7 +226,7 @@ public class BinarySearchTree {
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(h)")
     @Point("transform recursive into iterative approach by using Stack")
-    public void traversePreOrderWithoutRecursion() {
+    public void traversePreOrderIterative() {
         Stack<BSTNode> stack = new Stack<>();
         BSTNode current;
         stack.push(root);
@@ -245,7 +247,7 @@ public class BinarySearchTree {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(h)")
-    public void traverseInOrderWithoutRecursion() {
+    public void traverseInOrderIterative() {
         Stack<BSTNode> stack = new Stack<BSTNode>();
         BSTNode current = root;
         stack.push(root);
@@ -269,7 +271,7 @@ public class BinarySearchTree {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(h)")
-    public void traversePostOrderWithoutRecursion() {
+    public void traversePostOrderIterative() {
         Stack<BSTNode> stack = new Stack<BSTNode>();
         BSTNode prev = root;
         BSTNode current = root;

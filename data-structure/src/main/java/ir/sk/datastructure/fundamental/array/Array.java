@@ -97,7 +97,7 @@ public class Array {
     @TimeComplexity("O(n)")
     public void traverseIterative() {
         for (int i = 0; i < size; i++)
-            System.out.println(array[i]);
+            visit(array[i]);
     }
 
     /**
@@ -108,7 +108,7 @@ public class Array {
     public void traverseTailRecursive(int index) {
         if (index == size)
             return;
-        System.out.println(array[index]);
+        visit(array[index]);
         traverseTailRecursive(index + 1);
     }
 
@@ -121,6 +121,10 @@ public class Array {
         if (index == size)
             return;
         traverseHeadRecursive(index + 1);
-        System.out.println(array[index]);
+        visit(array[index]);
+    }
+
+    public void visit(int value) {
+        System.out.println(value);
     }
 }

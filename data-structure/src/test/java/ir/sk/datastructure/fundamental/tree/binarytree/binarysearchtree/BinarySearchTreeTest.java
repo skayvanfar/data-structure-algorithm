@@ -90,21 +90,21 @@ public class BinarySearchTreeTest {
     public void givenABinaryTree_WhenTraversingInOrder_ThenPrintValues() {
         binarySearchTree.traverseInOrder(binarySearchTree.root);
         System.out.println();
-        binarySearchTree.traverseInOrderWithoutRecursion();
+        binarySearchTree.traverseInOrderIterative();
     }
 
     @Test
     public void givenABinaryTree_WhenTraversingPreOrder_ThenPrintValues() {
         binarySearchTree.traversePreOrder(binarySearchTree.root);
         System.out.println();
-        binarySearchTree.traversePreOrderWithoutRecursion();
+        binarySearchTree.traversePreOrderIterative();
     }
 
     @Test
     public void givenABinaryTree_WhenTraversingPostOrder_ThenPrintValues() {
         binarySearchTree.traversePostOrder(binarySearchTree.root);
         System.out.println();
-        binarySearchTree.traversePostOrderWithoutRecursion();
+        binarySearchTree.traversePostOrderIterative();
     }
 
     @Test
