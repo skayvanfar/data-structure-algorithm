@@ -102,4 +102,61 @@ public class TreeGraphAlgorithms {
         else
             return false;
     }
+
+    /**
+     * You are given a binary tree representation of an arithmetic expression. In this tree, each leaf is an integer value,
+     * and a non-leaf node is one of the four operations: '+', '-', '*', or '/'.
+     * Write a function that takes this tree and evaluates the expression.
+     * <p>
+     * Example:
+     * <p>
+     * *
+     * / \
+     * +    +
+     * / \  / \
+     * 3  2  4  5
+     * <p>
+     * This is a representation of the expression (3 + 2) * (4 + 5), and should return 45.
+     *
+     * @param node
+     * @return
+     */
+    public static int calculateExpression(Node<Character> node) {
+        if (node.left == null || node.right == null)
+            return Integer.valueOf(node.value+"");
+        else {
+            int leftValue = calculateExpression(node.left);
+            int rightValue = calculateExpression(node.right);
+            return calculator(leftValue, rightValue, node.value);
+        }
+    }
+
+    private static int calculator(int leftValue, int rightValue, Character value) {
+        switch (value) {
+            case '+':
+                return leftValue + rightValue;
+            case '-':
+                return leftValue - rightValue;
+            case '*':
+                return leftValue * rightValue;
+            default:
+                return leftValue / rightValue;
+        }
+    }
+}
+
+class Node<T> {
+    T value;
+    Node<T> left;
+    Node<T> right;
+
+    public Node(T value) {
+        this.value = value;
+    }
+
+    public Node(T value, Node<T> left, Node<T> right) {
+        this.value = value;
+        this.left = left;
+        this.right = right;
+    }
 }
