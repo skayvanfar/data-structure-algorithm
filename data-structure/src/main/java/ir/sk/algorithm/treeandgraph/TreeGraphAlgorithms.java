@@ -1,5 +1,6 @@
 package ir.sk.algorithm.treeandgraph;
 
+import ir.sk.algorithm.stack.parsingarithmeticexpression.Expression;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
@@ -131,20 +132,7 @@ public class TreeGraphAlgorithms {
         else {
             int leftValue = calculateExpression(node.left);
             int rightValue = calculateExpression(node.right);
-            return calculator(leftValue, rightValue, node.value);
-        }
-    }
-
-    private static int calculator(int leftValue, int rightValue, Character value) {
-        switch (value) {
-            case '+':
-                return leftValue + rightValue;
-            case '-':
-                return leftValue - rightValue;
-            case '*':
-                return leftValue * rightValue;
-            default:
-                return leftValue / rightValue;
+            return Expression.calculator(leftValue, rightValue, node.value);
         }
     }
 }

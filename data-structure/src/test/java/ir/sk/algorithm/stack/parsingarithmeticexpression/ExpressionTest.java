@@ -25,4 +25,9 @@ public class ExpressionTest {
     public void infixIntoPostfixExp() {
         System.out.println(Expression.infixIntoPostfixExp("((2+3)*(4+5))"));
     }
+
+    @Test
+    public void postfixEvaluation() {
+        System.out.println(Expression.postfixEvaluation("23+45+*"));
+    }
 }

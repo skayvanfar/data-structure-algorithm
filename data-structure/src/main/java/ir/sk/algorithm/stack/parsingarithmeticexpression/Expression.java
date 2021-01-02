@@ -70,4 +70,44 @@ public class Expression {
         }
         return -1;
     }
+
+    /**
+     * @param str
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
+    public static int postfixEvaluation(String str) {
+
+        Stack<Integer> stack = new Stack<>();
+
+        for (char ch : str.toCharArray()) {
+            switch (ch) {
+                case '/':
+                case '*':
+                case '+':
+                case '-':
+                    int left = stack.pop();
+                    int right = stack.pop();
+                    stack.push(calculator(left, right, ch));
+                    break;
+                default:
+                    stack.push(Character.getNumericValue(ch));
+            }
+        }
+        return stack.pop();
+    }
+
+    public static int calculator(int leftValue, int rightValue, Character value) {
+        switch (value) {
+            case '+':
+                return leftValue + rightValue;
+            case '-':
+                return leftValue - rightValue;
+            case '*':
+                return leftValue * rightValue;
+            default:
+                return leftValue / rightValue;
+        }
+    }
 }
