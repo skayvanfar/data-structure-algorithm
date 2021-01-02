@@ -28,17 +28,4 @@ public class TreeGraphAlgorithmsTest {
     @Test
     public void checkValidBSTByBoundaries() {
     }
-
-    @Test
-    public void calculateExpression() {
-        Node<Character> root =
-                new Node<>('*',
-                        new Node<>('+',
-                                new Node<>('3'),
-                                new Node<>('2')),
-                        new Node<>('+',
-                                new Node<>('4'),
-                                new Node<>('5')));
-        System.out.println(TreeGraphAlgorithms.calculateExpression(root));
-    }
 }
