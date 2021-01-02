@@ -5,6 +5,12 @@ import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
 /**
+ * The expression tree is a binary tree in which each internal node corresponds
+ * to the operator and each leaf node corresponds to the operand
+ *
+ * Inorder traversal of expression tree produces infix version of given postfix expression
+ * (same with postorder traversal it gives prefix expression)
+ *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/2/2021.
  */
 public class ExpressionTree {
