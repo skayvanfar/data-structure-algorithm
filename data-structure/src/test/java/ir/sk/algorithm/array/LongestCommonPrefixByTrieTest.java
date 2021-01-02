@@ -7,12 +7,10 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static org.junit.Assert.*;
-
 /**
- * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/3/2021.
+ * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/2/2021.
  */
-public class LongestCommonPrefixTest {
+public class LongestCommonPrefixByTrieTest {
 
     @Before
     public void setUp() throws Exception {
@@ -23,9 +21,9 @@ public class LongestCommonPrefixTest {
     }
 
     @Test
-    public void findLongestCommonPrefixCharByChar() {
+    public void longestCommonPrefix() {
         ArrayList<String> arr = new ArrayList<>(Arrays.asList("tutorialcup", "tutorial", "tussle", "tumble"));
-        StringBuffer ans = LongestCommonPrefix.longestCommonPrefixCharByChar(arr.toArray(new String[4]));
+        StringBuffer ans = LongestCommonPrefixByTrie.longestCommonPrefix(arr);
 
         if (ans.length() != 0)
             System.out.print("Longest common prefix = " + ans);
