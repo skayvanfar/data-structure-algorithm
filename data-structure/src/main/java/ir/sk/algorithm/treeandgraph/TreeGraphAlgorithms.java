@@ -1,8 +1,12 @@
 package ir.sk.algorithm.treeandgraph;
 
-import ir.sk.algorithm.stack.parsingarithmeticexpression.Expression;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
+
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
 
 /**
  * Created by sad.kayvanfar on 9/15/2020.
@@ -54,8 +58,8 @@ public class TreeGraphAlgorithms {
     private static Integer lastPrinted = null;
 
     /*
-    * Implement a function to check if a binary tree is a valid binary search tree.
-    * */
+     * Implement a function to check if a binary tree is a valid binary search tree.
+     * */
 
     /**
      * Implement a function to check if a binary tree is a valid binary search tree.
@@ -86,7 +90,7 @@ public class TreeGraphAlgorithms {
 
     /**
      * @param n
-     * @param low bound
+     * @param low  bound
      * @param high bound
      * @return
      */
@@ -102,5 +106,40 @@ public class TreeGraphAlgorithms {
             return true;
         else
             return false;
+    }
+
+    /**
+     * Given a binary tree, populate an array to represent its level-by-level traversal.
+     * You should populate the values of all nodes of each level from left to right in separate sub-arrays.
+     * <p>
+     * [[1],[2,3],[4,5,6,7]], 3 levels
+     *
+     * @param root
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
+    public static List<List<Integer>> levelByLevelBFS(TreeNode root) {
+        TreeNode tmp = root;
+        List<List<Integer>> result = new ArrayList<>();
+
+        Queue<TreeNode> queue = new ArrayDeque<>();
+        queue.add(tmp);
+
+        while (!queue.isEmpty()) {
+            int levelSize = queue.size();
+            List<Integer> currentLevel = new ArrayList<>();
+
+            for (int i = 0; i < levelSize; i++) {
+                TreeNode currentNode = queue.poll();
+                currentLevel.add(currentNode.value);
+                if (currentNode.left != null)
+                    queue.offer(currentNode.left);
+                if (currentNode.right != null)
+                    queue.offer(currentNode.right);
+            }
+            result.add(currentLevel);
+        }
+        return result;
     }
 }

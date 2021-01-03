@@ -4,6 +4,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
+
 /**
  * Created by sad.kayvanfar on 9/15/2020.
  */
@@ -27,5 +29,18 @@ public class TreeGraphAlgorithmsTest {
 
     @Test
     public void checkValidBSTByBoundaries() {
+    }
+
+    @Test
+    public void levelByLevelBFS() {
+        TreeNode root = new TreeNode(1,
+                                        new TreeNode(2,
+                                                new TreeNode(4),
+                                                new TreeNode(5)),
+                                        new TreeNode(3,
+                                                new TreeNode(6),
+                                                new TreeNode(7)));
+        List<List<Integer>> result = TreeGraphAlgorithms.levelByLevelBFS(root);
+        System.out.println(result);
     }
 }
