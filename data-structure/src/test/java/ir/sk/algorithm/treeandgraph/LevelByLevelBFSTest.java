@@ -73,4 +73,15 @@ public class LevelByLevelBFSTest {
         List<Double> result = LevelByLevelBFS.levelByLevelBFSAverage(root);
         System.out.println(result);
     }
+
+    @Test
+    public void levelByLevelBFSMinimumDepth() {
+        TreeNode root = new TreeNode(1,
+                new TreeNode(2,
+                        new TreeNode(4),
+                        new TreeNode(5)),
+                new TreeNode(3));
+        int result = LevelByLevelBFS.levelByLevelBFSMinimumDepth(root);
+        System.out.println(result);
+    }
 }

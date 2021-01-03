@@ -147,14 +147,38 @@ public class LevelByLevelBFS {
         return result;
     }
 
-    private static double calculateAverage(List <Integer> marks) {
-        Integer sum = 0;
-        if(!marks.isEmpty()) {
-            for (Integer mark : marks) {
-                sum += mark;
+    /**
+     * Find the minimum depth of a binary tree.
+     * The minimum depth is the number of nodes along the shortest path from the root node to the nearest leaf node.
+     *
+     * @param root
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
+    public static int levelByLevelBFSMinimumDepth(TreeNode root) {
+        Queue<TreeNode> queue = new ArrayDeque<>();
+        queue.add(root);
+
+        // level
+        int minimumTreeDepth = 0;
+
+        while (!queue.isEmpty()) {
+            int levelSize = queue.size();
+            minimumTreeDepth ++;
+            for (int i = 0; i < levelSize; i++) {
+                TreeNode currentNode = queue.poll();
+                // check if this is a leaf node
+                if (currentNode.left == null && currentNode.right == null)
+                    return minimumTreeDepth;
+                if (currentNode.left != null)
+                    queue.offer(currentNode.left);
+                if (currentNode.right != null)
+                    queue.offer(currentNode.right);
             }
-            return sum.doubleValue() / marks.size();
+
         }
-        return sum;
+        return minimumTreeDepth;
     }
+
 }
