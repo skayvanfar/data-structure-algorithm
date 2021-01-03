@@ -4,6 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -44,4 +45,18 @@ public class TreeGraphAlgorithmsTest {
         System.out.println(result);
     }
 
+    @Test
+    public void allPathByDFS() {
+        TreeNode root = new TreeNode(1,
+                new TreeNode(2,
+                        new TreeNode(4),
+                        new TreeNode(5)),
+                new TreeNode(3,
+                        new TreeNode(6),
+                        new TreeNode(7)));
+        List<List<Integer>> allPaths = new ArrayList<>();
+        List<Integer> currentPath = new ArrayList<>();
+        TreeGraphAlgorithms.allPathByDFS(root, 10, 0, currentPath, allPaths);
+        System.out.println(allPaths);
+    }
 }

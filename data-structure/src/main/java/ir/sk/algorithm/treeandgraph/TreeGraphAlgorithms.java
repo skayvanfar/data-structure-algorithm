@@ -4,7 +4,6 @@ import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
 import java.util.List;
-import java.util.Stack;
 
 /**
  * Created by sad.kayvanfar on 9/15/2020.
@@ -109,8 +108,9 @@ public class TreeGraphAlgorithms {
     /**
      * Given a binary tree and a number ‘S’,
      * find if the tree has a path from root-to-leaf such that the sum of all the node values of that path equals ‘S’.
-     *
+     * <p>
      * VLR
+     *
      * @param node
      * @param value
      * @param sum
@@ -129,6 +129,33 @@ public class TreeGraphAlgorithms {
         else {
             int val = node.value + sum;
             return hasPathByDFS(node.left, value, val) || hasPathByDFS(node.right, value, val);
+        }
+    }
+
+    /**
+     * Given a binary tree and a number ‘S’,
+     * find if the tree has a path from root-to-leaf such that the sum of all the node values of that path equals ‘S’.
+     *
+     * @param node
+     * @param value
+     * @param sum
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
+    public static void allPathByDFS(TreeNode node, int value, int sum, List<Integer> currentPath, List<List<Integer>> allPaths) {
+        if (node == null)
+            return;
+        if (node.left == null && node.right == null)
+            if (node.value + sum == value) {
+                currentPath.add(node.value);
+                allPaths.add(currentPath);
+            } else
+                return;
+        else {
+            int val = node.value + sum;
+            allPathByDFS(node.left, value, val, currentPath, allPaths);
+            allPathByDFS(node.right, value, val, currentPath, allPaths);
         }
     }
 
