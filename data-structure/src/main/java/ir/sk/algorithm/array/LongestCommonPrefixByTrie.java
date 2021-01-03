@@ -70,8 +70,8 @@ public class LongestCommonPrefixByTrie {
      * @param root
      * @param arr
      */
-    @TimeComplexity("O(n*m), N = Number of strings, M = Length of longest string")
-    @SpaceComplexity("O(n*m)")
+    @TimeComplexity("O(n*m), n = Number of strings, m = Length of longest string")
+    @SpaceComplexity("O(26*m*n) ~ O(n*m)")
     static void constructTrie(TrieNode root, ArrayList<String> arr) {
         for (int i = 0; i < arr.size(); i++)
             insert(root, arr.get(i));

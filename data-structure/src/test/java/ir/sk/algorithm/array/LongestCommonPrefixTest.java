@@ -36,7 +36,18 @@ public class LongestCommonPrefixTest {
     @Test
     public void findLongestCommonPrefixBySorting() {
         ArrayList<String> arr = new ArrayList<>(Arrays.asList("tutorialcup", "tutorial", "tussle", "tumble"));
-        StringBuffer ans = LongestCommonPrefix.findLongestCommonPrefixBySorting(arr.toArray(new String[4]));
+        String ans = LongestCommonPrefix.findLongestCommonPrefixBySorting(arr.toArray(new String[4]));
+
+        if (ans.length() != 0)
+            System.out.println("Longest common prefix = " + ans);
+        else
+            System.out.print("No common prefix found");
+    }
+
+    @Test
+    public void findLongestCommonPrefixByDivideAndConquer() {
+        ArrayList<String> arr = new ArrayList<>(Arrays.asList("tutorialcup", "tutorial", "tussle", "tumble"));
+        String ans = LongestCommonPrefix.findLongestCommonPrefixByDivideAndConquer(arr.toArray(new String[4]), 0, arr.size() - 1);
 
         if (ans.length() != 0)
             System.out.println("Longest common prefix = " + ans);

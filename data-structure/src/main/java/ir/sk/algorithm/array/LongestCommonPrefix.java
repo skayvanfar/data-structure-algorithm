@@ -1,5 +1,6 @@
 package ir.sk.algorithm.array;
 
+import ir.sk.helper.DivideAndConquer;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
@@ -41,6 +42,8 @@ public class LongestCommonPrefix {
     }
 
     /**
+     * The idea is to sort the array of strings and find the common prefix of the first and last string of the sorted array.
+     *
      * @param stringArrays
      * @return
      */
@@ -60,14 +63,53 @@ public class LongestCommonPrefix {
         Arrays.sort(stringArrays);
 
         /* find the minimum length from first and last string */
-        int end = Math.min(stringArrays[0].length(), stringArrays[size-1].length());
+        int end = Math.min(stringArrays[0].length(), stringArrays[size - 1].length());
 
         /* find the common prefix between the first and
            last string */
         int i = 0;
-        while (i < end && stringArrays[0].charAt(i) == stringArrays[size-1].charAt(i) )
+        while (i < end && stringArrays[0].charAt(i) == stringArrays[size - 1].charAt(i))
             i++;
 
         return stringArrays[0].substring(0, i);
+    }
+
+    /**
+     * We first divide the arrays of string into two parts.
+     * Then we do the same for left part and after that for the right part.
+     * We will do it until and unless all the strings become of length 1. Now after that,
+     * we will start conquering by returning the common prefix of the left and the right strings.
+     *
+     * @param stringArrays
+     * @param start
+     * @param end
+     * @return
+     */
+    @TimeComplexity("O(m Log n), n Number of strings, m = Length of longest string")
+    @DivideAndConquer
+    public static String findLongestCommonPrefixByDivideAndConquer(String[] stringArrays, int start, int end) {
+        if (start == end)
+            return stringArrays[start];
+        else {
+            int middle = (start + end) / 2;
+            String first = findLongestCommonPrefixByDivideAndConquer(stringArrays, start, middle);
+            String last = findLongestCommonPrefixByDivideAndConquer(stringArrays, middle + 1, end);
+            return findCommonPrefix(first, last);
+        }
+    }
+
+    /**
+     * @param first
+     * @param second
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    private static String findCommonPrefix(String first, String second) {
+        int i;
+        for (i = 0; i < first.length() && i < second.length(); i++) {
+            if (first.charAt(i) != second.charAt(i))
+                break;
+        }
+        return first.substring(0, i);
     }
 }
