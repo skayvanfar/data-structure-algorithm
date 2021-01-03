@@ -173,4 +173,42 @@ public class TreeGraphAlgorithms {
         }
         return result;
     }
+
+    /**
+     * Given a binary tree, populate an array to represent its zigzag level order traversal.
+     * You should populate the values of all nodes of the first level from left to right,
+     * then right to left for the next level and keep alternating in the same manner for the following levels.
+     *
+     * @param root
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
+    public static List<List<Integer>> LevelByLevelBFSZigzag(TreeNode root) {
+        List<List<Integer>> result = new ArrayList<>();
+        Queue<TreeNode> queue = new ArrayDeque<>();
+        queue.offer(root);
+        boolean leftToRight = true;
+        while (!queue.isEmpty()) {
+            int levelSize = queue.size();
+            List<Integer> currentLevel = new ArrayList<>();
+            for (int i = 0; i < levelSize; i++) {
+                TreeNode currentNode = queue.poll();
+
+                // add the node to the current Level based on the traverse direction
+                if (!leftToRight)
+                    currentLevel.add(currentNode.value);
+                else
+                    currentLevel.add(0, currentNode.value);
+                if (currentNode.left != null)
+                    queue.add(currentNode.left);
+                if (currentNode.right != null)
+                    queue.add(currentNode.right);
+            }
+            // reverse the traversal direction
+            leftToRight = !leftToRight;
+            result.add(currentLevel);
+        }
+        return result;
+    }
 }
