@@ -6,8 +6,6 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by sad.kayvanfar on 1/3/2021.
  */
@@ -97,13 +95,26 @@ public class LevelByLevelBFSTest {
     }
 
     @Test
-    public void levelByLevelBFSOrderSuccessor() {
+    public void levelOrderSuccessorBFS() {
         TreeNode root = new TreeNode(1,
                 new TreeNode(2,
                         new TreeNode(4),
                         new TreeNode(5)),
                 new TreeNode(3));
-        int result = LevelByLevelBFS.levelByLevelBFSOrderSuccessor(root, 3);
+        int result = LevelByLevelBFS.levelOrderSuccessorBFS(root, 3);
         System.out.println(result);
+    }
+
+    @Test
+    public void connectLevelOrderSiblingsBFS() {
+        TreeNode root = new TreeNode(1,
+                new TreeNode(2,
+                        new TreeNode(4),
+                        new TreeNode(5)),
+                new TreeNode(3,
+                        new TreeNode(6),
+                        new TreeNode(7)));
+        LevelByLevelBFS.connectLevelOrderSiblingsBFS(root);
+        root.printLevelOrderByNextNode();
     }
 }
