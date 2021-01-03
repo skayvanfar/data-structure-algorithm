@@ -94,6 +94,18 @@ public class LevelByLevelBFSTest {
         System.out.println(result);
     }
 
+
+    @Test
+    public void levelByLevelBFSRightSide() {
+        TreeNode root = new TreeNode(1,
+                new TreeNode(2,
+                        new TreeNode(4),
+                        new TreeNode(5)),
+                new TreeNode(3));
+        List<Integer> result = LevelByLevelBFS.levelByLevelBFSRightSide(root);
+        System.out.println(result);
+    }
+
     @Test
     public void levelOrderSuccessorBFS() {
         TreeNode root = new TreeNode(1,
@@ -130,4 +142,5 @@ public class LevelByLevelBFSTest {
         LevelByLevelBFS.connectAllLevelOrderSiblingsBFS(root);
         root.printAllLevelOrderByNextNode();
     }
+
 }

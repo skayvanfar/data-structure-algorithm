@@ -213,6 +213,36 @@ public class LevelByLevelBFS {
     }
 
     /**
+     * Given a binary tree, return an array containing nodes in its right view.
+     * The right view of a binary tree is the set of nodes visible when the tree is seen from the right side.
+     *
+     * @param root
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
+    public static List<Integer> levelByLevelBFSRightSide(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        Queue<TreeNode> queue = new ArrayDeque<>();
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            int levelSize = queue.size();
+            for (int i = 0; i < levelSize; i++) {
+                TreeNode currentNode = queue.poll();
+
+                if (i == levelSize - 1)
+                    result.add(currentNode.value);
+
+                if (currentNode.left != null)
+                    queue.offer(currentNode.left);
+                if (currentNode.right != null)
+                    queue.offer(currentNode.right);
+            }
+        }
+        return result;
+    }
+
+    /**
      * Given a binary tree and a node, find the level order successor of the given node in the tree.
      * The level order successor is the node that appears right after the given node in the level order traversal.
      *
