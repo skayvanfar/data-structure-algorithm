@@ -29,7 +29,7 @@ class TreeNode {
      */
     public void printLevelOrderByNextNode() {
         TreeNode nextLevelRoot = this;
-        while(nextLevelRoot != null) {
+        while (nextLevelRoot != null) {
             TreeNode current = nextLevelRoot;
             nextLevelRoot = null;
             while (current != null) {
@@ -43,6 +43,14 @@ class TreeNode {
                 current = current.next;
             }
             System.out.println();
+        }
+    }
+
+    public void printAllLevelOrderByNextNode() {
+        TreeNode current = this;
+        while (current != null) {
+            System.out.print(current.value + " ");
+            current = current.next;
         }
     }
 }

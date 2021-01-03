@@ -278,4 +278,40 @@ public class LevelByLevelBFS {
         }
     }
 
+    /**
+     * Given a binary tree, connect each node with its level order successor.
+     * The last node of each level should point to the first node of the next level.
+     *
+     * @param root
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
+    public static void connectAllLevelOrderSiblingsBFS(TreeNode root) {
+        Queue<TreeNode> queue = new ArrayDeque<>();
+        queue.add(root);
+
+        TreeNode previousNode = null;
+
+        while (!queue.isEmpty()) {
+            int levelSize = queue.size();
+
+            // connect all nodes of this level
+            for (int i = 0; i < levelSize; i++) {
+
+                TreeNode currentNode = queue.poll();
+
+                if (previousNode != null)
+                    previousNode.next = currentNode;
+                previousNode = currentNode;
+
+                if (currentNode.left != null)
+                    queue.offer(currentNode.left);
+                if (currentNode.right != null)
+                    queue.offer(currentNode.right);
+
+            }
+        }
+    }
+
 }
