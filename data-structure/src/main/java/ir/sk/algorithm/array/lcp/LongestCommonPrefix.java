@@ -62,16 +62,7 @@ public class LongestCommonPrefix {
         /* sort the array of strings O(m*n*logn) */
         Arrays.sort(stringArrays);
 
-        /* find the minimum length from first and last string */
-        int end = Math.min(stringArrays[0].length(), stringArrays[size - 1].length());
-
-        /* find the common prefix between the first and
-           last string */
-        int i = 0;
-        while (i < end && stringArrays[0].charAt(i) == stringArrays[size - 1].charAt(i))
-            i++;
-
-        return stringArrays[0].substring(0, i);
+        return findCommonPrefix(stringArrays[0], stringArrays[stringArrays.length - 1]);
     }
 
     /**
@@ -104,7 +95,7 @@ public class LongestCommonPrefix {
      * @return
      */
     @TimeComplexity("O(n)")
-    private static String findCommonPrefix(String first, String second) {
+    public static String findCommonPrefix(String first, String second) {
         int i;
         for (i = 0; i < first.length() && i < second.length(); i++) {
             if (first.charAt(i) != second.charAt(i))

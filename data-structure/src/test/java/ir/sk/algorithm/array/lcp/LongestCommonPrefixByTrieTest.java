@@ -1,4 +1,4 @@
-package ir.sk.algorithm.array;
+package ir.sk.algorithm.array.lcp;
 
 import ir.sk.algorithm.array.lcp.LongestCommonPrefixByTrie;
 import org.junit.After;
