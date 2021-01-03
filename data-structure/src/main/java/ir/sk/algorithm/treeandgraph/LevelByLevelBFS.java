@@ -88,7 +88,7 @@ public class LevelByLevelBFS {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
-    public static List<List<Integer>> LevelByLevelBFSZigzag(TreeNode root) {
+    public static List<List<Integer>> levelByLevelBFSZigzag(TreeNode root) {
         List<List<Integer>> result = new ArrayList<>();
         Queue<TreeNode> queue = new ArrayDeque<>();
         queue.offer(root);
@@ -114,5 +114,47 @@ public class LevelByLevelBFS {
             result.add(currentLevel);
         }
         return result;
+    }
+
+    /**
+     * Given a binary tree, populate an array to represent the averages of all of its levels.
+     *
+     * @param root
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
+    public static List<Double> levelByLevelBFSAverage(TreeNode root) {
+        List<Double> result = new ArrayList<>();
+
+        Queue<TreeNode> queue = new ArrayDeque<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            int levelSize = queue.size();
+            double levelSum = 0;
+
+            for (int i = 0; i < levelSize; i++) {
+                TreeNode currentNode = queue.poll();
+                levelSum += currentNode.value;
+                if (currentNode.left != null)
+                    queue.offer(currentNode.left);
+                if (currentNode.right != null)
+                    queue.offer(currentNode.right);
+            }
+            result.add(levelSum / levelSize);
+        }
+        return result;
+    }
+
+    private static double calculateAverage(List <Integer> marks) {
+        Integer sum = 0;
+        if(!marks.isEmpty()) {
+            for (Integer mark : marks) {
+                sum += mark;
+            }
+            return sum.doubleValue() / marks.size();
+        }
+        return sum;
     }
 }

@@ -56,7 +56,21 @@ public class LevelByLevelBFSTest {
                 new TreeNode(3,
                         new TreeNode(6),
                         new TreeNode(7)));
-        List<List<Integer>> result = LevelByLevelBFS.LevelByLevelBFSZigzag(root);
+        List<List<Integer>> result = LevelByLevelBFS.levelByLevelBFSZigzag(root);
+        System.out.println(result);
+    }
+
+
+    @Test
+    public void levelByLevelBFSAverage() {
+        TreeNode root = new TreeNode(1,
+                new TreeNode(2,
+                        new TreeNode(4),
+                        new TreeNode(5)),
+                new TreeNode(3,
+                        new TreeNode(6),
+                        new TreeNode(7)));
+        List<Double> result = LevelByLevelBFS.levelByLevelBFSAverage(root);
         System.out.println(result);
     }
 }
