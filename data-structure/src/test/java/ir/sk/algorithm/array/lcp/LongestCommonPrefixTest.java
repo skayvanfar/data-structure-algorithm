@@ -53,4 +53,19 @@ public class LongestCommonPrefixTest {
         else
             System.out.print("No common prefix found");
     }
+
+    @Test
+    public void findLongestCommonPrefixByBinarySearch() {
+        ArrayList<String> arr = new ArrayList<>(Arrays.asList("tutorialcup", "tutorial", "tussle", "tumble"));
+        String ans = LongestCommonPrefix.findLongestCommonPrefixByBinarySearch(arr.toArray(new String[4]));
+
+        if (ans.length() != 0)
+            System.out.println("Longest common prefix = " + ans);
+        else
+            System.out.print("No common prefix found");
+    }
+
+    @Test
+    public void findMinLength() {
+    }
 }

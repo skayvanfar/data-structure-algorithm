@@ -1,6 +1,7 @@
 package ir.sk.algorithm.array.lcp;
 
 import ir.sk.helper.DivideAndConquer;
+import ir.sk.helper.RecurrenceRelation;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
@@ -31,14 +32,6 @@ public class LongestCommonPrefix {
             result.append(currChar);
         }
         return result;
-    }
-
-    private static int findMinLength(String[] string_array) {
-        int min = string_array[0].length();
-        for (int i = 1; i < string_array.length; i++)
-            if (string_array[i].length() < min)
-                min = string_array[i].length();
-        return (min);
     }
 
     /**
@@ -102,5 +95,68 @@ public class LongestCommonPrefix {
                 break;
         }
         return first.substring(0, i);
+    }
+
+    /**
+     * A Function that returns the longest common prefix from the array of strings
+     * @param arr
+     * @return
+     */
+    @RecurrenceRelation("T(m) = T(m/2) + O(mn), n Number of strings, m = Length of longest string")
+    @SpaceComplexity("O(nm log m)")
+    public static String findLongestCommonPrefixByBinarySearch(String arr[]) {
+        int index = findMinLength(arr);
+        String prefix = ""; // Our resultant string
+
+        // We will do an in-place binary search on the
+        // first string of the array in the range 0 to
+        // index
+        int low = 0, high = index - 1;
+        while (low <= high) {
+
+            // Same as (low + high)/2, but avoids
+            // overflow for large low and high
+            int mid = low + (high - low) / 2;
+
+            if (allContainsPrefix(arr, arr.length, arr[0], low, mid)) {
+                // If all the strings in the input array
+                // contains this prefix then append this
+                // substring to our answer
+                prefix = prefix + arr[0].substring(low, mid + 1);
+
+                // And then go for the right part
+                low = mid + 1;
+            } else { // Go for the left part
+                high = mid - 1;
+            }
+        }
+
+        return prefix;
+    }
+
+    /**
+     * A Function to find the string having the minimum length and returns that length
+     *
+     * @param arr
+     * @return
+     */
+    public static int findMinLength(String arr[]) {
+        int min = Integer.MAX_VALUE;
+        for (int i = 0; i < arr.length; i++)
+            if (arr[i].length() < min)
+                min = arr[i].length();
+
+        return min;
+    }
+
+    public static boolean allContainsPrefix(String arr[], int n, String str, int start, int end) {
+        for (int i = 0; i <= (n - 1); i++) {
+            String arr_i = arr[i];
+
+            for (int j = start; j <= end; j++)
+                if (arr_i.charAt(j) != str.charAt(j))
+                    return false;
+        }
+        return true;
     }
 }
