@@ -31,4 +31,17 @@ public class TreeGraphAlgorithmsTest {
     public void checkValidBSTByBoundaries() {
     }
 
+    @Test
+    public void hasPathByDFS() {
+        TreeNode root = new TreeNode(1,
+                new TreeNode(2,
+                        new TreeNode(4),
+                        new TreeNode(5)),
+                new TreeNode(3,
+                        new TreeNode(6),
+                        new TreeNode(7)));
+        boolean result = TreeGraphAlgorithms.hasPathByDFS(root, 10, 0);
+        System.out.println(result);
+    }
+
 }

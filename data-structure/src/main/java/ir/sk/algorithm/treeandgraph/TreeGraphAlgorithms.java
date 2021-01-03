@@ -3,7 +3,8 @@ package ir.sk.algorithm.treeandgraph;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
-import java.util.*;
+import java.util.List;
+import java.util.Stack;
 
 /**
  * Created by sad.kayvanfar on 9/15/2020.
@@ -103,6 +104,32 @@ public class TreeGraphAlgorithms {
             return true;
         else
             return false;
+    }
+
+    /**
+     * Given a binary tree and a number ‘S’,
+     * find if the tree has a path from root-to-leaf such that the sum of all the node values of that path equals ‘S’.
+     *
+     * VLR
+     * @param node
+     * @param value
+     * @param sum
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
+    public static boolean hasPathByDFS(TreeNode node, int value, int sum) {
+        if (node == null)
+            return false;
+        if (node.left == null && node.right == null)
+            if (node.value + sum == value)
+                return true;
+            else
+                return false;
+        else {
+            int val = node.value + sum;
+            return hasPathByDFS(node.left, value, val) || hasPathByDFS(node.right, value, val);
+        }
     }
 
 }
