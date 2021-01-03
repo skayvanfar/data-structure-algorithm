@@ -165,7 +165,7 @@ public class LevelByLevelBFS {
 
         while (!queue.isEmpty()) {
             int levelSize = queue.size();
-            minimumTreeDepth ++;
+            minimumTreeDepth++;
             for (int i = 0; i < levelSize; i++) {
                 TreeNode currentNode = queue.poll();
                 // check if this is a leaf node
@@ -198,7 +198,7 @@ public class LevelByLevelBFS {
 
         while (!queue.isEmpty()) {
             int levelSize = queue.size();
-            minimumTreeDepth ++;
+            minimumTreeDepth++;
             for (int i = 0; i < levelSize; i++) {
                 TreeNode currentNode = queue.poll();
 
@@ -210,6 +210,37 @@ public class LevelByLevelBFS {
 
         }
         return minimumTreeDepth;
+    }
+
+    /**
+     * Given a binary tree and a node, find the level order successor of the given node in the tree.
+     * The level order successor is the node that appears right after the given node in the level order traversal.
+     *
+     * @param root
+     * @param key
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
+    public static int levelByLevelBFSOrderSuccessor(TreeNode root, int key) {
+        Queue<TreeNode> queue = new ArrayDeque<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            TreeNode currentNode = queue.poll();
+
+            if (currentNode.left != null)
+                queue.offer(currentNode.left);
+            if (currentNode.right != null)
+                queue.offer(currentNode.right);
+
+            if (currentNode.value == key)
+                break;
+        }
+        if (queue.peek() != null)
+            return queue.peek().value;
+        else
+            return 0;
     }
 
 }
