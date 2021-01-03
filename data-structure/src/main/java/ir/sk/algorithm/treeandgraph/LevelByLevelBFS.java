@@ -181,4 +181,35 @@ public class LevelByLevelBFS {
         return minimumTreeDepth;
     }
 
+    /**
+     * Given a binary tree, find its maximum depth (or height).
+     *
+     * @param root
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
+    public static int levelByLevelBFSMaximumDepth(TreeNode root) {
+        Queue<TreeNode> queue = new ArrayDeque<>();
+        queue.add(root);
+
+        // level
+        int minimumTreeDepth = 0;
+
+        while (!queue.isEmpty()) {
+            int levelSize = queue.size();
+            minimumTreeDepth ++;
+            for (int i = 0; i < levelSize; i++) {
+                TreeNode currentNode = queue.poll();
+
+                if (currentNode.left != null)
+                    queue.offer(currentNode.left);
+                if (currentNode.right != null)
+                    queue.offer(currentNode.right);
+            }
+
+        }
+        return minimumTreeDepth;
+    }
+
 }
