@@ -1,4 +1,4 @@
-package ir.sk.algorithm.array;
+package ir.sk.algorithm.array.lcp;
 
 import ir.sk.helper.DivideAndConquer;
 import ir.sk.helper.SpaceComplexity;

@@ -1,13 +1,12 @@
 package ir.sk.algorithm.array;
 
+import ir.sk.algorithm.array.lcp.LongestCommonPrefix;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
-import static org.junit.Assert.*;
 
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/3/2021.

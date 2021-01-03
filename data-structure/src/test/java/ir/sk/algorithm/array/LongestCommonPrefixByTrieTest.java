@@ -1,5 +1,6 @@
 package ir.sk.algorithm.array;
 
+import ir.sk.algorithm.array.lcp.LongestCommonPrefixByTrie;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
