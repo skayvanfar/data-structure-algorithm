@@ -1,6 +1,5 @@
 package ir.sk.algorithm.array.lcp;
 
-import ir.sk.algorithm.array.lcp.LongestCommonPrefix;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +23,7 @@ public class LongestCommonPrefixTest {
     @Test
     public void findLongestCommonPrefixCharByChar() {
         ArrayList<String> arr = new ArrayList<>(Arrays.asList("tutorialcup", "tutorial", "tussle", "tumble"));
-        StringBuffer ans = LongestCommonPrefix.longestCommonPrefixCharByChar(arr.toArray(new String[4]));
+        StringBuffer ans = LongestCommonPrefix.findLongestCommonPrefixCharByChar(arr.toArray(new String[4]));
 
         if (ans.length() != 0)
             System.out.println("Longest common prefix = " + ans);
@@ -70,9 +69,9 @@ public class LongestCommonPrefixTest {
     }
 
     @Test
-    public void findLongestCommonPrefixByWordByWordMatching() {
+    public void findLongestCommonPrefixByWordByWord() {
         ArrayList<String> arr = new ArrayList<>(Arrays.asList("tutorialcup", "tutorial", "tussle", "tumble"));
-        String ans = LongestCommonPrefix.findLongestCommonPrefixByWordByWordMatching(arr.toArray(new String[4]));
+        String ans = LongestCommonPrefix.findLongestCommonPrefixByWordByWord(arr.toArray(new String[4]));
 
         if (ans.length() != 0)
             System.out.println("Longest common prefix = " + ans);

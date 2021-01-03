@@ -18,7 +18,7 @@ public class LongestCommonPrefix {
      */
     @TimeComplexity("O(n*m), n = Number of strings, m = Length of longest string")
     @SpaceComplexity("O(m)")
-    public static StringBuffer longestCommonPrefixCharByChar(String[] stringArray) {
+    public static StringBuffer findLongestCommonPrefixCharByChar(String[] stringArray) {
         int minLen = findMinLength(stringArray);
         StringBuffer result = new StringBuffer();
         char currChar;
@@ -163,12 +163,14 @@ public class LongestCommonPrefix {
     }
 
     /**
+     * LCP(s1, s2, s3) = LCP(LCP(s1, s2), s3)
+     *
      * @param list
      * @return
      */
     @TimeComplexity("O(nm), n Number of strings, m = Length of longest string")
     @SpaceComplexity("O(1)")
-    public static String findLongestCommonPrefixByWordByWordMatching(String[] list) {
+    public static String findLongestCommonPrefixByWordByWord(String[] list) {
         // Initialize longest common prefix as first word of list
         String lcp = list[0];
 
