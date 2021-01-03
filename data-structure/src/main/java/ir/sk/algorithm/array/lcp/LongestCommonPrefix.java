@@ -55,7 +55,7 @@ public class LongestCommonPrefix {
         /* sort the array of strings O(m*n*logn) */
         Arrays.sort(stringArrays);
 
-        return findCommonPrefix(stringArrays[0], stringArrays[stringArrays.length - 1]);
+        return findCommonPrefixTwoString(stringArrays[0], stringArrays[stringArrays.length - 1]);
     }
 
     /**
@@ -78,17 +78,19 @@ public class LongestCommonPrefix {
             int middle = (start + end) / 2;
             String first = findLongestCommonPrefixByDivideAndConquer(stringArrays, start, middle);
             String last = findLongestCommonPrefixByDivideAndConquer(stringArrays, middle + 1, end);
-            return findCommonPrefix(first, last);
+            return findCommonPrefixTwoString(first, last);
         }
     }
 
     /**
+     * The longest common prefix of two words
+     *
      * @param first
      * @param second
      * @return
      */
     @TimeComplexity("O(n)")
-    public static String findCommonPrefix(String first, String second) {
+    public static String findCommonPrefixTwoString(String first, String second) {
         int i;
         for (i = 0; i < first.length() && i < second.length(); i++) {
             if (first.charAt(i) != second.charAt(i))
@@ -158,5 +160,25 @@ public class LongestCommonPrefix {
                     return false;
         }
         return true;
+    }
+
+    /**
+     * @param list
+     * @return
+     */
+    @TimeComplexity("O(nm), n Number of strings, m = Length of longest string")
+    @SpaceComplexity("O(1)")
+    public static String findLongestCommonPrefixByWordByWordMatching(String[] list) {
+        // Initialize longest common prefix as first word of list
+        String lcp = list[0];
+
+        // Traverse the list from index 1 (0 based indexing)
+        for (int i = 1; i < list.length; i++) {
+            // Update lcp as prefix of lcp and current word
+            lcp = findCommonPrefixTwoString(list[i], lcp);
+        }
+
+        // return lcp
+        return lcp;
     }
 }

@@ -68,4 +68,19 @@ public class LongestCommonPrefixTest {
     @Test
     public void findMinLength() {
     }
+
+    @Test
+    public void findLongestCommonPrefixByWordByWordMatching() {
+        ArrayList<String> arr = new ArrayList<>(Arrays.asList("tutorialcup", "tutorial", "tussle", "tumble"));
+        String ans = LongestCommonPrefix.findLongestCommonPrefixByWordByWordMatching(arr.toArray(new String[4]));
+
+        if (ans.length() != 0)
+            System.out.println("Longest common prefix = " + ans);
+        else
+            System.out.print("No common prefix found");
+    }
+
+    @Test
+    public void findCommonPrefixTwoString() {
+    }
 }
