@@ -3,10 +3,7 @@ package ir.sk.algorithm.treeandgraph;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * Created by sad.kayvanfar on 9/15/2020.
@@ -120,11 +117,10 @@ public class TreeGraphAlgorithms {
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
     public static List<List<Integer>> levelByLevelBFS(TreeNode root) {
-        TreeNode tmp = root;
         List<List<Integer>> result = new ArrayList<>();
 
         Queue<TreeNode> queue = new ArrayDeque<>();
-        queue.add(tmp);
+        queue.add(root);
 
         while (!queue.isEmpty()) {
             int levelSize = queue.size();
@@ -139,6 +135,41 @@ public class TreeGraphAlgorithms {
                     queue.offer(currentNode.right);
             }
             result.add(currentLevel);
+        }
+        return result;
+    }
+
+    /**
+     * Given a binary tree, populate an array to represent its level-by-level traversal in reverse order,
+     * i.e., the lowest level comes first.
+     * You should populate the values of all nodes in each level from left to right in separate sub-arrays.
+     *
+     * @param root
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
+    public static List<List<Integer>> levelByLevelBFSReverse(TreeNode root) {
+        List<List<Integer>> result = new LinkedList<>();
+
+        Queue<TreeNode> queue = new ArrayDeque<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            int levelSize = queue.size();
+            // using Linkedlist
+            List<Integer> currentLevel = new ArrayList<>();
+
+            for (int i = 0; i < levelSize; i++) {
+                TreeNode currentNode = queue.poll();
+                currentLevel.add(currentNode.value);
+                if (currentNode.left != null)
+                    queue.offer(currentNode.left);
+                if (currentNode.right != null)
+                    queue.offer(currentNode.right);
+            }
+            // append the current level at the beginning
+            result.add(0, currentLevel);
         }
         return result;
     }
