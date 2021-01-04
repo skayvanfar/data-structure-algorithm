@@ -118,4 +118,19 @@ public class RootToLeafPathTest {
         boolean result = RootToLeafPath.hasPathWithSequenceRecursive(root, new int[]{1, 3, 6});
         System.out.println(result);
     }
+
+    @Test
+    public void countAllPathSum() {
+        TreeNode root = new TreeNode(12,
+                new TreeNode(7,
+                        new TreeNode(4),
+                        null
+                        ),
+                new TreeNode(1,
+                        new TreeNode(10),
+                        new TreeNode(5)));
+
+        int result = RootToLeafPath.countAllPathSum(root, 11);
+        System.out.println(result);
+    }
 }
