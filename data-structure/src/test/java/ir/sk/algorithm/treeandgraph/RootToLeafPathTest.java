@@ -64,7 +64,7 @@ public class RootToLeafPathTest {
     }
 
     @Test
-    public void allPathByDFSWithMaximumSum() {
+    public void findPathByDFSWithMaximumSum() {
         TreeNode root = new TreeNode(1,
                 new TreeNode(2,
                         new TreeNode(4),
@@ -73,7 +73,21 @@ public class RootToLeafPathTest {
                         new TreeNode(6),
                         new TreeNode(7)));
 
-        List<Integer> result = RootToLeafPath.allPathByDFSWithMaximumSum(root);
+        List<Integer> result = RootToLeafPath.findPathByDFSWithMaximumSum(root);
+        System.out.println(result);
+    }
+
+    @Test
+    public void findSumOfPathNumbers() {
+        TreeNode root = new TreeNode(1,
+                new TreeNode(2,
+                        new TreeNode(4),
+                        new TreeNode(5)),
+                new TreeNode(3,
+                        new TreeNode(6),
+                        new TreeNode(7)));
+
+        int result = RootToLeafPath.findSumOfPathNumbers(root);
         System.out.println(result);
     }
 }

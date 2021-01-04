@@ -1,6 +1,7 @@
 package ir.sk.algorithm.treeandgraph;
 
 import ir.sk.helper.Backtracking;
+import ir.sk.helper.Point;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
@@ -104,10 +105,10 @@ public class RootToLeafPath {
         currentPath.remove(currentPath.size() - 1);
     }
 
-    public static List<Integer> allPathByDFSWithMaximumSum(TreeNode root) {
+    public static List<Integer> findPathByDFSWithMaximumSum(TreeNode root) {
         List<Integer> currentPath = new ArrayList<>();
         List<Integer> maxPath = new ArrayList<>();
-        allPathByDFSWithMaximumSum(root, 0, currentPath, maxPath);
+        findPathByDFSWithMaximumSum(root, 0, currentPath, maxPath);
         return maxPath;
     }
 
@@ -120,7 +121,7 @@ public class RootToLeafPath {
     @TimeComplexity("O(n^2)")
     @SpaceComplexity("O(n log n)")
     @Backtracking
-    private static void allPathByDFSWithMaximumSum(TreeNode node, int sum, List<Integer> currentPath, List<Integer> maxPath) {
+    private static void findPathByDFSWithMaximumSum(TreeNode node, int sum, List<Integer> currentPath, List<Integer> maxPath) {
         if (node == null)
             return;
 
@@ -135,10 +136,40 @@ public class RootToLeafPath {
             }
         }
 
-        allPathByDFSWithMaximumSum(node.left, sum, currentPath, maxPath);
-        allPathByDFSWithMaximumSum(node.right, sum, currentPath, maxPath);
+        findPathByDFSWithMaximumSum(node.left, sum, currentPath, maxPath);
+        findPathByDFSWithMaximumSum(node.right, sum, currentPath, maxPath);
 
         currentPath.remove(currentPath.size() - 1);
+    }
+
+    public static int findSumOfPathNumbers(TreeNode root) {
+        return findSumOfPathNumbers(root, 0);
+    }
+
+    /**
+     * Given a binary tree where each node can only have a digit (0-9) value,
+     * each root-to-leaf path will represent a number.
+     * Find the total sum of all the numbers represented by all paths.
+     *
+     * @param node
+     * @param pathSum
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
+    @Backtracking
+    @Point("1 * 10 + 7 => 17")
+    private static int findSumOfPathNumbers(TreeNode node, int pathSum) {
+        if (node == null)
+            return 0;
+
+        // 1 * 10 + 7 => 17
+        pathSum = 10 * pathSum + node.value;
+
+        if (node.left == null && node.right == null) {
+            return pathSum;
+        }
+
+        return findSumOfPathNumbers(node.left, pathSum) + findSumOfPathNumbers(node.right, pathSum);
     }
 
 }
