@@ -32,4 +32,17 @@ public class TreeGraphAlgorithmsTest {
     public void checkValidBSTByBoundaries() {
     }
 
+    @Test
+    public void treeSerialization() {
+        Node<String> root = new Node("Ali",
+                new Node("Vali",
+                        new Node("Saeed"),
+                        new Node("Reza")),
+                new Node("Mehran",
+                        new Node("Mohsen"),
+                        new Node("Amir")));
+
+        String result = TreeGraphAlgorithms.treeSerialization(root);
+        System.out.println(result);
+    }
 }

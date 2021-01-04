@@ -107,4 +107,25 @@ public class TreeGraphAlgorithms {
             return false;
     }
 
+    /**
+     * serializes the tree into a string representation. it use the pre-order traversal of the tree.
+     *
+     * @param node
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
+    public static String treeSerialization(Node<String> node) {
+        if (node == null)
+            return "";
+        String left = treeSerialization(node.left);
+        String right = treeSerialization(node.right);
+        if (!left.equals(""))
+            return node.value + ',' + left;
+        if (!right.equals(""))
+            return node.value + ',' + right;
+        else
+            return node.value;
+    }
+
 }
