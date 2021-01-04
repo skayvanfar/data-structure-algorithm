@@ -41,7 +41,7 @@ public class TreeGraphAlgorithmsTest {
                 new TreeNode(3,
                         new TreeNode(6),
                         new TreeNode(7)));
-        boolean result = TreeGraphAlgorithms.hasPathByDFS(root, 10, 0);
+        boolean result = TreeGraphAlgorithms.hasPathByDFS(root, 10);
         System.out.println(result);
     }
 
@@ -54,9 +54,8 @@ public class TreeGraphAlgorithmsTest {
                 new TreeNode(3,
                         new TreeNode(6),
                         new TreeNode(7)));
-        List<List<Integer>> allPaths = new ArrayList<>();
-        List<Integer> currentPath = new ArrayList<>();
-        TreeGraphAlgorithms.allPathByDFS(root, 10, 0, currentPath, allPaths);
-        System.out.println(allPaths);
+
+        List<List<Integer>> result = TreeGraphAlgorithms.allPathByDFS(root, 10);
+        System.out.println(result);
     }
 }

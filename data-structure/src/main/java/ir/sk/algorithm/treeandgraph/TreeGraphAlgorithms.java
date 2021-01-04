@@ -3,6 +3,7 @@ package ir.sk.algorithm.treeandgraph;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -112,51 +113,55 @@ public class TreeGraphAlgorithms {
      * VLR
      *
      * @param node
-     * @param value
      * @param sum
      * @return
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
-    public static boolean hasPathByDFS(TreeNode node, int value, int sum) {
+    public static boolean hasPathByDFS(TreeNode node, int sum) {
         if (node == null)
             return false;
-        if (node.left == null && node.right == null)
-            if (node.value + sum == value)
+        if (node.left == null && node.right == null && node.value == sum)
                 return true;
-            else
-                return false;
-        else {
-            int val = node.value + sum;
-            return hasPathByDFS(node.left, value, val) || hasPathByDFS(node.right, value, val);
-        }
+
+        return hasPathByDFS(node.left, sum - node.value) || hasPathByDFS(node.right, sum - node.value);
+
+    }
+
+    public static List<List<Integer>> allPathByDFS(TreeNode root, int sum) {
+        List<List<Integer>> allPaths = new ArrayList<>();
+        List<Integer> currentPath = new ArrayList<>();
+        allPathByDFS(root, sum, currentPath, allPaths);
+        return allPaths;
     }
 
     /**
      * Given a binary tree and a number ‘S’,
-     * find if the tree has a path from root-to-leaf such that the sum of all the node values of that path equals ‘S’.
+     * find all paths from root-to-leaf such that the sum of all the node values of each path equals ‘S’.     *
      *
-     * @param node
-     * @param value
+     *  @param node
      * @param sum
      * @return
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
-    public static void allPathByDFS(TreeNode node, int value, int sum, List<Integer> currentPath, List<List<Integer>> allPaths) {
+    public static void allPathByDFS(TreeNode node, int sum, List<Integer> currentPath, List<List<Integer>> allPaths) {
         if (node == null)
             return;
-        if (node.left == null && node.right == null)
-            if (node.value + sum == value) {
-                currentPath.add(node.value);
-                allPaths.add(currentPath);
-            } else
-                return;
+
+        currentPath.add(node.value);
+
+        // if the current node is a leaf and its value is equal to sum, save the current path
+        if (node.left == null && node.right == null && node.value == sum)
+            allPaths.add(new ArrayList<>(currentPath));
         else {
-            int val = node.value + sum;
-            allPathByDFS(node.left, value, val, currentPath, allPaths);
-            allPathByDFS(node.right, value, val, currentPath, allPaths);
+            allPathByDFS(node.left, sum - node.value, currentPath, allPaths);
+            allPathByDFS(node.right, sum - node.value, currentPath, allPaths);
         }
+
+        // remove the current node from the path to backtrack,
+        // we need to remove the current node while we are going up the recursive call stack.
+        currentPath.remove(currentPath.size() - 1);
     }
 
 }
