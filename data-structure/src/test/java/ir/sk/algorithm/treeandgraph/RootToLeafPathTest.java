@@ -90,4 +90,32 @@ public class RootToLeafPathTest {
         int result = RootToLeafPath.findSumOfPathNumbers(root);
         System.out.println(result);
     }
+
+    @Test
+    public void hasPathWithSequenceIterative() {
+        TreeNode root = new TreeNode(1,
+                new TreeNode(2,
+                        new TreeNode(4),
+                        new TreeNode(5)),
+                new TreeNode(3,
+                        new TreeNode(6),
+                        new TreeNode(7)));
+
+        boolean result = RootToLeafPath.hasPathWithSequenceIterative(root, new int[]{1, 3, 6});
+        System.out.println(result);
+    }
+
+    @Test
+    public void hasPathWithSequenceRecursive() {
+        TreeNode root = new TreeNode(1,
+                new TreeNode(2,
+                        new TreeNode(4),
+                        new TreeNode(5)),
+                new TreeNode(3,
+                        new TreeNode(6),
+                        new TreeNode(7)));
+
+        boolean result = RootToLeafPath.hasPathWithSequenceRecursive(root, new int[]{1, 3, 6});
+        System.out.println(result);
+    }
 }

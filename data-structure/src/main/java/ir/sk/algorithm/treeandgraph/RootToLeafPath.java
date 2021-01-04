@@ -129,8 +129,8 @@ public class RootToLeafPath {
         sum += node.value;
 
         if (node.left == null && node.right == null) {
-            int maxSum = maxPath.stream().mapToInt(a->a).sum();
-            if (sum > maxSum){
+            int maxSum = maxPath.stream().mapToInt(a -> a).sum();
+            if (sum > maxSum) {
                 maxPath.clear();
                 maxPath.addAll(currentPath);
             }
@@ -170,6 +170,66 @@ public class RootToLeafPath {
         }
 
         return findSumOfPathNumbers(node.left, pathSum) + findSumOfPathNumbers(node.right, pathSum);
+    }
+
+    /**
+     * Given a binary tree and a number sequence,
+     * find if the sequence is present as a root-to-leaf path in the given tree.
+     *
+     * @param root
+     * @param sequence
+     * @return
+     */
+    @TimeComplexity("O(h), h is height of tree")
+    @SpaceComplexity("O(1)")
+    public static boolean hasPathWithSequenceIterative(TreeNode root, int[] sequence) {
+        TreeNode currentNode = root;
+
+        int i = 0;
+        while (currentNode != null) {
+            if (currentNode.left == null && currentNode.right == null)
+                return true;
+
+            if (currentNode.left != null && currentNode.left.value == sequence[i])
+                currentNode = currentNode.left;
+            else if (currentNode.right != null && currentNode.right.value == sequence[i])
+                currentNode = currentNode.right;
+            else
+                currentNode = null;
+            i++;
+        }
+        return false;
+    }
+
+    /**
+     * Given a binary tree and a number sequence,
+     * find if the sequence is present as a root-to-leaf path in the given tree.
+     *
+     *  @param root
+     * @param sequence
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
+    public static boolean hasPathWithSequenceRecursive(TreeNode root, int[] sequence) {
+        if (root == null)
+            return sequence.length == 0;
+        return hasPathWithSequenceRecursive(root, sequence, 0);
+    }
+
+    public static boolean hasPathWithSequenceRecursive(TreeNode currentNode, int[] sequence, int sequenceIndex) {
+        if (currentNode == null)
+            return false;
+
+        if (sequenceIndex >= sequence.length || currentNode.value != sequence[sequenceIndex])
+            return false;
+
+        if (currentNode.left == null && currentNode.right == null && sequenceIndex == sequence.length - 1)
+            return true;
+
+        return hasPathWithSequenceRecursive(currentNode.left, sequence, sequenceIndex + 1)
+                || hasPathWithSequenceRecursive(currentNode.right, sequence, sequenceIndex + 1);
+
     }
 
 }
