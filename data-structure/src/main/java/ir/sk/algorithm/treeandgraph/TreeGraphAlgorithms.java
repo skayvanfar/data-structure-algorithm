@@ -1,5 +1,6 @@
 package ir.sk.algorithm.treeandgraph;
 
+import ir.sk.helper.Backtracking;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
@@ -143,8 +144,9 @@ public class TreeGraphAlgorithms {
      * @param sum
      * @return
      */
-    @TimeComplexity("O(n)")
-    @SpaceComplexity("O(n)")
+    @TimeComplexity("O(n^2)")
+    @SpaceComplexity("O(n log n)")
+    @Backtracking
     public static void allPathByDFS(TreeNode node, int sum, List<Integer> currentPath, List<List<Integer>> allPaths) {
         if (node == null)
             return;
