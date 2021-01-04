@@ -45,4 +45,11 @@ public class TreeGraphAlgorithmsTest {
         String result = TreeGraphAlgorithms.treeSerialization(root);
         System.out.println(result);
     }
+
+    @Test
+    public void treeDeserialization() {
+        Node<String> result = TreeGraphAlgorithms.treeDeserialization("Ali,Vali,Saeed,Reza,Mehran,Mohsen,Amir");
+        System.out.println(result);
+    }
+
 }

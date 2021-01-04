@@ -1,6 +1,7 @@
 package ir.sk.algorithm.treeandgraph;
 
 import ir.sk.helper.Backtracking;
+import ir.sk.helper.Point;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
@@ -109,6 +110,7 @@ public class TreeGraphAlgorithms {
 
     /**
      * serializes the tree into a string representation. it use the pre-order traversal of the tree.
+     * linked representation into array representation of tree
      *
      * @param node
      * @return
@@ -122,11 +124,38 @@ public class TreeGraphAlgorithms {
         String right = treeSerialization(node.right);
         String result = node.value;
         if (!left.equals(""))
-            result +=  ',' + left;
+            result += ',' + left;
         if (!right.equals(""))
-            result +=  ',' + right;
+            result += ',' + right;
 
         return result;
+    }
+
+    public static Node<String> treeDeserialization(String str) {
+        return treeDeserialization(str.split(","), 0);
+    }
+
+    /**
+     * deserializes the string back to the original tree that it represents
+     * array representation of into tree linked representation
+     *
+     * @param stringArray
+     * @param index
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
+    @Point("leftNodeIndex = (2*parentIndex)+1, rightNodeIndex = (2*parentIndex)+1 ")
+    public static Node<String> treeDeserialization(String[] stringArray, int index) {
+        if (index >= stringArray.length)
+            return null;
+
+        Node<String> stringNode = new Node<>(stringArray[index]);
+
+        // leftNodeIndex = (2*parentIndex)+1, rightNodeIndex = (2*parentIndex)+1
+        stringNode.left = treeDeserialization(stringArray, 2 * index + 1);
+        stringNode.right = treeDeserialization(stringArray, 2 * index + 2);
+        return stringNode;
     }
 
 }
