@@ -120,12 +120,13 @@ public class TreeGraphAlgorithms {
             return "";
         String left = treeSerialization(node.left);
         String right = treeSerialization(node.right);
+        String result = node.value;
         if (!left.equals(""))
-            return node.value + ',' + left;
+            result +=  ',' + left;
         if (!right.equals(""))
-            return node.value + ',' + right;
-        else
-            return node.value;
+            result +=  ',' + right;
+
+        return result;
     }
 
 }
