@@ -81,12 +81,32 @@ public class SubArray {
 
     /**
      * Given an array of integers and a number k, find maximum sum of a subarray of size k.
+     * @param array
+     * @param k
+     */
+    @TimeComplexity("O(n * k)")
+    @SpaceComplexity("O(1)")
+    @BruteForce
+    public static void findMaxSumSubArrayNaive(int[] array, int k) {
+        int maxSoFar = 0, currentSum;
+        for (int i = 0; i <= array.length - k; i++) {
+            currentSum = 0;
+            for (int j = 0; j < i + k; j++) {
+                currentSum  += array[j];
+            }
+            maxSoFar = Math.max(maxSoFar, currentSum);
+        }
+    }
+
+    /**
+     * Given an array of integers and a number k, find maximum sum of a subarray of size k.
      *
      * @param array
-     * @param k size
+     * @param k     size
      * @return
      */
     @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
     @SlidingWindowPattern(type = SlidingWindowPatternType.STATICALLY_RESIZABLE)
     public static int findMaxSumSubArray(int[] array, int k) {
         int start = 0, end = k;
@@ -146,7 +166,7 @@ public class SubArray {
 
         while (end < arr.length) {
             currentWindowSum += arr[end];
-            while (currentWindowSum >=  targetSum) {
+            while (currentWindowSum >= targetSum) {
                 minWindowSizeSoFar = Math.min(minWindowSizeSoFar, end - start + 1);
                 currentWindowSum -= arr[start];
                 start++;
