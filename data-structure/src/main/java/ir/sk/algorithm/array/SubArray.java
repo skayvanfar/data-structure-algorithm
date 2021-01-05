@@ -162,6 +162,7 @@ public class SubArray {
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
     @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
+    @Point("Two loops, but O(n)")
     public static int sizeOfSmallestSubArray(int arr[], int targetSum) {
         int start = 0, end = 0;
         int minWindowSizeSoFar = Integer.MAX_VALUE, currentWindowSum = 0;
