@@ -81,6 +81,7 @@ public class SubArray {
 
     /**
      * Given an array of integers and a number k, find maximum sum of a subarray of size k.
+     *
      * @param array
      * @param k
      */
@@ -92,7 +93,7 @@ public class SubArray {
         for (int i = 0; i <= array.length - k; i++) {
             currentSum = 0;
             for (int j = 0; j < i + k; j++) {
-                currentSum  += array[j];
+                currentSum += array[j];
             }
             maxSoFar = Math.max(maxSoFar, currentSum);
         }
@@ -159,6 +160,7 @@ public class SubArray {
      * @return
      */
     @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
     @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
     public static int sizeOfSmallestSubArray(int arr[], int targetSum) {
         int start = 0, end = 0;

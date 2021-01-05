@@ -44,4 +44,5 @@ public class SubArrayTest {
         int arr[] = new int[]{4, 2, 3, 7, 5, 1};
         Assert.assertEquals(15, SubArray.findMaxSumSubArray(arr, 3));
     }
+
 }
