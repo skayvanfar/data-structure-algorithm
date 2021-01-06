@@ -5,7 +5,7 @@ import ir.sk.helper.*;
 /**
  * Created by sad.keyvanfar on 8/23/2020.
  */
-public class SubArray {
+public class ContinuesSubArray {
 
     /*************
      * to find the sum of contiguous subarray within a one-dimensional array of numbers which has the largest sum.
@@ -196,13 +196,17 @@ public class SubArray {
         int lengthSoFar = 0, currentCount = 0;
         boolean[] hashtable = new boolean[256];
 
+        // extend the slide window
         while (end < chars.length) {
+            // main operation
             if (!hashtable[chars[end]]) {
                 currentCount++;
                 hashtable[chars[end]] = true;
             }
+            // compare
             if (currentCount == d)
                 lengthSoFar = Math.max(lengthSoFar, end - start +1);
+            // shrink the slide window
             while (currentCount > d) {
                 if(hashtable[chars[start]]) {
                     currentCount--;
