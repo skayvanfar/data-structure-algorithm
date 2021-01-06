@@ -181,10 +181,10 @@ public class ContinuesSubArray {
 
 
     /**
-     * Given a string, find the length of the longest substring in it with no more than K distinct characters.
+     * Given a string, find the length of the longest substring in it with no more than d distinct characters.
      *
-     * @param chars
-     * @param d
+     * @param chars string
+     * @param d distinct characters
      * @return
      */
     @TimeComplexity("(O(n+n) = O(n))")
@@ -205,6 +205,49 @@ public class ContinuesSubArray {
             }
             // compare
             if (currentCount == d)
+                lengthSoFar = Math.max(lengthSoFar, end - start +1);
+            // shrink the slide window
+            while (currentCount > d) {
+                if(hashtable[chars[start]]) {
+                    currentCount--;
+                    hashtable[chars[start]] = false;
+                }
+                start++;
+            }
+            end++;
+        }
+        return lengthSoFar;
+    }
+
+
+
+
+
+    /**
+     * Given a string, find the length of the Longest Substring with at most d distinct characters
+     *
+     * @param chars
+     * @param d
+     * @return
+     */
+    @TimeComplexity("(O(n+n) = O(n))")
+    @SpaceComplexity("O(256) = O(1)")
+    @FrequencyCountingPattern
+    @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
+    public static int longestSubstringAtMostDistinct(char[] chars, int d) {
+        int start= 0, end = 0;
+        int lengthSoFar = 0, currentCount = 0;
+        boolean[] hashtable = new boolean[256];
+
+        // extend the slide window
+        while (end < chars.length) {
+            // main operation
+            if (!hashtable[chars[end]]) {
+                currentCount++;
+                hashtable[chars[end]] = true;
+            }
+            // compare
+            if (currentCount <= d)
                 lengthSoFar = Math.max(lengthSoFar, end - start +1);
             // shrink the slide window
             while (currentCount > d) {

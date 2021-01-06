@@ -15,6 +15,10 @@ public class ContinuesSubArrayTest {
     }
 
     @Test
+    public void findMaxSumSubArrayNaive() {
+    }
+
+    @Test
     public void maxSubArraySumBruteForce() {
         int[] arr = new int[]{1, 5, 2, 4, 9, 7};
         ContinuesSubArray.maxSubArraySumBruteForce(arr);
@@ -47,5 +51,10 @@ public class ContinuesSubArrayTest {
     @Test
     public void longestSubstringDistinct() {
         Assert.assertEquals(4, ContinuesSubArray.longestSubstringDistinct("araaci".toCharArray(), 2));
+    }
+
+    @Test
+    public void longestSubstringAtMostDistinct() {
+        Assert.assertEquals(4, ContinuesSubArray.longestSubstringAtMostDistinct("araaci".toCharArray(), 2));
     }
 }
