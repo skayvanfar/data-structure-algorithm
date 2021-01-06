@@ -24,6 +24,7 @@ public class ContinuesSubArray {
      */
     @BruteForce
     @TimeComplexity("O(n^2)")
+    @MultipleLoopsPattern
     public static int maxSubArraySumBruteForce(int[] nums) {
 
         int n = nums.length;
@@ -83,6 +84,8 @@ public class ContinuesSubArray {
         System.out.printf("Found Maximum Subarray between %d and %d", start, end);
         return maxSoFar;
     }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
      * Given an array of integers and a number k, find maximum sum of a subarray of size k.
@@ -183,6 +186,8 @@ public class ContinuesSubArray {
         }
         return minWindowSizeSoFar;
     }
+
+    /////////////////////////////////////////////////////////////////////////////////////
 
 
     /**
