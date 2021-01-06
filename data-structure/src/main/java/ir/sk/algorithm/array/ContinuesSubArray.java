@@ -2,6 +2,11 @@ package ir.sk.algorithm.array;
 
 import ir.sk.helper.*;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 /**
  * Created by sad.keyvanfar on 8/23/2020.
  */
@@ -187,7 +192,7 @@ public class ContinuesSubArray {
      * @param d distinct characters
      * @return
      */
-    @TimeComplexity("(O(n+n) = O(n))")
+    @TimeComplexity("O(n+n) = O(n)")
     @SpaceComplexity("O(256) = O(1)")
     @FrequencyCountingPattern
     @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
@@ -230,7 +235,7 @@ public class ContinuesSubArray {
      * @param d
      * @return
      */
-    @TimeComplexity("(O(n+n) = O(n))")
+    @TimeComplexity("O(n+n) = O(n)")
     @SpaceComplexity("O(256) = O(1)")
     @FrequencyCountingPattern
     @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
@@ -258,6 +263,74 @@ public class ContinuesSubArray {
                 start++;
             }
             end++;
+        }
+        return lengthSoFar;
+    }
+
+
+    /**
+     * Given a string, find the length of the longest substring which has no repeating characters.
+     *
+     * @param chars
+     * @return
+     */
+    @TimeComplexity("(O(n+n) = O(n))")
+    @SpaceComplexity("O(256) = O(1)")
+    @FrequencyCountingPattern
+    @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
+    public static int longestSubstringAllDistinct(char[] chars) {
+        int start=0, end =0;
+        int lengthSoFar = Integer.MIN_VALUE;
+        Set<Character> hashtable = new HashSet<>();
+
+        while (end < chars.length) {
+
+            // shrink the slide window
+            while (hashtable.contains(chars[end])) {
+                hashtable.remove(chars[start]);
+                start++;
+            }
+
+            if (!hashtable.contains(chars[end]))
+                hashtable.add(chars[end]);
+
+            lengthSoFar = Math.max(lengthSoFar, end - start + 1);
+            end++;
+
+
+
+        }
+        return lengthSoFar;
+    }
+
+    /**
+     * Given a string, find the length of the longest substring which has no repeating characters.
+     *
+     * @param chars
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(256) = O(1)")
+    @FrequencyCountingPattern
+    @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
+    public static int longestSubstringAllDistinct2(char[] chars) {
+        int start=0, end =0;
+        int lengthSoFar = Integer.MIN_VALUE;
+        // We can use a HashMap to remember the last index of each character we have processed.
+        Map<Character, Integer> charIndexMap = new HashMap<>();
+
+        while (end < chars.length) {
+
+            // shrink the slide window
+            if (charIndexMap.containsKey(chars[end])) {
+                start = Math.max(start, charIndexMap.get(chars[end]) + 1);
+            }
+
+            charIndexMap.put(chars[end], end);
+
+            lengthSoFar = Math.max(lengthSoFar, end - start + 1);
+            end++;
+
         }
         return lengthSoFar;
     }

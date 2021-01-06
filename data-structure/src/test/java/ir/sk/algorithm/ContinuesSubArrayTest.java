@@ -57,4 +57,14 @@ public class ContinuesSubArrayTest {
     public void longestSubstringAtMostDistinct() {
         Assert.assertEquals(4, ContinuesSubArray.longestSubstringAtMostDistinct("araaci".toCharArray(), 2));
     }
+
+    @Test
+    public void longestSubstringAllDistinct() {
+        Assert.assertEquals(3, ContinuesSubArray.longestSubstringAllDistinct("abccde".toCharArray()));
+    }
+
+    @Test
+    public void longestSubstringAllDistinct2() {
+        Assert.assertEquals(3, ContinuesSubArray.longestSubstringAllDistinct2("abccde".toCharArray()));
+    }
 }
