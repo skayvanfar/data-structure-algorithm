@@ -179,4 +179,39 @@ public class SubArray {
         return minWindowSizeSoFar;
     }
 
+
+    /**
+     * Given a string, find the length of the longest substring in it with no more than K distinct characters.
+     *
+     * @param chars
+     * @param d
+     * @return
+     */
+    @TimeComplexity("(O(n+n) = O(n))")
+    @SpaceComplexity("O(256) = O(1)")
+    @FrequencyCountingPattern
+    @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
+    public static int longestSubstringDistinct(char[] chars, int d) {
+        int start= 0, end = 0;
+        int lengthSoFar = 0, currentCount = 0;
+        boolean[] hashtable = new boolean[256];
+
+        while (end < chars.length) {
+            if (!hashtable[chars[end]]) {
+                currentCount++;
+                hashtable[chars[end]] = true;
+            }
+            if (currentCount == d)
+                lengthSoFar = Math.max(lengthSoFar, end - start +1);
+            while (currentCount > d) {
+                if(hashtable[chars[start]]) {
+                    currentCount--;
+                    hashtable[chars[start]] = false;
+                }
+                start++;
+            }
+            end++;
+        }
+        return lengthSoFar;
+    }
 }

@@ -45,4 +45,8 @@ public class SubArrayTest {
         Assert.assertEquals(15, SubArray.findMaxSumSubArray(arr, 3));
     }
 
+    @Test
+    public void longestSubstringDistinct() {
+        Assert.assertEquals(4, SubArray.longestSubstringDistinct("araaci".toCharArray(), 2));
+    }
 }
