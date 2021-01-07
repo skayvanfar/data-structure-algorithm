@@ -52,4 +52,27 @@ public class TreeGraphAlgorithmsTest {
         System.out.println(result);
     }
 
+    @Test
+    public void makeFullBinaryTree() {
+        TreeNode root = new TreeNode(1,
+                new TreeNode(2,
+                        new TreeNode(4), null),
+                new TreeNode(3,
+                        new TreeNode(6),
+                        new TreeNode(7)));
+        TreeGraphAlgorithms.makeFullBinaryTree(root);
+        System.out.println(root);
+    }
+
+    @Test
+    public void removeHalfNodes() {
+        TreeNode root = new TreeNode(1,
+                new TreeNode(2,
+                        new TreeNode(4), null),
+                new TreeNode(3,
+                        new TreeNode(6),
+                        new TreeNode(7)));
+        TreeGraphAlgorithms.removeHalfNodes(root);
+        System.out.println(root);
+    }
 }

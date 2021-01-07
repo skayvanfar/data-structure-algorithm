@@ -222,7 +222,7 @@ public class PairsWithGivenSum {
      * As the input array is sorted, therefore, one way to do this is to shift the elements left whenever we encounter duplicates. In other words,
      * we will keep one pointer for iterating the array and one pointer for placing the next non-duplicate number.
      * So our algorithm will be to iterate the array and whenever we see a non-duplicate number we move it next to the last non-duplicate number we’ve seen.
-     *
+     * TODO: 1/7/2021 need more attention
      * @param arr
      */
     @TimeComplexity("O(n)")

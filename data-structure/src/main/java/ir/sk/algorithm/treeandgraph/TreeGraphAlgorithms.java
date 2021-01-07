@@ -1,12 +1,11 @@
 package ir.sk.algorithm.treeandgraph;
 
-import ir.sk.helper.Backtracking;
 import ir.sk.helper.Point;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.ArrayDeque;
+import java.util.Queue;
 
 /**
  * Created by sad.kayvanfar on 9/15/2020.
@@ -108,6 +107,8 @@ public class TreeGraphAlgorithms {
             return false;
     }
 
+    /////////////////////////////////////////////////////////////////
+
     /**
      * serializes the tree into a string representation. it use the pre-order traversal of the tree.
      * linked representation into array representation of tree
@@ -156,6 +157,77 @@ public class TreeGraphAlgorithms {
         stringNode.left = treeDeserialization(stringArray, 2 * index + 1);
         stringNode.right = treeDeserialization(stringArray, 2 * index + 2);
         return stringNode;
+    }
+    /////////////////////////////////////////////////////////////////
+
+    /**
+     * Given a binary tree, remove the nodes in which there is only 1 child, so that the binary tree is a full binary tree.
+     * So leaf nodes with no children should be kept, and nodes with 2 children should be kept as well.
+     *
+     * @param root
+     */
+    @TimeComplexity("O(n)")
+    public static void makeFullBinaryTree(TreeNode root) {
+        Queue<TreeNode> queue = new ArrayDeque<>();
+        if (root.left == null && root.right == null) {
+            return;
+        } else
+            queue.offer(root);
+        while (!queue.isEmpty()) {
+            TreeNode currentNode = queue.poll();
+            if (currentNode.left == null || currentNode.right == null)
+                break;
+            if ((currentNode.left.left == null && currentNode.left.right != null)
+                    || (currentNode.left.left != null && currentNode.left.right == null)) {
+                currentNode.left = null;
+            } else {
+                queue.offer(currentNode.left);
+            }
+            if ((currentNode.right.left == null && currentNode.right.right != null)
+                    || (currentNode.right.left != null && currentNode.right.right == null)) {
+                currentNode.right = null;
+            } else {
+                queue.offer(currentNode.right);
+            }
+        }
+    }
+
+    /**
+     * The idea is to use post-order traversal to solve this problem efficiently. We first process the left children, then right children,
+     * and finally the node itself. So we form the new tree bottom up, starting from the leaves towards the root.
+     * By the time we process the current node, both its left and right subtrees were already processed.
+     *
+     * @param node
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    public static TreeNode removeHalfNodes(TreeNode node) {
+        if (node == null)
+            return null;
+
+        node.left = removeHalfNodes(node.left);
+        node.right = removeHalfNodes(node.right);
+
+        if (node.left == null && node.right == null)
+            return node;
+
+        /* if current nodes is a half node with left
+         child NULL left, then it's right child is
+         returned and replaces it in the given tree */
+        if (node.left == null) {
+            TreeNode newRoot = node.right;
+            return newRoot;
+        }
+
+        /* if current nodes is a half node with right
+           child NULL right, then it's right child is
+           returned and replaces it in the given tree  */
+        if (node.right == null) {
+            TreeNode newRoot = node.left;
+            return newRoot;
+        }
+
+        return node;
     }
 
 }
