@@ -5,6 +5,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
+
 /**
  * Created by sad.keyvanfar on 8/23/2020.
  */
@@ -71,5 +73,11 @@ public class ContinuesSubArrayTest {
     @Test
     public void minimumWindowSubstring() {
         Assert.assertEquals("banc", ContinuesSubArray.minimumWindowSubstring("ebbancf".toCharArray(), "abc".toCharArray()));
+    }
+
+    @Test
+    public void findAllAnagramsString() {
+        List<Integer> result = ContinuesSubArray.findAllAnagramsString("cbaebabacd".toCharArray(), "abc".toCharArray());
+        System.out.println(result);
     }
 }

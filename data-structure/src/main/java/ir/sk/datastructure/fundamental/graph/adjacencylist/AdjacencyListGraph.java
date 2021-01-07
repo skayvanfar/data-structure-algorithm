@@ -48,7 +48,7 @@ public class AdjacencyListGraph<T> implements Graph<T> {
     }
 
     @Override
-    public boolean areAdjacent(T src, T dest) throws Exception { // TODO: 7/12/2020
+    public boolean areAdjacent(T src, T dest) throws Exception {
 
         return adjVertices.get(src).contains(dest);
     }

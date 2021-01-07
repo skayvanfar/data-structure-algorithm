@@ -2,10 +2,7 @@ package ir.sk.algorithm.array;
 
 import ir.sk.helper.*;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by sad.keyvanfar on 8/23/2020.
@@ -336,6 +333,7 @@ public class ContinuesSubArray {
 
     /**
      * the minimum substring from the string S (Source) which has all the characters of the string T (Target).
+     * // TODO: 1/7/2021 need more attention
      *
      * @param source
      * @param target
@@ -347,9 +345,13 @@ public class ContinuesSubArray {
     @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
     public static String minimumWindowSubstring(char[] source, char[] target) {
         int start = 0, end = 0;
-        int minLengthSoFar = Integer.MAX_VALUE, match = 0;
+        int minLengthSoFar = Integer.MAX_VALUE;
         Map<Character, Integer> need = new HashMap<>();
         Map<Character, Integer> window = new HashMap<>();
+
+        // Maintain a counter to check whether match the target string.
+        int match = 0;
+
         int index = 0;
 
         for (char ch : target)
@@ -380,5 +382,52 @@ public class ContinuesSubArray {
             }
         }
         return minLengthSoFar == Integer.MAX_VALUE ? "" : String.valueOf(source).substring(index, minLengthSoFar + 1);
+    }
+
+    /**
+     * Given a String s and a non-empty string p, find all the start indices of p's anagrams in s.
+     *
+     * // TODO: 1/7/2021 need more attention
+     * @param source
+     * @param target
+     * @return
+     */
+    @TimeComplexity("O(s + t), s and t represent the lengths of strings S and T")
+    @SpaceComplexity("O(256) = O(1)")
+    @FrequencyCountingPattern
+    @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
+    public static List<Integer> findAllAnagramsString(char[] source, char[] target) {
+        int start = 0, end = 0;
+        List<Integer> result = new ArrayList<>();
+        Map<Character, Integer> need = new HashMap<>();
+        Map<Character, Integer> window = new HashMap<>();
+        // Maintain a counter to check whether match the target string.
+        int match = 0;
+
+        for (char ch : target)
+            need.put(ch, need.getOrDefault(ch, 0) + 1);
+
+        while (end < source.length) {
+            if (need.containsKey(source[end])) {
+                window.put(source[end], window.getOrDefault(source[end], 0) + 1);
+                if (window.get(source[end]) == need.get(source[end]))
+                    match++;
+            }
+            end++;
+
+            while (match == need.size()) {
+                if (end - start == target.length) {
+                    result.add(start);
+                }
+
+                if (need.containsKey(source[start])) {
+                    window.put(source[start], window.getOrDefault(source[start], 0) - 1);
+                    if (window.get(source[start]) < need.get(source[start]))
+                        match--;
+                }
+                start++;
+            }
+        }
+        return result;
     }
 }
