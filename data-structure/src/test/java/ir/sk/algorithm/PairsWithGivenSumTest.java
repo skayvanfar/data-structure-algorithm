@@ -6,6 +6,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 /**
  * Created by sad.keyvanfar on 8/23/2020.
  */
@@ -49,4 +51,17 @@ public class PairsWithGivenSumTest {
         Assert.assertEquals(2, PairsWithGivenSum.getPairsCountByHashing(arr, 6));
     }
 
+    @Test
+    public void deleteDuplicates() {
+        int arr[] = new int[]{2, 3, 3, 3, 6, 9, 9};
+        PairsWithGivenSum.deleteDuplicates(arr);
+        System.out.println(Arrays.toString(arr));
+    }
+
+    @Test
+    public void deleteDuplicatesAndShift() {
+        int arr[] = new int[]{2, 3, 3, 3, 6, 9, 9};
+        PairsWithGivenSum.deleteDuplicatesAndShift(arr);
+        System.out.println(Arrays.toString(arr));
+    }
 }

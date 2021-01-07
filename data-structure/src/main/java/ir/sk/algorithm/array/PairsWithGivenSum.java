@@ -192,4 +192,50 @@ public class PairsWithGivenSum {
 
         return count;
     }
+
+    /**
+     * Given an array of sorted numbers, remove all duplicates from it. You should not use any extra space;
+     *
+     * @param arr
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
+    @MultiplePointerPattern
+    public static void deleteDuplicates(int[] arr) {
+        int start = 0, end =0;
+
+        while (end < arr.length) {
+            if (arr[start] == arr[end])
+                arr[end] = 0;
+            else
+                start = end;
+            end++;
+        }
+    }
+
+    /**
+     * Given an array of sorted numbers, remove all duplicates from it.
+     * You should not use any extra space;
+     * after removing the duplicates in-place return the new length of the array.
+     *
+     * In this problem, we need to remove the duplicates in-place such that the resultant length of the array remains sorted.
+     * As the input array is sorted, therefore, one way to do this is to shift the elements left whenever we encounter duplicates. In other words,
+     * we will keep one pointer for iterating the array and one pointer for placing the next non-duplicate number.
+     * So our algorithm will be to iterate the array and whenever we see a non-duplicate number we move it next to the last non-duplicate number we’ve seen.
+     *
+     * @param arr
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
+    @MultiplePointerPattern
+    public static void deleteDuplicatesAndShift(int[] arr) {
+        int nextNonDuplicate = 1;
+
+        for (int i = 0; i < arr.length;i++) {
+            if (arr[nextNonDuplicate - 1] != arr[i]) {
+                arr[nextNonDuplicate] = arr[i];
+                nextNonDuplicate++;
+            }
+        }
+    }
 }
