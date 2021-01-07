@@ -194,7 +194,7 @@ public class ContinuesSubArray {
      * Given a string, find the length of the longest substring in it with no more than d distinct characters.
      *
      * @param chars string
-     * @param d distinct characters
+     * @param d     distinct characters
      * @return
      */
     @TimeComplexity("O(n+n) = O(n)")
@@ -202,7 +202,7 @@ public class ContinuesSubArray {
     @FrequencyCountingPattern
     @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
     public static int longestSubstringDistinct(char[] chars, int d) {
-        int start= 0, end = 0;
+        int start = 0, end = 0;
         int lengthSoFar = 0, currentCount = 0;
         boolean[] hashtable = new boolean[256];
 
@@ -215,10 +215,10 @@ public class ContinuesSubArray {
             }
             // compare
             if (currentCount == d)
-                lengthSoFar = Math.max(lengthSoFar, end - start +1);
+                lengthSoFar = Math.max(lengthSoFar, end - start + 1);
             // shrink the slide window
             while (currentCount > d) {
-                if(hashtable[chars[start]]) {
+                if (hashtable[chars[start]]) {
                     currentCount--;
                     hashtable[chars[start]] = false;
                 }
@@ -228,9 +228,6 @@ public class ContinuesSubArray {
         }
         return lengthSoFar;
     }
-
-
-
 
 
     /**
@@ -245,7 +242,7 @@ public class ContinuesSubArray {
     @FrequencyCountingPattern
     @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
     public static int longestSubstringAtMostDistinct(char[] chars, int d) {
-        int start= 0, end = 0;
+        int start = 0, end = 0;
         int lengthSoFar = 0, currentCount = 0;
         boolean[] hashtable = new boolean[256];
 
@@ -258,10 +255,10 @@ public class ContinuesSubArray {
             }
             // compare
             if (currentCount <= d)
-                lengthSoFar = Math.max(lengthSoFar, end - start +1);
+                lengthSoFar = Math.max(lengthSoFar, end - start + 1);
             // shrink the slide window
             while (currentCount > d) {
-                if(hashtable[chars[start]]) {
+                if (hashtable[chars[start]]) {
                     currentCount--;
                     hashtable[chars[start]] = false;
                 }
@@ -284,7 +281,7 @@ public class ContinuesSubArray {
     @FrequencyCountingPattern
     @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
     public static int longestSubstringAllDistinct(char[] chars) {
-        int start=0, end =0;
+        int start = 0, end = 0;
         int lengthSoFar = Integer.MIN_VALUE;
         Set<Character> hashtable = new HashSet<>();
 
@@ -296,14 +293,10 @@ public class ContinuesSubArray {
                 start++;
             }
 
-            if (!hashtable.contains(chars[end]))
-                hashtable.add(chars[end]);
-
+            hashtable.add(chars[end]);
             lengthSoFar = Math.max(lengthSoFar, end - start + 1);
+
             end++;
-
-
-
         }
         return lengthSoFar;
     }
@@ -319,7 +312,7 @@ public class ContinuesSubArray {
     @FrequencyCountingPattern
     @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
     public static int longestSubstringAllDistinct2(char[] chars) {
-        int start=0, end =0;
+        int start = 0, end = 0;
         int lengthSoFar = Integer.MIN_VALUE;
         // We can use a HashMap to remember the last index of each character we have processed.
         Map<Character, Integer> charIndexMap = new HashMap<>();
@@ -338,5 +331,54 @@ public class ContinuesSubArray {
 
         }
         return lengthSoFar;
+    }
+
+
+    /**
+     * the minimum substring from the string S (Source) which has all the characters of the string T (Target).
+     *
+     * @param source
+     * @param target
+     * @return
+     */
+    @TimeComplexity("O(s + t), s and t represent the lengths of strings S and T")
+    @SpaceComplexity("O(256) = O(1)")
+    @FrequencyCountingPattern
+    @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
+    public static String minimumWindowSubstring(char[] source, char[] target) {
+        int start = 0, end = 0;
+        int minLengthSoFar = Integer.MAX_VALUE, match = 0;
+        Map<Character, Integer> need = new HashMap<>();
+        Map<Character, Integer> window = new HashMap<>();
+        int index = 0;
+
+        for (char ch : target)
+            need.put(ch, need.getOrDefault(ch, 0) + 1);
+
+        while (end < source.length) {
+            if (need.containsKey(source[end])) {
+                window.put(source[end], window.getOrDefault(source[end], 0) + 1);
+                if (window.get(source[end]) == need.get(source[end]))
+                    match++;
+            }
+            end++;
+
+            while (match == need.size()) {
+                if (end - start + 1 < minLengthSoFar) {
+                    // Updates the position and length of the smallest string
+                    index = start;
+                    minLengthSoFar = end - start + 1;
+                }
+
+                if (need.containsKey(source[start])) {
+                    window.put(source[start], window.getOrDefault(source[start], 0) - 1);
+
+                    if (window.get(source[start]) < need.get(source[start]))
+                        match--;
+                }
+                start++;
+            }
+        }
+        return minLengthSoFar == Integer.MAX_VALUE ? "" : String.valueOf(source).substring(index, minLengthSoFar + 1);
     }
 }

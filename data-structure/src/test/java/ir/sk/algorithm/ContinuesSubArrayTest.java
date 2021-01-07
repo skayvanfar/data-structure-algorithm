@@ -60,11 +60,16 @@ public class ContinuesSubArrayTest {
 
     @Test
     public void longestSubstringAllDistinct() {
-        Assert.assertEquals(3, ContinuesSubArray.longestSubstringAllDistinct("abccde".toCharArray()));
+        Assert.assertEquals(3, ContinuesSubArray.longestSubstringAllDistinct("aabccde".toCharArray()));
     }
 
     @Test
     public void longestSubstringAllDistinct2() {
-        Assert.assertEquals(3, ContinuesSubArray.longestSubstringAllDistinct2("abccde".toCharArray()));
+        Assert.assertEquals(3, ContinuesSubArray.longestSubstringAllDistinct2("aabccde".toCharArray()));
+    }
+
+    @Test
+    public void minimumWindowSubstring() {
+        Assert.assertEquals("banc", ContinuesSubArray.minimumWindowSubstring("ebbancf".toCharArray(), "abc".toCharArray()));
     }
 }
