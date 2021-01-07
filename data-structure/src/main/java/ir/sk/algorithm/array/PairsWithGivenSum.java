@@ -30,13 +30,30 @@ public class PairsWithGivenSum {
     @MultipleLoopsPattern
     public static boolean isPairSum(int[] input, int targetValue) {
 
-        for (int i = 0; i < input.length; i++) {
-            for (int j = i + 1; j < input.length; j++) {
-                if (input[i] + input[j] == targetValue) {
+        for (int i = 0; i < input.length; i++)
+            for (int j = i + 1; j < input.length; j++)
+                if (input[i] + input[j] == targetValue)
                     return true;
-                }
-            }
-        }
+
+        return false;
+    }
+
+    /**
+     * Since the given array is sorted, a brute-force solution could be to iterate through the array,
+     * taking one number at a time and searching for the second number through Binary Search.
+     *
+     * @param input
+     * @param targetValue
+     * @return
+     */
+    @TimeComplexity("O(n*Log n)")
+    @SpaceComplexity("O(1)")
+    public static boolean isPairSumBinarySort(int[] input, int targetValue) {
+
+        for (int i = 0; i < input.length; i++)
+            if (Arrays.binarySearch(input, targetValue - input[i]) != 1)
+                return true;
+
         return false;
     }
 
@@ -76,6 +93,8 @@ public class PairsWithGivenSum {
     }
 
     /**
+     * Given an array of integers, we need to see if there are two numbers in it such that their sum is equal to a specific value.
+     *
      * @param array
      * @param targetValue
      * @return
@@ -89,7 +108,7 @@ public class PairsWithGivenSum {
 
         int range = max - min;
 
-        // as a cash
+        // as a cache
         boolean[] counting = new boolean[range];
 
         for (int i = 0; i < array.length; i++) {
