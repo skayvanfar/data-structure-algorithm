@@ -71,6 +71,11 @@ public class ContinuesSubArrayTest {
     }
 
     @Test
+    public void longestSubstringAllDistinct3() {
+        Assert.assertEquals(3, ContinuesSubArray.longestSubstringAllDistinct3("aabccde".toCharArray()));
+    }
+
+    @Test
     public void minimumWindowSubstring() {
         Assert.assertEquals("banc", ContinuesSubArray.minimumWindowSubstring("ebbancf".toCharArray(), "abc".toCharArray()));
     }

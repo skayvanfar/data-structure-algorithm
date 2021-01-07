@@ -301,6 +301,36 @@ public class ContinuesSubArray {
     /**
      * Given a string, find the length of the longest substring which has no repeating characters.
      *
+     * @param s
+     * @return
+     */
+    @TimeComplexity("(O(n+n) = O(n))")
+    @SpaceComplexity("O(256) = O(1)")
+    @FrequencyCountingPattern
+    @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
+    public static int longestSubstringAllDistinct2(char[] s) {
+        int left = 0, right = 0;
+        int[] window = new  int[256];
+        int res = 0; // Record maximum length
+
+        while (right < s.length) {
+            window[s[right]]++;
+
+            // If a duplicate character appears in the window
+            // Move the left pointer
+            while (window[s[right]] > 1) {
+                window[s[left]]--;
+                left++;
+            }
+            right++;
+            res = Math.max(res, right - left);
+        }
+        return res;
+    }
+
+    /**
+     * Given a string, find the length of the longest substring which has no repeating characters.
+     *
      * @param chars
      * @return
      */
@@ -308,7 +338,7 @@ public class ContinuesSubArray {
     @SpaceComplexity("O(256) = O(1)")
     @FrequencyCountingPattern
     @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
-    public static int longestSubstringAllDistinct2(char[] chars) {
+    public static int longestSubstringAllDistinct3(char[] chars) {
         int start = 0, end = 0;
         int lengthSoFar = Integer.MIN_VALUE;
         // We can use a HashMap to remember the last index of each character we have processed.
