@@ -1,0 +1,4 @@
+recursion rules:
+1. notice to base case and how get n from n-1
+2. tail recursion or head recursion
+3. backtracking

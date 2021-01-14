@@ -30,4 +30,10 @@ public class PowerSetTest {
             System.out.println(s);
         }
     }
+
+    @Test
+    public void powerSetBinary() {
+        char set[] = {'a', 'b', 'c'};
+        PowerSet.powerSetBinary(set);
+    }
 }
