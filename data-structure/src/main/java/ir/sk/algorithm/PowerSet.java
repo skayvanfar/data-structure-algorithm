@@ -1,5 +1,6 @@
 package ir.sk.algorithm;
 
+import ir.sk.helper.Backtracking;
 import ir.sk.helper.TimeComplexity;
 
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class PowerSet {
      * @return
      */
     @TimeComplexity("O(2^n)")
+    @Backtracking
     public static <T> Set<Set<T>> powerSetRecursive(Set<T> originalSet) {
         Set<Set<T>> sets = new HashSet<>();
         if (originalSet.isEmpty()) {
@@ -45,6 +47,8 @@ public class PowerSet {
     }
 
     /**
+     * Another way to generate subsets is based on the bit representation of integers.
+     *
      * @param set
      */
     public static void powerSetBinary(char set[]) {
