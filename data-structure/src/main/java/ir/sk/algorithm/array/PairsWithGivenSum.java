@@ -14,7 +14,7 @@ public class PairsWithGivenSum {
 
     /***************
      *  Given a sorted array of integers, we need to see if there are two numbers in it such that their sum is equal to a specific value.
-     ***************/
+     **Fast *************/
 
     /**
      * Given an array of integers, we need to see if there are two numbers in it such that their sum is equal to a specific value.

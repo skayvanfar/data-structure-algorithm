@@ -4,6 +4,7 @@ import ir.sk.datastructure.fundamental.linklist.SinglyLink;
 import ir.sk.helper.*;
 
 import java.util.HashSet;
+import java.util.Set;
 import java.util.Stack;
 
 /**
@@ -467,4 +468,28 @@ public class LinkListAlgorithms {
         return current;
     }
 
+
+    /**
+     * Given the head of a Singly LinkedList, write a function to determine if the LinkedList has a cycle in it or not.
+     * 1->2->3->4->5->6->3
+     *
+     * @param head
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
+    @FrequencyCountingPattern
+    public static boolean hasCycleByHashing(SinglyLink<Integer> head) {
+        SinglyLink<Integer> current  = head;
+        Set<SinglyLink<Integer>> hashtable = new HashSet<>();
+        while (current != null) {
+            if (hashtable.contains(current))
+                return true;
+            else {
+                hashtable.add(current);
+                current = current.next;
+            }
+        }
+        return false;
+    }
 }

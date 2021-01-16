@@ -82,4 +82,20 @@ public class LinkListAlgorithmsTest {
         }
         return previousNode;
     }
+
+    @Test
+    public void hasCycleByHashing() {
+        SinglyLink<Integer> head = new SinglyLink<>(1);
+        head.next = new SinglyLink(2);
+        head.next.next = new SinglyLink(3);
+        head.next.next.next = new SinglyLink(3);
+        head.next.next.next.next = new SinglyLink(5);
+        head.next.next.next.next.next = new SinglyLink(6);
+
+        System.out.println(LinkListAlgorithms.hasCycleByHashing(head));
+
+        head.next.next.next.next.next = head.next.next;
+
+        System.out.println(LinkListAlgorithms.hasCycleByHashing(head));
+    }
 }
