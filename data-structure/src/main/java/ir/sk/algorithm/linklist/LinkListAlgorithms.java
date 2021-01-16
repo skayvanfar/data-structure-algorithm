@@ -514,7 +514,8 @@ public class LinkListAlgorithms {
      * @return
      */
     @TimeComplexity("O(n)")
-    @SpaceComplexity("O(n)")
+    @SpaceComplexity("O(1)")
+    @RunnerPattern
     public static boolean hasCycleByRunner(SinglyLink<Integer> head) {
         SinglyLink<Integer> slow = head;
         SinglyLink<Integer> fast = head;
