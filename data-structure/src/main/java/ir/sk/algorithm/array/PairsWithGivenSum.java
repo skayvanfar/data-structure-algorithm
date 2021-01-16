@@ -194,7 +194,7 @@ public class PairsWithGivenSum {
     }
 
     /**
-     * Given an array of sorted numbers, remove all duplicates from it. You should not use any extra space;
+     * Given an array of sorted numbers, remove all duplicates from it (set it zero). You should not use any extra space;
      *
      * @param arr
      */
@@ -202,7 +202,7 @@ public class PairsWithGivenSum {
     @SpaceComplexity("O(1)")
     @MultiplePointerPattern
     public static void deleteDuplicates(int[] arr) {
-        int start = 0, end =0;
+        int start = 0, end = 1;
 
         while (end < arr.length) {
             if (arr[start] == arr[end])
