@@ -494,6 +494,8 @@ public class LinkListAlgorithms {
     }
 
     /**
+     * Given the head of a Singly LinkedList, write a function to determine if the LinkedList has a cycle in it or not.
+     *
      * Imagine two racers running in a circular racing track. If one racer is faster than the other, the faster racer is bound to catch up and cross the slower racer from behind. We can use this fact to devise an algorithm to determine if a LinkedList has a cycle in it or not.
      *
      * Imagine we have a slow and a fast pointer to traverse the LinkedList. In each iteration, the slow pointer moves one step and the fast pointer moves two steps. This gives us two conclusions:
@@ -509,6 +511,8 @@ public class LinkListAlgorithms {
      * If the fast pointer is one step behind the slow pointer: The fast pointer moves two steps and the slow pointer moves one step, and they both meet.
      * If the fast pointer is two steps behind the slow pointer: The fast pointer moves two steps and the slow pointer moves one step. After the moves, the fast pointer will be one step behind the slow pointer, which reduces this scenario to the first scenario. This means that the two pointers will meet in the next iteration.
      * This concludes that the two pointers will definitely meet if the LinkedList has a cycle.
+     *
+     * 1->2->3->4->5->6->3
      *
      * @param head
      * @return
@@ -526,5 +530,38 @@ public class LinkListAlgorithms {
                 return true;
         }
         return false;
+    }
+
+    /**
+     * Given the head of a LinkedList with a cycle, find the length of the cycle.
+     *
+     * Once the fast and slow pointers meet, we can save the slow pointer and iterate the whole cycle with another pointer until we see the slow pointer again to find the length of the cycle.
+     *
+     * @param head
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
+    @RunnerPattern
+    public static int findCycleLength(SinglyLink<Integer> head) {
+        SinglyLink<Integer> slow = head;
+        SinglyLink<Integer> fast = head;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if (slow == fast)
+                return calculateLength(slow);
+        }
+        return 0;
+    }
+
+    private static int calculateLength(SinglyLink<Integer> slow) {
+        SinglyLink<Integer> current = slow;
+        int cycleLength = 0;
+        do {
+            current = current.next;
+            cycleLength++;
+        } while (current != slow);
+        return cycleLength;
     }
 }
