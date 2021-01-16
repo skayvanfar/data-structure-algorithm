@@ -64,4 +64,11 @@ public class PairsWithGivenSumTest {
         PairsWithGivenSum.deleteDuplicatesAndShift(arr);
         System.out.println(Arrays.toString(arr));
     }
+
+    @Test
+    public void deleteDuplicatesAll() {
+        int arr[] = new int[]{3, 2, 3, 6, 3, 10, 9, 3};
+        PairsWithGivenSum.deleteDuplicatesAll(arr, 3);
+        System.out.println(Arrays.toString(arr));
+    }
 }
