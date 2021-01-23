@@ -188,18 +188,19 @@ public class LinkListAlgorithms {
     }
 
     /**
-     * first solution is to reverse the linked list and compare the reversed list to the original list. If they're the
-     * same, the lists are identical.
-     * <p>
-     * when we compare the linked list to the reversed list, we only actually need to compare the first
-     * half of the list. If the first half of the normal list matches the first half of the reversed list, then the second half
-     * of the normal list must match the second half of the reversed list.
+     * 1) Get the middle of the linked list.
+     * 2) Reverse the second half of the linked list.
+     * 3) Check if the first half and second half are identical.
      *
      * @param head
      * @return
      */
-    public static boolean isPalindrome(SinglyLink<Integer> head) {
-        SinglyLink reversed = reverseAndClone(head);
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
+    @RunnerPattern
+    public static boolean isPalindromeByRunner(SinglyLink<Integer> head) {
+        SinglyLink<Integer> middleLink = findMiddleLink(head);
+        SinglyLink reversed = reverseIterative(middleLink);
         return isEqual(head, reversed);
     }
 
@@ -213,10 +214,11 @@ public class LinkListAlgorithms {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
-    public static SinglyLink reverseIterative(SinglyLink node) {
-        SinglyLink prev = null;
-        SinglyLink current = node;
-        SinglyLink next = null;
+    @InPlace
+    public static SinglyLink<Integer> reverseIterative(SinglyLink<Integer> node) {
+        SinglyLink<Integer> prev = null;
+        SinglyLink<Integer> current = node;
+        SinglyLink<Integer> next = null;
         while (current != null) {
             next = current.next;
             current.next = prev;
@@ -291,6 +293,8 @@ public class LinkListAlgorithms {
      * @return
      */
     @MultiplePointerPattern
+    @TimeComplexity("O(n/2) = O(n)")
+    @SpaceComplexity("O(n/2) = O(n)")
     public static boolean isPalindromeByStack(SinglyLink<Integer> head) {
         SinglyLink<Integer> fast = head;
         SinglyLink<Integer> slow = head;
