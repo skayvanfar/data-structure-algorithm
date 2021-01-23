@@ -144,4 +144,11 @@ public class LinkListAlgorithmsTest {
 
         System.out.println(LinkListAlgorithms.findCycleStart(head));
     }
+
+    @Test
+    public void findMiddleLink() {
+        SinglyLink head = getLinkList();
+        head = LinkListAlgorithms.findMiddleLink(head);
+        System.out.println(head.data);
+    }
 }
