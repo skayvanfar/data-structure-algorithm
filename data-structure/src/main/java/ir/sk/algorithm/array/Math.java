@@ -1,6 +1,7 @@
 package ir.sk.algorithm.array;
 
 import ir.sk.helper.BruteForce;
+import ir.sk.helper.RunnerPattern;
 import ir.sk.helper.SpaceComplexity;
 import ir.sk.helper.TimeComplexity;
 
@@ -53,6 +54,7 @@ public class Math {
      */
     @TimeComplexity("O(Log n)")
     @SpaceComplexity("O(1)")
+    @RunnerPattern
     public static boolean isHappyNumberByRunner(int number) {
         int slow  = number, fast = number;
         do {

@@ -616,6 +616,9 @@ public class LinkListAlgorithms {
      * @param head
      * @return
      */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
+    @RunnerPattern
     public static SinglyLink<Integer> findMiddleLink(SinglyLink<Integer> head) {
         SinglyLink<Integer> slow = head;
         SinglyLink<Integer> fast = head;
