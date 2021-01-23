@@ -200,8 +200,40 @@ public class LinkListAlgorithms {
     @RunnerPattern
     public static boolean isPalindromeByRunner(SinglyLink<Integer> head) {
         SinglyLink<Integer> middleLink = findMiddleLink(head);
-        SinglyLink reversed = reverseIterative(middleLink);
+        SinglyLink<Integer> reversed = reverseIterative(middleLink);
         return isEqual(head, reversed);
+    }
+
+    /**
+     * Given the head of a Singly LinkedList, write a method to modify the LinkedList such that the nodes
+     * from the second half of the LinkedList are inserted alternately to the nodes from the first half in reverse order.
+     * So if the LinkedList has nodes 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> null, your method should return 1 -> 6 -> 2 -> 5 -> 3 -> 4 -> null.
+     *
+     * This problem shares similarities with Palindrome LinkedList. To rearrange the given LinkedList we will follow the following steps:
+     *
+     * We can use the Fast & Slow pointers method similar to Middle of the LinkedList to find the middle node of the LinkedList.
+     * Once we have the middle of the LinkedList, we will reverse the second half of the LinkedList.
+     * Finally, we’ll iterate through the first half and the reversed second half to produce a LinkedList in the required order.
+     *
+     * @param head
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
+    @RunnerPattern
+    public static void reOrder(SinglyLink<Integer> head) {
+        SinglyLink<Integer> middleLink = findMiddleLink(head);
+        SinglyLink<Integer> reversed = reverseIterative(middleLink);
+        while (reversed != null) {
+            SinglyLink<Integer> tmp = head.next;
+            head.next = reversed;
+            head = tmp;
+
+            tmp = reversed.next;
+            reversed.next = head;
+            reversed = tmp;
+        }
+        if (head != null)
+            head.next = null;
     }
 
     /**

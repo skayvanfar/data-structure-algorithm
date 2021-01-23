@@ -151,4 +151,11 @@ public class LinkListAlgorithmsTest {
         head = LinkListAlgorithms.findMiddleLink(head);
         System.out.println(head.data);
     }
+
+    @Test
+    public void reOrder() {
+        SinglyLink head = getLinkList();
+        LinkListAlgorithms.reOrder(head);
+        System.out.println(head.data);
+    }
 }
