@@ -1,9 +1,6 @@
 package ir.sk.algorithm.array;
 
-import ir.sk.helper.BruteForce;
-import ir.sk.helper.RunnerPattern;
-import ir.sk.helper.SpaceComplexity;
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.*;
 
 /**
  * Created by sad.kayvanfar on 1/10/2021.
@@ -13,14 +10,15 @@ public class ArrayAlgorithms {
     /**
      * Given a 2D matrix of characters and a target word, write a function
      * that returns whether the word can be found in the matrix by going left-to-right, or up-to-down.
-     *
+     * <p>
      * String str = 'FOAM'
      * const matrix = [
-     *   ['F', 'A', 'C', 'I'],
-     *   ['O', 'B', 'Q', 'P'],
-     *   ['A', 'N', 'O', 'B'],
-     *   ['M', 'A', 'S', 'S']
+     * ['F', 'A', 'C', 'I'],
+     * ['O', 'B', 'Q', 'P'],
+     * ['A', 'N', 'O', 'B'],
+     * ['M', 'A', 'S', 'S']
      * ]
+     *
      * @param matrix
      * @param world
      * @return
@@ -59,12 +57,12 @@ public class ArrayAlgorithms {
      * We are given an array containing positive and negative numbers. Suppose the array contains a number ‘M’ at a particular index. Now,
      * if ‘M’ is positive we will move forward ‘M’ indices and if ‘M’ is negative move backwards ‘M’ indices.
      * You should assume that the array is circular which means two things:
-     *
+     * <p>
      * If, while moving forward, we reach the end of the array, we will jump to the first element to continue the movement.
      * If, while moving backward, we reach the beginning of the array, we will jump to the last element to continue the movement.
      * Write a method to determine if the array has a cycle. The cycle should have more than one element and should follow one direction which means the cycle should not contain both forward and backward movements.
      *
-     * @param array 
+     * @param array
      * @return
      */
     @TimeComplexity("O(n^2)")
@@ -104,5 +102,35 @@ public class ArrayAlgorithms {
             nextIndex = -1;
 
         return nextIndex;
+    }
+
+    /**
+     * Given a sorted array, create a new array containing squares of all the number of the input array in the sorted order.
+     *
+     * use two pointers starting at both the ends of the input array. At any step,
+     * whichever pointer gives us the bigger square we add it to the result array and move to the next/previous number according to the pointer.
+     *
+     * @param array
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
+    @MultiplePointerPattern
+    public static int[] makeSquaresSortedArray(int[] array) {
+        int[] squares = new int[array.length];
+        int highestSquareIds = array.length - 1;
+        int left = 0, right = array.length - 1;
+        while (left <= right) {
+            int leftSquare = array[left] * array[left];
+            int rightSquare = array[right] * array[right];
+            if (leftSquare > rightSquare) {
+                squares[highestSquareIds--] = leftSquare;
+                left++;
+            } else {
+                squares[highestSquareIds--] = rightSquare;
+                right--;
+            }
+        }
+        return squares;
     }
 }

@@ -4,6 +4,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 /**
  * Created by sad.kayvanfar on 1/10/2021.
  */
@@ -32,4 +34,10 @@ public class ArrayAlgorithmsTest {
         System.out.println(ArrayAlgorithms.loopExistsInCircularArray(new int[]{2, 2, -1, 2}));
         System.out.println(ArrayAlgorithms.loopExistsInCircularArray(new int[]{2, 1, -1, -2}));
     }
+
+    @Test
+    public void makeSquaresSortedArray() {
+        System.out.println(Arrays.toString(ArrayAlgorithms.makeSquaresSortedArray(new int[]{-2, -1, 0, 2, 3})));
+    }
+
 }
