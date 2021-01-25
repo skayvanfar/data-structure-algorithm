@@ -507,6 +507,10 @@ public class LinkListAlgorithms {
 
     /**
      * Given the head of a Singly LinkedList, write a function to determine if the LinkedList has a cycle in it or not.
+     * Traverse the list one by one and keep putting the node addresses in a Hash Table. At any point,
+     * if NULL is reached then return false and if next of current node points to any of the previously
+     * stored nodes in Hash then return true
+     *
      * 1->2->3->4->5->6->3
      *
      * @param head
@@ -550,6 +554,8 @@ public class LinkListAlgorithms {
      *
      * 1->2->3->4->5->6->3
      *
+     * floyds way
+     *
      * @param head
      * @return
      */
@@ -557,8 +563,7 @@ public class LinkListAlgorithms {
     @SpaceComplexity("O(1)")
     @RunnerPattern
     public static boolean hasCycleByRunner(SinglyLink<Integer> head) {
-        SinglyLink<Integer> slow = head;
-        SinglyLink<Integer> fast = head;
+        SinglyLink<Integer> slow = head, fast = head;
         while (fast != null && fast.next != null) {
             fast = fast.next.next;
             slow = slow.next;
