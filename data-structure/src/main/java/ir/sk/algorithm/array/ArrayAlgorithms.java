@@ -8,7 +8,7 @@ import ir.sk.helper.TimeComplexity;
 /**
  * Created by sad.kayvanfar on 1/10/2021.
  */
-public class Array {
+public class ArrayAlgorithms {
 
     /**
      * Given a 2D matrix of characters and a target word, write a function

@@ -7,7 +7,7 @@ import org.junit.Test;
 /**
  * Created by sad.kayvanfar on 1/10/2021.
  */
-public class ArrayTest {
+public class ArrayAlgorithmsTest {
 
     @Before
     public void setUp() throws Exception {
@@ -19,7 +19,7 @@ public class ArrayTest {
 
     @Test
     public void findWord() {
-        boolean result = Array.findWord(new char[][]{{'F', 'A', 'C', 'I'},
+        boolean result = ArrayAlgorithms.findWord(new char[][]{{'F', 'A', 'C', 'I'},
                 {'O', 'B', 'Q', 'P'},
                 {'A', 'N', 'O', 'B'},
                 {'M', 'A', 'S', 'S'}}, "FOAM".toCharArray());
@@ -28,8 +28,8 @@ public class ArrayTest {
 
     @Test
     public void loopExistsInCircularArray() {
-        System.out.println(Array.loopExistsInCircularArray(new int[]{1, 2, -1, 2, 2}));
-        System.out.println(Array.loopExistsInCircularArray(new int[]{2, 2, -1, 2}));
-        System.out.println(Array.loopExistsInCircularArray(new int[]{2, 1, -1, -2}));
+        System.out.println(ArrayAlgorithms.loopExistsInCircularArray(new int[]{1, 2, -1, 2, 2}));
+        System.out.println(ArrayAlgorithms.loopExistsInCircularArray(new int[]{2, 2, -1, 2}));
+        System.out.println(ArrayAlgorithms.loopExistsInCircularArray(new int[]{2, 1, -1, -2}));
     }
 }
