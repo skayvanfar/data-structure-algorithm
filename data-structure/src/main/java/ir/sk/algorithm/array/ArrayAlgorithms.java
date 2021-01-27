@@ -236,4 +236,51 @@ public class ArrayAlgorithms {
         }
         return targetSum - smallDifference;
     }
+
+    /**
+     * Given an array arr of unsorted numbers and a target sum,
+     * count all triplets in it such that arr[i] + arr[j] + arr[k] < target where i, j, and k
+     * are three different indices. Write a function to return the count of such triplets.
+     *
+     * This problem follows the Two Pointers pattern and shares similarities with Triplet Sum to Zero. The only difference is that, in this problem, we need to find the triplets whose sum is less than the given target. To meet the condition i != j != k we need to make sure that each number is not used more than once.
+     *
+     * Following a similar approach, first we can sort the array and then iterate through it,
+     * taking one number at a time. Let’s say during our iteration we are at number ‘X’,
+     * so we need to find ‘Y’ and ‘Z’ such that X + Y + Z < targetX+Y+Z<target. At this stage,
+     * our problem translates into finding a pair whose sum is less than “$ target - X$”
+     * (as from the above equation Y + Z == target - XY+Z==target−X).
+     * We can use a similar approach as discussed in Triplet Sum to Zero.
+     *
+     * @param array
+     * @param target
+     * @return
+     */
+    @TimeComplexity("O(nLogn + n^2) = O(n^2)")
+    @SpaceComplexity("O(n) which is required for sorting if we are not using an in-place sorting algorithm.")
+    @MultiplePointerPattern
+    public static int searchTripletsSumSmallerThanNumber(int[] array, int target) {
+        Arrays.sort(array);
+        int count = 0;
+        for (int i = 0; i < array.length; i++) {
+            count += searchPair(array, target - array[i], i);
+        }
+        return count;
+    }
+
+    @TimeComplexity("O(n)")
+    private static int searchPair(int[] array, int targetSum, int first) {
+        int count = 0;
+        int left = first + 1, right = array.length - 1;
+        while (left < right) {
+            if (array[left] + array[right] < targetSum) { // found the triplet
+                // since array[right] >= array[left], therefore, we can replace array [right] by any
+                // number between left and right to get a sum less than the target sum
+                count += right - left;
+                left++;
+            } else {
+                right--; // we need a pair with a smaller sum
+            }
+        }
+        return count;
+    }
 }
