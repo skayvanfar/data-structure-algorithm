@@ -241,6 +241,9 @@ public class ArrayAlgorithms {
      * Given an array arr of unsorted numbers and a target sum,
      * count all triplets in it such that arr[i] + arr[j] + arr[k] < target where i, j, and k
      * are three different indices. Write a function to return the count of such triplets.
+     * Input: [-1, 0, 2, 3], target=3
+     * Output: 2
+     * Explanation: There are two triplets whose sum is less than the target: [-1, 0, 3], [-1, 0, 2]
      *
      * This problem follows the Two Pointers pattern and shares similarities with Triplet Sum to Zero. The only difference is that, in this problem, we need to find the triplets whose sum is less than the given target. To meet the condition i != j != k we need to make sure that each number is not used more than once.
      *
@@ -262,13 +265,13 @@ public class ArrayAlgorithms {
         Arrays.sort(array);
         int count = 0;
         for (int i = 0; i < array.length; i++) {
-            count += searchPair(array, target - array[i], i);
+            count += searchPair2(array, target - array[i], i);
         }
         return count;
     }
 
     @TimeComplexity("O(n)")
-    private static int searchPair(int[] array, int targetSum, int first) {
+    private static int searchPair2(int[] array, int targetSum, int first) {
         int count = 0;
         int left = first + 1, right = array.length - 1;
         while (left < right) {
@@ -276,6 +279,47 @@ public class ArrayAlgorithms {
                 // since array[right] >= array[left], therefore, we can replace array [right] by any
                 // number between left and right to get a sum less than the target sum
                 count += right - left;
+                left++;
+            } else {
+                right--; // we need a pair with a smaller sum
+            }
+        }
+        return count;
+    }
+
+    /**
+     * Write a function to return the list of all such triplets instead of the count.
+     * How will the time complexity change in this case?
+     *
+     * Following a similar approach we can create a list containing all the triplets.
+     *
+     * @param array
+     * @param target
+     * @return
+     */
+    @TimeComplexity("O(nLogn + n^3) = O(n^3)")
+    @SpaceComplexity("O(n) which is required for sorting if we are not using an in-place sorting algorithm.")
+    @MultiplePointerPattern
+    public static List<List<Integer>> returnTripletsSumSmallerThanNumber(int[] array, int target) {
+        Arrays.sort(array);
+        List<List<Integer>> triplets = new ArrayList<>();
+        for (int i = 0; i < array.length; i++) {
+            searchPair2(array, target - array[i], i, triplets);
+        }
+        return triplets;
+    }
+
+    @TimeComplexity("O(n)")
+    private static int searchPair2(int[] array, int targetSum, int first, java.util.List<List<Integer>> triplets) {
+        int count = 0;
+        int left = first + 1, right = array.length - 1;
+        while (left < right) {
+            if (array[left] + array[right] < targetSum) { // found the triplet
+                // since array[right] >= array[left], therefore, we can replace array [right] by any
+                // number between left and right to get a sum less than the target sum
+                for (int i = right; i > left; i--) {
+                    triplets.add(Arrays.asList(array[first], array[left], array[i]));
+                }
                 left++;
             } else {
                 right--; // we need a pair with a smaller sum

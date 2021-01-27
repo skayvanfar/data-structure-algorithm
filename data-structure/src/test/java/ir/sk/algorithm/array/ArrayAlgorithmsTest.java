@@ -54,4 +54,9 @@ public class ArrayAlgorithmsTest {
     public void searchTripletsSumSmallerThanNumber() {
         System.out.println(ArrayAlgorithms.searchTripletsSumSmallerThanNumber(new int[]{-1,0,2,3}, 3));
     }
+
+    @Test
+    public void returnTripletsSumSmallerThanNumber() {
+        System.out.println(ArrayAlgorithms.returnTripletsSumSmallerThanNumber(new int[]{-1,0,2,3}, 3));
+    }
 }
