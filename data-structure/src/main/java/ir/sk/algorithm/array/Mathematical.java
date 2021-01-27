@@ -10,7 +10,7 @@ import java.util.HashSet;
 /**
  * Created by sad.kayvanfar on 1/20/2021.
  */
-public class Math {
+public class Mathematical {
 
     /**
      * Any number will be called a happy number if, after repeatedly replacing it with a number equal to the sum of the square of all of its digits, leads us to number ‘1’.

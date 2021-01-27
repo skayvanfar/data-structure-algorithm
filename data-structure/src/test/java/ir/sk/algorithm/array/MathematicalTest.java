@@ -4,12 +4,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by sad.kayvanfar on 1/20/2021.
  */
-public class MathTest {
+public class MathematicalTest {
 
     @Before
     public void setUp() throws Exception {
@@ -21,11 +19,11 @@ public class MathTest {
 
     @Test
     public void isHappyNumberNaive() {
-        System.out.println(Math.isHappyNumberNaive(23));
+        System.out.println(Mathematical.isHappyNumberNaive(23));
     }
 
     @Test
     public void isHappyNumberByRunner() {
-        System.out.println(Math.isHappyNumberByRunner(23));
+        System.out.println(Mathematical.isHappyNumberByRunner(23));
     }
 }

@@ -579,6 +579,7 @@ public class Sort {
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
     @MultiplePointerPattern
+    @Difficulty(type = DifficultyType.MEDIUM)
     public static int minimumWindowSort(int[] array) {
         int low = 0, high = array.length - 1;
         // find the first number out of sorting order from the beginning
