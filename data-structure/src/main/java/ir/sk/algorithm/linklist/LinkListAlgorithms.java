@@ -1,5 +1,7 @@
 package ir.sk.algorithm.linklist;
 
+import ir.sk.datastructure.fundamental.linklist.DoubledLink;
+import ir.sk.datastructure.fundamental.linklist.DoublyLinkedList;
 import ir.sk.datastructure.fundamental.linklist.SinglyLink;
 import ir.sk.helper.*;
 import ir.sk.helper.complexity.InPlace;
@@ -413,6 +415,39 @@ public class LinkListAlgorithms {
         res.node = res.node.next;
 
         return res;
+    }
+
+    /**
+     * You are given a doubly linked list. Determine if it is a palindrome.
+     *
+     * Initialize two pointers left at starting of list and right at the end of the list.
+     * Check the data at left node is equal to right node, if it is equal then increment left and decrement right till middle of the list,
+     * if at any stage it is not equal then return false.
+     *
+     * @param left
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
+    @Difficulty(type = DifficultyType.EASY)
+    @MultiplePointerPattern
+    public static boolean isPalindrome(DoubledLink<Integer> left) {
+        if (left == null)
+            return true;
+
+        // find the rightmost node
+        DoubledLink<Integer> right = left;
+        while (right.next != null)
+            right = right.next;
+
+        while (left != right) {
+            if (left.data != right.data)
+                return false;
+
+            left = left.next;
+            right = right.previous;
+        }
+        return true;
     }
 
     private static int lengthOfList(SinglyLink<Integer> n) {

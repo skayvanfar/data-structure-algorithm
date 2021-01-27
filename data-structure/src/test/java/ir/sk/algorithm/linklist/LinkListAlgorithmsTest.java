@@ -1,5 +1,6 @@
 package ir.sk.algorithm.linklist;
 
+import ir.sk.datastructure.fundamental.linklist.DoubledLink;
 import ir.sk.datastructure.fundamental.linklist.SinglyLink;
 import org.junit.After;
 import org.junit.Before;
@@ -157,5 +158,21 @@ public class LinkListAlgorithmsTest {
         SinglyLink head = getLinkList();
         LinkListAlgorithms.reOrder(head);
         System.out.println(head.data);
+    }
+
+    @Test
+    public void isPalindromeByRunner() {
+        DoubledLink<Integer> head = new DoubledLink<>(1);
+        DoubledLink<Integer> second = new DoubledLink<>(2);
+        DoubledLink<Integer> third = new DoubledLink<>(3);
+        DoubledLink<Integer> forth = new DoubledLink<>(4);
+        head.next = second;
+        second.next = third;
+        second.previous = head;
+        third.next = forth;
+        third.previous = second;
+        forth.previous = third;
+
+        LinkListAlgorithms.isPalindrome(head);
     }
 }

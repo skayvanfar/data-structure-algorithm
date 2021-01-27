@@ -180,17 +180,3 @@ public class DoublyLinkedList<T> {
     }
 }
 
-class DoubledLink<T> {
-
-    public T data;
-    public DoubledLink<T> next;
-    public DoubledLink<T> previous;
-
-    public DoubledLink(T d) {
-        data = d;
-    }
-
-    public void displayLink() {
-        System.out.print(data + " ");
-    }
-}
