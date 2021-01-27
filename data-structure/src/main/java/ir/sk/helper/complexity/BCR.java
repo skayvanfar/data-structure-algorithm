@@ -1,4 +1,4 @@
-package ir.sk.helper;
+package ir.sk.helper.complexity;
 
 /**
  * Best Conceivable Runtime (BCR)

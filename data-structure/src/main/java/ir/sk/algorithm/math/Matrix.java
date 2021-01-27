@@ -1,8 +1,8 @@
 package ir.sk.algorithm.math;
 
-import ir.sk.helper.BCR;
-import ir.sk.helper.SpaceComplexity;
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.complexity.BCR;
+import ir.sk.helper.complexity.SpaceComplexity;
+import ir.sk.helper.complexity.TimeComplexity;
 
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 2/7/2020.

@@ -1,7 +1,7 @@
 package ir.sk.algorithm;
 
 import ir.sk.helper.Backtracking;
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.complexity.TimeComplexity;
 
 /**
  * The N Queen is the problem of placing N chess queens on an N×N chessboard so that no two queens attack each other.

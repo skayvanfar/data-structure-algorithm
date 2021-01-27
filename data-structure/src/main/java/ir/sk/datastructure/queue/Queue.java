@@ -1,6 +1,6 @@
 package ir.sk.datastructure.queue;
 
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.complexity.TimeComplexity;
 
 /**
  * A queue implements FIFO (first-in first-out) ordering. As in a line or queue at a ticket stand, items are

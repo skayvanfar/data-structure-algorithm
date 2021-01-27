@@ -1,6 +1,6 @@
 package ir.sk.datastructure.fundamental.tree.binarytree.binarysearchtree;
 
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.complexity.TimeComplexity;
 
 /**
  * AVLTree is a self-balancing binary search tree (BST).

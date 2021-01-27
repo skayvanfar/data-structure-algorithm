@@ -1,7 +1,7 @@
 package ir.sk.datastructure.fundamental.hashing;
 
 import ir.sk.helper.Remainder;
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.complexity.TimeComplexity;
 
 /**
  * ChainingDictionary ADT (HashTable ADT) (HashMap ADT), Symbol table

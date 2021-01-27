@@ -1,7 +1,7 @@
 package ir.sk.datastructure.queue;
 
 import ir.sk.datastructure.fundamental.tree.binarytree.MaxBinaryHeap;
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.complexity.TimeComplexity;
 
 /**
  * It's just a wrapper for BinaryHeap

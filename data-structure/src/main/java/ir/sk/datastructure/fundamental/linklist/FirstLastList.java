@@ -1,6 +1,6 @@
 package ir.sk.datastructure.fundamental.linklist;
 
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.complexity.TimeComplexity;
 
 /**
  * Double-Ended List

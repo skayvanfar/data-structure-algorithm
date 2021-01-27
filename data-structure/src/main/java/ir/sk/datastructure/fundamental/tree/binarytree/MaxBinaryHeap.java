@@ -1,6 +1,6 @@
 package ir.sk.datastructure.fundamental.tree.binarytree;
 
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.complexity.TimeComplexity;
 
 /**
  * two properties of a heap:

@@ -1,8 +1,8 @@
 package ir.sk.algorithm.array;
 
 import ir.sk.helper.BruteForce;
-import ir.sk.helper.MultipleLoopsPattern;
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.pattern.MultipleLoopsPattern;
+import ir.sk.helper.complexity.TimeComplexity;
 
 /**
  * string-searching algorithms, sometimes called string-matching algorithms, are an important class of string algorithms

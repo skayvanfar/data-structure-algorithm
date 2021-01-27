@@ -1,6 +1,6 @@
 package ir.sk.datastructure.fundamental.linklist;
 
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.complexity.TimeComplexity;
 
 /**
  * A circular linked list is a variation of a linked list in which the last node points to the first node, completing a full circle of node

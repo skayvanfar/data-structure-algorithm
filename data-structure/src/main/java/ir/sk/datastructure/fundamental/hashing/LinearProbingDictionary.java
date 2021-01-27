@@ -1,6 +1,6 @@
 package ir.sk.datastructure.fundamental.hashing;
 
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.complexity.TimeComplexity;
 
 /**
  * deals with collisions by Open Addressing - Linear Probing

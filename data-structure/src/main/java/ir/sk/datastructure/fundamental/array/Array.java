@@ -1,7 +1,7 @@
 package ir.sk.datastructure.fundamental.array;
 
 import ir.sk.algorithm.basic.RotationShift;
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.recursiontype.HeadRecursion;
 import ir.sk.helper.recursiontype.TailRecursion;
 

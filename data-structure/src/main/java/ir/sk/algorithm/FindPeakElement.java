@@ -1,8 +1,8 @@
 package ir.sk.algorithm;
 
 import ir.sk.helper.BinarySearch;
-import ir.sk.helper.SpaceComplexity;
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.complexity.SpaceComplexity;
+import ir.sk.helper.complexity.TimeComplexity;
 
 import java.util.Arrays;
 import java.util.List;

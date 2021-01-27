@@ -1,4 +1,4 @@
-package ir.sk.helper;
+package ir.sk.helper.pattern;
 
 /**
  * Runner, Two Pointer

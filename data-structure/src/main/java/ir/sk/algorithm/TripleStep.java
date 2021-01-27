@@ -2,8 +2,8 @@ package ir.sk.algorithm;
 
 import ir.sk.helper.BruteForce;
 import ir.sk.helper.Memoization;
-import ir.sk.helper.SpaceComplexity;
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.complexity.SpaceComplexity;
+import ir.sk.helper.complexity.TimeComplexity;
 
 /**
  * A child is running up a staircase with n steps and can hop either 1 step, 2 steps, or 3

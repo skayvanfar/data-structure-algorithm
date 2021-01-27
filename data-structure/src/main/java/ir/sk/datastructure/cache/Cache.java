@@ -1,6 +1,6 @@
 package ir.sk.datastructure.cache;
 
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.complexity.TimeComplexity;
 
 import java.util.HashMap;
 

@@ -1,6 +1,6 @@
 package ir.sk.datastructure.stack;
 
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.complexity.TimeComplexity;
 
 /**
  * A stack uses LIFO (last-in first-out) ordering. That is, as in a stack of dinner plates, the most recent item

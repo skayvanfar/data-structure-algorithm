@@ -2,8 +2,8 @@ package ir.sk.algorithm.array.lcp;
 
 import ir.sk.helper.DivideAndConquer;
 import ir.sk.helper.RecurrenceRelation;
-import ir.sk.helper.SpaceComplexity;
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.complexity.SpaceComplexity;
+import ir.sk.helper.complexity.TimeComplexity;
 
 import java.util.Arrays;
 

@@ -1,7 +1,7 @@
 package ir.sk.datastructure.fundamental.tree;
 
-import ir.sk.helper.SpaceComplexity;
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.complexity.SpaceComplexity;
+import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.recursiontype.HeadRecursion;
 import ir.sk.helper.recursiontype.TailRecursion;
 

@@ -1,6 +1,6 @@
 package ir.sk.datastructure.fundamental.tree.binarytree.binarysearchtree;
 
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.complexity.TimeComplexity;
 
 /**
  * A Red-Black tree is essentially a different representation of a 2-3 tree.

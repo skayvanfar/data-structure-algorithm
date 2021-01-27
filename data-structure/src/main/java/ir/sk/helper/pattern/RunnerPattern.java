@@ -1,4 +1,4 @@
-package ir.sk.helper;
+package ir.sk.helper.pattern;
 
 /**
  * (Runner Pattern) The Fast & Slow pointer approach, also known as the Hare & Tortoise algorithm, is a pointer algorithm (MultiplePointerPattern) that uses two pointers which move through the array (or sequence/LinkedList) at different speeds.

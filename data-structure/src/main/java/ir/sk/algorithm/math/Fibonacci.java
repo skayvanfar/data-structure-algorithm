@@ -2,8 +2,8 @@ package ir.sk.algorithm.math;
 
 import ir.sk.helper.BruteForce;
 import ir.sk.helper.Memoization;
-import ir.sk.helper.SpaceComplexity;
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.complexity.SpaceComplexity;
+import ir.sk.helper.complexity.TimeComplexity;
 
 /**
  * Created by sad.keyvanfar on 6/25/2020.

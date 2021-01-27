@@ -1,6 +1,6 @@
 package ir.sk.datastructure.fundamental.hashing;
 
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.complexity.TimeComplexity;
 
 /**
  * Double hashing is a collision resolving technique in Open Addressed Hash tables.

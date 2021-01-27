@@ -1,7 +1,7 @@
 package ir.sk.algorithm.math;
 
-import ir.sk.helper.SpaceComplexity;
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.complexity.SpaceComplexity;
+import ir.sk.helper.complexity.TimeComplexity;
 
 /**
  * 1 1 2 5 14 42 132 429 1430 4862

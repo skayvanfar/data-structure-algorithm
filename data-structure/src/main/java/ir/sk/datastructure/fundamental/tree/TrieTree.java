@@ -1,7 +1,7 @@
 package ir.sk.datastructure.fundamental.tree;
 
-import ir.sk.helper.FrequencyCountingPattern;
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.pattern.FrequencyCountingPattern;
+import ir.sk.helper.complexity.TimeComplexity;
 
 import java.util.HashMap;
 import java.util.Map;

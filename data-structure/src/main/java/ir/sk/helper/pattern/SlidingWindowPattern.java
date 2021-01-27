@@ -1,4 +1,4 @@
-package ir.sk.helper;
+package ir.sk.helper.pattern;
 
 /**
  * Involves creating a window from an array or number from one position to another.

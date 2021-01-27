@@ -1,8 +1,8 @@
 package ir.sk.datastructure.fundamental.hashing;
 
-import ir.sk.helper.AmortizedTimeComplexity;
+import ir.sk.helper.complexity.AmortizedTimeComplexity;
 import ir.sk.helper.Point;
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.complexity.TimeComplexity;
 
 /**
  * Hash table or hash map is a data structure that

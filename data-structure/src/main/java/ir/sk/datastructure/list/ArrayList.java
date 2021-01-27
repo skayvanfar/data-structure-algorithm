@@ -1,7 +1,7 @@
 package ir.sk.datastructure.list;
 
-import ir.sk.helper.AmortizedTimeComplexity;
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.complexity.AmortizedTimeComplexity;
+import ir.sk.helper.complexity.TimeComplexity;
 
 /**
  * Use dynamic array logic

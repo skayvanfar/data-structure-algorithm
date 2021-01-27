@@ -1,7 +1,7 @@
 package ir.sk.algorithm.basic;
 
-import ir.sk.helper.SpaceComplexity;
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.complexity.SpaceComplexity;
+import ir.sk.helper.complexity.TimeComplexity;
 
 /**
  * Created by sad.kayvanfar on 9/16/2020.

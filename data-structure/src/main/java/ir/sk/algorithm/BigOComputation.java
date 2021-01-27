@@ -1,6 +1,6 @@
 package ir.sk.algorithm;
 
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.complexity.TimeComplexity;
 
 /**
  * There are few methods to compute Big O of alghoritms. In this class we show the m by examples.

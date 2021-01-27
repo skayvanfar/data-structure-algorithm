@@ -1,6 +1,6 @@
 package ir.sk.algorithm.treeandgraph;
 
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.complexity.TimeComplexity;
 
 /**
  * The lowest common ancestor (LCA) is defined between two nodes v and w as the lowest node in T that has both v and w as descendants

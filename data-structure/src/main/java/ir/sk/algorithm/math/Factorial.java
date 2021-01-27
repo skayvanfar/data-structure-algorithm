@@ -1,8 +1,8 @@
 package ir.sk.algorithm.math;
 
 import ir.sk.helper.BruteForce;
-import ir.sk.helper.SpaceComplexity;
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.complexity.SpaceComplexity;
+import ir.sk.helper.complexity.TimeComplexity;
 
 import java.math.BigInteger;
 

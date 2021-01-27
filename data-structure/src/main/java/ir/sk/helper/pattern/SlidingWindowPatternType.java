@@ -1,4 +1,4 @@
-package ir.sk.helper;
+package ir.sk.helper.pattern;
 
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 11/1/2020.

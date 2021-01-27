@@ -1,9 +1,9 @@
 package ir.sk.algorithm;
 
 import ir.sk.helper.BruteForce;
-import ir.sk.helper.FrequencyCountingPattern;
-import ir.sk.helper.MultipleLoopsPattern;
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.pattern.FrequencyCountingPattern;
+import ir.sk.helper.pattern.MultipleLoopsPattern;
+import ir.sk.helper.complexity.TimeComplexity;
 
 import java.util.HashMap;
 import java.util.Map;

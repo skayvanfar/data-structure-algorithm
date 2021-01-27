@@ -1,6 +1,6 @@
 package ir.sk.datastructure.fundamental.linklist;
 
-import ir.sk.helper.TimeComplexity;
+import ir.sk.helper.complexity.TimeComplexity;
 
 /**
  * In a sorted list, the items are arranged in sorted order by key value.
