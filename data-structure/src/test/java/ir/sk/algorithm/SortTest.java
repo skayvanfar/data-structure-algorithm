@@ -129,4 +129,9 @@ public class SortTest {
         Sort.sortJustThreeTypeNumber(array);
         System.out.println(Arrays.toString(array));
     }
+
+    @Test
+    public void minimumWindowSort() {
+        System.out.println(Sort.minimumWindowSort(new int[]{1, 2, 5, 3, 7, 10, 9, 12}));
+    }
 }
