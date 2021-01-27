@@ -1,4 +1,4 @@
-package ir.sk.helper;
+package ir.sk.helper.complexity;
 
 /**
  * Stable sort algorithms sort repeated elements in the same order that they appear in the input.

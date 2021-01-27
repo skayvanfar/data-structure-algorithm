@@ -1,6 +1,6 @@
 package ir.sk.algorithm.basic;
 
-import ir.sk.helper.InPlace;
+import ir.sk.helper.complexity.InPlace;
 import ir.sk.helper.pattern.MultiplePointerPattern;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;

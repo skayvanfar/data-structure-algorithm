@@ -1,7 +1,7 @@
 package ir.sk.algorithm;
 
 import ir.sk.helper.technique.BruteForce;
-import ir.sk.helper.InPlace;
+import ir.sk.helper.complexity.InPlace;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 

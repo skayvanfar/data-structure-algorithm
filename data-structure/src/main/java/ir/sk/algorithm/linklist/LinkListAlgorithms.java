@@ -2,6 +2,7 @@ package ir.sk.algorithm.linklist;
 
 import ir.sk.datastructure.fundamental.linklist.SinglyLink;
 import ir.sk.helper.*;
+import ir.sk.helper.complexity.InPlace;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.FrequencyCountingPattern;
