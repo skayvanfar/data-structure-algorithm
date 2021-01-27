@@ -41,7 +41,12 @@ public class ArrayAlgorithmsTest {
     }
 
     @Test
-    public void searchTriplets() {
-        System.out.println(ArrayAlgorithms.searchTriplets(new int[]{-3, 0, 1, 2, -1, 1, -2}));
+    public void searchTripletsSumZero() {
+        System.out.println(ArrayAlgorithms.searchTripletsSumZero(new int[]{-3, 0, 1, 2, -1, 1, -2}));
+    }
+
+    @Test
+    public void searchTripletsSumNearNumber() {
+        System.out.println(ArrayAlgorithms.searchTripletsSumNearNumber(new int[]{-2, 0, 1, 2}, 2));
     }
 }

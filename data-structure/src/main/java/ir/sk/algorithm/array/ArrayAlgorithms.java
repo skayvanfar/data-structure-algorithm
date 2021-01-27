@@ -161,7 +161,7 @@ public class ArrayAlgorithms {
     @TimeComplexity("O(nLogn + n^2) = O(n^2)")
     @SpaceComplexity("O(n)")
     @MultiplePointerPattern
-    public static List<List<Integer>> searchTriplets(int[] array) {
+    public static List<List<Integer>> searchTripletsSumZero(int[] array) {
         Arrays.sort(array);
         List<List<Integer>> triplets = new ArrayList<>();
         for (int i = 0; i < array.length; i++) {
@@ -178,7 +178,7 @@ public class ArrayAlgorithms {
         while (left < right) {
             int currentSum = array[left] + array[right];
             if (currentSum == targetSum) { // found the triplet
-                triplets.add(Arrays.<Integer>asList(-targetSum, array[left], array[right]));
+                triplets.add(Arrays.asList(-targetSum, array[left], array[right]));
                 left++;
                 right--;
                 while (left < right && array[left] == array[left - 1])
@@ -190,5 +190,50 @@ public class ArrayAlgorithms {
             else
                 right--; // we need a pair with smaller sum
         }
+    }
+
+    /**
+     * Given an array of unsorted numbers and a target number,
+     * find a triplet in the array whose sum is as close to the target number as possible,
+     * return the sum of the triplet. If there are more than one such triplet, return the sum of the triplet with the smallest sum.
+     *
+     * This problem follows the Two Pointers pattern and is quite similar to Triplet Sum to Zero.
+     *
+     * We can follow a similar approach to iterate through the array,
+     * taking one number at a time. At every step, we will save the difference between the triplet and the target number,
+     * so that in the end, we can return the triplet with the closest sum.
+     *
+     * @param array
+     * @param targetSum
+     * @return
+     */
+    @TimeComplexity("O(nLogn + n^2) = O(n^2)")
+    @SpaceComplexity("O(n)")
+    @MultiplePointerPattern
+    public static int searchTripletsSumNearNumber(int[] array, int targetSum) {
+        Arrays.sort(array);
+        int smallDifference = Integer.MAX_VALUE;
+        for (int i = 0; i < array.length - 2; i++) {
+            int left = i + 1, right = array.length - 1;
+            while (left < right) {
+                // comparing the sum of three numbers to the 'targetSum' can cause overflow
+                // so, we will try to find a target difference
+                int targetDiff = targetSum - array[i];
+                if (targetDiff == 0) { // we've found a triplet with an exact sum
+                    return targetSum - targetDiff; // return sum of all the numbers
+                }
+
+                if (java.lang.Math.abs(targetDiff) < java.lang.Math.abs(smallDifference)) {
+                    smallDifference = targetDiff;
+                }
+
+                if (targetDiff > 0) {
+                    left++; // we need triplet with bigger sum
+                } else {
+                    right--; // we need triplet with smaller sum
+                }
+            }
+        }
+        return targetSum - smallDifference;
     }
 }
