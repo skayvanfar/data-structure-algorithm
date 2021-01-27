@@ -40,4 +40,8 @@ public class ArrayAlgorithmsTest {
         System.out.println(Arrays.toString(ArrayAlgorithms.makeSquaresSortedArray(new int[]{-2, -1, 0, 2, 3})));
     }
 
+    @Test
+    public void searchTriplets() {
+        System.out.println(ArrayAlgorithms.searchTriplets(new int[]{-3, 0, 1, 2, -1, 1, -2}));
+    }
 }

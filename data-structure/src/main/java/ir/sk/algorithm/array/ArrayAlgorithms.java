@@ -2,6 +2,10 @@ package ir.sk.algorithm.array;
 
 import ir.sk.helper.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Created by sad.kayvanfar on 1/10/2021.
  */
@@ -106,7 +110,7 @@ public class ArrayAlgorithms {
 
     /**
      * Given a sorted array, create a new array containing squares of all the number of the input array in the sorted order.
-     *
+     * <p>
      * use two pointers starting at both the ends of the input array. At any step,
      * whichever pointer gives us the bigger square we add it to the result array and move to the next/previous number according to the pointer.
      *
@@ -132,5 +136,59 @@ public class ArrayAlgorithms {
             }
         }
         return squares;
+    }
+
+    /**
+     * Given an array of unsorted numbers, find all unique triplets in it that add up to zero.
+     * Input: [-3, 0, 1, 2, -1, 1, -2]
+     * Output: [-3, 1, 2], [-2, 0, 2], [-2, 1, 1], [-1, 0, 1]
+     * Explanation: There are four unique triplets whose sum is equal to zero.
+     *
+     * This problem follows the Two Pointers pattern and shares similarities with Pair with Target Sum.
+     * A couple of differences are that the input array is not sorted and instead of a pair we need to find triplets with a target sum of zero.
+     *
+     * To follow a similar approach, first, we will sort the array and then iterate through it
+     * taking one number at a time. Let’s say during our iteration we are at number ‘X’, so we need to find ‘Y’ and ‘Z’ such that X + Y + Z == 0X+Y+Z==0.
+     * At this stage, our problem translates into finding a pair whose sum is equal to “-X−X” (as from the above equation Y + Z == -XY+Z==−X).
+     *
+     * Another difference from Pair with Target Sum is that we need to find all the unique triplets.
+     * To handle this, we have to skip any duplicate number. Since we will be sorting the array,
+     * so all the duplicate numbers will be next to each other and are easier to skip.
+     *
+     * @param array
+     * @return
+     */
+    @TimeComplexity("O(nLogn + n^2) = O(n^2)")
+    @SpaceComplexity("O(n)")
+    @MultiplePointerPattern
+    public static List<List<Integer>> searchTriplets(int[] array) {
+        Arrays.sort(array);
+        List<List<Integer>> triplets = new ArrayList<>();
+        for (int i = 0; i < array.length; i++) {
+            if (i > 0 && array[i] == array[i - 1]) // skip same element to avoid duplicate triples
+                continue;
+            searchPair(array, -array[i], i + 1, triplets);
+        }
+        return triplets;
+    }
+
+    @TimeComplexity("O(n)")
+    private static void searchPair(int[] array, int targetSum, int left, java.util.List<List<Integer>> triplets) {
+        int right = array.length - 1;
+        while (left < right) {
+            int currentSum = array[left] + array[right];
+            if (currentSum == targetSum) { // found the triplet
+                triplets.add(Arrays.<Integer>asList(-targetSum, array[left], array[right]));
+                left++;
+                right--;
+                while (left < right && array[left] == array[left - 1])
+                    left++; //skip same element to avoid duplicate triplets
+                while (left < right && array[right] == array[right] + 1)
+                    right--;
+            } else if (targetSum > currentSum)
+                left++; // we need a pair with bigger sum
+            else
+                right--; // we need a pair with smaller sum
+        }
     }
 }
