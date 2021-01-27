@@ -520,6 +520,7 @@ public class Sort {
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
     @MultiplePointerPattern
+    @Difficulty(type = DifficultyType.MEDIUM)
     public static void sortJustThreeTypeNumber(int[] array) {
         // all elements  < low are 0 and all elements > high are 2
         // all elements from >= low < i are 1

@@ -161,6 +161,7 @@ public class ArrayAlgorithms {
     @TimeComplexity("O(nLogn + n^2) = O(n^2)")
     @SpaceComplexity("O(n)")
     @MultiplePointerPattern
+    @Difficulty(type = DifficultyType.MEDIUM)
     public static List<List<Integer>> searchTripletsSumZero(int[] array) {
         Arrays.sort(array);
         List<List<Integer>> triplets = new ArrayList<>();
@@ -210,6 +211,7 @@ public class ArrayAlgorithms {
     @TimeComplexity("O(nLogn + n^2) = O(n^2)")
     @SpaceComplexity("O(n)")
     @MultiplePointerPattern
+    @Difficulty(type = DifficultyType.MEDIUM)
     public static int searchTripletsSumNearNumber(int[] array, int targetSum) {
         Arrays.sort(array);
         int smallDifference = Integer.MAX_VALUE;
@@ -261,6 +263,7 @@ public class ArrayAlgorithms {
     @TimeComplexity("O(nLogn + n^2) = O(n^2)")
     @SpaceComplexity("O(n) which is required for sorting if we are not using an in-place sorting algorithm.")
     @MultiplePointerPattern
+    @Difficulty(type = DifficultyType.MEDIUM)
     public static int searchTripletsSumSmallerThanNumber(int[] array, int target) {
         Arrays.sort(array);
         int count = 0;
@@ -300,6 +303,7 @@ public class ArrayAlgorithms {
     @TimeComplexity("O(nLogn + n^3) = O(n^3)")
     @SpaceComplexity("O(n) which is required for sorting if we are not using an in-place sorting algorithm.")
     @MultiplePointerPattern
+    @Difficulty(type = DifficultyType.MEDIUM)
     public static List<List<Integer>> returnTripletsSumSmallerThanNumber(int[] array, int target) {
         Arrays.sort(array);
         List<List<Integer>> triplets = new ArrayList<>();
@@ -346,6 +350,7 @@ public class ArrayAlgorithms {
     @TimeComplexity("O(nLogn + n^3) = O(n^3)")
     @SpaceComplexity("O(n) which is required for sorting if we are not using an in-place sorting algorithm.")
     @MultiplePointerPattern
+    @Difficulty(type = DifficultyType.MEDIUM)
     public static List<List<Integer>> searchQuadrupletsSumNumber(int[] array, int target) {
         Arrays.sort(array);
         List<List<Integer>> quadruplets = new ArrayList<>();

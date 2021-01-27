@@ -121,6 +121,7 @@ public class Strings {
     @TimeComplexity("O(m+n)")
     @SpaceComplexity("O(1)")
     @MultiplePointerPattern
+    @Difficulty(type = DifficultyType.MEDIUM)
     public static boolean compareStringsContainingBackspaces(String str1, String str2) {
         // use two pointer approach to compare the strings
         int index1 = str1.length() - 1, index2 = str2.length() - 1;
