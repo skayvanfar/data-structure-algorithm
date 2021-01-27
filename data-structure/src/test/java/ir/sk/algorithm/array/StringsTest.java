@@ -37,4 +37,9 @@ public class StringsTest {
     public void longestCommonSubStringNaive() {
         System.out.println(Strings.longestCommonSubStringNaive("babcdddfr", "aabscdfrggsb"));
     }
+
+    @Test
+    public void compareStringsContainingBackspaces() {
+        Assert.assertEquals(true, Strings.compareStringsContainingBackspaces("xy#z", "xzz#"));
+    }
 }
