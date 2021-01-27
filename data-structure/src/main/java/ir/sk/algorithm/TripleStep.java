@@ -1,6 +1,6 @@
 package ir.sk.algorithm;
 
-import ir.sk.helper.BruteForce;
+import ir.sk.helper.technique.BruteForce;
 import ir.sk.helper.Memoization;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;

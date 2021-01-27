@@ -7,6 +7,7 @@ import ir.sk.helper.pattern.FrequencyCountingPattern;
 import ir.sk.helper.pattern.MultipleLoopsPattern;
 import ir.sk.helper.pattern.SlidingWindowPattern;
 import ir.sk.helper.pattern.SlidingWindowPatternType;
+import ir.sk.helper.technique.BruteForce;
 
 import java.util.*;
 

@@ -1,6 +1,6 @@
 package ir.sk.algorithm.array;
 
-import ir.sk.helper.BruteForce;
+import ir.sk.helper.technique.BruteForce;
 import ir.sk.helper.pattern.MultipleLoopsPattern;
 import ir.sk.helper.complexity.TimeComplexity;
 

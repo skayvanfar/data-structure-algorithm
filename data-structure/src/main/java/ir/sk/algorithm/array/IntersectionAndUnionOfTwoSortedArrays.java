@@ -1,13 +1,14 @@
 package ir.sk.algorithm.array;
 
 import ir.sk.algorithm.Search;
-import ir.sk.helper.*;
 import ir.sk.helper.complexity.BCR;
 import ir.sk.helper.complexity.Best;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.FrequencyCountingPattern;
+import ir.sk.helper.pattern.MultipleFinger;
 import ir.sk.helper.pattern.MultipleLoopsPattern;
+import ir.sk.helper.technique.BruteForce;
 
 import java.util.Arrays;
 

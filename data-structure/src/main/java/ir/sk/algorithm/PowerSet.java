@@ -1,6 +1,6 @@
 package ir.sk.algorithm;
 
-import ir.sk.helper.Backtracking;
+import ir.sk.helper.technique.Backtracking;
 import ir.sk.helper.complexity.TimeComplexity;
 
 import java.util.ArrayList;

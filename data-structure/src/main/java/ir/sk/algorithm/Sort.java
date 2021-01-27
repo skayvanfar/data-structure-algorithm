@@ -9,6 +9,7 @@ import ir.sk.helper.*;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.MultiplePointerPattern;
+import ir.sk.helper.technique.DivideAndConquer;
 
 import java.util.Arrays;
 import java.util.stream.IntStream;

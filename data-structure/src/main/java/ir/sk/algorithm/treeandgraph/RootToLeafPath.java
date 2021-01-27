@@ -1,6 +1,6 @@
 package ir.sk.algorithm.treeandgraph;
 
-import ir.sk.helper.Backtracking;
+import ir.sk.helper.technique.Backtracking;
 import ir.sk.helper.Point;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;

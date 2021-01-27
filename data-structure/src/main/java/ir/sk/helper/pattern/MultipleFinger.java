@@ -1,4 +1,4 @@
-package ir.sk.helper;
+package ir.sk.helper.pattern;
 
 /**
  * Created by sad.kayvanfar on 12/26/2020.

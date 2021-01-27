@@ -1,10 +1,11 @@
 package ir.sk.algorithm;
 
-import ir.sk.helper.*;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.FrequencyCountingPattern;
 import ir.sk.helper.pattern.MultipleLoopsPattern;
+import ir.sk.helper.technique.BinarySearch;
+import ir.sk.helper.technique.BruteForce;
 
 import java.util.Arrays;
 

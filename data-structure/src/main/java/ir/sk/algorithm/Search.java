@@ -1,7 +1,7 @@
 package ir.sk.algorithm;
 
-import ir.sk.helper.BinarySearch;
-import ir.sk.helper.DivideAndConquer;
+import ir.sk.helper.technique.BinarySearch;
+import ir.sk.helper.technique.DivideAndConquer;
 import ir.sk.helper.complexity.TimeComplexity;
 
 /**
