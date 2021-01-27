@@ -143,14 +143,14 @@ public class ArrayAlgorithms {
      * Input: [-3, 0, 1, 2, -1, 1, -2]
      * Output: [-3, 1, 2], [-2, 0, 2], [-2, 1, 1], [-1, 0, 1]
      * Explanation: There are four unique triplets whose sum is equal to zero.
-     *
+     * <p>
      * This problem follows the Two Pointers pattern and shares similarities with Pair with Target Sum.
      * A couple of differences are that the input array is not sorted and instead of a pair we need to find triplets with a target sum of zero.
-     *
+     * <p>
      * To follow a similar approach, first, we will sort the array and then iterate through it
      * taking one number at a time. Let’s say during our iteration we are at number ‘X’, so we need to find ‘Y’ and ‘Z’ such that X + Y + Z == 0X+Y+Z==0.
      * At this stage, our problem translates into finding a pair whose sum is equal to “-X−X” (as from the above equation Y + Z == -XY+Z==−X).
-     *
+     * <p>
      * Another difference from Pair with Target Sum is that we need to find all the unique triplets.
      * To handle this, we have to skip any duplicate number. Since we will be sorting the array,
      * so all the duplicate numbers will be next to each other and are easier to skip.
@@ -196,9 +196,9 @@ public class ArrayAlgorithms {
      * Given an array of unsorted numbers and a target number,
      * find a triplet in the array whose sum is as close to the target number as possible,
      * return the sum of the triplet. If there are more than one such triplet, return the sum of the triplet with the smallest sum.
-     *
+     * <p>
      * This problem follows the Two Pointers pattern and is quite similar to Triplet Sum to Zero.
-     *
+     * <p>
      * We can follow a similar approach to iterate through the array,
      * taking one number at a time. At every step, we will save the difference between the triplet and the target number,
      * so that in the end, we can return the triplet with the closest sum.
@@ -244,9 +244,9 @@ public class ArrayAlgorithms {
      * Input: [-1, 0, 2, 3], target=3
      * Output: 2
      * Explanation: There are two triplets whose sum is less than the target: [-1, 0, 3], [-1, 0, 2]
-     *
+     * <p>
      * This problem follows the Two Pointers pattern and shares similarities with Triplet Sum to Zero. The only difference is that, in this problem, we need to find the triplets whose sum is less than the given target. To meet the condition i != j != k we need to make sure that each number is not used more than once.
-     *
+     * <p>
      * Following a similar approach, first we can sort the array and then iterate through it,
      * taking one number at a time. Let’s say during our iteration we are at number ‘X’,
      * so we need to find ‘Y’ and ‘Z’ such that X + Y + Z < targetX+Y+Z<target. At this stage,
@@ -290,7 +290,7 @@ public class ArrayAlgorithms {
     /**
      * Write a function to return the list of all such triplets instead of the count.
      * How will the time complexity change in this case?
-     *
+     * <p>
      * Following a similar approach we can create a list containing all the triplets.
      *
      * @param array
@@ -326,5 +326,58 @@ public class ArrayAlgorithms {
             }
         }
         return count;
+    }
+
+    /**
+     * Given an array of unsorted numbers and a target number, find all unique quadruplets in it, whose sum is equal to the target number.
+     * Input: [4, 1, 2, -1, 1, -3], target=1
+     * Output: [-3, -1, 1, 4], [-3, 1, 1, 2]
+     * Explanation: Both the quadruplets add up to the target.
+     *
+     * This problem follows the Two Pointers pattern and shares similarities with Triplet Sum to Zero.
+     *
+     * We can follow a similar approach to iterate through the array, taking one number at a time. At every step during the iteration,
+     * we will search for the quadruplets similar to Triplet Sum to Zero whose sum is equal to the given target.
+     *
+     * @param array
+     * @param target
+     * @return
+     */
+    @TimeComplexity("O(nLogn + n^3) = O(n^3)")
+    @SpaceComplexity("O(n) which is required for sorting if we are not using an in-place sorting algorithm.")
+    @MultiplePointerPattern
+    public static List<List<Integer>> searchQuadrupletsSumNumber(int[] array, int target) {
+        Arrays.sort(array);
+        List<List<Integer>> quadruplets = new ArrayList<>();
+        for (int i = 0; i < array.length - 3; i++) {
+            if (i > 0 && array[i] == array[i - 1]) // skipp the same element to avoid duplicate quadruplets
+                continue;
+            for (int j = i + 1; j < array.length - 2; j++) {
+                if (j > i + 1 && array[j] == array[j - 1]) // skip same element to avoid duplicate quadruplets
+                    continue;
+                searchPairs3(array, target, i, j, quadruplets);
+            }
+        }
+        return quadruplets;
+    }
+
+    private static void searchPairs3(int[] array, int targetSum, int first, int second, List<List<Integer>> quadruplets) {
+        int left = second + 1;
+        int right = array.length - 1;
+        while (left < right) {
+            int sum = array[first] + array[second] + array[left] + array[right];
+            if (sum == targetSum) { // found the quadruplet
+                quadruplets.add(Arrays.asList(array[first], array[second], array[left], array[right]));
+                left++;
+                right--;
+                while (left < right && array[left] == array[left - 1])
+                    left++; // skip same element to avoid duplicate quadruplets
+                while (left < right && array[right] == array[left + 1])
+                    right--; // skip same element to avoid duplicate quadruplets
+            } else if (sum < targetSum)
+                left++; // we need a pair with a bigger sum
+            else
+                right--; // we need a pair with a smaller sum
+        }
     }
 }

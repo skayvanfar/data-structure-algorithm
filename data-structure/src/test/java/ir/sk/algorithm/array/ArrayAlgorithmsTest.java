@@ -52,11 +52,16 @@ public class ArrayAlgorithmsTest {
 
     @Test
     public void searchTripletsSumSmallerThanNumber() {
-        System.out.println(ArrayAlgorithms.searchTripletsSumSmallerThanNumber(new int[]{-1,0,2,3}, 3));
+        System.out.println(ArrayAlgorithms.searchTripletsSumSmallerThanNumber(new int[]{-1, 0, 2, 3}, 3));
     }
 
     @Test
     public void returnTripletsSumSmallerThanNumber() {
-        System.out.println(ArrayAlgorithms.returnTripletsSumSmallerThanNumber(new int[]{-1,0,2,3}, 3));
+        System.out.println(ArrayAlgorithms.returnTripletsSumSmallerThanNumber(new int[]{-1, 0, 2, 3}, 3));
+    }
+
+    @Test
+    public void searchQuadrupletsSumNumber() {
+        System.out.println(ArrayAlgorithms.searchQuadrupletsSumNumber(new int[]{4, 1, 2, -1, 1, -3}, 1));
     }
 }
