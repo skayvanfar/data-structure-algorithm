@@ -4,6 +4,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.assertArrayEquals;
 
 /**
@@ -119,5 +121,12 @@ public class SortTest {
 
     @Test
     public void quickSort() {
+    }
+
+    @Test
+    public void sortJustThreeTypeNumber() {
+        int[] array = new int[]{1, 0, 2, 1, 0};
+        Sort.sortJustThreeTypeNumber(array);
+        System.out.println(Arrays.toString(array));
     }
 }

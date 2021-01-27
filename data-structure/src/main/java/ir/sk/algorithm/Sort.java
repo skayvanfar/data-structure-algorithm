@@ -134,14 +134,14 @@ public class Sort {
      * T(n) = 2T(n/2) + O(n)
      * Stable: Yes
      * Sorting In Place: No
-     *              n             n        n
-     *             / \
-     *           /    \
-     *         n/2     n/2       2 n/2     n
-     *        /  \    /  \
-     *       /    \  /    \
-     *      n/4   n/4 n/4   n/4  4 n/4     n
-     *
+     * n             n        n
+     * / \
+     * /    \
+     * n/2     n/2       2 n/2     n
+     * /  \    /  \
+     * /    \  /    \
+     * n/4   n/4 n/4   n/4  4 n/4     n
+     * <p>
      * height of tree: log n
      *
      * @param a
@@ -496,5 +496,53 @@ public class Sort {
 
     private static int findMaximumNumberIn(int[] arr) {
         return Arrays.stream(arr).max().getAsInt();
+    }
+
+    /**
+     * Given an array containing 0s, 1s and 2s, sort the array in-place.
+     * You should treat numbers of the array as objects, hence,
+     * we can’t count 0s, 1s, and 2s to recreate the array.
+     *
+     * The flag of the Netherlands consists of three colors:
+     * red, white and blue; and since our input array also consists of three different numbers that is why it is called Dutch National Flag problem.
+     *
+     * Input: [1, 0, 2, 1, 0]
+     * Output: [0 0 1 1 2]
+     *
+     * The brute force solution will be to use an in-place sorting algorithm like Heapsort which will take O(N*logN)O(N∗logN). Can we do better than this? Is it possible to sort the array in one iteration?
+     *
+     * We can use a Two Pointers approach while iterating through the array.
+     * Let’s say the two pointers are called low and high which are pointing to the first and the last element of the array respectively.
+     * So while iterating, we will move all 0s before low and all 2s after high so that in the end, all 1s will be between low and high.
+     *
+     * @param array
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
+    @MultiplePointerPattern
+    public static void sortJustThreeTypeNumber(int[] array) {
+        // all elements  < low are 0 and all elements > high are 2
+        // all elements from >= low < i are 1
+        int low = 0, high = array.length - 1;
+        for (int i = 0; i <= high; ) {
+            if (array[i] == 0) {
+                swap(array, i, low);
+                // increment 'i' and 'low'
+                i++;
+                low++;
+            } else if (array[i] == 1) {
+                i++;
+            } else { // the case for array[i] == 2
+                swap(array, i, high);
+                // decrement 'high' only, after the swap the number at index 'i' could be 0, 1 or 2
+                high--;
+            }
+        }
+    }
+
+    private static void swap(int[] array, int i, int j) {
+        int temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
     }
 }
