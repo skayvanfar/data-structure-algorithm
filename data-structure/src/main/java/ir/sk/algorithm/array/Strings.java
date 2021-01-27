@@ -164,7 +164,7 @@ public class Strings {
     }
 
     /**
-     * You are given two strings, A and B. Return whether A can be shifted some number of times to get B.
+     * checks if passed strings (str1 and str2) are rotations of each other
      * Eg. A = abcde, B = cdeab should return true because A can be shifted 3 times to the right to get B. A = abc and B= acb should return false.
      *
      * Time complexity of this problem depends on the implementation of strstr function.
