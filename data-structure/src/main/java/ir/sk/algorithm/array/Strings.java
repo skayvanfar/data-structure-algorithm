@@ -163,4 +163,21 @@ public class Strings {
         return index;
     }
 
+    /**
+     * You are given two strings, A and B. Return whether A can be shifted some number of times to get B.
+     * Eg. A = abcde, B = cdeab should return true because A can be shifted 3 times to the right to get B. A = abc and B= acb should return false.
+     *
+     * Time complexity of this problem depends on the implementation of strstr function.
+     * If implementation of strstr is done using KMP matcher then complexity of the above program is (-)(n1 + n2) where n1 and n2 are lengths of strings.
+     * KMP matcher takes (-)(n) time to find a substrng in a string of length n where length of substring is assumed to be smaller than the string.
+     *
+     * @param str1
+     * @param str2
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    public static boolean areRotation(String  str1, String str2) {
+        String tmp = str1 + str1;
+        return tmp.contains(str2);
+    }
 }

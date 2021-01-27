@@ -42,4 +42,9 @@ public class StringsTest {
     public void compareStringsContainingBackspaces() {
         Assert.assertEquals(true, Strings.compareStringsContainingBackspaces("xy#z", "xzz#"));
     }
+
+    @Test
+    public void areRotation() {
+        Assert.assertEquals(true, Strings.areRotation("abcd", "cdab"));
+    }
 }
