@@ -1,12 +1,9 @@
 package ir.sk.algorithm.array;
 
-import ir.sk.algorithm.math.Factorial;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by sad.kayvanfar on 10/31/2020.

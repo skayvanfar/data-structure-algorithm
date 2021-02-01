@@ -1,4 +1,4 @@
-package ir.sk.algorithm.math;
+package ir.sk.algorithm.mathematic;
 
 /**
  * f(n) =

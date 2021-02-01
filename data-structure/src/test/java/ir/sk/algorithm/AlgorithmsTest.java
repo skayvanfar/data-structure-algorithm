@@ -1,6 +1,6 @@
 package ir.sk.algorithm;
 
-import ir.sk.algorithm.math.Algorithms;
+import ir.sk.algorithm.mathematic.Algorithms;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

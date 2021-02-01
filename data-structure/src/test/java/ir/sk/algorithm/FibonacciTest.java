@@ -1,6 +1,6 @@
 package ir.sk.algorithm;
 
-import ir.sk.algorithm.math.Fibonacci;
+import ir.sk.algorithm.mathematic.Fibonacci;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

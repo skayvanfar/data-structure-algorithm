@@ -1,4 +1,4 @@
-package ir.sk.algorithm.math;
+package ir.sk.algorithm.mathematic;
 
 import ir.sk.helper.*;
 import ir.sk.helper.complexity.SpaceComplexity;
