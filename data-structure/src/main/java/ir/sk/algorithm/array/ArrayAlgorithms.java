@@ -359,6 +359,7 @@ public class ArrayAlgorithms {
     @Difficulty(type = DifficultyType.MEDIUM)
     public static List<List<Integer>> searchQuadrupletsSumNumber(int[] array, int target) {
         Arrays.sort(array);
+        @Point("skip")
         List<List<Integer>> quadruplets = new ArrayList<>();
         for (int i = 0; i < array.length - 3; i++) {
             if (i > 0 && array[i] == array[i - 1]) // skipp the same element to avoid duplicate quadruplets
