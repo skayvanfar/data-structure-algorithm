@@ -207,6 +207,7 @@ public class PairsWithGivenSum {
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
     @MultiplePointerPattern
+    @Difficulty(type = DifficultyType.EASY)
     public static void deleteDuplicates(int[] arr) {
         int start = 0, end = 1;
 
@@ -234,6 +235,7 @@ public class PairsWithGivenSum {
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
     @MultiplePointerPattern
+    @Difficulty(type = DifficultyType.EASY)
     public static void deleteDuplicatesAndShift(int[] arr) {
         int nextNonDuplicate = 1;
 
