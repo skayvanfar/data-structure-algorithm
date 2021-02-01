@@ -1,5 +1,7 @@
 package ir.sk.algorithm;
 
+import ir.sk.helper.Difficulty;
+import ir.sk.helper.DifficultyType;
 import ir.sk.helper.Point;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
@@ -28,6 +30,7 @@ public class IntervalAlgorithms {
     @TimeComplexity("O(n * Log n)")
     @SpaceComplexity("O(n), O(N) as we need to return a list containing all the merged intervals. We will also need O(N) space for sorting.")
     @Point("For Java, depending on its version, Collection.sort() either uses Merge sort or Timsort, and both these algorithms need O(N)")
+    @Difficulty(type = DifficultyType.MEDIUM)
     public static List<Interval> mergeIntervals(List<Interval> intervals) {
         if (intervals.size() < 2)
             return intervals;
@@ -72,6 +75,7 @@ public class IntervalAlgorithms {
      */
     @TimeComplexity("O(n * Log n)")
     @SpaceComplexity("O(n), We will also need O(N) space for sorting.")
+    @Difficulty(type = DifficultyType.MEDIUM)
     public static boolean hasOverlapIntervals(List<Interval> intervals) {
         if (intervals.size() < 2)
             return false;
