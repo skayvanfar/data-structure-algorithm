@@ -42,4 +42,16 @@ public class IntervalAlgorithmsTest {
         input.add(new Interval(7, 9));
         System.out.println(IntervalAlgorithms.hasOverlapIntervals(input));
     }
+
+    @Test
+    public void insertInterval() {
+        List<Interval> input = new ArrayList<>();;
+        input.add(new Interval(1, 3));
+        input.add(new Interval(5, 7));
+        input.add(new Interval(8, 12));
+        System.out.print("Intervals after inserting the new interval: ");
+        for (Interval interval : IntervalAlgorithms.insertInterval(input, new Interval(4, 6)))
+            System.out.print("[" + interval.start + "," + interval.end + "] ");
+        System.out.println();
+    }
 }

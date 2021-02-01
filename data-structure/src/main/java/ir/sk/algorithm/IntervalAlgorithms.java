@@ -102,6 +102,67 @@ public class IntervalAlgorithms {
 
         return false;
     }
+
+    /**
+     * Given a list of non-overlapping intervals sorted by their start time, insert a given interval at the correct position and merge all necessary intervals to produce a list that has only mutually exclusive intervals.
+     *
+     * Input: Intervals=[[1,3], [5,7], [8,12]], New Interval=[4,6]
+     * Output: [[1,3], [4,7], [8,12]]
+     * Explanation: After insertion, since [4,6] overlaps with [5,7], we merged them into one [4,7].
+     *
+     * If the given list was not sorted, we could have simply appended the new interval to it and used the merge() function from Merge Intervals.
+     * But since the given list is sorted, we should try to come up with a solution better than O(N * logN)
+     *
+     * When inserting a new interval in a sorted list,
+     * we need to first find the correct index where the new interval can be placed. In other words,
+     * we need to skip all the intervals which end before the start of the new interval. So we can iterate through the given sorted listed of intervals and skip all the intervals
+     * Once we have found the correct place, we can follow an approach similar to Merge Intervals to insert and/or merge the new interval.
+     *
+     * Our overall algorithm will look like this:
+     *
+     * Skip all intervals which end before the start of the new interval, i.e., skip all intervals with the following condition:
+     *     intervals[i].end < newInterval.start
+     * Let’s call the last interval ‘b’ that does not satisfy the above condition. If ‘b’ overlaps with the new interval (a) (i.e. b.start <= a.end), we need to merge them into a new interval ‘c’:
+     *     c.start = min(a.start, b.start)
+     *     c.end = max(a.end, b.end)
+     * We will repeat the above two steps to merge ‘c’ with the next overlapping interval.
+     *
+     * @param intervals
+     * @param newInterval
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
+    @Difficulty(type = DifficultyType.MEDIUM)
+    public static List<Interval> insertInterval(List<Interval> intervals, Interval newInterval) {
+        if (intervals == null || intervals.isEmpty()) {
+            return Arrays.asList(newInterval);
+        }
+
+        List<Interval> mergedIntervals = new ArrayList<>();
+
+        int i = 0;
+
+        // skip (and add to output) all intervals that come before the 'nextInterval'
+        while (i < intervals.size() && intervals.get(i).end < newInterval.start)
+            mergedIntervals.add(intervals.get(i++));
+
+        //merge all intervals that overlap with 'newInterval'
+        while (i < intervals.size() && intervals.get(i).start <= newInterval.end) {
+            newInterval.start = Math.min(intervals.get(i).start, newInterval.start);
+            newInterval.end = Math.max(intervals.get(i).end, newInterval.end);
+            i++;
+        }
+
+        // insert the newInterval
+        mergedIntervals.add(newInterval);
+
+        // add all the remaining intervals to the output
+        while (i < intervals.size())
+            mergedIntervals.add(intervals.get(i++));
+
+        return mergedIntervals;
+    }
 }
 
 class Interval {
