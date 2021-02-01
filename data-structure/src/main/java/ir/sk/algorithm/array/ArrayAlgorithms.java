@@ -125,6 +125,7 @@ public class ArrayAlgorithms {
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
     @MultiplePointerPattern
+    @Difficulty(type = DifficultyType.EASY)
     public static int[] makeSquaresSortedArray(int[] array) {
         int[] squares = new int[array.length];
         int highestSquareIds = array.length - 1;
