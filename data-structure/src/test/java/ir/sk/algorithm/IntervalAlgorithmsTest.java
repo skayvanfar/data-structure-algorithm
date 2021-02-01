@@ -33,4 +33,13 @@ public class IntervalAlgorithmsTest {
             System.out.print("[" + interval.start + "," + interval.end + "] ");
         System.out.println();
     }
+
+    @Test
+    public void hasOverlapIntervals() {
+        List<Interval> input = new ArrayList<>();;
+        input.add(new Interval(1, 4));
+        input.add(new Interval(2, 5));
+        input.add(new Interval(7, 9));
+        System.out.println(IntervalAlgorithms.hasOverlapIntervals(input));
+    }
 }

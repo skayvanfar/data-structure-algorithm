@@ -58,6 +58,46 @@ public class IntervalAlgorithms {
         mergedIntervals.add(new Interval(start, end));
         return mergedIntervals;
     }
+
+    /**
+     * Given a set of intervals, find out if any two intervals overlap.
+     * Intervals: [[1,4], [2,5], [7,9]]
+     * Output: true
+     * Explanation: Intervals [1,4] and [2,5] overlap
+     *
+     * We can follow the same approach as discussed above to find if any two intervals overlap.
+     *
+     * @param intervals
+     * @return
+     */
+    @TimeComplexity("O(n * Log n)")
+    @SpaceComplexity("O(n), We will also need O(N) space for sorting.")
+    public static boolean hasOverlapIntervals(List<Interval> intervals) {
+        if (intervals.size() < 2)
+            return false;
+
+        // O(n * log n)
+        // sort intervals by start time
+        Collections.sort(intervals, Comparator.comparingInt(a -> a.start));
+
+        @Point("Using iterator")
+        Iterator<Interval> intervalItr = intervals.iterator();
+        Interval interval = intervalItr.next();
+        int start = interval.start;
+        int end = interval.end;
+        // O(n)
+        while (intervalItr.hasNext()) {
+            interval = intervalItr.next();
+            if( interval.start <= end) { // overlapping intervals, adjust the 'end'
+                return true;
+            } else { // non-overlapping intervals reset
+                start = interval.start;
+                end = interval.end;
+            }
+        }
+
+        return false;
+    }
 }
 
 class Interval {
