@@ -21,6 +21,13 @@ public class IntervalAlgorithms {
      * Explanation: Since the first two intervals [1,4] and [2,5] overlap, we merged them into
      * one [1,5]
      *
+     * A simple aproach is to start from the first intervaland compare it with all other intervals for overlapping, if it overlaps
+     * with any other interval, then remove the other interval from the list and merge the other into the first interval.
+     * Repeat the same steps for remaining intervals after first. This approach cannot be implemented in better than (n^2) time
+     *
+     * An efficient approach is to first sort the intervals according to the stating time.
+     * then we can combine all intervals in a linear traversal
+     *
      * Our goal is to merge the intervals whenever they overlap.
      *
      *
