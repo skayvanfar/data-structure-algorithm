@@ -1,4 +1,4 @@
-package ir.sk.algorithm;
+package ir.sk.algorithm.intervals;
 
 import ir.sk.helper.Difficulty;
 import ir.sk.helper.DifficultyType;
@@ -238,12 +238,3 @@ public class IntervalAlgorithms {
     }
 }
 
-class Interval {
-    public int start;
-    public int end;
-
-    public Interval(int start, int end) {
-        this.start = start;
-        this.end = end;
-    }
-}
