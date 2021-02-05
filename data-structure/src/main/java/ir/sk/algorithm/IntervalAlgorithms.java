@@ -13,6 +13,40 @@ import java.util.*;
  */
 public class IntervalAlgorithms {
 
+
+    /**
+     * @param intervals
+     * @return
+     */
+    @TimeComplexity("O(n * Log n)")
+    @SpaceComplexity("O(n), O(N) as we need to return a list containing all the merged intervals. We will also need O(N) space for sorting.")
+    @Point("For Java, depending on its version, Collection.sort() either uses Merge sort or Timsort, and both these algorithms need O(N)")
+    @Difficulty(type = DifficultyType.MEDIUM)
+    public static Interval[] mergeIntervalsByLoop(Interval[] intervals) {
+        if (intervals.length < 2)
+            return intervals;
+
+        List<Interval> mergedIntervals = new ArrayList<>();
+
+        Arrays.sort(intervals, Comparator.comparingInt(a -> a.start));
+        int start = intervals[0].start;
+        int end = intervals[0].end;
+        for (int i = 1; i < intervals.length; i++) {
+            int currStart = intervals[i].start;
+            int currEnd = intervals[i].end;
+
+            if (currStart < end) {
+                end = Math.max(end, currEnd);
+            } else {
+                mergedIntervals.add(new Interval(start, end));
+                start = currStart;
+                end = currEnd;
+            }
+        }
+        mergedIntervals.add(new Interval(start, end));
+        return mergedIntervals.toArray(new Interval[1]);
+    }
+
     /**
      * Given a list of intervals, merge all the overlapping intervals to produce a list that has only mutually exclusive intervals.
      *
@@ -21,7 +55,7 @@ public class IntervalAlgorithms {
      * Explanation: Since the first two intervals [1,4] and [2,5] overlap, we merged them into
      * one [1,5]
      *
-     * A simple aproach is to start from the first intervaland compare it with all other intervals for overlapping, if it overlaps
+     * A simple aproach is to start from the first interval and compare it with all other intervals for overlapping, if it overlaps
      * with any other interval, then remove the other interval from the list and merge the other into the first interval.
      * Repeat the same steps for remaining intervals after first. This approach cannot be implemented in better than (n^2) time
      *

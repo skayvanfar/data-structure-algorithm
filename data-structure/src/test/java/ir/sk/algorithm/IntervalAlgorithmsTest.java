@@ -23,8 +23,21 @@ public class IntervalAlgorithmsTest {
     }
 
     @Test
+    public void mergeIntervalsByLoop() {
+        Interval[] input = new Interval[]{
+                new Interval(1, 4),
+                new Interval(2, 5),
+                new Interval(7, 9)
+        };
+        System.out.print("Merged intervals: ");
+        for (Interval interval : IntervalAlgorithms.mergeIntervalsByLoop(input))
+            System.out.print("[" + interval.start + "," + interval.end + "] ");
+        System.out.println();
+    }
+
+    @Test
     public void mergeIntervals() {
-        List<Interval> input = new ArrayList<>();;
+        List<Interval> input = new ArrayList<>();
         input.add(new Interval(1, 4));
         input.add(new Interval(2, 5));
         input.add(new Interval(7, 9));
