@@ -22,6 +22,19 @@ public class IntervalAlgorithmsTest {
     public void tearDown() throws Exception {
     }
 
+
+    @Test
+    public void mergeIntervalsNaive() {
+        List<Interval> input = new ArrayList<>();
+        input.add(new Interval(1, 4));
+        input.add(new Interval(2, 5));
+        input.add(new Interval(7, 9));
+        System.out.print("Merged intervals: ");
+        for (Interval interval : IntervalAlgorithms.mergeIntervalsNaive(input))
+            System.out.print("[" + interval.start + "," + interval.end + "] ");
+        System.out.println();
+    }
+
     @Test
     public void mergeIntervalsByLoop() {
         Interval[] input = new Interval[]{
@@ -67,4 +80,5 @@ public class IntervalAlgorithmsTest {
             System.out.print("[" + interval.start + "," + interval.end + "] ");
         System.out.println();
     }
+
 }
