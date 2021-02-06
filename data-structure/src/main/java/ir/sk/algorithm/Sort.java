@@ -618,4 +618,26 @@ public class Sort {
 
         return high - low + 1;
     }
+
+    /**
+     * Cycle sort is a comparison sorting algorithm which forces array to be factored into the number of cycles where each of them can be rotated to produce a sorted array.
+     * It is theoretically optimal in the sense that it reduces the number of writes to the original array.
+     *
+     * @param numbers
+     */
+    @InPlace
+    @TimeComplexity("O(n)+O(n-1) = O(n)")
+    @SpaceComplexity("O(1)")
+    @Stability(false)
+    @Difficulty(type = DifficultyType.EASY)
+    public static void cyclicSort(int[] numbers) {
+        int i = 0;
+        while (i < numbers.length) {
+            int j = numbers[i]-1;
+            if (numbers[i] != numbers[j])
+                swap(numbers, i, j);
+            else
+                i++;
+        }
+    }
 }

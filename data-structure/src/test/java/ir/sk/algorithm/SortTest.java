@@ -134,4 +134,11 @@ public class SortTest {
     public void minimumWindowSort() {
         System.out.println(Sort.minimumWindowSort(new int[]{1, 2, 5, 3, 7, 10, 9, 12}));
     }
+
+    @Test
+    public void cyclicSort() {
+        int[] array = new int[]{3, 1, 5, 4, 2};
+        Sort.cyclicSort(array);
+        System.out.println(Arrays.toString(array));
+    }
 }
