@@ -17,14 +17,17 @@ import java.util.stream.Collectors;
  * <p>
  * it can represent a weighted and directed graph
  * <p>
+ * The main operation performed by the adjacency list data structure is to report a list of the neighbors of a given vertex.  this can be performed in constant time per neighbor.
+ * <p>
  * Space Complexity: O(V+E)
  * Created by sad.keyvanfar on 7/1/2020.
  */
 public class AdjacencyListGraph<T> implements Graph<T> {
 
     /**
-     * Could be replaced by array
+     * List Could be replaced by array
      */
+    // private Map<Vertex<T>, Vertex<T>[]> adjVertices;
     private Map<Vertex<T>, List<Vertex<T>>> adjVertices;
 
     private boolean directed;
@@ -34,27 +37,30 @@ public class AdjacencyListGraph<T> implements Graph<T> {
         this.directed = directed;
     }
 
+    @TimeComplexity("O(1)")
     public boolean contains(T vertex) {
         return adjVertices.containsKey(vertex);
     }
 
     /**
-     * Time Complexity: O(1)
-     *
-     * @param info
+     * {@inheritDoc}
      */
+    @TimeComplexity("O(1)")
     public void addVertex(T info) {
         adjVertices.putIfAbsent(new Vertex(info), new ArrayList<>());
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @TimeComplexity("O(1)")
     @Override
     public boolean areAdjacent(T src, T dest) throws Exception {
-
         return adjVertices.get(src).contains(dest);
     }
 
     /**
-     * @param info
+     * {@inheritDoc}
      */
     @TimeComplexity("O(|E|)")
     public void removeVertex(T info) {
@@ -64,13 +70,10 @@ public class AdjacencyListGraph<T> implements Graph<T> {
     }
 
     /**
-     * Time Complexity: O(1)
-     *
-     * @param from
-     * @param to
+     * {@inheritDoc}
      */
     @TimeComplexity("O(1)")
-    public void addEdge(T from, T to, int weight) { // TODO: 7/12/2020
+    public void addEdge(T from, T to, int weight) {
         Vertex<T> v1 = new Vertex<>(from, weight);
         Vertex<T> v2 = new Vertex<>(to, weight);
         adjVertices.get(v1).add(v2);
@@ -79,10 +82,7 @@ public class AdjacencyListGraph<T> implements Graph<T> {
     }
 
     /**
-     * Time Complexity: O(|V|)
-     *
-     * @param from
-     * @param to
+     * {@inheritDoc}
      */
     @TimeComplexity("O(|V|)")
     public void removeEdge(T from, T to) {
@@ -98,6 +98,9 @@ public class AdjacencyListGraph<T> implements Graph<T> {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<T> getNeighborsFor(T info) {
         return adjVertices.get(new Vertex(info)).stream().map(tVertex -> tVertex.info).collect(Collectors.toList());
@@ -117,8 +120,7 @@ public class AdjacencyListGraph<T> implements Graph<T> {
     }
 
     /**
-     * @param start
-     * @return
+     * {@inheritDoc}
      */
     @Override
     @TimeComplexity("O(|V|+|E|) Linear Time")
@@ -142,8 +144,7 @@ public class AdjacencyListGraph<T> implements Graph<T> {
     }
 
     /**
-     * @param start
-     * @return
+     * {@inheritDoc}
      */
     @Override
     @TimeComplexity("O(|V|+|E|) Linear Time")
@@ -165,7 +166,7 @@ public class AdjacencyListGraph<T> implements Graph<T> {
     }
 
     /**
-     * @param start
+     * {@inheritDoc}
      */
     public Collection<T> depthFirstSearchRecursive(T start) {
         // parents
@@ -326,8 +327,6 @@ class Vertex<T> {
         if (getClass() != obj.getClass())
             return false;
         Vertex other = (Vertex) obj;
-       /* if (!getOuterType().equals(other.getOuterType()))
-            return false;*/
         if (info == null) {
             if (other.info != null)
                 return false;
@@ -340,9 +339,4 @@ class Vertex<T> {
     public String toString() {
         return info.toString();
     }
-
-
-   /* private AdjacencyListGraph getOuterType() {
-        return AdjacencyListGraph.this;
-    }*/
 }
