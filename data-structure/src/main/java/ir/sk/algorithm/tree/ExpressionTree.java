@@ -1,4 +1,4 @@
-package ir.sk.algorithm.treeandgraph;
+package ir.sk.algorithm.tree;
 
 import ir.sk.algorithm.stack.parsingarithmeticexpression.Expression;
 import ir.sk.helper.complexity.SpaceComplexity;

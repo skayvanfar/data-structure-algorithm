@@ -1,4 +1,4 @@
-package ir.sk.algorithm.treeandgraph;
+package ir.sk.algorithm.graph;
 
 import java.util.*;
 

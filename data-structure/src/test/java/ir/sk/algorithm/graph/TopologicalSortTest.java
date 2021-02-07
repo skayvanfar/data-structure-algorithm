@@ -1,5 +1,6 @@
-package ir.sk.algorithm.treeandgraph;
+package ir.sk.algorithm.graph;
 
+import ir.sk.algorithm.graph.TopologicalSort;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

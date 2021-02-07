@@ -1,4 +1,4 @@
-package ir.sk.algorithm.treeandgraph;
+package ir.sk.algorithm.tree;
 
 import org.junit.After;
 import org.junit.Before;
@@ -7,7 +7,7 @@ import org.junit.Test;
 /**
  * Created by sad.kayvanfar on 9/15/2020.
  */
-public class TreeGraphAlgorithmsTest {
+public class TreeAlgorithmsTest {
 
     @Before
     public void setUp() throws Exception {
@@ -39,13 +39,13 @@ public class TreeGraphAlgorithmsTest {
                         new Node("Mohsen"),
                         new Node("Amir")));
 
-        String result = TreeGraphAlgorithms.treeSerialization(root);
+        String result = TreeAlgorithms.treeSerialization(root);
         System.out.println(result);
     }
 
     @Test
     public void treeDeserialization() {
-        Node<String> result = TreeGraphAlgorithms.treeDeserialization("Ali,Vali,Saeed,Reza,Mehran,Mohsen,Amir");
+        Node<String> result = TreeAlgorithms.treeDeserialization("Ali,Vali,Saeed,Reza,Mehran,Mohsen,Amir");
         System.out.println(result);
     }
 
@@ -57,7 +57,7 @@ public class TreeGraphAlgorithmsTest {
                 new TreeNode(3,
                         new TreeNode(6),
                         new TreeNode(7)));
-        TreeGraphAlgorithms.makeFullBinaryTree(root);
+        TreeAlgorithms.makeFullBinaryTree(root);
         System.out.println(root);
     }
 
@@ -69,7 +69,7 @@ public class TreeGraphAlgorithmsTest {
                 new TreeNode(3,
                         new TreeNode(6),
                         new TreeNode(7)));
-        TreeGraphAlgorithms.removeHalfNodes(root);
+        TreeAlgorithms.removeHalfNodes(root);
         System.out.println(root);
     }
 }

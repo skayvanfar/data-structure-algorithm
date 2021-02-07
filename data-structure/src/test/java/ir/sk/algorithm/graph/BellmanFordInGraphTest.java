@@ -1,6 +1,6 @@
-package ir.sk.algorithm.treeandgraph;
+package ir.sk.algorithm.graph;
 
-import ir.sk.algorithm.treeandgraph.BellmanFordInGraph;
+import ir.sk.algorithm.graph.BellmanFordInGraph;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

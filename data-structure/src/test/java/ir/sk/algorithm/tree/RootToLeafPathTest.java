@@ -1,4 +1,4 @@
-package ir.sk.algorithm.treeandgraph;
+package ir.sk.algorithm.tree;
 
 import org.junit.After;
 import org.junit.Before;

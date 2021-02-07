@@ -1,4 +1,4 @@
-package ir.sk.algorithm.treeandgraph;
+package ir.sk.algorithm.tree;
 
 /**
  * Created by sad.kayvanfar on 9/19/2020.

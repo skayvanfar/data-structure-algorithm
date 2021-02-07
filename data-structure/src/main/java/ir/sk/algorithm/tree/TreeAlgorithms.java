@@ -1,4 +1,4 @@
-package ir.sk.algorithm.treeandgraph;
+package ir.sk.algorithm.tree;
 
 import ir.sk.helper.Point;
 import ir.sk.helper.complexity.SpaceComplexity;
@@ -10,7 +10,7 @@ import java.util.Queue;
 /**
  * Created by sad.kayvanfar on 9/15/2020.
  */
-public class TreeGraphAlgorithms {
+public class TreeAlgorithms {
 
     /**
      * @param array

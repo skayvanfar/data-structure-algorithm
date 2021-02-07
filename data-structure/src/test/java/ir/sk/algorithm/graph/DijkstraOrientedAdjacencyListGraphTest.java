@@ -1,5 +1,7 @@
-package ir.sk.algorithm.treeandgraph;
+package ir.sk.algorithm.graph;
 
+import ir.sk.algorithm.graph.DijkstraOrientedAdjacencyListGraph;
+import ir.sk.algorithm.graph.Vertix;
 import org.junit.Test;
 
 import java.util.Arrays;
