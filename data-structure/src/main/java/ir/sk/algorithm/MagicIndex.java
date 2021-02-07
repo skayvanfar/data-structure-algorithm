@@ -1,8 +1,8 @@
 package ir.sk.algorithm;
 
+import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.technique.BinarySearch;
 import ir.sk.helper.technique.BruteForce;
-import ir.sk.helper.complexity.TimeComplexity;
 
 /**
  * A magic index in an array A[ 1 .•. n-1] is defined to be an index such that A[ i]

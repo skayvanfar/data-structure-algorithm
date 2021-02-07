@@ -1,8 +1,8 @@
 package ir.sk.algorithm;
 
+import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.technique.BinarySearch;
 import ir.sk.helper.technique.DivideAndConquer;
-import ir.sk.helper.complexity.TimeComplexity;
 
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.

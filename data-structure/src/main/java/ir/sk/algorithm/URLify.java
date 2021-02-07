@@ -1,9 +1,9 @@
 package ir.sk.algorithm;
 
-import ir.sk.helper.technique.BruteForce;
 import ir.sk.helper.complexity.InPlace;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
+import ir.sk.helper.technique.BruteForce;
 
 /**
  * Created by sad.kayvanfar on 8/25/2020.

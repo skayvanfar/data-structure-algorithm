@@ -1,6 +1,8 @@
 package ir.sk.algorithm.array;
 
-import ir.sk.helper.*;
+import ir.sk.helper.Difficulty;
+import ir.sk.helper.DifficultyType;
+import ir.sk.helper.Point;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.FrequencyCountingPattern;
@@ -65,12 +67,13 @@ public class PairsWithGivenSum {
 
     /**
      * Given a sorted array of integers, we need to see if there are two numbers in it such that their sum is equal to a specific value.
-     *
+     * <p>
      * You can keep variables that point to different parts of an array.
      * Having multiple pointers helps to avoid O(n²) time complexity if for example you wanted to calculate a target sum from a pair of numbers in a sorted array.
      * You can have a pointer at the beginning of the array and at the end of the array and you would move the pointers on every iteration. This would reduce the time complexity to O(n).
-     *
+     * <p>
      * point: array must be SORTED to work
+     *
      * @param input
      * @param targetValue
      * @return
@@ -224,12 +227,13 @@ public class PairsWithGivenSum {
      * Given an array of sorted numbers, remove all duplicates from it.
      * You should not use any extra space;
      * after removing the duplicates in-place return the new length of the array.
-     *
+     * <p>
      * In this problem, we need to remove the duplicates in-place such that the resultant length of the array remains sorted.
      * As the input array is sorted, therefore, one way to do this is to shift the elements left whenever we encounter duplicates. In other words,
      * we will keep one pointer for iterating the array and one pointer for placing the next non-duplicate number.
      * So our algorithm will be to iterate the array and whenever we see a non-duplicate number we move it next to the last non-duplicate number we’ve seen.
      * TODO: 1/7/2021 need more attention
+     *
      * @param arr
      */
     @TimeComplexity("O(n)")
@@ -239,7 +243,7 @@ public class PairsWithGivenSum {
     public static void deleteDuplicatesAndShift(int[] arr) {
         int nextNonDuplicate = 1;
 
-        for (int i = 0; i < arr.length;i++) {
+        for (int i = 0; i < arr.length; i++) {
             if (arr[nextNonDuplicate - 1] != arr[i]) {
                 arr[nextNonDuplicate] = arr[i];
                 nextNonDuplicate++;
@@ -248,9 +252,10 @@ public class PairsWithGivenSum {
     }
 
     /**
-     *  Given an unsorted array of numbers and a target ‘key’, remove all instances of ‘key’ in-place and return the new length of the array.
+     * Given an unsorted array of numbers and a target ‘key’, remove all instances of ‘key’ in-place and return the new length of the array.
+     * <p>
+     * // TODO: 1/16/2021 need more attention
      *
-     * // TODO: 1/16/2021 need more attention 
      * @param arr
      */
     @TimeComplexity("O(n)")

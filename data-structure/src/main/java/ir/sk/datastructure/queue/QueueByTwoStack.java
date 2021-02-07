@@ -4,7 +4,7 @@ import java.util.Stack;
 
 /**
  * A class which implements a queue using two stacks.
- *
+ * <p>
  * Created by sad.kayvanfar on 10/4/2020.
  */
 public class QueueByTwoStack<T> implements Queue<T> {

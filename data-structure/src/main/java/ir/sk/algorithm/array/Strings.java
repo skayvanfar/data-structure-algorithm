@@ -1,6 +1,7 @@
 package ir.sk.algorithm.array;
 
-import ir.sk.helper.*;
+import ir.sk.helper.Difficulty;
+import ir.sk.helper.DifficultyType;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.FrequencyCountingPattern;
@@ -110,7 +111,7 @@ public class Strings {
      * Input: str1="xy#z", str2="xzz#"
      * Output: true
      * Explanation: After applying backspaces the strings become "xz" and "xz" respectively.
-     *
+     * <p>
      * To compare the given strings, first, we need to apply the backspaces.
      * An efficient way to do this would be from the end of both the strings.
      * We can have separate pointers, pointing to the last element of the given strings.
@@ -166,7 +167,7 @@ public class Strings {
     /**
      * checks if passed strings (str1 and str2) are rotations of each other
      * Eg. A = abcde, B = cdeab should return true because A can be shifted 3 times to the right to get B. A = abc and B= acb should return false.
-     *
+     * <p>
      * Time complexity of this problem depends on the implementation of strstr function.
      * If implementation of strstr is done using KMP matcher then complexity of the above program is (-)(n1 + n2) where n1 and n2 are lengths of strings.
      * KMP matcher takes (-)(n) time to find a substrng in a string of length n where length of substring is assumed to be smaller than the string.
@@ -176,7 +177,7 @@ public class Strings {
      * @return
      */
     @TimeComplexity("O(n)")
-    public static boolean areRotation(String  str1, String str2) {
+    public static boolean areRotation(String str1, String str2) {
         String tmp = str1 + str1;
         return tmp.contains(str2);
     }

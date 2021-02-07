@@ -1,6 +1,8 @@
 package ir.sk.algorithm.array;
 
-import ir.sk.helper.*;
+import ir.sk.helper.Difficulty;
+import ir.sk.helper.DifficultyType;
+import ir.sk.helper.Point;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.MultiplePointerPattern;
@@ -343,9 +345,9 @@ public class ArrayAlgorithms {
      * Input: [4, 1, 2, -1, 1, -3], target=1
      * Output: [-3, -1, 1, 4], [-3, 1, 1, 2]
      * Explanation: Both the quadruplets add up to the target.
-     *
+     * <p>
      * This problem follows the Two Pointers pattern and shares similarities with Triplet Sum to Zero.
-     *
+     * <p>
      * We can follow a similar approach to iterate through the array, taking one number at a time. At every step during the iteration,
      * we will search for the quadruplets similar to Triplet Sum to Zero whose sum is equal to the given target.
      *

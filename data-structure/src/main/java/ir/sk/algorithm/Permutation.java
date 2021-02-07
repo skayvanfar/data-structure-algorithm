@@ -7,7 +7,10 @@ import ir.sk.helper.pattern.FrequencyCountingPattern;
 import ir.sk.helper.technique.Backtracking;
 import ir.sk.helper.technique.DivideAndConquer;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * A permutation of a set is a rearrangement of its elements. A set which consists of n elements has n! permutations.
@@ -47,11 +50,11 @@ public class Permutation {
             // if size is odd, swap 0th i.e (first) and
             // (size-1)th i.e (last) element
             if (size % 2 == 1)
-                swap(array, 0, size-1);
-            // If size is even, swap ith
-            // and (size-1)th i.e last element
+                swap(array, 0, size - 1);
+                // If size is even, swap ith
+                // and (size-1)th i.e last element
             else
-                swap(array, i, size-1);
+                swap(array, i, size - 1);
         }
     }
 
@@ -94,7 +97,7 @@ public class Permutation {
             // consider previously constructed partial permutation one by one
 
             // (iterate backwards to avoid ConcurrentModificationException)
-            for (int j = partial.size() - 1; j >= 0 ; j--) {
+            for (int j = partial.size() - 1; j >= 0; j--) {
                 // remove current partial permutation from the ArrayList
                 String str = partial.remove(j);
 

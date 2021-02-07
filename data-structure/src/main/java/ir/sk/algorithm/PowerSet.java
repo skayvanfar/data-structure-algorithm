@@ -1,7 +1,7 @@
 package ir.sk.algorithm;
 
-import ir.sk.helper.technique.Backtracking;
 import ir.sk.helper.complexity.TimeComplexity;
+import ir.sk.helper.technique.Backtracking;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -13,7 +13,7 @@ import java.util.Set;
  * <p>
  * The powerset of {1, 2, 3} is:
  * {{}, {2}, {3}, {2, 3}, {1, 2}, {1, 3}, {1, 2, 3}, {1}}
- *
+ * <p>
  * The total number of subsets of any given set is equal to 2^n
  *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/14/2021.

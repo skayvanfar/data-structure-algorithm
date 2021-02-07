@@ -6,8 +6,6 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by sad.kayvanfar on 12/26/2020.
  */

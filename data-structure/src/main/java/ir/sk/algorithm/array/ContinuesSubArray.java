@@ -1,6 +1,6 @@
 package ir.sk.algorithm.array;
 
-import ir.sk.helper.*;
+import ir.sk.helper.Point;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.FrequencyCountingPattern;
@@ -317,7 +317,7 @@ public class ContinuesSubArray {
     @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
     public static int longestSubstringAllDistinct2(char[] s) {
         int left = 0, right = 0;
-        int[] window = new  int[256];
+        int[] window = new int[256];
         int res = 0; // Record maximum length
 
         while (right < s.length) {
@@ -423,8 +423,9 @@ public class ContinuesSubArray {
 
     /**
      * Given a String s and a non-empty string p, find all the start indices of p's anagrams in s.
-     *
+     * <p>
      * // TODO: 1/7/2021 need more attention
+     *
      * @param source
      * @param target
      * @return

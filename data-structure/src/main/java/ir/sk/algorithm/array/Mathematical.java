@@ -1,9 +1,9 @@
 package ir.sk.algorithm.array;
 
-import ir.sk.helper.technique.BruteForce;
-import ir.sk.helper.pattern.RunnerPattern;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
+import ir.sk.helper.pattern.RunnerPattern;
+import ir.sk.helper.technique.BruteForce;
 
 import java.util.HashSet;
 
@@ -15,7 +15,7 @@ public class Mathematical {
     /**
      * Any number will be called a happy number if, after repeatedly replacing it with a number equal to the sum of the square of all of its digits, leads us to number ‘1’.
      * All other (not-happy) numbers will never reach ‘1’. Instead, they will be stuck in a cycle of numbers which does not include ‘1’.
-     *
+     * <p>
      * 2^2 + 3^2 = 4 + 9 = 13
      * 1^2 + 3^2 = 1 + 9 = 10
      * 2^2 + 0^2 = 1 + 0 = 1
@@ -32,7 +32,7 @@ public class Mathematical {
             number = findSquareSum(number);
             if (number == 1)
                 return true;
-            if(hashSet.contains(number))
+            if (hashSet.contains(number))
                 return false;
             else
                 hashSet.add(number);
@@ -44,7 +44,7 @@ public class Mathematical {
      * always ends in a cycle. If the number is a happy number,
      * the process will be stuck in a cycle on number ‘1,’ and if the number is not a happy number then the process will be stuck in a cycle with a set of numbers.
      * As we saw in Example-2 while determining if ‘12’ is a happy number or not, our process will get stuck in a cycle with the following numbers: 89 -> 145 -> 42 -> 20 -> 4 -> 16 -> 37 -> 58 -> 89
-     *
+     * <p>
      * We saw in the LinkedList Cycle problem that we can use the Fast & Slow pointers method to find a cycle among a set of elements.
      * As we have described above, each number will definitely have a cycle. Therefore, we will use the same fast & slow pointer strategy to find the cycle and once the cycle is found,
      * we will see if the cycle is stuck on number ‘1’ to find out if the number is happy or not.
@@ -56,7 +56,7 @@ public class Mathematical {
     @SpaceComplexity("O(1)")
     @RunnerPattern
     public static boolean isHappyNumberByRunner(int number) {
-        int slow  = number, fast = number;
+        int slow = number, fast = number;
         do {
             slow = findSquareSum(slow); // move one step
             fast = findSquareSum(findSquareSum(fast)); // move two steps
@@ -65,7 +65,7 @@ public class Mathematical {
     }
 
     private static int findSquareSum(int number) {
-        int sum  = 0, digit;
+        int sum = 0, digit;
         while (number > 0) {
             digit = number % 10;
             sum += digit * digit;

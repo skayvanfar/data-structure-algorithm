@@ -1,9 +1,10 @@
 package ir.sk.algorithm.linklist;
 
 import ir.sk.datastructure.fundamental.linklist.DoubledLink;
-import ir.sk.datastructure.fundamental.linklist.DoublyLinkedList;
 import ir.sk.datastructure.fundamental.linklist.SinglyLink;
-import ir.sk.helper.*;
+import ir.sk.helper.Difficulty;
+import ir.sk.helper.DifficultyType;
+import ir.sk.helper.Point;
 import ir.sk.helper.complexity.InPlace;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
@@ -216,9 +217,9 @@ public class LinkListAlgorithms {
      * Given the head of a Singly LinkedList, write a method to modify the LinkedList such that the nodes
      * from the second half of the LinkedList are inserted alternately to the nodes from the first half in reverse order.
      * So if the LinkedList has nodes 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> null, your method should return 1 -> 6 -> 2 -> 5 -> 3 -> 4 -> null.
-     *
+     * <p>
      * This problem shares similarities with Palindrome LinkedList. To rearrange the given LinkedList we will follow the following steps:
-     *
+     * <p>
      * We can use the Fast & Slow pointers method similar to Middle of the LinkedList to find the middle node of the LinkedList.
      * Once we have the middle of the LinkedList, we will reverse the second half of the LinkedList.
      * Finally, we’ll iterate through the first half and the reversed second half to produce a LinkedList in the required order.
@@ -419,7 +420,7 @@ public class LinkListAlgorithms {
 
     /**
      * You are given a doubly linked list. Determine if it is a palindrome.
-     *
+     * <p>
      * Initialize two pointers left at starting of list and right at the end of the list.
      * Check the data at left node is equal to right node, if it is equal then increment left and decrement right till middle of the list,
      * if at any stage it is not equal then return false.
@@ -551,7 +552,7 @@ public class LinkListAlgorithms {
      * Traverse the list one by one and keep putting the node addresses in a Hash Table. At any point,
      * if NULL is reached then return false and if next of current node points to any of the previously
      * stored nodes in Hash then return true
-     *
+     * <p>
      * 1->2->3->4->5->6->3
      *
      * @param head
@@ -561,7 +562,7 @@ public class LinkListAlgorithms {
     @SpaceComplexity("O(n)")
     @FrequencyCountingPattern
     public static boolean hasCycleByHashing(SinglyLink<Integer> head) {
-        SinglyLink<Integer> current  = head;
+        SinglyLink<Integer> current = head;
         Set<SinglyLink<Integer>> hashtable = new HashSet<>();
         while (current != null) {
             if (hashtable.contains(current))
@@ -576,25 +577,25 @@ public class LinkListAlgorithms {
 
     /**
      * Given the head of a Singly LinkedList, write a function to determine if the LinkedList has a cycle in it or not.
-     *
+     * <p>
      * Imagine two racers running in a circular racing track. If one racer is faster than the other, the faster racer is bound to catch up and cross the slower racer from behind. We can use this fact to devise an algorithm to determine if a LinkedList has a cycle in it or not.
-     *
+     * <p>
      * Imagine we have a slow and a fast pointer to traverse the LinkedList. In each iteration, the slow pointer moves one step and the fast pointer moves two steps. This gives us two conclusions:
-     *
+     * <p>
      * If the LinkedList doesn’t have a cycle in it, the fast pointer will reach the end of the LinkedList before the slow pointer to reveal that there is no cycle in the LinkedList.
      * The slow pointer will never be able to catch up to the fast pointer if there is no cycle in the LinkedList.
      * If the LinkedList has a cycle, the fast pointer enters the cycle first, followed by the slow pointer. After this, both pointers will keep moving in the cycle infinitely. If at any stage both of these pointers meet, we can conclude that the LinkedList has a cycle in it. Let’s analyze if it is possible for the two pointers to meet. When the fast pointer is approaching the slow pointer from behind we have two possibilities:
-     *
+     * <p>
      * The fast pointer is one step behind the slow pointer.
      * The fast pointer is two steps behind the slow pointer.
      * All other distances between the fast and slow pointers will reduce to one of these two possibilities. Let’s analyze these scenarios, considering the fast pointer always moves first:
-     *
+     * <p>
      * If the fast pointer is one step behind the slow pointer: The fast pointer moves two steps and the slow pointer moves one step, and they both meet.
      * If the fast pointer is two steps behind the slow pointer: The fast pointer moves two steps and the slow pointer moves one step. After the moves, the fast pointer will be one step behind the slow pointer, which reduces this scenario to the first scenario. This means that the two pointers will meet in the next iteration.
      * This concludes that the two pointers will definitely meet if the LinkedList has a cycle.
-     *
+     * <p>
      * 1->2->3->4->5->6->3
-     *
+     * <p>
      * floyds way
      *
      * @param head
@@ -616,7 +617,7 @@ public class LinkListAlgorithms {
 
     /**
      * Given the head of a LinkedList with a cycle, find the length of the cycle.
-     *
+     * <p>
      * Once the fast and slow pointers meet, we can save the slow pointer and iterate the whole cycle with another pointer until we see the slow pointer again to find the length of the cycle.
      *
      * @param head
@@ -649,7 +650,7 @@ public class LinkListAlgorithms {
 
     /**
      * If we know the length of the LinkedList cycle, we can find the start of the cycle through the following steps:
-     *
+     * <p>
      * Take two pointers. Let’s call them pointer1 and pointer2.
      * Initialize both pointers to point to the start of the LinkedList.
      * We can find the length of the LinkedList cycle using the approach discussed in LinkedList Cycle. Let’s assume that the length of the cycle is ‘K’ nodes.
@@ -663,7 +664,7 @@ public class LinkListAlgorithms {
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
     @RunnerPattern
-    public static SinglyLink<Integer> findCycleStart(SinglyLink<Integer>  head) {
+    public static SinglyLink<Integer> findCycleStart(SinglyLink<Integer> head) {
         int cycleLength = findCycleLength(head);
         return findStart(head, cycleLength);
     }
@@ -688,9 +689,9 @@ public class LinkListAlgorithms {
 
     /**
      * Given the head of a Singly LinkedList, write a method to return the middle node of the LinkedList.
-     *
+     * <p>
      * One brute force strategy could be to first count the number of nodes in the LinkedList and then find the middle node in the second iteration.
-     *
+     * <p>
      * We can use the Fast & Slow pointers method such that the fast pointer is always twice the nodes ahead of the slow pointer.
      * This way, when the fast pointer reaches the end of the LinkedList,
      * the slow pointer will be pointing at the middle node.

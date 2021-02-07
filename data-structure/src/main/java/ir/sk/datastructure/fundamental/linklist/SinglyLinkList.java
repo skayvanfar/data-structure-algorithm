@@ -187,6 +187,7 @@ public class SinglyLinkList<T> {
     }
 
     //////////////////////////////////// traverse
+
     /**
      * 1, 2, 3, 4
      */
@@ -202,6 +203,7 @@ public class SinglyLinkList<T> {
 
     /**
      * 1, 2, 3, 4
+     *
      * @param link
      */
     @TimeComplexity("O(n)")
@@ -214,6 +216,7 @@ public class SinglyLinkList<T> {
 
     /**
      * 4, 3, 2, 1
+     *
      * @param link
      */
     @TimeComplexity("O(n)")

@@ -4,7 +4,6 @@ import ir.sk.helper.Difficulty;
 import ir.sk.helper.DifficultyType;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.pattern.MultipleLoopsPattern;
 import ir.sk.helper.technique.BruteForce;
 
 import java.util.*;
@@ -96,25 +95,25 @@ public class MergeIntervalsByGraph {
     /**
      * If we draw a graph (with intervals as nodes) that contains undirected edges between all pairs of intervals that overlap,
      * then all intervals in each connected component of the graph can be merged into a single interval.
-     *
+     * <p>
      * With the above intuition in mind, we can represent the graph as an adjacency list, inserting directed edges in both directions to simulate undirected edges.
      * Then, to determine which connected component each node is it,
      * we perform graph traversals from arbitrary unvisited nodes until all nodes have been visited.
      * To do this efficiently, we store visited nodes in a Set, allowing for constant time containment checks and insertion. Finally,
      * we consider each connected component, merging all of its intervals by constructing a new Interval with start equal to the minimum start among them and end equal to the maximum end.
-     *
+     * <p>
      * This algorithm is correct simply because it is basically the brute force solution. We compare every interval to every other interval,
      * so we know exactly which intervals overlap. The reason for the connected component search is that two intervals may not directly overlap,
      * but might overlap indirectly via a third interval.
-     *
+     * <p>
      * Time complexity : O(n^2)
-     *
+     * <p>
      * Building the graph costs O(V + E) = O(V) + O(E) = O(n) + O(n^2) = O(n^2) time, as in the worst case all intervals are mutually overlapping.
      * Traversing the graph has the same cost (although it might appear higher at first) because our visited set guarantees that each node will be visited exactly once. Finally, because each node is part of exactly one component,
      * the merge step costs O(V) = O(n) time. This all adds up as follows:
-     *
+     * <p>
      * O(n^2) + O(n^2) + O(n) = O(n^2)
-     *
+     * <p>
      * Space complexity : O(n^2)
      *
      * @param intervals

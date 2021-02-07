@@ -61,7 +61,8 @@ public class IntervalAlgorithmsTest {
 
     @Test
     public void hasOverlapIntervals() {
-        List<Interval> input = new ArrayList<>();;
+        List<Interval> input = new ArrayList<>();
+        ;
         input.add(new Interval(1, 4));
         input.add(new Interval(2, 5));
         input.add(new Interval(7, 9));
@@ -70,7 +71,8 @@ public class IntervalAlgorithmsTest {
 
     @Test
     public void insertInterval() {
-        List<Interval> input = new ArrayList<>();;
+        List<Interval> input = new ArrayList<>();
+        ;
         input.add(new Interval(1, 3));
         input.add(new Interval(5, 7));
         input.add(new Interval(8, 12));

@@ -6,8 +6,6 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by sad.kayvanfar on 1/4/2021.
  */
@@ -125,7 +123,7 @@ public class RootToLeafPathTest {
                 new TreeNode(7,
                         new TreeNode(4),
                         null
-                        ),
+                ),
                 new TreeNode(1,
                         new TreeNode(10),
                         new TreeNode(5)));

@@ -5,7 +5,8 @@ import ir.sk.algorithm.basic.RotationShift;
 import ir.sk.algorithm.basic.Utils;
 import ir.sk.datastructure.fundamental.tree.binarytree.MaxBinaryHeap;
 import ir.sk.datastructure.fundamental.tree.binarytree.binarysearchtree.BinarySearchTree;
-import ir.sk.helper.*;
+import ir.sk.helper.Difficulty;
+import ir.sk.helper.DifficultyType;
 import ir.sk.helper.complexity.InPlace;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.Stability;
@@ -508,15 +509,15 @@ public class Sort {
      * Given an array containing 0s, 1s and 2s, sort the array in-place.
      * You should treat numbers of the array as objects, hence,
      * we can’t count 0s, 1s, and 2s to recreate the array.
-     *
+     * <p>
      * The flag of the Netherlands consists of three colors:
      * red, white and blue; and since our input array also consists of three different numbers that is why it is called Dutch National Flag problem.
-     *
+     * <p>
      * Input: [1, 0, 2, 1, 0]
      * Output: [0 0 1 1 2]
-     *
+     * <p>
      * The brute force solution will be to use an in-place sorting algorithm like Heapsort which will take O(N*logN)O(N∗logN). Can we do better than this? Is it possible to sort the array in one iteration?
-     *
+     * <p>
      * We can use a Two Pointers approach while iterating through the array.
      * Let’s say the two pointers are called low and high which are pointing to the first and the last element of the array respectively.
      * So while iterating, we will move all 0s before low and all 2s after high so that in the end, all 1s will be between low and high.
@@ -556,26 +557,26 @@ public class Sort {
 
     /**
      * Given an array, find the length of the smallest subarray in it which when sorted will sort the whole array.
-     *
+     * <p>
      * Input: [1, 2, 5, 3, 7, 10, 9, 12]
      * Output: 5
      * Explanation: We need to sort only the subarray [5, 3, 7, 10, 9] to make the whole array sorted
-     *
+     * <p>
      * As we know, once an array is sorted (in ascending order), the smallest number is at the beginning and the largest number is at the end of the array. So if we start from the beginning of the array to find the first element which is out of sorting order i.e.,
      * which is smaller than its previous element,
      * and similarly from the end of array to find the first element which is bigger than its previous element, will sorting the subarray between these two numbers result in the whole array being sorted?
-     *
+     * <p>
      * Let’s try to understand this with Example-2 mentioned above. In the following array, what are the first numbers out of sorting order from the beginning and the end of the array:
-     *
-     *     [1, 3, 2, 0, -1, 7, 10]
+     * <p>
+     * [1, 3, 2, 0, -1, 7, 10]
      * Starting from the beginning of the array the first number out of the sorting order is ‘2’ as it is smaller than its previous element which is ‘3’.
      * Starting from the end of the array the first number out of the sorting order is ‘0’ as it is bigger than its previous element which is ‘-1’
      * As you can see, sorting the numbers between ‘3’ and ‘-1’ will not sort the whole array. To see this, the following will be our original array after the sorted subarray:
-     *
-     *     [1, -1, 0, 2, 3, 7, 10]
+     * <p>
+     * [1, -1, 0, 2, 3, 7, 10]
      * The problem here is that the smallest number of our subarray is ‘-1’ which dictates that we need to include more numbers from the beginning of the array to make the whole array sorted. We will have a similar problem if the maximum of the subarray is bigger than some elements at the end of the array.
      * To sort the whole array we need to include all such elements that are smaller than the biggest element of the subarray. So our final algorithm will look like:
-     *
+     * <p>
      * From the beginning and end of the array, find the first elements that are out of the sorting order. The two elements will be our candidate subarray.
      * Find the maximum and minimum of this subarray.
      * Extend the subarray from beginning to include any number which is bigger than the minimum of the subarray.
@@ -604,7 +605,7 @@ public class Sort {
         // find the maximum and minimum of the subarray
         int subarrayMax = Integer.MIN_VALUE, subarrayMin = Integer.MAX_VALUE;
         for (int k = low; k < high; k++) {
-            subarrayMax = Math.max(subarrayMax,array[k]);
+            subarrayMax = Math.max(subarrayMax, array[k]);
             subarrayMin = Math.min(subarrayMin, array[k]);
         }
 
@@ -613,7 +614,7 @@ public class Sort {
             low--;
 
         // extend the subarray to include any number which is smaller than the maximum of the subarray
-        while (high < array.length -1 && array[high + 1] < subarrayMax)
+        while (high < array.length - 1 && array[high + 1] < subarrayMax)
             high++;
 
         return high - low + 1;
@@ -633,7 +634,7 @@ public class Sort {
     public static void cyclicSort(int[] numbers) {
         int i = 0;
         while (i < numbers.length) {
-            int j = numbers[i]-1;
+            int j = numbers[i] - 1;
             if (numbers[i] != numbers[j])
                 swap(numbers, i, j);
             else

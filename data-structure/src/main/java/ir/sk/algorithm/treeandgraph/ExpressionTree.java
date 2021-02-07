@@ -7,7 +7,7 @@ import ir.sk.helper.complexity.TimeComplexity;
 /**
  * The expression tree is a binary tree in which each internal node corresponds
  * to the operator and each leaf node corresponds to the operand
- *
+ * <p>
  * Inorder traversal of expression tree produces infix version of given postfix expression
  * (same with postorder traversal it gives prefix expression)
  *
@@ -22,14 +22,14 @@ public class ExpressionTree {
      * <p>
      * Example:
      * <p>
-     *      *
-     *     / \
-     *   +    +
-     *  / \  / \
+     * *
+     * / \
+     * +    +
+     * / \  / \
      * 3  2  4  5
      * <p>
      * This is a representation of the expression (3 + 2) * (4 + 5), and should return 45.
-     *
+     * <p>
      * using LRV DFS ,traversePostOrder
      *
      * @param node
@@ -39,7 +39,7 @@ public class ExpressionTree {
     @SpaceComplexity("O(n)")
     public static int calculateExpression(Node<Character> node) {
         if (node.left == null || node.right == null)
-            return Integer.valueOf(node.value+"");
+            return Integer.valueOf(node.value + "");
         else {
             int leftValue = calculateExpression(node.left);
             int rightValue = calculateExpression(node.right);

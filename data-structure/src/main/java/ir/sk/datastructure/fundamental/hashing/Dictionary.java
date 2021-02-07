@@ -1,7 +1,7 @@
 package ir.sk.datastructure.fundamental.hashing;
 
-import ir.sk.helper.complexity.AmortizedTimeComplexity;
 import ir.sk.helper.Point;
+import ir.sk.helper.complexity.AmortizedTimeComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 
 /**

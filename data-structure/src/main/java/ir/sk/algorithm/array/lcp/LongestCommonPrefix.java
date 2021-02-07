@@ -1,9 +1,9 @@
 package ir.sk.algorithm.array.lcp;
 
-import ir.sk.helper.technique.DivideAndConquer;
 import ir.sk.helper.RecurrenceRelation;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
+import ir.sk.helper.technique.DivideAndConquer;
 
 import java.util.Arrays;
 
@@ -101,6 +101,7 @@ public class LongestCommonPrefix {
 
     /**
      * A Function that returns the longest common prefix from the array of strings
+     *
      * @param arr
      * @return
      */

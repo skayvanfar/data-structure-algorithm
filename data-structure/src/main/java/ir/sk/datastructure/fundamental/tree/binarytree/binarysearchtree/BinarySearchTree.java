@@ -1,9 +1,9 @@
 package ir.sk.datastructure.fundamental.tree.binarytree.binarysearchtree;
 
-import ir.sk.helper.technique.BinarySearch;
 import ir.sk.helper.Point;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
+import ir.sk.helper.technique.BinarySearch;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -45,7 +45,6 @@ public class BinarySearchTree {
     }
 
     /**
-     *
      * @param value
      */
     public void add(int value) {
@@ -179,6 +178,7 @@ public class BinarySearchTree {
     /**
      * Depth-First Search is a type of traversal that goes deep as much as possible in every child before exploring the next sibling.
      * LVR
+     *
      * @param BSTNode
      */
     @TimeComplexity("O(n)")
@@ -193,6 +193,7 @@ public class BinarySearchTree {
 
     /**
      * VLR
+     *
      * @param BSTNode
      */
     @TimeComplexity("O(n)")
@@ -207,6 +208,7 @@ public class BinarySearchTree {
 
     /**
      * LRV
+     *
      * @param BSTNode
      */
     @TimeComplexity("O(n)")
