@@ -1,6 +1,8 @@
 package ir.sk.datastructure.fundamental.graph.adjacencylist;
 
 import ir.sk.datastructure.fundamental.graph.Graph;
+import ir.sk.helper.Implementation;
+import ir.sk.helper.ImplementationType;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 
@@ -128,6 +130,7 @@ public class AdjacencyListGraph<T> implements Graph<T> {
     @Override
     @TimeComplexity("O(|V|+|E|) Linear Time")
     @SpaceComplexity("O(w) w is the maximum width of the tree")
+    @Implementation(type = ImplementationType.Iterative)
     public Collection<T> breathFirstSearch(T start) {
         // we can add a property as state into Node instead of this
         Collection<T> visited = new LinkedHashSet<>();
@@ -136,6 +139,7 @@ public class AdjacencyListGraph<T> implements Graph<T> {
         visited.add(start);
         while (!queue.isEmpty()) {
             T info = queue.poll();
+            System.out.println(info);
             for (Vertex<T> v : getAdjVertices(info)) {
                 if (!visited.contains(v.info)) {
                     visited.add(v.info);
@@ -152,12 +156,14 @@ public class AdjacencyListGraph<T> implements Graph<T> {
     @Override
     @TimeComplexity("O(|V|+|E|) Linear Time")
     @SpaceComplexity("O(h) h is the maximum width of the tree")
+    @Implementation(type = ImplementationType.Iterative)
     public Collection<T> depthFirstSearch(T start) {
         Collection<T> visited = new LinkedHashSet<>();
         Stack<T> stack = new Stack<>();
         stack.push(start);
         while (!stack.isEmpty()) {
             T info = stack.pop();
+            System.out.println(info);
             if (!visited.contains(info)) {
                 visited.add(info);
                 for (Vertex<T> v : getAdjVertices(info)) {
@@ -182,6 +188,7 @@ public class AdjacencyListGraph<T> implements Graph<T> {
      * @param current
      * @param visited
      */
+    @Implementation(type = ImplementationType.Recursive)
     private void dfsVisit(T current, Collection<T> visited) {
         visited.add(current);
         for (T dest : getNeighborsFor(current)) {
