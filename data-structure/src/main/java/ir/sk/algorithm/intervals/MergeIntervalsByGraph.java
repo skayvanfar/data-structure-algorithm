@@ -16,13 +16,23 @@ public class MergeIntervalsByGraph {
     private Map<Integer, List<Interval>> nodesInComp;
     private Set<Interval> visited;
 
-    // return whether two intervals overlap (inclusive)
+    /**
+     * return whether two intervals overlap (inclusive)
+     *
+     * @param a
+     * @param b
+     * @return
+     */
     private boolean overlap(Interval a, Interval b) {
         return a.start <= b.end && b.start <= a.end;
     }
 
-    // build a graph where an undirected edge between intervals u and v exists
-    // iff u and v overlap.
+    /**
+     * build a graph where an undirected edge between intervals u and v exists if u and v overlap.
+     *
+     * @param intervals
+     */
+    @TimeComplexity("O(V + E) = O(V) + O(E) = O(n) + O(n^2) = O(n^2)")
     private void buildGraph(Interval[] intervals) {
         graph = new HashMap<>();
         for (Interval interval : intervals) {
@@ -39,7 +49,12 @@ public class MergeIntervalsByGraph {
         }
     }
 
-    // merges all of the nodes in this connected component into one interval.
+    /**
+     * merges all of the nodes in this connected component into one interval.
+     *
+     * @param nodes
+     * @return
+     */
     private Interval mergeNodes(List<Interval> nodes) {
         int minStart = nodes.get(0).start;
         for (Interval node : nodes) {
@@ -54,8 +69,12 @@ public class MergeIntervalsByGraph {
         return new Interval(minStart, maxEnd);
     }
 
-    // use depth-first search to mark all nodes in the same connected component
-    // with the same integer.
+    /**
+     * use depth-first search to mark all nodes in the same connected component with the same integer.
+     *
+     * @param start
+     * @param compNumber
+     */
     private void markComponentDFS(Interval start, int compNumber) {
         Stack<Interval> stack = new Stack<>();
         stack.add(start);
@@ -77,7 +96,11 @@ public class MergeIntervalsByGraph {
         }
     }
 
-    // gets the connected components of the interval overlap graph.
+    /**
+     * gets the connected components of the interval overlap graph.
+     *
+     * @param intervals
+     */
     private void buildComponents(Interval[] intervals) {
         nodesInComp = new HashMap<>();
         visited = new HashSet<>();
@@ -109,7 +132,8 @@ public class MergeIntervalsByGraph {
      * Time complexity : O(n^2)
      * <p>
      * Building the graph costs O(V + E) = O(V) + O(E) = O(n) + O(n^2) = O(n^2) time, as in the worst case all intervals are mutually overlapping.
-     * Traversing the graph has the same cost (although it might appear higher at first) because our visited set guarantees that each node will be visited exactly once. Finally, because each node is part of exactly one component,
+     * Traversing the graph has the same cost (although it might appear higher at first) because our visited set guarantees that each node will be visited exactly once.
+     * Finally, because each node is part of exactly one component,
      * the merge step costs O(V) = O(n) time. This all adds up as follows:
      * <p>
      * O(n^2) + O(n^2) + O(n) = O(n^2)
