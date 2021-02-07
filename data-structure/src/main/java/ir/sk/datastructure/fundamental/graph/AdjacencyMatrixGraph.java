@@ -1,6 +1,7 @@
 package ir.sk.datastructure.fundamental.graph;
 
 
+import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 
 import java.util.ArrayDeque;
@@ -21,6 +22,7 @@ import java.util.Stack;
  * <p>
  * Created by sad.keyvanfar on 7/1/2020.
  */
+@SpaceComplexity("O(|V|^2)")
 public class AdjacencyMatrixGraph {
 
     private final int MAX_VERTS = 20;
@@ -62,30 +64,7 @@ public class AdjacencyMatrixGraph {
     /**
      *
      */
-    public void dfs() {
-        Stack<Integer> theStack = new Stack<>();
-        vertexList[0].wasVisited = true;
-        displayVertex(0);
-        theStack.push(0);
-        while (!theStack.isEmpty()) {
-            // get an unvisited vertex adjacent to stack top
-            int v = getAdjUnvisitedVertex(theStack.peek());
-            if (v == -1) // if no such vertex,
-                theStack.pop();
-            else { // if it exists,
-                vertexList[v].wasVisited = true;
-                displayVertex(v);
-                theStack.push(v);
-            }
-        }
-        // stack is empty, so we’re done
-        for (int j = 0; j < numVerts; j++) // reset flags
-            vertexList[j].wasVisited = false;
-    }
-
-    /**
-     *
-     */
+    @TimeComplexity("O(|V|^2)")
     public void bfs() {
         Queue<Integer> theQueue = new ArrayDeque<>();
         vertexList[0].wasVisited = true;
@@ -103,6 +82,31 @@ public class AdjacencyMatrixGraph {
             }
         }
         // queue is empty, so we’re done
+        for (int j = 0; j < numVerts; j++) // reset flags
+            vertexList[j].wasVisited = false;
+    }
+
+    /**
+     *
+     */
+    @TimeComplexity("O(|V|^2)")
+    public void dfs() {
+        Stack<Integer> theStack = new Stack<>();
+        vertexList[0].wasVisited = true;
+        displayVertex(0);
+        theStack.push(0);
+        while (!theStack.isEmpty()) {
+            // get an unvisited vertex adjacent to stack top
+            int v = getAdjUnvisitedVertex(theStack.peek());
+            if (v == -1) // if no such vertex,
+                theStack.pop();
+            else { // if it exists,
+                vertexList[v].wasVisited = true;
+                displayVertex(v);
+                theStack.push(v);
+            }
+        }
+        // stack is empty, so we’re done
         for (int j = 0; j < numVerts; j++) // reset flags
             vertexList[j].wasVisited = false;
     }

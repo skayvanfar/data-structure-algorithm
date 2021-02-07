@@ -24,9 +24,9 @@ import java.util.stream.Collectors;
  * For a sparse graph (one in which most pairs of vertices are not connected by edges) an adjacency list is significantly more space-efficient than an adjacency matrix (stored as a two-dimensional array): the space usage of the adjacency list is proportional to the number of edges and vertices in the graph,
  * while for an adjacency matrix stored in this way the space is proportional to the square of the number of vertices.
  * <p>
- * Space Complexity: O(|V|+|E|)
  * Created by sad.keyvanfar on 7/1/2020.
  */
+@SpaceComplexity("O(|V|+|E|)")
 public class AdjacencyListGraph<T> implements Graph<T> {
 
     /**
@@ -91,7 +91,7 @@ public class AdjacencyListGraph<T> implements Graph<T> {
     /**
      * {@inheritDoc}
      */
-    @TimeComplexity("O(|V|)")
+    @TimeComplexity("O(|E|)")
     public void removeEdge(T from, T to) {
         Vertex v1 = new Vertex(from);
         Vertex v2 = new Vertex(to);
