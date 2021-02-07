@@ -107,9 +107,7 @@ public class MergeIntervalsByGraph {
      * so we know exactly which intervals overlap. The reason for the connected component search is that two intervals may not directly overlap,
      * but might overlap indirectly via a third interval.
      *
-     * Time complexity : O(n^2)O(n
-     * 2
-     *  )
+     * Time complexity : O(n^2)
      *
      * Building the graph costs O(V + E) = O(V) + O(E) = O(n) + O(n^2) = O(n^2) time, as in the worst case all intervals are mutually overlapping.
      * Traversing the graph has the same cost (although it might appear higher at first) because our visited set guarantees that each node will be visited exactly once. Finally, because each node is part of exactly one component,
