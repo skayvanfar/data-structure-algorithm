@@ -1,6 +1,8 @@
 package ir.sk.datastructure.fundamental.graph;
 
 
+import ir.sk.helper.complexity.TimeComplexity;
+
 import java.util.ArrayDeque;
 import java.util.Queue;
 import java.util.Stack;
@@ -34,20 +36,17 @@ public class AdjacencyMatrixGraph {
     }
 
     /**
-     * Time Complexity: O(1)
-     *
-     * @param label
+     * {@inheritDoc}
      */
+    @TimeComplexity("O(1)")
     public void addVertex(char label) {
         vertexList[nVerts++] = new VertexM(label);
     }
 
     /**
-     * Time Complexity: O(n)
-     *
-     * @param start
-     * @param end
+     * {@inheritDoc}
      */
+    @TimeComplexity("O(1)")
     public void addEdge(int start, int end, int weight) {
         adjMat[start][end] = weight;
         adjMat[end][start] = weight;
