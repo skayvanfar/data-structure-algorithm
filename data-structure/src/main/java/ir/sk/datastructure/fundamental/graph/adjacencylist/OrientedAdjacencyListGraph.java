@@ -1,6 +1,7 @@
 package ir.sk.datastructure.fundamental.graph.adjacencylist;
 
 import ir.sk.datastructure.fundamental.graph.Graph;
+import ir.sk.helper.Point;
 
 import java.util.*;
 
@@ -25,6 +26,7 @@ public class OrientedAdjacencyListGraph<T> implements Graph<T> {
      */
     // private OrientedVertex<T>[] graph;
     // private Set<OrientedVertex<T>> graph;
+    @Point("Instead  of using Set, we use map so we can map between value and vertex easily")
     private Map<T, OrientedVertex<T>> graph;
 
     public OrientedAdjacencyListGraph() {
