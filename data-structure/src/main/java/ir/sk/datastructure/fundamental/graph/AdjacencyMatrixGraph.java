@@ -13,6 +13,12 @@ import java.util.Stack;
  * Adjacency matrix for undirected graph is always symmetric. Adjacency Matrix is also used to represent weighted graphs.
  * If adj[i][j] = w, then there is an edge from vertex i to vertex j with weight w.
  * <p>
+ * If the graph is undirected (i.e. all of its edges are bidirectional), the adjacency matrix is symmetric.
+ * <p>
+ * For a dense graph (one in which most pairs of vertices are connected by edges) is appropriate
+ * <p>
+ * This representation makes use of VxV matrix, so space required in worst case is O(|V|^2).
+ * <p>
  * Created by sad.keyvanfar on 7/1/2020.
  */
 public class AdjacencyMatrixGraph {
@@ -20,19 +26,16 @@ public class AdjacencyMatrixGraph {
     private final int MAX_VERTS = 20;
 
     private VertexM vertexList[]; // array of vertices
-    private int adjMat[][]; // adjacency matrix
-    private int nVerts; // current number of vertices
-
-    private Stack<Integer> theStack = new Stack<>();
-    private Queue<Integer> theQueue = new ArrayDeque<>();
+    private int adjacencyMatrix[][]; // adjacency matrix
+    private int numVerts; // current number of vertices
 
     public AdjacencyMatrixGraph() {
         vertexList = new VertexM[MAX_VERTS];
-        adjMat = new int[MAX_VERTS][MAX_VERTS];
-        nVerts = 0;
+        adjacencyMatrix = new int[MAX_VERTS][MAX_VERTS];
+        numVerts = 0;
         for (int j = 0; j < MAX_VERTS; j++) // set adjacency
             for (int k = 0; k < MAX_VERTS; k++) // matrix to 0
-                adjMat[j][k] = 0;
+                adjacencyMatrix[j][k] = 0;
     }
 
     /**
@@ -40,7 +43,7 @@ public class AdjacencyMatrixGraph {
      */
     @TimeComplexity("O(1)")
     public void addVertex(char label) {
-        vertexList[nVerts++] = new VertexM(label);
+        vertexList[numVerts++] = new VertexM(label);
     }
 
     /**
@@ -48,8 +51,8 @@ public class AdjacencyMatrixGraph {
      */
     @TimeComplexity("O(1)")
     public void addEdge(int start, int end, int weight) {
-        adjMat[start][end] = weight;
-        adjMat[end][start] = weight;
+        adjacencyMatrix[start][end] = weight;
+        adjacencyMatrix[end][start] = weight;
     }
 
     public void displayVertex(int v) {
@@ -60,6 +63,7 @@ public class AdjacencyMatrixGraph {
      *
      */
     public void dfs() {
+        Stack<Integer> theStack = new Stack<>();
         vertexList[0].wasVisited = true;
         displayVertex(0);
         theStack.push(0);
@@ -75,7 +79,7 @@ public class AdjacencyMatrixGraph {
             }
         }
         // stack is empty, so we’re done
-        for (int j = 0; j < nVerts; j++) // reset flags
+        for (int j = 0; j < numVerts; j++) // reset flags
             vertexList[j].wasVisited = false;
     }
 
@@ -83,6 +87,7 @@ public class AdjacencyMatrixGraph {
      *
      */
     public void bfs() {
+        Queue<Integer> theQueue = new ArrayDeque<>();
         vertexList[0].wasVisited = true;
         displayVertex(0);
         theQueue.add(0); // insert at tail
@@ -98,13 +103,13 @@ public class AdjacencyMatrixGraph {
             }
         }
         // queue is empty, so we’re done
-        for (int j = 0; j < nVerts; j++) // reset flags
+        for (int j = 0; j < numVerts; j++) // reset flags
             vertexList[j].wasVisited = false;
     }
 
     public int getAdjUnvisitedVertex(int v) {
-        for (int j = 0; j < nVerts; j++)
-            if (adjMat[v][j] >= 1 && vertexList[j].wasVisited == false) // for unweighted graph is adjMat[v][j] == 1
+        for (int j = 0; j < numVerts; j++)
+            if (adjacencyMatrix[v][j] >= 1 && vertexList[j].wasVisited == false) // for unweighted graph is adjMat[v][j] == 1
                 return j;
         return -1;
     }
