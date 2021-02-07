@@ -1,15 +1,15 @@
-package ir.sk.datastructure.fundamental.graph.adjacencylist;
+package ir.sk.algorithm.treeandgraph;
 
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 7/27/2020.
  */
-public class Graph3 {
+public class BellmanFordInGraph {
 
     private int V, E;
     public Edgee edge[];
 
     // Creates a graph with V vertices and E edges
-    public Graph3(int v, int e) {
+    public BellmanFordInGraph(int v, int e) {
         V = v;
         E = e;
         edge = new Edgee[e];

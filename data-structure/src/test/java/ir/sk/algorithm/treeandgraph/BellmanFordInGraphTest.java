@@ -1,5 +1,6 @@
-package ir.sk.datastructure.fundamental.graph.adjacencylist;
+package ir.sk.algorithm.treeandgraph;
 
+import ir.sk.algorithm.treeandgraph.BellmanFordInGraph;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -7,16 +8,16 @@ import org.junit.Test;
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 7/27/2020.
  */
-public class Graph3Test {
+public class BellmanFordInGraphTest {
 
     int V = 5; // Number of vertices in graph
     int E = 8; // Number of edges in graph
 
-    Graph3 graph;
+    BellmanFordInGraph graph;
 
     @Before
     public void setUp() throws Exception {
-        graph = new Graph3(V, E);
+        graph = new BellmanFordInGraph(V, E);
         // add edge 0-1 (or A-B in above figure)
         graph.edge[0].src = 0;
         graph.edge[0].dest = 1;
