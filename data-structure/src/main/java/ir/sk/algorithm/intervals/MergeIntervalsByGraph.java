@@ -32,7 +32,7 @@ public class MergeIntervalsByGraph {
      *
      * @param intervals
      */
-    @TimeComplexity("O(V + E) = O(V) + O(E) = O(n) + O(n^2) = O(n^2)")
+    @TimeComplexity("O(|V| + |E|) = O(|V|) + O(|E|) = O(n) + O(n^2) = O(n^2)")
     private void buildGraph(Interval[] intervals) {
         graph = new HashMap<>();
         for (Interval interval : intervals) {
