@@ -23,6 +23,7 @@ public class OrientedAdjacencyListGraph<T> implements Graph<T> {
     /**
      * Could be replaced by array
      */
+    // private OrientedVertex<T>[] graph;
     private Map<T, OrientedVertex<T>> graph;
 
     public OrientedAdjacencyListGraph() {

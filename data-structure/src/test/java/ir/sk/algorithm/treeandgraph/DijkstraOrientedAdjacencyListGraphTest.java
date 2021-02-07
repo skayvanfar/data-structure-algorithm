@@ -1,4 +1,4 @@
-package ir.sk.datastructure.fundamental.graph.adjacencylist;
+package ir.sk.algorithm.treeandgraph;
 
 import org.junit.Test;
 
@@ -10,7 +10,7 @@ import static org.junit.Assert.assertTrue;
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 7/18/2020.
  */
-public class OrientedAdjacencyListGraph2Test {
+public class DijkstraOrientedAdjacencyListGraphTest {
 
     @Test
     public void dijkstraShortestPath() {
@@ -20,12 +20,12 @@ public class OrientedAdjacencyListGraph2Test {
     @Test
     public void whenSPPSolved_thenCorrect() {
 
-        Node nodeA = new Node("A");
-        Node nodeB = new Node("B");
-        Node nodeC = new Node("C");
-        Node nodeD = new Node("D");
-        Node nodeE = new Node("E");
-        Node nodeF = new Node("F");
+        Vertix nodeA = new Vertix("A");
+        Vertix nodeB = new Vertix("B");
+        Vertix nodeC = new Vertix("C");
+        Vertix nodeD = new Vertix("D");
+        Vertix nodeE = new Vertix("E");
+        Vertix nodeF = new Vertix("F");
 
         nodeA.addDestination(nodeB, 10);
         nodeA.addDestination(nodeC, 15);
@@ -40,7 +40,7 @@ public class OrientedAdjacencyListGraph2Test {
 
         nodeF.addDestination(nodeE, 5);
 
-        OrientedAdjacencyListGraph2 graph = new OrientedAdjacencyListGraph2();
+        DijkstraOrientedAdjacencyListGraph graph = new DijkstraOrientedAdjacencyListGraph();
 
         graph.addNode(nodeA);
         graph.addNode(nodeB);
@@ -51,13 +51,13 @@ public class OrientedAdjacencyListGraph2Test {
 
         graph.dijkstraShortestPath(nodeA);
 
-        List<Node> shortestPathForNodeB = Arrays.asList(nodeA);
-        List<Node> shortestPathForNodeC = Arrays.asList(nodeA);
-        List<Node> shortestPathForNodeD = Arrays.asList(nodeA, nodeB);
-        List<Node> shortestPathForNodeE = Arrays.asList(nodeA, nodeB, nodeD);
-        List<Node> shortestPathForNodeF = Arrays.asList(nodeA, nodeB, nodeD);
+        List<Vertix> shortestPathForNodeB = Arrays.asList(nodeA);
+        List<Vertix> shortestPathForNodeC = Arrays.asList(nodeA);
+        List<Vertix> shortestPathForNodeD = Arrays.asList(nodeA, nodeB);
+        List<Vertix> shortestPathForNodeE = Arrays.asList(nodeA, nodeB, nodeD);
+        List<Vertix> shortestPathForNodeF = Arrays.asList(nodeA, nodeB, nodeD);
 
-        for (Node node : graph.getNodes()) {
+        for (Vertix node : graph.getVertices()) {
             switch (node.getName()) {
                 case "B":
                     assertTrue(node
