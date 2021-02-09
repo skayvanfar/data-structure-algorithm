@@ -5,5 +5,5 @@ package ir.sk.helper.technique;
  */
 public enum DynamicProgrammingType {
     TOP_DAWN_MEMOIZATION,
-    DOWN_TOP
+    DOWN_TOP_TABULATION
 }

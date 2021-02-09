@@ -63,17 +63,19 @@ public class Fibonacci {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
-    @DynamicProgramming(type = DynamicProgrammingType.TOP_DAWN_MEMOIZATION)
+    @DynamicProgramming(type = DynamicProgrammingType.DOWN_TOP_TABULATION)
     public static int memoizedDPFibonacciByIterative(int n) {
-        int[] array = new int[n + 1];
-        array[0] = 0;
-        if (n > 0) {
-            array[1] = 1;
-            for (int i = 2; i <= n; i++) {
-                array[i] = array[i - 1] + array[i - 2];
-            }
-        }
-        return array[n];
+        if (n == 0) return 0;
+        int[] table = new int[n + 1];
+
+        //base cases
+        table[0] = 0;
+        table[1] = 1;
+
+        for(int i=2; i<=n; i++)
+            table[i] = table[i-1] + table[i-2];
+
+        return table[n];
     }
 
     /**
@@ -85,7 +87,7 @@ public class Fibonacci {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
-    @DynamicProgramming(type = DynamicProgrammingType.DOWN_TOP)
+    @DynamicProgramming(type = DynamicProgrammingType.DOWN_TOP_TABULATION)
     public static int bottomUpDPFibonacci(int n) {
         int low = 0;
         int high = 1;
