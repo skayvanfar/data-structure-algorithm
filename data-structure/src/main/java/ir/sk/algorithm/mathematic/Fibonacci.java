@@ -28,8 +28,8 @@ public class Fibonacci {
     }
 
     public static int memoizedDPFibonacciByRecursive(int n) {
-        int[] memo = new int[n + 1];
-        return memoizedDPFibonacciByRecursive(n, memo);
+        int[] memoize = new int[n + 1];
+        return memoizedDPFibonacciByRecursive(n, memoize);
     }
 
     /**
@@ -37,22 +37,21 @@ public class Fibonacci {
      * time = subproblems * time/subproblem = n*O(1) = O(n)
      *
      * @param n
-     * @param memo
+     * @param memoize
      * @return
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
     @DynamicProgramming(type = DynamicProgrammingType.TOP_DAWN_MEMOIZATION)
-    private static int memoizedDPFibonacciByRecursive(int n, int[] memo) {
-        if (memo[n] != 0) return memo[n];
-
-        if (n == 0 || n == 1)
+    private static int memoizedDPFibonacciByRecursive(int n, int[] memoize) {
+        if (n < 2)
             return n;
-        else {
-            int result = memoizedDPFibonacciByRecursive(n - 1, memo) + memoizedDPFibonacciByRecursive(n - 2, memo);
-            memo[n] = result;
-            return result;
-        }
+        // if we have already solved this sub problem, simply return the result from the cache
+        if (memoize[n] != 0)
+            return memoize[n];
+
+        memoize[n] = memoizedDPFibonacciByRecursive(n - 1, memoize) + memoizedDPFibonacciByRecursive(n - 2, memoize);
+        return memoize[n];
     }
 
     /**
@@ -72,8 +71,8 @@ public class Fibonacci {
         table[0] = 0;
         table[1] = 1;
 
-        for(int i=2; i<=n; i++)
-            table[i] = table[i-1] + table[i-2];
+        for (int i = 2; i <= n; i++)
+            table[i] = table[i - 1] + table[i - 2];
 
         return table[n];
     }
