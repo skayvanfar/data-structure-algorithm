@@ -1,9 +1,10 @@
 package ir.sk.algorithm.mathematic;
 
-import ir.sk.helper.Memoization;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.technique.BruteForce;
+import ir.sk.helper.technique.DynamicProgramming;
+import ir.sk.helper.technique.DynamicProgrammingType;
 
 /**
  * Created by sad.keyvanfar on 6/25/2020.
@@ -41,7 +42,7 @@ public class Fibonacci {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
-    @Memoization
+    @DynamicProgramming(type = DynamicProgrammingType.TOP_DAWN_MEMOIZATION)
     private static int memoizedDPFibonacciByRecursive(int n, int[] memo) {
         if (memo[n] != 0) return memo[n];
 
@@ -62,7 +63,7 @@ public class Fibonacci {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
-    @Memoization
+    @DynamicProgramming(type = DynamicProgrammingType.TOP_DAWN_MEMOIZATION)
     public static int memoizedDPFibonacciByIterative(int n) {
         int[] array = new int[n + 1];
         array[0] = 0;
@@ -84,6 +85,7 @@ public class Fibonacci {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
+    @DynamicProgramming(type = DynamicProgrammingType.DOWN_TOP)
     public static int bottomUpDPFibonacci(int n) {
         int low = 0;
         int high = 1;
@@ -110,7 +112,7 @@ public class Fibonacci {
      * @param n
      */
     @TimeComplexity("O(n)")
-    @Memoization
+    @DynamicProgramming(type = DynamicProgrammingType.TOP_DAWN_MEMOIZATION)
     public static void allFibonacciMemoized(int n) {
         int[] memo = new int[n + 1];
         for (int i = 0; i < n; i++) {

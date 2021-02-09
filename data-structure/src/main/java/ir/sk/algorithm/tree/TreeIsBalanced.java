@@ -1,8 +1,9 @@
 package ir.sk.algorithm.tree;
 
-import ir.sk.helper.Memoization;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
+import ir.sk.helper.technique.DynamicProgramming;
+import ir.sk.helper.technique.DynamicProgrammingType;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -49,7 +50,7 @@ public class TreeIsBalanced {
      * @param memo
      * @return
      */
-    @Memoization
+    @DynamicProgramming(type = DynamicProgrammingType.TOP_DAWN_MEMOIZATION)
     public int getHeightMemo(TreeNode root, Map<TreeNode, Integer> memo) {
         if (memo.get(root) != null) return memo.get(root);
         if (root == null) return -1; // Base case

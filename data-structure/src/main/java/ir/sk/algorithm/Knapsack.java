@@ -1,8 +1,9 @@
 package ir.sk.algorithm;
 
-import ir.sk.helper.Memoization;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
+import ir.sk.helper.technique.DynamicProgramming;
+import ir.sk.helper.technique.DynamicProgrammingType;
 
 /**
  * Given the weights and profits of ‘N’ items,
@@ -65,7 +66,7 @@ public class Knapsack {
      */
     @SpaceComplexity("O(n*c + n) = O(n*c)")
     @TimeComplexity("O(n*c), ‘C’ is the knapsack capacity")
-    @Memoization
+    @DynamicProgramming(type = DynamicProgrammingType.TOP_DAWN_MEMOIZATION)
     private static int slove10knapsackByDP(Integer[][] dp, int[] profits, int[] weights, int capacity, int currentIndex) {
         // base checks
         if (capacity <= 0 || currentIndex >= profits.length)

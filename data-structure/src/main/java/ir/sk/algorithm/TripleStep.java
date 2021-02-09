@@ -1,9 +1,10 @@
 package ir.sk.algorithm;
 
-import ir.sk.helper.Memoization;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.technique.BruteForce;
+import ir.sk.helper.technique.DynamicProgramming;
+import ir.sk.helper.technique.DynamicProgrammingType;
 
 /**
  * A child is running up a staircase with n steps and can hop either 1 step, 2 steps, or 3
@@ -37,7 +38,7 @@ public class TripleStep {
 
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
-    @Memoization
+    @DynamicProgramming(type = DynamicProgrammingType.TOP_DAWN_MEMOIZATION)
     private static int memoizedDPCountWaysByRecursive(int n, int[] memo) {
         if (n < 0)
             return 0;

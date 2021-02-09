@@ -1,8 +1,9 @@
 package ir.sk.algorithm.mathematic;
 
-import ir.sk.helper.Memoization;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
+import ir.sk.helper.technique.DynamicProgramming;
+import ir.sk.helper.technique.DynamicProgrammingType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -474,7 +475,7 @@ public class Algorithms {
      * @return
      */
     @TimeComplexity("O(rc)")
-    @Memoization
+    @DynamicProgramming(type = DynamicProgrammingType.TOP_DAWN_MEMOIZATION)
     public static ArrayList<Point> memoizedDPGetPath(boolean[][] maze) {
         if (maze == null || maze.length == 0) return null;
         ArrayList<Point> path = new ArrayList<>();
