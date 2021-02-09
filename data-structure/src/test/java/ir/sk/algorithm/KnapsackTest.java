@@ -26,4 +26,14 @@ public class KnapsackTest {
         maxProfits = Knapsack.slove10knapsack(profits, weights, 6);
         System.out.println("Total knapsack profit ---> " + maxProfits);
     }
+
+    @Test
+    public void slove10knapsackByDP() {
+        int[] profits = {1, 6, 10, 16};
+        int[] weights = {1, 2, 3, 5};
+        int maxProfits = Knapsack.slove10knapsackByDP(profits, weights, 7);
+        System.out.println("Total knapsack profit ---> " + maxProfits);
+        maxProfits = Knapsack.slove10knapsackByDP(profits, weights, 6);
+        System.out.println("Total knapsack profit ---> " + maxProfits);
+    }
 }

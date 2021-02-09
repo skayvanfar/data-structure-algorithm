@@ -1,5 +1,6 @@
 package ir.sk.algorithm;
 
+import ir.sk.helper.Memoization;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 
@@ -13,6 +14,10 @@ import ir.sk.helper.complexity.TimeComplexity;
  */
 public class Knapsack {
 
+    public static int slove10knapsack(int[] profits, int[] weights, int capacity) {
+        return slove10knapsack(profits, weights, capacity, 0);
+    }
+
     /**
      * Given two integer arrays to represent weights and profits of ‘N’ items,
      * we need to find a subset of these items which will give us maximum profit such that their cumulative weight is not more than a given number ‘C’.
@@ -21,12 +26,9 @@ public class Knapsack {
      * @param profits
      * @param weights
      * @param capacity
+     * @param currentIndex
      * @return
      */
-    public static int slove10knapsack(int[] profits, int[] weights, int capacity) {
-        return slove10knapsack(profits, weights, capacity, 0);
-    }
-
     @SpaceComplexity("O(n)")
     @TimeComplexity("O(2^n), This space will be used to store the recursion stack.")
     private static int slove10knapsack(int[] profits, int[] weights, int capacity, int currentIndex) {
@@ -45,5 +47,45 @@ public class Knapsack {
         int profit2 = slove10knapsack(profits, weights, capacity, currentIndex + 1);
 
         return Math.max(profit1, profit2);
+    }
+
+
+    public static int slove10knapsackByDP(int[] profits, int[] weights, int capacity) {
+        Integer[][] dp = new Integer[profits.length][capacity + 1];
+        return slove10knapsackByDP(dp, profits, weights, capacity, 0);
+    }
+
+    /**
+     * @param dp
+     * @param profits
+     * @param weights
+     * @param capacity
+     * @param currentIndex
+     * @return
+     */
+    @SpaceComplexity("O(n*c + n) = O(n*c)")
+    @TimeComplexity("O(n*c), ‘C’ is the knapsack capacity")
+    @Memoization
+    private static int slove10knapsackByDP(Integer[][] dp, int[] profits, int[] weights, int capacity, int currentIndex) {
+        // base checks
+        if (capacity <= 0 || currentIndex >= profits.length)
+            return 0;
+
+        // if we have already solved a similar problem, return the result from memory
+        if (dp[currentIndex][capacity] != null)
+            return dp[currentIndex][capacity];
+
+        // recursive call after choosing the element at the currentIndex
+        // if the weight of the element at the currentIndex exceeds the capacity,
+        // we shouldn't process this
+        int profit1 = 0;
+        if (weights[currentIndex] <= capacity)
+            profit1 = profits[currentIndex] + slove10knapsack(profits, weights, capacity - weights[currentIndex], currentIndex + 1);
+
+        // recursiveIndex call after excluding the element at the currentIndex
+        int profit2 = slove10knapsack(profits, weights, capacity, currentIndex + 1);
+
+        dp[currentIndex][capacity] = Math.max(profit1, profit2);
+        return dp[currentIndex][capacity];
     }
 }
