@@ -1,6 +1,11 @@
 package ir.sk.algorithm;
 
+import ir.sk.helper.Difficulty;
+import ir.sk.helper.DifficultyType;
+import ir.sk.helper.Implementation;
+import ir.sk.helper.ImplementationType;
 import ir.sk.helper.complexity.TimeComplexity;
+import ir.sk.helper.recursiontype.HeadRecursion;
 import ir.sk.helper.technique.Backtracking;
 
 import java.util.ArrayList;
@@ -11,7 +16,7 @@ import java.util.Set;
 /**
  * A power set of set S is the set of all possible subsets of S, including the empty set and S itself.
  * <p>
- * The powerset of {1, 2, 3} is:
+ * The power set of {1, 2, 3} is:
  * {{}, {2}, {3}, {2, 3}, {1, 2}, {1, 3}, {1, 2, 3}, {1}}
  * <p>
  * The total number of subsets of any given set is equal to 2^n
@@ -27,6 +32,9 @@ public class PowerSet {
      */
     @TimeComplexity("O(2^n)")
     @Backtracking
+    @Difficulty(type = DifficultyType.MEDIUM)
+    @Implementation(type = ImplementationType.Recursive)
+    @HeadRecursion
     public static <T> Set<Set<T>> powerSetRecursive(Set<T> originalSet) {
         Set<Set<T>> sets = new HashSet<>();
         if (originalSet.isEmpty()) {
