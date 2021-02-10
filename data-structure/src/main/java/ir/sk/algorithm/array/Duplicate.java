@@ -6,12 +6,36 @@ import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.MultiplePointerPattern;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * Remove duplicates from an array
  *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 2/10/2021.
  */
 public class Duplicate {
+
+    /**
+     * with the standard Java Collections Framework
+     *
+     * @param array
+     */
+    public static List<Integer> deleteDuplicatesWithPlainJava(List<Integer> array) {
+        return new ArrayList<>(new HashSet<>(array));
+    }
+
+    /**
+     * use the distinct() method from the Stream API
+     *
+     * @param array
+     * @return
+     */
+    public static List<Integer> deleteDuplicatesWithJava8(List<Integer> array) {
+        return array.stream().distinct().collect(Collectors.toList());
+    }
 
     /**
      * Given an array of sorted numbers, remove all duplicates from it (set it zero). You should not use any extra space;

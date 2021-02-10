@@ -4,7 +4,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -42,4 +44,15 @@ public class DuplicateTest {
         System.out.println(Arrays.toString(arr));
     }
 
+    @Test
+    public void deleteDuplicatesWithPlainJava() {
+        List<Integer> listWithDuplicates = Arrays.asList(0, 1, 2, 3, 0, 0);
+        System.out.println(Duplicate.deleteDuplicatesWithPlainJava(listWithDuplicates));
+    }
+
+    @Test
+    public void deleteDuplicatesWithJava8() {
+        List<Integer> listWithDuplicates = Arrays.asList(0, 1, 2, 3, 0, 0);
+        System.out.println(Duplicate.deleteDuplicatesWithJava8(listWithDuplicates));
+    }
 }
