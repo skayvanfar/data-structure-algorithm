@@ -7,6 +7,7 @@ import ir.sk.helper.ImplementationType;
 import ir.sk.helper.complexity.BCR;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
+import ir.sk.helper.pattern.BFS;
 import ir.sk.helper.pattern.FrequencyCountingPattern;
 import ir.sk.helper.technique.Backtracking;
 import ir.sk.helper.technique.DivideAndConquer;
@@ -105,6 +106,7 @@ public class Permutation {
     @SpaceComplexity("O(n * n!)")
     @Implementation(type = ImplementationType.Iterative)
     @Difficulty(type = DifficultyType.MEDIUM)
+    @BFS
     public static List<List<Integer>> findPermutationsInsertInEachPosition(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         Queue<List<Integer>> permutations = new LinkedList<>();

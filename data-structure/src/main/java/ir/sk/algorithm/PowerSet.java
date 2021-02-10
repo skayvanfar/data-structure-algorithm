@@ -6,6 +6,7 @@ import ir.sk.helper.Implementation;
 import ir.sk.helper.ImplementationType;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
+import ir.sk.helper.pattern.BFS;
 import ir.sk.helper.recursiontype.HeadRecursion;
 import ir.sk.helper.technique.Backtracking;
 
@@ -72,6 +73,7 @@ public class PowerSet {
     @TimeComplexity("O(2^n)")
     @SpaceComplexity("O(2^n)")
     @Implementation(type = ImplementationType.Iterative)
+    @BFS
     public static List<List<Integer>> findSubSets(int[] nums) {
         List<List<Integer>> subsets = new ArrayList<>();
         // start by adding the empty subset
@@ -109,6 +111,7 @@ public class PowerSet {
     @TimeComplexity("O(2^n)")
     @SpaceComplexity("O(2^n)")
     @Implementation(type = ImplementationType.Iterative)
+    @BFS
     public static List<List<Integer>> findSubsetsWithDuplicates(int[] nums) {
         // sort the numbers to handle duplicates
         Arrays.sort(nums);
