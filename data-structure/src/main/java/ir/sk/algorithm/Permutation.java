@@ -1,5 +1,7 @@
 package ir.sk.algorithm;
 
+import ir.sk.helper.Difficulty;
+import ir.sk.helper.DifficultyType;
 import ir.sk.helper.Implementation;
 import ir.sk.helper.ImplementationType;
 import ir.sk.helper.complexity.BCR;
@@ -102,6 +104,7 @@ public class Permutation {
     @TimeComplexity("O(n * n!)")
     @SpaceComplexity("O(n * n!)")
     @Implementation(type = ImplementationType.Iterative)
+    @Difficulty(type = DifficultyType.MEDIUM)
     public static List<List<Integer>> findPermutationsInsertInEachPosition(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         Queue<List<Integer>> permutations = new LinkedList<>();
@@ -131,15 +134,16 @@ public class Permutation {
      * @param nums
      * @return
      */
-    @TimeComplexity("O(n * n!)")
-    @SpaceComplexity("O(n * n!)")
-    @Implementation(type = ImplementationType.Recursive)
     public static List<List<Integer>> findPermutationsInsertInEachPositionRecursive(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         findPermutationsInsertInEachPositionRecursive(nums, 0, new ArrayList<>(), result);
         return result;
     }
 
+    @TimeComplexity("O(n * n!)")
+    @SpaceComplexity("O(n * n!)")
+    @Implementation(type = ImplementationType.Recursive)
+    @Difficulty(type = DifficultyType.MEDIUM)
     private static void findPermutationsInsertInEachPositionRecursive(int[] nums, int index, List<Integer> currentPermutations, List<List<Integer>> result) {
         if (index == nums.length) {
             result.add(currentPermutations);
