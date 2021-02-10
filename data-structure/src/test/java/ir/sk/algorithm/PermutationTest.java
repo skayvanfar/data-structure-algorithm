@@ -5,6 +5,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
+
 /**
  * Created by sad.keyvanfar on 8/23/2020.
  */
@@ -64,5 +66,17 @@ public class PermutationTest {
     @Test
     public void permutationIterative() {
         Permutation.permutationIterative("abc");
+    }
+
+    @Test
+    public void findPermutationsInsertInEachPosition() {
+        List<List<Integer>> result = Permutation.findPermutationsInsertInEachPosition(new int[]{1, 3, 5});
+        System.out.println("here are all the permutations: " + result);
+    }
+
+    @Test
+    public void findPermutationsInsertInEachPositionRecursive() {
+        List<List<Integer>> result = Permutation.findPermutationsInsertInEachPositionRecursive(new int[]{1, 3, 5});
+        System.out.println("here are all the permutations: " + result);
     }
 }

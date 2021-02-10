@@ -1,5 +1,7 @@
 package ir.sk.algorithm;
 
+import ir.sk.helper.Implementation;
+import ir.sk.helper.ImplementationType;
 import ir.sk.helper.complexity.BCR;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
@@ -7,10 +9,7 @@ import ir.sk.helper.pattern.FrequencyCountingPattern;
 import ir.sk.helper.technique.Backtracking;
 import ir.sk.helper.technique.DivideAndConquer;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * A permutation of a set is a rearrangement of its elements. A set which consists of n elements has n! permutations.
@@ -76,6 +75,81 @@ public class Permutation {
                 }
             }
             return result;
+        }
+    }
+
+    /**
+     * Given a set of distinct numbers, find all of its permutations.
+     * <p>
+     * This problem follows the Subsets pattern and we can follow a similar Breadth First Search (BFS) approach. However, unlike Subsets, every permutation must contain all the numbers.
+     * <p>
+     * Let’s take the example-1 mentioned above to generate all the permutations. Following a BFS approach, we will consider one number at a time:
+     * <p>
+     * If the given set is empty then we have only an empty permutation set: []
+     * Let’s add the first element (1), the permutations will be: [1]
+     * Let’s add the second element (3), the permutations will be: [3,1], [1,3]
+     * Let’s add the third element (5), the permutations will be: [5,3,1], [3,5,1], [3,1,5], [5,1,3], [1,5,3], [1,3,5]
+     * <p>
+     * If we look closely, we will realize that when we add a new number (5), we take each permutation of the previous step and insert the new number in every position to generate the new permutations. For example, inserting ‘5’ in different positions of [3,1] will give us the following permutations:
+     * <p>
+     * Inserting ‘5’ before ‘3’: [5,3,1]
+     * Inserting ‘5’ between ‘3’ and ‘1’: [3,5,1]
+     * Inserting ‘5’ after ‘1’: [3,1,5]
+     *
+     * @param nums
+     * @return
+     */
+    @TimeComplexity("O(n * n!)")
+    @SpaceComplexity("O(n * n!)")
+    @Implementation(type = ImplementationType.Iterative)
+    public static List<List<Integer>> findPermutationsInsertInEachPosition(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        Queue<List<Integer>> permutations = new LinkedList<>();
+        permutations.add(new ArrayList<>());
+
+        for (int currentNumber : nums) {
+            // we will take all existing permutations and add the current number to create new permutations
+            int n = permutations.size();
+            for (int i = 0; i < n; i++) {
+                List<Integer> oldPermutations = permutations.poll();
+
+                // create a new permutations by adding the current number at every position
+                for (int j = 0; j <= oldPermutations.size(); j++) {
+                    List<Integer> newPermutaions = new ArrayList<>(oldPermutations);
+                    newPermutaions.add(j, currentNumber);
+                    if (newPermutaions.size() == nums.length)
+                        result.add(newPermutaions);
+                    else
+                        permutations.add(newPermutaions);
+                }
+            }
+        }
+        return result;
+    }
+
+    /**
+     * @param nums
+     * @return
+     */
+    @TimeComplexity("O(n * n!)")
+    @SpaceComplexity("O(n * n!)")
+    @Implementation(type = ImplementationType.Recursive)
+    public static List<List<Integer>> findPermutationsInsertInEachPositionRecursive(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        findPermutationsInsertInEachPositionRecursive(nums, 0, new ArrayList<>(), result);
+        return result;
+    }
+
+    private static void findPermutationsInsertInEachPositionRecursive(int[] nums, int index, List<Integer> currentPermutations, List<List<Integer>> result) {
+        if (index == nums.length) {
+            result.add(currentPermutations);
+        } else {
+            // create a new permutation by adding the current number at every position
+            for (int i = 0; i <= currentPermutations.size(); i++) {
+                List<Integer> newPermutation = new ArrayList<>(currentPermutations);
+                newPermutation.add(i, nums[index]);
+                findPermutationsInsertInEachPositionRecursive(nums, index + 1, newPermutation, result);
+            }
         }
     }
 

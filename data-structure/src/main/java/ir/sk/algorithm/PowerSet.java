@@ -101,6 +101,7 @@ public class PowerSet {
      * Follow the same BFS approach but whenever we are about to process a duplicate (i.e., when the current and the previous numbers are same),
      * instead of adding the current number (which is a duplicate) to all the existing subsets,
      * only add it to the subsets which were created in the previous step.
+     * todo more attention
      *
      * @param nums
      * @return
