@@ -3,6 +3,7 @@ package ir.sk.algorithm.array;
 import ir.sk.helper.Difficulty;
 import ir.sk.helper.DifficultyType;
 import ir.sk.helper.Point;
+import ir.sk.helper.complexity.BCR;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.Stability;
 import ir.sk.helper.complexity.TimeComplexity;
@@ -185,6 +186,7 @@ public class Duplicate {
     @SpaceComplexity("O(1)")
     @MultiplePointerPattern
     @Difficulty(type = DifficultyType.EASY)
+    @BCR
     public static void deleteDuplicatesAndShift(int[] arr) {
         int nextNonDuplicate = 1;
 
