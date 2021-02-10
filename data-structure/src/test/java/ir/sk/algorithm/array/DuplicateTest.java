@@ -24,6 +24,12 @@ public class DuplicateTest {
     }
 
     @Test
+    public void deleteDuplicatesNaive() {
+        int arr[] = new int[]{6,7,8,7,2,3};
+        System.out.println(Arrays.toString(Duplicate.deleteDuplicatesNaive(arr)));
+    }
+
+    @Test
     public void deleteDuplicates() {
         int arr[] = new int[]{2, 3, 3, 3, 6, 9, 9};
         Duplicate.deleteDuplicates(arr);

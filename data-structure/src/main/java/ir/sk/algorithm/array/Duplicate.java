@@ -1,12 +1,17 @@
 package ir.sk.algorithm.array;
 
+import ir.sk.algorithm.basic.RotationShift;
+import ir.sk.algorithm.basic.Utils;
 import ir.sk.helper.Difficulty;
 import ir.sk.helper.DifficultyType;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
+import ir.sk.helper.pattern.MultipleLoopsPattern;
 import ir.sk.helper.pattern.MultiplePointerPattern;
+import ir.sk.helper.technique.BruteForce;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,6 +22,34 @@ import java.util.stream.Collectors;
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 2/10/2021.
  */
 public class Duplicate {
+
+    /**
+     * unsorted array
+     * Brute Force approach I: Using 3 nested loops
+     * To remove duplicates, first, we need to find them.
+     * The idea is to iterate over array A[] till the end, find the duplicates and remove it.
+     *
+     * @param nums
+     * @return
+     */
+    @TimeComplexity("O(n^3)")
+    @SpaceComplexity("O(n)")
+    @MultipleLoopsPattern
+    @BruteForce
+    public static int[] deleteDuplicatesNaive(int[] nums) {
+        int newLength = nums.length;
+        for (int i = 0; i < newLength; i++) {
+            for (int j = i + 1; j < newLength; j++) {
+                if (nums[i] == nums[j]) {
+                    // shift
+                    for (int k = j; k < newLength - 1; k++)
+                        nums[k] = nums[k + 1];
+                    newLength--;
+                }
+            }
+        }
+        return Arrays.copyOf(nums, newLength);
+    }
 
     /**
      * with the standard Java Collections Framework
