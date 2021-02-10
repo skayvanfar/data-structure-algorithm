@@ -1,4 +1,4 @@
-package ir.sk.algorithm;
+package ir.sk.algorithm.array;
 
 import ir.sk.algorithm.array.PairsWithGivenSum;
 import org.junit.After;
@@ -51,24 +51,4 @@ public class PairsWithGivenSumTest {
         Assert.assertEquals(2, PairsWithGivenSum.getPairsCountByHashing(arr, 6));
     }
 
-    @Test
-    public void deleteDuplicates() {
-        int arr[] = new int[]{2, 3, 3, 3, 6, 9, 9};
-        PairsWithGivenSum.deleteDuplicates(arr);
-        System.out.println(Arrays.toString(arr));
-    }
-
-    @Test
-    public void deleteDuplicatesAndShift() {
-        int arr[] = new int[]{2, 3, 3, 3, 6, 9, 9};
-        PairsWithGivenSum.deleteDuplicatesAndShift(arr);
-        System.out.println(Arrays.toString(arr));
-    }
-
-    @Test
-    public void deleteDuplicatesAll() {
-        int arr[] = new int[]{3, 2, 3, 6, 3, 10, 9, 3};
-        PairsWithGivenSum.deleteDuplicatesAll(arr, 3);
-        System.out.println(Arrays.toString(arr));
-    }
 }
