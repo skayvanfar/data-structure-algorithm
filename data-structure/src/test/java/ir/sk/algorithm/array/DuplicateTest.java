@@ -44,8 +44,7 @@ public class DuplicateTest {
     @Test
     public void deleteDuplicates() {
         int arr[] = new int[]{2, 3, 3, 3, 6, 9, 9};
-        Duplicate.deleteDuplicates(arr);
-        System.out.println(Arrays.toString(arr));
+        System.out.println(Duplicate.deleteDuplicates(arr));
     }
 
     @Test

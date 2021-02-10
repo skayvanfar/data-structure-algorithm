@@ -122,6 +122,8 @@ public class Duplicate {
      *
      * @param array
      */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
     public static List<Integer> deleteDuplicatesWithPlainJava(List<Integer> array) {
         return new ArrayList<>(new HashSet<>(array));
     }
@@ -142,19 +144,27 @@ public class Duplicate {
      * @param arr
      */
     @TimeComplexity("O(n)")
-    @SpaceComplexity("O(1)")
+    @SpaceComplexity("O(n)")
     @MultiplePointerPattern
     @Difficulty(type = DifficultyType.EASY)
-    public static void deleteDuplicates(int[] arr) {
+    public static Set<Integer> deleteDuplicates(int[] arr) {
         int start = 0, end = 1;
+
+        Set<Integer> noDuplicates = new HashSet<>();
 
         while (end < arr.length) {
             if (arr[start] == arr[end])
-                arr[end] = 0;
+                arr[end] = -1; // -1 is just a flag
             else
                 start = end;
             end++;
         }
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] != -1)
+                noDuplicates.add(arr[i]);
+        }
+        return noDuplicates;
     }
 
 
