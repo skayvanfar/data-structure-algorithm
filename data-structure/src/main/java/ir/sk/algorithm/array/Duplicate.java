@@ -52,6 +52,11 @@ public class Duplicate {
     }
 
     /**
+     * We could use an auxiliary array to store the non-duplicates and return the auxiliary array.
+     *
+     * one way is to use another auxiliary array, a boolean array. At every corresponding index for each element,
+     * True will mean that the element is unique and False will mean that its a duplicate.
+     *
      * @param nums
      * @return
      */
@@ -60,6 +65,7 @@ public class Duplicate {
     @MultipleLoopsPattern
     @BruteForce
     @Stability(false)
+    @Point("We just increased your space complexity to reduce your time complexity. This is known as a time-space tradeoff.")
     public static Set<Integer> deleteDuplicatesNaiveII(int[] nums) {
 
         boolean[] marks = new boolean[nums.length];
