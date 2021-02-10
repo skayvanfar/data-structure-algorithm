@@ -1,19 +1,16 @@
 package ir.sk.algorithm.array;
 
-import ir.sk.algorithm.basic.RotationShift;
-import ir.sk.algorithm.basic.Utils;
 import ir.sk.helper.Difficulty;
 import ir.sk.helper.DifficultyType;
+import ir.sk.helper.Point;
 import ir.sk.helper.complexity.SpaceComplexity;
+import ir.sk.helper.complexity.Stability;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.MultipleLoopsPattern;
 import ir.sk.helper.pattern.MultiplePointerPattern;
 import ir.sk.helper.technique.BruteForce;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -33,22 +30,63 @@ public class Duplicate {
      * @return
      */
     @TimeComplexity("O(n^3)")
-    @SpaceComplexity("O(n)")
+    @SpaceComplexity("O(1)")
     @MultipleLoopsPattern
     @BruteForce
-    public static int[] deleteDuplicatesNaive(int[] nums) {
+    @Stability
+    public static int[] deleteDuplicatesNaiveI(int[] nums) {
         int newLength = nums.length;
         for (int i = 0; i < newLength; i++) {
-            for (int j = i + 1; j < newLength; j++) {
+            for (int j = i + 1; j < newLength;) {
                 if (nums[i] == nums[j]) {
-                    // shift
+                    // Shifting elements one to the left, hence, deleting element at pos j
                     for (int k = j; k < newLength - 1; k++)
                         nums[k] = nums[k + 1];
                     newLength--;
+                } else
+                    j++;
+            }
+        }
+        // Reduce the size of array A to now accommodate only initial n elements. (resize)
+        return Arrays.copyOf(nums, newLength);
+    }
+
+    /**
+     * @param nums
+     * @return
+     */
+    @TimeComplexity("O(n^2)")
+    @SpaceComplexity("O(n)")
+    @MultipleLoopsPattern
+    @BruteForce
+    @Stability(false)
+    public static Set<Integer> deleteDuplicatesNaiveII(int[] nums) {
+
+        boolean[] marks = new boolean[nums.length];
+        int newLength = nums.length;
+
+        @Point("HashSet O(1) unstable, TreeSet O(log n) sorted, LinkedHashSet O(n) stable")
+        Set<Integer> noDuplicates = new HashSet<>();
+
+        for (int i = 0; i < nums.length; i++)
+            marks[i] = true;
+
+        for (int i = 0; i < nums.length; i++) {
+            if (marks[i] = true) {
+                for (int j = i + 1; j < nums.length; j++) {
+                    if (nums[i] == nums[j]) {
+                        marks[j] = false;
+                        newLength--;
+                    }
                 }
             }
         }
-        return Arrays.copyOf(nums, newLength);
+
+        for (int i = 0; i < nums.length; i++)
+            if (marks[i])
+                noDuplicates.add(nums[i]);
+
+        return noDuplicates;
     }
 
     /**

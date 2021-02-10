@@ -24,9 +24,15 @@ public class DuplicateTest {
     }
 
     @Test
-    public void deleteDuplicatesNaive() {
-        int arr[] = new int[]{6,7,8,7,2,3};
-        System.out.println(Arrays.toString(Duplicate.deleteDuplicatesNaive(arr)));
+    public void deleteDuplicatesNaiveI() {
+        int arr[] = new int[]{6,7,8,7,7,7,7,2};
+        System.out.println(Arrays.toString(Duplicate.deleteDuplicatesNaiveI(arr)));
+    }
+
+    @Test
+    public void deleteDuplicatesNaiveII() {
+        int arr[] = new int[]{6,7,8,7,7,7,7,2,3};
+        System.out.println(Duplicate.deleteDuplicatesNaiveII(arr));
     }
 
     @Test
@@ -61,4 +67,6 @@ public class DuplicateTest {
         List<Integer> listWithDuplicates = Arrays.asList(0, 1, 2, 3, 0, 0);
         System.out.println(Duplicate.deleteDuplicatesWithJava8(listWithDuplicates));
     }
+
+
 }
