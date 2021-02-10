@@ -33,8 +33,15 @@ public class PowerSetTest {
 
     @Test
     public void findSubSets() {
-        int[] integers = {1, 2, 3,4 ,5 ,6, 7, 8};
+        int[] integers = {1, 2, 3, 4, 5, 6, 7, 8};
         List<List<Integer>> result = PowerSet.findSubSets(integers);
+        System.out.println(result);
+    }
+
+    @Test
+    public void findSubsetsWithDuplicates() {
+        int[] integers = {1, 5, 3, 3};
+        List<List<Integer>> result = PowerSet.findSubsetsWithDuplicates(integers);
         System.out.println(result);
     }
 
