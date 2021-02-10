@@ -37,7 +37,7 @@ public class Duplicate {
     public static int[] deleteDuplicatesNaiveI(int[] nums) {
         int newLength = nums.length;
         for (int i = 0; i < newLength; i++) {
-            for (int j = i + 1; j < newLength;) {
+            for (int j = i + 1; j < newLength; ) {
                 if (nums[i] == nums[j]) {
                     // Shifting elements one to the left, hence, deleting element at pos j
                     for (int k = j; k < newLength - 1; k++)
@@ -53,7 +53,7 @@ public class Duplicate {
 
     /**
      * We could use an auxiliary array to store the non-duplicates and return the auxiliary array.
-     *
+     * <p>
      * one way is to use another auxiliary array, a boolean array. At every corresponding index for each element,
      * True will mean that the element is unique and False will mean that its a duplicate.
      *
@@ -92,6 +92,28 @@ public class Duplicate {
             if (marks[i])
                 noDuplicates.add(nums[i]);
 
+        return noDuplicates;
+    }
+
+    /**
+     * If we sort the array, all the duplicate elements line up next to each other and it's easier to find them. We could again delete duplicate elements by shifting or just use a new resultant array similar to the above approach.
+     *
+     * @param num
+     * @return
+     */
+    @TimeComplexity("O(n log n)")
+    @SpaceComplexity("O(n)")
+    @Stability(false)
+    public static Set<Integer> deleteDuplicatesBySorting(int[] num) {
+        Arrays.sort(num);
+        Set<Integer> noDuplicates = new HashSet<>();
+        int i = 0;
+        while (i < num.length) {
+            noDuplicates.add(num[i]);
+            while (i + 1 < num.length && num[i] == num[i + 1])
+                i++;
+            i++;
+        }
         return noDuplicates;
     }
 

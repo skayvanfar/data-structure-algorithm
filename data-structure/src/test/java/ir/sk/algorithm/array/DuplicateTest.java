@@ -36,6 +36,12 @@ public class DuplicateTest {
     }
 
     @Test
+    public void deleteDuplicatesBySorting() {
+        int arr[] = new int[]{6,7,8,7,7,7,7,2,3};
+        System.out.println(Duplicate.deleteDuplicatesBySorting(arr));
+    }
+
+    @Test
     public void deleteDuplicates() {
         int arr[] = new int[]{2, 3, 3, 3, 6, 9, 9};
         Duplicate.deleteDuplicates(arr);
@@ -67,6 +73,5 @@ public class DuplicateTest {
         List<Integer> listWithDuplicates = Arrays.asList(0, 1, 2, 3, 0, 0);
         System.out.println(Duplicate.deleteDuplicatesWithJava8(listWithDuplicates));
     }
-
 
 }
