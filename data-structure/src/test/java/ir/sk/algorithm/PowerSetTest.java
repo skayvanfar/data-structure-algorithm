@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -26,9 +27,15 @@ public class PowerSetTest {
         mySet.add(1);
         mySet.add(2);
         mySet.add(3);
-        for (Set<Integer> s : PowerSet.powerSetRecursive(mySet)) {
-            System.out.println(s);
-        }
+        Set<Set<Integer>> result = PowerSet.powerSetRecursive(mySet);
+        System.out.println(result);
+    }
+
+    @Test
+    public void findSubSets() {
+        int[] integers = {1, 2, 3,4 ,5 ,6, 7, 8};
+        List<List<Integer>> result = PowerSet.findSubSets(integers);
+        System.out.println(result);
     }
 
     @Test
@@ -36,4 +43,5 @@ public class PowerSetTest {
         char set[] = {'a', 'b', 'c'};
         PowerSet.powerSetBinary(set);
     }
+
 }

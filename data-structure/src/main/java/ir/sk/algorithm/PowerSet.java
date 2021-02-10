@@ -4,6 +4,7 @@ import ir.sk.helper.Difficulty;
 import ir.sk.helper.DifficultyType;
 import ir.sk.helper.Implementation;
 import ir.sk.helper.ImplementationType;
+import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.recursiontype.HeadRecursion;
 import ir.sk.helper.technique.Backtracking;
@@ -52,6 +53,43 @@ public class PowerSet {
             sets.add(set);
         }
         return sets;
+    }
+
+    /**
+     * To generate all subsets of the given set,
+     * we can use the Breadth First Search (BFS) approach.
+     * We can start with an empty set, iterate through all numbers one-by-one,
+     * and add them to existing sets to create new subsets.
+     *
+     * Given set: [1, 5, 3]
+     *
+     * Start with an empty set: [[]]
+     * Add the first number (1) to all the existing subsets to create new subsets: [[], [1]];
+     * Add the second number (5) to all the existing subsets: [[], [1], [5], [1,5]];
+     * Add the third number (3) to all the existing subsets: [[], [1], [5], [1,5], [3], [1,3], [5,3], [1,5,3]].
+     *
+     * @param nums
+     * @return
+     */
+
+    @TimeComplexity("O(2^n)")
+    @SpaceComplexity("O(2^n)")
+    @Implementation(type = ImplementationType.Iterative)
+    public static List<List<Integer>> findSubSets(int[] nums) {
+        List<List<Integer>> subsets = new ArrayList<>();
+        // start by adding the empty subset
+        subsets.add(new ArrayList<>());
+        for (int currentNumber : nums) {
+            // we will take all existing sunsets and insert the current number in them to create new sunSets
+            int n = subsets.size();
+            for (int i = 0; i < n; i++) {
+                // create a new subset from the existing subset and insert the current element to it
+                List<Integer> set = new ArrayList<>(subsets.get(i));
+                set.add(currentNumber);
+                subsets.add(set);
+            }
+        }
+        return subsets;
     }
 
     /**
