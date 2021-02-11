@@ -64,11 +64,6 @@ public class PermutationTest {
     }
 
     @Test
-    public void permutationIterative() {
-        Permutation.permutationIterative("abc");
-    }
-
-    @Test
     public void findPermutationsInsertInEachPosition() {
         List<List<Integer>> result = Permutation.findPermutationsInsertInEachPosition(new int[]{1, 3, 5});
         System.out.println("here are all the permutations: " + result);

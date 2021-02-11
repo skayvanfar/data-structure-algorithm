@@ -86,7 +86,7 @@ public class Permutation {
      * <p>
      * This problem follows the Subsets pattern and we can follow a similar Breadth First Search (BFS) approach. However, unlike Subsets, every permutation must contain all the numbers.
      * <p>
-     * Let’s take the example-1 mentioned above to generate all the permutations. Following a BFS approach, we will consider one number at a time:
+     * Following a BFS approach, we will consider one number at a time:
      * <p>
      * If the given set is empty then we have only an empty permutation set: []
      * Let’s add the first element (1), the permutations will be: [1]
@@ -157,43 +157,6 @@ public class Permutation {
                 findPermutationsInsertInEachPositionRecursive(nums, index + 1, newPermutation, result);
             }
         }
-    }
-
-    /**
-     * Iterative function to generate all permutations of a String in Java
-     * using Collections
-     *
-     * @param s
-     */
-    public static void permutationIterative(String s) {
-        // create an empty ArrayList to store (partial) permutations
-        List<String> partial = new ArrayList<>();
-
-        // initialize the list with the first character of the string
-        partial.add(String.valueOf(s.charAt(0)));
-
-        // do for every character of the specified string
-        for (int i = 1; i < s.length(); i++) {
-            // consider previously constructed partial permutation one by one
-
-            // (iterate backwards to avoid ConcurrentModificationException)
-            for (int j = partial.size() - 1; j >= 0; j--) {
-                // remove current partial permutation from the ArrayList
-                String str = partial.remove(j);
-
-                // Insert next character of the specified string in all
-                // possible positions of current partial permutation. Then
-                // insert each of these newly constructed string in the list
-
-                for (int k = 0; k <= str.length(); k++) {
-                    // Advice: use StringBuilder for concatenation
-                    partial.add(str.substring(0, k) + s.charAt(i) +
-                            str.substring(k));
-                }
-            }
-        }
-
-        System.out.println(partial);
     }
 
     /**
