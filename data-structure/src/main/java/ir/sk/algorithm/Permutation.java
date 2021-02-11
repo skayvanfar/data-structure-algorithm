@@ -1,5 +1,6 @@
 package ir.sk.algorithm;
 
+import ir.sk.algorithm.basic.Utils;
 import ir.sk.helper.Difficulty;
 import ir.sk.helper.DifficultyType;
 import ir.sk.helper.Implementation;
@@ -173,9 +174,41 @@ public class Permutation {
      * @param elements
      * @param <T>
      */
+    @TimeComplexity("O(n)")
     public static <T> T[] randomPermutationGenerator(T[] elements) {
         Collections.shuffle(Arrays.asList(elements));
         return elements;
+    }
+
+    /**
+     * randomPermutationGenerator
+     *
+     * The idea is to start from the last element, swap it with a randomly selected element from the whole array (including last).
+     * Now consider the array from 0 to n-2 (size reduced by 1), and repeat the process till we hit the first element.
+     *
+     * @param arr
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
+    public static int[] shuffleByFisherYates(int[] arr) {
+        // Creating a object for Random class
+        Random r = new Random();
+
+        // Start from the last element and swap one by one. We don't
+        // need to run for the first element that's why i > 0
+        for (int i = arr.length - 1; i > 0; i--) {
+
+            // Pick a random index from 0 to i
+            // o(1)
+            int j = r.nextInt(i + 1);
+
+            // Swap arr[i] with the element at random index
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+        return arr;
     }
 
     private static void swap(int[] elements, int a, int b) {

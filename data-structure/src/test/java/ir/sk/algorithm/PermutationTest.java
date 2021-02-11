@@ -1,5 +1,6 @@
 package ir.sk.algorithm;
 
+import ir.sk.algorithm.basic.Utils;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -25,6 +26,12 @@ public class PermutationTest {
     public void randomPermutationGenerator() {
         Integer[] arr = new Integer[]{1, 5, 2};
         System.out.println(Arrays.toString(Permutation.randomPermutationGenerator(arr)));
+        // shuffleByFisherYates
+    }
+
+    @Test
+    public void shuffleByFisherYates() {
+        System.out.println(Arrays.toString(Permutation.shuffleByFisherYates(new int[]{1, 5, 2})));
     }
 
     @Test
