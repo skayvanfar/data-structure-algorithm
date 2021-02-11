@@ -1,4 +1,4 @@
-package ir.sk.algorithm;
+package ir.sk.algorithm.basic;
 
 import ir.sk.algorithm.basic.Utils;
 import org.junit.After;

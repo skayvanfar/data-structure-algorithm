@@ -1,4 +1,4 @@
-package ir.sk.algorithm;
+package ir.sk.algorithm.mathematic;
 
 import ir.sk.algorithm.mathematic.Multiplication;
 import org.junit.After;

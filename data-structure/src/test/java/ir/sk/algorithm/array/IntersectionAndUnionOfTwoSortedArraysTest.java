@@ -1,4 +1,4 @@
-package ir.sk.algorithm;
+package ir.sk.algorithm.array;
 
 import ir.sk.algorithm.array.IntersectionAndUnionOfTwoSortedArrays;
 import ir.sk.algorithm.array.Merge;
