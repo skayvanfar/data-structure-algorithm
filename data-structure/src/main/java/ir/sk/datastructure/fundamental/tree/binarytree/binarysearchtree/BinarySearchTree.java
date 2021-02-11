@@ -3,6 +3,7 @@ package ir.sk.datastructure.fundamental.tree.binarytree.binarysearchtree;
 import ir.sk.helper.Point;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
+import ir.sk.helper.pattern.BFS;
 import ir.sk.helper.technique.BinarySearch;
 
 import java.util.LinkedList;
@@ -316,6 +317,7 @@ public class BinarySearchTree {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(w) w is the maximum width of the tree")
+    @BFS
     public void traverseLevelOrder() {
         if (root == null)
             return;

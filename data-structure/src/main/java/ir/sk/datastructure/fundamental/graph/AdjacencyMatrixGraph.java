@@ -3,6 +3,7 @@ package ir.sk.datastructure.fundamental.graph;
 
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
+import ir.sk.helper.pattern.BFS;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
@@ -65,6 +66,7 @@ public class AdjacencyMatrixGraph {
      *
      */
     @TimeComplexity("O(|V|^2)")
+    @BFS
     public void bfs() {
         Queue<Integer> theQueue = new ArrayDeque<>();
         vertexList[0].wasVisited = true;

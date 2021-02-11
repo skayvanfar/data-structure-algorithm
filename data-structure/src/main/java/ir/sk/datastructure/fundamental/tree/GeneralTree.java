@@ -2,6 +2,7 @@ package ir.sk.datastructure.fundamental.tree;
 
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
+import ir.sk.helper.pattern.BFS;
 import ir.sk.helper.recursiontype.HeadRecursion;
 import ir.sk.helper.recursiontype.TailRecursion;
 
@@ -106,6 +107,7 @@ public class GeneralTree<T> {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
+    @BFS
     public void traverseLevelOrder(GeneralNode<T> node) {
         Queue<GeneralNode<T>> nodes = new LinkedList<>();
         nodes.add(node);

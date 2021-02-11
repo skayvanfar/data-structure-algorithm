@@ -2,6 +2,7 @@ package ir.sk.datastructure.fundamental.graph.adjacencylist;
 
 import ir.sk.datastructure.fundamental.graph.Graph;
 import ir.sk.helper.Point;
+import ir.sk.helper.pattern.BFS;
 
 import java.util.*;
 
@@ -102,6 +103,7 @@ public class OrientedAdjacencyListGraph<T> implements Graph<T> {
      * @throws NoSuchVertexException
      */
     @Override
+    @BFS
     public Collection<T> breathFirstSearch(T start) throws NoSuchVertexException {
         if (graph.get(start) == null)
             throw new NoSuchVertexException();

@@ -5,6 +5,7 @@ import ir.sk.helper.Implementation;
 import ir.sk.helper.ImplementationType;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
+import ir.sk.helper.pattern.BFS;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -132,7 +133,7 @@ public class AdjacencyListGraph<T> implements Graph<T> {
     @Override
     @TimeComplexity("O(|V|+|E|) Linear Time")
     @SpaceComplexity("O(w) w is the maximum width of the tree")
-    @Implementation(type = ImplementationType.Iterative)
+    @BFS
     public Collection<T> breathFirstSearch(T start) {
         // we can add a property as state into Node instead of this
         Collection<T> visited = new LinkedHashSet<>();
