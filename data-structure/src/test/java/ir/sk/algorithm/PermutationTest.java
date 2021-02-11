@@ -1,6 +1,5 @@
 package ir.sk.algorithm;
 
-import ir.sk.algorithm.basic.Utils;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -54,8 +53,8 @@ public class PermutationTest {
     }
 
     @Test
-    public void permutationNew() {
-        Permutation.permutationNew("abc").stream().forEach(System.out::println);
+    public void simpleHeapPermutation() {
+        Permutation.simpleHeapPermutation("abc").stream().forEach(System.out::println);
     }
 
 

@@ -61,11 +61,11 @@ public class Permutation {
             // if size is odd, swap 0th i.e (first) and
             // (size-1)th i.e (last) element
             if (size % 2 == 1)
-                swap(array, 0, size - 1);
+                Utils.swapInArray(array, 0, size - 1);
                 // If size is even, swap ith
                 // and (size-1)th i.e last element
             else
-                swap(array, i, size - 1);
+                Utils.swapInArray(array, i, size - 1);
         }
     }
 
@@ -74,14 +74,15 @@ public class Permutation {
      * @return
      */
     @Backtracking
-    public static List<String> permutationNew(String str) {
+    @Implementation(type = ImplementationType.Recursive)
+    public static List<String> simpleHeapPermutation(String str) {
         List<String> result = new ArrayList<>();
         if (str.length() == 1) {
             result.add(str);
             return result;
         } else {
             for (char c : str.toCharArray()) {
-                List<String> subPermList = permutationNew(str.replace(c + "", ""));
+                List<String> subPermList = simpleHeapPermutation(str.replace(c + "", ""));
                 for (String substr : subPermList) {
                     result.add(c + substr);
                 }
@@ -204,17 +205,9 @@ public class Permutation {
             int j = r.nextInt(i + 1);
 
             // Swap arr[i] with the element at random index
-            int temp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = temp;
+            Utils.swapInArray(arr, i, j);
         }
         return arr;
-    }
-
-    private static void swap(int[] elements, int a, int b) {
-        int tmp = elements[a];
-        elements[a] = elements[b];
-        elements[b] = tmp;
     }
 
     /**

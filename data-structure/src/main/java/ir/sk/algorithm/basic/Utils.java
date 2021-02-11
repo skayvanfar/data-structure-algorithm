@@ -37,6 +37,18 @@ public class Utils {
     }
 
     /**
+     * @param elements
+     * @param index1
+     * @param index2
+     */
+    @TimeComplexity("O(1)")
+    public static void swapInArray(int[] elements, int index1, int index2) {
+        int tmp = elements[index1];
+        elements[index1] = elements[index2];
+        elements[index2] = tmp;
+    }
+
+    /**
      * checks if a number is prime by checking for divisibility on numbers less than it. It only
      * needs to go up to the square root of n because if n is divisible by a number greater than its square root then
      * it's divisible by something smaller than it.
