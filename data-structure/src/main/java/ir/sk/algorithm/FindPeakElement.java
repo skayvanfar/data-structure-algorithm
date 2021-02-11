@@ -1,8 +1,11 @@
 package ir.sk.algorithm;
 
+import ir.sk.helper.Implementation;
+import ir.sk.helper.ImplementationType;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.technique.BinarySearch;
+import ir.sk.helper.technique.DecreaseAndConquer;
 
 import java.util.Arrays;
 import java.util.List;
@@ -42,7 +45,7 @@ public class FindPeakElement {
     }
 
     /**
-     * to find peak element by decrease-and-conquer (Divide-and-conquer algorithm) and recursive
+     * to find peak element
      *
      * @param array
      * @param low
@@ -52,6 +55,8 @@ public class FindPeakElement {
     @TimeComplexity("O(log n)")
     @SpaceComplexity("O(1)")
     @BinarySearch
+    @DecreaseAndConquer
+    @Implementation(type = ImplementationType.Recursive)
     public static boolean findPeakByRecursive(int array[], int low, int high) {
         if (low > high)
             return false;

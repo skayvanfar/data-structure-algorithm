@@ -1,8 +1,10 @@
 package ir.sk.algorithm;
 
+import ir.sk.helper.Implementation;
+import ir.sk.helper.ImplementationType;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.technique.BinarySearch;
-import ir.sk.helper.technique.DivideAndConquer;
+import ir.sk.helper.technique.DecreaseAndConquer;
 
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
@@ -30,14 +32,14 @@ public class Search {
      * If they are not equal, the half in which the target cannot lie is eliminated and the search continues on the remaining half,
      * again taking the middle element to compare to the target value, and repeating this until the target value is found.
      * If the search ends with the remaining half being empty, the target is not in the array
-     * <p>
-     * decrease-and-conquer (Divide-and-conquer algorithm) algorithm and iterative
      *
      * @param array
      * @param key
      * @return
      */
     @TimeComplexity("O(Log n)")
+    @DecreaseAndConquer
+    @Implementation(type = ImplementationType.Iterative)
     public static int binarySearchByLoop(int array[], int key) {
         int low = 0;
         int high = array.length - 1;
@@ -58,8 +60,6 @@ public class Search {
     }
 
     /**
-     * decrease-and-conquer (Divide-and-conquer algorithm) algorithm and recursive
-     *
      * @param array
      * @param key
      * @param low
@@ -67,8 +67,9 @@ public class Search {
      * @return
      */
     @TimeComplexity("O(Log n)")
-    @DivideAndConquer
+    @DecreaseAndConquer
     @BinarySearch
+    @Implementation(type = ImplementationType.Recursive)
     public static int binarySearchByRecursive(int array[], int key, int low, int high) {
         if (low > high)
             return -1;

@@ -1,7 +1,11 @@
 package ir.sk.algorithm.mathematic;
 
+import ir.sk.helper.Implementation;
+import ir.sk.helper.ImplementationType;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
+import ir.sk.helper.recursiontype.TailRecursion;
+import ir.sk.helper.technique.DecreaseAndConquer;
 import ir.sk.helper.technique.DynamicProgramming;
 import ir.sk.helper.technique.DynamicProgrammingType;
 
@@ -156,6 +160,9 @@ public class Algorithms {
      * @param b
      * @return
      */
+    @DecreaseAndConquer
+    @Implementation(type = ImplementationType.Recursive)
+    @TailRecursion
     public static int gcdByEuclidean(int a, int b) {
         if (b == 0)
             return a;
