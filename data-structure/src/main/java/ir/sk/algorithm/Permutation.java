@@ -33,6 +33,13 @@ public class Permutation {
     /**
      * Generating permutation using Heap Algorithm (Heap’s Algorithm)
      *
+     * generate each permutation from the previous permutation by choosing a pair of elements to interchange,
+     * without disturbing the other n-2 elements.
+     *
+     * The algorithm generates (n-1)! permutations of the first n-1 elements, adjoining the last element to each of these. This will generate all of the permutations that end with the last element.
+     * If n is odd, swap the first and last element and if n is even, then swap the ith element (i is the counter starting from 0) and the last element and repeat the above algorithm till i is less than n.
+     * In each iteration, the algorithm will produce all the permutations that end with the current last element.
+     *
      * @param array
      * @param size
      */
@@ -40,6 +47,7 @@ public class Permutation {
     @SpaceComplexity("O(n)")
     @DivideAndConquer
     @Backtracking
+    @Implementation(type = ImplementationType.Recursive)
     public static void heapPermutationRecursive(int array[], int size) {
         // if size becomes 1 then prints the obtained
         // permutation
@@ -156,42 +164,6 @@ public class Permutation {
                 newPermutation.add(i, nums[index]);
                 findPermutationsInsertInEachPositionRecursive(nums, index + 1, newPermutation, result);
             }
-        }
-    }
-
-    /**
-     * If the elements are comparable, we can generate permutations sorted by the natural order of the elements
-     *
-     * @param elements
-     * @param delimiter
-     * @param <T>
-     */
-    public static <T extends Comparable<T>> void printAllOrdered(T[] elements, char delimiter) {
-
-        Arrays.sort(elements);
-        boolean hasNext = true;
-
-        while (hasNext) {
-            printArray(elements, delimiter);
-            int k = 0, l = 0;
-            hasNext = false;
-            for (int i = elements.length - 1; i > 0; i--) {
-                if (elements[i].compareTo(elements[i - 1]) > 0) {
-                    k = i - 1;
-                    hasNext = true;
-                    break;
-                }
-            }
-
-            for (int i = elements.length - 1; i > k; i--) {
-                if (elements[i].compareTo(elements[k]) > 0) {
-                    l = i;
-                    break;
-                }
-            }
-
-            swap(elements, k, l);
-            Collections.reverse(Arrays.asList(elements).subList(k + 1, elements.length));
         }
     }
 

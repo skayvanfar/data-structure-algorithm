@@ -27,12 +27,6 @@ public class PermutationTest {
     }
 
     @Test
-    public void printAllOrdered() {
-        Integer[] arr = new Integer[]{1, 5, 2};
-        Permutation.printAllOrdered(arr, ',');
-    }
-
-    @Test
     public void arePermutationUseSorting() {
         boolean expectedValue = true;
         Assert.assertEquals(expectedValue, Permutation.arePermutationUseSorting("abcdd".toCharArray(), "acdbd".toCharArray()));
