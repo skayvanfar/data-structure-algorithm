@@ -171,13 +171,11 @@ public class Permutation {
      * If n is big, we can generate a random permutation by shuffling the array
      *
      * @param elements
-     * @param delimiter
      * @param <T>
      */
-    public static <T> void printRandom(T[] elements, char delimiter) {
-
+    public static <T> T[] randomPermutationGenerator(T[] elements) {
         Collections.shuffle(Arrays.asList(elements));
-        printArray(elements, delimiter);
+        return elements;
     }
 
     private static void swap(int[] elements, int a, int b) {
@@ -185,16 +183,6 @@ public class Permutation {
         elements[a] = elements[b];
         elements[b] = tmp;
     }
-
-    private static <T> void printArray(T[] elements, char delimiter) {
-
-        String delimiterSpace = delimiter + " ";
-        for (int i = 0; i < elements.length; i++) {
-            System.out.print(elements[i] + delimiterSpace);
-        }
-        System.out.print('\n');
-    }
-
 
     /**
      * Check if two strings are permutation of each other

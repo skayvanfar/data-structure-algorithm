@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -21,9 +22,9 @@ public class PermutationTest {
     }
 
     @Test
-    public void printRandom() {
+    public void randomPermutationGenerator() {
         Integer[] arr = new Integer[]{1, 5, 2};
-        Permutation.printRandom(arr, ',');
+        System.out.println(Arrays.toString(Permutation.randomPermutationGenerator(arr)));
     }
 
     @Test

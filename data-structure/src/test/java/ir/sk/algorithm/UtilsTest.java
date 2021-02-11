@@ -61,4 +61,9 @@ public class UtilsTest {
     public void sieveOfEratosthenes() {
         System.out.println(Arrays.toString(Utils.sieveOfEratosthenesFindPrimes(100)));
     }
+
+    @Test
+    public void shuffleByFisherYates() {
+        System.out.println(Arrays.toString(Utils.shuffleByFisherYates(new int[]{1, 5, 2})));
+    }
 }
