@@ -180,12 +180,6 @@ public class Permutation {
         printArray(elements, delimiter);
     }
 
-    private static <T> void swap(T[] elements, int a, int b) {
-        T tmp = elements[a];
-        elements[a] = elements[b];
-        elements[b] = tmp;
-    }
-
     private static void swap(int[] elements, int a, int b) {
         int tmp = elements[a];
         elements[a] = elements[b];
