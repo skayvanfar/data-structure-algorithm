@@ -1,10 +1,12 @@
 package ir.sk.algorithm.array;
 
 import ir.sk.algorithm.basic.Utils;
+import ir.sk.datastructure.fundamental.linklist.SinglyLink;
 import ir.sk.helper.Difficulty;
 import ir.sk.helper.DifficultyType;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
+import ir.sk.helper.pattern.RunnerPattern;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -110,5 +112,53 @@ public class CyclicSortPattern {
                 i++;
         }
         return -1;
+    }
+
+    /**
+     * above problem in O(1) space and without modifying the input array.
+     * While doing the cyclic sort, we realized that the array will have a cycle due to the duplicate number and that the start of the cycle will always point to the duplicate number.
+     * This means that we can use the fast & the slow pointer method to find the duplicate number or the start of the cycle similar to Start of LinkedList Cycle.
+     *
+     * See also {@link ir.sk.algorithm.linklist.LinkListAlgorithms#hasCycleByRunner(SinglyLink)}
+     *
+     * @param arr
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
+    @RunnerPattern
+    public static int findDuplicateByFastAndSlow(int[] arr) {
+        int slow = 0, fast = 0;
+        do {
+            slow = arr[slow];
+            fast = arr[arr[fast]];
+        } while (slow != fast);
+
+        // find cycle length
+        int current = arr[slow];
+        int cycleLength = 0;
+        do {
+            current = arr[current];
+            cycleLength++;
+        } while (current != arr[slow]);
+
+        return findStart(arr, cycleLength);
+    }
+
+    private static int findStart(int[] arr, int cycleLength) {
+        int pointer1 = arr[0], pointer2 = arr[0];
+        // move pointer2 ahead 'cycleLength' steps
+        while (cycleLength > 0) {
+            pointer2 = arr[pointer2];
+            cycleLength--;
+        }
+
+        // increment both pointers untill they meet at the start of cycle
+        while (pointer1 != pointer2) {
+            pointer1 = arr[pointer1];
+            pointer2 = arr[pointer2];
+        }
+
+        return pointer1;
     }
 }

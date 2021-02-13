@@ -31,4 +31,9 @@ public class CyclicSortPatternTest {
     public void findDuplicateNumber() {
         System.out.println(CyclicSortPattern.findDuplicateNumber(new int[]{1, 4, 4, 3, 2}));
     }
+
+    @Test
+    public void findDuplicateByFastAndSlow() {
+        System.out.println(CyclicSortPattern.findDuplicateByFastAndSlow(new int[]{1, 4, 4, 3, 2}));
+    }
 }
