@@ -79,4 +79,36 @@ public class CyclicSortPattern {
 
         return missingNumbers;
     }
+
+    /**
+     * We are given an unsorted array containing ‘n+1’ numbers taken from the range 1 to ‘n’.
+     * The array has only one duplicate but it can be repeated multiple times.
+     * Find that duplicate number without using any extra space.
+     * You are, however, allowed to modify the input array.
+     *
+     * This problem follows the Cyclic Sort pattern and shares similarities with Find the Missing Number.
+     * Following a similar approach, we will try to place each number on its correct index. Since there is only one duplicate,
+     * if while swapping the number with its index both the numbers being swapped are same, we have found our duplicate!
+     *
+     * See also {@link ir.sk.algorithm.Sort#cyclicSort(int[])}
+     *
+     * @param nums
+     * @return
+     */
+    @TimeComplexity("O(n) + O(n-1) = O(n)")
+    @SpaceComplexity("O(1)")
+    @Difficulty(type = DifficultyType.EASY)
+    public static int findDuplicateNumber(int[] nums) {
+        int i = 0;
+        while (i < nums.length) {
+            if (nums[i] != i + 1) {
+                if (nums[i] != nums[nums[i] - 1])
+                    Utils.swapInArray(nums, i, nums[i] - 1);
+                else // we have found the duplicate
+                    return nums[i];
+            } else
+                i++;
+        }
+        return -1;
+    }
 }

@@ -26,4 +26,9 @@ public class CyclicSortPatternTest {
     public void findAllMissingNumbers() {
         System.out.println(CyclicSortPattern.findAllMissingNumbers(new int[]{2, 3, 1, 8, 2, 3, 5, 1}));
     }
+
+    @Test
+    public void findDuplicateNumber() {
+        System.out.println(CyclicSortPattern.findDuplicateNumber(new int[]{1, 4, 4, 3, 2}));
+    }
 }
