@@ -535,24 +535,18 @@ public class Sort {
         int low = 0, high = array.length - 1;
         for (int i = 0; i <= high; ) {
             if (array[i] == 0) {
-                swap(array, i, low);
+                Utils.swapInArray(array, i, low);
                 // increment 'i' and 'low'
                 i++;
                 low++;
             } else if (array[i] == 1) {
                 i++;
             } else { // the case for array[i] == 2
-                swap(array, i, high);
+                Utils.swapInArray(array, i, high);
                 // decrement 'high' only, after the swap the number at index 'i' could be 0, 1 or 2
                 high--;
             }
         }
-    }
-
-    private static void swap(int[] array, int i, int j) {
-        int temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
     }
 
     /**
@@ -636,7 +630,7 @@ public class Sort {
         while (i < numbers.length) {
             int j = numbers[i] - 1;
             if (numbers[i] != numbers[j])
-                swap(numbers, i, j);
+                Utils.swapInArray(numbers, i, j);
             else
                 i++;
         }
