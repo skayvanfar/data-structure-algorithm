@@ -5,8 +5,7 @@ import ir.sk.algorithm.basic.RotationShift;
 import ir.sk.algorithm.basic.Utils;
 import ir.sk.datastructure.fundamental.tree.binarytree.MaxBinaryHeap;
 import ir.sk.datastructure.fundamental.tree.binarytree.binarysearchtree.BinarySearchTree;
-import ir.sk.helper.Difficulty;
-import ir.sk.helper.DifficultyType;
+import ir.sk.helper.*;
 import ir.sk.helper.complexity.InPlace;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.Stability;
@@ -156,6 +155,8 @@ public class Sort {
      */
     @TimeComplexity("O(n * Log n)")
     @SpaceComplexity("O(n)")
+    @Implementation(type = ImplementationType.Recursive)
+    @RecurrenceRelation("T(n) = 2 T(n/2) + O(n)")
     public static void mergeSort(int[] a, int n) {
 
         // base case

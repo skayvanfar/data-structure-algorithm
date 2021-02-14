@@ -1,5 +1,6 @@
 package ir.sk.algorithm.mathematic;
 
+import ir.sk.helper.RecurrenceRelation;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.technique.BruteForce;
@@ -23,6 +24,7 @@ public class Factorial {
      * @return
      */
     @BruteForce
+    @RecurrenceRelation("T(n) = T(n-1) + O(1)")
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
     public static int factorialByRecursive(int n) {

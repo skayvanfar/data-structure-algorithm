@@ -5,6 +5,7 @@ import ir.sk.datastructure.fundamental.linklist.SinglyLink;
 import ir.sk.helper.Difficulty;
 import ir.sk.helper.DifficultyType;
 import ir.sk.helper.Point;
+import ir.sk.helper.RecurrenceRelation;
 import ir.sk.helper.complexity.InPlace;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
@@ -277,6 +278,7 @@ public class LinkListAlgorithms {
      * @param head
      * @return
      */
+    @RecurrenceRelation("T(n) = T(n-1) + O(1)")
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
     public static SinglyLink reverseRecursive(SinglyLink head) {

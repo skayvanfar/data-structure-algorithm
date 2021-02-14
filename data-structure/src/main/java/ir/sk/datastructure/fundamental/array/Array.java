@@ -1,6 +1,7 @@
 package ir.sk.datastructure.fundamental.array;
 
 import ir.sk.algorithm.basic.RotationShift;
+import ir.sk.helper.RecurrenceRelation;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.recursiontype.HeadRecursion;
 import ir.sk.helper.recursiontype.TailRecursion;
@@ -104,6 +105,7 @@ public class Array {
     /**
      * @param index
      */
+    @RecurrenceRelation("T(n) = T(n-1) + O(1)")
     @TimeComplexity("O(n)")
     @TailRecursion
     public void traverseTailRecursive(int index) {
@@ -116,6 +118,7 @@ public class Array {
     /**
      * @param index
      */
+    @RecurrenceRelation("T(n) = T(n-1) + O(1)")
     @TimeComplexity("O(n)")
     @HeadRecursion
     public void traverseHeadRecursive(int index) {

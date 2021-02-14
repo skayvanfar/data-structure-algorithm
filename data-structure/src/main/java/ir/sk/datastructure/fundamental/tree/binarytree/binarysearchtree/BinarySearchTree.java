@@ -1,6 +1,7 @@
 package ir.sk.datastructure.fundamental.tree.binarytree.binarysearchtree;
 
 import ir.sk.helper.Point;
+import ir.sk.helper.RecurrenceRelation;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.BFS;
@@ -184,6 +185,7 @@ public class BinarySearchTree {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(h)")
+    @RecurrenceRelation("T(n) = 2 T(n/2) + O(1)")
     public void traverseInOrder(BSTNode BSTNode) {
         if (BSTNode != null) {
             traverseInOrder(BSTNode.left);
@@ -199,6 +201,7 @@ public class BinarySearchTree {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(h)")
+    @RecurrenceRelation("T(n) = 2 T(n/2) + O(1)")
     public void traversePreOrder(BSTNode BSTNode) {
         if (BSTNode != null) {
             visit(BSTNode.value);
@@ -214,6 +217,7 @@ public class BinarySearchTree {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(h)")
+    @RecurrenceRelation("T(n) = 2 T(n/2) + O(1)")
     public void traversePostOrder(BSTNode BSTNode) {
         if (BSTNode != null) {
             traversePostOrder(BSTNode.left);

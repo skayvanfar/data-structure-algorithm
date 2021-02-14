@@ -2,6 +2,7 @@ package ir.sk.algorithm;
 
 import ir.sk.helper.Implementation;
 import ir.sk.helper.ImplementationType;
+import ir.sk.helper.RecurrenceRelation;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.technique.BinarySearch;
 import ir.sk.helper.technique.DecreaseAndConquer;
@@ -70,6 +71,7 @@ public class Search {
     @DecreaseAndConquer
     @BinarySearch
     @Implementation(type = ImplementationType.Recursive)
+    @RecurrenceRelation("T(n) = T(n/2) + O(1)")
     public static int binarySearchByRecursive(int array[], int key, int low, int high) {
         if (low > high)
             return -1;
