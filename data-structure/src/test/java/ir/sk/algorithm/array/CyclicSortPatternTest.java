@@ -4,6 +4,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 /**
  * Created by sad.kayvanfar on 2/13/2021.
  */
@@ -40,5 +42,10 @@ public class CyclicSortPatternTest {
     @Test
     public void findAllDuplicates() {
         System.out.println(CyclicSortPattern.findAllDuplicates(new int[]{1, 4, 4, 5, 5}));
+    }
+
+    @Test
+    public void findCorruptNumbers() {
+        System.out.println(Arrays.toString(CyclicSortPattern.findCorruptNumbers(new int[]{3, 1, 2, 5, 2})));
     }
 }

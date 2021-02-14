@@ -165,7 +165,7 @@ public class CyclicSortPattern {
     /**
      * We are given an unsorted array containing ‘n’ numbers taken from the range 1 to ‘n’.
      * The array has some duplicates, find all the duplicate numbers without using any extra space.
-     *
+     * <p>
      * This problem follows the Cyclic Sort pattern and shares similarities with Find the Duplicate Number.
      * Following a similar approach, we will place each number at its correct index. After that,
      * we will iterate through the array to find all numbers that are not at the correct indices.
@@ -193,5 +193,37 @@ public class CyclicSortPattern {
         }
 
         return duplicateNumbers;
+    }
+
+    /**
+     * We are given an unsorted array containing ‘n’ numbers taken from the range 1 to ‘n’.
+     * The array originally contained all the numbers from 1 to ‘n’, but due to a data error,
+     * one of the numbers got duplicated which also resulted in one number going missing. Find both these numbers.
+     *
+     * This problem follows the Cyclic Sort pattern and shares similarities with Find all Duplicate Numbers.
+     * Following a similar approach, we will place each number at its correct index. Once we are done with the cyclic sort,
+     * we will iterate through the array to find the number that is not at the correct index. Since only one number got corrupted,
+     * the number at the wrong index is the duplicated number and the index itself represents the missing number.
+     *
+     * @param nums
+     * @return
+     */
+    @TimeComplexity("O(n) + O(n-1) = O(n)")
+    @SpaceComplexity("O(1)")
+    @Difficulty(type = DifficultyType.EASY)
+    public static int[] findCorruptNumbers(int[] nums) {
+        int i = 0;
+        while (i < nums.length) {
+            if (nums[i] != nums[nums[i] - 1])
+                Utils.swapInArray(nums, i, nums[i] - 1);
+            else
+                i++;
+        }
+
+        for (i = 0; i < nums.length; i++)
+            if (nums[i] != i + 1)
+                return new int[]{nums[i], i + 1};
+
+        return new int[]{-1, -1};
     }
 }
