@@ -1,5 +1,6 @@
 package ir.sk.algorithm.array;
 
+import ir.sk.algorithm.TripleStep;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -63,5 +64,33 @@ public class ArrayAlgorithmsTest {
     @Test
     public void searchQuadrupletsSumNumber() {
         System.out.println(ArrayAlgorithms.searchQuadrupletsSumNumber(new int[]{4, 1, 2, -1, 1, -3}, 1));
+    }
+
+    @Test
+    public void naiveCountWays() {
+        int n = 4;
+        System.out.println(ArrayAlgorithms.naiveCountWays(n));
+    }
+
+    @Test
+    public void memoizedDPCountWaysByRecursive() {
+        int n = 4;
+        System.out.println(ArrayAlgorithms.memoizedDPCountWaysByRecursive(n));
+    }
+
+    @Test
+    public void bottomUpCountWays() {
+        int n = 4;
+        System.out.println(ArrayAlgorithms.bottomUpCountWays(n));
+    }
+
+    @Test
+    public void magicIndexNaive() {
+        System.out.println(ArrayAlgorithms.magicIndexNaive(new int[]{8,9,2,3,4}));
+    }
+
+    @Test
+    public void magicIndexBinarySearch() {
+        System.out.println(ArrayAlgorithms.magicIndexBinarySearch(new int[]{8,9,2,3,4}));
     }
 }

@@ -395,10 +395,10 @@ public class ArrayAlgorithms {
     }
 
     /**
-     *  A child is running up a staircase with n steps and can hop either 1 step, 2 steps, or 3
-     *  steps at a time. Implement a method to count how many possible ways the child can run up the
-     *  stairs.
-     *  
+     * A child is running up a staircase with n steps and can hop either 1 step, 2 steps, or 3
+     * steps at a time. Implement a method to count how many possible ways the child can run up the
+     * stairs.
+     *
      * @param n
      * @return
      */
@@ -419,7 +419,8 @@ public class ArrayAlgorithms {
 
     /**
      * See {@link #naiveCountWays(int)}
-     * @param n 
+     *
+     * @param n
      * @return
      */
     public static int memoizedDPCountWaysByRecursive(int n) {
@@ -446,8 +447,9 @@ public class ArrayAlgorithms {
 
     /**
      * tart computing values of states from 1, 2 .. to n, i.e. compute values of i, i+1, i+2 and then use them to calculate the value of i+3.
-     *
+     * <p>
      * See also {@link #memoizedDPCountWaysByRecursive(int)}
+     *
      * @param n
      * @return
      */
@@ -489,6 +491,7 @@ public class ArrayAlgorithms {
 
     /**
      * See {@link #magicIndexNaive(int[])}
+     *
      * @param array
      * @return
      */
