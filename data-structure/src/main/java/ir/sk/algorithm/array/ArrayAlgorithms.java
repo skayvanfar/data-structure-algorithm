@@ -407,7 +407,7 @@ public class ArrayAlgorithms {
      * @param n
      * @return
      */
-    @TimeComplexity("O(n^3) O(branches ^ depth)")
+    @TimeComplexity("O(3^n) O(branches ^ depth)")
     @SpaceComplexity("O(1)")
     @BruteForce
     @Implementation(type = ImplementationType.Recursive)
