@@ -399,6 +399,11 @@ public class ArrayAlgorithms {
      * steps at a time. Implement a method to count how many possible ways the child can run up the
      * stairs.
      *
+     * Lets define n as the n-th step of this stairs, and T(n) is the number of ways the child can run up to the n-th step.
+     * This child could arrive at the n-th step from 3 different possible prior steps, namely (n-1), (n-2), and (n-3).
+     * The key insight is that the number of possible ways of the n-th step, T(n),
+     * is the summation of the number possible ways of these 3 possible prior steps.
+     *
      * @param n
      * @return
      */
