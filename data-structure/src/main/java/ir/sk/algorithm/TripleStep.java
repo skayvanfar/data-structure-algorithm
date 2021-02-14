@@ -1,10 +1,12 @@
 package ir.sk.algorithm;
 
+import ir.sk.helper.Implementation;
+import ir.sk.helper.ImplementationType;
+import ir.sk.helper.RecurrenceRelation;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.technique.BruteForce;
-import ir.sk.helper.technique.DynamicProgramming;
-import ir.sk.helper.technique.DynamicProgrammingType;
+import ir.sk.helper.recursiontype.TailRecursion;
+import ir.sk.helper.technique.*;
 
 /**
  * A child is running up a staircase with n steps and can hop either 1 step, 2 steps, or 3
@@ -22,6 +24,9 @@ public class TripleStep {
     @TimeComplexity("O(n^3) O(branches ^ depth)")
     @SpaceComplexity("O(1)")
     @BruteForce
+    @Implementation(type = ImplementationType.Recursive)
+    @RecurrenceRelation("T(n) = T(n-1) + T(n-2) + T(n-3)")
+    @TailRecursion
     public static int naiveCountWays(int n) {
         if (n < 0)
             return 0;
@@ -32,7 +37,7 @@ public class TripleStep {
     }
 
     public static int memoizedDPCountWaysByRecursive(int n) {
-        int[] memo = new int[n];
+        int[] memo = new int[n + 1];
         return memoizedDPCountWaysByRecursive(n, memo);
     }
 
@@ -44,7 +49,7 @@ public class TripleStep {
             return 0;
         else if (n == 0)
             return 1;
-        else if (memo[n] > -1)
+        else if (memo[n] > 0)
             return memo[n];
         else {
             memo[n] = memoizedDPCountWaysByRecursive(n - 1, memo) + memoizedDPCountWaysByRecursive(n - 2, memo) +
@@ -53,9 +58,15 @@ public class TripleStep {
         }
     }
 
-    // A recursive function used by countWays
+    /**
+     * tart computing values of states from 1, 2 .. to n, i.e. compute values of i, i+1, i+2 and then use them to calculate the value of i+3.
+     *
+     * @param n
+     * @return
+     */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
+    @DynamicProgramming(type = DynamicProgrammingType.DOWN_TOP_TABULATION)
     public static int bottomUpCountWays(int n) {
         int[] res = new int[n + 1];
         res[0] = 1;
@@ -70,43 +81,58 @@ public class TripleStep {
     }
 
     /**
-     * elements are not distinct
+     * Magic Index (Fixed Point): A magic index in an array A[ 1 .•. n-1] is defined to be an index such that A[ i]
+     * i. Given a sorted array of distinct integers, write a method to find a magic index, if one exists, in
+     * array A.
+     * <p>
+     * Linearly search for an index i such that arr[i] == i. Return the first such index found.
      *
      * @param array
      * @return
      */
-    public static int magicFast(int[] array) {
-        return magicFast(array, 0, array.length - 1);
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
+    public static int magicIndexNaive(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == i)
+                return i;
+        }
+        return -1;
     }
 
     /**
-     * elements are not distinct
      *
      * @param array
-     * @param start
-     * @param end
      * @return
      */
-    public static int magicFast(int[] array, int start, int end) {
-        if (end < start) return -1;
-
-        int midindex = (start + end) / 2;
-        int midValue = array[midindex];
-        if (midValue == midindex)
-            return midindex;
-
-        /* Search left */
-        int leftindex = Math.min(midindex - 1, midValue);
-        int left = magicFast(array, start, leftindex);
-        if (left >= 0)
-            return left;
+    public static int magicIndexBinarySearch(int[] array) {
+        return binarySearch(array, 0, array.length - 1);
+    }
 
 
-        /* Search right */
-        int rightIndex = Math.max(midindex + 1, midValue);
-        int right = magicFast(array, rightIndex, end);
+    /**
+     * @param arr
+     * @param low
+     * @param high
+     * @return
+     */
+    @TimeComplexity("O(Log n)")
+    @SpaceComplexity("O(1)")
+    @BinarySearch
+    @DecreaseAndConquer
+    private static int binarySearch(int arr[], int low, int high) {
+        if (high >= low) {
+            /* low + (high - low)/2; */
+            int mid = (low + high) / 2;
+            if (mid == arr[mid])
+                return mid;
+            if (mid > arr[mid])
+                return binarySearch(arr, (mid + 1), high);
+            else
+                return binarySearch(arr, low, (mid - 1));
+        }
 
-        return right;
+        return -1;
     }
 
 

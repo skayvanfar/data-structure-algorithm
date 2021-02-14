@@ -19,13 +19,29 @@ public class TripleStepTest {
 
     @Test
     public void naiveCountWays() {
+        int n = 4;
+        System.out.println(TripleStep.naiveCountWays(n));
     }
 
     @Test
     public void memoizedDPCountWaysByRecursive() {
+        int n = 4;
+        System.out.println(TripleStep.memoizedDPCountWaysByRecursive(n));
     }
 
     @Test
     public void bottomUpCountWays() {
+        int n = 4;
+        System.out.println(TripleStep.bottomUpCountWays(n));
+    }
+
+    @Test
+    public void magicIndexNaive() {
+        System.out.println(TripleStep.magicIndexNaive(new int[]{8,9,2,3,4}));
+    }
+
+    @Test
+    public void magicIndexBinarySearch() {
+        System.out.println(TripleStep.magicIndexBinarySearch(new int[]{8,9,2,3,4}));
     }
 }
