@@ -2,9 +2,10 @@ package ir.sk.datastructure.fundamental.tree;
 
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.pattern.BFS;
+import ir.sk.helper.technique.BFS;
 import ir.sk.helper.recursiontype.HeadRecursion;
 import ir.sk.helper.recursiontype.TailRecursion;
+import ir.sk.helper.technique.BacktrackingDFS;
 
 import java.util.*;
 
@@ -56,6 +57,7 @@ public class GeneralTree<T> {
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
     @TailRecursion
+    @BacktrackingDFS
     public void traverseDFSTailRecursive(GeneralNode<T> node) {
         visit(node);
         for (int i = 0; i < node.childrenCount(); i++)
@@ -70,6 +72,7 @@ public class GeneralTree<T> {
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
     @HeadRecursion
+    @BacktrackingDFS
     public void traverseDFSHeadRecursive(GeneralNode<T> node) {
         for (int i = 0; i < node.childrenCount(); i++)
             traverseDFSHeadRecursive(node.getChild(i));
@@ -81,6 +84,7 @@ public class GeneralTree<T> {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
+    @BacktrackingDFS
     public void traverseDFSIterative() {
         Stack<GeneralNode<T>> stack = new Stack<>();
         stack.push(root);

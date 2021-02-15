@@ -4,7 +4,8 @@ import ir.sk.helper.Point;
 import ir.sk.helper.RecurrenceRelation;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.pattern.BFS;
+import ir.sk.helper.technique.BFS;
+import ir.sk.helper.technique.BacktrackingDFS;
 import ir.sk.helper.technique.BinarySearch;
 
 import java.util.LinkedList;
@@ -186,6 +187,7 @@ public class BinarySearchTree {
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(h)")
     @RecurrenceRelation("T(n) = 2 T(n/2) + O(1)")
+    @BacktrackingDFS
     public void traverseInOrder(BSTNode BSTNode) {
         if (BSTNode != null) {
             traverseInOrder(BSTNode.left);
@@ -202,6 +204,7 @@ public class BinarySearchTree {
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(h)")
     @RecurrenceRelation("T(n) = 2 T(n/2) + O(1)")
+    @BacktrackingDFS
     public void traversePreOrder(BSTNode BSTNode) {
         if (BSTNode != null) {
             visit(BSTNode.value);
@@ -218,6 +221,7 @@ public class BinarySearchTree {
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(h)")
     @RecurrenceRelation("T(n) = 2 T(n/2) + O(1)")
+    @BacktrackingDFS
     public void traversePostOrder(BSTNode BSTNode) {
         if (BSTNode != null) {
             traversePostOrder(BSTNode.left);
@@ -233,6 +237,7 @@ public class BinarySearchTree {
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(h)")
     @Point("transform recursive into iterative approach by using Stack")
+    @BacktrackingDFS
     public void traversePreOrderIterative() {
         Stack<BSTNode> stack = new Stack<>();
         BSTNode current;
@@ -254,6 +259,7 @@ public class BinarySearchTree {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(h)")
+    @BacktrackingDFS
     public void traverseInOrderIterative() {
         Stack<BSTNode> stack = new Stack<BSTNode>();
         BSTNode current = root;
@@ -278,6 +284,7 @@ public class BinarySearchTree {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(h)")
+    @BacktrackingDFS
     public void traversePostOrderIterative() {
         Stack<BSTNode> stack = new Stack<BSTNode>();
         BSTNode prev = root;

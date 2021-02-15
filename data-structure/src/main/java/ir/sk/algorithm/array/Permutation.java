@@ -8,9 +8,9 @@ import ir.sk.helper.ImplementationType;
 import ir.sk.helper.complexity.BCR;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.pattern.BFS;
+import ir.sk.helper.technique.BFS;
 import ir.sk.helper.pattern.FrequencyCountingPattern;
-import ir.sk.helper.technique.Backtracking;
+import ir.sk.helper.technique.BacktrackingDFS;
 import ir.sk.helper.technique.DivideAndConquer;
 
 import java.util.*;
@@ -47,7 +47,7 @@ public class Permutation {
     @TimeComplexity("O(n! * n), T(n) = n * T(n-1) = n!")
     @SpaceComplexity("O(n)")
     @DivideAndConquer
-    @Backtracking
+    @BacktrackingDFS
     @Implementation(type = ImplementationType.Recursive)
     public static void heapPermutationRecursive(int array[], int size) {
         // if size becomes 1 then prints the obtained
@@ -73,7 +73,7 @@ public class Permutation {
      * @param str
      * @return
      */
-    @Backtracking
+    @BacktrackingDFS
     @Implementation(type = ImplementationType.Recursive)
     public static List<String> simpleHeapPermutation(String str) {
         List<String> result = new ArrayList<>();

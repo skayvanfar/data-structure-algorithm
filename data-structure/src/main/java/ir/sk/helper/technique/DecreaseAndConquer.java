@@ -8,5 +8,6 @@ package ir.sk.helper.technique;
  *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 2/11/2021.
  */
+@DivideAndConquer
 public @interface DecreaseAndConquer {
 }

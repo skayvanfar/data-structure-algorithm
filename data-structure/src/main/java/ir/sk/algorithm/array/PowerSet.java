@@ -6,9 +6,9 @@ import ir.sk.helper.Implementation;
 import ir.sk.helper.ImplementationType;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.pattern.BFS;
+import ir.sk.helper.technique.BFS;
 import ir.sk.helper.recursiontype.HeadRecursion;
-import ir.sk.helper.technique.Backtracking;
+import ir.sk.helper.technique.BacktrackingDFS;
 
 import java.util.*;
 
@@ -30,7 +30,7 @@ public class PowerSet {
      * @return
      */
     @TimeComplexity("O(2^n)")
-    @Backtracking
+    @BacktrackingDFS
     @Difficulty(type = DifficultyType.MEDIUM)
     @Implementation(type = ImplementationType.Recursive)
     @HeadRecursion

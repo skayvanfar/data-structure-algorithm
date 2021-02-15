@@ -2,7 +2,7 @@ package ir.sk.datastructure.fundamental.graph.adjacencylist;
 
 import ir.sk.datastructure.fundamental.graph.Graph;
 import ir.sk.helper.Point;
-import ir.sk.helper.pattern.BFS;
+import ir.sk.helper.technique.BFS;
 
 import java.util.*;
 

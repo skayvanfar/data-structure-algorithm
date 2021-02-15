@@ -1,7 +1,7 @@
 package ir.sk.algorithm;
 
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.technique.Backtracking;
+import ir.sk.helper.technique.BacktrackingDFS;
 
 /**
  * The N Queen is the problem of placing N chess queens on an N×N chessboard so that no two queens attack each other.
@@ -25,7 +25,7 @@ import ir.sk.helper.technique.Backtracking;
  *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/14/2021.
  */
-@Backtracking
+@BacktrackingDFS
 @TimeComplexity("O(2^n)")
 public class NQueenProblem {
     final int N = 4;

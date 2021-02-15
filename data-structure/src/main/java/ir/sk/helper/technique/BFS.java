@@ -1,4 +1,6 @@
-package ir.sk.helper.pattern;
+package ir.sk.helper.technique;
+
+import ir.sk.helper.technique.CompleteSearch;
 
 /**
  * Breadth First Search (BFS) approach (Subsets)
@@ -7,5 +9,6 @@ package ir.sk.helper.pattern;
  *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 2/10/2021.
  */
+@CompleteSearch
 public @interface BFS {
 }
