@@ -21,7 +21,7 @@ import java.util.HashMap;
  * <p>
  * Created by sad.kayvanfar on 9/21/2020.
  */
-public class Cache {
+public class LRUCache {
 
     public static int MAX_SIZE = 10;
     public Node head;
@@ -29,7 +29,7 @@ public class Cache {
     public HashMap<String, Node> map;
     public int size = 0;
 
-    public Cache() {
+    public LRUCache() {
         map = new HashMap<>();
     }
 

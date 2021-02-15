@@ -7,7 +7,7 @@ import org.junit.Test;
 /**
  * Created by sad.kayvanfar on 9/21/2020.
  */
-public class CacheTest {
+public class LRUCacheTest {
 
     @Before
     public void setUp() throws Exception {
@@ -19,7 +19,7 @@ public class CacheTest {
 
     @Test
     public void cache() {
-        Cache cache = new Cache();
+        LRUCache cache = new LRUCache();
         for (int i = 0; i < 20; i++) {
             String query = "query" + i;
             cache.insertResults(query, generateResults(i));
