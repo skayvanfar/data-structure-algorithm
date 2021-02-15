@@ -10,6 +10,7 @@ import ir.sk.helper.complexity.InPlace;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.Stability;
 import ir.sk.helper.complexity.TimeComplexity;
+import ir.sk.helper.pattern.CyclicSortPattern;
 import ir.sk.helper.pattern.MultiplePointerPattern;
 import ir.sk.helper.technique.DivideAndConquer;
 
@@ -626,6 +627,7 @@ public class Sort {
     @SpaceComplexity("O(1)")
     @Stability(false)
     @Difficulty(type = DifficultyType.EASY)
+    @CyclicSortPattern
     public static void cyclicSort(int[] numbers) {
         int i = 0;
         while (i < numbers.length) {

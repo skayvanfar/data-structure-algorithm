@@ -6,6 +6,7 @@ import ir.sk.helper.Difficulty;
 import ir.sk.helper.DifficultyType;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
+import ir.sk.helper.pattern.CyclicSortPattern;
 import ir.sk.helper.pattern.RunnerPattern;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ import java.util.List;
 /**
  * Created by sad.kayvanfar on 2/13/2021.
  */
-public class CyclicSortPattern {
+public class CyclicSortPatternAlgorithms {
 
     /**
      * We are given an array containing ‘n’ distinct numbers taken from the range 0 to ‘n’.
@@ -32,6 +33,7 @@ public class CyclicSortPattern {
     @TimeComplexity("O(n) + O(n-1) + O(n) = O(n)")
     @SpaceComplexity("O(1)")
     @Difficulty(type = DifficultyType.EASY)
+    @CyclicSortPattern
     public static int findMissingNumber(int[] nums) {
         int i = 0;
         while (i < nums.length) {
@@ -65,6 +67,7 @@ public class CyclicSortPattern {
     @TimeComplexity("O(n) + O(n-1) + O(n) = O(n)")
     @SpaceComplexity("O(n)")
     @Difficulty(type = DifficultyType.EASY)
+    @CyclicSortPattern
     public static List<Integer> findAllMissingNumbers(int[] nums) {
         int i = 0;
         while (i < nums.length) {
@@ -100,6 +103,7 @@ public class CyclicSortPattern {
     @TimeComplexity("O(n) + O(n-1) = O(n)")
     @SpaceComplexity("O(1)")
     @Difficulty(type = DifficultyType.EASY)
+    @CyclicSortPattern
     public static int findDuplicateNumber(int[] nums) {
         int i = 0;
         while (i < nums.length) {
@@ -177,6 +181,7 @@ public class CyclicSortPattern {
     @TimeComplexity("O(n) + O(n-1) = O(n)")
     @SpaceComplexity("O(1)")
     @Difficulty(type = DifficultyType.EASY)
+    @CyclicSortPattern
     public static List<Integer> findAllDuplicates(int[] nums) {
         int i = 0;
         while (i < nums.length) {
@@ -211,6 +216,7 @@ public class CyclicSortPattern {
     @TimeComplexity("O(n) + O(n-1) = O(n)")
     @SpaceComplexity("O(1)")
     @Difficulty(type = DifficultyType.EASY)
+    @CyclicSortPattern
     public static int[] findCorruptNumbers(int[] nums) {
         int i = 0;
         while (i < nums.length) {
