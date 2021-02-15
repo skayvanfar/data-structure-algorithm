@@ -1,5 +1,7 @@
 package ir.sk.datastructure.cache;
 
+import ir.sk.helper.Difficulty;
+import ir.sk.helper.DifficultyType;
 import ir.sk.helper.complexity.TimeComplexity;
 
 import java.util.HashMap;
@@ -21,6 +23,7 @@ import java.util.HashMap;
  * <p>
  * Created by sad.kayvanfar on 9/21/2020.
  */
+@Difficulty(type = DifficultyType.HARD)
 public class LRUCache {
 
     public static int MAX_SIZE = 10;
