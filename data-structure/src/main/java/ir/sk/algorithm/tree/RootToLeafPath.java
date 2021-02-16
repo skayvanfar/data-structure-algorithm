@@ -1,6 +1,7 @@
 package ir.sk.algorithm.tree;
 
 import ir.sk.helper.Point;
+import ir.sk.helper.RecurrenceRelation;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.technique.BacktrackingDFS;
@@ -25,12 +26,19 @@ public class RootToLeafPath {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
+    @BacktrackingDFS
+    @RecurrenceRelation("T(n) = 2 T(n/2) + O(1)")
     public static boolean hasPathByDFSWithSum(TreeNode node, int sum) {
         if (node == null)
             return false;
-        if (node.left == null && node.right == null && node.value == sum)
-            return true;
 
+        // if the current node is a leaf and its value os equals to the sum, we've found a path
+        if (node.left == null && node.right == null && node.value == sum) {
+            return true;
+        }
+
+        // recursively call to traverse the left and right sub-tree
+        // return true if any of the two recursive call return true
         return hasPathByDFSWithSum(node.left, sum - node.value) || hasPathByDFSWithSum(node.right, sum - node.value);
 
     }
