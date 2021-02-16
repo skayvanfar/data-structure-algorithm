@@ -25,6 +25,11 @@ public class CyclicSortPatternAlgorithmsTest {
     }
 
     @Test
+    public void findMissingNumberByXOR() {
+        System.out.println(CyclicSortPatternAlgorithms.findMissingNumberByXOR(new int[]{4, 0, 3, 1}));
+    }
+
+    @Test
     public void findMissingNumber() {
         System.out.println(CyclicSortPatternAlgorithms.findMissingNumber(new int[]{4, 0, 3, 1}));
     }

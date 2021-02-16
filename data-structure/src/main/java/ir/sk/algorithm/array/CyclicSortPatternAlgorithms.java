@@ -33,11 +33,9 @@ public class CyclicSortPatternAlgorithms {
     @Difficulty(type = DifficultyType.EASY)
     @BruteForce
     public static int findMissingNumberNaive(int[] nums) {
-        int n = nums.length;
-
         // find sum of all numbers from 1 to n.
         int s1 = 0;
-        for (int i = 1; i <= n; i++)
+        for (int i = 1; i <= nums.length; i++)
             s1 += i;
 
         // subtract all numbers in input from sum
@@ -46,6 +44,32 @@ public class CyclicSortPatternAlgorithms {
 
         // s1, now, is thw missing number
         return s1;
+    }
+
+    /** in {@link #findMissingNumberNaive(int[])} While finding the sum of numbers from 1 to nn, we can get integer overflow when nn is large.
+     *
+     * XOR all the numbers from 1 to nn, let’s call it x1.
+     * XOR all the numbers in the input array, let’s call it x2.
+     * The missing number can be found by x1 XOR x2.
+     *
+     * @param nums
+     * @return
+     */
+    @TimeComplexity("O(n) + O(n-1) + O(n) = O(n)")
+    @SpaceComplexity("O(1)")
+    public static int findMissingNumberByXOR(int[] nums) {
+        // find sum of all numbers from 1 to n.
+        int x1 = 1;
+        for (int i = 1; i <= nums.length; i++)
+            x1 = x1 ^ i;
+
+        // x2 represents XOR of all values in nums
+        int x2 = nums[0];
+        for (int i = 1; i < nums.length - 1; i++)
+            x2 = x2 ^ nums[i];
+
+        // missing number is the xor of and x2
+        return x1 ^ x2;
     }
 
     /**
