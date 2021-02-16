@@ -20,6 +20,11 @@ public class CyclicSortPatternAlgorithmsTest {
     }
 
     @Test
+    public void findMissingNumberNaive() {
+        System.out.println(CyclicSortPatternAlgorithms.findMissingNumberNaive(new int[]{4, 0, 3, 1}));
+    }
+
+    @Test
     public void findMissingNumber() {
         System.out.println(CyclicSortPatternAlgorithms.findMissingNumber(new int[]{4, 0, 3, 1}));
     }
@@ -48,4 +53,5 @@ public class CyclicSortPatternAlgorithmsTest {
     public void findCorruptNumbers() {
         System.out.println(Arrays.toString(CyclicSortPatternAlgorithms.findCorruptNumbers(new int[]{3, 1, 2, 5, 2})));
     }
+
 }

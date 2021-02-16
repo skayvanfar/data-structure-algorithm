@@ -8,6 +8,7 @@ import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.CyclicSortPattern;
 import ir.sk.helper.pattern.RunnerPattern;
+import ir.sk.helper.technique.BruteForce;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,36 @@ import java.util.List;
  * Created by sad.kayvanfar on 2/13/2021.
  */
 public class CyclicSortPatternAlgorithms {
+
+    /**
+     *
+     * A straight forward approach to solve this problem can be:
+     *
+     * Find the sum of all integers from 11 to nn; let’s call it s1.
+     * Subtract all the numbers in the input array from s1; this will give us the missing number.
+     *
+     * @param nums
+     * @return
+     */
+    @TimeComplexity("O(n) + O(n) = O(n)")
+    @SpaceComplexity("O(1)")
+    @Difficulty(type = DifficultyType.EASY)
+    @BruteForce
+    public static int findMissingNumberNaive(int[] nums) {
+        int n = nums.length;
+
+        // find sum of all numbers from 1 to n.
+        int s1 = 0;
+        for (int i = 1; i <= n; i++)
+            s1 += i;
+
+        // subtract all numbers in input from sum
+        for (int num : nums)
+            s1 -= num;
+
+        // s1, now, is thw missing number
+        return s1;
+    }
 
     /**
      * We are given an array containing ‘n’ distinct numbers taken from the range 0 to ‘n’.
@@ -37,8 +68,7 @@ public class CyclicSortPatternAlgorithms {
     public static int findMissingNumber(int[] nums) {
         int i = 0;
         while (i < nums.length) {
-            int j = nums[i];
-            if (nums[i] < nums.length && nums[i] == nums[j])
+            if (nums[i] < nums.length && nums[i] != nums[nums[i]])
                 Utils.swapInArray(nums, i, nums[i]);
             else
                 i++;
