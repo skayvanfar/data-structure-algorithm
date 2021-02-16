@@ -1,5 +1,7 @@
 package ir.sk.algorithm.tree;
 
+import ir.sk.helper.Difficulty;
+import ir.sk.helper.DifficultyType;
 import ir.sk.helper.Point;
 import ir.sk.helper.RecurrenceRelation;
 import ir.sk.helper.complexity.SpaceComplexity;
@@ -280,7 +282,7 @@ public class RootToLeafPath {
     private static int treeDiameter = 0;
 
     public static int findDiameter(TreeNode root) {
-        calculateHeight(root);
+        findDiameterRecursive(root);
         return treeDiameter;
     }
 
@@ -298,18 +300,21 @@ public class RootToLeafPath {
      *
      * Note: You can always assume that there are at least two leaf nodes in the given tree.
      *
+     * See also {@link #hasPathByDFSWithSum}
+     *
      * @param currentNode
      * @return
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
     @BacktrackingDFS
-    private static int calculateHeight(TreeNode currentNode) {
+    @Difficulty(type = DifficultyType.MEDIUM)
+    private static int findDiameterRecursive(TreeNode currentNode) {
         if (currentNode == null)
             return 0;
 
-        int leftTreeHeight = calculateHeight(currentNode.left);
-        int rightTreeHeight = calculateHeight(currentNode.right);
+        int leftTreeHeight = findDiameterRecursive(currentNode.left);
+        int rightTreeHeight = findDiameterRecursive(currentNode.right);
 
         // diameter at the current node will be equal to the height of left subtree +
         // the height of the right sub-tree + '1' for the current node
@@ -321,5 +326,51 @@ public class RootToLeafPath {
         // height of the current node will be equal to maximum of the height of
         // left or right subtrees plus '1' for the current node
         return Math.max(leftTreeHeight, rightTreeHeight) + 1;
+    }
+
+
+    private static int globalMaximumSum = Integer.MIN_VALUE;;
+
+    public static int findMaximumPathSum(TreeNode root) {
+        findMaximumPathSumRecursive(root);
+        return globalMaximumSum;
+    }
+
+    /**
+     * Find the path with the maximum sum in a given binary tree.
+     * Write a function that returns the maximum sum.
+     * A path can be defined as a sequence of nodes between any two nodes and doesn’t necessarily pass through the root.
+     *
+     * his problem follows the Binary Tree Path Sum pattern and shares the algorithmic logic with Tree Diameter. We can follow the same DFS approach. The only difference will be to ignore the paths with negative sums. Since we need to find the overall maximum sum, we should ignore any path which has an overall negative sum.
+     *
+     * @param currentNode
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
+    @BacktrackingDFS
+    @Difficulty(type = DifficultyType.MEDIUM)
+    private static int findMaximumPathSumRecursive(TreeNode currentNode) {
+        if (currentNode == null)
+            return 0;
+
+        int maxPathSumFromLeft = findMaximumPathSumRecursive(currentNode.left);
+        int maxPathSumFromRight = findMaximumPathSumRecursive(currentNode.right);
+
+        // ignore path with negative sums, since we need to find the maximum sum we should
+        // ignore any path which has an overall negative sum
+        maxPathSumFromLeft = Math.max(maxPathSumFromLeft, 0);
+        maxPathSumFromRight = Math.max(maxPathSumFromRight, 0);
+
+        // maximum path sum at the current node will be equal to the sum from hte left subtree +
+        // the sum from right subtree + val of current node
+        int localMaximumSum = maxPathSumFromLeft + maxPathSumFromRight + currentNode.value;
+
+        // update the global maximum sum
+        globalMaximumSum = Math.max(globalMaximumSum, localMaximumSum);
+
+        // maximum sum of any path from the current node will be equal to hte maximum of
+        // the sums from left or right subtrees plus the value of the current node
+        return Math.max(maxPathSumFromLeft, maxPathSumFromRight) + currentNode.value;
     }
 }
