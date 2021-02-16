@@ -2,6 +2,7 @@ package ir.sk.algorithm;
 
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
+import ir.sk.helper.technique.BacktrackingDFS;
 import ir.sk.helper.technique.DynamicProgramming;
 import ir.sk.helper.technique.DynamicProgrammingType;
 
@@ -15,8 +16,8 @@ import ir.sk.helper.technique.DynamicProgrammingType;
  */
 public class Knapsack {
 
-    public static int slove10knapsack(int[] profits, int[] weights, int capacity) {
-        return slove10knapsack(profits, weights, capacity, 0);
+    public static int solve10knapsack(int[] profits, int[] weights, int capacity) {
+        return solve10knapsack(profits, weights, capacity, 0);
     }
 
     /**
@@ -32,7 +33,8 @@ public class Knapsack {
      */
     @SpaceComplexity("O(n)")
     @TimeComplexity("O(2^n), This space will be used to store the recursion stack.")
-    private static int slove10knapsack(int[] profits, int[] weights, int capacity, int currentIndex) {
+    @BacktrackingDFS
+    private static int solve10knapsack(int[] profits, int[] weights, int capacity, int currentIndex) {
         // base checks
         if (capacity <= 0 || currentIndex >= profits.length)
             return 0;
@@ -42,10 +44,10 @@ public class Knapsack {
         // we shouldn't process this
         int profit1 = 0;
         if (weights[currentIndex] <= capacity)
-            profit1 = profits[currentIndex] + slove10knapsack(profits, weights, capacity - weights[currentIndex], currentIndex + 1);
+            profit1 = profits[currentIndex] + solve10knapsack(profits, weights, capacity - weights[currentIndex], currentIndex + 1);
 
         // recursiveIndex call after excluding the element at the currentIndex
-        int profit2 = slove10knapsack(profits, weights, capacity, currentIndex + 1);
+        int profit2 = solve10knapsack(profits, weights, capacity, currentIndex + 1);
 
         return Math.max(profit1, profit2);
     }
@@ -81,10 +83,10 @@ public class Knapsack {
         // we shouldn't process this
         int profit1 = 0;
         if (weights[currentIndex] <= capacity)
-            profit1 = profits[currentIndex] + slove10knapsack(profits, weights, capacity - weights[currentIndex], currentIndex + 1);
+            profit1 = profits[currentIndex] + solve10knapsack(profits, weights, capacity - weights[currentIndex], currentIndex + 1);
 
         // recursiveIndex call after excluding the element at the currentIndex
-        int profit2 = slove10knapsack(profits, weights, capacity, currentIndex + 1);
+        int profit2 = solve10knapsack(profits, weights, capacity, currentIndex + 1);
 
         dp[currentIndex][capacity] = Math.max(profit1, profit2);
         return dp[currentIndex][capacity];

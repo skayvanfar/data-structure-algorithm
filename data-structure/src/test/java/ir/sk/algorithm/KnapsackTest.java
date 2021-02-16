@@ -21,9 +21,9 @@ public class KnapsackTest {
     public void slove10knapsack() {
         int[] profits = {1, 6, 10, 16};
         int[] weights = {1, 2, 3, 5};
-        int maxProfits = Knapsack.slove10knapsack(profits, weights, 7);
+        int maxProfits = Knapsack.solve10knapsack(profits, weights, 7);
         System.out.println("Total knapsack profit ---> " + maxProfits);
-        maxProfits = Knapsack.slove10knapsack(profits, weights, 6);
+        maxProfits = Knapsack.solve10knapsack(profits, weights, 6);
         System.out.println("Total knapsack profit ---> " + maxProfits);
     }
 
