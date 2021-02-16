@@ -1,0 +1,9 @@
+package ir.sk.helper.technique;
+
+/**
+ * an algorithmic paradigm that follows the problem solving heuristic of making the locally optimal choice at each stage with the hope of finding a global optimum.
+ *
+ * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 2/16/2021.
+ */
+public @interface GreedyAlgorithm {
+}

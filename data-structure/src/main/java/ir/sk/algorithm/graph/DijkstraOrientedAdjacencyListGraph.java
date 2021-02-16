@@ -1,10 +1,13 @@
 package ir.sk.algorithm.graph;
 
+import ir.sk.helper.technique.GreedyAlgorithm;
+
 import java.util.*;
 
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 7/18/2020.
  */
+@GreedyAlgorithm
 public class DijkstraOrientedAdjacencyListGraph {
 
     private Set<Vertix> vertices = new HashSet<>();
