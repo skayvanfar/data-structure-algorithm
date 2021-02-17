@@ -20,6 +20,8 @@ import java.util.*;
  * <p>
  * The total number of subsets of any given set is equal to 2^n
  *
+ * all the combinations of all the different sizes, then you actually end up with the Power Set of that original set.
+ *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/14/2021.
  */
 public class PowerSet {
