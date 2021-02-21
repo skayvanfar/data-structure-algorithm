@@ -1,4 +1,4 @@
-package ir.sk.algorithm.array;
+package ir.sk.algorithm.array.set;
 
 import ir.sk.helper.Difficulty;
 import ir.sk.helper.DifficultyType;

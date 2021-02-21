@@ -1,6 +1,6 @@
-package ir.sk.algorithm.array;
+package ir.sk.algorithm.array.set;
 
-import ir.sk.algorithm.array.Permutation;
+import ir.sk.algorithm.array.set.Permutation;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

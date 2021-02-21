@@ -1,6 +1,6 @@
-package ir.sk.algorithm.array;
+package ir.sk.algorithm.array.set;
 
-import ir.sk.algorithm.array.PowerSet;
+import ir.sk.algorithm.array.set.PowerSet;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
