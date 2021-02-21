@@ -32,4 +32,9 @@ public class CoinExchangeProblemTest {
     public void findMinCoinsByRecursive() {
         System.out.println(CoinExchangeProblem.findMinCoinsByRecursive(new int[]{9, 6, 5, 1}, 11));
     }
+
+    @Test
+    public void findMinCoinsByByDP() {
+        System.out.println(CoinExchangeProblem.findMinCoinsByByDP(new int[]{9, 6, 5, 1}, 11));
+    }
 }

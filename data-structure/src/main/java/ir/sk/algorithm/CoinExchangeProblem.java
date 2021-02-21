@@ -2,6 +2,9 @@ package ir.sk.algorithm;
 
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
+import ir.sk.helper.technique.CompleteSearch;
+import ir.sk.helper.technique.DynamicProgramming;
+import ir.sk.helper.technique.DynamicProgrammingType;
 import ir.sk.helper.technique.GreedyAlgorithm;
 
 import java.util.ArrayList;
@@ -21,14 +24,14 @@ public class CoinExchangeProblem {
      * @param sum
      * @return
      */
-    @TimeComplexity("O(V)")
+    @TimeComplexity("O(sum)")
     @SpaceComplexity("O(1)")
     @GreedyAlgorithm
     public static List<Integer> findMinCoinsGreedy(int[] coins, int sum) {
         List<Integer> result = new ArrayList<>();
 
         // Traverse through all
-        for (int i = 0; i< coins.length; i++) {
+        for (int i = 0; i < coins.length; i++) {
             // Find denominations
             while (sum >= coins[i]) {
                 sum -= coins[i];
@@ -40,11 +43,13 @@ public class CoinExchangeProblem {
 
     /**
      * The time complexity of the solution is exponential
+     *
      * @param coins
      * @param sum
      * @return
      */
     @TimeComplexity("O(2^n)")
+    @CompleteSearch
     public static int findMinCoinsByRecursive(int coins[], int sum) {
         // base case
         if (sum == 0) return 0;
@@ -64,5 +69,47 @@ public class CoinExchangeProblem {
             }
         }
         return res;
+    }
+
+    /**
+     * @param coins
+     * @param sum
+     * @return
+     */
+    @TimeComplexity("O(n*sum)")
+    @DynamicProgramming(type = DynamicProgrammingType.DOWN_TOP_TABULATION)
+    public static int findMinCoinsByByDP(int coins[], int sum) {
+        // table[i] will be storing
+        // the minimum number of coins
+        // required for i value. So
+        // table[sum] will have result
+        int table[] = new int[sum + 1];
+
+        // Base case (If given value sum is 0)
+        table[0] = 0;
+
+        // Initialize all table values as Infinite
+        for (int i = 1; i <= sum; i++)
+            table[i] = Integer.MAX_VALUE;
+
+        // Compute minimum coins required for all
+        // values from 1 to sum
+        for (int i = 1; i <= sum; i++) {
+            // Go through all coins smaller than i
+            for (int j = 0; j < coins.length; j++)
+                if (coins[j] <= i) {
+                    int sub_res = table[i - coins[j]];
+                    if (sub_res != Integer.MAX_VALUE
+                            && sub_res + 1 < table[i])
+                        table[i] = sub_res + 1;
+                }
+
+        }
+
+        if (table[sum] == Integer.MAX_VALUE)
+            return -1;
+
+        return table[sum];
+
     }
 }
