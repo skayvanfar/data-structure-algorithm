@@ -42,7 +42,7 @@ public class PowerSet {
             sets.add(new HashSet<T>());
             return sets;
         }
-        List<T> list = new ArrayList<T>(originalSet);
+        List<T> list = new ArrayList<>(originalSet);
         T head = list.get(0);
         Set<T> rest = new HashSet<T>(list.subList(1, list.size()));
         for (Set<T> set : powerSetRecursive(rest)) {
@@ -142,6 +142,8 @@ public class PowerSet {
      *
      * @param set
      */
+    @TimeComplexity("O(n*2^n)")
+    @SpaceComplexity("O(n)")
     public static void powerSetBinary(char set[]) {
         int n = set.length;
 
