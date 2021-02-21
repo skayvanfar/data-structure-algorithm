@@ -6,8 +6,8 @@ import ir.sk.helper.Implementation;
 import ir.sk.helper.ImplementationType;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.technique.BFS;
 import ir.sk.helper.recursiontype.HeadRecursion;
+import ir.sk.helper.technique.BFS;
 import ir.sk.helper.technique.BacktrackingDFS;
 
 import java.util.*;
@@ -19,7 +19,7 @@ import java.util.*;
  * {{}, {2}, {3}, {2, 3}, {1, 2}, {1, 3}, {1, 2, 3}, {1}}
  * <p>
  * The total number of subsets of any given set is equal to 2^n
- *
+ * <p>
  * all the combinations of all the different sizes, then you actually end up with the Power Set of that original set.
  *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/14/2021.
@@ -38,15 +38,16 @@ public class PowerSet {
     @HeadRecursion
     public static <T> Set<Set<T>> powerSetRecursive(Set<T> originalSet) {
         Set<Set<T>> sets = new HashSet<>();
+        // base case
         if (originalSet.isEmpty()) {
-            sets.add(new HashSet<T>());
+            sets.add(new HashSet<>());
             return sets;
         }
         List<T> list = new ArrayList<>(originalSet);
         T head = list.get(0);
         Set<T> rest = new HashSet<T>(list.subList(1, list.size()));
         for (Set<T> set : powerSetRecursive(rest)) {
-            Set<T> newSet = new HashSet<T>();
+            Set<T> newSet = new HashSet<>();
             newSet.add(head);
             newSet.addAll(set);
             sets.add(newSet);
@@ -55,14 +56,44 @@ public class PowerSet {
         return sets;
     }
 
+    public static void findPowerSetRecursive2(int[] s) {
+        Deque<Integer> set = new ArrayDeque<>();
+        findPowerSetRecursive2(s, set, s.length);
+    }
+
+    /**
+     * The idea is to consider two cases for every character.
+     * (i) Consider current character as part of current subset (ii) Do not consider current character as part of current subset.
+     *
+     * @param S
+     * @param set
+     * @param n
+     */
+    @TimeComplexity("O(2^n)")
+    private static void findPowerSetRecursive2(int[] S, Deque<Integer> set, int n) {
+        // if we have considered all elements
+        if (n == 0) {
+            System.out.println(set);
+            return;
+        }
+
+        // consider the n'th element
+        set.addLast(S[n - 1]);
+        findPowerSetRecursive2(S, set, n - 1);
+
+        // or don't consider the n'th element
+        set.removeLast();
+        findPowerSetRecursive2(S, set, n - 1);
+    }
+
     /**
      * To generate all subsets of the given set,
      * we can use the Breadth First Search (BFS) approach.
      * We can start with an empty set, iterate through all numbers one-by-one,
      * and add them to existing sets to create new subsets.
-     *
+     * <p>
      * Given set: [1, 5, 3]
-     *
+     * <p>
      * Start with an empty set: [[]]
      * Add the first number (1) to all the existing subsets to create new subsets: [[], [1]];
      * Add the second number (5) to all the existing subsets: [[], [1], [5], [1,5]];
@@ -95,12 +126,12 @@ public class PowerSet {
 
     /**
      * Given a set of numbers that might contain duplicates, find all of its distinct subsets.
-     *
+     * <p>
      * This problem follows the Subsets pattern and we can follow a similar Breadth First Search (BFS) approach.
      * The only additional thing we need to do is handle duplicates. Since the given set can have duplicate numbers,
      * if we follow the same approach discussed in Subsets, we will end up with duplicate subsets,
      * which is not acceptable. To handle this, we will do two extra things:
-     *
+     * <p>
      * Sort all numbers of the given set. This will ensure that all duplicate numbers are next to each other.
      * Follow the same BFS approach but whenever we are about to process a duplicate (i.e., when the current and the previous numbers are same),
      * instead of adding the current number (which is a duplicate) to all the existing subsets,
@@ -124,7 +155,7 @@ public class PowerSet {
             startIndex = 0;
 
             // if current and the previous elements are the same, create new subsets from the subsets added in the previous step
-            if (i > 0 && nums[i] == nums[i -1])
+            if (i > 0 && nums[i] == nums[i - 1])
                 startIndex = endIndex + 1;
             endIndex = subsets.size() - 1;
             for (int j = startIndex; j <= endIndex; j++) {

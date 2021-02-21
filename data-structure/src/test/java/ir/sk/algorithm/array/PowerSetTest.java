@@ -52,4 +52,10 @@ public class PowerSetTest {
         PowerSet.powerSetBinary(set);
     }
 
+    @Test
+    public void findPowerSetRecursive2() {
+        int[] integers = {1, 5, 3};
+        PowerSet.findPowerSetRecursive2(integers);
+      //  System.out.println(result);
+    }
 }
