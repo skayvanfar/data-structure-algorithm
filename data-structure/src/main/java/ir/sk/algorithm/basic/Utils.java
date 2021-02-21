@@ -60,9 +60,8 @@ public class Utils {
     @SpaceComplexity("O(1)")
     public static boolean isPrime(int n) {
         for (int i = 2; i * i <= n; i++) { // i * i <= n ==> sqrt
-            if (n % i == 0) {
+            if (n % i == 0)
                 return false;
-            }
         }
         return true;
     }
