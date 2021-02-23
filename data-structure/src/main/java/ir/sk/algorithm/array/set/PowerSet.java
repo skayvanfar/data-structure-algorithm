@@ -27,6 +27,11 @@ import java.util.*;
 public class PowerSet {
 
     /**
+     * Suppose now I know the results of a smaller subproblem, then how can I derive the results of the current problem?
+     * to be specific, now you need to find the subset of [1,2,3], if you have already known the subset of [1,2], can you derive the subset of [1,2,3]? Let's take a look of the subset of [1,2]
+     * The subset of[1,2,3] can be derived by[1,2], and the subset of [1,2] can be derived by [1]. Obviously, the base case is that when the input set is an empty set,
+     * the output subset is also an empty set.
+     *
      * @param originalSet
      * @param <T>
      * @return

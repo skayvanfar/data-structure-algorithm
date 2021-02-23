@@ -24,7 +24,7 @@ public class CoinExchangeProblemTest {
 
     @Test
     public void findMinCoinsUnOptimal() {
-        // it doesn’t work for denominations {9, 6, 5, 1} and V = 11. The above approach would print 9, 1 and 1. But we can use 2 denominations 5 and 6.
+        // it doesnt work for denominations {9, 6, 5, 1} and V = 11. The above approach would print 9, 1 and 1. But we can use 2 denominations 5 and 6.
         System.out.println(CoinExchangeProblem.findMinCoinsGreedy(new int[]{9, 6, 5, 1}, 11));
     }
 
