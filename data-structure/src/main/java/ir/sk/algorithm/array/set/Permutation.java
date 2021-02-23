@@ -49,6 +49,7 @@ public class Permutation {
     @DivideAndConquer
     @BacktrackingDFS
     @Implementation(type = ImplementationType.Recursive)
+    @BCR
     public static void heapPermutationRecursive(int array[], int size) {
         // if size becomes 1 then prints the obtained
         // permutation
@@ -70,6 +71,8 @@ public class Permutation {
     }
 
     /**
+     * The solution is using the idea of <strong>mathematical induction</strong>
+     *
      * @param str
      * @return
      */
@@ -88,6 +91,54 @@ public class Permutation {
                 }
             }
             return result;
+        }
+    }
+
+    /**
+     * main function, input a uique set of numbers and return all permutations of them
+     *
+     * @param nums
+     * @return
+     */
+    public static List<List<Integer>> permutationByBacktracking(int[] nums) {
+        // record "path"
+        LinkedList<Integer> track = new LinkedList<>();
+        List<List<Integer>> result = new LinkedList<>();
+        permutationByBacktracking(nums, track, result);
+        return result;
+    }
+
+    /**
+     * Think about how we find out all the permutations. If you are given three numbers [1,2,3] , you may follow these steps:
+     *
+     * Fix the first number to 1;
+     * Then the second number can be 2;
+     * If the second number is 2, then the third number can only be 3;
+     * Then you can change the second number to 3 and the third number can only be 2;
+     * Then you can only change the first place,and repeat 2-4.
+     *
+     * @param nums
+     * @param track
+     * @param result
+     */
+    @BacktrackingDFS
+    private static void permutationByBacktracking(int[] nums, LinkedList<Integer> track, List<List<Integer>> result) {
+        // trigger the ending condition
+        if (track.size() == nums.length) {
+            result.add(new LinkedList(track));
+            return;
+        }
+
+        for (int i = 0; i < nums.length; i++) {
+            // exclud illegal selections
+            if (track.contains(nums[i]))
+                continue;
+            // select
+            track.add(nums[i]);
+            // go to the next decision tree
+            permutationByBacktracking(nums, track, result);
+            // deselect
+            track.removeLast();
         }
     }
 
