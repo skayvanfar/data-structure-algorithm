@@ -19,6 +19,17 @@ package ir.sk.helper.technique;
  * then we stop computing that solution and we return back to the step before (backtrack).
  * the sooner we realize invalid solution, algorithm is faster.
  *
+ * There is a template for backtracking algorithms:
+ * result = []
+ * def backtrack(Path, selection List):
+ *     if meet the End Condition:
+ *         result.add(Path)
+ *         return
+ *
+ *     for selection in selection List:
+ *         select
+ *         backtrack(Path, selection List)
+ *         deselect
  *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 12/29/2020.
  */
