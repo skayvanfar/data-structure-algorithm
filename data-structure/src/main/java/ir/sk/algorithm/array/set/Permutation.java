@@ -117,6 +117,10 @@ public class Permutation {
      * Then you can change the second number to 3 and the third number can only be 2;
      * Then you can only change the first place,and repeat 2-4.
      *
+     * Path: recorded in track
+     * Selection List: those elements in nums that do not exist in track
+     * End Condition: all elements in nums appear in track
+     *
      * @param nums
      * @param track
      * @param result
@@ -224,7 +228,6 @@ public class Permutation {
      * If n is big, we can generate a random permutation by shuffling the array
      *
      * @param elements
-     * @param <T>
      */
     @TimeComplexity("O(n)")
     public static int[] randomPermutationGenerator(int [] elements) {

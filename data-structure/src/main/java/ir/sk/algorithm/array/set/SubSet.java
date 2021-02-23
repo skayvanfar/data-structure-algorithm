@@ -24,7 +24,7 @@ import java.util.*;
  *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/14/2021.
  */
-public class PowerSet {
+public class SubSet {
 
     /**
      * The first solution is using the idea of <strong>mathematical induction</strong>
