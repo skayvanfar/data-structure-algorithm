@@ -56,4 +56,11 @@ public class SubSetTest {
         int[] integers = {1, 5, 3};
         SubSet.findPowerSetRecursive2(integers);
     }
+
+    @Test
+    public void subSetByBacktracking() {
+        int[] integers = {1, 2, 3};
+        List<List<Integer>> result = SubSet.subSetByBacktracking(integers);
+        System.out.println(result);
+    }
 }

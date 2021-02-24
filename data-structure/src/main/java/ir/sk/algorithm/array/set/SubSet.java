@@ -28,7 +28,7 @@ public class SubSet {
 
     /**
      * The first solution is using the idea of <strong>mathematical induction</strong>
-     *
+     * <p>
      * Suppose now I know the results of a smaller subproblem, then how can I derive the results of the current problem?
      * to be specific, now you need to find the subset of [1,2,3], if you have already known the subset of [1,2], can you derive the subset of [1,2,3]? Let's take a look of the subset of [1,2]
      * The subset of[1,2,3] can be derived by[1,2], and the subset of [1,2] can be derived by [1]. Obviously, the base case is that when the input set is an empty set,
@@ -62,6 +62,57 @@ public class SubSet {
         }
         return sets;
     }
+
+    //////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * main function, input a unique set of numbers and return all subsets of them
+     *
+     * @param nums
+     * @return
+     */
+    public static List<List<Integer>> subSetByBacktracking(int[] nums) {
+        // record "path"
+        LinkedList<Integer> track = new LinkedList<>();
+        List<List<Integer>> result = new LinkedList<>();
+        subSetByBacktracking(nums, 0, track, result);
+        return result;
+    }
+
+    /**
+     * Think about how we find out all the subSets. If you are given three numbers [1,2,3] , you may follow these steps:
+     * <p>
+     * Fix the first number to 1;
+     * Then the second number can be 2;
+     * If the second number is 2, then the third number can only be 3;
+     * Then you can change the second number to 3;
+     * Then you can only change the first place,and repeat 2-4.
+     * <p>
+     * Path: recorded in track
+     * Selection List: those elements in nums that do not exist in track
+     * End Condition: each recur
+     *
+     * @param nums
+     * @param track
+     * @param result
+     */
+    @TimeComplexity("O(2^n)")
+    @BacktrackingDFS
+    private static void subSetByBacktracking(int[] nums, int start, LinkedList<Integer> track, List<List<Integer>> result) {
+        // trigger the ending condition
+        result.add(new LinkedList(track));
+
+        for (int i = start; i < nums.length; i++) {
+            // select
+            track.add(nums[i]);
+            // go to the next decision tree
+            subSetByBacktracking(nums, i + 1, track, result);
+            // deselect
+            track.removeLast();
+        }
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////
+
 
     public static void findPowerSetRecursive2(int[] s) {
         Deque<Integer> set = new ArrayDeque<>();

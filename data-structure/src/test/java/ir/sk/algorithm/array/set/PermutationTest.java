@@ -69,4 +69,10 @@ public class PermutationTest {
         List<List<Integer>> result = Permutation.findPermutationsInsertInEachPositionRecursive(new int[]{1, 3, 5});
         System.out.println("here are all the permutations: " + result);
     }
+
+    @Test
+    public void permutationByBacktracking() {
+        List<List<Integer>> result = Permutation.permutationByBacktracking(new int[]{1, 3, 5});
+        System.out.println("here are all the permutations: " + result);
+    }
 }

@@ -95,7 +95,7 @@ public class Permutation {
     }
 
     /**
-     * main function, input a uique set of numbers and return all permutations of them
+     * main function, input a unique set of numbers and return all permutations of them
      *
      * @param nums
      * @return
