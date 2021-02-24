@@ -4,6 +4,7 @@ import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.technique.BacktrackingDFS;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -21,173 +22,82 @@ import java.util.List;
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/14/2021.
  */
 public class NQueenProblem {
-    final int N = 4;
 
     /**
-     * This function solves the N Queen problem using
-     * Backtracking.  It mainly uses solveNQueen() to
-     * solve the problem. It returns false if queens
-     * cannot be placed, otherwise, return true and
-     * prints placement of queens in the form of 1s.
-     * Please note that there may be more than one
-     * solutions, this function prints one of the
-     * feasible solutions.
-     *
-     * The expected output is a binary matrix which has 1s for the blocks where queens are placed.
-     * For example, following is the output matrix for above 4 queen solution.
-     * <p>
-     * { 0,  1,  0,  0}
-     * { 0,  0,  0,  1}
-     * { 1,  0,  0,  0}
-     * { 0,  0,  1,  0}
-     *
-     * @return
-     */
-    public int[][] solveNQueen() {
-        int board[][] = {{0, 0, 0, 0},
-                {0, 0, 0, 0},
-                {0, 0, 0, 0},
-                {0, 0, 0, 0}};
-
-        if (solveNQueen(board, 0) == false) {
-            System.out.print("Solution does not exist");
-            return board;
-        }
-
-        return board;
-    }
-
-    /**
-     * A recursive utility function to solve N Queen problem
+     * A utility function to print solution
      *
      * @param board
-     * @param col
-     * @return
      */
+    private void printSolution(char board[][]) {
+        for (int i = 0; i < board.length; i++) {
+            System.out.println(Arrays.toString(board[i]).replaceAll(",", ""));
+        }
+        System.out.println();
+    }
+
+    public void findAllNQueen(int n) {
+        // `mat[][]` keeps track of the position of queens in the current configuration
+        char[][] board = new char[n][n];
+
+        // '.' Means empty, and 'Q' means queen, initializing the empty board.
+        for (int i = 0; i < n; i++)
+            Arrays.fill(board[i], '.');
+
+        findAllNQueen(board, 0);
+    }
+
     @BacktrackingDFS
     @TimeComplexity("O(2^n)")
-    private boolean solveNQueen(int board[][], int col) {
-        /* base case: If all queens are placed
-           then return true */
-        if (col >= N)
-            return true;
-
-        /* Consider this column and try placing
-           this queen in all rows one by one */
-        for (int i = 0; i < N; i++) {
-            /* Check if the queen can be placed on
-               board[i][col] */
-            if (isSafe(board, i, col)) {
-                /* Place this queen in board[i][col] */
-                board[i][col] = 1;
-
-                /* recur to place rest of the queens */
-                if (solveNQueen(board, col + 1) == true)
-                    return true;
-
-                /* If placing queen in board[i][col]
-                   doesn't lead to a solution then
-                   remove queen from board[i][col] */
-                board[i][col] = 0; // BACKTRACK
-            }
+    public void findAllNQueen(char board[][], int row) {
+        // trigger the End Condition (the gaul) if `N` queens are placed successfully, print the solution
+        if (row == board.length) {
+            printSolution(board);
+            return;
         }
 
-        /* If the queen can not be placed in any row in
-           this colum col, then return false */
-        return false;
-    }
+        // place queen at every square in the current row `r` and recur for each valid movement
+        for (int i = 0; i < board.length; i++) {
+            // exclude illegal selections (constraints)
+            // if no two queens threaten each other
+            if (isValid(board, row, i)) {
+                // select (choice) - place queen on the current square
+                board[row][i] = 'Q';
 
-    /**
-     * A utility function to check if a queen can
-     * be placed on board[row][col]. Note that this
-     * function is called when "col" queens are already
-     * placed in columns from 0 to col -1. So we need
-     * to check only left side for attacking queens
-     *
-     * @param board
-     * @param row
-     * @param col
-     * @return
-     */
-    private boolean isSafe(int board[][], int row, int col) {
-        int i, j;
-
-        /* Check this row on left side */
-        for (i = 0; i < col; i++)
-            if (board[row][i] == 1)
-                return false;
-
-        /* Check upper diagonal on left side */
-        for (i = row, j = col; i >= 0 && j >= 0; i--, j--)
-            if (board[i][j] == 1)
-                return false;
-
-        /* Check lower diagonal on left side */
-        for (i = row, j = col; j >= 0 && i < N; i++, j--)
-            if (board[i][j] == 1)
-                return false;
-
-        return true;
-    }
-
-
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    /**
-     * Enter board length n, return all legal placements
-     *
-     * The expected output is a binary matrix which has 1s for column places of each row
-     * For example, following is the output matrix for above 4 queen solution.
-     * [[1, 3, 0, 2], [2, 0, 3, 1]]
-     *
-     * @param n
-     * @return
-     */
-    public List<List<Integer>> findAllNQueen(int n) {
-        List<List<Integer>> result = new ArrayList<>();
-        findAllNQueen(n, 0, new ArrayList<>(), result);
-        return result;
-    }
-
-    /**
-     * Path:The rows smaller than row in the board have been successfully placed the queens
-     * Selection List: all columns in 'rowth' row are queen's selections
-     * End condition: row meets the last line of board(n)
-     *
-     * @param n
-     * @param row
-     * @param colPlacement
-     * @param result
-     */
-    public void findAllNQueen(int n, int row, List<Integer> colPlacement, List<List<Integer>> result) {
-        // trigger the End Condition (our goal)
-        if (row == n) {
-            result.add(new ArrayList<>(colPlacement));
-        } else {
-            for (int col = 0; col < n; col++) {
-                // exclude illegal selections (our constraints)
-                if (!isValid(colPlacement))
-                    continue;
-                // select (choice)
-                colPlacement.add(col);
                 // enter next row decision
-                findAllNQueen(n, row + 1, colPlacement, result);
-                // unselect (undo choice)
-                colPlacement.remove(colPlacement.size() - 1);
+                findAllNQueen(board, row + 1);
+
+                // deselect - backtrack and remove the queen from the current square
+                board[row][i] = '.';
             }
         }
     }
 
-    /*Is it possible to place a queen on board [row] [col]? */
-    boolean isValid(List<Integer> colPlacement) {
-        int rowId = colPlacement.size() - 1;
-        for (int i = 0; i < rowId; i++) {
-            int diff = Math.abs(colPlacement.get(i) - colPlacement.get(rowId));
-            if (diff == 0 || diff == rowId - i)
+
+    // Function to check if two queens threaten each other or not
+    private boolean isValid(char board[][], int row, int col) {
+        // return false if two queens share the same column
+        for (int i = 0; i < row; i++) {
+            if (board[i][col] == 'Q') {
                 return false;
+            }
         }
+
+        // return false if two queens share the same `` diagonal
+        for (int i = row, j = col; i >= 0 && j >= 0; i--, j--) {
+            if (board[i][j] == 'Q') {
+                return false;
+            }
+        }
+
+        // return false if two queens share the same `/` diagonal
+        for (int i = row, j = col; i >= 0 && j < board.length; i--, j++) {
+            if (board[i][j] == 'Q') {
+                return false;
+            }
+        }
+
         return true;
     }
+
 
 }
