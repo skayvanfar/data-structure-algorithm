@@ -362,7 +362,7 @@ public class RootToLeafPath {
         maxPathSumFromLeft = Math.max(maxPathSumFromLeft, 0);
         maxPathSumFromRight = Math.max(maxPathSumFromRight, 0);
 
-        // maximum path sum at the current node will be equal to the sum from hte left subtree +
+        // maximum path sum at the current node will be equal to the sum from the left subtree +
         // the sum from right subtree + val of current node
         int localMaximumSum = maxPathSumFromLeft + maxPathSumFromRight + currentNode.value;
 
