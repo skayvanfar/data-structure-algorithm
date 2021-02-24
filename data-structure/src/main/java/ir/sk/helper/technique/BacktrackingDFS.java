@@ -19,6 +19,8 @@ package ir.sk.helper.technique;
  * then we stop computing that solution and we return back to the step before (backtrack).
  * the sooner we realize invalid solution, algorithm is faster.
  *
+ * here Recursion is decision
+ *
  * There is a template for backtracking algorithms:
  * result = []
  * def backtrack(Path, selection List):
@@ -28,8 +30,9 @@ package ir.sk.helper.technique;
  *
  *     for selection in selection List:
  *         select
+ *         (Remove this Selection from the Selection List, Path.add(Selection))
  *         backtrack(Path, selection List)
- *         deselect
+ *         deselect (Path.remove(selection), Add the selection to the Selection List)
  *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 12/29/2020.
  */

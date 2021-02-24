@@ -125,6 +125,8 @@ public class Permutation {
      * @param track
      * @param result
      */
+    @TimeComplexity("O(n! * n), T(n) = n * T(n-1) = n!")
+    @SpaceComplexity("O(n)")
     @BacktrackingDFS
     private static void permutationByBacktracking(int[] nums, LinkedList<Integer> track, List<List<Integer>> result) {
         // trigger the ending condition
@@ -134,7 +136,8 @@ public class Permutation {
         }
 
         for (int i = 0; i < nums.length; i++) {
-            // exclud illegal selections
+            // exclude illegal selections
+            // O(n)
             if (track.contains(nums[i]))
                 continue;
             // select
