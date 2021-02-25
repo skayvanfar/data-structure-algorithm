@@ -91,4 +91,13 @@ public class TreeAlgorithmsTest {
         Node root = TreeAlgorithms.buildTreeByInOrderAndPreOrderByMap(preorder, inorder);
         System.out.println();
     }
+
+    @Test
+    public void buildTreeByInOrderAndPreOrderIterative() {
+        int[] preorder = { 1, 2, 4, 3, 5, 7, 8, 6 };
+        int[] inorder = { 4, 2, 1, 7, 5, 8, 3, 6 };
+
+        Node root = TreeAlgorithms.buildTreeByInOrderAndPreOrderIterative(preorder, inorder);
+        System.out.println();
+    }
 }

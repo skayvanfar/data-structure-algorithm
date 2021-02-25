@@ -4,10 +4,7 @@ import ir.sk.helper.Point;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 
-import java.util.ArrayDeque;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * Created by sad.kayvanfar on 9/15/2020.
@@ -243,31 +240,32 @@ public class TreeAlgorithms {
 
     /**
      * Given preorder and inorder traversal of a tree, construct the binary tree.
+     * Method 1
      * preorder = [3,9,20,15,7]
      * inorder = [9,3,15,20,7]
-     *
-     *   3
-     *    / \
-     *   9  20
-     *     /  \
-     *    15   7
-     *
+     * <p>
+     * 3
+     * / \
+     * 9  20
+     * /  \
+     * 15   7
+     * <p>
      * In a Preorder sequence, leftmost element is the root of the tree. So we know ‘A’ is root for given sequences.
      * By searching ‘A’ in Inorder sequence, we can find out all elements on left side of ‘A’ are in left subtree and elements on right are in right subtree.
      * So we know below structure now.
-     *                  A
-     *                /   \
-     *              /       \
-     *            D B E     F C
-     *
-     *          A
-     *        /   \
-     *      /       \
-     *     B         C
-     *    / \        /
-     *  /     \    /
+     * A
+     * /   \
+     * /       \
+     * D B E     F C
+     * <p>
+     * A
+     * /   \
+     * /       \
+     * B         C
+     * / \        /
+     * /     \    /
      * D       E  F
-     *
+     * <p>
      * Algorithm: buildTree()
      * 1) Pick an element from Preorder. Increment a Preorder Index Variable (preIndex in below code) to pick next element in next recursive call.
      * 2) Create a new tree node tNode with the data as picked element.
@@ -309,7 +307,7 @@ public class TreeAlgorithms {
 
     /**
      * Given preorder and inorder traversal of a tree, construct the binary tree.
-     *
+     * Method 1 improved
      * We can optimize the above solution using hashing (unordered_map in C++ or HashMap in Java).
      * We store indexes of inorder traversal in a hash table. So that search can be done O(1) time.
      *
@@ -342,4 +340,67 @@ public class TreeAlgorithms {
         return root;
     }
 
+    /**
+     * Method 2
+     *
+     * Use the fact that InOrder traversal is Left-Root-Right and PreOrder traversal is Root-Left-Right.
+     * Also, first node in the PreOrder traversal is always the root node and the first node in the InOrder traversal is the leftmost node in the tree.
+     * Maintain two data-structures : Stack (to store the path we visited while traversing PreOrder array) and Set (to maintain the node in which the next right subtree is expected).
+     *
+     * 1. Do below until you reach the leftmost node.
+     * Keep creating the nodes from PreOrder traversal
+     * If the stack’s topmost element is not in the set, link the created node to the left child of stack’s topmost element (if any), without popping the element.
+     * Else link the created node to the right child of stack’s topmost element. Remove the stack’s topmost element from the set and the stack.
+     * Push the node to a stack.
+     *
+     * 2. Keep popping the nodes from the stack until either the stack is empty, or the topmost element of stack compares to the current element of InOrder traversal.
+     * Once the loop is over, push the last node back into the stack and into the set.
+     *
+     * 3. Goto Step 1.
+     *
+     * @param preorder
+     * @param inorder
+     * @return
+     */
+    public static Node<Integer> buildTreeByInOrderAndPreOrderIterative(int[] preorder, int[] inorder) {
+        Set<Node<Integer>> set = new HashSet<>();
+        Stack<Node<Integer>> stack = new Stack<>();
+
+        Node<Integer> root = null;
+        for (int pre = 0, in = 0; pre < preorder.length; ) {
+
+            Node<Integer> node = null;
+            do {
+                node = new Node<>(preorder[pre]);
+                if (root == null) {
+                    root = node;
+                }
+                if (!stack.isEmpty()) {
+                    if (set.contains(stack.peek())) {
+                        set.remove(stack.peek());
+                        stack.pop().right = node;
+                    } else {
+                        stack.peek().left = node;
+                    }
+                }
+                stack.push(node);
+            } while (preorder[pre++] != inorder[in] && pre < preorder.length);
+
+            node = null;
+            while (!stack.isEmpty() && in < inorder.length &&
+                    stack.peek().value == inorder[in]) {
+                node = stack.pop();
+                in++;
+            }
+
+            if (node != null) {
+                set.add(node);
+                stack.push(node);
+            }
+        }
+
+        return root;
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
