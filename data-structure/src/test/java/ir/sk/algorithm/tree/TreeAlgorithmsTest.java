@@ -1,5 +1,6 @@
 package ir.sk.algorithm.tree;
 
+import ir.sk.datastructure.fundamental.tree.binarytree.binarysearchtree.BinarySearchTree;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -71,5 +72,23 @@ public class TreeAlgorithmsTest {
                         new TreeNode(7)));
         TreeAlgorithms.removeHalfNodes(root);
         System.out.println(root);
+    }
+
+    @Test
+    public void buildTreeByInOrderAndPreOrder() {
+        int[] preorder = { 1, 2, 4, 3, 5, 7, 8, 6 };
+        int[] inorder = { 4, 2, 1, 7, 5, 8, 3, 6 };
+
+        Node root = TreeAlgorithms.buildTreeByInOrderAndPreOrder(preorder, inorder);
+        System.out.println();
+    }
+
+    @Test
+    public void buildTreeByInOrderAndPreOrderByMap() {
+        int[] preorder = { 1, 2, 4, 3, 5, 7, 8, 6 };
+        int[] inorder = { 4, 2, 1, 7, 5, 8, 3, 6 };
+
+        Node root = TreeAlgorithms.buildTreeByInOrderAndPreOrderByMap(preorder, inorder);
+        System.out.println();
     }
 }

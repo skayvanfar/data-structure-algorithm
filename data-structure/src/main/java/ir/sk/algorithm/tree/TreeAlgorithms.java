@@ -5,6 +5,8 @@ import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 
 import java.util.ArrayDeque;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Queue;
 
 /**
@@ -228,6 +230,116 @@ public class TreeAlgorithms {
         }
 
         return node;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////
+
+    public static Node buildTreeByInOrderAndPreOrder(int[] preorder, int[] inorder) {
+        if (preorder == null || inorder == null || preorder.length != inorder.length) {
+            return null;
+        }
+        return buildTreeByInOrderAndPreOrder(preorder, inorder, 0, preorder.length - 1, 0, inorder.length - 1);
+    }
+
+    /**
+     * Given preorder and inorder traversal of a tree, construct the binary tree.
+     * preorder = [3,9,20,15,7]
+     * inorder = [9,3,15,20,7]
+     *
+     *   3
+     *    / \
+     *   9  20
+     *     /  \
+     *    15   7
+     *
+     * In a Preorder sequence, leftmost element is the root of the tree. So we know ‘A’ is root for given sequences.
+     * By searching ‘A’ in Inorder sequence, we can find out all elements on left side of ‘A’ are in left subtree and elements on right are in right subtree.
+     * So we know below structure now.
+     *                  A
+     *                /   \
+     *              /       \
+     *            D B E     F C
+     *
+     *          A
+     *        /   \
+     *      /       \
+     *     B         C
+     *    / \        /
+     *  /     \    /
+     * D       E  F
+     *
+     * Algorithm: buildTree()
+     * 1) Pick an element from Preorder. Increment a Preorder Index Variable (preIndex in below code) to pick next element in next recursive call.
+     * 2) Create a new tree node tNode with the data as picked element.
+     * 3) Find the picked element’s index in Inorder. Let the index be inIndex.
+     * 4) Call buildTree for elements before inIndex and make the built tree as left subtree of tNode.
+     * 5) Call buildTree for elements after inIndex and make the built tree as right subtree of tNode.
+     * 6) return tNode
+     *
+     * @param preorder
+     * @param inorder
+     * @param preStart
+     * @param preEnd
+     * @param inStart
+     * @param inEnd
+     * @return
+     */
+    @TimeComplexity("O(n^2)")
+    private static Node buildTreeByInOrderAndPreOrder(int[] preorder, int[] inorder, int preStart, int preEnd, int inStart, int inEnd) {
+        if (inStart > inEnd) {
+            return null;
+        }
+        int rootPosition = findPosition(inStart, inEnd, inorder, preorder[preStart]);
+        Node root = new Node(preorder[preStart]);
+        root.left = buildTreeByInOrderAndPreOrder(preorder, inorder, preStart + 1, preStart + rootPosition - inStart, inStart, rootPosition - 1);
+
+        root.right = buildTreeByInOrderAndPreOrder(preorder, inorder, preEnd - inEnd + rootPosition + 1, preEnd, rootPosition + 1, inEnd);
+        return root;
+    }
+
+    private static int findPosition(int start, int end, int[] arr, int target) {
+        int i;
+        for (i = start; i <= end; i++) {
+            if (arr[i] == target) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * Given preorder and inorder traversal of a tree, construct the binary tree.
+     *
+     * We can optimize the above solution using hashing (unordered_map in C++ or HashMap in Java).
+     * We store indexes of inorder traversal in a hash table. So that search can be done O(1) time.
+     *
+     * @param preorder
+     * @param inorder
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    public static Node buildTreeByInOrderAndPreOrderByMap(int[] preorder, int[] inorder) {
+        Map<Integer, Integer> inMap = new HashMap<Integer, Integer>();
+
+        for (int i = 0; i < inorder.length; i++) {
+            inMap.put(inorder[i], i);
+        }
+
+        Node root = buildTreeByInOrderAndPreOrderByMap(preorder, 0, preorder.length - 1, inorder, 0, inorder.length - 1, inMap);
+        return root;
+    }
+
+    private static Node buildTreeByInOrderAndPreOrderByMap(int[] preorder, int preStart, int preEnd, int[] inorder, int inStart, int inEnd, Map<Integer, Integer> inMap) {
+        if (preStart > preEnd || inStart > inEnd) return null;
+
+        Node root = new Node(preorder[preStart]);
+        int inRoot = inMap.get(root.value);
+        int numsLeft = inRoot - inStart;
+
+        root.left = buildTreeByInOrderAndPreOrderByMap(preorder, preStart + 1, preStart + numsLeft, inorder, inStart, inRoot - 1, inMap);
+        root.right = buildTreeByInOrderAndPreOrderByMap(preorder, preStart + numsLeft + 1, preEnd, inorder, inRoot + 1, inEnd, inMap);
+
+        return root;
     }
 
 }
