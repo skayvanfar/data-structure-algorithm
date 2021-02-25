@@ -166,14 +166,14 @@ public class TreeAlgorithms {
      * @param root
      */
     @TimeComplexity("O(n)")
-    public static void makeFullBinaryTree(TreeNode root) {
-        Queue<TreeNode> queue = new ArrayDeque<>();
+    public static void makeFullBinaryTree(Node root) {
+        Queue<Node> queue = new ArrayDeque<>();
         if (root.left == null && root.right == null) {
             return;
         } else
             queue.offer(root);
         while (!queue.isEmpty()) {
-            TreeNode currentNode = queue.poll();
+            Node currentNode = queue.poll();
             if (currentNode.left == null || currentNode.right == null)
                 break;
             if ((currentNode.left.left == null && currentNode.left.right != null)
@@ -200,7 +200,7 @@ public class TreeAlgorithms {
      * @return
      */
     @TimeComplexity("O(n)")
-    public static TreeNode removeHalfNodes(TreeNode node) {
+    public static Node removeHalfNodes(Node node) {
         if (node == null)
             return null;
 
@@ -214,7 +214,7 @@ public class TreeAlgorithms {
          child NULL left, then it's right child is
          returned and replaces it in the given tree */
         if (node.left == null) {
-            TreeNode newRoot = node.right;
+            Node newRoot = node.right;
             return newRoot;
         }
 
@@ -222,7 +222,7 @@ public class TreeAlgorithms {
            child NULL right, then it's right child is
            returned and replaces it in the given tree  */
         if (node.right == null) {
-            TreeNode newRoot = node.left;
+            Node newRoot = node.left;
             return newRoot;
         }
 
@@ -239,6 +239,7 @@ public class TreeAlgorithms {
     }
 
     /**
+     * // TODO: 2/25/21 need more attention
      * Given preorder and inorder traversal of a tree, construct the binary tree.
      * Method 1
      * preorder = [3,9,20,15,7]

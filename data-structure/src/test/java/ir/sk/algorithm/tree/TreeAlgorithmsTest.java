@@ -52,24 +52,24 @@ public class TreeAlgorithmsTest {
 
     @Test
     public void makeFullBinaryTree() {
-        TreeNode root = new TreeNode(1,
-                new TreeNode(2,
-                        new TreeNode(4), null),
-                new TreeNode(3,
-                        new TreeNode(6),
-                        new TreeNode(7)));
+        Node root = new Node(1,
+                new Node(2,
+                        new Node(4), null),
+                new Node(3,
+                        new Node(6),
+                        new Node(7)));
         TreeAlgorithms.makeFullBinaryTree(root);
         System.out.println(root);
     }
 
     @Test
     public void removeHalfNodes() {
-        TreeNode root = new TreeNode(1,
-                new TreeNode(2,
-                        new TreeNode(4), null),
-                new TreeNode(3,
-                        new TreeNode(6),
-                        new TreeNode(7)));
+        Node root = new Node(1,
+                new Node(2,
+                        new Node(4), null),
+                new Node(3,
+                        new Node(6),
+                        new Node(7)));
         TreeAlgorithms.removeHalfNodes(root);
         System.out.println(root);
     }
