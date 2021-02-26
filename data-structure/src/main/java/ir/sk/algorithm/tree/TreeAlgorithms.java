@@ -1,5 +1,7 @@
 package ir.sk.algorithm.tree;
 
+import ir.sk.helper.Difficulty;
+import ir.sk.helper.DifficultyType;
 import ir.sk.helper.Point;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
@@ -243,7 +245,6 @@ public class TreeAlgorithms {
     }
 
     /**
-     * // TODO: 2/25/21 need more attention
      * Given preorder and inorder traversal of a tree, construct the binary tree.
      * Method 1
      * preorder = [3,9,20,15,7]
@@ -287,6 +288,7 @@ public class TreeAlgorithms {
      * @return
      */
     @TimeComplexity("O(n^2)")
+    @Difficulty(type = DifficultyType.MEDIUM)
     private static Node buildTreeByInOrderAndPreOrder(char[] preorder, char[] inorder, PreIndex preIndex, int inStart, int inEnd) {
         if (inStart > inEnd)
             return null;
@@ -334,6 +336,7 @@ public class TreeAlgorithms {
      * @return
      */
     @TimeComplexity("O(n)")
+    @Difficulty(type = DifficultyType.MEDIUM)
     public static Node buildTreeByInOrderAndPreOrderByMap(char[] preorder, char[] inorder) {
         Map<Character, Integer> inMap = new HashMap<>();
 
@@ -356,7 +359,7 @@ public class TreeAlgorithms {
     }
 
     /**
-     * Method 2
+     * Method 2 // TODO: 2/25/21 need more attention
      * <p>
      * Use the fact that InOrder traversal is Left-Root-Right and PreOrder traversal is Root-Left-Right.
      * Also, first node in the PreOrder traversal is always the root node and the first node in the InOrder traversal is the leftmost node in the tree.
@@ -377,6 +380,7 @@ public class TreeAlgorithms {
      * @param inorder
      * @return
      */
+    @Difficulty(type = DifficultyType.MEDIUM)
     public static Node<Character> buildTreeByInOrderAndPreOrderIterative(char[] preorder, char[] inorder) {
         Set<Node<Character>> set = new HashSet<>();
         Stack<Node<Character>> stack = new Stack<>();
@@ -418,4 +422,108 @@ public class TreeAlgorithms {
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    private static Node<Integer> first, middle, last, prev;
+
+    /**
+     * Two of the nodes of a Binary Search Tree (BST) are swapped. Fix (or correct) the BST.
+     * Input Tree:
+     * 10
+     * /  \
+     * 5    8
+     * / \
+     * 2   20
+     * <p>
+     * In the above tree, nodes 20 and 8 must be swapped to fix the tree.
+     * Following is the output tree
+     * 10
+     * /  \
+     * 5    20
+     * / \
+     * 2   8
+     * <p>
+     * The inorder traversal of a BST produces a sorted array.
+     * So a simple method is to store inorder traversal of the input tree in an auxiliary array.
+     * Sort the auxiliary array. Finally, insert the auxiliary array elements back to the BST, keeping the structure of the BST same.
+     * The time complexity of this method is O(nLogn) and the auxiliary space needed is O(n).
+     * <p>
+     * We can solve this in O(n) time and with a single traversal of the given BST. Since inorder traversal of BST is always a sorted array,
+     * the problem can be reduced to a problem where two elements of a sorted array are swapped. There are two cases that we need to handle:
+     * <p>
+     * We will maintain three-pointers, first, middle, and last. When we find the first point where the current node value is smaller than the previous node value,
+     * we update the first with the previous node & the middle with the current node. When we find the second point where the current node value is smaller than the previous node value,
+     * we update the last with the current node. In the case of #2, we will never find the second point. So, the last pointer will not be updated.
+     * After processing, if the last node value is null, then two swapped nodes of BST are adjacent.
+     *
+     * @param root
+     */
+    @TimeComplexity("O(n)")
+    public static void fixBST(Node root) {
+        // Initialize pointers needed
+        // for correctBSTUtil()
+        first = middle = last = prev = null;
+
+        // Set the poiters to find out
+        // two nodes
+        fixBSTUtil(root);
+
+        // Fix (or correct) the tree
+        if (first != null && last != null) {
+            int temp = first.value;
+            first.value = last.value;
+            last.value = temp;
+        }
+        // Adjacent nodes swapped
+        else if (first != null && middle !=
+                null) {
+            int temp = first.value;
+            first.value = middle.value;
+            middle.value = temp;
+        }
+
+        // else nodes have not been swapped,
+        // passed tree is really BST.
+    }
+
+    /**
+     * This function does inorder traversal
+     * to find out the two swapped nodes.
+     * It sets three pointers, first, middle
+     * and last. If the swapped nodes are
+     * adjacent to each other, then first
+     * and middle contain the resultant nodes
+     * Else, first and last contain the
+     * resultant nodes
+     *
+     * @param currentNode
+     */
+    public static void fixBSTUtil(Node<Integer> currentNode) {
+        if (currentNode == null)
+            return;
+
+        fixBSTUtil(currentNode.left);
+        // If this node is smaller than
+        // the previous node, it's
+        // violating the BST rule.
+        if (prev != null && currentNode.value < prev.value) {
+            // If this is first violation,
+            // mark these two nodes as
+            // 'first' and 'middle'
+            if (first == null) {
+                first = prev;
+                middle = currentNode;
+            }
+
+            // If this is second violation,
+            // mark this node as last
+            else
+                last = currentNode;
+        }
+
+        // Mark this node as previous
+        prev = currentNode;
+
+        // Recur for the right subtree
+        fixBSTUtil(currentNode.right);
+    }
 }

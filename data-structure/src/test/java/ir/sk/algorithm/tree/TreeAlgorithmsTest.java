@@ -1,5 +1,6 @@
 package ir.sk.algorithm.tree;
 
+import ir.sk.datastructure.fundamental.tree.binarytree.binarysearchtree.BinarySearchTree;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -79,7 +80,7 @@ public class TreeAlgorithmsTest {
         char[] inorder = {'D', 'B', 'E', 'A', 'F', 'C'};
 
         Node root = TreeAlgorithms.buildTreeByInOrderAndPreOrder(preorder, inorder);
-        System.out.println();
+        printInorder(root);
     }
 
     @Test
@@ -88,7 +89,7 @@ public class TreeAlgorithmsTest {
         char[] inorder = {'D', 'B', 'E', 'A', 'F', 'C'};
 
         Node root = TreeAlgorithms.buildTreeByInOrderAndPreOrderByMap(preorder, inorder);
-        System.out.println();
+        printInorder(root);
     }
 
     @Test
@@ -97,6 +98,48 @@ public class TreeAlgorithmsTest {
         char[] inorder = {'D', 'B', 'E', 'A', 'F', 'C'};
 
         Node root = TreeAlgorithms.buildTreeByInOrderAndPreOrderIterative(preorder, inorder);
-        System.out.println();
+        printInorder(root);
     }
+
+
+    @Test
+    public void fixBST() {
+         /*   6
+            / \
+           10  2
+          / \ / \
+         1  3 7 12
+
+        10 and 2 are swapped
+        */
+        Node root = new Node(6);
+        root.left = new Node(10);
+        root.right = new Node(2);
+        root.left.left = new Node(1);
+        root.left.right = new Node(3);
+        root.right.right = new Node(12);
+        root.right.left = new Node(7);
+
+        System.out.println("Inorder Traversal" +
+                " of the original tree");
+
+        printInorder(root);
+
+        TreeAlgorithms.fixBST(root);
+
+        System.out.println("\nInorder Traversal" +
+                " of the fixed tree");
+        printInorder(root);
+    }
+
+    /* This function is here just to test buildTree() */
+    static void printInorder(Node node) {
+        if (node == null)
+            return;
+
+        printInorder(node.left);
+        System.out.print(node.value + " ");
+        printInorder(node.right);
+    }
+
 }
