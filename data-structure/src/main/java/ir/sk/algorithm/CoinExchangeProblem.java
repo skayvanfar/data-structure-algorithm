@@ -2,13 +2,9 @@ package ir.sk.algorithm;
 
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.technique.CompleteSearch;
-import ir.sk.helper.technique.DynamicProgramming;
-import ir.sk.helper.technique.DynamicProgrammingType;
-import ir.sk.helper.technique.GreedyAlgorithm;
+import ir.sk.helper.technique.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by sad.kayvanfar on 2/21/2021.
@@ -55,20 +51,20 @@ public class CoinExchangeProblem {
         if (sum == 0) return 0;
 
         // Initialize result
-        int res = Integer.MAX_VALUE;
+        int minNumCoins = Integer.MAX_VALUE;
 
         // Try every coin that has smaller value than sum
         for (int i = 0; i < coins.length; i++) {
             if (coins[i] <= sum) {
-                int sub_res = findMinCoinsByRecursive(coins, sum - coins[i]);
+                int numCoins = findMinCoinsByRecursive(coins, sum - coins[i]);
 
                 // Check for INT_MAX to avoid overflow and see if
                 // result can minimized
-                if (sub_res != Integer.MAX_VALUE && sub_res + 1 < res)
-                    res = sub_res + 1;
+                if (numCoins != Integer.MAX_VALUE && numCoins + 1 < minNumCoins)
+                    minNumCoins = numCoins + 1;
             }
         }
-        return res;
+        return minNumCoins;
     }
 
     /**
@@ -111,5 +107,60 @@ public class CoinExchangeProblem {
 
         return table[sum];
 
+    }
+
+    /**
+     * We have already seen how to solve this problem using dynamic-programming approach in {@link #findMinCoinsByByDP(int[], int)}.
+     * Here, we will see a slightly different approach to solve this problem using BFS. 
+     * 
+     * @param sum
+     * @param coin
+     * @return
+     */
+    @BFS
+    @TimeComplexity("O(n*sum)")
+    public static int findMinCoinsByByBFS(int[] coin, int sum) {
+        // Queue for BFS
+        Queue<Integer> q = new LinkedList<>();
+
+        // Base value in queue
+        q.add(sum);
+
+        // Boolean array to check if
+        // a number has been visited before
+        Set<Integer> v = new HashSet<>();
+
+        // Variable to store depth of BFS
+        int d = 0;
+
+        // BFS algorithm
+        while (q.size() > 0) {
+
+            // Size of queue
+            int s = q.size();
+            while (s-- > 0) {
+
+                // Front most element of the queue
+                int c = q.peek();
+
+                // Base case
+                if (c == 0)
+                    return d;
+                q.remove();
+                if (v.contains(c) || c < 0)
+                    continue;
+
+                // Setting current state as visited
+                v.add(c);
+
+                // Pushing the required states in queue
+                for (int i = 0; i < coin.length; i++)
+                    q.add(c - coin[i]);
+            }
+            d++;
+        }
+
+        // If no possible solution
+        return -1;
     }
 }

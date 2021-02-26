@@ -37,4 +37,9 @@ public class CoinExchangeProblemTest {
     public void findMinCoinsByByDP() {
         System.out.println(CoinExchangeProblem.findMinCoinsByByDP(new int[]{9, 6, 5, 1}, 11));
     }
+
+    @Test
+    public void findMinCoinsByByBFS() {
+        System.out.println(CoinExchangeProblem.findMinCoinsByByBFS(new int[]{9, 6, 5, 1}, 11));
+    }
 }
