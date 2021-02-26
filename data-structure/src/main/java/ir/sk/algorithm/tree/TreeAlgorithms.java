@@ -231,11 +231,15 @@ public class TreeAlgorithms {
 
     ////////////////////////////////////////////////////////////////////////////////////////
 
-    public static Node buildTreeByInOrderAndPreOrder(int[] preorder, int[] inorder) {
+    public static Node buildTreeByInOrderAndPreOrder(char[] preorder, char[] inorder) {
         if (preorder == null || inorder == null || preorder.length != inorder.length) {
             return null;
         }
-        return buildTreeByInOrderAndPreOrder(preorder, inorder, 0, preorder.length - 1, 0, inorder.length - 1);
+        return buildTreeByInOrderAndPreOrder(preorder, inorder, new PreIndex(), 0, inorder.length - 1);
+    }
+
+    static class PreIndex {
+        int value;
     }
 
     /**
@@ -277,33 +281,46 @@ public class TreeAlgorithms {
      *
      * @param preorder
      * @param inorder
-     * @param preStart
-     * @param preEnd
+     * @param preIndex
      * @param inStart
      * @param inEnd
      * @return
      */
     @TimeComplexity("O(n^2)")
-    private static Node buildTreeByInOrderAndPreOrder(int[] preorder, int[] inorder, int preStart, int preEnd, int inStart, int inEnd) {
-        if (inStart > inEnd) {
+    private static Node buildTreeByInOrderAndPreOrder(char[] preorder, char[] inorder, PreIndex preIndex, int inStart, int inEnd) {
+        if (inStart > inEnd)
             return null;
-        }
-        int rootPosition = findPosition(inStart, inEnd, inorder, preorder[preStart]);
-        Node root = new Node(preorder[preStart]);
-        root.left = buildTreeByInOrderAndPreOrder(preorder, inorder, preStart + 1, preStart + rootPosition - inStart, inStart, rootPosition - 1);
 
-        root.right = buildTreeByInOrderAndPreOrder(preorder, inorder, preEnd - inEnd + rootPosition + 1, preEnd, rootPosition + 1, inEnd);
+        /* Pick current node from Preorder traversal using preIndex and increment preIndex */
+        Node<Character> root = new Node<>(preorder[preIndex.value++]);
+
+        /* Else find the index of this node in Inorder traversal */
+        int rootPosition = findPosition(inorder, inStart, inEnd, root.value);
+
+        /* Using index in Inorder traversal, construct left and right subtrees */
+        root.left = buildTreeByInOrderAndPreOrder(preorder, inorder, preIndex, inStart, rootPosition - 1);
+        root.right = buildTreeByInOrderAndPreOrder(preorder, inorder, preIndex, rootPosition + 1, inEnd);
+
         return root;
     }
 
-    private static int findPosition(int start, int end, int[] arr, int target) {
+    /**
+     * Function to find index of value in arr[start...end]
+     * The function assumes that value is present in in[]
+     *
+     * @param start
+     * @param end
+     * @param arr
+     * @param value
+     * @return
+     */
+    private static int findPosition(char[] arr, int start, int end, int value) {
         int i;
         for (i = start; i <= end; i++) {
-            if (arr[i] == target) {
+            if (arr[i] == value)
                 return i;
-            }
         }
-        return -1;
+        return i;
     }
 
     /**
@@ -317,72 +334,69 @@ public class TreeAlgorithms {
      * @return
      */
     @TimeComplexity("O(n)")
-    public static Node buildTreeByInOrderAndPreOrderByMap(int[] preorder, int[] inorder) {
-        Map<Integer, Integer> inMap = new HashMap<Integer, Integer>();
+    public static Node buildTreeByInOrderAndPreOrderByMap(char[] preorder, char[] inorder) {
+        Map<Character, Integer> inMap = new HashMap<>();
 
-        for (int i = 0; i < inorder.length; i++) {
+        for (int i = 0; i < inorder.length; i++)
             inMap.put(inorder[i], i);
-        }
 
-        Node root = buildTreeByInOrderAndPreOrderByMap(preorder, 0, preorder.length - 1, inorder, 0, inorder.length - 1, inMap);
-        return root;
+        return buildTreeByInOrderAndPreOrderByMap(preorder, inorder, new PreIndex(), 0, inorder.length - 1, inMap);
     }
 
-    private static Node buildTreeByInOrderAndPreOrderByMap(int[] preorder, int preStart, int preEnd, int[] inorder, int inStart, int inEnd, Map<Integer, Integer> inMap) {
-        if (preStart > preEnd || inStart > inEnd) return null;
+    private static Node buildTreeByInOrderAndPreOrderByMap(char[] preorder, char[] inorder, PreIndex preIndex, int inStart, int inEnd, Map<Character, Integer> inMap) {
+        if (inStart > inEnd) return null;
 
-        Node root = new Node(preorder[preStart]);
-        int inRoot = inMap.get(root.value);
-        int numsLeft = inRoot - inStart;
+        Node root = new Node(preorder[preIndex.value++]);
+        int rootPosition = inMap.get(root.value);
 
-        root.left = buildTreeByInOrderAndPreOrderByMap(preorder, preStart + 1, preStart + numsLeft, inorder, inStart, inRoot - 1, inMap);
-        root.right = buildTreeByInOrderAndPreOrderByMap(preorder, preStart + numsLeft + 1, preEnd, inorder, inRoot + 1, inEnd, inMap);
+        root.left = buildTreeByInOrderAndPreOrderByMap(preorder, inorder, preIndex, inStart, rootPosition - 1, inMap);
+        root.right = buildTreeByInOrderAndPreOrderByMap(preorder, inorder, preIndex, rootPosition + 1, inEnd, inMap);
 
         return root;
     }
 
     /**
      * Method 2
-     *
+     * <p>
      * Use the fact that InOrder traversal is Left-Root-Right and PreOrder traversal is Root-Left-Right.
      * Also, first node in the PreOrder traversal is always the root node and the first node in the InOrder traversal is the leftmost node in the tree.
      * Maintain two data-structures : Stack (to store the path we visited while traversing PreOrder array) and Set (to maintain the node in which the next right subtree is expected).
-     *
+     * <p>
      * 1. Do below until you reach the leftmost node.
      * Keep creating the nodes from PreOrder traversal
      * If the stack’s topmost element is not in the set, link the created node to the left child of stack’s topmost element (if any), without popping the element.
      * Else link the created node to the right child of stack’s topmost element. Remove the stack’s topmost element from the set and the stack.
      * Push the node to a stack.
-     *
+     * <p>
      * 2. Keep popping the nodes from the stack until either the stack is empty, or the topmost element of stack compares to the current element of InOrder traversal.
      * Once the loop is over, push the last node back into the stack and into the set.
-     *
+     * <p>
      * 3. Goto Step 1.
      *
      * @param preorder
      * @param inorder
      * @return
      */
-    public static Node<Integer> buildTreeByInOrderAndPreOrderIterative(int[] preorder, int[] inorder) {
-        Set<Node<Integer>> set = new HashSet<>();
-        Stack<Node<Integer>> stack = new Stack<>();
+    public static Node<Character> buildTreeByInOrderAndPreOrderIterative(char[] preorder, char[] inorder) {
+        Set<Node<Character>> set = new HashSet<>();
+        Stack<Node<Character>> stack = new Stack<>();
 
-        Node<Integer> root = null;
+        Node<Character> root = null;
         for (int pre = 0, in = 0; pre < preorder.length; ) {
 
-            Node<Integer> node = null;
+            Node<Character> node = null;
             do {
                 node = new Node<>(preorder[pre]);
-                if (root == null) {
+                if (root == null)
                     root = node;
-                }
+
                 if (!stack.isEmpty()) {
                     if (set.contains(stack.peek())) {
                         set.remove(stack.peek());
                         stack.pop().right = node;
-                    } else {
+                    } else
                         stack.peek().left = node;
-                    }
+
                 }
                 stack.push(node);
             } while (preorder[pre++] != inorder[in] && pre < preorder.length);
