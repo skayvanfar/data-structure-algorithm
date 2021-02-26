@@ -16,6 +16,10 @@ import ir.sk.helper.technique.DecreaseAndConquer;
  * Interval Search: These algorithms are specifically designed for searching in sorted data-structures.
  * These type of searching algorithms are much more efficient than Linear Search as they repeatedly target the center of the search structure and divide the search space in half. For Example: Binary Search.
  *
+ * Although the basic idea of binary search is comparatively straightforward, the details can be surprisingly tricky.
+ * Many people like to talk about integer overflow bugs, but the real pit of binary search is not the detail problem at all,
+ * but whether to add one to or subtract one from mid, whether to use<=in while <.
+ *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
 public class Search {
@@ -109,6 +113,8 @@ public class Search {
     /**
      * Given a sorted array and a target number.
      * Return the index of the first target number in the array if it exists, otherwise return -1.
+     *
+     * bruteforce: find a target and then search linearly left
      *
      * @param array
      * @param target
