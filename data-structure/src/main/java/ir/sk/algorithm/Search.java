@@ -114,6 +114,9 @@ public class Search {
      * @param target
      * @return
      */
+    @TimeComplexity("O(Log n)")
+    @DecreaseAndConquer
+    @BinarySearch
     public static int leftBoundBinarySearch(int[] array, int target) {
         int left = 0, right = array.length - 1; // interval [left, right]
         // search interval is [left, right]
@@ -144,6 +147,9 @@ public class Search {
      * @param target
      * @return
      */
+    @TimeComplexity("O(Log n)")
+    @DecreaseAndConquer
+    @BinarySearch
     public static int rightBoundBinarySearch(int[] array, int target) {
         int left = 0, right = array.length - 1; // interval [left, right]
         while (left <= right) {
@@ -162,4 +168,5 @@ public class Search {
             return -1;
         return right;
     }
+
 }
