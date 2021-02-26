@@ -294,16 +294,16 @@ public class TreeAlgorithms {
             return null;
 
         /* Pick current node from Preorder traversal using preIndex and increment preIndex */
-        Node<Character> root = new Node<>(preorder[preIndex.value++]);
+        Node<Character> currentNode = new Node<>(preorder[preIndex.value++]);
 
         /* Else find the index of this node in Inorder traversal */
-        int rootPosition = findPosition(inorder, inStart, inEnd, root.value);
+        int rootPosition = findPosition(inorder, inStart, inEnd, currentNode.value);
 
         /* Using index in Inorder traversal, construct left and right subtrees */
-        root.left = buildTreeByInOrderAndPreOrder(preorder, inorder, preIndex, inStart, rootPosition - 1);
-        root.right = buildTreeByInOrderAndPreOrder(preorder, inorder, preIndex, rootPosition + 1, inEnd);
+        currentNode.left = buildTreeByInOrderAndPreOrder(preorder, inorder, preIndex, inStart, rootPosition - 1);
+        currentNode.right = buildTreeByInOrderAndPreOrder(preorder, inorder, preIndex, rootPosition + 1, inEnd);
 
-        return root;
+        return currentNode;
     }
 
     /**
@@ -349,13 +349,13 @@ public class TreeAlgorithms {
     private static Node buildTreeByInOrderAndPreOrderByMap(char[] preorder, char[] inorder, PreIndex preIndex, int inStart, int inEnd, Map<Character, Integer> inMap) {
         if (inStart > inEnd) return null;
 
-        Node root = new Node(preorder[preIndex.value++]);
-        int rootPosition = inMap.get(root.value);
+        Node currentNode = new Node(preorder[preIndex.value++]);
+        int rootPosition = inMap.get(currentNode.value);
 
-        root.left = buildTreeByInOrderAndPreOrderByMap(preorder, inorder, preIndex, inStart, rootPosition - 1, inMap);
-        root.right = buildTreeByInOrderAndPreOrderByMap(preorder, inorder, preIndex, rootPosition + 1, inEnd, inMap);
+        currentNode.left = buildTreeByInOrderAndPreOrderByMap(preorder, inorder, preIndex, inStart, rootPosition - 1, inMap);
+        currentNode.right = buildTreeByInOrderAndPreOrderByMap(preorder, inorder, preIndex, rootPosition + 1, inEnd, inMap);
 
-        return root;
+        return currentNode;
     }
 
     /**
@@ -458,6 +458,7 @@ public class TreeAlgorithms {
      * @param root
      */
     @TimeComplexity("O(n)")
+    @Difficulty(type = DifficultyType.HARD)
     public static void fixBST(Node root) {
         // Initialize pointers needed
         // for correctBSTUtil()
