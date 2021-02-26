@@ -16,6 +16,10 @@ public class CoinExchangeProblem {
      * Coin exchange problem is nothing but finding the minimum number of coins (of certain denominations)
      * that add up to a given amount of money. It is a knapsack type problem.
      *
+     * For example, for N = 4 and S = {1,2,3}, there are four solutions: {1,1,1,1},{1,1,2},{2,2},{1,3}.
+     * So output should be 4. For N = 10 and S = {2, 5, 3, 6}, there are five solutions: {2,2,2,2,2}, {2,2,3,3}, {2,2,6}, {2,3,5} and {5,5}.
+     * So the output should be 5.
+     *
      * @param coins
      * @param sum
      * @return
@@ -111,8 +115,8 @@ public class CoinExchangeProblem {
 
     /**
      * We have already seen how to solve this problem using dynamic-programming approach in {@link #findMinCoinsByByDP(int[], int)}.
-     * Here, we will see a slightly different approach to solve this problem using BFS. 
-     * 
+     * Here, we will see a slightly different approach to solve this problem using BFS.
+     *
      * @param sum
      * @param coin
      * @return

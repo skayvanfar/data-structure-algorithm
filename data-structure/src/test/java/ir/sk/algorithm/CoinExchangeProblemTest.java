@@ -1,5 +1,7 @@
 package ir.sk.algorithm;
 
+import ir.sk.helper.Difficulty;
+import ir.sk.helper.DifficultyType;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -7,6 +9,7 @@ import org.junit.Test;
 /**
  * Created by sad.kayvanfar on 2/21/2021.
  */
+@Difficulty(type = DifficultyType.HARD)
 public class CoinExchangeProblemTest {
 
     @Before
