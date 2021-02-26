@@ -115,7 +115,7 @@ public class Search {
      * @return
      */
     public static int leftBoundBinarySearch(int[] array, int target) {
-        int left = 0, right = array.length - 1;
+        int left = 0, right = array.length - 1; // interval [left, right]
         // search interval is [left, right]
         while (left <= right) {
             int mid = left + (right - left) / 2;
@@ -134,5 +134,32 @@ public class Search {
         if (left >= array.length || array[left] != target)
             return -1;
         return left;
+    }
+
+    /**
+     * Given a sorted array and a target number.
+     * Return the index of the last target number in the array if it exists, otherwise return -1.
+     *
+     * @param array
+     * @param target
+     * @return
+     */
+    public static int rightBoundBinarySearch(int[] array, int target) {
+        int left = 0, right = array.length - 1; // interval [left, right]
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (array[mid] < target) {
+                left = mid + 1;
+            } else if (array[mid] > target) {
+                right = mid - 1;
+            } else if (array[mid] == target) {
+                // here~ change to shrink left bounds
+                left = mid + 1;
+            }
+        }
+        // here~ change to check right out of bounds, see below
+        if (right < 0 || array[right] != target)
+            return -1;
+        return right;
     }
 }

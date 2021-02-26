@@ -55,4 +55,12 @@ public class SearchTest {
         int resultIndex = Search.leftBoundBinarySearch(array, 2);
         Assert.assertEquals(expectedValue, resultIndex);
     }
+
+    @Test
+    public void rightBoundBinarySearch() {
+        int[] array = new int[]{1, 2, 2, 2, 3};
+        int expectedValue = 3;
+        int resultIndex = Search.rightBoundBinarySearch(array, 2);
+        Assert.assertEquals(expectedValue, resultIndex);
+    }
 }
