@@ -48,33 +48,31 @@ or
 ./gradlew run -Pmain=ir.sk.algorithm.Sort
 ```
 
-## Compiling and running with only a JDK
+- [Data Structure](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/datastructure)
+    - [Fundamental](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/datastructure/fundamental)
+        - [Array](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/datastructure/fundamental/array)
+        - [Graph](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/datastructure/fundamental/graph)
+        - [Hashing](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/datastructure/fundamental/hashing)
+        - [LinkList](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/datastructure/fundamental/linklist)
+        - [Tree](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/datastructure/fundamental/tree)
+    - [List](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/datastructure/list)
+    - [Queue](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/datastructure/queue)
+    - [Stack](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/datastructure/stack)
+    - [cache](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/datastructure/cache)
+    
+- [Algorithm](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/datastructure)
+    - [Array](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm/array)
+        - [lcp](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm/array/lcp)
+        - [set](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm/array/set)
+    - [Basic](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm/basic)
+    - [Graph](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm/graph)
+    - [Intervals](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm/intervals)
+    - [LinkList](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm/linklist)
+    - [Mathematic](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm/mathematic)
+    - [Median](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm/median)
+    - [Stack](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm/stack)
+    - [tree](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm/tree)
 
-### Create a classes folder
-
-```
-cd Algorithms
-mkdir classes
-```
-
-### Compile the algorithm
-
-```
-javac -sourcepath src/main/java -d classes src/main/java/ <relative-path-to-java-source-file>
-```
-
-### Run the algorithm
-
-```
-java -cp classes <class-fully-qualified-name>
-```
-
-### Example
-
-```
-$ javac -d classes -sourcepath src/main/java src/main/java/ir/sk/algorithm/Sort.java
-$ java -cp classes ir.sk.algorithm.Sort
-```
 
 # License
 
