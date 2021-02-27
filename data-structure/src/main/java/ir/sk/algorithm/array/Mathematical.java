@@ -1,9 +1,13 @@
 package ir.sk.algorithm.array;
 
+import ir.sk.helper.Implementation;
+import ir.sk.helper.ImplementationType;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.RunnerPattern;
+import ir.sk.helper.recursiontype.TailRecursion;
 import ir.sk.helper.technique.BruteForce;
+import ir.sk.helper.technique.DecreaseAndConquer;
 
 import java.util.HashSet;
 
@@ -11,6 +15,198 @@ import java.util.HashSet;
  * Created by sad.kayvanfar on 1/20/2021.
  */
 public class Mathematical {
+
+
+    /**
+     * Using loop
+     *
+     * @param n
+     * @return
+     */
+    public static int triangleByLoop(int n) {
+        int total = 0;
+        while (n > 0) {
+            total += n; // add n (column height) to total
+            --n; // decrement column height
+        }
+        return total;
+    }
+
+    /**
+     * Using Recursion
+     *
+     * @param n
+     * @return
+     */
+    public static int triangleByRecursive(int n) {
+        if (n == 1)
+            return 1;
+        else
+            return (n + triangleByRecursive(n - 1));
+    }
+
+    /**
+     * @param a
+     * @param b
+     * @return
+     */
+    public static int div(int a, int b) {
+        if (a < b)
+            return 0;
+        else
+            return mod(a - b, b) + 1;
+    }
+
+    /**
+     * @param a
+     * @param b
+     * @return
+     */
+    @TimeComplexity("O(a/b)")
+    @SpaceComplexity("O(1)")
+    public static int div2(int a, int b) {
+        int count = 0;
+        int sum = b;
+        while (sum <= a) {
+            sum += b;
+            count++;
+        }
+        return count;
+    }
+
+    /**
+     * computes a % b
+     *
+     * @param a
+     * @param b
+     * @return
+     */
+    public static int mod(int a, int b) {
+        if (a < b)
+            return a;
+        else
+            return mod(a - b, b);
+    }
+
+    /**
+     * @param a
+     * @param b
+     * @return
+     */
+    @TimeComplexity("O(1)")
+    @SpaceComplexity("O(1)")
+    public static int mod2(int a, int b) {
+        if (b <= 0) {
+            return -1;
+        }
+        int div = a / b;
+        return a - div * b;
+    }
+
+    /**
+     * computes the [integer] square root of a number. If the number is not a
+     * perfect square (there is no integer square root) , then it returns -1. It does this by successive
+     * guessing. If n is 100, it first guesses SO. Too high? Try something lower - halfway between 1
+     * and SO.
+     *
+     * @param n
+     * @return
+     */
+    public static int sqrtByBinarySearch(int n) {
+        return sqrt_helper(n, 1, n);
+    }
+
+    @TimeComplexity("O(log n)")
+    private static int sqrt_helper(int n, int min, int max) {
+        if (max < min) return -1; // no square root
+        int guess = (min + max) / 2;
+        if (guess * guess == n) { // found it!
+            return guess;
+        } else if (guess * guess < n) { // too low
+            return sqrt_helper(n, guess + 1, max); // try higher
+        } else { // too high
+            return sqrt_helper(n, min, guess - 1); // try lower
+        }
+    }
+
+    /**
+     * computes the [integer] square root of a number. If the number is not
+     * a perfect square (there is no integer square root), then it returns -1. It does this by trying
+     * increasingly large numbers until it finds the right value (or is too high)
+     *
+     * @param n
+     * @return
+     */
+    @TimeComplexity("O(sqrt(n))")
+    @SpaceComplexity("O(1)")
+    public static int sqrtByIteration(int n) {
+        for (int guess = 1; guess * guess <= n; guess++) {
+            if (guess * guess == n) {
+                return guess;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * the Euclidean algorithm, or Euclid's algorithm, is an efficient method for
+     * computing the greatest common divisor (GCD) of two numbers, the largest number
+     * that divides both of them without leaving a remainder.
+     * <p>
+     * decrease-and-conquer (Divide-and-conquer algorithm) algorithm and recursive
+     *
+     * @param a
+     * @param b
+     * @return
+     */
+    @DecreaseAndConquer
+    @Implementation(type = ImplementationType.Recursive)
+    @TailRecursion
+    public static int gcdByEuclidean(int a, int b) {
+        if (b == 0)
+            return a;
+        else
+            return gcdByEuclidean(b, mod(a, b));
+    }
+
+    /**
+     * @param n
+     * @param m
+     * @return
+     */
+    @TimeComplexity("O(m)")
+    @SpaceComplexity("O(1)")
+    public static int powerByRecursive(int n, int m) {
+        if (m == 1)
+            return n;
+        else
+            return (n * powerByRecursive(n, m - 1));
+    }
+
+    /**
+     * Pascal
+     *
+     * @param n
+     * @param m
+     * @return
+     */
+    public static int combinationByRecursive(int n, int m) {
+        if (n == m || m == 0)
+            return 1;
+        else
+            return combinationByRecursive(n - 1, m) + combinationByRecursive(n - 1, m - 1);
+    }
+
+
+    /**
+     * @param a
+     * @param b
+     * @return
+     */
+    public static double hypotenuse(double a, double b) {
+        return Math.sqrt(a * a + b * b);
+    }
+
 
     /**
      * Any number will be called a happy number if, after repeatedly replacing it with a number equal to the sum of the square of all of its digits, leads us to number ‘1’.
