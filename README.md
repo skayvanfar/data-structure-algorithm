@@ -18,3 +18,7 @@ This repository provides algorithm implementations in Java.
 # Running an algorithm implementation
 
 To compile and run any of the algorithms here, you need at least JDK version 8. Gradle can make things more convenient for you, but it is not required.
+
+# License
+
+This repository is released under the [MIT license](https://opensource.org/licenses/MIT). In short, this means you are free to use this software in any personal, open-source or commercial projects. Attribution is optional but appreciated.
