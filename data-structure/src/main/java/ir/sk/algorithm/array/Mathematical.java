@@ -207,6 +207,40 @@ public class Mathematical {
         return Math.sqrt(a * a + b * b);
     }
 
+    /**
+     * the n-th harmonic number is the sum of the reciprocals of the first n natural numbers:
+     *
+     * @param N
+     * @return
+     */
+    public static double harmonicNumber(int N) {
+        double sum = 0.0;
+        for (int i = 1; i <= N; i++)
+            sum += 1.0 / i;
+        return sum;
+    }
+
+    /**
+     * absolute value of an int value
+     *
+     * @param x
+     * @return
+     */
+    public static int abs(int x) {
+        if (x < 0) return -x;
+        else return x;
+    }
+
+    /**
+     * absolute value of a double value
+     *
+     * @param x
+     * @return
+     */
+    public static double abs(double x) {
+        if (x < 0.0) return -x;
+        else return x;
+    }
 
     /**
      * Any number will be called a happy number if, after repeatedly replacing it with a number equal to the sum of the square of all of its digits, leads us to number ‘1’.
