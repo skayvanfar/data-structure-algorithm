@@ -1,6 +1,7 @@
 package ir.sk.algorithm.array;
 
 import ir.sk.algorithm.basic.Utils;
+import ir.sk.algorithm.others.Sort;
 import ir.sk.datastructure.fundamental.linklist.SinglyLink;
 import ir.sk.helper.Difficulty;
 import ir.sk.helper.DifficultyType;
@@ -80,7 +81,7 @@ public class CyclicSortPatternAlgorithms {
      * we can use a similar strategy as discussed in Cyclic Sort to place the numbers on their correct index. Once we have every number in its correct place,
      * we can iterate the array to find the index which does not have the correct number, and that index will be our missing number.
      * <p>
-     * See also {@link ir.sk.algorithm.Sort#cyclicSort(int[])}
+     * See also {@link Sort#cyclicSort(int[])}
      *
      * @param nums
      * @return
@@ -149,7 +150,7 @@ public class CyclicSortPatternAlgorithms {
      * Following a similar approach, we will try to place each number on its correct index. Since there is only one duplicate,
      * if while swapping the number with its index both the numbers being swapped are same, we have found our duplicate!
      * <p>
-     * See also {@link ir.sk.algorithm.Sort#cyclicSort(int[])}
+     * See also {@link Sort#cyclicSort(int[])}
      *
      * @param nums
      * @return

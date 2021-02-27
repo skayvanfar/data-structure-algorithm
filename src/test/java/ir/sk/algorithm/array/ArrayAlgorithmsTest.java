@@ -1,6 +1,5 @@
 package ir.sk.algorithm.array;
 
-import ir.sk.algorithm.TripleStep;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

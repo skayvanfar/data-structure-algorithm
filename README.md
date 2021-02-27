@@ -72,6 +72,7 @@ or
     - [Median](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm/median)
     - [Stack](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm/stack)
     - [tree](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm/tree)
+    - [others](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm/others)
 
 
 # License
