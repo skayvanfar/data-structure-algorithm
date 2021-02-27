@@ -3,12 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/data-structure-algorithm.iml" filepath="$PROJECT_DIR$/.idea/modules/data-structure-algorithm.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/algorithm/data-structure-algorithm.algorithm.iml" filepath="$PROJECT_DIR$/.idea/modules/algorithm/data-structure-algorithm.algorithm.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/data-structure/data-structure-algorithm.data-structure.iml" filepath="$PROJECT_DIR$/.idea/modules/data-structure/data-structure-algorithm.data-structure.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/data-structure/data-structure-algorithm.data-structure.main.iml" filepath="$PROJECT_DIR$/.idea/modules/data-structure/data-structure-algorithm.data-structure.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/data-structure/data-structure-algorithm.data-structure.test.iml" filepath="$PROJECT_DIR$/.idea/modules/data-structure/data-structure-algorithm.data-structure.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/data-structure-algorithm.main.iml" filepath="$PROJECT_DIR$/.idea/modules/data-structure-algorithm.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/data-structure-algorithm.test.iml" filepath="$PROJECT_DIR$/.idea/modules/data-structure-algorithm.test.iml" />
     </modules>
   </component>
 </project>
