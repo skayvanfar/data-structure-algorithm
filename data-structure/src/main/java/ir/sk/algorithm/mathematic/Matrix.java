@@ -3,6 +3,7 @@ package ir.sk.algorithm.mathematic;
 import ir.sk.helper.complexity.BCR;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
+import ir.sk.helper.technique.BruteForce;
 
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 2/7/2020.
@@ -30,19 +31,19 @@ public class Matrix {
     }
 
     /**
-     * @param A
-     * @param B
+     * Given two square matrices a and b of size n x m each, find their multiplication matrix.
+     * @param a
+     * @param b
      */
-    public static int[][] multiplyMatrix(int A[][], int B[][]) {
-        int[][] C = new int[N][M];
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < M; j++) {
-                C[i][j] = 0;
-                for (int k = 0; k < P; k++)
-                    C[i][j] += A[i][k] * B[k][j];
-            }
-        }
-        return C;
+    @TimeComplexity("O(n^3)")
+    @BruteForce
+    public static int[][] multiplyMatrix(int a[][], int b[][]) {
+        int[][] c = new int[N][M];
+        for (int i = 0; i < N; i++)
+            for (int j = 0; j < M; j++)
+                for (int k = 0; k < P; k++) // Compute dot product of row i and column j.
+                    c[i][j] += a[i][k] * b[k][j];
+        return c;
     }
 
     /**

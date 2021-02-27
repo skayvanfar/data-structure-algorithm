@@ -42,12 +42,12 @@ public class MatrixTest {
 
     @Test
     public void multiplyMatrix() {
-        int C[][] = Matrix.multiplyMatrix(A, B);
+        int c[][] = Matrix.multiplyMatrix(A, B);
 
         System.out.print("Result matrix is \n");
         for (int i = 0; i < Matrix.N; i++) {
             for (int j = 0; j < Matrix.M; j++)
-                System.out.print(C[i][j] + " ");
+                System.out.print(c[i][j] + " ");
             System.out.print("\n");
         }
     }
