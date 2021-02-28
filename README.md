@@ -14,6 +14,10 @@ and a static method in one library can call static methods defined in other libr
 
 This repository provides algorithm implementations in Java.
 
+# Contributing
+
+This repository is contribution friendly. If you'd like to add or improve an algorithm or data structure, your contribution is welcome.
+
 # Running an algorithm implementation
 
 To compile and run any of the algorithms here, you need at least JDK version 8. Gradle can make things more convenient for you, but it is not required.
