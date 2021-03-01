@@ -26,4 +26,9 @@ public class ExpressionTest {
     public void postfixEvaluation() {
         System.out.println(Expression.postfixEvaluation("23+45+*"));
     }
+
+    @Test
+    public void infixEvaluation() {
+        System.out.println(Expression.infixEvaluation("( ( 100 * ( 2 + 12 ) ) / 14 )"));
+    }
 }

@@ -7,12 +7,19 @@ import ir.sk.helper.complexity.TimeComplexity;
 import java.util.Stack;
 
 /**
+ * Expressions can be written in one of three forms:
+ * Infix Notation: Operators are written between the operands they operate on, e.g. 3 + 4.
+ * Prefix Notation: Operators are written before the operands, e.g + 3 4
+ * Postfix Notation: Operators are written after operands.
+ *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/2/2021.
  */
 public class Expression {
 
     /**
      * converts given infix expression to postfix expression.
+     *
+     * Shunting Yard Algorithm by Edgar Dijkstra
      *
      * @param str
      * @return
@@ -111,4 +118,48 @@ public class Expression {
                 return leftValue / rightValue;
         }
     }
+
+
+    /**
+     *  very well known algorithm for converting an infix notation to a postfix notation is Shunting Yard Algorithm by Edgar Dijkstra.
+     *  This algorithm takes as input an Infix Expression and produces a queue that has this expression converted to postfix notation.
+     *  The same algorithm can be modified so that it outputs the result of the evaluation of expression instead of a queue.
+     *
+     * @param expression
+     * @return
+     */
+    @SpaceComplexity("O(n)")
+    @TimeComplexity("O(n)")
+    public static double infixEvaluation(String expression) {
+
+        String[] tokens = expression.split(" ");
+
+        // Stack for Operators: 'ops
+        Stack<String> ops = new Stack<>();
+
+        // Stack for numbers: 'values'
+        Stack<Double> vals = new Stack<>();
+
+        for (String token : tokens) {
+            if (token.equals("(")) ;
+            else if (token.equals("+")) ops.push(token);
+            else if (token.equals("-")) ops.push(token);
+            else if (token.equals("*")) ops.push(token);
+            else if (token.equals("/")) ops.push(token);
+            else if (token.equals("sqrt")) ops.push(token);
+            else if (token.equals(")")) { // Pop, evaluate, and push result if token is ")".
+                String op = ops.pop();
+                double v = vals.pop();
+                if (op.equals("+")) v = vals.pop() + v;
+                else if (op.equals("-")) v = vals.pop() - v;
+                else if (op.equals("*")) v = vals.pop() * v;
+                else if (op.equals("/")) v = vals.pop() / v;
+                else if (op.equals("sqrt")) v = Math.sqrt(v);
+                vals.push(v);
+            } // Token not operator or paren: push double value.
+            else vals.push(Double.parseDouble(token));
+        }
+        return vals.pop();
+    }
+
 }
