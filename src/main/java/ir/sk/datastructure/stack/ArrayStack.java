@@ -7,13 +7,11 @@ import java.util.NoSuchElementException;
  */
 public class ArrayStack<T> implements Stack<T> {
 
-    private int maxSize;
-    private Object[] stackArray;
+    private T[] stackArray;
     private int top;
 
     public ArrayStack(int s) {
-        maxSize = s; // set array size
-        stackArray = new Object[maxSize]; // create array
+        stackArray = (T[]) new Object[s]; // create array
         top = -1; // no items yet
     }
 
@@ -36,7 +34,7 @@ public class ArrayStack<T> implements Stack<T> {
     public T pop() {
         if (isEmpty())
             throw new NoSuchElementException("Underflow Exception");
-        return (T) stackArray[top--]; // access item, decrement top
+        return stackArray[top--]; // access item, decrement top
     }
 
     /**
@@ -47,7 +45,7 @@ public class ArrayStack<T> implements Stack<T> {
     public T peek() {
         if (isEmpty())
             throw new NoSuchElementException("Underflow Exception");
-        return (T) stackArray[top];
+        return stackArray[top];
     }
 
     @Override
@@ -56,7 +54,11 @@ public class ArrayStack<T> implements Stack<T> {
     }
 
     public boolean isFull() {// true if stack is full
-        return (top == maxSize - 1);
+        return (top == stackArray.length - 1);
+    }
+
+    public int size() {
+        return top + 1;
     }
 
     public void display() {

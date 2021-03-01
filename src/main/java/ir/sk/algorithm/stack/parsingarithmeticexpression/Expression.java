@@ -18,7 +18,7 @@ public class Expression {
 
     /**
      * converts given infix expression to postfix expression.
-     *
+     * <p>
      * Shunting Yard Algorithm by Edgar Dijkstra
      *
      * @param str
@@ -121,9 +121,14 @@ public class Expression {
 
 
     /**
-     *  very well known algorithm for converting an infix notation to a postfix notation is Shunting Yard Algorithm by Edgar Dijkstra.
-     *  This algorithm takes as input an Infix Expression and produces a queue that has this expression converted to postfix notation.
-     *  The same algorithm can be modified so that it outputs the result of the evaluation of expression instead of a queue.
+     * developed by  E. W. Dijkstra in the 1960s uses two stacks (one for operands and one for operators) to do this job.
+     * An expression consists of parentheses, operators, and oper-ands (numbers).
+     * Proceeding from left to right and taking these entities one at a time, we manipulate the stacks according to four possible cases, as follows:
+     * Push operands onto the operand stack.
+     * Push operators onto the operator stack.
+     * Ignore left parentheses.
+     * On encountering a right parenthesis, pop an operator, pop the requisite number of operands,
+     * and push onto the operand stack the result of applying that opera-tor to those operands.
      *
      * @param expression
      * @return
