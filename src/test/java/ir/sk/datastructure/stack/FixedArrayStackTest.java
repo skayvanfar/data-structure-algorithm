@@ -7,13 +7,13 @@ import org.junit.Test;
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 12/10/2017.
  */
-public class ArrayStackTest {
+public class FixedArrayStackTest {
 
-    ArrayStack<Integer> theArrayStack;
+    FixedArrayStack<Integer> theArrayStack;
 
     @Before
     public void setUp() throws Exception {
-        theArrayStack = new ArrayStack<>(10); // make new stack
+        theArrayStack = new FixedArrayStack<>(10); // make new stack
         theArrayStack.push(20); // push items onto stack
         theArrayStack.push(40);
         theArrayStack.push(60);

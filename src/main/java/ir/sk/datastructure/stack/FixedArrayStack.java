@@ -1,16 +1,19 @@
 package ir.sk.datastructure.stack;
 
+import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.Spliterator;
+import java.util.function.Consumer;
 
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 12/10/2017.
  */
-public class ArrayStack<T> implements Stack<T> {
+public class FixedArrayStack<T> implements Stack<T>, Iterable<T> {
 
     private T[] stackArray;
     private int top;
 
-    public ArrayStack(int s) {
+    public FixedArrayStack(int s) {
         stackArray = (T[]) new Object[s]; // create array
         top = -1; // no items yet
     }
@@ -48,12 +51,22 @@ public class ArrayStack<T> implements Stack<T> {
         return stackArray[top];
     }
 
+    /**
+     * true if stack is empty
+     *
+     * @return
+     */
     @Override
-    public boolean isEmpty() { // true if stack is empty
+    public boolean isEmpty() {
         return (top == -1);
     }
 
-    public boolean isFull() {// true if stack is full
+    /**
+     * true if stack is full
+     *
+     * @return
+     */
+    public boolean isFull() {
         return (top == stackArray.length - 1);
     }
 
@@ -70,5 +83,28 @@ public class ArrayStack<T> implements Stack<T> {
         for (int i = top; i >= 0; i--)
             System.out.print(stackArray[i] + " ");
         System.out.println();
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new ReverseArrayIterator();
+    }
+
+    /**
+     * Support LIFO iteration.
+     */
+    private class ReverseArrayIterator implements Iterator<T> {
+        private int i = top + 1;
+
+        public boolean hasNext() {
+            return i > 0;
+        }
+
+        public T next() {
+            return stackArray[--i];
+        }
+
+        public void remove() {
+        }
     }
 }
