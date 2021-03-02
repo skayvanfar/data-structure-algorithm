@@ -19,9 +19,6 @@ public class Steque<T> implements Iterable<T> {
         Node next;
     }
 
-    /**
-     * constructs a steque object.
-     */
     public Steque() {
         first = last = null;
     }

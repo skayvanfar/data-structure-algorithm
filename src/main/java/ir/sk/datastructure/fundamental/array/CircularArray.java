@@ -75,7 +75,7 @@ public class CircularArray<T> implements Iterable<T> {
 
         @Override
         public void remove() {
-            throw new UnsupportedOperationException("Remove is not supported by CircularArray");
+            throw new UnsupportedOperationException("Operation not supported");
         }
     }
 }
