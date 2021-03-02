@@ -37,6 +37,11 @@ public class QueueByTwoStack<T> implements Queue<T> {
     }
 
     @Override
+    public void add(T item) {
+        enqueue(item);
+    }
+
+    @Override
     public boolean isEmpty() {
         return stack.isEmpty();
     }

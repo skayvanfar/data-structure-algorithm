@@ -50,6 +50,11 @@ public class ArrayQueue<T> implements Queue<T> {
         return (T) queueArray[front];
     }
 
+    @Override
+    public void add(T item) {
+        enqueue(item);
+    }
+
     /**
      * @return
      */

@@ -7,7 +7,7 @@ import java.util.Iterator;
  *
  * @param <T>
  */
-public class LinkBag<T> implements Bag<T>, Iterable {
+public class LinkBag<T> implements Bag<T>, Iterable<T> {
 
     private Node first; // first node in list
 

@@ -1,5 +1,7 @@
 package ir.sk.datastructure.list;
 
+import ir.sk.datastructure.bag.Bag;
+
 /**
  * List is ADT that access elements via index
  *
@@ -14,7 +16,7 @@ package ir.sk.datastructure.list;
  * <p>
  * Created by sad.keyvanfar on 8/25/2020.
  */
-public interface List<T> {
+public interface List<T> extends Bag<T> {
     /**
      * Add item to the end of the List
      *

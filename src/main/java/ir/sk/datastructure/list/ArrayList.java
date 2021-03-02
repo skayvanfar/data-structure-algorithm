@@ -40,6 +40,11 @@ public class ArrayList<T> implements List<T> {
         items[size++] = item;
     }
 
+    @Override
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
     /**
      * Get a new array of twice the current size.
      * Copy the items from the old array to the new array.

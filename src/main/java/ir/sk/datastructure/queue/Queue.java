@@ -1,5 +1,6 @@
 package ir.sk.datastructure.queue;
 
+import ir.sk.datastructure.bag.Bag;
 import ir.sk.helper.complexity.TimeComplexity;
 
 /**
@@ -9,7 +10,7 @@ import ir.sk.helper.complexity.TimeComplexity;
  * <p>
  * Created by sad.kayvanfar on 9/1/2020.
  */
-public interface Queue<T> {
+public interface Queue<T> extends Bag<T> {
 
     /**
      * Add an item to the end of the list. (enqueue)

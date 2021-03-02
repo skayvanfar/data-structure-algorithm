@@ -16,6 +16,11 @@ public class LinkQueue<T> implements Queue<T> {
     }
 
     @Override
+    public void add(T item) {
+        enqueue(item);
+    }
+
+    @Override
     public boolean isEmpty() {
         return theList.isEmpty();
     }
