@@ -3,7 +3,8 @@ package ir.sk.datastructure.queue;
 import ir.sk.helper.complexity.TimeComplexity;
 
 /**
- * A queue implements FIFO (first-in first-out) ordering. As in a line or queue at a ticket stand, items are
+ * Queue is ADT of the collection of elements with specific remove order = FIFO (first-in-first-out), allows duplicates,
+ * As in a line or queue at a ticket stand, items are
  * removed from the data structure in the same order that they are added.
  * <p>
  * Created by sad.kayvanfar on 9/1/2020.

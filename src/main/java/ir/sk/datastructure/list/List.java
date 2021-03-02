@@ -1,6 +1,8 @@
 package ir.sk.datastructure.list;
 
 /**
+ * List is ADT that access elements via index
+ *
  * an ordered collection of items of some element type E. Note that this doesn't mean that the objects are in sorted order,
  * it just means that each object has a position in the List, starting with position zero.
  * <p>

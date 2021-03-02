@@ -3,7 +3,7 @@ package ir.sk.datastructure.stack;
 import ir.sk.helper.complexity.TimeComplexity;
 
 /**
- * A stack uses LIFO (last-in first-out) ordering. That is, as in a stack of dinner plates, the most recent item
+ * stack is ADT of the collection of elements with specific remove order = LIFO (last-in-first-out), allows duplicates, the most recent item
  * added to the stack is the first item to be removed.
  * <p>
  *
