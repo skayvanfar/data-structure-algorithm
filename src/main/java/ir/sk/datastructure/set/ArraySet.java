@@ -3,6 +3,9 @@ package ir.sk.datastructure.set;
 import java.util.Arrays;
 import java.util.Iterator;
 
+/**
+ * @param <T>
+ */
 public class ArraySet<T> implements Set<T>, Iterable<T> {
 
     private T[] set;

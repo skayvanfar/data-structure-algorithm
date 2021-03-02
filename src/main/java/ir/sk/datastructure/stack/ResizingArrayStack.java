@@ -103,6 +103,8 @@ public class ResizingArrayStack<T> implements Stack<T>, Iterable<T> {
         private int i = top + 1;
 
         public boolean hasNext() {
+            if (i == 0)
+                throw new UnsupportedOperationException();
             return i > 0;
         }
 
@@ -111,6 +113,7 @@ public class ResizingArrayStack<T> implements Stack<T>, Iterable<T> {
         }
 
         public void remove() {
+            throw new UnsupportedOperationException();
         }
     }
 }

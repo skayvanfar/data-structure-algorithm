@@ -101,6 +101,8 @@ public class FixedArrayStack<T> implements Stack<T>, Iterable<T> {
         }
 
         public T next() {
+            if (i == -1)
+                throw new UnsupportedOperationException();
             return stackArray[--i];
         }
 
