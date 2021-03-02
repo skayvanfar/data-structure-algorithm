@@ -2,12 +2,14 @@ package ir.sk.datastructure.stack;
 
 import ir.sk.datastructure.fundamental.linklist.SinglyLinkList;
 
+import java.util.Iterator;
+
 /**
  * Stack Implemented by a Linked List
  *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
-public class LinkStack<T> implements Stack<T> {
+public class LinkStack<T> implements Stack<T>, Iterable<T> {
 
     private SinglyLinkList<T> theList;
 
@@ -20,6 +22,7 @@ public class LinkStack<T> implements Stack<T> {
      */
     @Override
     public void push(T item) {
+        // by using insertFirst for O(1)
         theList.insertFirst(item);
     }
 
@@ -44,5 +47,10 @@ public class LinkStack<T> implements Stack<T> {
     public void display() {
         System.out.print("Stack (top-->bottom): ");
         theList.displayList();
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return theList.iterator();
     }
 }

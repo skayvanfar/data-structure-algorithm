@@ -59,7 +59,7 @@ public class SinglyLinkListTest {
 
     @Test
     public void getIterator() {
-        ListIterator listIterator = theList.getIterator();
+        ListIterator listIterator = theList.iterator();
         while (listIterator.getCurrent() != null) {
             System.out.println(listIterator.getCurrent().data);
             listIterator.nextLink();

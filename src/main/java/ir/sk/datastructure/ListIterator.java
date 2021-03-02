@@ -3,10 +3,12 @@ package ir.sk.datastructure;
 import ir.sk.datastructure.fundamental.linklist.SinglyLink;
 import ir.sk.datastructure.fundamental.linklist.SinglyLinkList;
 
+import java.util.Iterator;
+
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
-public class ListIterator<T> {
+public class ListIterator<T> implements Iterator<T> {
 
     private SinglyLink<T> current;          // current link
     private SinglyLink<T> previous;         // previous link
@@ -23,6 +25,23 @@ public class ListIterator<T> {
     public void reset() {
         current = ourList.getHead();
         previous = null;
+    }
+
+    @Override
+    public boolean hasNext() {
+        return current.next != null;
+    }
+
+    @Override
+    public T next() {
+        T item = current.data;
+        current = current.next;
+        return item;
+    }
+
+    @Override
+    public void remove() {
+        throw new UnsupportedOperationException();
     }
 
     /**

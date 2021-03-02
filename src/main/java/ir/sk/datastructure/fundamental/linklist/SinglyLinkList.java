@@ -12,7 +12,7 @@ import ir.sk.helper.recursiontype.TailRecursion;
  *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
-public class SinglyLinkList<T> {
+public class SinglyLinkList<T> implements Iterable<T> {
 
     // ref to first link on list
     private SinglyLink<T> head;
@@ -164,11 +164,15 @@ public class SinglyLinkList<T> {
     }
 
     /**
+     * another implementation O(1), we keep
+     * track of the number of items in an instance variable N , incrementing N when we push
+     * and decrementing N when we pop.
+     *
      * @param n
      * @return
      */
     @TimeComplexity("O(n)")
-    public int length(SinglyLink<T> n) {
+    public int size(SinglyLink<T> n) {
         int size = 0;
         while (n != null) {
             size++;
@@ -182,7 +186,8 @@ public class SinglyLinkList<T> {
      *
      * @return
      */
-    public ListIterator<T> getIterator() {
+    @Override
+    public ListIterator<T> iterator() {
         return new ListIterator(this);
     }
 
