@@ -105,6 +105,7 @@ public class FixedArrayStack<T> implements Stack<T>, Iterable<T> {
         }
 
         public void remove() {
+            throw new UnsupportedOperationException();
         }
     }
 }
