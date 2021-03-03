@@ -60,6 +60,8 @@ or
         - [Hashing](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/datastructure/fundamental/hashing)
         - [LinkList](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/datastructure/fundamental/linklist)
         - [Tree](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/datastructure/fundamental/tree)
+    - [Bag](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/datastructure/bag)
+    - [Set](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/datastructure/set)
     - [List](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/datastructure/list)
     - [Queue](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/datastructure/queue)
     - [Stack](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/datastructure/stack)
