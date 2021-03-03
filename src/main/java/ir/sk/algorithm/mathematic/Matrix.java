@@ -6,6 +6,7 @@ import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.technique.BruteForce;
 
 /**
+ * Matrix library
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 2/7/2020.
  */
 public class Matrix {
@@ -31,6 +32,23 @@ public class Matrix {
     }
 
     /**
+     * vector dot product
+     * the dot product or scalar product[note 1] is an algebraic operation that takes two equal-length sequences of numbers (usually coordinate vectors), and returns a single number.
+     *
+     * @param x
+     * @param y
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    public static double dot(double[] x, double[] y) {
+        if (x.length != y.length) throw new IllegalArgumentException("Illegal vector dimensions.");
+        double sum = 0.0;
+        for (int i = 0; i < x.length; i++)
+            sum += x[i] * y[i];
+        return sum;
+    }
+
+    /**
      * Given two square matrices a and b of size n x m each, find their multiplication matrix.
      * @param a
      * @param b
@@ -47,17 +65,26 @@ public class Matrix {
     }
 
     /**
-     * @param A
+     * the transpose of a matrix is an operator which flips a matrix over its diagonal
+     * that is, it switches the row and column indices of the matrix A by producing another matrix, often denoted by AT (among other notations).
+     *
+     * return C = A^T
+     *
+     * @param a
      * @return
      */
-    public static int[][] transposeMatrix(int A[][]) {
-        int[][] C = new int[N][M];
+    @TimeComplexity("O(n * m)")
+    @SpaceComplexity("O(n * m)")
+    public static int[][] transposeMatrix(int a[][]) {
+        int m = a.length;
+        int n = a[0].length;
+        int[][] c = new int[n][m];
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
-                C[j][i] = A[i][j];
+                c[j][i] = a[i][j];
             }
         }
-        return C;
+        return c;
     }
 
     /**
