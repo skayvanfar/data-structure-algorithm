@@ -40,6 +40,7 @@ public class Matrix {
      * @return
      */
     @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
     public static double dot(double[] x, double[] y) {
         if (x.length != y.length) throw new IllegalArgumentException("Illegal vector dimensions.");
         double sum = 0.0;
@@ -56,12 +57,35 @@ public class Matrix {
     @TimeComplexity("O(n^3)")
     @BruteForce
     public static int[][] multiplyMatrix(int a[][], int b[][]) {
-        int[][] c = new int[N][M];
+        int m1 = a.length;
+        int n1 = a[0].length;
+        int m2 = b.length;
+        int n2 = b[0].length;
+        if (n1 != m2) throw new IllegalArgumentException("Illegal matrix dimensions.");
+        int[][] c = new int[m1][n2];
         for (int i = 0; i < N; i++)
             for (int j = 0; j < M; j++)
                 for (int k = 0; k < P; k++) // Compute dot product of row i and column j.
                     c[i][j] += a[i][k] * b[k][j];
         return c;
+    }
+
+    /**
+     * matrix-vector multiplication (y = A * x)
+     *
+     * @param a
+     * @param x
+     * @return
+     */
+    public static double[] multiply(double[][] a, double[] x) {
+        int m = a.length;
+        int n = a[0].length;
+        if (x.length != n) throw new IllegalArgumentException("Illegal matrix dimensions.");
+        double[] y = new double[m];
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < n; j++)
+                y[i] += a[i][j] * x[j];
+        return y;
     }
 
     /**
