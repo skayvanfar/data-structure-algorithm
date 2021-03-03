@@ -88,6 +88,18 @@ public class Matrix {
         return y;
     }
 
+    // vector-matrix multiplication (y = x^T A)
+    public static double[] multiply(double[] x, double[][] a) {
+        int m = a.length;
+        int n = a[0].length;
+        if (x.length != m) throw new IllegalArgumentException("Illegal matrix dimensions.");
+        double[] y = new double[n];
+        for (int j = 0; j < n; j++)
+            for (int i = 0; i < m; i++)
+                y[j] += a[i][j] * x[i];
+        return y;
+    }
+
     /**
      * the transpose of a matrix is an operator which flips a matrix over its diagonal
      * that is, it switches the row and column indices of the matrix A by producing another matrix, often denoted by AT (among other notations).
