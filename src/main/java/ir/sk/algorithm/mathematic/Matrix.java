@@ -18,18 +18,32 @@ public class Matrix {
     /**
      * This function adds A[][] and B[][], and stores
      *
-     * @param A
-     * @param B
+     * @param a
+     * @param b
      * @return
      */
-    public static int[][] addMatrix(int A[][], int B[][]) {
-        int[][] C = new int[N][M];
+    public static int[][] addMatrix(int a[][], int b[][]) {
+        int m = a.length;
+        int n = a[0].length;
+        int[][] c = new int[m][n];
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++)
-                C[i][j] = A[i][j] + B[i][j];
+                c[i][j] = a[i][j] + b[i][j];
         }
-        return C;
+        return c;
     }
+
+    // return c = a - b
+    public static double[][] subtract(double[][] a, double[][] b) {
+        int m = a.length;
+        int n = a[0].length;
+        double[][] c = new double[m][n];
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < n; j++)
+                c[i][j] = a[i][j] - b[i][j];
+        return c;
+    }
+
 
     /**
      * vector dot product
