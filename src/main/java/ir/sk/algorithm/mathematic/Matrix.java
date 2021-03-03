@@ -16,6 +16,19 @@ public class Matrix {
     public static final int P = 4;
 
     /**
+     * return n-by-n identity matrix I
+     *
+     * @param n
+     * @return
+     */
+    public static double[][] identity(int n) {
+        double[][] a = new double[n][n];
+        for (int i = 0; i < n; i++)
+            a[i][i] = 1;
+        return a;
+    }
+
+    /**
      * This function adds A[][] and B[][], and stores
      *
      * @param a
