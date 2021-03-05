@@ -143,8 +143,8 @@ public class Matrix {
         int m = a.length;
         int n = a[0].length;
         int[][] c = new int[n][m];
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < M; j++) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
                 c[j][i] = a[i][j];
             }
         }
