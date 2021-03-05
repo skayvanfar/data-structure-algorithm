@@ -39,8 +39,8 @@ public class Matrix {
         int m = a.length;
         int n = a[0].length;
         int[][] c = new int[m][n];
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < M; j++)
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++)
                 c[i][j] = a[i][j] + b[i][j];
         }
         return c;
@@ -89,10 +89,11 @@ public class Matrix {
         int m2 = b.length;
         int n2 = b[0].length;
         if (n1 != m2) throw new IllegalArgumentException("Illegal matrix dimensions.");
+
         int[][] c = new int[m1][n2];
-        for (int i = 0; i < N; i++)
-            for (int j = 0; j < M; j++)
-                for (int k = 0; k < P; k++) // Compute dot product of row i and column j.
+        for (int i = 0; i < m1; i++)
+            for (int j = 0; j < n2; j++)
+                for (int k = 0; k < n1; k++) // Compute dot product of row i and column j.
                     c[i][j] += a[i][k] * b[k][j];
         return c;
     }
