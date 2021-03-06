@@ -168,12 +168,12 @@ public class Expression {
     }
 
 
-    private static final char LEFT_PAREN     = '(';
-    private static final char RIGHT_PAREN    = ')';
-    private static final char LEFT_BRACE     = '{';
-    private static final char RIGHT_BRACE    = '}';
-    private static final char LEFT_BRACKET   = '[';
-    private static final char RIGHT_BRACKET  = ']';
+    private static final char LEFT_PAREN = '(';
+    private static final char RIGHT_PAREN = ')';
+    private static final char LEFT_BRACE = '{';
+    private static final char RIGHT_BRACE = '}';
+    private static final char LEFT_BRACKET = '[';
+    private static final char RIGHT_BRACKET = ']';
 
 
     /**
@@ -187,25 +187,48 @@ public class Expression {
     public static boolean isParenthesesBalances(String str) {
         Stack<Character> stack = new Stack<>();
         for (int i = 0; i < str.length(); i++) {
-            if (str.charAt(i) == LEFT_PAREN)   stack.push(LEFT_PAREN);
-            if (str.charAt(i) == LEFT_BRACE)   stack.push(LEFT_BRACE);
+            if (str.charAt(i) == LEFT_PAREN) stack.push(LEFT_PAREN);
+            if (str.charAt(i) == LEFT_BRACE) stack.push(LEFT_BRACE);
             if (str.charAt(i) == LEFT_BRACKET) stack.push(LEFT_BRACKET);
 
             if (str.charAt(i) == RIGHT_PAREN) {
-                if (stack.isEmpty())           return false;
+                if (stack.isEmpty()) return false;
                 if (stack.pop() != LEFT_PAREN) return false;
-            }
-
-            else if (str.charAt(i) == RIGHT_BRACE) {
-                if (stack.isEmpty())           return false;
+            } else if (str.charAt(i) == RIGHT_BRACE) {
+                if (stack.isEmpty()) return false;
                 if (stack.pop() != LEFT_BRACE) return false;
-            }
-
-            else if (str.charAt(i) == RIGHT_BRACKET) {
-                if (stack.isEmpty())             return false;
+            } else if (str.charAt(i) == RIGHT_BRACKET) {
+                if (stack.isEmpty()) return false;
                 if (stack.pop() != LEFT_BRACKET) return false;
             }
         }
         return stack.isEmpty();
+    }
+
+
+    /**
+     * it takes an expression without left parentheses
+     * and prints the equivalent infix expression with the parentheses inserted. For
+     * example, given the input:
+     * 1 + 2 ) * 3 - 4 ) * 5 - 6 ) ) )
+     * your program should print
+     * ( ( 1 + 2 ) * ( ( 3 - 4 ) * ( 5 - 6 ) )
+     *
+     * @param str
+     * @return
+     */
+    public static String insertLeftBracket(String str) {
+        Stack<String> stack = new Stack<>();
+        String[] chars = str.split(" ");
+        for (String currChar : chars) {
+            if (currChar.equals(")")) {
+                String opr1 = stack.pop();
+                String operator = stack.pop();
+                String opr2 = stack.pop();
+                stack.push("( " + opr2 + " " + operator + " " + opr1 + " )");
+            } else
+                stack.push(currChar + "");
+        }
+        return stack.pop();
     }
 }

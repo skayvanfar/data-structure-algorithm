@@ -36,4 +36,9 @@ public class ExpressionTest {
     public void isParenthesesBalances() {
         System.out.println(Expression.isParenthesesBalances("[()]{}{[()()]()}"));
     }
+
+    @Test
+    public void insertLeftBracket() {
+        System.out.println(Expression.insertLeftBracket("1 + 2 ) * 3 - 4 ) * 5 - 6 ) ) )"));
+    }
 }
