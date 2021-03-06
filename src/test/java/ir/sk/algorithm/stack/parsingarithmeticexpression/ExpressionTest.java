@@ -31,4 +31,9 @@ public class ExpressionTest {
     public void infixEvaluation() {
         System.out.println(Expression.infixEvaluation("( ( 100 * ( 2 + 12 ) ) / 14 )"));
     }
+
+    @Test
+    public void isParenthesesBalances() {
+        System.out.println(Expression.isParenthesesBalances("[()]{}{[()()]()}"));
+    }
 }

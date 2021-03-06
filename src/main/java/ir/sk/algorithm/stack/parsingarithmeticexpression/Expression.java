@@ -167,4 +167,45 @@ public class Expression {
         return vals.pop();
     }
 
+
+    private static final char LEFT_PAREN     = '(';
+    private static final char RIGHT_PAREN    = ')';
+    private static final char LEFT_BRACE     = '{';
+    private static final char RIGHT_BRACE    = '}';
+    private static final char LEFT_BRACKET   = '[';
+    private static final char RIGHT_BRACKET  = ']';
+
+
+    /**
+     * it reads in a text stream from standard input
+     * and uses a stack to determine whether its parentheses are properly balanced. For example,
+     * your program should print true for [()]{}{[()()]()} and false for [(]).
+     *
+     * @param str
+     * @return
+     */
+    public static boolean isParenthesesBalances(String str) {
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == LEFT_PAREN)   stack.push(LEFT_PAREN);
+            if (str.charAt(i) == LEFT_BRACE)   stack.push(LEFT_BRACE);
+            if (str.charAt(i) == LEFT_BRACKET) stack.push(LEFT_BRACKET);
+
+            if (str.charAt(i) == RIGHT_PAREN) {
+                if (stack.isEmpty())           return false;
+                if (stack.pop() != LEFT_PAREN) return false;
+            }
+
+            else if (str.charAt(i) == RIGHT_BRACE) {
+                if (stack.isEmpty())           return false;
+                if (stack.pop() != LEFT_BRACE) return false;
+            }
+
+            else if (str.charAt(i) == RIGHT_BRACKET) {
+                if (stack.isEmpty())             return false;
+                if (stack.pop() != LEFT_BRACKET) return false;
+            }
+        }
+        return stack.isEmpty();
+    }
 }
