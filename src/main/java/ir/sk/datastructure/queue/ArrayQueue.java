@@ -1,44 +1,48 @@
 package ir.sk.datastructure.queue;
 
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 12/10/2017.
  */
-public class ArrayQueue<T> implements Queue<T> {
+public class ArrayQueue<T> implements Queue<T>, Iterable<T> {
 
-    private int maxSize;
     private Object[] queueArray;
-    private int front;
-    private int rear;
+    private int front, rear;
+    private int capacity;
 
-    public ArrayQueue(int s) {
-        maxSize = s + 1;
-        queueArray = new Object[maxSize];
+    public ArrayQueue(int capacity) {
+        this.capacity = capacity;
+        queueArray = new Object[this.capacity];
         front = 0;
-        rear = -1;
+        rear = 0;
     }
 
     /**
-     * @param j
+     * @param item
      */
     @Override
-    public void enqueue(T j) {
-        if (rear == maxSize - 1)
-            rear = -1;
-        queueArray[++rear] = j;
+    public void enqueue(T item) {
+        if (rear == capacity - 1)
+            throw new RuntimeException("Queue Overflow");
+
+        queueArray[++rear] = item;
     }
 
     /**
+     * It's better to shift for better space management
+     *
      * @return
      */
     @Override
     @SuppressWarnings("unchecked")
     public T dequeue() {
-        T temp = (T) queueArray[front++];
-        if (front == maxSize)
-            front = 0;
-        return temp;
+        if (front == rear)
+            throw new RuntimeException("Queue is Empty");
+
+        return (T) queueArray[front++];
     }
 
     /**
@@ -60,27 +64,45 @@ public class ArrayQueue<T> implements Queue<T> {
      */
     @Override
     public boolean isEmpty() {
-        return (rear + 1 == front || (front + maxSize - 1 == rear));
+        return rear == front;
     }
 
     public boolean isFull() {
-        return (rear + 2 == front || (front + maxSize - 2 == rear));
+        return rear == capacity - 1;
     }
 
-    public int size() { // (assumes queue not empty)
-        if (rear >= front) // contiguous sequence
-            return rear - front + 1;
-        else // broken sequence
-            return (maxSize - front) + (rear + 1);
+    public int size() {
+        return rear - front + 1;
     }
 
     public void display() {
-        System.out.print("\nQueue = ");
-        if (queueArray.length == 0) {
-            System.out.print("Empty\n");
-            return;
-        }
         Arrays.stream(queueArray).forEach(o -> System.out.print(", " + o));
-        System.out.println();
+    }
+
+    public Iterator<T> iterator() {
+        return new ArrayQueue.ArrayIterator();
+    }
+
+    /**
+     * an iterator, doesn't implement remove() since it's optional
+     */
+    private class ArrayIterator implements Iterator<T> {
+        private int i = 0;
+
+        public boolean hasNext() {
+            return i <= rear;
+        }
+
+        public void remove() {
+            throw new UnsupportedOperationException();
+        }
+
+        public T next() {
+            if (!hasNext())
+                throw new NoSuchElementException();
+            T item = (T) queueArray[(i + front) % queueArray.length];
+            i++;
+            return item;
+        }
     }
 }
