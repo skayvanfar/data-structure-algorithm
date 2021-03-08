@@ -109,11 +109,11 @@ public class FirstLastList<T> implements Iterable<T> {
 
     private class FirstLastListIterator implements Iterator<T> {
 
-        private SinglyLink<T> current;          // current link
+        private SinglyLink<T> current = head;          // current link
 
         @Override
         public boolean hasNext() {
-            return current.next != null;
+            return current != null;
         }
 
         @Override
