@@ -1,18 +1,14 @@
 package ir.sk.datastructure.queue;
 
 import ir.sk.datastructure.fundamental.linklist.DoublyLinkedList;
-import ir.sk.datastructure.queue.Queue;
-import ir.sk.datastructure.stack.Stack;
 
 import java.util.Iterator;
 
 /**
- * Deque. A double-ended queue or deque (pronounced “deck”) is like a stack or
- * a queue but supports adding and removing items at both ends.
  *
  * Created by sad.kayvanfar on 3/8/2021.
  */
-public class LinkListDeque<T> implements Iterable<T> {
+public class LinkListDeque<T> implements Deque<T>, Iterable<T> {
 
     private DoublyLinkedList<T> theList;
 
@@ -20,28 +16,24 @@ public class LinkListDeque<T> implements Iterable<T> {
         theList = new DoublyLinkedList<>();
     }
 
+    @Override
     public void pushLeft(T item) {
         theList.insertFirst(item);
     }
 
+    @Override
     public void pushRight(T item) {
         theList.insertLast(item);
     }
 
+    @Override
     public T popLeft() {
         return theList.deleteFirst();
     }
 
+    @Override
     public T popRight() {
         return theList.deleteLast();
-    }
-
-    public T pop() {
-        return theList.deleteFirst();
-    }
-
-    public void add(T item) {
-        pushLeft(item);
     }
 
     public boolean isEmpty() {
