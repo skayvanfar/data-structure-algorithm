@@ -6,7 +6,10 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class StequeTest {
+/**
+ * Created by sad.kayvanfar on 3/8/2021.
+ */
+public class LinkListDequeTest {
 
     @Before
     public void setUp() throws Exception {
@@ -21,11 +24,15 @@ public class StequeTest {
     }
 
     @Test
+    public void dequeue() {
+    }
+
+    @Test
+    public void peek() {
+    }
+
+    @Test
     public void push() {
-        Steque<Integer> s = new Steque<>();
-        for (int i = 0; i < 10; i++)
-            s.push(i);
-        System.out.println();
     }
 
     @Test

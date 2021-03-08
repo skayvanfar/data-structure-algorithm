@@ -2,6 +2,8 @@ package ir.sk.datastructure.fundamental.linklist;
 
 import ir.sk.helper.complexity.TimeComplexity;
 
+import java.util.Iterator;
+
 /**
  * he doubly linked list (not to be
  * confused with the double-ended list)
@@ -13,7 +15,7 @@ import ir.sk.helper.complexity.TimeComplexity;
  * Doubled
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
-public class DoublyLinkedList<T> {
+public class DoublyLinkedList<T> implements Iterable<T> {
 
     private DoubledLink<T> head;
     private DoubledLink<T> tail;
@@ -68,7 +70,7 @@ public class DoublyLinkedList<T> {
      * @return
      */
     @TimeComplexity("O(1)")
-    public DoubledLink<T> deleteFirst() {
+    public T deleteFirst() {
         // (assumes non-empty list)
         DoubledLink<T> temp = head;
         if (head.next == null)         // if only one item
@@ -76,7 +78,7 @@ public class DoublyLinkedList<T> {
         else
             head.next.previous = null; // null <-- old next
         head = head.next;            // first --> old next
-        return temp;
+        return temp.data;
     }
 
     /**
@@ -85,7 +87,7 @@ public class DoublyLinkedList<T> {
      * @return
      */
     @TimeComplexity("O(1)")
-    public DoubledLink<T> deleteLast() {
+    public T deleteLast() {
         // (assumes non-empty list)
         DoubledLink<T> temp = tail;
         if (head.next == null)         // if only one item
@@ -93,7 +95,7 @@ public class DoublyLinkedList<T> {
         else
             tail.previous.next = null;  // old previous --> null
         tail = tail.previous;          // old previous <-- last
-        return temp;
+        return temp.data;
     }
 
     /**
@@ -179,6 +181,28 @@ public class DoublyLinkedList<T> {
             current = current.previous; // move to previous link
         }
         System.out.println("");
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new DoublyLinkedList.DoublyLinkedListIterator();
+    }
+
+    private class DoublyLinkedListIterator implements Iterator<T> {
+
+        private DoubledLink<T> current = head;          // current link
+
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public T next() {
+            T item = current.data;
+            current = current.next;
+            return item;
+        }
     }
 }
 

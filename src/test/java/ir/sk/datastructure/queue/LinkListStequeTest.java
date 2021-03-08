@@ -1,15 +1,10 @@
-package ir.sk.datastructure.fundamental.linklist;
+package ir.sk.datastructure.queue;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
-/**
- * Created by sad.kayvanfar on 3/8/2021.
- */
-public class DequeTest {
+public class LinkListStequeTest {
 
     @Before
     public void setUp() throws Exception {
@@ -24,15 +19,11 @@ public class DequeTest {
     }
 
     @Test
-    public void dequeue() {
-    }
-
-    @Test
-    public void peek() {
-    }
-
-    @Test
     public void push() {
+        LinkListSteque<Integer> s = new LinkListSteque<>();
+        for (int i = 0; i < 10; i++)
+            s.push(i);
+        System.out.println();
     }
 
     @Test

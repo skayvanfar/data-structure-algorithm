@@ -11,11 +11,11 @@ import java.util.Iterator;
  *
  * @param <T>
  */
-public class Steque<T> implements Iterable<T> {
+public class LinkListSteque<T> implements Iterable<T> {
 
     private FirstLastList<T> theList;
 
-    public Steque() {
+    public LinkListSteque() {
         theList = new FirstLastList();
     }
 

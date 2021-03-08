@@ -82,6 +82,17 @@ public class FirstLastList<T> implements Iterable<T> {
     }
 
     @TimeComplexity("O(1)")
+    public T deleteLast() {
+        // (assumes non-empty list)
+        T temp = tail.data;
+        if (head.next == null)         // if only one item
+            tail = null;                // null <-- last
+        head = head.next;            // first --> old next
+        return temp;
+    }
+
+
+    @TimeComplexity("O(1)")
     public T peakFirst() {
         return head.data;
     }
