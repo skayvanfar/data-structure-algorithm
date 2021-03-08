@@ -9,6 +9,8 @@ import ir.sk.helper.complexity.TimeComplexity;
  * well as forward through the list. The secret is that each link has two references to
  * other links instead of one. The first is to the next link, as in ordinary lists.
  *
+ * First-Last Pointer
+ * Doubled
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
 public class DoublyLinkedList<T> {

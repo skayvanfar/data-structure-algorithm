@@ -7,7 +7,7 @@ import org.junit.Test;
 /**
  * Created by sad.kayvanfar on 9/1/2020.
  */
-public class CircularSinglyLinkedListTest {
+public class DoublyCircularSinglyLinkedListTest {
 
     @Before
     public void setUp() throws Exception {

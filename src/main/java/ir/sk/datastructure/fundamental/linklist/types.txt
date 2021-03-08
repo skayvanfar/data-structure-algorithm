@@ -1,0 +1,9 @@
+LinkList can be:
+1. Singly or Doubled
+2. First or First-Last pointers
+
+LinkList Types:
+Normal
+Circular
+Sorted
+

@@ -5,6 +5,9 @@ import ir.sk.helper.complexity.TimeComplexity;
 /**
  * In a sorted list, the items are arranged in sorted order by key value.
  *
+ * First Pointer
+ * Singled
+ *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
 public class SortedLinkList<T extends Comparable> {

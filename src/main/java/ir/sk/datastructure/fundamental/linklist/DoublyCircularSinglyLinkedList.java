@@ -8,9 +8,18 @@ import ir.sk.helper.complexity.TimeComplexity;
  * Consequently, the whole list can be traversed starting from any node
  * Since the last node of the circular linked list has the pointer to the first node, it's easy to perform enqueue and dequeue operations like (FirstLastList)
  * <p>
+ *
+ * A circular linked list can be either singly linked or doubly linked.
+ * for singly linked list, next pointer of last item points to the first item
+ * In the doubly linked list, prev pointer of the first item points to the last item as well.
+ *
+ *
+ * First-Last Pointer
+ * Doubled
+ *
  * Created by sad.kayvanfar on 9/1/2020.
  */
-public class CircularSinglyLinkedList<T> {
+public class DoublyCircularSinglyLinkedList<T> {
 
     private SinglyLink<T> head = null;
     private SinglyLink<T> tail = null;
