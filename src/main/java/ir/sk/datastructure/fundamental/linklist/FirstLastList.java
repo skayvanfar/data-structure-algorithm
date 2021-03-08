@@ -4,6 +4,7 @@ import ir.sk.datastructure.ListIterator;
 import ir.sk.helper.complexity.TimeComplexity;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * Double-Ended List
@@ -129,6 +130,8 @@ public class FirstLastList<T> implements Iterable<T> {
 
         @Override
         public T next() {
+            if (current == null)
+                throw new NoSuchElementException("Cannot call next() on last item");
             T item = current.data;
             current = current.next;
             return item;

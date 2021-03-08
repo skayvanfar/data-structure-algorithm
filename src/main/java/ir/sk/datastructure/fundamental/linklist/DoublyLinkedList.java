@@ -3,6 +3,7 @@ package ir.sk.datastructure.fundamental.linklist;
 import ir.sk.helper.complexity.TimeComplexity;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * he doubly linked list (not to be
@@ -199,6 +200,8 @@ public class DoublyLinkedList<T> implements Iterable<T> {
 
         @Override
         public T next() {
+            if (current == null)
+                throw new NoSuchElementException("Cannot call next() on last item");
             T item = current.data;
             current = current.next;
             return item;
