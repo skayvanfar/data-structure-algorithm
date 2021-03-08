@@ -1,6 +1,9 @@
 package ir.sk.datastructure.fundamental.linklist;
 
+import ir.sk.datastructure.ListIterator;
 import ir.sk.helper.complexity.TimeComplexity;
+
+import java.util.Iterator;
 
 /**
  * Double-Ended List
@@ -18,7 +21,7 @@ import ir.sk.helper.complexity.TimeComplexity;
  *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
-public class FirstLastList<T> {
+public class FirstLastList<T> implements Iterable<T> {
 
     private SinglyLink<T> head;
     private SinglyLink<T> tail;
@@ -92,5 +95,32 @@ public class FirstLastList<T> {
             current = current.next;     // move to next link
         }
         System.out.println("");
+    }
+
+    /**
+     * Returns an iterator over elements of type {@code T}.
+     *
+     * @return an Iterator.
+     */
+    @Override
+    public Iterator<T> iterator() {
+        return new FirstLastListIterator();
+    }
+
+    private class FirstLastListIterator implements Iterator<T> {
+
+        private SinglyLink<T> current;          // current link
+
+        @Override
+        public boolean hasNext() {
+            return current.next != null;
+        }
+
+        @Override
+        public T next() {
+            T item = current.data;
+            current = current.next;
+            return item;
+        }
     }
 }

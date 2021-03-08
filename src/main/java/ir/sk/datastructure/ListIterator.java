@@ -39,11 +39,6 @@ public class ListIterator<T> implements Iterator<T> {
         return item;
     }
 
-    @Override
-    public void remove() {
-        throw new UnsupportedOperationException();
-    }
-
     /**
      * true if last link
      *

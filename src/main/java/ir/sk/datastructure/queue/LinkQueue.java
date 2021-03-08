@@ -1,13 +1,16 @@
 package ir.sk.datastructure.queue;
 
+import ir.sk.datastructure.ListIterator;
 import ir.sk.datastructure.fundamental.linklist.FirstLastList;
+
+import java.util.Iterator;
 
 /**
  * 2-ended list
  *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
-public class LinkQueue<T> implements Queue<T> {
+public class LinkQueue<T> implements Queue<T>, Iterable<T> {
 
     private FirstLastList<T> theList;
 
@@ -49,5 +52,10 @@ public class LinkQueue<T> implements Queue<T> {
     public void display() {
         System.out.print("Queue (front-->rear): ");
         theList.displayList();
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return theList.iterator();
     }
 }

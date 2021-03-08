@@ -93,10 +93,6 @@ public class ArrayQueue<T> implements Queue<T>, Iterable<T> {
             return i <= rear;
         }
 
-        public void remove() {
-            throw new UnsupportedOperationException();
-        }
-
         public T next() {
             if (!hasNext())
                 throw new NoSuchElementException();
