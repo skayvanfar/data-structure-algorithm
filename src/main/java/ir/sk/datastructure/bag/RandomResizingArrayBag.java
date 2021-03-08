@@ -65,7 +65,7 @@ public class RandomResizingArrayBag<T> implements Bag<T>, Iterable<T> {
             current = 0;
             Random random = new Random();
             for (int i = 0; i < N; i++) {
-                int rand = random.nextInt(N - 0 + 1) + 0;
+                int rand = random.nextInt(N + 1);
                 T copy = items[rand];
                 items[rand] = items[i];
                 items[i] = copy;
