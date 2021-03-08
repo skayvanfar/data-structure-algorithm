@@ -13,13 +13,7 @@ import java.util.Iterator;
  */
 public class Steque<T> implements Iterable<T> {
 
-
     private FirstLastList<T> theList;
-
-    private class Node {
-        T item;
-        Node next;
-    }
 
     public Steque() {
         theList = new FirstLastList();
