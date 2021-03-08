@@ -1,14 +1,24 @@
 package ir.sk.datastructure.queue;
 
+import ir.sk.helper.Remainder;
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- * A ring buffer, or circular queue, is a FIFO data structure of a fixed size N. It is useful for
+ * A ring buffer (circular buffer), or circular queue, is a FIFO data structure of a fixed size N. It is useful for
  * transferring data between asynchronous processes or for storing log files. When the buffer is
  * empty, the consumer waits until data is deposited; when the buffer is full, the producer waits
  * to deposit data. Develop an API for a RingBuffer and an implementation that uses an array
  * representation (with circular wrap-around).
+ *
+ * The useful property of a circular buffer is that it does not need to have its elements shuffled around when one is consumed.
+ * (If a non-circular buffer were used then it would be necessary to shift all elements when one is consumed.)
+ * In other words, the circular buffer is well-suited as a FIFO (First In, First Out) buffer while a standard, non-circular buffer is well suited as a LIFO (Last In, First Out) buffer.
+ *
+ * Circular buffering makes a good implementation strategy for a queue that has fixed maximum size. Should a maximum size be adopted for a queue, then a circular buffer is a completely ideal implementation;
+ * all queue operations are constant time. However, expanding a circular buffer requires shifting memory, which is comparatively costly.
+ * For arbitrarily expanding queues, a linked list approach may be preferred instead.
  *
  * @param <T>
  */
@@ -16,6 +26,7 @@ import java.util.NoSuchElementException;
 
     private T[] items;
     private int capacity;
+    // front
     private int start;
     private int size;
 
@@ -47,10 +58,12 @@ import java.util.NoSuchElementException;
         return capacity;
     }
 
+    @Remainder
     public void enqueue(T item) {
         if (isFull()) {
             throw new UnsupportedOperationException("Queue is full");
         }
+        // calculate rear
         items[(start + size) % capacity] = item;
         size++;
     }
