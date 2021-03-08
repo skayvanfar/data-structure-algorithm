@@ -33,6 +33,8 @@ This project supports the [Gradle Wrapper](https://docs.gradle.org/current/userg
         - [Hashing](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/datastructure/fundamental/hashing)
         - [LinkList](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/datastructure/fundamental/linklist)
         - [Tree](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/datastructure/fundamental/tree)
+            - [Binary Tree](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/datastructure/fundamental/tree/binarytree)
+                - [Binary Search Tree(BST)](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/datastructure/fundamental/tree/binarytree/binarysearchtree)
     - [Bag](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/datastructure/bag)
     - [Set](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/datastructure/set)
     - [List](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/datastructure/list)
