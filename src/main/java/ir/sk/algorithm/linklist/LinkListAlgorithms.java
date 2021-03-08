@@ -83,7 +83,7 @@ public class LinkListAlgorithms {
      * @param k
      * @return
      */
-    public static SinglyLink<Integer> kthToLastRecursive(SinglyLink<Integer> head, int k) {
+    public static <T> SinglyLink<T> kthToLastRecursive(SinglyLink<T> head, int k) {
         Index idx = new Index();
         return kthToLastRecursive(head, k, idx);
     }
@@ -100,11 +100,11 @@ public class LinkListAlgorithms {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
-    private static SinglyLink<Integer> kthToLastRecursive(SinglyLink<Integer> head, int k, Index idx) {
+    private static <T> SinglyLink<T> kthToLastRecursive(SinglyLink<T> head, int k, Index idx) {
         if (head == null)
             return null;
 
-        SinglyLink<Integer> node = kthToLastRecursive(head.next, k, idx);
+        SinglyLink<T> node = kthToLastRecursive(head.next, k, idx);
         idx.value = idx.value + 1;
         if (idx.value == k)
             return head;
@@ -125,9 +125,9 @@ public class LinkListAlgorithms {
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
     @MultiplePointerPattern
-    private static SinglyLink<Integer> nthToLastByRunner(SinglyLink<Integer> head, int k) {
-        SinglyLink<Integer> pl = head;
-        SinglyLink<Integer> p2 = head;
+    private static <T> SinglyLink<T> nthToLastByRunner(SinglyLink<T> head, int k) {
+        SinglyLink<T> pl = head;
+        SinglyLink<T> p2 = head;
 
         /* Move pl k nodes into the list.*/
         for (int i = 0; i < k; i++) {
@@ -156,11 +156,11 @@ public class LinkListAlgorithms {
      * @param n
      * @return
      */
-    private static boolean deleteNode(SinglyLink<Integer> n) {
+    private static <T> boolean deleteNode(SinglyLink<T> n) {
         if (n == null || n.next == null)
             return false; // Failure
 
-        SinglyLink<Integer> next = n.next;
+        SinglyLink<T> next = n.next;
         n.data = next.data;
         n.next = next.next;
         return true;
@@ -230,11 +230,11 @@ public class LinkListAlgorithms {
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
     @RunnerPattern
-    public static void reOrder(SinglyLink<Integer> head) {
-        SinglyLink<Integer> middleLink = findMiddleLink(head);
-        SinglyLink<Integer> reversed = reverseIterative(middleLink);
+    public static <T> void reOrder(SinglyLink<T> head) {
+        SinglyLink<T> middleLink = findMiddleLink(head);
+        SinglyLink<T> reversed = reverseIterative(middleLink);
         while (reversed != null) {
-            SinglyLink<Integer> tmp = head.next;
+            SinglyLink<T> tmp = head.next;
             head.next = reversed;
             head = tmp;
 
@@ -257,10 +257,10 @@ public class LinkListAlgorithms {
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
     @InPlace
-    public static SinglyLink<Integer> reverseIterative(SinglyLink<Integer> node) {
-        SinglyLink<Integer> prev = null;
-        SinglyLink<Integer> current = node;
-        SinglyLink<Integer> next = null;
+    public static <T> SinglyLink<T> reverseIterative(SinglyLink<T> node) {
+        SinglyLink<T> prev = null;
+        SinglyLink<T> current = node;
+        SinglyLink<T> next = null;
         while (current != null) {
             next = current.next;
             current.next = prev;
@@ -275,25 +275,19 @@ public class LinkListAlgorithms {
      * 1->2->3->4->null
      * 4->3->2->1->null
      *
-     * @param head
+     * @param first
      * @return
      */
     @RecurrenceRelation("T(n) = T(n-1) + O(1)")
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
-    public static SinglyLink reverseRecursive(SinglyLink head) {
-        if (head == null || head.next == null)
-            return head;
-
-        /* reverse the rest list and put
-        the first element at the end */
-        SinglyLink rest = reverseRecursive(head.next);
-        head.next.next = head;
-
-        /* tricky step -- see the diagram */
-        head.next = null;
-
-        /* fix the head pointer */
+    public static <T> SinglyLink<T> reverseRecursive(SinglyLink<T> first) {
+        if (first == null) return null;
+        if (first.next == null) return first;
+        SinglyLink<T> second = first.next;
+        SinglyLink<T> rest = reverseRecursive(second);
+        second.next = first;
+        first.next = null;
         return rest;
     }
 
@@ -301,10 +295,10 @@ public class LinkListAlgorithms {
      * @param node
      * @return
      */
-    public static SinglyLink reverseAndClone(SinglyLink<Integer> node) {
-        SinglyLink<Integer> head = null;
+    public static <T> SinglyLink<T> reverseAndClone(SinglyLink<T> node) {
+        SinglyLink<T> head = null;
         while (node != null) {
-            SinglyLink<Integer> n = new SinglyLink<>(node.data); // Clone
+            SinglyLink<T> n = new SinglyLink<>(node.data); // Clone
             n.next = head;
             head = n;
             node = node.next;
@@ -369,11 +363,11 @@ public class LinkListAlgorithms {
         return true;
     }
 
-    static class Result {
-        public SinglyLink<Integer> node;
+    static class Result<T> {
+        public SinglyLink<T> node;
         public boolean result;
 
-        public Result(SinglyLink<Integer> node, boolean result) {
+        public Result(SinglyLink<T> node, boolean result) {
             this.node = node;
             this.result = result;
         }
@@ -388,13 +382,13 @@ public class LinkListAlgorithms {
      * @param head
      * @return
      */
-    public static boolean isPalindromeByRecurse(SinglyLink<Integer> head) {
+    public static <T> boolean isPalindromeByRecurse(SinglyLink<T> head) {
         int length = lengthOfList(head);
         Result p = isPalindromeRecurse(head, length);
         return p.result;
     }
 
-    private static Result isPalindromeRecurse(SinglyLink<Integer> head, int length) {
+    private static <T> Result isPalindromeRecurse(SinglyLink<T> head, int length) {
         if (head == null || length <= 0) {
             // Even number of nodes
             return new Result(head, true);
@@ -434,12 +428,12 @@ public class LinkListAlgorithms {
     @SpaceComplexity("O(1)")
     @Difficulty(type = DifficultyType.EASY)
     @MultiplePointerPattern
-    public static boolean isPalindrome(DoubledLink<Integer> left) {
+    public static <T> boolean isPalindrome(DoubledLink<T> left) {
         if (left == null)
             return true;
 
         // find the rightmost node
-        DoubledLink<Integer> right = left;
+        DoubledLink<T> right = left;
         while (right.next != null)
             right = right.next;
 
@@ -453,7 +447,7 @@ public class LinkListAlgorithms {
         return true;
     }
 
-    private static int lengthOfList(SinglyLink<Integer> n) {
+    private static <T> int lengthOfList(SinglyLink<T> n) {
         int size = 0;
         while (n != null) {
             size++;
@@ -475,7 +469,7 @@ public class LinkListAlgorithms {
      */
     @TimeComplexity("O(A+B) where A and Bare the lengths of the two linked lists")
     @SpaceComplexity("O(1)")
-    public static SinglyLink<Integer> findIntersection(SinglyLink<Integer> listl, SinglyLink<Integer> list2) {
+    public static <T> SinglyLink<T> findIntersection(SinglyLink<T> listl, SinglyLink<T> list2) {
         if (listl == null || list2 == null) return null;
 
 
@@ -488,8 +482,8 @@ public class LinkListAlgorithms {
             return null;
         }
         /* Set pointers to the start of each linked list. */
-        SinglyLink<Integer> shorter = resultl.size < result2.size ? listl : list2;
-        SinglyLink<Integer> longer = resultl.size < result2.size ? list2 : listl;
+        SinglyLink<T> shorter = resultl.size < result2.size ? listl : list2;
+        SinglyLink<T> longer = resultl.size < result2.size ? list2 : listl;
 
         /* Advance the pointer for the longer linked list by difference in lengths. */
         longer = getKthNode(longer, Math.abs(resultl.size - result2.size));
@@ -520,11 +514,11 @@ public class LinkListAlgorithms {
      * @param list
      * @return
      */
-    private static Result2 getTailAndSize(SinglyLink<Integer> list) {
+    private static <T> Result2 getTailAndSize(SinglyLink<T> list) {
         if (list == null) return null;
 
         int size = 1;
-        SinglyLink<Integer> current = list;
+        SinglyLink<T> current = list;
         while (current.next != null) {
             size++;
             current = current.next;
@@ -539,8 +533,8 @@ public class LinkListAlgorithms {
      * @param k
      * @return
      */
-    private static SinglyLink<Integer> getKthNode(SinglyLink<Integer> head, int k) {
-        SinglyLink<Integer> current = head;
+    private static <T> SinglyLink<T> getKthNode(SinglyLink<T> head, int k) {
+        SinglyLink<T> current = head;
         while (k > 0 && current != null) {
             current = current.next;
             k--;
@@ -563,9 +557,9 @@ public class LinkListAlgorithms {
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
     @FrequencyCountingPattern
-    public static boolean hasCycleByHashing(SinglyLink<Integer> head) {
-        SinglyLink<Integer> current = head;
-        Set<SinglyLink<Integer>> hashtable = new HashSet<>();
+    public static <T> boolean hasCycleByHashing(SinglyLink<T> head) {
+        SinglyLink<T> current = head;
+        Set<SinglyLink<T>> hashtable = new HashSet<>();
         while (current != null) {
             if (hashtable.contains(current))
                 return true;
@@ -606,8 +600,8 @@ public class LinkListAlgorithms {
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
     @RunnerPattern
-    public static boolean hasCycleByRunner(SinglyLink<Integer> head) {
-        SinglyLink<Integer> slow = head, fast = head;
+    public static <T> boolean hasCycleByRunner(SinglyLink<T> head) {
+        SinglyLink<T> slow = head, fast = head;
         while (fast != null && fast.next != null) {
             fast = fast.next.next;
             slow = slow.next;
@@ -628,9 +622,9 @@ public class LinkListAlgorithms {
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
     @RunnerPattern
-    public static int findCycleLength(SinglyLink<Integer> head) {
-        SinglyLink<Integer> slow = head;
-        SinglyLink<Integer> fast = head;
+    public static <T> int findCycleLength(SinglyLink<T> head) {
+        SinglyLink<T> slow = head;
+        SinglyLink<T> fast = head;
         while (fast != null && fast.next != null) {
             fast = fast.next.next;
             slow = slow.next;
@@ -640,8 +634,8 @@ public class LinkListAlgorithms {
         return 0;
     }
 
-    private static int calculateLength(SinglyLink<Integer> slow) {
-        SinglyLink<Integer> current = slow;
+    private static <T> int calculateLength(SinglyLink<T> slow) {
+        SinglyLink<T> current = slow;
         int cycleLength = 0;
         do {
             current = current.next;
@@ -666,13 +660,13 @@ public class LinkListAlgorithms {
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
     @RunnerPattern
-    public static SinglyLink<Integer> findCycleStart(SinglyLink<Integer> head) {
+    public static <T> SinglyLink<T> findCycleStart(SinglyLink<T> head) {
         int cycleLength = findCycleLength(head);
         return findStart(head, cycleLength);
     }
 
-    private static SinglyLink<Integer> findStart(SinglyLink<Integer> head, int cycleLength) {
-        SinglyLink<Integer> pointer1 = head, pointer2 = head;
+    private static <T> SinglyLink<T> findStart(SinglyLink<T> head, int cycleLength) {
+        SinglyLink<T> pointer1 = head, pointer2 = head;
 
         // move pointer1 ahead 'cycLength' nodes
         while (cycleLength > 0) {
@@ -704,9 +698,9 @@ public class LinkListAlgorithms {
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
     @RunnerPattern
-    public static SinglyLink<Integer> findMiddleLink(SinglyLink<Integer> head) {
-        SinglyLink<Integer> slow = head;
-        SinglyLink<Integer> fast = head;
+    public static <T> SinglyLink<T> findMiddleLink(SinglyLink<T> head) {
+        SinglyLink<T> slow = head;
+        SinglyLink<T> fast = head;
 
         while (fast != null && fast.next != null) {
             slow = slow.next;
