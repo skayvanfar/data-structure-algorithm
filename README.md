@@ -53,6 +53,7 @@ This project supports the [Gradle Wrapper](https://docs.gradle.org/current/userg
     - [Mathematic](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm/mathematic)
     - [Median](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm/median)
     - [Stack](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm/stack)
+    - [Queue](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm/queue)
     - [tree](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm/tree)
     - [others](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm/others)
 
