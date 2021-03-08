@@ -24,34 +24,7 @@ To compile and run any of the algorithms here, you need at least JDK version 8. 
 
 ## Running with Gradle (recommended)
 
-This project supports the [Gradle Wrapper](https://docs.gradle.org/current/userguide/gradle_wrapper.html). The Gradle wrapper automatically downloads Gradle at the first time it runs, so expect a delay when running the first command below.
-
-If you are on Windows, use `gradlew.bat` instead of `./gradlew` below.
-
-Run a single algorithm like this:
-
-```
-./gradlew run -Palgorithm=<algorithm-subpackage>.<algorithm-class>
-```
-
-Alternatively, you can run a single algorithm specifying the full class name
-
-```
-./gradlew run -Pmain=<algorithm-fully-qualified-class-name>
-
-```
-
-For instance:
-
-```
-./gradlew run -Palgorithm=algorithm.Sort
-```
-
-or
-
-```
-./gradlew run -Pmain=ir.sk.algorithm.Sort
-```
+This project supports the [Gradle Wrapper](https://docs.gradle.org/current/userguide/gradle_wrapper.html). The Gradle wrapper automatically downloads Gradle at the first time it runs
 
 - [Data Structure](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/datastructure)
     - [Fundamental](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/datastructure/fundamental)
