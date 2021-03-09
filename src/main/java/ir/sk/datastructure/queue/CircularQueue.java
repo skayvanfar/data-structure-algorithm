@@ -26,6 +26,8 @@ import java.util.NoSuchElementException;
 
     private T[] items;
     private int capacity;
+
+    // there are another way to calculate front and rear. 1.front = start, rear = start + size
     // front
     private int start;
     private int size;
