@@ -184,6 +184,32 @@ public class DoublyLinkedList<T> implements Iterable<T> {
         System.out.println("");
     }
 
+    public DoubledLink<T> findNode(T item) {
+        if (isEmpty()) throw new NoSuchElementException("Stack underflow");
+        DoubledLink<T> current = head;
+        while (current != null) {
+            if (current.data.equals(item)) return current;
+            current = current.next;
+        }
+        return null;
+    }
+
+    public T removeNode(DoubledLink<T> node) {
+        DoubledLink<T> current = head;
+        while (current != null) {
+            if (current == node) {
+                T item = current.data;
+                if (current == head) head = current.next;
+                if (current == tail)  tail  = current.previous;
+                if (current.previous != null)  current.previous.next = current.next;
+                if (current.next     != null)  current.next.previous = current.previous;
+                return item;
+            }
+            current = current.next;
+        }
+        return null;
+    }
+
     @Override
     public Iterator<T> iterator() {
         return new DoublyLinkedList.DoublyLinkedListIterator();
