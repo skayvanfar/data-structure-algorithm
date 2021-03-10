@@ -137,10 +137,9 @@ public class PairsWithGivenSum {
     /**
      * A simple solution is be traverse each element and check if there’s another number in the array which can be added to it to give sum.
      *
-     * @see #isPairSum(int[], int)
-     *
      * @param arr
      * @param sum
+     * @see #isPairSum(int[], int)
      */
     @BruteForce
     @TimeComplexity("O(n2)")
@@ -163,11 +162,10 @@ public class PairsWithGivenSum {
     /**
      * for every element check if it can be combined with any other element (other than itself!) to give the desired sum
      *
-     * @see #isPairSumByHashing(int[], int)
-     *
      * @param arr
      * @param sum
      * @return
+     * @see #isPairSumByHashing(int[], int)
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n + k)")
@@ -228,6 +226,26 @@ public class PairsWithGivenSum {
             }
         }
         return count;
+    }
+
+    /**
+     * A pair a[i] and a[j] is part of a triple
+     * that sums to 0 if and only if the value -(a[i] + a[j]) is in the array
+     *
+     * @param a
+     * @return
+     */
+    @TimeComplexity("O(n^2 Log n)")
+    @SpaceComplexity("O(1)")
+    public static int countOfThreeSumBinarySearch(int[] a) { // Count triples that sum to 0.
+        Arrays.sort(a);
+        int N = a.length;
+        int cnt = 0;
+        for (int i = 0; i < N; i++)
+            for (int j = i + 1; j < N; j++)
+                if (Arrays.binarySearch(a, -a[i] - a[j]) > j)
+                    cnt++;
+        return cnt;
     }
 
     /**
