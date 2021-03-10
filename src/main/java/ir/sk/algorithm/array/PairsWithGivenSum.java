@@ -24,7 +24,7 @@ public class PairsWithGivenSum {
 
     /***************
      *  Given a sorted array of integers, we need to see if there are two numbers in it such that their sum is equal to a specific value.
-     **Fast *************/
+     ***************/
 
     /**
      * Given an array of integers, we need to see if there are two numbers in it such that their sum is equal to a specific value.
@@ -43,7 +43,6 @@ public class PairsWithGivenSum {
             for (int j = i + 1; j < input.length; j++)
                 if (input[i] + input[j] == targetValue)
                     return true;
-
         return false;
     }
 
@@ -58,11 +57,9 @@ public class PairsWithGivenSum {
     @TimeComplexity("O(n*Log n)")
     @SpaceComplexity("O(1)")
     public static boolean isPairSumBinarySort(int[] input, int targetValue) {
-
         for (int i = 0; i < input.length; i++)
             if (Arrays.binarySearch(input, targetValue - input[i]) != 1)
                 return true;
-
         return false;
     }
 
@@ -90,13 +87,12 @@ public class PairsWithGivenSum {
         while (pointerOne < pointerTwo) {
             int sum = input[pointerOne] + input[pointerTwo];
 
-            if (sum == targetValue) {
+            if (sum == targetValue)
                 return true;
-            } else if (sum < targetValue) {
+            else if (sum < targetValue)
                 pointerOne++;
-            } else {
+            else
                 pointerTwo--;
-            }
         }
 
         return false;
@@ -121,9 +117,9 @@ public class PairsWithGivenSum {
         // as a cache
         boolean[] counting = new boolean[range];
 
-        for (int i = 0; i < array.length; i++) {
+        for (int i = 0; i < array.length; i++)
             counting[array[i] - min] = true;
-        }
+
 
         for (int i = 0; i < array.length; i++) {
             int value = targetValue - array[i];
@@ -140,6 +136,8 @@ public class PairsWithGivenSum {
 
     /**
      * A simple solution is be traverse each element and check if there’s another number in the array which can be added to it to give sum.
+     *
+     * @see #isPairSum(int[], int)
      *
      * @param arr
      * @param sum
@@ -165,6 +163,8 @@ public class PairsWithGivenSum {
     /**
      * for every element check if it can be combined with any other element (other than itself!) to give the desired sum
      *
+     * @see #isPairSumByHashing(int[], int)
+     *
      * @param arr
      * @param sum
      * @return
@@ -188,9 +188,8 @@ public class PairsWithGivenSum {
         boolean[] counting = new boolean[range];
 
         // O(n)
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = 0; i < arr.length; i++)
             counting[arr[i] - min] = true;
-        }
 
         // O(n)
         for (int i = 0; i < arr.length; i++) {
@@ -209,12 +208,13 @@ public class PairsWithGivenSum {
      * Returns the number of triples (i, j, k) with {@code i < j < k}
      * such that {@code a[i] + a[j] + a[k] == 0}.
      *
-     * @param  a the array of integers
+     * @param a the array of integers
      * @return the number of triples (i, j, k) with {@code i < j < k}
-     *         such that {@code a[i] + a[j] + a[k] == 0}
+     * such that {@code a[i] + a[j] + a[k] == 0}
      */
     @TimeComplexity("O(n^3)")
     @SpaceComplexity("O(1)")
+    @BruteForce
     public static int countOfThreeSum(int[] a) {
         int n = a.length;
         int count = 0;
