@@ -3,6 +3,7 @@ package ir.sk.algorithm.array;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.rules.Stopwatch;
 
 import java.util.Arrays;
 
@@ -91,5 +92,10 @@ public class ArrayAlgorithmsTest {
     @Test
     public void magicIndexBinarySearch() {
         System.out.println(ArrayAlgorithms.magicIndexBinarySearch(new int[]{8,9,2,3,4}));
+    }
+
+    @Test
+    public void countOfThreeSum() {
+        System.out.println(ArrayAlgorithms.countOfThreeSum(new int[]{8,9,2,3,4}));
     }
 }

@@ -398,7 +398,7 @@ public class ArrayAlgorithms {
      * A child is running up a staircase with n steps and can hop either 1 step, 2 steps, or 3
      * steps at a time. Implement a method to count how many possible ways the child can run up the
      * stairs.
-     *
+     * <p>
      * Lets define n as the n-th step of this stairs, and T(n) is the number of ways the child can run up to the n-th step.
      * This child could arrive at the n-th step from 3 different possible prior steps, namely (n-1), (n-2), and (n-3).
      * The key insight is that the number of possible ways of the n-th step, T(n),
@@ -501,7 +501,7 @@ public class ArrayAlgorithms {
      * @return
      */
     public static int magicIndexBinarySearch(int[] array) {
-        return binarySearch(array, 0, array.length - 1);
+        return magicIndexBinarySearch(array, 0, array.length - 1);
     }
 
 
@@ -520,18 +520,42 @@ public class ArrayAlgorithms {
     @SpaceComplexity("O(1)")
     @BinarySearch
     @DecreaseAndConquer
-    private static int binarySearch(int arr[], int low, int high) {
+    private static int magicIndexBinarySearch(int arr[], int low, int high) {
         if (high >= low) {
             /* low + (high - low)/2; */
             int mid = (low + high) / 2;
             if (mid == arr[mid])
                 return mid;
             if (mid > arr[mid])
-                return binarySearch(arr, (mid + 1), high);
+                return magicIndexBinarySearch(arr, (mid + 1), high);
             else
-                return binarySearch(arr, low, (mid - 1));
+                return magicIndexBinarySearch(arr, low, (mid - 1));
         }
 
         return -1;
+    }
+
+
+    /**
+     * Returns the number of triples (i, j, k) with {@code i < j < k}
+     * such that {@code a[i] + a[j] + a[k] == 0}.
+     *
+     * @param  a the array of integers
+     * @return the number of triples (i, j, k) with {@code i < j < k}
+     *         such that {@code a[i] + a[j] + a[k] == 0}
+     */
+    public static int countOfThreeSum(int[] a) {
+        int n = a.length;
+        int count = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                for (int k = j + 1; k < n; k++) {
+                    if (a[i] + a[j] + a[k] == 0) {
+                        count++;
+                    }
+                }
+            }
+        }
+        return count;
     }
 }
