@@ -544,6 +544,8 @@ public class ArrayAlgorithms {
      * @return the number of triples (i, j, k) with {@code i < j < k}
      *         such that {@code a[i] + a[j] + a[k] == 0}
      */
+    @TimeComplexity("O(n^3)")
+    @SpaceComplexity("O(1)")
     public static int countOfThreeSum(int[] a) {
         int n = a.length;
         int count = 0;
