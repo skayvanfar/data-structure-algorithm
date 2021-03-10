@@ -1,9 +1,9 @@
 package ir.sk.algorithm.array;
 
+import ir.sk.helper.Stopwatch;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.rules.Stopwatch;
 
 import java.util.Arrays;
 
@@ -42,31 +42,6 @@ public class ArrayAlgorithmsTest {
     }
 
     @Test
-    public void searchTripletsSumZero() {
-        System.out.println(ArrayAlgorithms.searchTripletsSumZero(new int[]{-3, 0, 1, 2, -1, 1, -2}));
-    }
-
-    @Test
-    public void searchTripletsSumNearNumber() {
-        System.out.println(ArrayAlgorithms.searchTripletsSumNearNumber(new int[]{-2, 0, 1, 2}, 2));
-    }
-
-    @Test
-    public void searchTripletsSumSmallerThanNumber() {
-        System.out.println(ArrayAlgorithms.searchTripletsSumSmallerThanNumber(new int[]{-1, 0, 2, 3}, 3));
-    }
-
-    @Test
-    public void returnTripletsSumSmallerThanNumber() {
-        System.out.println(ArrayAlgorithms.returnTripletsSumSmallerThanNumber(new int[]{-1, 0, 2, 3}, 3));
-    }
-
-    @Test
-    public void searchQuadrupletsSumNumber() {
-        System.out.println(ArrayAlgorithms.searchQuadrupletsSumNumber(new int[]{4, 1, 2, -1, 1, -3}, 1));
-    }
-
-    @Test
     public void naiveCountWays() {
         int n = 4;
         System.out.println(ArrayAlgorithms.naiveCountWays(n));
@@ -94,8 +69,4 @@ public class ArrayAlgorithmsTest {
         System.out.println(ArrayAlgorithms.magicIndexBinarySearch(new int[]{8,9,2,3,4}));
     }
 
-    @Test
-    public void countOfThreeSum() {
-        System.out.println(ArrayAlgorithms.countOfThreeSum(new int[]{8,9,2,3,4}));
-    }
 }
