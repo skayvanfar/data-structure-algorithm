@@ -19,6 +19,8 @@ import java.util.Stack;
  * Method 1 moves all the elements twice in enQueue operation, while method 2 (in deQueue operation) moves the elements once and moves elements only if stack2 empty.
  * So, the amortized complexity of the dequeue operation becomes O(1) .
  *
+ * @see ir.sk.datastructure.stack.StackByTwoQueue
+ *
  * <p>
  * Created by sad.kayvanfar on 10/4/2020.
  */
