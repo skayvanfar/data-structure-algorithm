@@ -1,6 +1,5 @@
 package ir.sk.datastructure.fundamental.linklist;
 
-import ir.sk.datastructure.ListIterator;
 import ir.sk.helper.complexity.TimeComplexity;
 
 import java.util.Iterator;
@@ -26,6 +25,7 @@ public class FirstLastList<T> implements Iterable<T> {
 
     private SinglyLink<T> head;
     private SinglyLink<T> tail;
+    private int counter;
 
     public FirstLastList() {
         head = null;
@@ -50,6 +50,7 @@ public class FirstLastList<T> implements Iterable<T> {
             tail = newSinglyLink;             // newLink <-- last
         newSinglyLink.next = head;          // newLink --> old first
         head = newSinglyLink;               // first --> newLink
+        counter++;
     }
 
     /**
@@ -65,6 +66,7 @@ public class FirstLastList<T> implements Iterable<T> {
         else
             tail.next = newSinglyLink;        // old last --> newLink
         tail = newSinglyLink;                // newLink <-- last
+        counter++;
     }
 
     /**
@@ -79,6 +81,7 @@ public class FirstLastList<T> implements Iterable<T> {
         if (head.next == null)         // if only one item
             tail = null;                // null <-- last
         head = head.next;            // first --> old next
+        counter++;
         return temp;
     }
 
@@ -89,6 +92,7 @@ public class FirstLastList<T> implements Iterable<T> {
         if (head.next == null)         // if only one item
             tail = null;                // null <-- last
         head = head.next;            // first --> old next
+        counter++;
         return temp;
     }
 
@@ -116,21 +120,34 @@ public class FirstLastList<T> implements Iterable<T> {
      */
     @Override
     public Iterator<T> iterator() {
-        return new FirstLastListIterator();
+        return new FirstLastListIterator(head, counter);
     }
 
     private class FirstLastListIterator implements Iterator<T> {
 
-        private SinglyLink<T> current = head;          // current link
+        private SinglyLink<T> current;          // current link
+
+        // Maintain a counter that counts the number of operations. When creating an
+        // iterator, store this value as an Iterator instance variable. Before each call to hasNext() and next(),
+        // check that this value has not changed since construction of the iterator; if it has, throw the exception.
+        private int counter;
+
+        public FirstLastListIterator(SinglyLink<T> current, int ops) {
+            this.current = current;
+            this.counter = ops;
+        }
 
         @Override
         public boolean hasNext() {
+            if (counter != FirstLastList.this.counter) throw new java.util.ConcurrentModificationException();
             return current != null;
         }
 
         @Override
         public T next() {
-            if (current == null)
+            if (counter != FirstLastList.this.counter)
+                throw new java.util.ConcurrentModificationException();
+            if (!hasNext())
                 throw new NoSuchElementException("Cannot call next() on last item");
             T item = current.data;
             current = current.next;
