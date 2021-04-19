@@ -130,7 +130,7 @@ public class ChainingDictionary<K, V> implements Dictionary<K, V> {
 
         // Insert key in chain
         size++;
-        head = bucketArray[bucketIndex];
+      //  head = bucketArray[bucketIndex];
         ChainingHashNode<K, V> newNode = new ChainingHashNode<>(key, value);
         newNode.next = head;
         bucketArray[bucketIndex] = newNode;
