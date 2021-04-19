@@ -1,4 +1,4 @@
-package ir.sk.datastructure.fundamental.hashing;
+package ir.sk.datastructure.dictionary;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -6,15 +6,15 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Created by sad.keyvanfar on 7/8/2020.
+ * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 7/7/2020.
  */
-public class DoubleHashingDictionaryTest {
+public class LinearProbingDictionaryTest {
 
-    private DoubleHashingDictionary<String, Integer> dictionary;
+    private LinearProbingDictionary<String, Integer> dictionary;
 
     @Before
     public void setUp() throws Exception {
-        dictionary = new DoubleHashingDictionary<>(10, 0.5f);
+        dictionary = new LinearProbingDictionary<>(10, 0.5f);
         dictionary.add("a", 1);
         dictionary.add("b", 2);
         dictionary.add("c", 3);

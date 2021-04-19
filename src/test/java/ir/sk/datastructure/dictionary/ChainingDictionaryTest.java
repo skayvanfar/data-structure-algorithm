@@ -1,4 +1,4 @@
-package ir.sk.datastructure.fundamental.hashing;
+package ir.sk.datastructure.dictionary;
 
 import org.junit.After;
 import org.junit.Assert;

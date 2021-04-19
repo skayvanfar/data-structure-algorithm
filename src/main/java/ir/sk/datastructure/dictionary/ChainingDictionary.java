@@ -1,4 +1,4 @@
-package ir.sk.datastructure.fundamental.hashing;
+package ir.sk.datastructure.dictionary;
 
 import ir.sk.helper.Remainder;
 import ir.sk.helper.complexity.TimeComplexity;
