@@ -1,7 +1,7 @@
 package ir.sk.algorithm.linklist;
 
-import ir.sk.datastructure.fundamental.linklist.DoubledLink;
-import ir.sk.datastructure.fundamental.linklist.SinglyLink;
+import ir.sk.adt.datastructure.linklist.DoubledLink;
+import ir.sk.adt.datastructure.linklist.SinglyLink;
 import ir.sk.helper.Difficulty;
 import ir.sk.helper.DifficultyType;
 import ir.sk.helper.Point;

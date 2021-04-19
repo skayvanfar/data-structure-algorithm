@@ -1,7 +1,7 @@
 package ir.sk.algorithm.linklist;
 
-import ir.sk.datastructure.fundamental.linklist.DoubledLink;
-import ir.sk.datastructure.fundamental.linklist.SinglyLink;
+import ir.sk.adt.datastructure.linklist.DoubledLink;
+import ir.sk.adt.datastructure.linklist.SinglyLink;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

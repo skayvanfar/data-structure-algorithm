@@ -2,7 +2,7 @@ package ir.sk.algorithm.array;
 
 import ir.sk.algorithm.basic.Utils;
 import ir.sk.algorithm.others.Sort;
-import ir.sk.datastructure.fundamental.linklist.SinglyLink;
+import ir.sk.adt.datastructure.linklist.SinglyLink;
 import ir.sk.helper.Difficulty;
 import ir.sk.helper.DifficultyType;
 import ir.sk.helper.complexity.SpaceComplexity;
