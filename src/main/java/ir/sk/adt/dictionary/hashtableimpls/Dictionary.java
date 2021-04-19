@@ -1,13 +1,12 @@
-package ir.sk.adt.dictionary;
+package ir.sk.adt.dictionary.hashtableimpls;
 
 import ir.sk.helper.Point;
 import ir.sk.helper.complexity.AmortizedTimeComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 
 /**
- * Hash table or hash map is a data structure that
- * stores the keys and their associated values, and hash table uses a hash function to map keys to
- * their associated values.
+ * Dictionary (map, association list) is a data structure, which is generally an association of unique keys with some values.
+ * One may bind a value to a key, delete a key (and naturally an associated value) and lookup for a value by the key. Values are not required to be unique.
  * <p>
  * There are only three basic operations on Dictionary: searching, inserting, and deleting.
  *

@@ -1,5 +1,6 @@
-package ir.sk.adt.dictionary;
+package ir.sk.adt.dictionary.hashtableimpls;
 
+import ir.sk.adt.dictionary.hashtableimpls.ChainingDictionary;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
