@@ -1,4 +1,4 @@
-package ir.sk.adt;
+package ir.sk.adt.nonCollections;
 
 import org.junit.After;
 import org.junit.Before;

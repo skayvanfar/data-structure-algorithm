@@ -1,4 +1,4 @@
-package ir.sk.adt;
+package ir.sk.adt.nonCollections;
 
 /**
  * a simple data type named Counter whose values are a name and a non
