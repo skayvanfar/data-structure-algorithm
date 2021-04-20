@@ -1,4 +1,4 @@
-package ir.sk.algorithm.mathematic;
+package ir.sk.adt.nonCollections;
 
 /**
  * Immutable ADT for Rational numbers.
