@@ -1,4 +1,4 @@
-package ir.sk.algorithm.stack.parsingarithmeticexpression;
+package ir.sk.algorithm.stack.parsing;
 
 import org.junit.After;
 import org.junit.Before;

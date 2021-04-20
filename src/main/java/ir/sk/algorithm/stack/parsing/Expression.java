@@ -1,4 +1,4 @@
-package ir.sk.algorithm.stack.parsingarithmeticexpression;
+package ir.sk.algorithm.stack.parsing;
 
 
 import ir.sk.helper.complexity.SpaceComplexity;

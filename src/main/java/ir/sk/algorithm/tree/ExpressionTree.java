@@ -1,6 +1,6 @@
 package ir.sk.algorithm.tree;
 
-import ir.sk.algorithm.stack.parsingarithmeticexpression.Expression;
+import ir.sk.algorithm.stack.parsing.Expression;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 
