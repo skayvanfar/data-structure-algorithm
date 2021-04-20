@@ -43,6 +43,7 @@ This project supports the [Gradle Wrapper](https://docs.gradle.org/current/userg
     - [Dictionary](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/adt/dictionary)
     - [Buffer](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/adt/buffer)
     - [Cache](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/adt/cache)
+    - [Non Collections](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/adt/nonCollections)
     
 - [Algorithm](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm)
     - [Array](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm/array)
