@@ -14,10 +14,10 @@ public class FirstLastListTest {
     @Before
     public void setUp() throws Exception {
         theList = new FirstLastList<>(); // make new list
-        theList.insertFirst(22); // insert four items
-        theList.insertFirst(44);
-        theList.insertFirst(66);
-        theList.insertFirst(88);
+        theList.insertLast(1); // insert four items
+        theList.insertLast(2);
+        theList.insertLast(3);
+        theList.insertLast(4);
     }
 
     @After
@@ -31,14 +31,14 @@ public class FirstLastListTest {
     @Test
     public void insertFirst() {
         theList.displayList();
-        theList.insertFirst(22);
+        theList.insertFirst(0);
         theList.displayList();
     }
 
     @Test
     public void insertLast() {
         theList.displayList();
-        theList.insertLast(22);
+        theList.insertLast(5);
         theList.displayList();
     }
 

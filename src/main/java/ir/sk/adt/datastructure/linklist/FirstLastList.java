@@ -56,16 +56,16 @@ public class FirstLastList<T> implements Iterable<T> {
     /**
      * insert at end of list
      *
-     * @param dd
+     * @param key
      */
     @TimeComplexity("O(1)")
-    public void insertLast(T dd) {
-        SinglyLink<T> newSinglyLink = new SinglyLink<T>(dd);   // make new link
-        if (isEmpty())                // if empty list,
-            head = newSinglyLink;            // first --> newLink
+    public void insertLast(T key) {
+        SinglyLink<T> newSinglyLink = new SinglyLink<T>(key);
+        if (isEmpty())
+            head = newSinglyLink;
         else
-            tail.next = newSinglyLink;        // old last --> newLink
-        tail = newSinglyLink;                // newLink <-- last
+            tail.next = newSinglyLink;
+        tail = newSinglyLink;
         counter++;
     }
 
