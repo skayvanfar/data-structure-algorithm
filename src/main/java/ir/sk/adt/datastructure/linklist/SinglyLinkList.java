@@ -35,7 +35,7 @@ public class SinglyLinkList<T> implements Iterable<T> {
      * @param value
      */
     @TimeComplexity("O(n)")
-    public void add(T value) {
+    public void insertLast(T value) {
         SinglyLink<T> current = head;
         SinglyLink<T> newSinglyLink = new SinglyLink<>(value);
 
@@ -58,7 +58,7 @@ public class SinglyLinkList<T> implements Iterable<T> {
      * @return
      */
     @TimeComplexity("O(n)")
-    public SinglyLink find(int key) {
+    public SinglyLink<T> search(int key) {
         SinglyLink<T> current = head;
         while (!current.data.equals(key)) {
             if (current.next == null)
@@ -70,45 +70,27 @@ public class SinglyLinkList<T> implements Iterable<T> {
     }
 
     /**
-     * @param nodeNum
-     * @return
-     */
-    @TimeComplexity("O(n)")
-    public T get(int nodeNum) {
-        if (nodeNum <= 0) {
-            return null;
-        }
-        SinglyLink<T> current = head;
-        for (int i = 1; i < nodeNum; i++) {
-            current = current.next;
-        }
-        return current.data;
-    }
-
-    /**
      * delete link with given key
-     * (assumes non-empty list)
      *
      * @param key
      * @return
      */
     @TimeComplexity("O(n)")
-    public SinglyLink delete(int key) {
-        SinglyLink current = head;
-        SinglyLink previous = head;
-        while (!current.data.equals(key)) {
-            if (current.next == null)
-                return null;
-            else {
-                previous = current;
-                current = current.next;
+    public void delete(T key) {
+        SinglyLink<T> prev = null;
+        SinglyLink<T> curr = head;
+        while (curr != null) {
+            if (curr.data.equals(key)) {
+                if (curr == head) {
+                    head = head.next;
+                    return;
+                }
+                prev.next = prev.next.next;
+                return;
             }
+            prev = curr;
+            curr = curr.next;
         }
-        if (current == head)
-            head = head.next;
-        else
-            previous.next = current.next;
-        return current;
     }
 
     /**
@@ -132,17 +114,6 @@ public class SinglyLinkList<T> implements Iterable<T> {
     @TimeComplexity("O(1)")
     public boolean isEmpty() {
         return head == null;
-    }
-
-    public void displayList() {
-        System.out.print("List (first-->last): ");
-        SinglyLink<T> current = head;
-
-        while (current != null) {
-            current.displayLink();
-            current = current.next;
-        }
-        System.out.println("");
     }
 
     /**
@@ -181,18 +152,12 @@ public class SinglyLinkList<T> implements Iterable<T> {
         return size;
     }
 
-    /**
-     * return iterator
-     *
-     * @return
-     */
     @Override
     public ListIterator<T> iterator() {
         return new ListIterator(this);
     }
 
     //////////////////////////////////// traverse
-
     /**
      * 1, 2, 3, 4
      */

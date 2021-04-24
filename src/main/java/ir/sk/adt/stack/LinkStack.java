@@ -46,7 +46,7 @@ public class LinkStack<T> implements Stack<T>, Iterable<T> {
 
     public void display() {
         System.out.print("Stack (top-->bottom): ");
-        theList.displayList();
+        theList.traverseIterative();
     }
 
     @Override

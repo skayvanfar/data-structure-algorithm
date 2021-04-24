@@ -31,26 +31,26 @@ public class SinglyLinkListTest {
 
     @Test
     public void insertFirst() {
-        theList.displayList();
+        theList.traverseIterative();
         theList.insertFirst(45);
-        theList.displayList();
+        theList.traverseIterative();
     }
 
     @Test
     public void displayList() {
-        theList.displayList(); // display list
+        theList.traverseIterative(); // display list
     }
 
     @Test
     public void delete() {
-        theList.displayList();
+        theList.traverseIterative();
         theList.delete(66); // display list
-        theList.displayList();
+        theList.traverseIterative();
     }
 
     @Test
     public void find() {
-        SinglyLink singlyLink = theList.find(44);
+        SinglyLink singlyLink = theList.search(44);
         if (singlyLink != null)
             System.out.println("Found link with key " + singlyLink.data);
         else

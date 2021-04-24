@@ -7,3 +7,9 @@ Normal
 Circular
 Sorted
 
+main operations:
+1. InsertLast
+2. InsertFirst
+3. Search
+4. delete
+
