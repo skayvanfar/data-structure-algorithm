@@ -5,13 +5,10 @@ import ir.sk.adt.datastructure.linklist.FirstLastList;
 import java.util.Iterator;
 
 /**
- * Steque is a stack-ended data structure which
- * supports stack operations as well as queue's
- * enqueue operation.
- *
+ * Linked List implementation
  * @param <T>
  */
-public class LinkListSteque<T> implements Iterable<T> {
+public class LinkListSteque<T> implements Steque<T>, Iterable<T> {
 
     private FirstLastList<T> theList;
 
@@ -19,14 +16,17 @@ public class LinkListSteque<T> implements Iterable<T> {
         theList = new FirstLastList();
     }
 
+    @Override
     public void enqueue(T item) {
         theList.insertLast(item);
     }
 
+    @Override
     public void push(T item) {
         theList.insertFirst(item);
     }
 
+    @Override
     public T pop() {
         return theList.deleteFirst();
     }

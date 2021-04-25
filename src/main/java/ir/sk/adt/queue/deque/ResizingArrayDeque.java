@@ -19,12 +19,12 @@ public class ResizingArrayDeque<T> implements Deque<T>, Iterable<T> {
 
     public void resize(int n) {
         T[] copy = (T[]) new Object[n];
-        int newstart = (n - size()) / 2;
+        int newStart = (n - size()) / 2;
         for (int i = 0; i < size(); i++) {
-            copy[newstart + i] = deque[start + i];
+            copy[newStart + i] = deque[start + i];
         }
-        end = newstart + size();
-        start = newstart;
+        end = newStart + size();
+        start = newStart;
         deque = copy;
     }
 
@@ -37,25 +37,30 @@ public class ResizingArrayDeque<T> implements Deque<T>, Iterable<T> {
 
     @Override
     public void pushLeft(T item) {
-        if (item == null) throw new NullPointerException("Cannot add null item");
-        if (start == 0) resize(deque.length * 2);
+        if (item == null)
+            throw new NullPointerException("Cannot add null item");
+        if (start == 0)
+            resize(deque.length * 2);
         deque[--start] = item;
     }
 
     @Override
     public void pushRight(T item) {
-        if (item == null) throw new NullPointerException("Cannot add null item");
-        if (end == deque.length) resize(deque.length * 2);
+        if (item == null)
+            throw new NullPointerException("Cannot add null item");
+        if (end == deque.length)
+            resize(deque.length * 2);
         deque[end++] = item;
     }
 
     @Override
     public T popLeft() {
-        if (isEmpty()) throw new NoSuchElementException("Cannot remove from empty deque");
+        if (isEmpty())
+            throw new NoSuchElementException("Cannot remove from empty deque");
         T item = deque[start++];
-        if (!isEmpty() && size() < deque.length / 4) {
+        if (!isEmpty() && size() < deque.length / 4)
             resize(deque.length / 2);
-        }
+
         return item;
     }
 
@@ -63,17 +68,16 @@ public class ResizingArrayDeque<T> implements Deque<T>, Iterable<T> {
     public T popRight() {
         if (isEmpty()) throw new NoSuchElementException("Cannot remove from empty deque");
         T item = deque[--end];
-        if (!isEmpty() && size() < deque.length / 4) {
+        if (!isEmpty() && size() < deque.length / 4)
             resize(deque.length / 2);
-        }
+
         return item;
     }
 
     public String toString() {
         String s = "";
-        for (T item : this) {
+        for (T item : this)
             s += item + " ";
-        }
         return s;
     }
 
