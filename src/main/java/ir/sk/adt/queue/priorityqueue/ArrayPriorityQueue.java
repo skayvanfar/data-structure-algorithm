@@ -1,4 +1,4 @@
-package ir.sk.adt.queue;
+package ir.sk.adt.queue.priorityqueue;
 
 import java.util.Arrays;
 

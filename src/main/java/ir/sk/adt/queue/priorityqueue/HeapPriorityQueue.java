@@ -1,4 +1,4 @@
-package ir.sk.adt.queue;
+package ir.sk.adt.queue.priorityqueue;
 
 import ir.sk.adt.datastructure.tree.binarytree.MaxBinaryHeap;
 import ir.sk.helper.complexity.TimeComplexity;
@@ -8,7 +8,7 @@ import ir.sk.helper.complexity.TimeComplexity;
  *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 7/2/2020.
  */
-public class HeapPriorityQueue {
+public class HeapPriorityQueue implements PriorityQueue {
 
     private static final int CAPACITY = 15;
 
@@ -24,6 +24,7 @@ public class HeapPriorityQueue {
     /**
      * @param value
      */
+    @Override
     @TimeComplexity("O(Log n)")
     public void insert(int value) {
         this.binaryHeap.insert(value);
@@ -32,6 +33,7 @@ public class HeapPriorityQueue {
     /**
      * @return
      */
+    @Override
     @TimeComplexity("O(1)")
     public int max() {
         return this.binaryHeap.max();
@@ -40,6 +42,7 @@ public class HeapPriorityQueue {
     /**
      * @return
      */
+    @Override
     @TimeComplexity("O(Log n)")
     public int extractMax() {
         return this.binaryHeap.extractMax();
