@@ -41,6 +41,7 @@ This project supports the [Gradle Wrapper](https://docs.gradle.org/current/userg
     - [Queue](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/adt/queue)
         - [Deque](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/adt/queue/deque)
         - [Steque](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/adt/queue/steque)
+        - [Priority Queue](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/adt/queue/priorityqueue)
     - [Stack](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/adt/stack)
     - [Dictionary](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/adt/dictionary)
     - [Buffer](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/adt/buffer)
