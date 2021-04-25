@@ -1,4 +1,4 @@
-package ir.sk.adt.queue;
+package ir.sk.adt.queue.steque;
 
 import ir.sk.adt.queue.steque.LinkListSteque;
 import org.junit.After;

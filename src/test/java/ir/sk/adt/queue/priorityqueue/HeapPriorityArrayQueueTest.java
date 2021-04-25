@@ -1,4 +1,4 @@
-package ir.sk.adt.queue;
+package ir.sk.adt.queue.priorityqueue;
 
 import org.junit.After;
 import org.junit.Before;
