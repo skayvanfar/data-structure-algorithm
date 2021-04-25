@@ -12,6 +12,7 @@ import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.FrequencyCountingPattern;
 import ir.sk.helper.pattern.MultiplePointerPattern;
 import ir.sk.helper.pattern.RunnerPattern;
+import ir.sk.helper.recursiontype.HeadRecursion;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -281,6 +282,7 @@ public class LinkListAlgorithms {
     @RecurrenceRelation("T(n) = T(n-1) + O(1)")
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
+    @HeadRecursion
     public static <T> SinglyLink<T> reverseRecursive(SinglyLink<T> first) {
         if (first == null) return null;
         if (first.next == null) return first;

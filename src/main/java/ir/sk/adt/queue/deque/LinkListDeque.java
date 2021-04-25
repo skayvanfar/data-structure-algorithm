@@ -1,4 +1,4 @@
-package ir.sk.adt.queue;
+package ir.sk.adt.queue.deque;
 
 import ir.sk.adt.datastructure.linklist.DoublyLinkedList;
 

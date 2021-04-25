@@ -1,4 +1,4 @@
-package ir.sk.adt.queue;
+package ir.sk.adt.queue.deque;
 
 /**
  * Deque. A double-ended queue or deque (pronounced “deck”) is like a stack or

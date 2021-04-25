@@ -1,4 +1,4 @@
-package ir.sk.adt.queue;
+package ir.sk.adt.queue.deque;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;

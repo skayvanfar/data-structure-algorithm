@@ -1,4 +1,4 @@
-package ir.sk.adt.queue;
+package ir.sk.adt.queue.steque;
 
 import ir.sk.adt.datastructure.linklist.FirstLastList;
 
