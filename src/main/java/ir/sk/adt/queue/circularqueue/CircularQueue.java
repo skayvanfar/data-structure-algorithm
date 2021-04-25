@@ -1,5 +1,6 @@
-package ir.sk.adt.queue;
+package ir.sk.adt.queue.circularqueue;
 
+import ir.sk.adt.queue.Queue;
 import ir.sk.helper.Remainder;
 
 import java.util.Iterator;
