@@ -19,6 +19,7 @@ public class CircularArray<T> implements Iterable<T> {
     // head by shift Right.
     private int head = 0;
 
+    @SuppressWarnings("unchecked")
     public CircularArray(int size) {
         items = (T[]) new Object[size];
     }

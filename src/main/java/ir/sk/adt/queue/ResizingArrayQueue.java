@@ -22,6 +22,7 @@ public class ResizingArrayQueue<T> implements Queue<T>, Iterable<T> {
     private int first;      // index of first element of queue
     private int last;       // index of next available slot
 
+    @SuppressWarnings("unchecked")
     public ResizingArrayQueue() {
         queueArray = (T[]) new Object[INIT_CAPACITY];
         n = 0;
