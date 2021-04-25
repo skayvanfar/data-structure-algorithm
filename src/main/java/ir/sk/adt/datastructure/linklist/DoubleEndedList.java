@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- * Double-Ended List
+ * Double-Ended / FirstLastList List
  * A double-ended list is similar to an ordinary linked list, but it has one additional
  * feature: a reference to the last link as well as to the first.
  * <p>
@@ -21,13 +21,13 @@ import java.util.NoSuchElementException;
  *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
-public class FirstLastList<T> implements Iterable<T> {
+public class DoubleEndedList<T> implements Iterable<T> {
 
     private SinglyLink<T> head;
     private SinglyLink<T> tail;
     private int counter;
 
-    public FirstLastList() {
+    public DoubleEndedList() {
         head = null;
         tail = null;
     }
@@ -139,13 +139,13 @@ public class FirstLastList<T> implements Iterable<T> {
 
         @Override
         public boolean hasNext() {
-            if (counter != FirstLastList.this.counter) throw new java.util.ConcurrentModificationException();
+            if (counter != DoubleEndedList.this.counter) throw new java.util.ConcurrentModificationException();
             return current != null;
         }
 
         @Override
         public T next() {
-            if (counter != FirstLastList.this.counter)
+            if (counter != DoubleEndedList.this.counter)
                 throw new java.util.ConcurrentModificationException();
             if (!hasNext())
                 throw new NoSuchElementException("Cannot call next() on last item");

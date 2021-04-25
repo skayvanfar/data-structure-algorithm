@@ -11,6 +11,7 @@ import java.util.Iterator;
 public class LinkListDeque<T> implements Deque<T>, Iterable<T> {
 
     private DoublyLinkedList<T> theList;
+   // private DoubleEndedList<T> theList;
 
     public LinkListDeque() {
         theList = new DoublyLinkedList<>();

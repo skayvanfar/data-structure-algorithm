@@ -1,6 +1,6 @@
 package ir.sk.adt.queue;
 
-import ir.sk.adt.datastructure.linklist.FirstLastList;
+import ir.sk.adt.datastructure.linklist.DoubleEndedList;
 
 import java.util.Iterator;
 
@@ -11,10 +11,10 @@ import java.util.Iterator;
  */
 public class LinkQueue<T> implements Queue<T>, Iterable<T> {
 
-    private FirstLastList<T> theList;
+    private DoubleEndedList<T> theList;
 
     public LinkQueue() {
-        theList = new FirstLastList();
+        theList = new DoubleEndedList();
     }
 
     @Override

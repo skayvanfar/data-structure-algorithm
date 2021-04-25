@@ -7,13 +7,13 @@ import org.junit.Test;
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
-public class FirstLastListTest {
+public class DoubleEndedListTest {
 
-    FirstLastList<Integer> theList;
+    DoubleEndedList<Integer> theList;
 
     @Before
     public void setUp() throws Exception {
-        theList = new FirstLastList<>(); // make new list
+        theList = new DoubleEndedList<>(); // make new list
         theList.insertLast(1); // insert four items
         theList.insertLast(2);
         theList.insertLast(3);

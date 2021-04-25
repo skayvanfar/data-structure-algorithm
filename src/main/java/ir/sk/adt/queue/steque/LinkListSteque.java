@@ -1,6 +1,6 @@
 package ir.sk.adt.queue.steque;
 
-import ir.sk.adt.datastructure.linklist.FirstLastList;
+import ir.sk.adt.datastructure.linklist.DoubleEndedList;
 
 import java.util.Iterator;
 
@@ -10,10 +10,10 @@ import java.util.Iterator;
  */
 public class LinkListSteque<T> implements Steque<T>, Iterable<T> {
 
-    private FirstLastList<T> theList;
+    private DoubleEndedList<T> theList;
 
     public LinkListSteque() {
-        theList = new FirstLastList();
+        theList = new DoubleEndedList();
     }
 
     @Override
