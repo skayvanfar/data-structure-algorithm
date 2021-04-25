@@ -34,73 +34,74 @@ public class DoublyLinkedList<T> implements Iterable<T> {
     /**
      * insert at front of list
      *
-     * @param dd
+     * @param key
      */
     @TimeComplexity("O(1)")
-    public void insertFirst(T dd) {
-        DoubledLink<T> newLink = new DoubledLink<>(dd);   // make new link
+    public void insertFirst(T key) {
+        DoubledLink<T> newLink = new DoubledLink<>(key);
 
-        if (isEmpty())                // if empty list,
-            tail = newLink;             // newLink <-- last
+        if (isEmpty())
+            tail = newLink;
         else
-            head.previous = newLink;   // newLink <-- old first
-        newLink.next = head;          // newLink --> old first
-        head = newLink;               // first --> newLink
+            head.previous = newLink;
+        newLink.next = head;
+        head = newLink;
     }
 
     /**
      * insert at end of list
      *
-     * @param dd
+     * @param key
      */
     @TimeComplexity("O(1)")
-    public void insertLast(T dd) {
-        DoubledLink newLink = new DoubledLink(dd);   // make new link
-        if (isEmpty())                // if empty list,
-            head = newLink;            // first --> newLink
+    public void insertLast(T key) {
+        DoubledLink newLink = new DoubledLink(key);
+        if (isEmpty())
+            head = newLink;
         else {
-            tail.next = newLink;        // old last --> newLink
-            newLink.previous = tail;    // old last <-- newLink
+            tail.next = newLink;
+            newLink.previous = tail;
         }
-        tail = newLink;                // newLink <-- last
+        tail = newLink;
     }
 
     /**
      * delete first link
+     * assumes non-empty list
      *
      * @return
      */
     @TimeComplexity("O(1)")
     public T deleteFirst() {
-        // (assumes non-empty list)
         DoubledLink<T> temp = head;
-        if (head.next == null)         // if only one item
-            tail = null;                // null <-- last
+        if (head.next == null)
+            tail = null;
         else
-            head.next.previous = null; // null <-- old next
-        head = head.next;            // first --> old next
+            head.next.previous = null;
+        head = head.next;
         return temp.data;
     }
 
     /**
      * delete last link
+     * assumes non-empty list
      *
      * @return
      */
     @TimeComplexity("O(1)")
     public T deleteLast() {
-        // (assumes non-empty list)
         DoubledLink<T> temp = tail;
-        if (head.next == null)         // if only one item
-            head = null;               // first --> null
+        if (head.next == null)
+            head = null;
         else
-            tail.previous.next = null;  // old previous --> null
-        tail = tail.previous;          // old previous <-- last
+            tail.previous.next = null;
+        tail = tail.previous;
         return temp.data;
     }
 
     /**
      * insert dd just after key
+     * assumes non-empty list
      *
      * @param key
      * @param dd
@@ -108,78 +109,70 @@ public class DoublyLinkedList<T> implements Iterable<T> {
      */
     @TimeComplexity("O(n)")
     public boolean insertAfter(T key, T dd) {
-        // (assumes non-empty list)
-        DoubledLink<T> current = head;          // start at beginning
-        while (current.data != key) {  // until match is found,
-
-            current = current.next;     // move to next link
+        DoubledLink<T> current = head;
+        while (current.data != key) {
+            current = current.next;
             if (current == null)
-                return false;            // didn't find it
+                return false;
         }
-        DoubledLink<T> newLink = new DoubledLink<>(dd);   // make new link
+        DoubledLink<T> newLink = new DoubledLink<>(dd);
 
-        if (current == tail) {             // if last link,
+        if (current == tail) {
 
-            newLink.next = null;        // newLink --> null
-            tail = newLink;             // newLink <-- last
-        } else { // not last link,
-            newLink.next = current.next; // newLink --> old next
-            // newLink <-- old next
+            newLink.next = null;
+            tail = newLink;
+        } else {
+            newLink.next = current.next;
             current.next.previous = newLink;
         }
-        newLink.previous = current;    // old current <-- newLink
-        current.next = newLink;        // old current --> newLink
-        return true;                   // found it, did insertion
+        newLink.previous = current;
+        current.next = newLink;
+        return true;
     }
 
     /**
      * delete item w/ given key
+     * assumes non-empty list
      *
      * @param key
      * @return
      */
     @TimeComplexity("O(n)")
     public DoubledLink<T> deleteKey(T key) {
-        // (assumes non-empty list)
-        DoubledLink current = head;          // start at beginning
-        while (current.data != key)    // until match is found,
-        {
-            current = current.next;     // move to next link
+        DoubledLink current = head;
+        while (current.data != key) {
+            current = current.next;
             if (current == null)
-                return null;             // didn't find it
+                return null;
         }
-        if (current == head)             // found it; first item?
-            head = current.next;       // first --> old next
-        else                           // not first
-            // old previous --> old next
+        if (current == head)
+            head = current.next;
+        else
             current.previous.next = current.next;
 
-        if (current == tail)              // last item?
-            tail = current.previous;    // old previous <-- last
-        else                           // not last
-            // old previous <-- old next
+        if (current == tail)
+            tail = current.previous;
+        else
             current.next.previous = current.previous;
-        return current;                // return value
+        return current;
     }
 
     public void displayForward() {
         System.out.print("List (first-->last): ");
-        DoubledLink current = head;          // start at beginning
-        while (current != null)         // until end of list,
-        {
-            current.displayLink();      // display data
-            current = current.next;     // move to next link
+        DoubledLink current = head;
+        while (current != null) {
+            current.displayLink();
+            current = current.next;
         }
         System.out.println("");
     }
 
     public void displayBackward() {
         System.out.print("List (last-->first): ");
-        DoubledLink current = tail;           // start at end
-        while (current != null)         // until start of list,
-        {
-            current.displayLink();      // display data
-            current = current.previous; // move to previous link
+        DoubledLink current = tail;
+        while (current != null) {
+            current.displayLink();
+            current = current.previous;
         }
         System.out.println("");
     }
@@ -217,7 +210,7 @@ public class DoublyLinkedList<T> implements Iterable<T> {
 
     private class DoublyLinkedListIterator implements Iterator<T> {
 
-        private DoubledLink<T> current = head;          // current link
+        private DoubledLink<T> current = head;
 
         @Override
         public boolean hasNext() {

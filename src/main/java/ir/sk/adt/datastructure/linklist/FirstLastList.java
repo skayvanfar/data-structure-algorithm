@@ -40,16 +40,16 @@ public class FirstLastList<T> implements Iterable<T> {
     /**
      * insert at front of list
      *
-     * @param dd
+     * @param key
      */
     @TimeComplexity("O(1)")
-    public void insertFirst(T dd) {
-        SinglyLink<T> newSinglyLink = new SinglyLink<T>(dd);   // make new link
+    public void insertFirst(T key) {
+        SinglyLink<T> newSinglyLink = new SinglyLink<T>(key);
 
-        if (isEmpty())                // if empty list,
-            tail = newSinglyLink;             // newLink <-- last
-        newSinglyLink.next = head;          // newLink --> old first
-        head = newSinglyLink;               // first --> newLink
+        if (isEmpty())
+            tail = newSinglyLink;
+        newSinglyLink.next = head;
+        head = newSinglyLink;
         counter++;
     }
 
@@ -60,7 +60,7 @@ public class FirstLastList<T> implements Iterable<T> {
      */
     @TimeComplexity("O(1)")
     public void insertLast(T key) {
-        SinglyLink<T> newSinglyLink = new SinglyLink<T>(key);
+        SinglyLink<T> newSinglyLink = new SinglyLink<>(key);
         if (isEmpty())
             head = newSinglyLink;
         else
