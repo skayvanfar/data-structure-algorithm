@@ -4,16 +4,14 @@ import java.util.Iterator;
 import java.util.Random;
 
 /**
- * this API is the same as for
- * Bag, except for the adjective random, which indicates that the iteration should provide
- * the items in random order (all N ! permutations equally likely, for each iterator). Hint :
  * Put the items in an array and randomize their order in the iterator’s constructor.
  * <p>
  * Created by sad.kayvanfar on 3/8/2021.
  */
-public class RandomResizingArrayBag<T> implements Bag<T>, Iterable<T> {
-    T[] items;
-    int N;
+public class RandomResizingArrayBag<T> implements RandomBag<T>, Iterable<T> {
+
+    private T[] items;
+    private int N;
 
     public RandomResizingArrayBag() {
         items = (T[]) new Object[4];

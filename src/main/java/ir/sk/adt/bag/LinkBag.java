@@ -9,7 +9,7 @@ import java.util.Iterator;
  */
 public class LinkBag<T> implements Bag<T>, Iterable<T> {
 
-    private Node first; // first node in list
+    private Node first;
 
     private class Node {
         T item;
@@ -17,11 +17,11 @@ public class LinkBag<T> implements Bag<T>, Iterable<T> {
     }
 
     @Override
-    public void add(T item) { // same as push() in Stack
-        Node oldfirst = first;
+    public void add(T item) {
+        Node oldFirst = first;
         first = new Node();
         first.item = item;
-        first.next = oldfirst;
+        first.next = oldFirst;
     }
 
     @Override
@@ -42,6 +42,7 @@ public class LinkBag<T> implements Bag<T>, Iterable<T> {
         }
 
         public void remove() {
+            throw new UnsupportedOperationException();
         }
 
         public T next() {
