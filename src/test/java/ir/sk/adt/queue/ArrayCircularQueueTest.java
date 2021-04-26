@@ -1,11 +1,11 @@
 package ir.sk.adt.queue;
 
-import ir.sk.adt.queue.circularqueue.CircularQueue;
+import ir.sk.adt.queue.circularqueue.ArrayCircularQueue;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class CircularQueueTest {
+public class ArrayCircularQueueTest {
 
     @Before
     public void setUp() throws Exception {
@@ -17,7 +17,7 @@ public class CircularQueueTest {
 
     @Test
     public void enqueue() {
-        CircularQueue<Integer> c = new CircularQueue<>(10);
+        ArrayCircularQueue<Integer> c = new ArrayCircularQueue<>(10);
         for (int i = 0; i < 10; i++) {
             c.enqueue(i);
         }

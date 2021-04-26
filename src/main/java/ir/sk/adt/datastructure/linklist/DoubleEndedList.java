@@ -24,7 +24,7 @@ import java.util.NoSuchElementException;
 public class DoubleEndedList<T> implements Iterable<T> {
 
     private SinglyLink<T> head;
-    private SinglyLink<T> tail;
+    private SinglyLink<T> tail; // double ended
     private int counter;
 
     public DoubleEndedList() {

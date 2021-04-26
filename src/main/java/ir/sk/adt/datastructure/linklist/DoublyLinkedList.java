@@ -19,7 +19,7 @@ import java.util.NoSuchElementException;
 public class DoublyLinkedList<T> implements Iterable<T> {
 
     private DoubledLink<T> head;
-    private DoubledLink<T> tail;
+    private DoubledLink<T> tail; // double ended
 
     public DoublyLinkedList() {
         head = null;

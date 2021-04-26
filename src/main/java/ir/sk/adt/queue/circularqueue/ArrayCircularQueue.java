@@ -23,7 +23,7 @@ import java.util.NoSuchElementException;
  *
  * @param <T>
  */
-    public class CircularQueue<T> implements Queue<T>, Iterable<T> {
+    public class ArrayCircularQueue<T> implements Queue<T>, Iterable<T> {
 
     private T[] items;
     private int capacity;
@@ -33,7 +33,7 @@ import java.util.NoSuchElementException;
     private int start;
     private int size;
 
-    public CircularQueue(int m) {
+    public ArrayCircularQueue(int m) {
         capacity = m;
         items = (T[]) new Object[capacity];
         start = 0;
