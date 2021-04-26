@@ -19,10 +19,10 @@ import ir.sk.helper.complexity.TimeComplexity;
  * <p>
  * Created by sad.kayvanfar on 9/1/2020.
  */
-public class DoublyCircularSinglyLinkedList<T> {
+public class DoubleEndedCircularSinglyLinkedList<T> {
 
     private SinglyLink<T> head = null;
-    private SinglyLink<T> tail = null;
+    private SinglyLink<T> tail = null; // double ended
 
     /**
      * @param value
