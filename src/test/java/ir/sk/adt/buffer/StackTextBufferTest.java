@@ -27,7 +27,7 @@ public class StackTextBufferTest {
         buffer.insert('c');
         buffer.insert('d');
         buffer.left(2);
-        buffer.insert('d');
+        buffer.insert('e');
         System.out.println(buffer.toString());
     }
 

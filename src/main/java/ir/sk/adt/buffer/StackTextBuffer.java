@@ -9,6 +9,10 @@ import java.util.Stack;
  *
  * Use two stacks: insertion gives O(1)
  *
+ * Declare two stacks of type character.
+ * First stack contains data on the left of cursor.
+ * Second stack contains data rest of data towards right of cursor till end of buffer.
+ *
  * Created by sad.kayvanfar on 3/9/2021.
  */
 public class StackTextBuffer implements TextBuffer {
@@ -23,14 +27,19 @@ public class StackTextBuffer implements TextBuffer {
 
     /**
      * insert c at the cursor position
+     *
+     * push the given character at end of left stack.
      */
     @TimeComplexity("O(1)")
     public void insert(char c) {
-        right.push(c);
+        left.push(c);
     }
 
     /**
      * delete and return the character at the cursor
+     *
+     * If the right stack is empty, return null character.
+     * Otherwise, pop out a character from right stack and return it.
      */
     @TimeComplexity("O(1)")
     public char delete() {
@@ -40,6 +49,9 @@ public class StackTextBuffer implements TextBuffer {
 
     /**
      * move the cursor k positions to the left
+     *
+     * Repeat the below statements k times or till left stack is empty.
+     * Pop out a character from left stack and push it to right stack.
      */
     @TimeComplexity("O(n)")
     public void left(int k) {
@@ -51,6 +63,9 @@ public class StackTextBuffer implements TextBuffer {
 
     /**
      * move the cursor k positions to the right
+     *
+     * Repeat the below statements k times or till right stack is empty.
+     * Pop out a character from right stack and push it to left stack.
      */
     @TimeComplexity("O(n)")
     public void right(int k) {
@@ -62,6 +77,7 @@ public class StackTextBuffer implements TextBuffer {
 
     /**
      * number of characters in the buffer
+     * return the sum of sizes on both stacks.
      */
     public int size() {
         return left.size() + right.size();
@@ -74,13 +90,13 @@ public class StackTextBuffer implements TextBuffer {
      */
     public String toString() {
         String s = "";
-        for (char c : left) {
+        for (char c : left)
             s += c;
-        }
+
         s += "|";
-        for (char c : right) {
-            s += c;
-        }
+        for(int i = right.size() - 1; i>=0; --i)
+            s += right.get(i);
+
         return s;
     }
 }

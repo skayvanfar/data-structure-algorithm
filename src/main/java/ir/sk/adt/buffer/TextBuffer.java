@@ -3,6 +3,8 @@ package ir.sk.adt.buffer;
 /**
  * a data type for a buffer in a text editor
  *
+ * API for a text buffer
+ *
  * Created by sad.kayvanfar on 3/9/2021.
  */
 public interface TextBuffer {
