@@ -20,12 +20,6 @@ public class PairsWithGivenSumTest {
     }
 
     @Test
-    public void isPairSum() {
-        int arr[] = {20, 3, 5, 9, 2, 8, 10, 11};
-        Assert.assertEquals(true, PairsWithGivenSum.isPairSum(arr, 17));
-    }
-
-    @Test
     public void isPairSumTwoPonters() {
         int arr[] = {2, 3, 5, 8, 9, 10, 11, 20};
         Assert.assertEquals(true, PairsWithGivenSum.countPairSumTwoPointers(arr, 17));
