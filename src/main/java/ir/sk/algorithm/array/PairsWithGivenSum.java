@@ -23,27 +23,24 @@ import java.util.List;
 public class PairsWithGivenSum {
 
     /***************
-     *  Given a sorted array of integers, we need to see if there are two numbers in it such that their sum is equal to a specific value.
+     * find all pairs with sum k within an array (assuming all distinct elements)
      ***************/
 
     /**
-     * Given an array of integers, we need to see if there are two numbers in it such that their sum is equal to a specific value.
-     * we consider all possible pairs of elements in the array and check their sum by two loops.
-     *
-     * @param input
-     * @param targetValue
-     * @return
+     * A simple solution is be traverse each element and check if there’s another number in the array which can be added to it to give sum.
      */
     @BruteForce
     @TimeComplexity("O(n^2)")
     @SpaceComplexity("O(1)")
     @MultipleLoopsPattern
-    public static boolean isPairSum(int[] input, int targetValue) {
-        for (int i = 0; i < input.length; i++)
-            for (int j = i + 1; j < input.length; j++)
-                if (input[i] + input[j] == targetValue)
-                    return true;
-        return false;
+    public static int getPairsCountWithSum(int[] arr, int sum) {
+        int count = 0;
+        for (int i = 0; i < arr.length; i++)
+            for (int j = i + 1; j < arr.length; j++)
+                if (arr[i] + arr[j] == sum)
+                    count++;
+
+        return count;
     }
 
     /**
@@ -56,11 +53,12 @@ public class PairsWithGivenSum {
      */
     @TimeComplexity("O(n*Log n)")
     @SpaceComplexity("O(1)")
-    public static boolean isPairSumBinarySort(int[] input, int targetValue) {
+    public static int countPairSumBinarySort(int[] input, int targetValue) {
+        int count = 0;
         for (int i = 0; i < input.length; i++)
             if (Arrays.binarySearch(input, targetValue - input[i]) != 1)
-                return true;
-        return false;
+                count++;
+        return count;
     }
 
     /**
@@ -79,8 +77,8 @@ public class PairsWithGivenSum {
     @MultiplePointerPattern
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
-    public static boolean isPairSumTwoPointers(int[] input, int targetValue) {
-
+    public static int countPairSumTwoPointers(int[] input, int targetValue) {
+        int count = 0;
         int pointerOne = 0;
         int pointerTwo = input.length - 1;
 
@@ -88,84 +86,18 @@ public class PairsWithGivenSum {
             int sum = input[pointerOne] + input[pointerTwo];
 
             if (sum == targetValue)
-                return true;
+                count++;
             else if (sum < targetValue)
                 pointerOne++;
             else
                 pointerTwo--;
         }
 
-        return false;
-    }
-
-    /**
-     * Given an array of integers, we need to see if there are two numbers in it such that their sum is equal to a specific value.
-     *
-     * @param array
-     * @param targetValue
-     * @return
-     */
-    @TimeComplexity("O(n)")
-    @SpaceComplexity("O(n + k)")
-    @FrequencyCountingPattern
-    public static boolean isPairSumByHashing(int[] array, int targetValue) {
-        int min = Arrays.stream(array).min().getAsInt();
-        int max = Arrays.stream(array).max().getAsInt();
-
-        int range = max - min;
-
-        // as a cache
-        boolean[] counting = new boolean[range];
-
-        for (int i = 0; i < array.length; i++)
-            counting[array[i] - min] = true;
-
-
-        for (int i = 0; i < array.length; i++) {
-            int value = targetValue - array[i];
-            if (counting[value - min] && value > array[i])
-                return true;
-        }
-        return false;
-    }
-
-    /***************
-     * variant of PairsWithGivenSum
-     * find all pairs with sum k within an array (assuming all distinct elements)
-     ***************/
-
-    /**
-     * A simple solution is be traverse each element and check if there’s another number in the array which can be added to it to give sum.
-     *
-     * @param arr
-     * @param sum
-     * @see #isPairSum(int[], int)
-     */
-    @BruteForce
-    @TimeComplexity("O(n2)")
-    @SpaceComplexity("O(1)")
-    public static int getPairsCount(int[] arr, int sum) {
-
-        int count = 0;// Initialize result
-
-        // Consider all possible pairs and check their sums
-        // O(n)
-        for (int i = 0; i < arr.length; i++)
-            // O(n)
-            for (int j = i + 1; j < arr.length; j++)
-                if ((arr[i] + arr[j]) == sum)
-                    count++;
-
         return count;
     }
 
     /**
      * for every element check if it can be combined with any other element (other than itself!) to give the desired sum
-     *
-     * @param arr
-     * @param sum
-     * @return
-     * @see #isPairSumByHashing(int[], int)
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n + k)")
@@ -174,7 +106,7 @@ public class PairsWithGivenSum {
     @FrequencyCountingPattern
     public static int getPairsCountByHashing(int[] arr, int sum) {
 
-        int count = 0;// Initialize result
+        int count = 0;
 
         int max = Arrays.stream(arr).max().getAsInt();
         int min = Arrays.stream(arr).min().getAsInt();
@@ -229,15 +161,14 @@ public class PairsWithGivenSum {
     }
 
     /**
+     * Count triples that sum to 0.
+     *
      * A pair a[i] and a[j] is part of a triple
      * that sums to 0 if and only if the value -(a[i] + a[j]) is in the array
-     *
-     * @param a
-     * @return
      */
     @TimeComplexity("O(n^2 Log n)")
     @SpaceComplexity("O(1)")
-    public static int countOfThreeSumBinarySearch(int[] a) { // Count triples that sum to 0.
+    public static int countOfThreeSumBinarySearch(int[] a) {
         Arrays.sort(a);
         int N = a.length;
         int cnt = 0;

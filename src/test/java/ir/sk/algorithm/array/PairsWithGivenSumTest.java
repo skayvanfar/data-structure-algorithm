@@ -1,13 +1,10 @@
 package ir.sk.algorithm.array;
 
-import ir.sk.algorithm.array.PairsWithGivenSum;
 import ir.sk.helper.Stopwatch;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.Arrays;
 
 /**
  * Created by sad.keyvanfar on 8/23/2020.
@@ -31,19 +28,19 @@ public class PairsWithGivenSumTest {
     @Test
     public void isPairSumTwoPonters() {
         int arr[] = {2, 3, 5, 8, 9, 10, 11, 20};
-        Assert.assertEquals(true, PairsWithGivenSum.isPairSumTwoPointers(arr, 17));
+        Assert.assertEquals(true, PairsWithGivenSum.countPairSumTwoPointers(arr, 17));
     }
 
     @Test
     public void isPairSumByHashing() {
         int arr[] = {2, 3, 5, 8, 9, 10, 11, 20};
-        Assert.assertEquals(true, PairsWithGivenSum.isPairSumTwoPointers(arr, 17));
+        Assert.assertEquals(true, PairsWithGivenSum.countPairSumTwoPointers(arr, 17));
     }
 
     @Test
     public void getPairsCount() {
         int arr[] = new int[]{1, 5, 7, -1};
-        Assert.assertEquals(2, PairsWithGivenSum.getPairsCount(arr, 6));
+        Assert.assertEquals(2, PairsWithGivenSum.getPairsCountWithSum(arr, 6));
     }
 
     @Test
