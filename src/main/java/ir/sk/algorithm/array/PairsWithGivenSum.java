@@ -189,8 +189,8 @@ public class PairsWithGivenSum {
      * A couple of differences are that the input array is not sorted and instead of a pair we need to find triplets with a target sum of zero.
      * <p>
      * To follow a similar approach, first, we will sort the array and then iterate through it
-     * taking one number at a time. Let’s say during our iteration we are at number ‘X’, so we need to find ‘Y’ and ‘Z’ such that X + Y + Z == 0X+Y+Z==0.
-     * At this stage, our problem translates into finding a pair whose sum is equal to “-X−X” (as from the above equation Y + Z == -XY+Z==−X).
+     * taking one number at a time. Let’s say during our iteration we are at number ‘X’, so we need to find ‘Y’ and ‘Z’ such that X + Y + Z == 0.
+     * At this stage, our problem translates into finding a pair whose sum is equal to “-Y−Z” (as from the above equation Y + Z == -X).
      * <p>
      * Another difference from Pair with Target Sum is that we need to find all the unique triplets.
      * To handle this, we have to skip any duplicate number. Since we will be sorting the array,
@@ -215,7 +215,7 @@ public class PairsWithGivenSum {
     }
 
     @TimeComplexity("O(n)")
-    private static void searchPair(int[] array, int targetSum, int left, java.util.List<List<Integer>> triplets) {
+    private static void searchPair(int[] array, int targetSum, int left, List<List<Integer>> triplets) {
         int right = array.length - 1;
         while (left < right) {
             int currentSum = array[left] + array[right];
