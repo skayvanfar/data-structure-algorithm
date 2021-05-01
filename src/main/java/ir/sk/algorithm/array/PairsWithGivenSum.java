@@ -168,13 +168,13 @@ public class PairsWithGivenSum {
      */
     @TimeComplexity("O(n^2 Log n)")
     @SpaceComplexity("O(1)")
-    public static int countOfThreeSumBinarySearch(int[] a) {
+    public static int countOfThreeSumBinarySearch(int[] a, int sum) {
         Arrays.sort(a);
         int N = a.length;
         int cnt = 0;
         for (int i = 0; i < N; i++)
             for (int j = i + 1; j < N; j++)
-                if (Arrays.binarySearch(a, -a[i] - a[j]) > j)
+                if (Arrays.binarySearch(a, sum - a[i] - a[j]) > j)
                     cnt++;
         return cnt;
     }
