@@ -20,9 +20,9 @@ public class QuickFindUFTest {
     @Test
     public void union() {
         UF uf = new QuickFindUF(10); // Initialize N components.
-        int p = 10;
-        int q = 20;
-        if (!uf.connected(10, 20)) { // Ignore if connected.
+        int p = 2;
+        int q = 3;
+        if (!uf.connected(p, q)) { // Ignore if connected.
             uf.union(p, q); // Combine components
             System.out.println(p + " " + q); // and print connection.
         }
