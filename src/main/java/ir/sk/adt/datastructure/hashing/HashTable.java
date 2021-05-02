@@ -1,5 +1,7 @@
 package ir.sk.adt.datastructure.hashing;
 
+import ir.sk.helper.pattern.HashingIndexPattern;
+
 /**
  * A simple hashtable implementation
  *
@@ -7,6 +9,7 @@ package ir.sk.adt.datastructure.hashing;
  * It efficiently implements the dictionary ADT with efficient insert, remove and find operations, each taking O(1)O(1) expected time.
  *
  */
+@HashingIndexPattern
 public class HashTable {
 
     private boolean[] array;

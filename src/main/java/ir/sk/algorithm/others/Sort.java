@@ -23,6 +23,8 @@ import java.util.stream.IntStream;
 public class Sort {
 
     /**
+     * Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in wrong order.
+     *
      * In bubble sort, we start at the beginning of the array and swap the first two elements if the first is greater
      * than the second. Then, we go to the next pair, and so on, continuously making sweeps of the array until it is
      * sorted. In doing so, the smaller items slowly"bubble" up to the beginning of the list.
@@ -36,12 +38,10 @@ public class Sort {
     @InPlace
     @Stability
     public static void bubbleSort(int[] array) {
-        int n = array.length;
-        for (int out = 0; out < n; out++) {
-            for (int in = 1; in < (n - out); in++)
-                if (array[in - 1] > array[in])
-                    array[in] = Utils.gSwap(array[in - 1], array[in - 1] = array[in]); // swap them A[j], A[j - 1]
-        }
+        for (int i = 0; i < array.length - 1; i++)
+            for (int j = 0; j < array.length - i - 1; j++)
+                if (array[j] > array[j + 1])
+                    array[j + 1] = Utils.gSwap(array[j], array[j] = array[j + 1]); // swap them A[j], A[j - 1]
     }
 
 
