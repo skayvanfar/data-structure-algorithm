@@ -1,7 +1,7 @@
 package ir.sk.algorithm.others;
 
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.pattern.FrequencyCountingPattern;
+import ir.sk.helper.pattern.HashingIndexPattern;
 import ir.sk.helper.pattern.MultipleLoopsPattern;
 import ir.sk.helper.technique.BruteForce;
 
@@ -101,7 +101,7 @@ public class SumOfCubes {
      * @return
      */
     @TimeComplexity("O(n2)")
-    @FrequencyCountingPattern("Using Map")
+    @HashingIndexPattern("Using Map")
     public static void sumOfCubesOptimizeByHashing(int n) {
         // Create an empty Hash to store mapping from sum to
         // pair indexes

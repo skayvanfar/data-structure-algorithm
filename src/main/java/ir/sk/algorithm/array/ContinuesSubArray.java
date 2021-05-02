@@ -3,7 +3,7 @@ package ir.sk.algorithm.array;
 import ir.sk.helper.Point;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.pattern.FrequencyCountingPattern;
+import ir.sk.helper.pattern.HashingIndexPattern;
 import ir.sk.helper.pattern.MultipleLoopsPattern;
 import ir.sk.helper.pattern.SlidingWindowPattern;
 import ir.sk.helper.pattern.SlidingWindowPatternType;
@@ -203,7 +203,7 @@ public class ContinuesSubArray {
      */
     @TimeComplexity("O(n+n) = O(n)")
     @SpaceComplexity("O(256) = O(1)")
-    @FrequencyCountingPattern
+    @HashingIndexPattern
     @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
     public static int longestSubstringDistinct(char[] chars, int d) {
         int start = 0, end = 0;
@@ -243,7 +243,7 @@ public class ContinuesSubArray {
      */
     @TimeComplexity("O(n+n) = O(n)")
     @SpaceComplexity("O(256) = O(1)")
-    @FrequencyCountingPattern
+    @HashingIndexPattern
     @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
     public static int longestSubstringAtMostDistinct(char[] chars, int d) {
         int start = 0, end = 0;
@@ -282,7 +282,7 @@ public class ContinuesSubArray {
      */
     @TimeComplexity("(O(n+n) = O(n))")
     @SpaceComplexity("O(256) = O(1)")
-    @FrequencyCountingPattern
+    @HashingIndexPattern
     @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
     public static int longestSubstringAllDistinct(char[] chars) {
         int start = 0, end = 0;
@@ -313,7 +313,7 @@ public class ContinuesSubArray {
      */
     @TimeComplexity("(O(n+n) = O(n))")
     @SpaceComplexity("O(256) = O(1)")
-    @FrequencyCountingPattern
+    @HashingIndexPattern
     @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
     public static int longestSubstringAllDistinct2(char[] s) {
         int left = 0, right = 0;
@@ -343,7 +343,7 @@ public class ContinuesSubArray {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(256) = O(1)")
-    @FrequencyCountingPattern
+    @HashingIndexPattern
     @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
     public static int longestSubstringAllDistinct3(char[] chars) {
         int start = 0, end = 0;
@@ -378,7 +378,7 @@ public class ContinuesSubArray {
      */
     @TimeComplexity("O(s + t), s and t represent the lengths of strings S and T")
     @SpaceComplexity("O(256) = O(1)")
-    @FrequencyCountingPattern
+    @HashingIndexPattern
     @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
     public static String minimumWindowSubstring(char[] source, char[] target) {
         int start = 0, end = 0;
@@ -432,7 +432,7 @@ public class ContinuesSubArray {
      */
     @TimeComplexity("O(s + t), s and t represent the lengths of strings S and T")
     @SpaceComplexity("O(256) = O(1)")
-    @FrequencyCountingPattern
+    @HashingIndexPattern
     @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
     public static List<Integer> findAllAnagramsString(char[] source, char[] target) {
         int start = 0, end = 0;

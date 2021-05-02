@@ -5,7 +5,7 @@ import ir.sk.helper.complexity.BCR;
 import ir.sk.helper.complexity.Best;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.pattern.FrequencyCountingPattern;
+import ir.sk.helper.pattern.HashingIndexPattern;
 import ir.sk.helper.pattern.MultipleFinger;
 import ir.sk.helper.pattern.MultipleLoopsPattern;
 import ir.sk.helper.technique.BruteForce;
@@ -81,7 +81,7 @@ public class IntersectionAndUnionOfTwoSortedArrays {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
-    @FrequencyCountingPattern
+    @HashingIndexPattern
     public static int countOfCommonItemsByHashing(int[] arr1, int[] arr2) {
         int max = Arrays.stream(arr2).max().getAsInt();
         int min = Arrays.stream(arr2).min().getAsInt();

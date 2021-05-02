@@ -5,7 +5,7 @@ import ir.sk.helper.DifficultyType;
 import ir.sk.helper.Point;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.pattern.FrequencyCountingPattern;
+import ir.sk.helper.pattern.HashingIndexPattern;
 import ir.sk.helper.pattern.MultipleLoopsPattern;
 import ir.sk.helper.pattern.MultiplePointerPattern;
 import ir.sk.helper.technique.BruteForce;
@@ -103,7 +103,7 @@ public class PairsWithGivenSum {
     @SpaceComplexity("O(n + k)")
     @Point("Using hashtable is trade off between time and space" +
             "change Multiply O(n)*O(n) into O(n)+O(n) by using hashtable")
-    @FrequencyCountingPattern
+    @HashingIndexPattern
     public static int getPairsCountByHashing(int[] arr, int sum) {
 
         int count = 0;

@@ -4,7 +4,7 @@ import ir.sk.helper.Difficulty;
 import ir.sk.helper.DifficultyType;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.pattern.FrequencyCountingPattern;
+import ir.sk.helper.pattern.HashingIndexPattern;
 import ir.sk.helper.pattern.MultiplePointerPattern;
 import ir.sk.helper.pattern.SlidingWindowPattern;
 import ir.sk.helper.pattern.SlidingWindowPatternType;
@@ -27,7 +27,7 @@ public class Strings {
      */
     @TimeComplexity("O(n)")
     @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
-    @FrequencyCountingPattern
+    @HashingIndexPattern
     public static String minWindow(String str, String pat) {
         if (str == null || pat == null) return "";
         int[] counting = new int[128];

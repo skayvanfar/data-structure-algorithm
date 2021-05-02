@@ -2,7 +2,7 @@ package ir.sk.algorithm.others;
 
 import ir.sk.helper.Point;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.pattern.FrequencyCountingPattern;
+import ir.sk.helper.pattern.HashingIndexPattern;
 import ir.sk.helper.pattern.SlidingWindowPattern;
 import ir.sk.helper.pattern.SlidingWindowPatternType;
 
@@ -149,7 +149,7 @@ public class Anagram {
      * @param txt
      */
     @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
-    @FrequencyCountingPattern
+    @HashingIndexPattern
     @TimeComplexity("O(n)")
     public static void searchAnagramsInTextByHashing(String pat, String txt) {
         int M = pat.length();
@@ -210,7 +210,7 @@ public class Anagram {
      * @return
      */
     ///////////////////////////////////////////////////////////////////////////////////////
-    @FrequencyCountingPattern
+    @HashingIndexPattern
     static int activityNotificationsByHashing(int[] expenditure, int d) {
         ;
 

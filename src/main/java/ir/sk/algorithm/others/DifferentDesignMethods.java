@@ -2,7 +2,7 @@ package ir.sk.algorithm.others;
 
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.pattern.FrequencyCountingPattern;
+import ir.sk.helper.pattern.HashingIndexPattern;
 import ir.sk.helper.pattern.MultipleLoopsPattern;
 import ir.sk.helper.pattern.SlidingWindowPattern;
 import ir.sk.helper.pattern.SlidingWindowPatternType;
@@ -50,7 +50,7 @@ public class DifferentDesignMethods {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(256) = O(1)")
-    @FrequencyCountingPattern
+    @HashingIndexPattern
     public static char firstRepeatedCharByHash(char[] array) {
         int[] counter = new int[256];
 
@@ -101,7 +101,7 @@ public class DifferentDesignMethods {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(256) = O(1)")
-    @FrequencyCountingPattern
+    @HashingIndexPattern
     public static char maximumRepeatedCharByHash(char[] array) {
         int[] counter = new int[256];
 

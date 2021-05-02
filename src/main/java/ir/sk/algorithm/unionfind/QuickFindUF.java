@@ -1,10 +1,12 @@
 package ir.sk.algorithm.unionfind;
 
 import ir.sk.helper.complexity.TimeComplexity;
+import ir.sk.helper.pattern.HashingIndexPattern;
 
 /**
  * Created by sad.kayvanfar on 5/1/2021.
  */
+@HashingIndexPattern
 public class QuickFindUF implements UF {
 
     private int[] id; // access to component id (site indexed)

@@ -1,7 +1,7 @@
 package ir.sk.adt.datastructure.tree;
 
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.pattern.FrequencyCountingPattern;
+import ir.sk.helper.pattern.HashingIndexPattern;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -88,7 +88,7 @@ public class TrieTree {
 }
 
 class TrieNode {
-    @FrequencyCountingPattern
+    @HashingIndexPattern
     private final Map<Character, TrieNode> children = new HashMap<>();
     private boolean endOfWord;
 

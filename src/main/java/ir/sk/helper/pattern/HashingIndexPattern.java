@@ -14,6 +14,6 @@ package ir.sk.helper.pattern;
  * <p>
  * Created by sad.kayvanfar on 9/6/2020.
  */
-public @interface FrequencyCountingPattern {
+public @interface HashingIndexPattern {
     String value() default "";
 }

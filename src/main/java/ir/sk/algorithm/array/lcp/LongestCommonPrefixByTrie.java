@@ -2,7 +2,7 @@ package ir.sk.algorithm.array.lcp;
 
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.pattern.FrequencyCountingPattern;
+import ir.sk.helper.pattern.HashingIndexPattern;
 
 import java.util.ArrayList;
 
@@ -27,7 +27,7 @@ import java.util.ArrayList;
 public class LongestCommonPrefixByTrie {
 
     static class TrieNode {
-        @FrequencyCountingPattern
+        @HashingIndexPattern
         TrieNode[] child = new TrieNode[26];
         boolean isEnd;
 

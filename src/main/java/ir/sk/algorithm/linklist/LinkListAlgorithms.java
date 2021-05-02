@@ -9,7 +9,7 @@ import ir.sk.helper.RecurrenceRelation;
 import ir.sk.helper.complexity.InPlace;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.pattern.FrequencyCountingPattern;
+import ir.sk.helper.pattern.HashingIndexPattern;
 import ir.sk.helper.pattern.MultiplePointerPattern;
 import ir.sk.helper.pattern.RunnerPattern;
 import ir.sk.helper.recursiontype.HeadRecursion;
@@ -56,7 +56,7 @@ public class LinkListAlgorithms {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
-    @FrequencyCountingPattern
+    @HashingIndexPattern
     public static void deleteDuplicatesByHashing(SinglyLink<Integer> head) {
         HashSet<Integer> hashTable = new HashSet<>();
         SinglyLink<Integer> previous = null;
@@ -558,7 +558,7 @@ public class LinkListAlgorithms {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
-    @FrequencyCountingPattern
+    @HashingIndexPattern
     public static <T> boolean hasCycleByHashing(SinglyLink<T> head) {
         SinglyLink<T> current = head;
         Set<SinglyLink<T>> hashtable = new HashSet<>();
