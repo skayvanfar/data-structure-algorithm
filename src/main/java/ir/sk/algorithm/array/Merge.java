@@ -11,6 +11,8 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 
 /**
+ * combining two ordered arrays to make one larger ordered array.
+ *
  * Created by sad.kayvanfar on 12/26/2020.
  */
 public class Merge {

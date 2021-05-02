@@ -164,6 +164,9 @@ public class Sort {
      *
      * @param array
      */
+    @TimeComplexity("O(n^2)")
+    @SpaceComplexity("O(1)")
+    @InPlace
     public static void shellSort(int[] array) {
         int N = array.length;
         int h = 1;
@@ -181,8 +184,13 @@ public class Sort {
     }
 
     /**
+     * recursive sort method known as mergesort
+     * : to sort an array, divide it into two halves, sort the two halves (recursively), and
+     * then merge the results. As you will see, one of mergesort’s most attractive properties is
+     * that it guarantees to sort any array of N items in time proportional to N log N. Its prime
+     * disadvantage is that it uses extra space proportional to N.
+     *
      * T(n) = 2T(n/2) + O(n)
-     * Stable: Yes
      * Sorting In Place: No
      * n             n        n
      * / \
@@ -201,6 +209,7 @@ public class Sort {
     @SpaceComplexity("O(n)")
     @Implementation(type = ImplementationType.Recursive)
     @RecurrenceRelation("T(n) = 2 T(n/2) + O(n)")
+    @Stability
     public static void mergeSort(int[] a, int n) {
 
         // base case
