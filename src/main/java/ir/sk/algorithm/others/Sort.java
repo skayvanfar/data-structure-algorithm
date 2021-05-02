@@ -271,6 +271,8 @@ public class Sort {
      * arrays in pairs, and so forth, continuing until we
      * do a merge that encompasses the whole array.
      *
+     * A version of bottom-up mergesort is the method of choice for sorting data organized in a linked list.
+     *
      * @param array
      */
     @DivideAndConquer
@@ -305,6 +307,15 @@ public class Sort {
      * partitioning element come before all elements that are greater than it. The partitioning can be performed
      * efficiently through a series of swaps
      *
+     * Quicksort vs Mergesort
+     * Quicksort is complementary to mergesort: for mergesort, we break the array
+     * into two subarrays to be sorted and then combine the ordered subarrays to make the
+     * whole ordered array; for quicksort, we rearrange the array such that, when the two
+     * subarrays are sorted, the whole array is ordered. In the first instance, we do the two
+     * recursive calls before working on the whole array; in the second instance, we do the two
+     * recursive calls after working on the whole array. For mergesort, the array is divided in
+     * half; for quicksort, the position of the partition depends on the contents of the array.
+     *
      * @param arr
      * @param left
      * @param right
@@ -315,15 +326,15 @@ public class Sort {
     @Stability(false)
     @DivideAndConquer
     public static void quickSort(int[] arr, int left, int right) {
+        if (left <= right) return;
         int index = partition(arr, left, right);
-        if (left < index - 1) { // Sort left half
-            quickSort(arr, left, index - 1);
-        }
-        if (index < right) { // Sort right half
-            quickSort(arr, index, right);
-        }
+        quickSort(arr, left, index - 1);
+        quickSort(arr, index, right);
     }
 
+    /**
+     * @return index of pivot
+     */
     public static int partition(int[] arr, int left, int right) {
         int pivot = arr[(left + right) / 2]; // Pick pivot point
         while (left <= right) {
