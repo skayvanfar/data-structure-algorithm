@@ -51,7 +51,7 @@ This project supports the [Gradle Wrapper](https://docs.gradle.org/current/userg
 - [Algorithm](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm)
     - [Array](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm/array)
         - [lcp](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm/array/lcp)
-        - [set](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm/array/set)
+        - [Set](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm/array/set)
     - [Basic](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm/basic)
     - [Graph](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm/graph)
     - [Intervals](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm/intervals)
@@ -60,8 +60,9 @@ This project supports the [Gradle Wrapper](https://docs.gradle.org/current/userg
     - [Median](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm/median)
     - [Stack](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm/stack)
     - [Queue](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm/queue)
-    - [tree](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm/tree)
-    - [others](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm/others)
+    - [Tree](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm/tree)
+    - [Others](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm/others)
+        - [Union Find](https://github.com/skayvanfar/data-structure-algorithm/tree/master/src/main/java/ir/sk/algorithm/others/unionfind)
 
 
 # License

@@ -1,4 +1,4 @@
-package ir.sk.algorithm.unionfind;
+package ir.sk.algorithm.others.unionfind;
 
 /**
  * an API that encapsulates the basic operations that: initialize, add a connection between two sites,

@@ -1,5 +1,7 @@
-package ir.sk.algorithm.unionfind;
+package ir.sk.algorithm.others.unionfind;
 
+import ir.sk.algorithm.others.unionfind.QuickFindUF;
+import ir.sk.algorithm.others.unionfind.UF;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

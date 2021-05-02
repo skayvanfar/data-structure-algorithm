@@ -1,18 +1,17 @@
-package ir.sk.algorithm.unionfind;
+package ir.sk.algorithm.others.unionfind;
 
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.pattern.HashingIndexPattern;
 
 /**
  * Created by sad.kayvanfar on 5/1/2021.
  */
-@HashingIndexPattern
-public class QuickFindUF implements UF {
+public class QuickUnionUF implements UF {
 
     private int[] id; // access to component id (site indexed)
     private int count; // number of components
 
-    public QuickFindUF(int count) {
+
+    public QuickUnionUF(int count) {
         this.count = count;
         id = new int[count];
         for (int i = 0; i < count; i++)
@@ -20,27 +19,30 @@ public class QuickFindUF implements UF {
     }
 
     /**
+     * Give p and q the same root.
+     *
      * @param p
      * @param q
      */
-    @TimeComplexity("O(n)")
     @Override
     public void union(int p, int q) {
-        // Put p and q into the same component.
-        int pID = find(p);
-        int qID = find(q);
-        // Nothing to do if p and q are already in the same component.
-        if (pID == qID) return;
-        // Rename p’s component to q’s name.
-        for (int i = 0; i < id.length; i++)
-            if (id[i] == pID) id[i] = qID;
+        int pRoot = find(p);
+        int qRoot = find(q);
+        if (pRoot == qRoot) return;
+        id[pRoot] = qRoot;
         count--;
     }
 
-    @TimeComplexity("O(1)")
+    /**
+     * Find component name.
+     *
+     * @param p
+     * @return
+     */
     @Override
     public int find(int p) {
-        return id[p];
+        while (p != id[p]) p = id[p];
+        return p;
     }
 
     @TimeComplexity("O(1)")
