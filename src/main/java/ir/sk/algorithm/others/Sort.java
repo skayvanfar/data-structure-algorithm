@@ -58,6 +58,8 @@ public class Sort {
      * <p>
      * compare and swap
      * The selection sort performs the same number of comparisons as the bubble sort.
+     * Data movement is minimal.
+     * Running time is insensitive to input.
      * compare: O(n-1) + O(n - 2) + ... + 2 + 1 = n(n-1)/2 ~ n^2/2 = o(n^2)
      * swap: O(n)
      *
@@ -92,6 +94,11 @@ public class Sort {
      * Insertion sort: inserts the next element at the correct position;
      * <p>
      * Selection sort: selects the smallest element and exchange it with the current item;
+     * Insertion sort is an efficient method for partially sorted arrays; selection sort is not. Indeed, when
+     * the number of inversions is low, insertion sort is likely to be faster than any sorting method
+     *
+     * compare: O(n-1) + O(n - 2) + ... + 2 + 1 = n(n-1)/2 ~ n^2/2 = o(n^2)
+     * swap: O(n-1) + O(n - 2) + ... + 2 + 1 = n(n-1)/2 ~ n^2/2 = o(n^2)
      *
      * @param array
      */
