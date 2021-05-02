@@ -65,6 +65,16 @@ public class SortTest {
         assertArrayEquals(expected, actual);
     }
 
+
+    @Test
+    public void shellSort() {
+        long start = System.currentTimeMillis();
+        Sort.shellSort(actual);
+        long end = System.currentTimeMillis();
+        System.out.println("Logic shellSort took " + (end - start) + " MilliSeconds");
+        assertArrayEquals(expected, actual);
+    }
+
     @Test
     public void mergeSort() {
         long start = System.currentTimeMillis();
@@ -142,4 +152,5 @@ public class SortTest {
         Sort.cyclicSort(array);
         System.out.println(Arrays.toString(array));
     }
+
 }

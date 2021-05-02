@@ -148,6 +148,39 @@ public class Sort {
     }
 
     /**
+     * Shell sort is a simple extension of insertion sort that gains
+     * speed by allowing exchanges of array entries that are far apart, to produce partially
+     * sorted arrays that can be efficiently sorted, eventually by insertion sort.
+     *
+     *  In insertion sort, we move elements only one position ahead. When an element has to be moved far ahead, many movements are involved.
+     *  The idea of shellSort is to allow exchange of far items. In shellSort, we make the array h-sorted for a large value of h.
+     *  We keep reducing the value of h until it becomes 1.
+     *  An array is said to be h-sorted if all sublists of every h’th element is sorted.
+     *
+     * shell sort is much faster than insertion sort and
+     * selection sort, and its speed advantage increases with the array size.
+     *
+     * performance characteristics of shellsort requires mathematical arguments that are beyond
+     *
+     * @param array
+     */
+    public static void shellSort(int[] array) {
+        int N = array.length;
+        int h = 1;
+        while (h < N/3) h = 3*h + 1; // 1, 4, 13, 40, 121, 364, 1093, ...
+        while (h >= 1)
+        { // h-sort the array.
+            for (int i = h; i < N; i++)
+            { // Insert a[i] among a[i-h], a[i-2*h], a[i-3*h]... .
+                for (int j = i; j >= h && array[j] < array[j-h]; j -= h)
+                    array[j] = Utils.gSwap(array[j-h], array[j-h] = array[j]);
+                //    exch(a, j, j-h);
+            }
+            h = h/3;
+        }
+    }
+
+    /**
      * T(n) = 2T(n/2) + O(n)
      * Stable: Yes
      * Sorting In Place: No
