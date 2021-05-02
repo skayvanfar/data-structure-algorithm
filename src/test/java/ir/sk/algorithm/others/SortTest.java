@@ -1,6 +1,5 @@
 package ir.sk.algorithm.others;
 
-import ir.sk.algorithm.others.Sort;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -78,7 +77,7 @@ public class SortTest {
     @Test
     public void mergeSort() {
         long start = System.currentTimeMillis();
-        Sort.mergeSort(actual, actual.length);
+        Sort.mergeSortRecursive(actual, actual.length);
         long end = System.currentTimeMillis();
         System.out.println("Logic mergeSort took " + (end - start) + " MilliSeconds");
         assertArrayEquals(expected, actual);
@@ -90,6 +89,15 @@ public class SortTest {
         Sort.inPlaceMergeSort(actual);
         long end = System.currentTimeMillis();
         System.out.println("Logic inPlaceMergeSort took " + (end - start) + " MilliSeconds");
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void mergeSortIterative() {
+        long start = System.currentTimeMillis();
+        Sort.mergeSortIterative(actual);
+        long end = System.currentTimeMillis();
+        System.out.println("Logic mergeSortIterative took " + (end - start) + " MilliSeconds");
         assertArrayEquals(expected, actual);
     }
 

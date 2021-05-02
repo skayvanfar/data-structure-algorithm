@@ -19,13 +19,14 @@ import java.util.stream.IntStream;
 
 /**
  * main operations are compare and swap
+ *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 12/7/2017.
  */
 public class Sort {
 
     /**
      * Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in wrong order.
-     *
+     * <p>
      * In bubble sort, we start at the beginning of the array and swap the first two elements if the first is greater
      * than the second. Then, we go to the next pair, and so on, continuously making sweeps of the array until it is
      * sorted. In doing so, the smaller items slowly"bubble" up to the beginning of the list.
@@ -96,7 +97,7 @@ public class Sort {
      * Selection sort: selects the smallest element and exchange it with the current item;
      * Insertion sort is an efficient method for partially sorted arrays; selection sort is not. Indeed, when
      * the number of inversions is low, insertion sort is likely to be faster than any sorting method
-     *
+     * <p>
      * compare: O(n-1) + O(n - 2) + ... + 2 + 1 = n(n-1)/2 ~ n^2/2 = o(n^2)
      * swap: O(n-1) + O(n - 2) + ... + 2 + 1 = n(n-1)/2 ~ n^2/2 = o(n^2)
      *
@@ -151,15 +152,15 @@ public class Sort {
      * Shell sort is a simple extension of insertion sort that gains
      * speed by allowing exchanges of array entries that are far apart, to produce partially
      * sorted arrays that can be efficiently sorted, eventually by insertion sort.
-     *
-     *  In insertion sort, we move elements only one position ahead. When an element has to be moved far ahead, many movements are involved.
-     *  The idea of shellSort is to allow exchange of far items. In shellSort, we make the array h-sorted for a large value of h.
-     *  We keep reducing the value of h until it becomes 1.
-     *  An array is said to be h-sorted if all sublists of every h’th element is sorted.
-     *
+     * <p>
+     * In insertion sort, we move elements only one position ahead. When an element has to be moved far ahead, many movements are involved.
+     * The idea of shellSort is to allow exchange of far items. In shellSort, we make the array h-sorted for a large value of h.
+     * We keep reducing the value of h until it becomes 1.
+     * An array is said to be h-sorted if all sublists of every h’th element is sorted.
+     * <p>
      * shell sort is much faster than insertion sort and
      * selection sort, and its speed advantage increases with the array size.
-     *
+     * <p>
      * performance characteristics of shellsort requires mathematical arguments that are beyond
      *
      * @param array
@@ -170,26 +171,26 @@ public class Sort {
     public static void shellSort(int[] array) {
         int N = array.length;
         int h = 1;
-        while (h < N/3) h = 3*h + 1; // 1, 4, 13, 40, 121, 364, 1093, ...
-        while (h >= 1)
-        { // h-sort the array.
-            for (int i = h; i < N; i++)
-            { // Insert a[i] among a[i-h], a[i-2*h], a[i-3*h]... .
-                for (int j = i; j >= h && array[j] < array[j-h]; j -= h)
-                    array[j] = Utils.gSwap(array[j-h], array[j-h] = array[j]);
+        while (h < N / 3) h = 3 * h + 1; // 1, 4, 13, 40, 121, 364, 1093, ...
+        while (h >= 1) { // h-sort the array.
+            for (int i = h; i < N; i++) { // Insert a[i] among a[i-h], a[i-2*h], a[i-3*h]... .
+                for (int j = i; j >= h && array[j] < array[j - h]; j -= h)
+                    array[j] = Utils.gSwap(array[j - h], array[j - h] = array[j]);
                 //    exch(a, j, j-h);
             }
-            h = h/3;
+            h = h / 3;
         }
     }
 
     /**
+     * Top-down mergesort
+     *
      * recursive sort method known as mergesort
      * : to sort an array, divide it into two halves, sort the two halves (recursively), and
      * then merge the results. As you will see, one of mergesort’s most attractive properties is
      * that it guarantees to sort any array of N items in time proportional to N log N. Its prime
      * disadvantage is that it uses extra space proportional to N.
-     *
+     * <p>
      * T(n) = 2T(n/2) + O(n)
      * Sorting In Place: No
      * n             n        n
@@ -210,93 +211,91 @@ public class Sort {
     @Implementation(type = ImplementationType.Recursive)
     @RecurrenceRelation("T(n) = 2 T(n/2) + O(n)")
     @Stability
-    public static void mergeSort(int[] a, int n) {
+    public static void mergeSortRecursive(int[] a, int n) {
 
         // base case
         if (n < 2)
             return;
 
         int mid = n / 2;
-        int[] l = new int[mid];
-        int[] r = new int[n - mid];
+        int[] left = new int[mid];
+        int[] right = new int[n - mid];
 
         for (int i = 0; i < mid; i++) {
-            l[i] = a[i];
+            left[i] = a[i];
         }
         for (int i = mid; i < n; i++) {
-            r[i - mid] = a[i];
+            right[i - mid] = a[i];
         }
-        mergeSort(l, mid);
-        mergeSort(r, n - mid);
+        mergeSortRecursive(left, mid);
+        mergeSortRecursive(right, n - mid);
 
-        merge(a, l, r, mid, n - mid);
+        Merge.mergeByTwoFinger(a, left, right, mid, n - mid);
     }
 
-    /**
-     * @param a
-     * @param l
-     * @param r
-     * @param left
-     * @param right
-     */
-    private static void merge(
-            int[] a, int[] l, int[] r, int left, int right) {
-        Merge.mergeByTwoFinger(a, l, r, left, right);
-    }
+    private static int[] aux;
 
     /**
      * Divide-and-conquer algorithm and recursive
      * <p>
      * Sorting In Place: Yes
      *
-     * @param array
+     * @param a
      */
     @TimeComplexity("O(n * Log n)")
     @SpaceComplexity("O(1) improved over normal merge sort O(n)")
-    public static void inPlaceMergeSort(int[] array) {
-        // provides workspace
-        int[] workSpace = new int[array.length];
-        recMergeSort(array, workSpace, 0, array.length - 1);
+    public static void inPlaceMergeSort(int[] a) {
+        aux = new int[a.length];
+        // Allocate space just once.
+        inPlaceMergeSort(a, 0, a.length - 1);
     }
 
-    private static void recMergeSort(int[] array, int[] workSpace, int lowerBound,
-                                     int upperBound) {
-        if (lowerBound == upperBound)            // if range is 1,
-            return;                              // no use sorting
-        else {                                    // find midpoint
-            int mid = (lowerBound + upperBound) / 2;
-            // sort low half
-            recMergeSort(array, workSpace, lowerBound, mid);
-            // sort high half
-            recMergeSort(array, workSpace, mid + 1, upperBound);
-            // merge them
-            merge(array, workSpace, lowerBound, mid + 1, upperBound);
-        }  // end else
-    }  // end recMergeSort()
 
-    //-----------------------------------------------------------
-    private static void merge(int[] array, int[] workSpace, int lowPtr,
-                              int highPtr, int upperBound) {
-        int j = 0;                             // workspace index
-        int lowerBound = lowPtr;
-        int mid = highPtr - 1;
-        int n = upperBound - lowerBound + 1;       // # of items
+    private static void inPlaceMergeSort(int[] a, int lo, int hi) { // Sort a[lo..hi].
+        if (hi <= lo) return;
+        int mid = lo + (hi - lo) / 2;
+        inPlaceMergeSort(a, lo, mid);
+        // Sort left half.
+        inPlaceMergeSort(a, mid + 1, hi);
+        // Sort right half.
+        merge(a, lo, mid, hi); // Merge results (code on page 271).
+    }
 
-        while (lowPtr <= mid && highPtr <= upperBound)
-            if (array[lowPtr] < array[highPtr])
-                workSpace[j++] = array[lowPtr++];
+
+    /**
+     * Bottom-up mergesort
+     * Another way to implement mergesort is to organize the merges so that we do
+     * all the merges of tiny subarrays on one pass, then do a second pass to merge those sub-
+     * arrays in pairs, and so forth, continuing until we sz = 1
+     * do a merge that encompasses the whole array.
+     *
+     * @param array
+     */
+    public static void mergeSortIterative(int[] array) { // Do lg N passes of pairwise merges.
+        int n = array.length;
+        aux = new int[n];
+        for (int sz = 1; sz < n; sz = sz + sz)
+            // sz: subarray size
+            for (int lo = 0; lo < n - sz; lo += sz + sz) // lo: subarray index
+                merge(array, lo, lo + sz - 1, Math.min(lo + sz + sz - 1, n - 1));
+    }
+
+    public static void merge(int[] a, int lo, int mid, int hi) { // Merge a[lo..mid] with a[mid+1..hi].
+        int i = lo, j = mid + 1;
+        for (int k = lo; k <= hi; k++)
+            // Copy a[lo..hi] to aux[lo..hi].
+            aux[k] = a[k];
+        for (int k = lo; k <= hi; k++) // Merge back to a[lo..hi].
+            if (i > mid)
+                a[k] = aux[j++];
+            else if (j > hi)
+                a[k] = aux[i++];
+            else if (aux[j] < aux[i])
+                a[k] = aux[j++];
             else
-                workSpace[j++] = array[highPtr++];
-
-        while (lowPtr <= mid)
-            workSpace[j++] = array[lowPtr++];
-
-        while (highPtr <= upperBound)
-            workSpace[j++] = array[highPtr++];
-
-        for (j = 0; j < n; j++)
-            array[lowerBound + j] = workSpace[j];
+                a[k] = aux[i++];
     }
+
 
     /**
      * In quick sort we pick a random element and partition the array, such that all numbers that are less than the
