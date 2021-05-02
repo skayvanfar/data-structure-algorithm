@@ -18,6 +18,7 @@ import java.util.Arrays;
 import java.util.stream.IntStream;
 
 /**
+ * main operations are compare and swap
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 12/7/2017.
  */
 public class Sort {
@@ -29,11 +30,12 @@ public class Sort {
      * than the second. Then, we go to the next pair, and so on, continuously making sweeps of the array until it is
      * sorted. In doing so, the smaller items slowly"bubble" up to the beginning of the list.
      * <p>
-     * compare and swap
+     * compare: O(n-1) + O(n - 2) + ... + 2 + 1 = n(n-1)/2 ~ n^2/2 = o(n^2)
+     * swap: O(n-1) + O(n - 2) + ... + 2 + 1 = n(n-1)/2 ~ n^2/2 = o(n^2)
      *
      * @param array
      */
-    @TimeComplexity("O(n^2)")
+    @TimeComplexity("O(n^2) + O(n^2) = O(n^2)")
     @SpaceComplexity("O(1)")
     @InPlace
     @Stability
@@ -56,11 +58,12 @@ public class Sort {
      * <p>
      * compare and swap
      * The selection sort performs the same number of comparisons as the bubble sort.
-     * but lower swap
+     * compare: O(n-1) + O(n - 2) + ... + 2 + 1 = n(n-1)/2 ~ n^2/2 = o(n^2)
+     * swap: O(n)
      *
      * @param array
      */
-    @TimeComplexity("O(n^2)")
+    @TimeComplexity("O(n^2) + O(n) = O(n^2)")
     @SpaceComplexity("O(1)")
     @InPlace
     @Stability(value = false)
