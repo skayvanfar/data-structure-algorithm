@@ -211,6 +211,7 @@ public class Sort {
     @Implementation(type = ImplementationType.Recursive)
     @RecurrenceRelation("T(n) = 2 T(n/2) + O(n)")
     @Stability
+    @DivideAndConquer
     public static void mergeSortRecursive(int[] a, int n) {
 
         // base case
@@ -244,6 +245,7 @@ public class Sort {
      */
     @TimeComplexity("O(n * Log n)")
     @SpaceComplexity("O(1) improved over normal merge sort O(n)")
+    @DivideAndConquer
     public static void inPlaceMergeSort(int[] a) {
         aux = new int[a.length];
         // Allocate space just once.
@@ -266,18 +268,19 @@ public class Sort {
      * Bottom-up mergesort
      * Another way to implement mergesort is to organize the merges so that we do
      * all the merges of tiny subarrays on one pass, then do a second pass to merge those sub-
-     * arrays in pairs, and so forth, continuing until we sz = 1
+     * arrays in pairs, and so forth, continuing until we
      * do a merge that encompasses the whole array.
      *
      * @param array
      */
+    @DivideAndConquer
+    @Implementation(type = ImplementationType.Iterative)
     public static void mergeSortIterative(int[] array) { // Do lg N passes of pairwise merges.
         int n = array.length;
         aux = new int[n];
-        for (int sz = 1; sz < n; sz = sz + sz)
-            // sz: subarray size
-            for (int lo = 0; lo < n - sz; lo += sz + sz) // lo: subarray index
-                merge(array, lo, lo + sz - 1, Math.min(lo + sz + sz - 1, n - 1));
+        for (int subarraySize = 1; subarraySize < n; subarraySize = subarraySize + subarraySize)
+            for (int subarrayIndex = 0; subarrayIndex < n - subarraySize; subarrayIndex += subarraySize + subarraySize)
+                merge(array, subarrayIndex, subarrayIndex + subarraySize - 1, Math.min(subarrayIndex + subarraySize + subarraySize - 1, n - 1));
     }
 
     public static void merge(int[] a, int lo, int mid, int hi) { // Merge a[lo..mid] with a[mid+1..hi].
