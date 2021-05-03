@@ -1,5 +1,7 @@
 package ir.sk.adt.queue.priorityqueue;
 
+import ir.sk.helper.complexity.TimeComplexity;
+
 import java.util.Arrays;
 
 /**
@@ -10,69 +12,67 @@ import java.util.Arrays;
  *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
-public class ArrayPriorityQueue<T extends Comparable> {
+public class ArrayPriorityQueue<T extends Comparable> implements PriorityQueue<T> {
 
     // array in sorted order, from max at 0 to min at size-1
-    private int maxSize;
     private Comparable[] queArray;
-    private int nItems;
+    private int capacity;
+    private int size;
 
-    public ArrayPriorityQueue(int s) {
-        maxSize = s;
-        queArray = new Comparable[maxSize];
-        nItems = 0;
+    public ArrayPriorityQueue(int capacity) {
+        this.capacity = capacity;
+        queArray = new Comparable[capacity];
+        size = 0;
     }
 
     /**
-     * Time Complexity: O(n)
      *
      * @param item
      */
+    @TimeComplexity("O(n)")
     public void insert(T item) {
         int j;
-        if (nItems == 0)
-            queArray[nItems++] = item; // insert at 0
+        if (size == 0)
+            queArray[size++] = item; // insert at 0
         else {
             // start at end,
-            for (j = nItems - 1; j >= 0; j--) {
-                if (item.compareTo(queArray[j]) > 0) // if new item larger,
+            for (j = size - 1; j >= 0; j--) {
+                if (item.compareTo(queArray[j]) < 0) // if new item larger,
                     queArray[j + 1] = queArray[j]; // shift upward
-                else // if smaller,
+                else // if larger,
                     break; // done shifting
             }
             queArray[j + 1] = item;
-            nItems++;
+            size++;
         }
     }
 
     /**
-     * remove minimum item
-     * <p>
-     * Time Complexity: O(1)
+     * remove maximum item
      *
      * @return
      */
-    public T remove() {
-        return (T) queArray[--nItems];
+    @TimeComplexity("O(1)")
+    public T max() {
+        return (T) queArray[--size];
     }
 
     /**
-     * peek at minimum item
-     * <p>
-     * Time Complexity: O(1)
+     * peek at maximum item
      *
      * @return
      */
-    public T peekMin() {
-        return (T) queArray[nItems - 1];
+    @TimeComplexity("O(1)")
+    public T extractMax() {
+        return (T) queArray[size - 1];
     }
 
     public boolean isEmpty() {
-        return (nItems == 0);
+        return (size == 0);
     }
 
     public boolean isFull() {
-        return (nItems == maxSize);
+        return (size == capacity);
     }
 
     public void display() {

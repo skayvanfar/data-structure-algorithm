@@ -8,7 +8,7 @@ import ir.sk.helper.complexity.TimeComplexity;
  *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 7/2/2020.
  */
-public class HeapPriorityQueue implements PriorityQueue {
+public class HeapPriorityQueue<T extends Integer> implements PriorityQueue<T> {
 
     private static final int CAPACITY = 15;
 
@@ -17,7 +17,7 @@ public class HeapPriorityQueue implements PriorityQueue {
     public HeapPriorityQueue() {
     }
 
-    public HeapPriorityQueue(int capacity) {
+    public HeapPriorityQueue(T capacity) {
         this.binaryHeap = new MaxBinaryHeap(capacity);
     }
 
@@ -26,7 +26,7 @@ public class HeapPriorityQueue implements PriorityQueue {
      */
     @Override
     @TimeComplexity("O(Log n)")
-    public void insert(int value) {
+    public void insert(T value) {
         this.binaryHeap.insert(value);
     }
 
@@ -35,8 +35,8 @@ public class HeapPriorityQueue implements PriorityQueue {
      */
     @Override
     @TimeComplexity("O(1)")
-    public int max() {
-        return this.binaryHeap.max();
+    public T max() {
+        return (T) Integer.valueOf(this.binaryHeap.max());
     }
 
     /**
@@ -44,8 +44,8 @@ public class HeapPriorityQueue implements PriorityQueue {
      */
     @Override
     @TimeComplexity("O(Log n)")
-    public int extractMax() {
-        return this.binaryHeap.extractMax();
+    public T extractMax() {
+        return (T) Integer.valueOf(this.binaryHeap.extractMax());
     }
 
 
