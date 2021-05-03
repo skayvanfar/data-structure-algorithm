@@ -7,7 +7,7 @@ public class SinglyLink<T> {
 
     public T data;
 
-    public SinglyLink next;
+    public SinglyLink<T> next;
 
     public SinglyLink() {
     }

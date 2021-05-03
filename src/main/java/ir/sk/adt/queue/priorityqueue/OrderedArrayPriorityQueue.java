@@ -5,21 +5,25 @@ import ir.sk.helper.complexity.TimeComplexity;
 import java.util.Arrays;
 
 /**
- * Simple array-based priority queue
+ * Simple ordered array-based priority queue
+ * its eager implementation where we do as much work
+ * as we can up front (keep the list sorted on insertion)
+ * to make later operations efficient.
+ *
  * This implementation suffers from slow insertion, but it’s
  * simpler and is appropriate when the number of items isn’t high or insertion speed
  * isn’t critical.
  *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
-public class ArrayPriorityQueue<T extends Comparable> implements PriorityQueue<T> {
+public class OrderedArrayPriorityQueue<T extends Comparable> implements PriorityQueue<T> {
 
     // array in sorted order, from max at 0 to min at size-1
     private Comparable[] queArray;
     private int capacity;
     private int size;
 
-    public ArrayPriorityQueue(int capacity) {
+    public OrderedArrayPriorityQueue(int capacity) {
         this.capacity = capacity;
         queArray = new Comparable[capacity];
         size = 0;
