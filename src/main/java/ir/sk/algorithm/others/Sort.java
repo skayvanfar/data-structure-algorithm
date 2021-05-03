@@ -379,10 +379,10 @@ public class Sort {
         heap.buildMaxHeap();
 
         // One by one extract an element from heap
-        for (int i = heap.getHeapSize(); i > 0; i--) {
+        for (int i = heap.getSize(); i > 0; i--) {
             // Move current root to end, swap
             array[0] = Utils.gSwap(array[i], array[i] = array[0]);
-            heap.setHeapSize(heap.getHeapSize() - 1);
+            heap.setSize(heap.getSize() - 1);
             // call max heapify on the reduced heap
             heap.heapifyDown(0);
         }

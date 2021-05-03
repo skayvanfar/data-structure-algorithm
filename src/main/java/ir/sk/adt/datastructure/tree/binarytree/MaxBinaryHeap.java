@@ -20,24 +20,24 @@ import ir.sk.helper.complexity.TimeComplexity;
 public class MaxBinaryHeap {
 
     private int[] array;
-    private int heapSize;
+    private int size;
 
     public MaxBinaryHeap(int capacity) {
         this.array = new int[capacity];
-        this.heapSize = 0;
+        this.size = 0;
     }
 
     public MaxBinaryHeap(int[] array) {
         this.array = array;
-        this.heapSize = array.length - 1;
+        this.size = array.length - 1;
     }
 
-    public int getHeapSize() {
-        return heapSize;
+    public int getSize() {
+        return size;
     }
 
-    public void setHeapSize(int heapSize) {
-        this.heapSize = heapSize;
+    public void setSize(int size) {
+        this.size = size;
     }
 
     /**
@@ -108,12 +108,12 @@ public class MaxBinaryHeap {
         int right = getRightChildIndex(index);
         int max;
 
-        if (left <= heapSize && array[left] > array[index])
+        if (left <= size && array[left] > array[index])
             max = left;
         else
             max = index;
 
-        if (right <= heapSize && array[right] > array[max])
+        if (right <= size && array[right] > array[max])
             max = right;
 
         if (max != index) {
@@ -132,10 +132,10 @@ public class MaxBinaryHeap {
      */
     @TimeComplexity("O(Log n)")
     public void insert(int element) {
-        if (heapSize >= array.length)
+        if (size >= array.length)
             return;
 
-        array[++heapSize] = element;
+        array[++size] = element;
         heapifyUp();
     }
 
@@ -144,7 +144,7 @@ public class MaxBinaryHeap {
      */
     @TimeComplexity("O(Log n)")
     private void heapifyUp() {
-        int current = heapSize;
+        int current = size;
 
         while (array[current] > array[getParentIndex(current)]) {
             swap(current, getParentIndex(current));
@@ -165,7 +165,7 @@ public class MaxBinaryHeap {
      */
     @TimeComplexity("O(n)")
     public void buildMaxHeap() {
-        for (int i = heapSize / 2; i >= 0; i--)
+        for (int i = size / 2; i >= 0; i--)
             heapifyDown(i);
     }
 
