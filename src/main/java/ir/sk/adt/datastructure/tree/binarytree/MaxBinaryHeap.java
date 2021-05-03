@@ -91,7 +91,9 @@ public class MaxBinaryHeap {
     @TimeComplexity("O(Log n)")
     public int extractMax() {
         int max = array[0];
-        swap(0, array.length - 1);
+        swap(0, size - 1);
+        array[size - 1] = 0; // Avoid loitering.
+
         heapifyDown(0);
         return max;
     }
