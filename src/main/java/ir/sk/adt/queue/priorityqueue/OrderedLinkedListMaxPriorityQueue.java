@@ -8,7 +8,7 @@ import ir.sk.helper.complexity.TimeComplexity;
  *
  * Created by sad.kayvanfar on 5/3/2021.
  */
-public class OrderedLinkedListPriorityQueue<T extends Comparable> implements PriorityQueue<T> {
+public class OrderedLinkedListMaxPriorityQueue<T extends Comparable> implements MaxPriorityQueue<T> {
 
     private SinglyLink<T> head;
 

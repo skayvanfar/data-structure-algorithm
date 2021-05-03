@@ -8,16 +8,16 @@ import ir.sk.helper.complexity.TimeComplexity;
  *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 7/2/2020.
  */
-public class HeapPriorityQueue<T extends Integer> implements PriorityQueue<T> {
+public class MaxHeapPriorityQueue<T extends Integer> implements MaxPriorityQueue<T> {
 
     private static final int CAPACITY = 15;
 
     private MaxBinaryHeap binaryHeap = new MaxBinaryHeap(CAPACITY);
 
-    public HeapPriorityQueue() {
+    public MaxHeapPriorityQueue() {
     }
 
-    public HeapPriorityQueue(T capacity) {
+    public MaxHeapPriorityQueue(T capacity) {
         this.binaryHeap = new MaxBinaryHeap(capacity);
     }
 

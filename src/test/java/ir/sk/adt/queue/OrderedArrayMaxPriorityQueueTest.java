@@ -1,6 +1,6 @@
 package ir.sk.adt.queue;
 
-import ir.sk.adt.queue.priorityqueue.OrderedArrayPriorityQueue;
+import ir.sk.adt.queue.priorityqueue.OrderedArrayMaxPriorityQueue;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,13 +8,13 @@ import org.junit.Test;
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
-public class OrderedArrayPriorityArrayQueueTest {
+public class OrderedArrayMaxPriorityQueueTest {
 
-    OrderedArrayPriorityQueue<Integer> theQueue;
+    OrderedArrayMaxPriorityQueue<Integer> theQueue;
 
     @Before
     public void setUp() throws Exception {
-        theQueue = new OrderedArrayPriorityQueue<>(10);
+        theQueue = new OrderedArrayMaxPriorityQueue<>(10);
         theQueue.insert(10); // insert 4 items
         theQueue.insert(20);
         theQueue.insert(30);

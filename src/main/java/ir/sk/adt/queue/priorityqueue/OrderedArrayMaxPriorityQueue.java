@@ -16,14 +16,14 @@ import java.util.Arrays;
  *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
-public class OrderedArrayPriorityQueue<T extends Comparable> implements PriorityQueue<T> {
+public class OrderedArrayMaxPriorityQueue<T extends Comparable> implements MaxPriorityQueue<T> {
 
     // array in sorted order, from max at 0 to min at size-1
     private Comparable[] queArray;
     private int capacity;
     private int size;
 
-    public OrderedArrayPriorityQueue(int capacity) {
+    public OrderedArrayMaxPriorityQueue(int capacity) {
         this.capacity = capacity;
         queArray = new Comparable[capacity];
         size = 0;
