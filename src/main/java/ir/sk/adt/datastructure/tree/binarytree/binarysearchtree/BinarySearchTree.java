@@ -13,6 +13,8 @@ import java.util.Queue;
 import java.util.Stack;
 
 /**
+ * goal: To combine the efficiency of binary search feature of array with the flexibility of linked structures for Insertion and deletion.
+ *
  * Vanilla BST is used as basic data structure when you need O(log n) time
  * Time Complexity: O(h) where h is height of Binary Search Tree, if tree is balanced it becomes O(log n)
  * it's between ordered array and ordered list. benefit of both. binary search of ordered array and fast insert of linked list.
