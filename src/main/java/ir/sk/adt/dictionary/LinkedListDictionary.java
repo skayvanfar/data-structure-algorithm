@@ -1,6 +1,7 @@
 package ir.sk.adt.dictionary;
 
 import ir.sk.adt.dictionary.hashtableimpls.Dictionary;
+import ir.sk.helper.complexity.TimeComplexity;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
@@ -56,6 +57,7 @@ public class LinkedListDictionary<K, V> implements Dictionary<K, V> {
      * @return the value associated with the given key if the key is in the symbol table
      *     and {@code null} if the key is not in the symbol table
      */
+    @TimeComplexity("O(n)")
     @Override
     public V get(K key) {
         for (Link x = first; x != null; x = x.next) {
@@ -72,6 +74,7 @@ public class LinkedListDictionary<K, V> implements Dictionary<K, V> {
      * @param key the key
      * @param val the value
      */
+    @TimeComplexity("O(n)")
     @Override
     public void put(K key, V val) {
         if (val == null) {

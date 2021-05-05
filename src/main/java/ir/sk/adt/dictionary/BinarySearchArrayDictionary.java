@@ -1,6 +1,7 @@
 package ir.sk.adt.dictionary;
 
 import ir.sk.adt.dictionary.hashtableimpls.Dictionary;
+import ir.sk.helper.complexity.TimeComplexity;
 
 import java.util.ArrayDeque;
 import java.util.NoSuchElementException;
@@ -25,7 +26,7 @@ public class BinarySearchArrayDictionary<K extends Comparable<K>, V> implements 
     private static final int INIT_CAPACITY = 2;
     private K[] keys;
     private V[] vals;
-    private int n = 0;
+    private int size = 0;
 
     /**
      * Initializes an empty symbol table.
@@ -45,10 +46,10 @@ public class BinarySearchArrayDictionary<K extends Comparable<K>, V> implements 
 
     // resize the underlying arrays
     private void resize(int capacity) {
-        assert capacity >= n;
-        K[]   tempk = (K[])   new Comparable[capacity];
+        assert capacity >= size;
+        K[] tempk = (K[]) new Comparable[capacity];
         V[] tempv = (V[]) new Object[capacity];
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < size; i++) {
             tempk[i] = keys[i];
             tempv[i] = vals[i];
         }
@@ -62,7 +63,7 @@ public class BinarySearchArrayDictionary<K extends Comparable<K>, V> implements 
      * @return the number of key-value pairs in this symbol table
      */
     public int size() {
-        return n;
+        return size;
     }
 
     /**
@@ -97,11 +98,14 @@ public class BinarySearchArrayDictionary<K extends Comparable<K>, V> implements 
      *         and {@code null} if the key is not in the symbol table
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
+    @TimeComplexity("O(Log n)")
+    @Override
     public V get(K key) {
         if (key == null) throw new IllegalArgumentException("argument to get() is null");
         if (isEmpty()) return null;
         int i = rank(key);
-        if (i < n && keys[i].compareTo(key) == 0) return vals[i];
+        if (i < size && keys[i].compareTo(key) == 0)
+            return vals[i];
         return null;
     }
 
@@ -115,7 +119,7 @@ public class BinarySearchArrayDictionary<K extends Comparable<K>, V> implements 
     public int rank(K key) {
         if (key == null) throw new IllegalArgumentException("argument to rank() is null");
 
-        int lo = 0, hi = n-1;
+        int lo = 0, hi = size -1;
         while (lo <= hi) {
             int mid = lo + (hi - lo) / 2;
             int cmp = key.compareTo(keys[mid]);
@@ -138,6 +142,8 @@ public class BinarySearchArrayDictionary<K extends Comparable<K>, V> implements 
      * @param  val the value
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
+    @TimeComplexity("O(Log n)")
+    @Override
     public void put(K key, V val)  {
         if (key == null) throw new IllegalArgumentException("first argument to put() is null");
 
@@ -149,21 +155,21 @@ public class BinarySearchArrayDictionary<K extends Comparable<K>, V> implements 
         int i = rank(key);
 
         // key is already in table
-        if (i < n && keys[i].compareTo(key) == 0) {
+        if (i < size && keys[i].compareTo(key) == 0) {
             vals[i] = val;
             return;
         }
 
         // insert new key-value pair
-        if (n == keys.length) resize(2*keys.length);
+        if (size == keys.length) resize(2 * keys.length);
 
-        for (int j = n; j > i; j--)  {
+        for (int j = size; j > i; j--)  {
             keys[j] = keys[j-1];
             vals[j] = vals[j-1];
         }
         keys[i] = key;
         vals[i] = val;
-        n++;
+        size++;
 
         assert check();
     }
@@ -183,21 +189,21 @@ public class BinarySearchArrayDictionary<K extends Comparable<K>, V> implements 
         int i = rank(key);
 
         // key not in table
-        if (i == n || keys[i].compareTo(key) != 0) {
+        if (i == size || keys[i].compareTo(key) != 0) {
             return null; // TODO: 5/5/2021  
         }
 
-        for (int j = i; j < n-1; j++)  {
+        for (int j = i; j < size -1; j++)  {
             keys[j] = keys[j+1];
             vals[j] = vals[j+1];
         }
 
-        n--;
-        keys[n] = null;  // to avoid loitering
-        vals[n] = null;
+        size--;
+        keys[size] = null;  // to avoid loitering
+        vals[size] = null;
 
         // resize if 1/4 full
-        if (n > 0 && n == keys.length/4) resize(keys.length/2);
+        if (size > 0 && size == keys.length/4) resize(keys.length/2);
 
         assert check();
         return null; // TODO: 5/5/2021  
@@ -247,7 +253,7 @@ public class BinarySearchArrayDictionary<K extends Comparable<K>, V> implements 
      */
     public K max() {
         if (isEmpty()) throw new NoSuchElementException("called max() with empty symbol table");
-        return keys[n-1];
+        return keys[size -1];
     }
 
     /**
@@ -276,7 +282,7 @@ public class BinarySearchArrayDictionary<K extends Comparable<K>, V> implements 
     public K floor(K key) {
         if (key == null) throw new IllegalArgumentException("argument to floor() is null");
         int i = rank(key);
-        if (i < n && key.compareTo(keys[i]) == 0) return keys[i];
+        if (i < size && key.compareTo(keys[i]) == 0) return keys[i];
         if (i == 0) throw new NoSuchElementException("argument to floor() is too small");
         else return keys[i-1];
     }
@@ -292,7 +298,7 @@ public class BinarySearchArrayDictionary<K extends Comparable<K>, V> implements 
     public K ceiling(K key) {
         if (key == null) throw new IllegalArgumentException("argument to ceiling() is null");
         int i = rank(key);
-        if (i == n) throw new NoSuchElementException("argument to ceiling() is too large");
+        if (i == size) throw new NoSuchElementException("argument to ceiling() is too large");
         else return keys[i];
     }
 
