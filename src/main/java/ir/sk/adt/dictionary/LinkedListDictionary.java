@@ -20,7 +20,7 @@ import java.util.Queue;
  *
  * Created by sad.kayvanfar on 5/5/2021.
  */
-public class LinkedListDictionary<K, V> implements Dictionary<K, V> {
+public class LinkedListDictionary<K , V> implements Dictionary<K, V> {
 
     private int size;           // number of key-value pairs
     private Link first;      // the linked list of key-value pairs
