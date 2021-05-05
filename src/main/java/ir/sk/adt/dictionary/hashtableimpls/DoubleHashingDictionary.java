@@ -90,7 +90,7 @@ public class DoubleHashingDictionary<K, V> implements Dictionary<K, V> {
      * @param value
      */
     @Override
-    public void add(K key, V value) {
+    public void put(K key, V value) {
         OpenAddressingHashNode<K, V> newNode = new OpenAddressingHashNode<>(key, value);
         int hashIndex = hashFuntion1(key);
 
@@ -202,7 +202,7 @@ public class DoubleHashingDictionary<K, V> implements Dictionary<K, V> {
 
         for (OpenAddressingHashNode<K, V> headNode : temp) {
             if (headNode != null) {
-                add(headNode.key, headNode.value);
+                put(headNode.key, headNode.value);
             }
         }
     }

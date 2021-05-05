@@ -114,7 +114,7 @@ public class ChainingDictionary<K, V> implements Dictionary<K, V> {
      * @param value
      */
     @Override
-    public void add(K key, V value) {
+    public void put(K key, V value) {
         // Find head of chain for given key
         int bucketIndex = hashFuntion(key);
         ChainingHashNode<K, V> head = bucketArray[bucketIndex];
@@ -155,7 +155,7 @@ public class ChainingDictionary<K, V> implements Dictionary<K, V> {
 
         for (ChainingHashNode<K, V> headNode : temp) {
             while (headNode != null) {
-                add(headNode.key, headNode.value);
+                put(headNode.key, headNode.value);
                 headNode = headNode.next;
             }
         }

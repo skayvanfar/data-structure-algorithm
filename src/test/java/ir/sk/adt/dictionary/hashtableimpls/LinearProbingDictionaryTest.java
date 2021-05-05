@@ -1,6 +1,5 @@
 package ir.sk.adt.dictionary.hashtableimpls;
 
-import ir.sk.adt.dictionary.hashtableimpls.LinearProbingDictionary;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -16,17 +15,17 @@ public class LinearProbingDictionaryTest {
     @Before
     public void setUp() throws Exception {
         dictionary = new LinearProbingDictionary<>(10, 0.5f);
-        dictionary.add("a", 1);
-        dictionary.add("b", 2);
-        dictionary.add("c", 3);
-        dictionary.add("d", 4);
-        dictionary.add("e", 5);
-        dictionary.add("f", 6);
-        dictionary.add("g", 7);
-        dictionary.add("h", 8);
-        dictionary.add("l", 9);
-        dictionary.add("m", 10);
-        dictionary.add("c", 30);
+        dictionary.put("a", 1);
+        dictionary.put("b", 2);
+        dictionary.put("c", 3);
+        dictionary.put("d", 4);
+        dictionary.put("e", 5);
+        dictionary.put("f", 6);
+        dictionary.put("g", 7);
+        dictionary.put("h", 8);
+        dictionary.put("l", 9);
+        dictionary.put("m", 10);
+        dictionary.put("c", 30);
     }
 
     @After
@@ -35,7 +34,7 @@ public class LinearProbingDictionaryTest {
 
     @Test
     public void add() {
-        dictionary.add("That", 6);
+        dictionary.put("That", 6);
     }
 
     @Test
