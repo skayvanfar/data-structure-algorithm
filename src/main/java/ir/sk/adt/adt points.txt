@@ -9,3 +9,10 @@ array representation of a tree: putting the nodes in level order
 
 map.get(key) == set.contains(item)
 traverse belongs to data-structure vs search(get, contains) belongs to adt
+
+data structure implementation when  need    search,     add
+unordered array                             O(n),       O(n)
+ordered array                               O(Long n)   O(n)
+link list                                   O(n)        O(1)
+bst                                         O(Long n)   o(Log n)
+hashtable                                   O(1)        o(1)
