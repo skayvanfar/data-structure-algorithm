@@ -6,3 +6,6 @@ HeapTree         --->   PriorityQueue
 Hashtable        --->   Dictionary
 
 array representation of a tree: putting the nodes in level order
+
+map.get(key) == set.contains(item)
+traverse belongs to data-structure vs search(get, contains) belongs to adt

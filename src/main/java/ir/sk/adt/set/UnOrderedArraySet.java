@@ -8,14 +8,14 @@ import java.util.Iterator;
 /**
  * @param <T>
  */
-public class ArraySet<T> implements Set<T>, Iterable<T> {
+public class UnOrderedArraySet<T> implements Set<T>, Iterable<T> {
 
     private T[] set;
     private int size;
     private int capacity;
 
     @SuppressWarnings("unchecked")
-    public ArraySet(int capacity) {
+    public UnOrderedArraySet(int capacity) {
         this.capacity = capacity;
         set = (T[]) new Object[capacity];
         size = 0;
