@@ -1,5 +1,7 @@
 package ir.sk.adt.set;
 
+import ir.sk.helper.complexity.TimeComplexity;
+
 import java.util.Arrays;
 import java.util.Iterator;
 
@@ -19,6 +21,7 @@ public class ArraySet<T> implements Set<T>, Iterable<T> {
         size = 0;
     }
 
+    @TimeComplexity("O(n)")
     @Override
     public void add(T item) {
         for (int i = 0; i < capacity; i++) {
@@ -37,6 +40,8 @@ public class ArraySet<T> implements Set<T>, Iterable<T> {
         return Arrays.copyOf(set, size * 2);
     }
 
+    @TimeComplexity("O(n)")
+    @Override
     public boolean contains(T item) {
         for (T setItem : set) {
             if (setItem.equals(item))
@@ -45,6 +50,7 @@ public class ArraySet<T> implements Set<T>, Iterable<T> {
         return false;
     }
 
+    @TimeComplexity("O(n)")
     @Override
     public void remove(T item) {
         boolean remove = false;

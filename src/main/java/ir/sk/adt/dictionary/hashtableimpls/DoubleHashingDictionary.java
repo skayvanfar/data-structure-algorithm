@@ -1,5 +1,6 @@
 package ir.sk.adt.dictionary.hashtableimpls;
 
+import ir.sk.adt.dictionary.Dictionary;
 import ir.sk.helper.complexity.TimeComplexity;
 
 /**

@@ -1,4 +1,4 @@
-package ir.sk.adt.dictionary.hashtableimpls;
+package ir.sk.adt.dictionary;
 
 import ir.sk.helper.Point;
 import ir.sk.helper.complexity.AmortizedTimeComplexity;

@@ -1,6 +1,5 @@
 package ir.sk.adt.dictionary;
 
-import ir.sk.adt.dictionary.hashtableimpls.Dictionary;
 import ir.sk.helper.complexity.TimeComplexity;
 
 import java.util.ArrayDeque;

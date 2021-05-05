@@ -1,5 +1,7 @@
 package ir.sk.adt.bag;
 
+import ir.sk.helper.complexity.TimeComplexity;
+
 import java.util.Iterator;
 
 /**
@@ -16,6 +18,7 @@ public class LinkBag<T> implements Bag<T>, Iterable<T> {
         Node next;
     }
 
+    @TimeComplexity("O(1)")
     @Override
     public void add(T item) {
         Node oldFirst = first;

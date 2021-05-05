@@ -9,4 +9,11 @@ public interface Set<T> extends Collection<T> {
     void add(T item);
     void remove(T item);
     boolean isEmpty();
+
+    /**
+     * equivalent to get(T item ) in Dictionary
+     * @param item
+     * @return
+     */
+    boolean contains(T item);
 }

@@ -1,7 +1,5 @@
 package ir.sk.adt.dictionary;
 
-import ir.sk.adt.dictionary.hashtableimpls.Dictionary;
-
 import java.util.ArrayDeque;
 import java.util.NoSuchElementException;
 import java.util.Queue;
