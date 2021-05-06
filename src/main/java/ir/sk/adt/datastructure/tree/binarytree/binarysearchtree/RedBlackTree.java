@@ -4,7 +4,10 @@ import ir.sk.helper.complexity.TimeComplexity;
 
 /**
  * A Red-Black tree is essentially a different representation of a 2-3 tree.
- * Red-Black Trees are one of several self-balanced tree structures. In a Red-Black Tree, in addition to the usual Binary Tree properties, each node contains the extra property Color. This color can be either red or black, and it is used to add a set of rules, called the red-black rules, that are used for balancing the tree:
+ * Red-Black Trees are one of several self-balanced tree structures. In a Red-Black Tree, in addition to the usual Binary Tree properties,
+ * each node contains the extra property Color.
+ * This color can be either red or black, and it is used to add a set of rules, called the red-black rules,
+ * that are used for balancing the tree:
  * <p>
  * Every node is either red or black.
  * The root is always black.

@@ -4,6 +4,9 @@ import java.util.ArrayDeque;
 import java.util.NoSuchElementException;
 import java.util.Queue;
 
+/**
+ * A symbol table implemented using a left-leaning red-black BST.
+ */
 public class RedBlackBSTDictionary<K extends Comparable<K>, V> implements Dictionary<K, V> {
     private static final boolean RED   = true;
     private static final boolean BLACK = false;
