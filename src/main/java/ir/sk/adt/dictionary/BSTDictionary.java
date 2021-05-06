@@ -165,11 +165,10 @@ public class BSTDictionary<K extends Comparable<K>, V> implements Dictionary<K, 
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
     @Override
-    public V remove(K key) {
+    public void remove(K key) {
         if (key == null) throw new IllegalArgumentException("calls delete() with a null key");
         root = delete(root, key);
         assert check();
-        return null; // TODO: 5/5/2021
     }
 
     private Node delete(Node x, K key) {

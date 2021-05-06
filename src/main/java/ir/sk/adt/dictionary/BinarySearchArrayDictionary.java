@@ -180,16 +180,16 @@ public class BinarySearchArrayDictionary<K extends Comparable<K>, V> implements 
      * @param  key the key
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
-    public V remove(K key) {
+    public void remove(K key) {
         if (key == null) throw new IllegalArgumentException("argument to delete() is null");
-        if (isEmpty()) return null; // TODO: 5/5/2021  
+        if (isEmpty()) return;
 
         // compute rank
         int i = rank(key);
 
         // key not in table
         if (i == size || keys[i].compareTo(key) != 0) {
-            return null; // TODO: 5/5/2021  
+            return;
         }
 
         for (int j = i; j < size -1; j++)  {
@@ -205,7 +205,6 @@ public class BinarySearchArrayDictionary<K extends Comparable<K>, V> implements 
         if (size > 0 && size == keys.length/4) resize(keys.length/2);
 
         assert check();
-        return null; // TODO: 5/5/2021  
     }
 
     /**

@@ -172,7 +172,7 @@ public class ChainingDictionary<K, V> implements Dictionary<K, V> {
      * @return
      */
     @Override
-    public V remove(K key) {
+    public void remove(K key) {
         // Apply hash function to find index for given key
         int bucketIndex = hashFuntion(key);
 
@@ -193,7 +193,7 @@ public class ChainingDictionary<K, V> implements Dictionary<K, V> {
 
         // If key was not there
         if (head == null)
-            return null;
+            return;
 
         // Reduce size
         size--;
@@ -211,7 +211,7 @@ public class ChainingDictionary<K, V> implements Dictionary<K, V> {
             reHash(capacity / 4);
         }
 
-        return head.value;
+        return;
     }
 }
 

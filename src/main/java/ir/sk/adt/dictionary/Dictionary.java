@@ -22,5 +22,5 @@ public interface Dictionary<K, V> {
     V get(K key);
 
     @AmortizedTimeComplexity("O(1)")
-    V remove(K key);
+    void remove(K key);
 }

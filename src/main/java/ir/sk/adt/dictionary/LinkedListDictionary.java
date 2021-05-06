@@ -96,9 +96,8 @@ public class LinkedListDictionary<K , V> implements Dictionary<K, V> {
      * (if the key is in the symbol table).
      * @param key the key
      */
-    public V remove(K key) {
+    public void remove(K key) {
         first = remove(first, key);
-        return null; // TODO: 5/5/2021
     }
 
     // delete key in linked list beginning at Link x

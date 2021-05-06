@@ -157,7 +157,7 @@ public class DoubleHashingDictionary<K, V> implements Dictionary<K, V> {
      * @return
      */
     @Override
-    public V remove(K key) {
+    public void remove(K key) {
         // Apply hash function to find index for given key
         int hashIndex = hashFuntion1(key);
         int hashIndex2 = hashFuntion2(key);
@@ -182,13 +182,13 @@ public class DoubleHashingDictionary<K, V> implements Dictionary<K, V> {
                     reHash(capacity / 4);
                 }
 
-                return temp.value;
+                return;
             }
             i++;
         }
 
-        //If not found return null
-        return null;
+        //If not found return
+        return;
     }
 
     /**
