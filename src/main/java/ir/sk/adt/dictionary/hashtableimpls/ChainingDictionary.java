@@ -28,6 +28,8 @@ public class ChainingDictionary<K, V> implements Dictionary<K, V> {
     private static final int DEFAULT_CAPACITY = 10;
 
     // bucketArray is used to store array of chains
+
+    // instead of linklist we can use different data structure like array bst
     private ChainingHashNode<K, V>[] bucketArray;
 
     // Current capacity of array list (m) (n <= m <= 4n) (constant load factor)
