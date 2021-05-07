@@ -7,6 +7,11 @@ import java.util.Queue;
 /**
  * BST combines the flexibility of insertion in a linked list with the efficiency of search in an ordered array.
  *
+ * The advantages
+ * of BSTs over hashing are that they are based on a simpler abstract interface (no hash
+ * function need be designed) and they support a wider range of operations (such as rank, select, sort, and
+ * range search).
+ *
  * Created by sad.kayvanfar on 5/5/2021.
  */
 public class BSTDictionary<K extends Comparable<K>, V> implements Dictionary<K, V> {
