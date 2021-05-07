@@ -9,6 +9,8 @@ import ir.sk.helper.Remainder;
 public class HashFunctions {
 
     /**
+     * The most commonly used method for hashing integers is calledmodular hashing
+     *
      * @param key
      * @param tableSize
      * @return
@@ -25,6 +27,6 @@ public class HashFunctions {
      */
     public static int multiplication(int key, int tableSize) {
         int k = 10;
-        return (int) (tableSize * (k * key % 1));
+        return (tableSize * (k * key % 1));
     }
 }
