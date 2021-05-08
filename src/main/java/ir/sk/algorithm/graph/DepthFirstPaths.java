@@ -15,6 +15,8 @@ public class DepthFirstPaths {
     private final int sourceVertex; // source
 
     /**
+     * Path Detection
+     *
      * Computes a path between {@code s} and every other vertex in graph {@code G}.
      * @param graph the graph
      * @param sourceVertex the source vertex
@@ -51,6 +53,8 @@ public class DepthFirstPaths {
     }
 
     /**
+     * Single-source paths
+     *
      * Returns a path between the source vertex {@code s} and vertex {@code v}, or
      * {@code null} if no such path.
      * @param  v the vertex

@@ -3,6 +3,7 @@ package ir.sk.adt.datastructure.graph;
 import java.util.Collection;
 
 /**
+ * Graph API
  * Edge classification:
  * 1. tree edge: visit new vertex via edge
  * 2. forward edge: node->descendant in tree (just in  weighted graph)
