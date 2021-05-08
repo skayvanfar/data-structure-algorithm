@@ -1,5 +1,7 @@
 package ir.sk.algorithm.graph;
 
+import ir.sk.helper.pattern.HashingIndexPattern;
+
 import java.util.Stack;
 
 /**
@@ -8,6 +10,7 @@ import java.util.Stack;
  */
 public class DepthFirstPaths {
     private boolean[] marked; // Has dfs() been called for this vertex?
+    @HashingIndexPattern
     private int[] edgeTo; // last vertex on known path to this vertex
     private final int sourceVertex; // source
 

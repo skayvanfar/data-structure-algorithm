@@ -33,7 +33,7 @@ public class DepthFirstPathsTest {
                 System.out.printf("%d to %d:  ", 1, v);
                 for (int x : dfs.pathTo(v)) {
                     if (x == 1) System.out.println(x);
-                    else System.out.print("-" + x);
+                    else System.out.print(x);
                 }
                 System.out.println();
             }
