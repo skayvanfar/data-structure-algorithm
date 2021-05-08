@@ -32,7 +32,7 @@ import java.util.stream.Collectors;
 public class AdjacencyListGraph<T> implements Graph<T> {
 
     /**
-     * List Could be replaced by array
+     * Map Could be replaced by array, list with bag
      */
     // private Map<Vertex<T>, Vertex<T>[]> adjVertices;
     private Map<Vertex<T>, List<Vertex<T>>> adjVertices;
