@@ -3,34 +3,35 @@ package ir.sk.algorithm.graph;
 import java.util.Stack;
 
 /**
+ * Path Detection
  * Created by sad.kayvanfar on 5/8/2021.
  */
 public class DepthFirstPaths {
     private boolean[] marked; // Has dfs() been called for this vertex?
     private int[] edgeTo; // last vertex on known path to this vertex
-    private final int s; // source
+    private final int sourceVertex; // source
 
     /**
      * Computes a path between {@code s} and every other vertex in graph {@code G}.
-     * @param G the graph
-     * @param s the source vertex
+     * @param graph the graph
+     * @param sourceVertex the source vertex
      * @throws IllegalArgumentException unless {@code 0 <= s < V}
      */
-    public DepthFirstPaths(Graph G, int s) {
-        this.s = s;
-        edgeTo = new int[G.vertexSize()];
-        marked = new boolean[G.vertexSize()];
-        validateVertex(s);
-        dfs(G, s);
+    public DepthFirstPaths(Graph graph, int sourceVertex) {
+        this.sourceVertex = sourceVertex;
+        edgeTo = new int[graph.vertexSize()];
+        marked = new boolean[graph.vertexSize()];
+        validateVertex(sourceVertex);
+        dfs(graph, sourceVertex);
     }
 
     // depth first search from v
-    private void dfs(Graph G, int v) {
-        marked[v] = true;
-        for (int w : G.getNeighborsFor(v)) {
+    private void dfs(Graph graph, int vertex) {
+        marked[vertex] = true;
+        for (int w : graph.getNeighborsFor(vertex)) {
             if (!marked[w]) {
-                edgeTo[w] = v;
-                dfs(G, w);
+                edgeTo[w] = vertex;
+                dfs(graph, w);
             }
         }
     }
@@ -58,9 +59,9 @@ public class DepthFirstPaths {
         validateVertex(v);
         if (!hasPathTo(v)) return null;
         Stack<Integer> path = new Stack<>();
-        for (int x = v; x != s; x = edgeTo[x])
+        for (int x = v; x != sourceVertex; x = edgeTo[x])
             path.push(x);
-        path.push(s);
+        path.push(sourceVertex);
         return path;
     }
 
