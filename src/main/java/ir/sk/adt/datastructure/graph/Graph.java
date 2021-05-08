@@ -33,6 +33,14 @@ public interface Graph<T> {
 
     void removeEdge(T from, T to) throws Exception;
 
+    /**
+     * allows the client code to iterate through the vertices adjacent to a given vertex.
+     * all of the algorithms that we consider on the basic abstraction embodied in getNeighborsFor().
+     *
+     * @param vertex
+     * @return
+     * @throws Exception
+     */
     Collection<T> getNeighborsFor(T vertex) throws Exception;
 
     /**

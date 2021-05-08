@@ -3,6 +3,8 @@ package ir.sk.adt.list;
 import ir.sk.helper.complexity.AmortizedTimeComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 
+import java.util.Iterator;
+
 /**
  * Use dynamic array logic
  * <p>
@@ -43,6 +45,11 @@ public class ArrayList<T> implements List<T> {
     @Override
     public boolean isEmpty() {
         return size == 0;
+    }
+
+    @Override
+    public int size() {
+        return size;
     }
 
     /**
@@ -116,5 +123,10 @@ public class ArrayList<T> implements List<T> {
         }
         size--;
         return object;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return null;
     }
 }

@@ -27,6 +27,11 @@ public class LinkQueue<T> implements Queue<T>, Iterable<T> {
         return theList.isEmpty();
     }
 
+    @Override
+    public int size() {
+        throw  new UnsupportedOperationException();
+    }
+
     /**
      * @param j
      */

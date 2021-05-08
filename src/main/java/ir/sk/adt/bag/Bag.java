@@ -7,8 +7,10 @@ import ir.sk.adt.Collection;
  *
  * @param <T>
  */
-public interface Bag<T> extends Collection<T> {
+public interface Bag<T> extends Collection<T>, Iterable<T> {
     void add(T item);
    // void remove(T item);
     boolean isEmpty();
+
+    int size();
 }

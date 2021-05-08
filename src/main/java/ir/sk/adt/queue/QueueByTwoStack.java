@@ -3,6 +3,7 @@ package ir.sk.adt.queue;
 import ir.sk.helper.complexity.AmortizedTimeComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 
+import java.util.Iterator;
 import java.util.Stack;
 
 /**
@@ -62,5 +63,15 @@ public class QueueByTwoStack<T> implements Queue<T> {
     @Override
     public boolean isEmpty() {
         return stack.isEmpty();
+    }
+
+    @Override
+    public int size() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return null;
     }
 }

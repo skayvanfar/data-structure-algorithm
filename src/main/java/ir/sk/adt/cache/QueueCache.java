@@ -71,6 +71,11 @@ public class QueueCache<T> implements Queue<T>, Iterable<T> {
         return false;
     }
 
+    @Override
+    public int size() {
+        throw new UnsupportedOperationException();
+    }
+
     public void display() {
         theList.displayForward();
     }
