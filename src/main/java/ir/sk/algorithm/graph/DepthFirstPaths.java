@@ -5,7 +5,8 @@ import ir.sk.helper.pattern.HashingIndexPattern;
 import java.util.Stack;
 
 /**
- * Path Detection
+ * Depth-first search to find paths in a graph. It doesn't give shortest path
+ *
  * Created by sad.kayvanfar on 5/8/2021.
  */
 public class DepthFirstPaths {

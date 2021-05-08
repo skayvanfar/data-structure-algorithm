@@ -5,6 +5,8 @@ import java.util.Queue;
 import java.util.Stack;
 
 /**
+ * Breadth-first search to find paths in a graph. It gives shortest path (one with a minimal number of edges).
+ *
  * Created by sad.kayvanfar on 5/8/2021.
  */
 public class BreadthFirstPaths {
@@ -119,6 +121,8 @@ public class BreadthFirstPaths {
     }
 
     /**
+     * Single-source shortest paths (one with a minimal number of edges)
+     *
      * Returns a shortest path between the source vertex {@code s} (or sources)
      * and {@code v}, or {@code null} if no such path.
      * @param  v the vertex
