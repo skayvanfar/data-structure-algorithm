@@ -4,8 +4,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by sad.kayvanfar on 5/8/2021.
  */
@@ -30,7 +28,7 @@ public class DepthFirstPathsTest {
         graph.addEdge(2, 3);
         DepthFirstPaths dfs = new DepthFirstPaths(graph, 1);
 
-        for (int v = 0; v < graph.V(); v++) {
+        for (int v = 0; v < graph.vertexSize(); v++) {
             if (dfs.hasPathTo(v)) {
                 System.out.printf("%d to %d:  ", 1, v);
                 for (int x : dfs.pathTo(v)) {

@@ -10,23 +10,23 @@ import java.util.Stack;
  */
 public class Graph {
 
-    private final int V;
-    private int E;
+    private final int vertexSize;
+    private int edgeSize;
     private Bag<Integer>[] adj;
 
     /**
      * Initializes an empty graph with {@code V} vertices and 0 edges.
      * param V the number of vertices
      *
-     * @param  V number of vertices
+     * @param  vertexSize number of vertices
      * @throws IllegalArgumentException if {@code V < 0}
      */
-    public Graph(int V) {
-        if (V < 0) throw new IllegalArgumentException("Number of vertices must be non-negative");
-        this.V = V;
-        this.E = 0;
-        adj = (Bag<Integer>[]) new Bag[V];
-        for (int v = 0; v < V; v++) {
+    public Graph(int vertexSize) {
+        if (vertexSize < 0) throw new IllegalArgumentException("Number of vertices must be non-negative");
+        this.vertexSize = vertexSize;
+        this.edgeSize = 0;
+        adj = (Bag<Integer>[]) new Bag[vertexSize];
+        for (int v = 0; v < vertexSize; v++) {
             adj[v] = new LinkBag<>();
         }
     }
@@ -34,24 +34,24 @@ public class Graph {
     /**
      * Initializes a new graph that is a deep copy of {@code G}.
      *
-     * @param  G the graph to copy
+     * @param  graph the graph to copy
      * @throws IllegalArgumentException if {@code G} is {@code null}
      */
-    public Graph(Graph G) {
-        this.V = G.V();
-        this.E = G.E();
-        if (V < 0) throw new IllegalArgumentException("Number of vertices must be non-negative");
+    public Graph(Graph graph) {
+        this.vertexSize = graph.vertexSize();
+        this.edgeSize = graph.edgeSize();
+        if (vertexSize < 0) throw new IllegalArgumentException("Number of vertices must be non-negative");
 
         // update adjacency lists
-        adj = (Bag<Integer>[]) new Bag[V];
-        for (int v = 0; v < V; v++) {
+        adj = (Bag<Integer>[]) new Bag[vertexSize];
+        for (int v = 0; v < vertexSize; v++) {
             adj[v] = new LinkBag<>();
         }
 
-        for (int v = 0; v < G.V(); v++) {
+        for (int v = 0; v < graph.vertexSize(); v++) {
             // reverse so that adjacency list is in same order as original
             Stack<Integer> reverse = new Stack<>();
-            for (int w : G.adj[v]) {
+            for (int w : graph.adj[v]) {
                 reverse.push(w);
             }
             for (int w : reverse) {
@@ -65,8 +65,8 @@ public class Graph {
      *
      * @return the number of vertices in this graph
      */
-    public int V() {
-        return V;
+    public int vertexSize() {
+        return vertexSize;
     }
 
     /**
@@ -74,14 +74,14 @@ public class Graph {
      *
      * @return the number of edges in this graph
      */
-    public int E() {
-        return E;
+    public int edgeSize() {
+        return edgeSize;
     }
 
     // throw an IllegalArgumentException unless {@code 0 <= v < V}
     private void validateVertex(int v) {
-        if (v < 0 || v >= V)
-            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+        if (v < 0 || v >= vertexSize)
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (vertexSize -1));
     }
 
     /**
@@ -94,7 +94,7 @@ public class Graph {
     public void addEdge(int v, int w) {
         validateVertex(v);
         validateVertex(w);
-        E++;
+        edgeSize++;
         adj[v].add(w);
         adj[w].add(v);
     }
@@ -133,8 +133,8 @@ public class Graph {
      */
     public String toString() {
         StringBuilder s = new StringBuilder();
-        s.append(V + " vertices, " + E + " edges \n ");
-        for (int v = 0; v < V; v++) {
+        s.append(vertexSize + " vertices, " + edgeSize + " edges \n ");
+        for (int v = 0; v < vertexSize; v++) {
             s.append(v + ": ");
             for (int w : adj[v]) {
                 s.append(w + " ");
