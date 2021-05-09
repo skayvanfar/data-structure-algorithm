@@ -1,5 +1,6 @@
 package ir.sk.algorithm.graph;
 
+import ir.sk.helper.Point;
 import ir.sk.helper.pattern.HashingIndexPattern;
 
 import java.util.Stack;
@@ -10,9 +11,10 @@ import java.util.Stack;
  * Created by sad.kayvanfar on 5/8/2021.
  */
 public class DepthFirstPaths {
-    private boolean[] marked; // Has dfs() been called for this vertex?
+    @Point("First think about adt and the implementation, if you can use data structure like hear")
+    private boolean[] marked; // Has dfs() been called for this vertex? // instead of Set adt, use hashtable data structure
     @HashingIndexPattern
-    private int[] edgeTo; // last vertex on known path to this vertex
+    private int[] edgeTo; // last vertex on known path to this vertex // instead of Map adt, use hashtable data structure
     private final int sourceVertex; // source
 
     /**
