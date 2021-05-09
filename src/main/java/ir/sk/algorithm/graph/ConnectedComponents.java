@@ -4,6 +4,19 @@ package ir.sk.algorithm.graph;
  * direct application of depth-first search is to
  * find the connected components of a graph.
  *
+ *
+ * How does the DFS-based solution for graph connectivity in CC compare
+ * with the {@link ir.sk.algorithm.others.unionfind.UF} In theory, DFS is faster than union-find
+ * because it provides a constant-time guarantee, which union-find does not; in practice,
+ * this difference is negligible, and union-find is faster because it does not have to build
+ * a full representation of the graph. More important, union-find is an online algorithm
+ * (we can check whether two vertices are connected in near-constant time at any point,
+ * even while adding edges), whereas the DFS solution must first preprocess the graph.
+ * Therefore, for example, we prefer union-find when determining connectivity is our
+ * only task or when we have a large number of queries intermixed with edge insertions
+ * but may find the DFS solution more appropriate for use in a graph ADT because it
+ * makes efficient use of existing infrastructure.
+ *
  * Created by sad.kayvanfar on 5/9/2021.
  */
 public class ConnectedComponents {

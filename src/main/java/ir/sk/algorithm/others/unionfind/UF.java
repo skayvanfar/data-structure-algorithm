@@ -3,6 +3,7 @@ package ir.sk.algorithm.others.unionfind;
 /**
  * an API that encapsulates the basic operations that: initialize, add a connection between two sites,
  * identify the component containing a site, determine whether two sites are in the same component, and count the number of components.
+ * its another algorithm for ConnectedComponents. ({@link ir.sk.algorithm.graph.ConnectedComponents})
  *
  * Created by sad.kayvanfar on 5/1/2021.
  */
