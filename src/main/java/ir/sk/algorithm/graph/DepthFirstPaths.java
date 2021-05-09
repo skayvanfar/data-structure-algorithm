@@ -10,7 +10,7 @@ import java.util.Stack;
  *
  * Created by sad.kayvanfar on 5/8/2021.
  */
-public class DepthFirstPaths {
+public class DepthFirstPaths implements Paths {
     @Point("First think about adt and the implementation, if you can use data structure like hear")
     private boolean[] marked; // Has dfs() been called for this vertex? // instead of Set adt, use hashtable data structure
     @HashingIndexPattern
@@ -50,6 +50,7 @@ public class DepthFirstPaths {
      * @return {@code true} if there is a path, {@code false} otherwise
      * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
+    @Override
     public boolean hasPathTo(int v) {
         validateVertex(v);
         return marked[v];
@@ -65,6 +66,7 @@ public class DepthFirstPaths {
      *         {@code s} and vertex {@code v}, as an Iterable
      * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
+    @Override
     public Iterable<Integer> pathTo(int v) {
         validateVertex(v);
         if (!hasPathTo(v)) return null;

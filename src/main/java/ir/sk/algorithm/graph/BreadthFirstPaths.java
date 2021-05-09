@@ -9,7 +9,7 @@ import java.util.Stack;
  *
  * Created by sad.kayvanfar on 5/8/2021.
  */
-public class BreadthFirstPaths {
+public class BreadthFirstPaths implements Paths {
 
     private static final int INFINITY = Integer.MAX_VALUE;
     private boolean[] marked;  // marked[v] = is there an s-v path
@@ -102,6 +102,7 @@ public class BreadthFirstPaths {
      * @return {@code true} if there is a path, and {@code false} otherwise
      * @throws IllegalArgumentException unless {@code 0 <= v < vertexSize}
      */
+    @Override
     public boolean hasPathTo(int v) {
         validateVertex(v);
         return marked[v];
@@ -129,6 +130,7 @@ public class BreadthFirstPaths {
      * @return the sequence of vertices on a shortest path, as an Iterable
      * @throws IllegalArgumentException unless {@code 0 <= v < vertexSize}
      */
+    @Override
     public Iterable<Integer> pathTo(int v) {
         validateVertex(v);
         if (!hasPathTo(v)) return null;
