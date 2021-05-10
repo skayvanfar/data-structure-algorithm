@@ -8,20 +8,20 @@ package ir.sk.algorithm.graph;
  */
 public class Cycle {
 
-    private boolean[] marked;
+    private boolean[] visited;
     private boolean hasCycle;
 
     public Cycle(Graph G) {
-        marked = new boolean[G.vertexSize()];
+        visited = new boolean[G.vertexSize()];
         for (int s = 0; s < G.vertexSize(); s++)
-            if (!marked[s])
+            if (!visited[s])
                 dfs(G, s, s);
     }
 
     private void dfs(Graph G, int v, int u) {
-        marked[v] = true;
+        visited[v] = true;
         for (int w : G.getNeighborsFor(v))
-            if (!marked[w])
+            if (!visited[w])
                 dfs(G, w, v);
             else if (w != u) hasCycle = true;
     }

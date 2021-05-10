@@ -21,22 +21,22 @@ package ir.sk.algorithm.graph;
  * Created by sad.kayvanfar on 5/9/2021.
  */
 public class TwoColorGraph {
-    private boolean[] marked;
+    private boolean[] visited;
     private boolean[] color;
     private boolean isTwoColorable = true;
 
     public TwoColorGraph(Graph G) {
-        marked = new boolean[G.vertexSize()];
+        visited = new boolean[G.vertexSize()];
         color = new boolean[G.vertexSize()];
         for (int s = 0; s < G.vertexSize(); s++)
-            if (!marked[s])
+            if (!visited[s])
                 dfs(G, s);
     }
 
     private void dfs(Graph G, int v) {
-        marked[v] = true;
+        visited[v] = true;
         for (int w : G.getNeighborsFor(v))
-            if (!marked[w]) {
+            if (!visited[w]) {
                 color[w] = !color[v];
                 dfs(G, w);
             } else if (color[w] == color[v]) isTwoColorable = false;
