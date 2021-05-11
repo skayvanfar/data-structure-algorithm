@@ -3,6 +3,10 @@ package ir.sk.algorithm.graph;
 import ir.sk.adt.bag.Bag;
 import ir.sk.adt.bag.LinkBag;
 
+/**
+ * A directed graph (or digraph) is a set of vertices and a collection of directed edges.
+ * Each directed edge connects an ordered pair of vertices.
+ */
 public class Digraph {
     private final int vertexSize;
     private int edgeSize;
