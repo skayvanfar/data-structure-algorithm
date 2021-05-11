@@ -3,6 +3,17 @@ package ir.sk.algorithm.graph;
 /**
  * Cycle detection: Is a given graph acylic?
  * is G acyclic? (assumes no self-loops or parallel edges)
+ *
+ * The {@code Cycle} class represents a data type for
+ * determining whether an undirected graph has a simple cycle.
+ * The <em>hasCycle</em> operation determines whether the graph has
+ * a cycle and, if so, the <em>cycle</em> operation returns one.
+ * <p>
+ * This implementation uses depth-first search.
+ * The constructor takes &Theta;(<em>V</em> + <em>E</em>) time in the
+ * worst case, where <em>V</em> is the number of vertices and
+ * <em>E</em> is the number of edges.
+ * (The depth-first search part takes only <em>O</em>(<em>V</em>) time;
  * <p>
  * Created by sad.kayvanfar on 5/9/2021.
  */
@@ -18,12 +29,17 @@ public class Cycle {
                 dfs(G, s, s);
     }
 
-    private void dfs(Graph G, int v, int u) {
-        visited[v] = true;
-        for (int w : G.getNeighborsFor(v))
+    /**
+     * @param graph
+     * @param currVertex current vertex
+     * @param prevVertex previous vertex
+     */
+    private void dfs(Graph graph, int currVertex, int prevVertex) {
+        visited[currVertex] = true;
+        for (int w : graph.getNeighborsFor(currVertex))
             if (!visited[w])
-                dfs(G, w, v);
-            else if (w != u) hasCycle = true;
+                dfs(graph, w, currVertex);
+            else if (w != prevVertex) hasCycle = true;
     }
 
     public boolean hasCycle() {

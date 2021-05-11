@@ -1,7 +1,5 @@
 package ir.sk.adt.set;
 
-import org.omg.CORBA.Object;
-
 public class OrderedArraySet<T extends Comparable<T>> implements Set<T> {
 
     private static final int INIT_CAPACITY = 2;
