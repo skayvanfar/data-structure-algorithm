@@ -42,6 +42,11 @@ public class Cycle {
             else if (w != prevVertex) hasCycle = true;
     }
 
+    /**
+     * Returns true if the graph {@code G} has a cycle.
+     *
+     * @return {@code true} if the graph has a cycle; {@code false} otherwise
+     */
     public boolean hasCycle() {
         return hasCycle;
     }
