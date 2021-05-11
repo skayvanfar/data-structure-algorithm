@@ -16,6 +16,8 @@ import java.util.*;
  * Main Operations: insert-delete-traverse
  * traverse: DFS-BFS
  * <p>
+ * A tree is an acyclic connected graph.
+ * <p>
  * Tree can be: Balanced- Unbalanced, Complete, Full, Perfect(Full+Complete)
  * <p>
  * Created by sad.keyvanfar on 7/1/2020.

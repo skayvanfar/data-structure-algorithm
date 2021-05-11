@@ -28,6 +28,7 @@ public class TwoColorGraph {
     public TwoColorGraph(Graph G) {
         visited = new boolean[G.vertexSize()];
         color = new boolean[G.vertexSize()];
+        // for disconnected graphs
         for (int s = 0; s < G.vertexSize(); s++)
             if (!visited[s])
                 dfs(G, s);
