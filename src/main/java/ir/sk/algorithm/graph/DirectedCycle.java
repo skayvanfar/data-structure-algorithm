@@ -9,7 +9,7 @@ import java.util.Stack;
  * last vertices are the same. A simple cycle is a cycle with no repeated edges or vertices
  * (except the requisite repetition of the first and last vertices). The length of a path or
  * a cycle is its number of edges.
- *
+ * <p>
  * The {@code DirectedCycle} class represents a data type for
  * determining whether a digraph has a directed cycle.
  * The <em>hasCycle</em> operation determines whether the digraph has
@@ -36,6 +36,7 @@ public class DirectedCycle {
     /**
      * Determines whether the digraph {@code G} has a directed cycle and, if so,
      * finds such a cycle.
+     *
      * @param digraph the digraph
      */
     public DirectedCycle(Digraph digraph) {
@@ -51,11 +52,11 @@ public class DirectedCycle {
     private void dfs(Digraph digraph, int currVertex) {
         onStack[currVertex] = true;
         visited[currVertex] = true;
-        for (int w : digraph.getNeighborsFor(currVertex))
+        for (int w : digraph.getNeighborsFor(currVertex)) {
             // short circuit if directed cycle found
             if (this.hasCycle())
                 return;
-            // found new vertex, so recur
+                // found new vertex, so recur
             else if (!visited[w]) {
                 edgeTo[w] = currVertex;
                 dfs(digraph, w);
@@ -67,11 +68,13 @@ public class DirectedCycle {
                 cycle.push(currVertex);
                 assert check();
             }
+        }
         onStack[currVertex] = false;
     }
 
     /**
      * Does the digraph have a directed cycle?
+     *
      * @return {@code true} if the digraph has a directed cycle, {@code false} otherwise
      */
     public boolean hasCycle() {
@@ -81,8 +84,9 @@ public class DirectedCycle {
 
     /**
      * Returns a directed cycle if the digraph has a directed cycle, and {@code null} otherwise.
+     *
      * @return a directed cycle (as an iterable) if the digraph has a directed cycle,
-     *    and {@code null} otherwise
+     * and {@code null} otherwise
      */
     public Iterable<Integer> cycle() {
         return cycle;

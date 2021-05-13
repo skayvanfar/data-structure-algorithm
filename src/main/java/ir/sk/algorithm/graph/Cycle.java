@@ -58,7 +58,7 @@ public class Cycle {
         visited[currVertex] = true;
         for (int w : graph.getNeighborsFor(currVertex)) {
             // short circuit if cycle already found
-            if (cycle != null) return;
+            if (this.hasCycle())
 
             if (!visited[w]) {
                 edgeTo[w] = prevVertex;
