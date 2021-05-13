@@ -7,7 +7,7 @@ package ir.sk.algorithm.graph;
  */
 public class KosarajuSCC {
 
-    private boolean[] marked;
+    private boolean[] visited;
     private int[] id;
     private int count;
 
@@ -15,21 +15,21 @@ public class KosarajuSCC {
 // component identifiers
 // number of strong components
     public KosarajuSCC(Digraph G) {
-        marked = new boolean[G.vertexSize()];
+        visited = new boolean[G.vertexSize()];
         id = new int[G.vertexSize()];
         DFSOrder order = new DFSOrder(G.reverse());
         for (int s : order.reversePostOrder())
-            if (!marked[s]) {
+            if (!visited[s]) {
                 dfs(G, s);
                 count++;
             }
     }
 
     private void dfs(Digraph G, int v) {
-        marked[v] = true;
+        visited[v] = true;
         id[v] = count;
         for (int w : G.getNeighborsFor(v))
-            if (!marked[w])
+            if (!visited[w])
                 dfs(G, w);
     }
 
