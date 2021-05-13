@@ -2,6 +2,13 @@ package ir.sk.algorithm.graph;
 
 /**
  * Minimum spanning tree api
+ *
+ *  Recall that a spanning tree of a graph is a
+ *  connected subgraph with no cycles that includes all
+ *  the vertices. A minimum spanning tree (MST ) of an
+ *  edge-weighted graph is a spanning tree whose weight
+ *  (the sum of the weights of its edges) is no larger than
+ *  the weight of any other spanning tree.
  */
 public interface MST {
 
