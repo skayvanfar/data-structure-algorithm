@@ -1,7 +1,9 @@
-package ir.sk.algorithm.graph;
+package ir.sk.algorithm.graph.mst;
 
 import ir.sk.adt.queue.LinkQueue;
 import ir.sk.adt.queue.Queue;
+import ir.sk.algorithm.graph.Edge;
+import ir.sk.algorithm.graph.EdgeWeightedGraph;
 import ir.sk.algorithm.others.unionfind.QuickUnionUF;
 import ir.sk.algorithm.others.unionfind.UF;
 import ir.sk.helper.technique.GreedyAlgorithm;
@@ -35,9 +37,9 @@ public class LazyPrimMST implements MST {
     private static final double FLOATING_POINT_EPSILON = 1E-12;
 
     private double weight;       // total weight of MST
-    private Queue<Edge> mst;     // edges in the MST
-    private boolean[] visited;    // marked[v] = true iff v on tree
-    private PriorityQueue<Edge> priorityQueue;      // edges with one endpoint in tree
+    private Queue<Edge> mst;     // MST edges
+    private boolean[] visited;   // MST vertices
+    private PriorityQueue<Edge> priorityQueue;    // crossing (and ineligible) edges. edges with one endpoint in tree
 
     /**
      * Compute a minimum spanning tree (or forest) of an edge-weighted graph.

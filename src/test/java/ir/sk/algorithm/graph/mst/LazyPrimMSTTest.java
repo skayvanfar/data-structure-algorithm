@@ -1,10 +1,11 @@
-package ir.sk.algorithm.graph;
+package ir.sk.algorithm.graph.mst;
 
+import ir.sk.algorithm.graph.Edge;
+import ir.sk.algorithm.graph.EdgeWeightedGraph;
+import ir.sk.algorithm.graph.mst.LazyPrimMST;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class LazyPrimMSTTest {
 

@@ -1,4 +1,6 @@
-package ir.sk.algorithm.graph;
+package ir.sk.algorithm.graph.mst;
+
+import ir.sk.algorithm.graph.Edge;
 
 /**
  * Minimum spanning tree api
