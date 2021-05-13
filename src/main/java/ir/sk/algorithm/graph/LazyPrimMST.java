@@ -4,6 +4,7 @@ import ir.sk.adt.queue.LinkQueue;
 import ir.sk.adt.queue.Queue;
 import ir.sk.algorithm.others.unionfind.QuickUnionUF;
 import ir.sk.algorithm.others.unionfind.UF;
+import ir.sk.helper.technique.GreedyAlgorithm;
 
 import java.util.PriorityQueue;
 
@@ -28,7 +29,8 @@ import java.util.PriorityQueue;
  * It uses &Theta;(<em>E</em>) extra space in the worst case
  * (not including the edge-weighted graph).
  */
-public class LazyPrimMST {
+@GreedyAlgorithm
+public class LazyPrimMST implements MST {
 
     private static final double FLOATING_POINT_EPSILON = 1E-12;
 
@@ -80,6 +82,7 @@ public class LazyPrimMST {
      * @return the edges in a minimum spanning tree (or forest) as
      *    an iterable of edges
      */
+    @Override
     public Iterable<Edge> edges() {
         return mst;
     }
@@ -88,6 +91,7 @@ public class LazyPrimMST {
      * Returns the sum of the edge weights in a minimum spanning tree (or forest).
      * @return the sum of the edge weights in a minimum spanning tree (or forest)
      */
+    @Override
     public double weight() {
         return weight;
     }
