@@ -128,7 +128,7 @@ public class Cycle {
                 visited[w] = true;
             }
 
-            // reset so marked[v] = false for all v
+            // reset so visited[v] = false for all v
             for (int w : G.getNeighborsFor(v)) {
                 visited[w] = false;
             }
