@@ -12,7 +12,7 @@ import ir.sk.helper.complexity.TimeComplexity;
  *
  * Created by sad.kayvanfar on 9/1/2020.
  */
-public interface Stack<T> {
+public interface Stack<T> extends Iterable<T>  {
 
     /**
      * Add an item to the top of the stack.

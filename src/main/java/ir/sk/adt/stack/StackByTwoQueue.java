@@ -1,5 +1,6 @@
 package ir.sk.adt.stack;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
 import java.util.Queue;
@@ -83,5 +84,10 @@ public class StackByTwoQueue<T> implements Stack<T> {
     @Override
     public boolean isEmpty() {
         return false;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return null;
     }
 }
