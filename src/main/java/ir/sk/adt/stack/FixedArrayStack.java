@@ -4,16 +4,18 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
+ * Generic stack implementation with a fixed-size array.
+ *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 12/10/2017.
  */
 public class FixedArrayStack<T> implements Stack<T>, Iterable<T> {
 
     private T[] stackArray;
-    private int top;
+    private int top;             // number of items in stack
 
     public FixedArrayStack(int s) {
         stackArray = (T[]) new Object[s]; // create array
-        top = -1; // no items yet
+        top = 0; // no items yet
     }
 
     /**
@@ -23,8 +25,7 @@ public class FixedArrayStack<T> implements Stack<T>, Iterable<T> {
     public void push(T item) {
         if (top >= stackArray.length)
             throw new IndexOutOfBoundsException("Overflow Exception");
-
-        stackArray[++top] = item; // increment top, insert item
+        stackArray[top++] = item;
     }
 
     /**
@@ -35,7 +36,7 @@ public class FixedArrayStack<T> implements Stack<T>, Iterable<T> {
     public T pop() {
         if (isEmpty())
             throw new NoSuchElementException("Underflow Exception");
-        return stackArray[top--]; // access item, decrement top
+        return stackArray[--top];
     }
 
     /**
@@ -46,7 +47,7 @@ public class FixedArrayStack<T> implements Stack<T>, Iterable<T> {
     public T peek() {
         if (isEmpty())
             throw new NoSuchElementException("Underflow Exception");
-        return stackArray[top];
+        return stackArray[top - 1];
     }
 
     /**
@@ -56,7 +57,7 @@ public class FixedArrayStack<T> implements Stack<T>, Iterable<T> {
      */
     @Override
     public boolean isEmpty() {
-        return (top == -1);
+        return top == 0;
     }
 
     /**
@@ -65,11 +66,11 @@ public class FixedArrayStack<T> implements Stack<T>, Iterable<T> {
      * @return
      */
     public boolean isFull() {
-        return (top == stackArray.length - 1);
+        return top == stackArray.length;
     }
 
     public int size() {
-        return top + 1;
+        return top;
     }
 
     public void display() {
@@ -91,17 +92,21 @@ public class FixedArrayStack<T> implements Stack<T>, Iterable<T> {
     /**
      * Support LIFO iteration.
      */
+    // an iterator, doesn't implement remove() since it's optional
     private class ReverseArrayIterator implements Iterator<T> {
-        private int i = top + 1;
+        private int i;
+
+        public ReverseArrayIterator() {
+            i = top - 1;
+        }
 
         public boolean hasNext() {
-            return i > 0;
+            return i >= 0;
         }
 
         public T next() {
-            if (i == -1)
-                throw new UnsupportedOperationException();
-            return stackArray[--i];
+            if (!hasNext()) throw new NoSuchElementException();
+            return stackArray[i--];
         }
 
         public void remove() {
