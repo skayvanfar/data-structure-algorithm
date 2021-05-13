@@ -24,9 +24,13 @@ public class DFSOrderTest {
 
     @Test
     public void reversePostOrder() {
-        Digraph G = new Digraph(5);
+        Digraph digraph = new Digraph(4);
+        digraph.addEdge(0, 1);
+        digraph.addEdge(0, 2);
+        digraph.addEdge(1, 3);
+        digraph.addEdge(2, 3);
 
-        DFSOrder dfs = new DFSOrder(G);
+        DFSOrder dfs = new DFSOrder(digraph);
 
         System.out.print("Preorder:  ");
         for (int v : dfs.preOrder()) {
