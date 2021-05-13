@@ -33,12 +33,6 @@ public class ResizingArrayStack<T> implements Stack<T>, Iterable<T> {
         top = 0;
     }
 
-
-    public ResizingArrayStack(int s) {
-        stackArray = (T[]) new Object[s];
-        top = 0; // no items yet
-    }
-
     /**
      * Adds the item to this stack.
      * @param item the item to add
@@ -88,15 +82,6 @@ public class ResizingArrayStack<T> implements Stack<T>, Iterable<T> {
     @Override
     public boolean isEmpty() {
         return top == 0;
-    }
-
-    /**
-     * true if stack is full
-     *
-     * @return
-     */
-    public boolean isFull() {
-        return (top == stackArray.length - 1);
     }
 
     /**
