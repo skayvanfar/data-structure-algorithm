@@ -6,11 +6,21 @@ import java.util.Iterator;
 
 /**
  * 2-ended list
- *
- * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
+ *  The {@code LinkedQueue} class represents a first-in-first-out (FIFO)
+ *  queue of generic items.
+ *  It supports the usual <em>enqueue</em> and <em>dequeue</em>
+ *  operations, along with methods for peeking at the first item,
+ *  testing if the queue is empty, and iterating through
+ *  the items in FIFO order.
+ *  <p>
+ *  This implementation uses a singly linked list with a non-static nested class
+ *  for linked-list nodes.  See {@link Queue} for a version that uses a static nested class.
+ *  The <em>enqueue</em>, <em>dequeue</em>, <em>peek</em>, <em>size</em>, and <em>is-empty</em>
+ *  operations all take constant time in the worst case.
  */
 public class LinkQueue<T> implements Queue<T>, Iterable<T> {
 
+    private int size = 0;         // number of elements on queue
     private DoubleEndedList<T> theList;
 
     public LinkQueue() {
@@ -19,6 +29,7 @@ public class LinkQueue<T> implements Queue<T>, Iterable<T> {
 
     @Override
     public void add(T item) {
+
         enqueue(item);
     }
 
@@ -29,7 +40,7 @@ public class LinkQueue<T> implements Queue<T>, Iterable<T> {
 
     @Override
     public int size() {
-        throw  new UnsupportedOperationException();
+        return size;
     }
 
     /**
@@ -38,6 +49,7 @@ public class LinkQueue<T> implements Queue<T>, Iterable<T> {
     @Override
     public void enqueue(T j) {
         theList.insertLast(j);
+        size++;
     }
 
     /**
@@ -45,6 +57,7 @@ public class LinkQueue<T> implements Queue<T>, Iterable<T> {
      */
     @Override
     public T dequeue() {
+        size--;
         return theList.deleteFirst();
     }
 
