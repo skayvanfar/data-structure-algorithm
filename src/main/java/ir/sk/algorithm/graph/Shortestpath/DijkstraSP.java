@@ -31,7 +31,7 @@ import ir.sk.algorithm.graph.EdgeWeightedDigraph;
  *  where <em>V</em> is the number of vertices and <em>C</em> is the maximum
  *  weight of any edge.
  */
-public class DijkstraSP {
+public class DijkstraSP implements SP {
 
     private double[] distTo;          // distTo[v] = distance  of shortest s->v path
     private DirectedEdge[] edgeTo;    // edgeTo[v] = last edge on shortest s->v path

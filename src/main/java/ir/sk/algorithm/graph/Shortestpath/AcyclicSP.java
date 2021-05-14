@@ -28,7 +28,7 @@ import ir.sk.algorithm.graph.Topological;
  *  where <em>V</em> is the number of vertices and <em>C</em> is the maximum
  *  absolute value of any edge weight.
  */
-public class AcyclicSP {
+public class AcyclicSP implements SP {
 
     private double[] distTo;         // distTo[v] = distance  of shortest s->v path
     private DirectedEdge[] edgeTo;   // edgeTo[v] = last edge on shortest s->v path
