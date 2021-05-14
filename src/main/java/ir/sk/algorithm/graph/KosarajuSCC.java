@@ -17,8 +17,8 @@ public class KosarajuSCC {
     public KosarajuSCC(Digraph G) {
         visited = new boolean[G.vertexSize()];
         id = new int[G.vertexSize()];
-        DFSOrder order = new DFSOrder(G.reverse());
-        for (int s : order.reversePostOrder())
+        DepthFirstOrder order = new DepthFirstOrder(G.reverse());
+        for (int s : order.reversePost())
             if (!visited[s]) {
                 dfs(G, s);
                 count++;
