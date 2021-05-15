@@ -8,6 +8,8 @@ Creating and designing excellent algorithms is required for being an exemplary p
 This repository's goal is to demonstrate how to correctly implement common data structures and algorithms in the simplest and most elegant ways.
 it includes algorithms, Fundamental data structures and abstract data types (ADTs).
 
+some sources came from different resources like Algorithms, 4th Edition book by Robert Sedgewick and Kevin Wayne
+
 Basic programming model: A library of static methods is a set of static methods that are defined in a Java class.
 Of critical importance in this model is that libraries of static methods enable modular programming where we build libraries of static methods (modules)
 and a static method in one library can call static methods defined in other libraries.
