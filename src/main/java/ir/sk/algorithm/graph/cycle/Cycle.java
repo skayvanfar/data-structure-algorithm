@@ -1,4 +1,6 @@
-package ir.sk.algorithm.graph;
+package ir.sk.algorithm.graph.cycle;
+
+import ir.sk.algorithm.graph.Graph;
 
 import java.util.Stack;
 

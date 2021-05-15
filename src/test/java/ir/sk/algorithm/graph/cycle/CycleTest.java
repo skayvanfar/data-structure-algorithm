@@ -1,5 +1,7 @@
-package ir.sk.algorithm.graph;
+package ir.sk.algorithm.graph.cycle;
 
+import ir.sk.algorithm.graph.Graph;
+import ir.sk.algorithm.graph.cycle.Cycle;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,15 +1,15 @@
-package ir.sk.algorithm.graph;
+package ir.sk.algorithm.graph.path;
 
+import ir.sk.algorithm.graph.Graph;
+import ir.sk.algorithm.graph.path.DepthFirstPaths;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by sad.kayvanfar on 5/8/2021.
  */
-public class BreadthFirstPathsTest {
+public class DepthFirstPathsTest {
 
     @Before
     public void setUp() throws Exception {
@@ -24,20 +24,16 @@ public class BreadthFirstPathsTest {
     }
 
     @Test
-    public void distTo() {
-    }
-
-    @Test
     public void pathTo() {
         Graph graph = new Graph(5);
         graph.addEdge(1, 2);
         graph.addEdge(2, 3);
-        BreadthFirstPaths bfs = new BreadthFirstPaths(graph, 1);
+        DepthFirstPaths dfs = new DepthFirstPaths(graph, 1);
 
         for (int v = 0; v < graph.vertexSize(); v++) {
-            if (bfs.hasPathTo(v)) {
+            if (dfs.hasPathTo(v)) {
                 System.out.printf("%d to %d:  ", 1, v);
-                for (int x : bfs.pathTo(v)) {
+                for (int x : dfs.pathTo(v)) {
                     if (x == 1) System.out.println(x);
                     else System.out.print(x);
                 }

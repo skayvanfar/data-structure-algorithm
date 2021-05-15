@@ -1,4 +1,7 @@
-package ir.sk.algorithm.graph;
+package ir.sk.algorithm.graph.component;
+
+import ir.sk.algorithm.graph.DepthFirstOrder;
+import ir.sk.algorithm.graph.Digraph;
 
 /**
  * To find strong components, it does a depth-first search in the reverse

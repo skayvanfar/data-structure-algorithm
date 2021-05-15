@@ -5,6 +5,9 @@ package ir.sk.algorithm.graph;
  * Compute topological ordering of a DAG or edge-weighted DAG.
  * Runs in O(E + V) time.
  */
+
+import ir.sk.algorithm.graph.cycle.DirectedCycle;
+
 /**
  *  The {@code Topological} class represents a data type for
  *  determining a topological order of a <em>directed acyclic graph</em> (DAG).

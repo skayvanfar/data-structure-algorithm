@@ -1,4 +1,4 @@
-package ir.sk.algorithm.graph;
+package ir.sk.algorithm.graph.cycle;
 
 import org.junit.After;
 import org.junit.Before;

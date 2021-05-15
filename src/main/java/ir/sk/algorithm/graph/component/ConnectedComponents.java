@@ -1,4 +1,6 @@
-package ir.sk.algorithm.graph;
+package ir.sk.algorithm.graph.component;
+
+import ir.sk.algorithm.graph.Graph;
 
 /**
  * direct application of depth-first search is to
