@@ -1,7 +1,7 @@
 package ir.sk.algorithm.graph.cycle;
 
 import ir.sk.algorithm.graph.Digraph;
-import ir.sk.algorithm.graph.Topological;
+import ir.sk.algorithm.graph.topological.Topological;
 
 import java.util.Stack;
 

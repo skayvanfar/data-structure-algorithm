@@ -1,7 +1,6 @@
 package ir.sk.algorithm.graph.path;
 
 import ir.sk.algorithm.graph.Graph;
-import ir.sk.algorithm.graph.Paths;
 import ir.sk.helper.Point;
 import ir.sk.helper.pattern.HashingIndexPattern;
 

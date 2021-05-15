@@ -1,10 +1,10 @@
-package ir.sk.algorithm.graph.Shortestpath;
+package ir.sk.algorithm.graph.shortestpath;
 
 import ir.sk.adt.stack.ResizingArrayStack;
 import ir.sk.adt.stack.Stack;
 import ir.sk.algorithm.graph.DirectedEdge;
 import ir.sk.algorithm.graph.EdgeWeightedDigraph;
-import ir.sk.algorithm.graph.Topological;
+import ir.sk.algorithm.graph.topological.Topological;
 
 /**
  * Computes shortest paths in an edge-weighted acyclic digraph. By Topological sort

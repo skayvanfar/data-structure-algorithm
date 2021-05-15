@@ -1,4 +1,4 @@
-package ir.sk.algorithm.graph;
+package ir.sk.algorithm.graph.path;
 
 /**
  * The single-source paths problem is fundamental to graph processing.

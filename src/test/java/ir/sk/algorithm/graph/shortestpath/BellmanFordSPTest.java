@@ -1,12 +1,10 @@
-package ir.sk.algorithm.graph.Shortestpath;
+package ir.sk.algorithm.graph.shortestpath;
 
 import ir.sk.algorithm.graph.DirectedEdge;
 import ir.sk.algorithm.graph.EdgeWeightedDigraph;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class BellmanFordSPTest {
 

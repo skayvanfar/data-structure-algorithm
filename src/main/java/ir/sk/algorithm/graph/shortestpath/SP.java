@@ -1,4 +1,4 @@
-package ir.sk.algorithm.graph.Shortestpath;
+package ir.sk.algorithm.graph.shortestpath;
 
 import ir.sk.algorithm.graph.DirectedEdge;
 

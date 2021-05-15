@@ -1,7 +1,5 @@
-package ir.sk.algorithm.graph;
+package ir.sk.algorithm.graph.shortestpath;
 
-import ir.sk.algorithm.graph.DijkstraOrientedAdjacencyListGraph;
-import ir.sk.algorithm.graph.Vertix;
 import org.junit.Test;
 
 import java.util.Arrays;

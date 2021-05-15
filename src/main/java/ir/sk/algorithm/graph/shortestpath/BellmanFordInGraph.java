@@ -1,4 +1,4 @@
-package ir.sk.algorithm.graph;
+package ir.sk.algorithm.graph.shortestpath;
 
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 7/27/2020.

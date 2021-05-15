@@ -1,4 +1,6 @@
-package ir.sk.algorithm.graph;
+package ir.sk.algorithm.graph.twocolor;
+
+import ir.sk.algorithm.graph.Graph;
 
 /**
  * Can the vertices of a given graph be assigned

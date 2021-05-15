@@ -1,6 +1,6 @@
-package ir.sk.algorithm.graph;
+package ir.sk.algorithm.graph.shortestpath;
 
-import ir.sk.algorithm.graph.BellmanFordInGraph;
+import ir.sk.algorithm.graph.shortestpath.BellmanFordInGraph;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

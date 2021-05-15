@@ -1,4 +1,4 @@
-package ir.sk.algorithm.graph.Shortestpath;
+package ir.sk.algorithm.graph.shortestpath;
 
 import ir.sk.adt.queue.LinkQueue;
 import ir.sk.adt.queue.Queue;
@@ -6,7 +6,7 @@ import ir.sk.adt.stack.ResizingArrayStack;
 import ir.sk.adt.stack.Stack;
 import ir.sk.algorithm.graph.DirectedEdge;
 import ir.sk.algorithm.graph.EdgeWeightedDigraph;
-import ir.sk.algorithm.graph.EdgeWeightedDirectedCycle;
+import ir.sk.algorithm.graph.cycle.EdgeWeightedDirectedCycle;
 
 /**
  * Bellman-Ford shortest path algorithm. Computes the shortest path tree in

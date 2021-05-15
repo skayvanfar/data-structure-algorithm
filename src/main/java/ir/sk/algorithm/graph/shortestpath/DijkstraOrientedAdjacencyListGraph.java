@@ -1,4 +1,4 @@
-package ir.sk.algorithm.graph;
+package ir.sk.algorithm.graph.shortestpath;
 
 import ir.sk.helper.technique.GreedyAlgorithm;
 

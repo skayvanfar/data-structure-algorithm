@@ -1,4 +1,4 @@
-package ir.sk.algorithm.graph;
+package ir.sk.algorithm.graph.topological;
 
 /**
  * Reverse postorder in a DAG is a topological sort.
@@ -6,6 +6,10 @@ package ir.sk.algorithm.graph;
  * Runs in O(E + V) time.
  */
 
+import ir.sk.algorithm.graph.DepthFirstOrder;
+import ir.sk.algorithm.graph.Digraph;
+import ir.sk.algorithm.graph.EdgeWeightedDigraph;
+import ir.sk.algorithm.graph.cycle.EdgeWeightedDirectedCycle;
 import ir.sk.algorithm.graph.cycle.DirectedCycle;
 
 /**

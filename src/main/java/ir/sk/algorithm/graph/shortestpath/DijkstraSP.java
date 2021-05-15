@@ -1,7 +1,6 @@
-package ir.sk.algorithm.graph.Shortestpath;
+package ir.sk.algorithm.graph.shortestpath;
 
 import ir.sk.adt.queue.priorityqueue.HeapIndexMinPQ;
-import ir.sk.adt.queue.priorityqueue.IndexMinPQ;
 import ir.sk.adt.stack.ResizingArrayStack;
 import ir.sk.adt.stack.Stack;
 import ir.sk.algorithm.graph.DirectedEdge;

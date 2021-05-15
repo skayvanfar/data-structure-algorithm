@@ -1,7 +1,10 @@
-package ir.sk.algorithm.graph;
+package ir.sk.algorithm.graph.cycle;
 
 import ir.sk.adt.stack.ResizingArrayStack;
 import ir.sk.adt.stack.Stack;
+import ir.sk.algorithm.graph.DirectedEdge;
+import ir.sk.algorithm.graph.EdgeWeightedDigraph;
+import ir.sk.algorithm.graph.topological.Topological;
 
 /**
  * Finds a directed cycle in an edge-weighted digraph. Runs in O(E + V) time.

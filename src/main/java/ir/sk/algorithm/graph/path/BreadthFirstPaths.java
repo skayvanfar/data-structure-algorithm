@@ -1,7 +1,6 @@
 package ir.sk.algorithm.graph.path;
 
 import ir.sk.algorithm.graph.Graph;
-import ir.sk.algorithm.graph.Paths;
 
 import java.util.ArrayDeque;
 import java.util.Queue;

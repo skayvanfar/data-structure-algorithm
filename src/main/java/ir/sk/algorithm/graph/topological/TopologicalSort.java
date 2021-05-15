@@ -1,4 +1,4 @@
-package ir.sk.algorithm.graph;
+package ir.sk.algorithm.graph.topological;
 
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
