@@ -1,10 +1,10 @@
 package ir.sk.algorithm.others;
 
+import ir.sk.adt.datastructure.tree.binarytree.MaxBinaryHeap;
+import ir.sk.adt.datastructure.tree.binarytree.binarysearchtree.BinarySearchTree;
 import ir.sk.algorithm.array.Merge;
 import ir.sk.algorithm.basic.RotationShift;
 import ir.sk.algorithm.basic.Utils;
-import ir.sk.adt.datastructure.tree.binarytree.MaxBinaryHeap;
-import ir.sk.adt.datastructure.tree.binarytree.binarysearchtree.BinarySearchTree;
 import ir.sk.helper.*;
 import ir.sk.helper.complexity.InPlace;
 import ir.sk.helper.complexity.SpaceComplexity;
@@ -184,7 +184,7 @@ public class Sort {
 
     /**
      * Top-down mergesort
-     *
+     * <p>
      * recursive sort method known as mergesort
      * : to sort an array, divide it into two halves, sort the two halves (recursively), and
      * then merge the results. As you will see, one of mergesort’s most attractive properties is
@@ -270,7 +270,7 @@ public class Sort {
      * all the merges of tiny subarrays on one pass, then do a second pass to merge those sub-
      * arrays in pairs, and so forth, continuing until we
      * do a merge that encompasses the whole array.
-     *
+     * <p>
      * A version of bottom-up mergesort is the method of choice for sorting data organized in a linked list.
      *
      * @param array
@@ -306,7 +306,7 @@ public class Sort {
      * In quick sort we pick a random element and partition the array, such that all numbers that are less than the
      * partitioning element come before all elements that are greater than it. The partitioning can be performed
      * efficiently through a series of swaps
-     *
+     * <p>
      * Quicksort vs Mergesort
      * Quicksort is complementary to mergesort: for mergesort, we break the array
      * into two subarrays to be sorted and then combine the ordered subarrays to make the
@@ -427,43 +427,29 @@ public class Sort {
      * Counting sort uses a partial hashing to count the occurrence of the data object in O(1).
      * Counting sort can be extended to work for negative inputs also.
      *
-     * @param array
+     * @param input
      */
     @TimeComplexity("O(n + k) + O(n) = O(2n + k) = O(n + k) where n is the number of elements in input array and k is the range of input.")
     @SpaceComplexity("nO(n + k)")
-    public static void countingSort(int[] array) {
-        int n = array.length;
-        int max = Arrays.stream(array).max().getAsInt();
+    public static void countSort(int[] input) {
+        int max = Arrays.stream(input).max().getAsInt();
 
-        // The output character array that will have sorted arr
-        int output[] = new int[n];
-
-        // Create a count array to store count of inidividul
-        // items and initialize count array as 0
-        // Frequency Array
-        int count[] = new int[max + 1];
-
-        // store count of each character
-        for (int i = 0; i < n; ++i)
-            ++count[array[i]];
-
-        // Change count[i] so that count[i] now contains actual
-        // position of this character in output array
-        for (int i = 1; i <= max; ++i)
-            count[i] += count[i - 1];
-
-        // Build the output array
-        // To make it stable we are operating in reverse order.
-        for (int i = n - 1; i >= 0; i--) {
-            output[count[array[i]] - 1] = array[i];
-            --count[array[i]];
+        // create buckets
+        int counter[] = new int[max + 1];
+        // fill buckets
+        for (int i : input) {
+            counter[i]++;
         }
-
-        // Copy the output array to arr, so that arr now
-        // contains sorted characters
-        for (int i = 0; i < n; ++i)
-            array[i] = output[i];
+        // sort array
+        int ndx = 0;
+        for (int i = 0; i < counter.length; i++) {
+            while (0 < counter[i]) {
+                input[ndx++] = i;
+                counter[i]--;
+            }
+        }
     }
+
 
     /**
      * Counting sort which takes negative numbers as well
@@ -517,6 +503,11 @@ public class Sort {
     }
 
     /**
+     * Radix sort uses a stable sorting algorithm as a subroutine to sort the digits.
+     * We've used a variation of counting sort as a subroutine here that uses the radix to sort the digits in every position.
+     * Counting sort is a stable sorting algorithm and it works well in practice.
+     * Radix sort works by sorting digits from the Least Significant Digit (LSD) to the Most Significant Digit (MSD).
+     * <p>
      * The radix sorting algorithm is an integer sorting algorithm, that sorts by grouping numbers by their individual digits (or by their radix).
      * It uses each radix/digit as a key, and implements counting sort or bucket sort under the hood in order to do the work of sorting.
      *
@@ -525,7 +516,7 @@ public class Sort {
     @TimeComplexity("O(kn) where n is the number of elements in input array and k represented this number of digits of maximum value.")
     @SpaceComplexity("nO(n + k)")
     @Stability
-    public static void radixSort(int numbers[]) {
+    public static void radixSortLSD(int numbers[]) {
         int maximumNumber = findMaximumNumberIn(numbers);
 
         int numberOfDigits = calculateNumberOfDigitsIn(maximumNumber);

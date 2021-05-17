@@ -121,7 +121,7 @@ public class SortTest {
     @Test
     public void countingSort() {
         long start = System.currentTimeMillis();
-        Sort.countingSort(actual);
+        Sort.countSort(actual);
         long end = System.currentTimeMillis();
         System.out.println("Logic countingSort took " + (end - start) + " MilliSeconds");
         assertArrayEquals(expected, actual);
@@ -161,4 +161,10 @@ public class SortTest {
         System.out.println(Arrays.toString(array));
     }
 
+    @Test
+    public void radixSort() {
+        int[] array = new int[]{170, 45, 75, 90, 2, 802, 2, 66};
+        Sort.radixSortLSD(array);
+        System.out.println(Arrays.toString(array));
+    }
 }
