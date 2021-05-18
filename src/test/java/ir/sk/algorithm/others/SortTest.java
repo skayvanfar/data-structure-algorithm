@@ -167,4 +167,11 @@ public class SortTest {
         Sort.radixSortLSD(array);
         System.out.println(Arrays.toString(array));
     }
+
+    @Test
+    public void radixSortMSD() {
+        String[] array = new String[]{"asd", "aafefe", "hyh", "f", "grgrg", "wwqq", "nbm", "fghhhgfhgf"};
+        Sort.radixSortMSD(array);
+        System.out.println(Arrays.toString(array));
+    }
 }
