@@ -421,7 +421,8 @@ public class Sort {
      * Time Complexity: O(n + k) + O(n) = O(2n + k) = O(n + k) where n is the number of elements in input array and k is the range of input.
      * Auxiliary Space: O(n+k)
      * <p>
-     * Counting sort is efficient if the range of input data is not significantly greater than the number of objects to be sorted. Consider the situation where the input sequence is between range 1 to 10K and the data is 10, 5, 10K, 5K.
+     * Counting sort is efficient if the range of input data is not significantly greater than the number of objects to be sorted. (1-9)(a-b-...-z (256 character))
+     * Consider the situation where the input sequence is between range 1 to 10K and the data is 10, 5, 10K, 5K.
      * It is not a comparison based sorting. It running time complexity is O(n) with space proportional to the range of data.
      * It is often used as a sub-routine to another sorting algorithm like radix sort.
      * Counting sort uses a partial hashing to count the occurrence of the data object in O(1).
@@ -538,6 +539,7 @@ public class Sort {
         int[] sortedValues = new int[length];
 
         for (int i = 0; i < length; i++) {
+            @Point("how to get a digit in a number by its place")
             int digit = (numbers[i] / placeValue) % range;
             frequency[digit]++;
         }
