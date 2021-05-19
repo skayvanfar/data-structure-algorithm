@@ -1,4 +1,4 @@
-package ir.sk.adt.datastructure.tree;
+package ir.sk.adt.datastructure.tree.trietree;
 
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.HashingIndexPattern;

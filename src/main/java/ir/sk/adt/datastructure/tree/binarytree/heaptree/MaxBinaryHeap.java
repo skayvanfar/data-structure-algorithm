@@ -1,4 +1,4 @@
-package ir.sk.adt.datastructure.tree.binarytree;
+package ir.sk.adt.datastructure.tree.binarytree.heaptree;
 
 import ir.sk.helper.complexity.TimeComplexity;
 

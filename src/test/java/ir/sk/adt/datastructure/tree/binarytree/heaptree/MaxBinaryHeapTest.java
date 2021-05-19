@@ -1,5 +1,6 @@
-package ir.sk.adt.datastructure.tree.binarytree;
+package ir.sk.adt.datastructure.tree.binarytree.heaptree;
 
+import ir.sk.adt.datastructure.tree.binarytree.heaptree.MaxBinaryHeap;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

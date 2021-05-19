@@ -1,6 +1,6 @@
 package ir.sk.algorithm.others;
 
-import ir.sk.adt.datastructure.tree.binarytree.MaxBinaryHeap;
+import ir.sk.adt.datastructure.tree.binarytree.heaptree.MaxBinaryHeap;
 import ir.sk.adt.datastructure.tree.binarytree.binarysearchtree.BinarySearchTree;
 import ir.sk.algorithm.array.Merge;
 import ir.sk.algorithm.basic.RotationShift;

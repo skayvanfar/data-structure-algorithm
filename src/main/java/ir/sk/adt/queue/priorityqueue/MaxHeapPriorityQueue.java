@@ -1,6 +1,6 @@
 package ir.sk.adt.queue.priorityqueue;
 
-import ir.sk.adt.datastructure.tree.binarytree.MaxBinaryHeap;
+import ir.sk.adt.datastructure.tree.binarytree.heaptree.MaxBinaryHeap;
 import ir.sk.helper.complexity.TimeComplexity;
 
 /**
