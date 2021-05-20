@@ -27,26 +27,21 @@ public class StringMatching {
     @BruteForce
     @MultipleLoopsPattern
     @TimeComplexity("O(m*(n-m+1)) (n: text length, m: pattern length) = O(n*m)")
-    public static boolean naiveStringSearch(String text, String pattern) {
-        int textLength = text.length();
-        int patternLength = pattern.length();
+    public static int naiveStringSearch(String text, String pattern) {
+        int m = text.length();
+        int n = pattern.length();
 
-        for (int i = 0; i <= (textLength - patternLength); i++) {
-            int counter = 0;
-            for (int j = 0; j < patternLength; j++) {
-                int pos = i + j;
-                if (text.charAt(pos) != pattern.charAt(j))
+        for (int i = 0; i <= (n - m); i++) {
+            int j;
+            for (j = 0; j < m; j++) {
+                if (text.charAt(i + j) != pattern.charAt(j))
                     break;
-                else
-                    counter++;
 
-                if (counter == patternLength) {
-                    return true;
-                }
-
+                if (j == m)
+                    return i; // found
             }
         }
-        return false;
+        return n; // not found
     }
 
     /**

@@ -28,8 +28,8 @@ public class StringMatchingTest {
 
     @Test
     public void naiveStringSearch() {
-        boolean expectedValue = true;
-        boolean actual = StringMatching.naiveStringSearch(text, pattern);
+        int expectedValue = 5;
+        int actual = StringMatching.naiveStringSearch(text, pattern);
         Assert.assertEquals(expectedValue, actual);
     }
 
