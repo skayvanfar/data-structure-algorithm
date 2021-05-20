@@ -25,6 +25,6 @@ public class TrieTest {
     public void put() {
         Trie trie = new Trie();
 
-        trie.put("ali");
+       // trie.put("ali");
     }
 }
