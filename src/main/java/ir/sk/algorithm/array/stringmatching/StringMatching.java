@@ -1,4 +1,4 @@
-package ir.sk.algorithm.array;
+package ir.sk.algorithm.array.stringmatching;
 
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.MultipleLoopsPattern;
@@ -43,6 +43,9 @@ public class StringMatching {
         }
         return n; // not found
     }
+
+
+
 
     /**
      * Rabin-Karp is another pattern searching algorithm to find the pattern in a more efficient way.

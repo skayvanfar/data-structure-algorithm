@@ -1,6 +1,6 @@
-package ir.sk.algorithm.others;
+package ir.sk.algorithm.array.stringmatching;
 
-import ir.sk.algorithm.array.StringMatching;
+import ir.sk.algorithm.array.stringmatching.StringMatching;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
