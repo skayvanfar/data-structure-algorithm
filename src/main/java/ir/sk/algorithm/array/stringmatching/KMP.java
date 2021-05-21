@@ -24,6 +24,7 @@ public class KMP {
 
     /**
      * Preprocesses the pattern string.
+     * create a DFA that can search for pat
      *
      * @param pat the pattern string
      */
