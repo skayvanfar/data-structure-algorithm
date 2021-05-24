@@ -1,6 +1,31 @@
 package ir.sk.adt.dictionary;
 
 /**
+ *  The {@code BTree} class represents an ordered symbol table of generic
+ *  key-value pairs.
+ *  It supports the <em>put</em>, <em>get</em>, <em>contains</em>,
+ *  <em>size</em>, and <em>is-empty</em> methods.
+ *  A symbol table implements the <em>associative array</em> abstraction:
+ *  when associating a value with a key that is already in the symbol table,
+ *  the convention is to replace the old value with the new value.
+ *  Unlike {@link java.util.Map}, this class uses the convention that
+ *  values cannot be {@code null}—setting the
+ *  value associated with a key to {@code null} is equivalent to deleting the key
+ *  from the symbol table.
+ *  <p>
+ *  This implementation uses a B-tree. It requires that
+ *  the key type implements the {@code Comparable} interface and calls the
+ *  {@code compareTo()} and method to compare two keys. It does not call either
+ *  {@code equals()} or {@code hashCode()}.
+ *  The <em>get</em>, <em>put</em>, and <em>contains</em> operations
+ *  each make log<sub><em>m</em></sub>(<em>n</em>) probes in the worst case,
+ *  where <em>n</em> is the number of key-value pairs
+ *  and <em>m</em> is the branching factor.
+ *  The <em>size</em>, and <em>is-empty</em> operations take constant time.
+ *  Construction takes constant time.
+ */
+
+/**
  * Created by sad.kayvanfar on 5/24/2021.
  */
 public class BTreeDictionary<K extends Comparable<K>, V> implements Dictionary<K, V> {
