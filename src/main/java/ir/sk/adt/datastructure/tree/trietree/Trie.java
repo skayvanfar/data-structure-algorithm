@@ -5,9 +5,36 @@ import ir.sk.helper.ImplementationType;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.HashingIndexPattern;
 
+/**
+ * Created by sad.kayvanfar on 5/18/2021.
+ */
 public class Trie {
 
-    private TriNode root;      // root of trie
+    private Node root;
+
+    public Trie() {
+        this.root = new Node();
+    }
+
+    @TimeComplexity("O(n)")
+    public void insert(String word) {
+        insert(root, word, 0);
+    }
+
+    private Node insert(Node currNode, String word, int index) {
+        if (currNode == null)
+            currNode = new Node();
+
+        if (index == word.length() - 1) {
+            currNode.end = true;
+            return currNode;
+        }
+
+        char ch = word.charAt(index); // Use dth key char to identify subtrie.
+
+        currNode.next[ch - 'a'] = insert(currNode.next[ch - 'a'], word, index + 1);
+        return currNode;
+    }
 
     /**
      * inserts a single string into a trie rooted at 'root'
@@ -17,35 +44,49 @@ public class Trie {
      */
     @TimeComplexity("O(n), n Length of the string")
     @Implementation(type = ImplementationType.Iterative)
-    static void insert(TriNode root, String key) {
-        TriNode temp = root;
+    static void insert(Node root, String key) {
+        Node temp = root;
         char[] charArray = key.toCharArray();
 
         for (char ch : charArray) {
             int index = ch - 'a';
 
-            if (temp.child[index] == null)
-                temp.child[index] = new TriNode();
+            if (temp.next[index] == null)
+                temp.next[index] = new Node();
 
-            temp = temp.child[index];
+            temp = temp.next[index];
         }
 
-        temp.isEnd = true;
+        temp.end = true;
     }
+
+    /**
+     * @param key
+     * @return
+     */
+    public boolean search(String key) {
+        if (key == null) throw new IllegalArgumentException("argument to search() is null");
+        Node x = search(root, key, 0);
+        if (x == null) return false;
+        return x.end;
+    }
+
+    private Node search(Node x, String key, int d) {
+        if (x == null) return null;
+        if (d == key.length()) return x;
+        char ch = key.charAt(d);
+        return search(x.next[ch - 'a'], key, d+1);
+    }
+
+
+
 }
 
-class TriNode {
+class Node {
 
     public final static int R = 26; // Range
 
     @HashingIndexPattern
-    TriNode[] child = new TriNode[R];
-    boolean isEnd;
-
-    public TriNode() {
-        for (int i = 0; i < child.length; i++)
-            child[i] = null;
-
-        isEnd = false;
-    }
+    public Node[] next = new Node[R];
+    public boolean end;
 }
