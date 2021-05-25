@@ -54,6 +54,7 @@ public class LevelByLevelBFS {
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
     public static List<List<Integer>> levelByLevelBFSReverse(TreeNode root) {
+        // using Linkedlist
         List<List<Integer>> result = new LinkedList<>();
 
         Queue<TreeNode> queue = new ArrayDeque<>();
@@ -61,7 +62,6 @@ public class LevelByLevelBFS {
 
         while (!queue.isEmpty()) {
             int levelSize = queue.size();
-            // using Linkedlist
             List<Integer> currentLevel = new ArrayList<>();
 
             for (int i = 0; i < levelSize; i++) {
