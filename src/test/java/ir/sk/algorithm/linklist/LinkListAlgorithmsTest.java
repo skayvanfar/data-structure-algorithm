@@ -33,6 +33,16 @@ public class LinkListAlgorithmsTest {
 
     @Test
     public void sumRevertedLists() {
+        SinglyLink link = new SinglyLink(3);
+        link.next = new SinglyLink(4);
+        link.next.next = new SinglyLink(2);
+
+        SinglyLink link2 = new SinglyLink(4);
+        link2.next = new SinglyLink(6);
+        link2.next.next = new SinglyLink(5);
+
+        SinglyLink sum = LinkListAlgorithms.sumRevertedLists(link, link2, 0);
+        System.out.println();
     }
 
     @Test
