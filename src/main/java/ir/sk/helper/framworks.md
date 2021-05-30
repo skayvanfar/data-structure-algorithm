@@ -80,3 +80,18 @@ def backtrack(Path, selection List):
         deselect (Path.remove(selection), Add the selection to the Selection List)
 ```
 
+
+##template for Sliding Window Algorithm algorithm:
+```
+int left = 0, right = 0;
+
+while (right < s.size()) {
+    window.add(s[right]);
+    right++;
+
+    while (valid) {
+        window.remove(s[left]);
+        left++;
+    }
+}
+```
