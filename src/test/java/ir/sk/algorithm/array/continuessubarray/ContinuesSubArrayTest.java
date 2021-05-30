@@ -50,35 +50,6 @@ public class ContinuesSubArrayTest {
         Assert.assertEquals(15, ContinuesSubArray.findMaxSumSubArray(arr, 3));
     }
 
-    @Test
-    public void longestSubstringDistinct() {
-        Assert.assertEquals(4, ContinuesSubArray.longestSubstringDistinct("araaci".toCharArray(), 2));
-    }
-
-    @Test
-    public void longestSubstringAtMostDistinct() {
-        Assert.assertEquals(4, ContinuesSubArray.longestSubstringAtMostDistinct("araaci".toCharArray(), 2));
-    }
-
-    @Test
-    public void longestSubstringAllDistinct() {
-        Assert.assertEquals(3, ContinuesSubArray.longestSubstringAllDistinct("aabccde".toCharArray()));
-    }
-
-    @Test
-    public void longestSubstringAllDistinct2() {
-        Assert.assertEquals(3, ContinuesSubArray.longestSubstringAllDistinct2("aabccde".toCharArray()));
-    }
-
-    @Test
-    public void longestSubstringAllDistinct3() {
-        Assert.assertEquals(3, ContinuesSubArray.longestSubstringAllDistinct3("aabccde".toCharArray()));
-    }
-
-    @Test
-    public void minimumWindowSubstring() {
-        Assert.assertEquals("banc", ContinuesSubArray.minimumWindowSubstring("ebbancf".toCharArray(), "abc".toCharArray()));
-    }
 
     @Test
     public void findAllAnagramsString() {
