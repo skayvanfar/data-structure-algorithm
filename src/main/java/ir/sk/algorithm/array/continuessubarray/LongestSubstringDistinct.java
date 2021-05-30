@@ -93,7 +93,10 @@ public class LongestSubstringDistinct {
     public static int longestSubstringAllDistinct(char[] chars) {
         int start = 0, end = 0;
         int lengthSoFar = Integer.MIN_VALUE;
+        // Set adt
         Set<Character> hashtable = new HashSet<>();
+     // int[] window = new int[256];
+     // Map<Character, Boolean> charIndexMap = new HashMap<>();
 
         while (end < chars.length) {
 
@@ -110,69 +113,6 @@ public class LongestSubstringDistinct {
         }
         return lengthSoFar;
     }
-
-    /**
-     * Given a string, find the length of the longest substring which has no repeating characters.
-     *
-     * @param s
-     * @return
-     */
-    @TimeComplexity("(O(n+n) = O(n))")
-    @SpaceComplexity("O(256) = O(1)")
-    @HashingIndexPattern
-    @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
-    public static int longestSubstringAllDistinct2(char[] s) {
-        int left = 0, right = 0;
-        int[] window = new int[256];
-        int res = 0; // Record maximum length
-
-        while (right < s.length) {
-            window[s[right]]++;
-
-            // If a duplicate character appears in the window
-            // Move the left pointer
-            while (window[s[right]] > 1) {
-                window[s[left]]--;
-                left++;
-            }
-            right++;
-            res = Math.max(res, right - left);
-        }
-        return res;
-    }
-
-    /**
-     * Given a string, find the length of the longest substring which has no repeating characters.
-     *
-     * @param chars
-     * @return
-     */
-    @TimeComplexity("O(n)")
-    @SpaceComplexity("O(256) = O(1)")
-    @HashingIndexPattern
-    @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
-    public static int longestSubstringAllDistinct3(char[] chars) {
-        int start = 0, end = 0;
-        int lengthSoFar = Integer.MIN_VALUE;
-        // We can use a HashMap to remember the last index of each character we have processed.
-        Map<Character, Integer> charIndexMap = new HashMap<>();
-
-        while (end < chars.length) {
-
-            // shrink the slide window
-            if (charIndexMap.containsKey(chars[end])) {
-                start = Math.max(start, charIndexMap.get(chars[end]) + 1);
-            }
-
-            charIndexMap.put(chars[end], end);
-
-            lengthSoFar = Math.max(lengthSoFar, end - start + 1);
-            end++;
-
-        }
-        return lengthSoFar;
-    }
-
 
     /**
      * Given a string, find the length of the longest substring in it with no more than d distinct characters.
