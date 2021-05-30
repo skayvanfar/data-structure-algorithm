@@ -13,16 +13,54 @@ import java.util.Set;
 
 /**
  * Length of the longest substring without repeating characters
- *
+ * <p>
  * Given a string str, find the length of the longest substring without repeating characters.
- *
+ * <p>
  * For “ABDEFGABEF”, the longest substring are “BDEFGA” and “DEFGAB”, with length 6.
  * For “BBBB” the longest substring is “B”, with length 1.
  * For “GEEKSFORGEEKS”, there are two longest substrings shown in the below diagrams, with length 7
- *
+ * <p>
  * Created by sad.kayvanfar on 5/30/2021.
  */
 public class LongestSubstringDistinct {
+
+    /**
+     * We can consider all substrings one by one and check for each substring whether it contains all unique characters or not.
+     * There will be n*(n+1)/2 substrings.
+     * Whether a substring contains all unique characters or not can be checked in linear time by scanning it from left to right and keeping a map of visited characters.
+     */
+    @TimeComplexity("O(n ^ 3)")
+    public static int longestSubstringDistinctNaive(String str) {
+        int n = str.length();
+
+        // Result
+        int res = 0;
+
+        for (int i = 0; i < n; i++)
+            for (int j = i; j < n; j++)
+                if (areDistinct(str, i, j))
+                    res = Math.max(res, j - i + 1);
+
+        return res;
+    }
+
+    // This function returns true if all characters in
+    // str[i..j] are distinct, otherwise returns false
+    @TimeComplexity("O(n)")
+    private static Boolean areDistinct(String str, int i, int j) {
+
+        // Note : Default values in visited are false
+        boolean[] visited = new boolean[26];
+
+        for (int k = i; k <= j; k++) {
+            if (visited[str.charAt(k) - 'a'] == true)
+                return false;
+
+            visited[str.charAt(k) - 'a'] = true;
+        }
+        return true;
+    }
+
 
     /**
      * Given a string, find the length of the longest substring in it with no more than d distinct characters.
