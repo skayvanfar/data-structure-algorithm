@@ -3,6 +3,8 @@ package ir.sk.algorithm.array;
 import ir.sk.helper.complexity.TimeComplexity;
 
 /**
+ * usually we use this technique when we want a brute force algorithm.
+ *
  * Created by sad.kayvanfar on 5/30/2021.
  */
 public class AllPairs {
