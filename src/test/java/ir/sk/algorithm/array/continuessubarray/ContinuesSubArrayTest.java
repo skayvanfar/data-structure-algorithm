@@ -1,6 +1,6 @@
-package ir.sk.algorithm.array;
+package ir.sk.algorithm.array.continuessubarray;
 
-import ir.sk.algorithm.array.ContinuesSubArray;
+import ir.sk.algorithm.array.continuessubarray.ContinuesSubArray;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

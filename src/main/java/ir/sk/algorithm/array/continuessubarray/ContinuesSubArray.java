@@ -1,4 +1,4 @@
-package ir.sk.algorithm.array;
+package ir.sk.algorithm.array.continuessubarray;
 
 import ir.sk.helper.Point;
 import ir.sk.helper.complexity.SpaceComplexity;
