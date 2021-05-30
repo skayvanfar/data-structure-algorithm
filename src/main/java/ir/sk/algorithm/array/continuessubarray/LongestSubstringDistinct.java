@@ -26,7 +26,17 @@ public class LongestSubstringDistinct {
 
     /**
      * We can consider all substrings one by one and check for each substring whether it contains all unique characters or not.
+     *
      * There will be n*(n+1)/2 substrings.
+     * Number of substrings of length one is n (We can choose any of the n characters)
+     * Number of substrings of length two is n-1 (We can choose any of the n-1 pairs formed by adjacent)
+     * Number of substrings of length three is n-2
+     * (We can choose any of the n-2 triplets formed by adjacent)
+     * In general, mumber of substrings of length k is n-k+1 where 1 <= k <= n
+     * Total number of substrings of all lengths from 1 to n =
+     * n + (n-1) + (n-2) + (n-3) + … 2 + 1
+     * = n * (n + 1)/2
+     *
      * Whether a substring contains all unique characters or not can be checked in linear time by scanning it from left to right and keeping a map of visited characters.
      */
     @TimeComplexity("O(n ^ 3)")
@@ -35,9 +45,11 @@ public class LongestSubstringDistinct {
 
         // Result
         int res = 0;
-
+        // O(n)
         for (int i = 0; i < n; i++)
+            // O(n)
             for (int j = i; j < n; j++)
+                // O(n)
                 if (areDistinct(str, i, j))
                     res = Math.max(res, j - i + 1);
 
