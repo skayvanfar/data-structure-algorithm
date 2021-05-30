@@ -1,11 +1,15 @@
 package ir.sk.algorithm.array.continuessubarray;
 
+import ir.sk.helper.complexity.BCR;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.HashingIndexPattern;
 import ir.sk.helper.pattern.SlidingWindowPattern;
 import ir.sk.helper.pattern.SlidingWindowPatternType;
+import ir.sk.helper.technique.BruteForce;
+import ir.sk.helper.technique.CompleteSearch;
 
+import javax.xml.ws.RespectBinding;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -22,6 +26,7 @@ import java.util.Set;
  * <p>
  * Created by sad.kayvanfar on 5/30/2021.
  */
+@BCR(bigOTime = "O(n)")
 public class LongestSubstringDistinct {
 
     /**
@@ -40,6 +45,8 @@ public class LongestSubstringDistinct {
      * Whether a substring contains all unique characters or not can be checked in linear time by scanning it from left to right and keeping a map of visited characters.
      */
     @TimeComplexity("O(n ^ 3)")
+    @BruteForce
+    @CompleteSearch
     public static int longestSubstringDistinctNaive(String str) {
         int n = str.length();
 
@@ -72,87 +79,6 @@ public class LongestSubstringDistinct {
         }
         return true;
     }
-
-
-    /**
-     * Given a string, find the length of the longest substring in it with no more than d distinct characters.
-     *
-     * @param chars string
-     * @param d     distinct characters
-     * @return
-     */
-    @TimeComplexity("O(n+n) = O(n)")
-    @SpaceComplexity("O(256) = O(1)")
-    @HashingIndexPattern
-    @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
-    public static int longestSubstringDistinct(char[] chars, int d) {
-        int start = 0, end = 0;
-        int lengthSoFar = 0, currentCount = 0;
-        boolean[] hashtable = new boolean[256];
-
-        // extend the slide window
-        while (end < chars.length) {
-            // main operation
-            if (!hashtable[chars[end]]) {
-                currentCount++;
-                hashtable[chars[end]] = true;
-            }
-            // compare
-            if (currentCount == d)
-                lengthSoFar = Math.max(lengthSoFar, end - start + 1);
-            // shrink the slide window
-            while (currentCount > d) {
-                if (hashtable[chars[start]]) {
-                    currentCount--;
-                    hashtable[chars[start]] = false;
-                }
-                start++;
-            }
-            end++;
-        }
-        return lengthSoFar;
-    }
-
-
-    /**
-     * Given a string, find the length of the Longest Substring with at most d distinct characters
-     *
-     * @param chars
-     * @param d
-     * @return
-     */
-    @TimeComplexity("O(n+n) = O(n)")
-    @SpaceComplexity("O(256) = O(1)")
-    @HashingIndexPattern
-    @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
-    public static int longestSubstringAtMostDistinct(char[] chars, int d) {
-        int start = 0, end = 0;
-        int lengthSoFar = 0, currentCount = 0;
-        boolean[] hashtable = new boolean[256];
-
-        // extend the slide window
-        while (end < chars.length) {
-            // main operation
-            if (!hashtable[chars[end]]) {
-                currentCount++;
-                hashtable[chars[end]] = true;
-            }
-            // compare
-            if (currentCount <= d)
-                lengthSoFar = Math.max(lengthSoFar, end - start + 1);
-            // shrink the slide window
-            while (currentCount > d) {
-                if (hashtable[chars[start]]) {
-                    currentCount--;
-                    hashtable[chars[start]] = false;
-                }
-                start++;
-            }
-            end++;
-        }
-        return lengthSoFar;
-    }
-
 
     /**
      * Given a string, find the length of the longest substring which has no repeating characters.
@@ -246,4 +172,85 @@ public class LongestSubstringDistinct {
         }
         return lengthSoFar;
     }
+
+
+    /**
+     * Given a string, find the length of the longest substring in it with no more than d distinct characters.
+     *
+     * @param chars string
+     * @param d     distinct characters
+     * @return
+     */
+    @TimeComplexity("O(n+n) = O(n)")
+    @SpaceComplexity("O(256) = O(1)")
+    @HashingIndexPattern
+    @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
+    public static int longestSubstringDistinct(char[] chars, int d) {
+        int start = 0, end = 0;
+        int lengthSoFar = 0, currentCount = 0;
+        boolean[] hashtable = new boolean[256];
+
+        // extend the slide window
+        while (end < chars.length) {
+            // main operation
+            if (!hashtable[chars[end]]) {
+                currentCount++;
+                hashtable[chars[end]] = true;
+            }
+            // compare
+            if (currentCount == d)
+                lengthSoFar = Math.max(lengthSoFar, end - start + 1);
+            // shrink the slide window
+            while (currentCount > d) {
+                if (hashtable[chars[start]]) {
+                    currentCount--;
+                    hashtable[chars[start]] = false;
+                }
+                start++;
+            }
+            end++;
+        }
+        return lengthSoFar;
+    }
+
+
+    /**
+     * Given a string, find the length of the Longest Substring with at most d distinct characters
+     *
+     * @param chars
+     * @param d
+     * @return
+     */
+    @TimeComplexity("O(n+n) = O(n)")
+    @SpaceComplexity("O(256) = O(1)")
+    @HashingIndexPattern
+    @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
+    public static int longestSubstringAtMostDistinct(char[] chars, int d) {
+        int start = 0, end = 0;
+        int lengthSoFar = 0, currentCount = 0;
+        boolean[] hashtable = new boolean[256];
+
+        // extend the slide window
+        while (end < chars.length) {
+            // main operation
+            if (!hashtable[chars[end]]) {
+                currentCount++;
+                hashtable[chars[end]] = true;
+            }
+            // compare
+            if (currentCount <= d)
+                lengthSoFar = Math.max(lengthSoFar, end - start + 1);
+            // shrink the slide window
+            while (currentCount > d) {
+                if (hashtable[chars[start]]) {
+                    currentCount--;
+                    hashtable[chars[start]] = false;
+                }
+                start++;
+            }
+            end++;
+        }
+        return lengthSoFar;
+    }
+
 }

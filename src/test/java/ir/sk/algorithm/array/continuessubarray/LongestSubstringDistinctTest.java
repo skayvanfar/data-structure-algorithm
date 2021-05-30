@@ -51,7 +51,7 @@ public class LongestSubstringDistinctTest {
     }
 
     @Test
-    public void longestSubstringAllDistinctNew() {
-        Assert.assertEquals(3, LongestSubstringDistinct.longestSubstringAllDistinct3("aabccde".toCharArray()));
+    public void longestSubstringDistinctNaive() {
+        Assert.assertEquals(3, LongestSubstringDistinct.longestSubstringDistinctNaive("aabccde"));
     }
 }
