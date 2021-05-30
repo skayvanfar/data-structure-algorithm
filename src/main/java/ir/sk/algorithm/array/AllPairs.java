@@ -1,12 +1,14 @@
 package ir.sk.algorithm.array;
 
 import ir.sk.helper.complexity.TimeComplexity;
+import ir.sk.helper.technique.CompleteSearch;
 
 /**
  * usually we use this technique when we want a brute force algorithm.
  *
  * Created by sad.kayvanfar on 5/30/2021.
  */
+@CompleteSearch
 public class AllPairs {
 
     /**
