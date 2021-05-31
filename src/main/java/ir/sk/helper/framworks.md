@@ -82,6 +82,7 @@ def backtrack(Path, selection List):
 
 
 ##template for Sliding Window Algorithm algorithm:
+[window)
 ```
 int left = 0, right = 0;
 
