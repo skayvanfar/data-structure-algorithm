@@ -30,4 +30,22 @@ public class Palindrome {
         return true;
     }
 
+    public static boolean isPalindromeByStack(char[] chars) {
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < chars.length / 2; i++) {
+            stack.push(chars[i]);
+        }
+        int i;
+        if (chars.length % 2 == 0)
+            i = chars.length / 2;
+        else
+            i = (chars.length / 2) + 1;
+
+        for (; i < chars.length; i++) {
+            if (chars[i] != stack.pop())
+                return false;
+        }
+        return true;
+    }
+
 }

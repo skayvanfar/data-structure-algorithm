@@ -26,8 +26,8 @@ public class PalindromeTest {
     }
 
     @Test
-    public void testIsPalindromeByTwoPointer() {
-        System.out.println(Palindrome.isPalindromeByTwoPointer("hosisoh".toCharArray()));
-        System.out.println(Palindrome.isPalindromeByTwoPointer("hossoh".toCharArray()));
+    public void isPalindromeByStack() {
+        System.out.println(Palindrome.isPalindromeByStack("hosisoh".toCharArray()));
+        System.out.println(Palindrome.isPalindromeByStack("hossoh".toCharArray()));
     }
 }
