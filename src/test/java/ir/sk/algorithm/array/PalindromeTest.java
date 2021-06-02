@@ -21,6 +21,13 @@ public class PalindromeTest {
 
     @Test
     public void isPalindromeByTwoPointer() {
-            System.out.println(Palindrome.isPalindromeByTwoPointer("hjosisoh".toCharArray()));
+        System.out.println(Palindrome.isPalindromeByTwoPointer("hosisoh".toCharArray()));
+        System.out.println(Palindrome.isPalindromeByTwoPointer("hossoh".toCharArray()));
+    }
+
+    @Test
+    public void testIsPalindromeByTwoPointer() {
+        System.out.println(Palindrome.isPalindromeByTwoPointer("hosisoh".toCharArray()));
+        System.out.println(Palindrome.isPalindromeByTwoPointer("hossoh".toCharArray()));
     }
 }
