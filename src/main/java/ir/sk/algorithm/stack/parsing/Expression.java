@@ -184,6 +184,8 @@ public class Expression {
      * @param str
      * @return
      */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
     public static boolean isParenthesesBalances(String str) {
         Stack<Character> stack = new Stack<>();
         for (int i = 0; i < str.length(); i++) {
