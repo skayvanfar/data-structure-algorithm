@@ -1,6 +1,7 @@
 package ir.sk.algorithm.array.continuessubarray;
 
-import ir.sk.algorithm.array.Palindrome;
+import ir.sk.helper.complexity.SpaceComplexity;
+import ir.sk.helper.complexity.TimeComplexity;
 
 /**
  * Created by sad.kayvanfar on 6/2/2021.
@@ -11,6 +12,8 @@ public class LongestPalindromeSubstring {
      * @param chars
      * @return
      */
+    @TimeComplexity("O(n^2)")
+    @SpaceComplexity("O(1)")
     public static int longestPalindromeSubstring(char[] chars) {
         int max = 1;
         for (int i = 0; i < chars.length; i++) {
