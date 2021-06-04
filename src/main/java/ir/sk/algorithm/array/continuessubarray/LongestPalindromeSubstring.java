@@ -9,6 +9,9 @@ import ir.sk.helper.complexity.TimeComplexity;
 public class LongestPalindromeSubstring {
 
     /**
+     * It looks at each character as the center of a palindrome and loops to determine the largest palindrome with that center.
+     * // TODO: 6/4/21 Manchester algorithm is better
+     *
      * @param chars
      * @return
      */
