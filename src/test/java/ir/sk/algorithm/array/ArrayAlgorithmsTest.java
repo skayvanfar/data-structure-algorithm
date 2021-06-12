@@ -72,9 +72,8 @@ public class ArrayAlgorithmsTest {
     @Test
     public void checkPossibility() {
         int[] arr = {10, 5, 11, 3};
-        int n = arr.length;
 
-        if (ArrayAlgorithms.checkPossibility(arr, n))
+        if (ArrayAlgorithms.checkPossibility(arr))
             System.out.print("Yes");
         else
             System.out.print("No");

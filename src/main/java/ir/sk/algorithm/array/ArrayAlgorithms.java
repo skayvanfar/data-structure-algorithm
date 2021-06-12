@@ -300,12 +300,11 @@ public class ArrayAlgorithms {
      * For every element arr[i], if it is greater than both arr[i – 1] and arr[i + 1] or it is smaller than both arr[i – 1] and arr[i + 1] then arr[i] needs to be modified.
      * i.e arr[i] = (arr[i – 1] + arr[i + 1]) / 2. If after modification, arr[i] = arr[i – 1] or arr[i + 1] then the array cannot be made strictly decreasing without affecting at most one element else count all such modifications, if the count of modifications in the end is less than or equal to 1 then print Yes else print No.
      *
-     * @param arr
-     * @param n
      * @return
      */
     @TimeComplexity("O(n)")
-    public static boolean checkPossibility(int[] arr, int n) {
+    public static boolean checkPossibility(int[] arr) {
+        int n = arr.length;
 
         // To store the number of modifications
         // required to make the array
