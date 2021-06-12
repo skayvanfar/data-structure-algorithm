@@ -69,4 +69,14 @@ public class ArrayAlgorithmsTest {
         System.out.println(ArrayAlgorithms.magicIndexBinarySearch(new int[]{8,9,2,3,4}));
     }
 
+    @Test
+    public void checkPossibility() {
+        int[] arr = { 10, 5, 11, 3 };
+        int n = arr.length;
+
+        if (ArrayAlgorithms.checkPossibility(arr, n))
+            System.out.print("Yes");
+        else
+            System.out.print("No");
+    }
 }
