@@ -37,4 +37,5 @@ public class KnapsackTest {
         maxProfits = Knapsack.slove10knapsackByDP(profits, weights, 6);
         System.out.println("Total knapsack profit ---> " + maxProfits);
     }
+
 }
