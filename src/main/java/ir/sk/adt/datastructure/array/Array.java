@@ -25,6 +25,7 @@ public class Array {
     }
 
     /**
+     * Linear Search
      * @param searchKey
      * @return
      */
