@@ -51,6 +51,7 @@ public class SinglyLinkList<T> implements Iterable<T> {
     }
 
     /**
+     * Linear Search
      * find link with given key
      * (assumes non-empty list)
      *
