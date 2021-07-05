@@ -1,5 +1,7 @@
 package ir.sk.adt.stack;
 
+import ir.sk.helper.Default;
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -8,6 +10,7 @@ import java.util.NoSuchElementException;
  *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 12/10/2017.
  */
+@Default
 public class FixedArrayStack<T> implements Stack<T>, Iterable<T> {
 
     private T[] stackArray;

@@ -61,12 +61,28 @@ public class ArrayAlgorithmsTest {
 
     @Test
     public void magicIndexNaive() {
-        System.out.println(ArrayAlgorithms.magicIndexNaive(new int[]{8,9,2,3,4}));
+        System.out.println(ArrayAlgorithms.magicIndexNaive(new int[]{8, 9, 2, 3, 4}));
     }
 
     @Test
     public void magicIndexBinarySearch() {
-        System.out.println(ArrayAlgorithms.magicIndexBinarySearch(new int[]{8,9,2,3,4}));
+        System.out.println(ArrayAlgorithms.magicIndexBinarySearch(new int[]{8, 9, 2, 3, 4}));
     }
 
+    @Test
+    public void checkPossibility() {
+        int[] arr = {10, 5, 11, 3};
+
+        if (ArrayAlgorithms.checkPossibility(arr))
+            System.out.print("Yes");
+        else
+            System.out.print("No");
+    }
+
+    @Test
+    public void findSingleNumber() {
+        int ar[] = {2, 3, 5, 4, 5, 3, 4};
+        int n = ar.length;
+        System.out.println("Element occurring once is " + ArrayAlgorithms.findSingleNumber(ar) + " ");
+    }
 }

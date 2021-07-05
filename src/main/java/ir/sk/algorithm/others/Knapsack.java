@@ -2,16 +2,14 @@ package ir.sk.algorithm.others;
 
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.technique.BacktrackingDFS;
-import ir.sk.helper.technique.DynamicProgramming;
-import ir.sk.helper.technique.DynamicProgrammingType;
+import ir.sk.helper.pattern.MultipleLoopsPattern;
+import ir.sk.helper.technique.*;
 
 /**
  * Given the weights and profits of ‘N’ items,
  * we are asked to put these items in a knapsack which has a capacity ‘C’.
  * The goal is to get the maximum profit out of the items in the knapsack.
- * Each item can only be selected once, as we don’t have multiple quantities of any item.
- *
+ * <p>
  * Created by sad.kayvanfar on 2/9/2021.
  */
 public class Knapsack {
@@ -25,6 +23,9 @@ public class Knapsack {
      * we need to find a subset of these items which will give us maximum profit such that their cumulative weight is not more than a given number ‘C’.
      * Each item can only be selected once, which means either we put an item in the knapsack or we skip it.
      *
+     * A basic brute-force solution could be to try all combinations of the given items (as we did above),
+     * allowing us to choose the one with maximum profit and a weight that doesn’t exceed ‘C’.
+     *
      * @param profits
      * @param weights
      * @param capacity
@@ -34,6 +35,7 @@ public class Knapsack {
     @SpaceComplexity("O(n)")
     @TimeComplexity("O(2^n), This space will be used to store the recursion stack.")
     @BacktrackingDFS
+    @BruteForce
     private static int solve10knapsack(int[] profits, int[] weights, int capacity, int currentIndex) {
         // base checks
         if (capacity <= 0 || currentIndex >= profits.length)

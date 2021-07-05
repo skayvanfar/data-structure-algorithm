@@ -2,6 +2,7 @@ package ir.sk.adt.datastructure.array;
 
 import ir.sk.algorithm.basic.RotationShift;
 import ir.sk.helper.complexity.TimeComplexity;
+import ir.sk.helper.technique.BinarySearch;
 
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 12/7/2017.
@@ -27,6 +28,7 @@ public class SortedArray {
      * @return
      */
     @TimeComplexity("O(Log n)")
+    @BinarySearch
     public int find(int searchKey) {
         int lowerBound = 0;
         int upperBound = size - 1;

@@ -1,6 +1,7 @@
 package ir.sk.adt.dictionary.hashtableimpls;
 
 import ir.sk.adt.dictionary.Dictionary;
+import ir.sk.helper.Default;
 import ir.sk.helper.Remainder;
 import ir.sk.helper.complexity.TimeComplexity;
 
@@ -22,6 +23,7 @@ import ir.sk.helper.complexity.TimeComplexity;
  * <p>
  * Created by sad.keyvanfar on 7/6/2020.
  */
+@Default
 public class ChainingDictionary<K, V> implements Dictionary<K, V> {
 
     private static final float DEFAULT_LOAD_FACTOR = 0.75f;

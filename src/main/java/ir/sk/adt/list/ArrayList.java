@@ -1,5 +1,6 @@
 package ir.sk.adt.list;
 
+import ir.sk.helper.Default;
 import ir.sk.helper.complexity.AmortizedTimeComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 
@@ -10,6 +11,7 @@ import java.util.Iterator;
  * <p>
  * Created by sad.keyvanfar on 8/25/2020.
  */
+@Default
 public class ArrayList<T> implements List<T> {
 
     private static final int DEFAULT_CAPACITY = 10;

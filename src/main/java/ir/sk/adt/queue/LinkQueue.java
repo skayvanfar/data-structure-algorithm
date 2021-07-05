@@ -1,6 +1,7 @@
 package ir.sk.adt.queue;
 
 import ir.sk.adt.datastructure.linklist.DoubleEndedList;
+import ir.sk.helper.Default;
 
 import java.util.Iterator;
 
@@ -18,6 +19,7 @@ import java.util.Iterator;
  *  The <em>enqueue</em>, <em>dequeue</em>, <em>peek</em>, <em>size</em>, and <em>is-empty</em>
  *  operations all take constant time in the worst case.
  */
+@Default
 public class LinkQueue<T> implements Queue<T>, Iterable<T> {
 
     private int size = 0;         // number of elements on queue
