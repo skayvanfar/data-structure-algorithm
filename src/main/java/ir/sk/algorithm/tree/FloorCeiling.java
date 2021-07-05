@@ -1,5 +1,6 @@
 package ir.sk.algorithm.tree;
 
+import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 
 /**
@@ -94,4 +95,45 @@ public class FloorCeiling {
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Imagine we are moving down the tree, and assume we are root node.
+     * The comparison yields three possibilities,
+     *
+     * A) Root data is equal to key. We are done, root data is ceil value.
+     *
+     * B) Root data < key value, certainly the ceil value can't be in left subtree.
+     *    Proceed to search on right subtree as reduced problem instance.
+     *
+     * C) Root data > key value, the ceil value may be in left subtree.
+     *    We may find a node with is larger data than key value in left subtree,
+     *    if not the root itself will be ceil node.
+     *
+     * @param node
+     * @param input
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
+    public static int ceilOfBST(TreeNode node, int input) {
+        if (node == null)
+            return -1;
+
+        // We found equal key
+        if (node.value == input) {
+            return node.value;
+        }
+
+        // If root's key is smaller,
+        // ceil must be in right subtree
+        if (node.value < input) {
+            return ceilOfBST(node.right, input);
+        }
+
+        // Else, either left subtree or root
+        // has the ceil value
+        int ceil = ceilOfBST(node.left, input);
+
+        return (ceil >= input) ? ceil : node.value;
+    }
 }
