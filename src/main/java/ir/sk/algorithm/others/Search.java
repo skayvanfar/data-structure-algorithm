@@ -114,7 +114,6 @@ public class Search {
     /**
      * Given a sorted array and a target number.
      * Return the index of the first target number in the array if it exists, otherwise return -1.
-     * (find the floor)
      *
      * bruteforce: find a target and then search linearly left
      *
@@ -156,7 +155,7 @@ public class Search {
     /**
      * Given a sorted array and a target number.
      * Return the index of the last target number in the array if it exists, otherwise return -1.
-     * (find the ceil)
+     *
      * @param array
      * @param target
      * @return
