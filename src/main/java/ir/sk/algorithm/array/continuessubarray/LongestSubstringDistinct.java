@@ -9,10 +9,7 @@ import ir.sk.helper.pattern.SlidingWindowPatternType;
 import ir.sk.helper.technique.BruteForce;
 import ir.sk.helper.technique.CompleteSearch;
 
-import javax.xml.ws.RespectBinding;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 /**
