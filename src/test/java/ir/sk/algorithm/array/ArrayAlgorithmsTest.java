@@ -42,24 +42,6 @@ public class ArrayAlgorithmsTest {
     }
 
     @Test
-    public void naiveCountWays() {
-        int n = 4;
-        System.out.println(ArrayAlgorithms.naiveCountWays(n));
-    }
-
-    @Test
-    public void memoizedDPCountWaysByRecursive() {
-        int n = 4;
-        System.out.println(ArrayAlgorithms.memoizedDPCountWaysByRecursive(n));
-    }
-
-    @Test
-    public void bottomUpCountWays() {
-        int n = 4;
-        System.out.println(ArrayAlgorithms.bottomUpCountWays(n));
-    }
-
-    @Test
     public void magicIndexNaive() {
         System.out.println(ArrayAlgorithms.magicIndexNaive(new int[]{8, 9, 2, 3, 4}));
     }
