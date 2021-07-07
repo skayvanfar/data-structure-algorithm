@@ -1,5 +1,6 @@
 package ir.sk.algorithm.tree;
 
+import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 
 /**
@@ -94,4 +95,82 @@ public class FloorCeiling {
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Imagine we are moving down the tree, and assume we are root node.
+     * The comparison yields three possibilities,
+     * <p>
+     * A) Root data is equal to key. We are done, root data is ceil value.
+     * <p>
+     * B) Root data < key value, certainly the ceil value can't be in left subtree.
+     * Proceed to search on right subtree as reduced problem instance.
+     * <p>
+     * C) Root data > key value, the ceil value may be in left subtree.
+     * We may find a node with is larger data than key value in left subtree,
+     * if not the root itself will be ceil node.
+     *
+     * @param node
+     * @param input
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
+    public static int ceilOfBST(TreeNode node, int input) {
+        if (node == null)
+            return -1;
+
+        // We found equal key
+        if (node.value == input) {
+            return node.value;
+        }
+
+        // If root's key is smaller,
+        // ceil must be in right subtree
+        if (node.value < input) {
+            return ceilOfBST(node.right, input);
+        }
+
+        // Else, either left subtree or root
+        // has the ceil value
+        int ceil = ceilOfBST(node.left, input);
+
+        return (ceil >= input) ? ceil : node.value;
+    }
+
+    /**
+     * 1 Start at the root Node.
+     * 2 If root->data == key,
+     *      floor of the key is equal
+     *      to the root.
+     * 3 Else if root->data > key, then
+     *      floor of the key must lie in the
+     *      left subtree.
+     * 4 Else floor may lie in the right subtree
+     *   but only if there is a value lesser than
+     *   or equal to the key.If not, then root is
+     *   the key.
+     *
+     * @param root
+     * @param key
+     * @return
+     */
+    @TimeComplexity("O(Log h)")
+    @SpaceComplexity("O(1)")
+    public static int floorOfBST(TreeNode root, int key) {
+        if (root == null)
+            return Integer.MAX_VALUE;
+
+        /* If root->data is equal to key */
+        if (root.value == key)
+            return root.value;
+
+        /* If root->data is greater than the key */
+        if (root.value > key)
+            return floorOfBST(root.left, key);
+
+        /* Else, the floor may lie in right subtree
+        or may be equal to the root*/
+        int floorValue = floorOfBST(root.right, key);
+        return (floorValue <= key) ? floorValue : root.value;
+    }
 }

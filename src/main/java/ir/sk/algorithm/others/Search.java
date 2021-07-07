@@ -52,6 +52,7 @@ public class Search {
      * If they are not equal, the half in which the target cannot lie is eliminated and the search continues on the remaining half,
      * again taking the middle element to compare to the target value, and repeating this until the target value is found.
      * If the search ends with the remaining half being empty, the target is not in the array
+     * [...]
      *
      * @param array
      * @param key
@@ -135,6 +136,12 @@ public class Search {
                 // search interval is [left, mid-1]
                 right = mid - 1;
             } else if (array[mid] == target) {
+                /* // bruteforce: find a target and then search linearly left
+                while (arr[mid - 1] == item) {
+                    mid--;
+                }
+                return mid;
+                */
                 // shrink right border
                 right = mid - 1;
             }
