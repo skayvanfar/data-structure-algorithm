@@ -27,4 +27,13 @@ public class PythagoreanTest {
         else
             System.out.println("No");
     }
+
+    @Test
+    public void isTripletByHashing() {
+        int ar[] = { 3, 1, 4, 6, 5 };
+        if (Pythagorean.isTripletByHashing(ar) == true)
+            System.out.println("Yes");
+        else
+            System.out.println("No");
+    }
 }
