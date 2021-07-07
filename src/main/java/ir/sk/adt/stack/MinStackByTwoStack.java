@@ -53,7 +53,7 @@ public class MinStackByTwoStack implements MinStack<Integer> {
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return stack.isEmpty();
     }
 
     @Override
