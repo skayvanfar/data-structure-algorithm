@@ -62,8 +62,8 @@ public class GeneralTree<T> {
     @BacktrackingDFS
     public void traverseDFSTailRecursive(GeneralNode<T> node) {
         visit(node);
-        for (int i = 0; i < node.childrenCount(); i++)
-            traverseDFSTailRecursive(node.getChild(i));
+        for (GeneralNode<T> currentNode : node.getChildren())
+            traverseDFSTailRecursive(currentNode);
     }
 
     /**
