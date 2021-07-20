@@ -96,3 +96,16 @@ while (right < s.size()) {
     }
 }
 ```
+
+##template for recurtion by sample:
+How many hairs does Monkey King have? Answer: One plus the rest.
+
+How old are you this year? Answer: One year plus my age of last year, I was born in 1999.
+```
+int func(How old are you this year) {
+    // simplest sub-problem, end condition
+    if (this year equals 1999) return my age 0;
+    // self-calling to decompose problem
+    return func(How old are you last year) + 1;   
+}
+```
