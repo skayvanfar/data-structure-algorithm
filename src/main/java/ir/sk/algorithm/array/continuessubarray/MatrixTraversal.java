@@ -51,4 +51,23 @@ public class MatrixTraversal {
         // Print all the paths that are possible after moving right
         printMatrixNaive(mat, m, n, i, j + 1, path, idx + 1);
     }
+
+    /**
+     * You 2 integers n and m representing an n by m grid, determine the number of ways you can get from the top-left to the bottom-right of the matrix y going only right or down.
+     *
+     * @param m
+     * @param n
+     * @return
+     */
+    public static int numberOfPathsGridNaive(int m, int n) {
+        // If either given row number is first or
+        // given column number is first
+        if (m == 1 || n == 1)
+            return 1;
+
+        // If diagonal movements are allowed then
+        // the last addition is required.
+        return numberOfPathsGridNaive(m - 1, n) + numberOfPathsGridNaive(m, n - 1);
+        // + numberOfPaths(m-1, n-1);
+    }
 }

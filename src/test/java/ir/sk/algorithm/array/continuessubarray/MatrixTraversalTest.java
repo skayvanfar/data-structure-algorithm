@@ -17,9 +17,14 @@ public class MatrixTraversalTest {
     }
 
     @Test
-    public void printMatrix() {
+    public void printMatrixNaive() {
         int mat[][] = { { 1, 2, 3 },
                 { 4, 5, 6 } };
         MatrixTraversal.printMatrixNaive(mat);
+    }
+
+    @Test
+    public void numberOfPathsGridNaive() {
+        System.out.println(MatrixTraversal.numberOfPathsGridNaive(3, 3));
     }
 }
