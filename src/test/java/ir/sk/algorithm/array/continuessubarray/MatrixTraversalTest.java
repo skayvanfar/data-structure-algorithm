@@ -27,4 +27,9 @@ public class MatrixTraversalTest {
     public void numberOfPathsGridNaive() {
         System.out.println(MatrixTraversal.numberOfPathsGridNaive(3, 3));
     }
+
+    @Test
+    public void numberOfPathsDPButtonUp() {
+        System.out.println(MatrixTraversal.numberOfPathsDPButtonUp(3, 3));
+    }
 }
