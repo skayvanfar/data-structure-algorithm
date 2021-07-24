@@ -67,4 +67,10 @@ public class ArrayAlgorithmsTest {
         int n = ar.length;
         System.out.println("Element occurring once is " + ArrayAlgorithms.findSingleNumber(ar) + " ");
     }
+
+    @Test
+    public void minCntCharDeletionsfrequency() {
+        String str = "abbbcccd";
+        System.out.print(ArrayAlgorithms.minCntCharDeletionsfrequency(str.toCharArray()));
+    }
 }

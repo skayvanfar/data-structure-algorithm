@@ -9,9 +9,7 @@ import ir.sk.helper.pattern.XOR;
 import ir.sk.helper.recursiontype.TailRecursion;
 import ir.sk.helper.technique.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by sad.kayvanfar on 1/10/2021.
@@ -271,12 +269,12 @@ public class ArrayAlgorithms {
 
     /**
      * Given a list of numbers, where every number shows up twice except for one number, find that one number.
-     *
+     * <p>
      * Input: [4, 3, 2, 4, 1, 3, 2]
      * Output: 1
-     *
+     * <p>
      * One solution is to check every element if it appears once or not. Once an element with a single occurrence is found, return it. Time complexity of this solution is O(n2).
-     *
+     * <p>
      * A better solution is to use hashing.
      * 1) Traverse all elements and put them in a hash table. Element is used as key and the count of occurrences is used as the value in the hash table.
      * 2) Traverse the array again and print the element with count 1 in the hash table.
@@ -298,5 +296,92 @@ public class ArrayAlgorithms {
             res = res ^ array[i];
 
         return res;
+    }
+
+
+    /**
+     * Given string str, the task is to find the minimum count of characters that need to be deleted from the string such that the frequency of each character of the string is unique.
+     *
+     * Input: str = “ceabaacb”
+     * Output: 2
+     * Explanation:
+     * The frequencies of each distinct character are as follows:
+     * c —> 2
+     * e —> 1
+     * a —> 3
+     * b —> 2
+     * Possible ways to make frequency of each character unique by minimum number of moves are:
+     *
+     * Removing both occurrences of ‘c’ modifies str to “eabaab”
+     * Removing an occurrence of ‘c’ and ‘e’ modifies str to “abaacb”
+     *
+     * @param str
+     * @return
+     */
+    public static int minCntCharDeletionsfrequency(char[] str) {
+        // Stores frequency of each
+        // distinct character of str
+        Map<Character, Integer> mp = new HashMap<>();
+
+        // Store frequency of each distinct
+        // character such that the largest
+        // frequency is present at the top
+        PriorityQueue<Integer> pq = new PriorityQueue<>((x, y) -> Integer.compare(y, x));
+
+        // Stores minimum count of characters
+        // required to be deleted to make
+        // frequency of each character unique
+        int cntChar = 0;
+
+        // Traverse the String
+        for (int i = 0; i < str.length; i++) {
+            // Update frequency of str[i]
+            if (mp.containsKey(str[i])) {
+                mp.put(str[i], mp.get(str[i]) + 1);
+            } else {
+                mp.put(str[i], 1);
+            }
+        }
+
+        // Traverse the map
+        for (Map.Entry<Character, Integer> it : mp.entrySet()) {
+            // Insert current
+            // frequency into pq
+            pq.add(it.getValue());
+        }
+
+        // Traverse the priority_queue
+        while (!pq.isEmpty()) {
+            // Stores topmost
+            // element of pq
+            int frequent = pq.peek();
+
+            // Pop the topmost element
+            pq.remove();
+
+            // If pq is empty
+            if (pq.isEmpty()) {
+
+                // Return cntChar
+                return cntChar;
+            }
+
+            // If frequent and topmost
+            // element of pq are equal
+            if (frequent == pq.peek()) {
+                // If frequency of the topmost
+                // element is greater than 1
+                if (frequent > 1) {
+                    // Insert the decremented
+                    // value of frequent
+                    pq.add(frequent - 1);
+                }
+
+                // Update cntChar
+                cntChar++;
+            }
+        }
+
+        return cntChar;
     }
 }
