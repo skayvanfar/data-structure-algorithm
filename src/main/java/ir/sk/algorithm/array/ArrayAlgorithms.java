@@ -318,6 +318,8 @@ public class ArrayAlgorithms {
      * @param str
      * @return
      */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(256)=O(1)")
     public static int minCntCharDeletionsfrequency(char[] str) {
         // Stores frequency of each
         // distinct character of str
