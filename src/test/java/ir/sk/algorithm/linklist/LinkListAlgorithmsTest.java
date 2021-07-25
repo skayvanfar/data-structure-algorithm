@@ -192,4 +192,15 @@ public class LinkListAlgorithmsTest {
 
         System.out.println(LinkListAlgorithms.removeZeroSum(head, 3));
     }
+
+    @Test
+    public void removeKthFromLinkedList() {
+        SinglyLink<Integer> head = new SinglyLink<>(1);
+        head.next = new SinglyLink(2);
+        head.next.next = new SinglyLink(3);
+        head.next.next.next = new SinglyLink(4);
+        head.next.next.next.next = new SinglyLink(5);
+
+        System.out.println(LinkListAlgorithms.removeKthFromLinkedList(head, 2));
+    }
 }

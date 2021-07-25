@@ -702,4 +702,37 @@ public class LinkListAlgorithms {
         // head node
         return root.next;
     }
+
+    /**
+     * You are given a singly linked list and an integer k. Return the linked list, removing the k-th last element from the list.
+     *
+     * @param head
+     * @param k
+     * @param <T>
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @RunnerPattern
+    @Difficulty(type = DifficultyType.MEDIUM)
+    public static <T> void removeKthFromLinkedList(SinglyLink<T> head, int k) {
+        SinglyLink<T> slowLink = head, fastLink = head;
+        for (int i = 0; i < k; i++) {
+            // If count of nodes in the given
+            // linked list is <= N
+            if (fastLink.next == null) {
+                // If count = N i.e. delete the head node
+                if (i == k - 1)
+                    head = head.next;
+                return;
+            }
+            fastLink = fastLink.next;
+        }
+
+        while (fastLink != null) {
+            fastLink = fastLink.next;
+            slowLink = slowLink.next;
+        }
+
+        slowLink.next = slowLink.next.next;
+    }
 }
