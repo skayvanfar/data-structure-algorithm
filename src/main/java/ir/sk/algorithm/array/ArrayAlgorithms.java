@@ -336,4 +336,60 @@ public class ArrayAlgorithms {
         Arrays.sort(arr); // or using optimization by QuickSelect
         return arr[arr.length - k];
     }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * You are given an array of integers. Return the largest product that can be made by multiplying any 3 integers in the array.
+     *
+     * A simple solution is to check for every triplet using three nested loops.
+     *
+     * @param arr
+     * @param n
+     * @return
+     */
+    @TimeComplexity("O(n^3)")
+    @SpaceComplexity("O(1)")
+    public static int maxProductThreeNaive(int[] arr, int n) {
+        // if size is less than
+        // 3, no triplet exists
+        if (n < 3)
+            return -1;
+
+        // will contain max product
+        int max_product = Integer.MIN_VALUE;
+
+        for (int i = 0; i < n - 2; i++)
+            for (int j = i + 1; j < n - 1; j++)
+                for (int k = j + 1; k < n; k++)
+                    max_product = Math.max(max_product,
+                            arr[i] * arr[j] * arr[k]);
+
+        return max_product;
+    }
+
+    /**
+     * @param arr
+     * @param n
+     * @return
+     */
+    @TimeComplexity("nlogn")
+    @SpaceComplexity("O(1)")
+    public static int maxProductThreeBySorting(int arr[], int n) {
+        // if size is less than 3, no triplet exists
+        if (n < 3) {
+            return -1;
+        }
+
+        // Sort the array in ascending order
+        Arrays.sort(arr);
+
+        // Return the maximum of product of last three
+        // elements and product of first two elements
+        // and last element
+        return Math.max(arr[0] * arr[1] * arr[n - 1],
+                arr[n - 1] * arr[n - 2] * arr[n - 3]);
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////
 }

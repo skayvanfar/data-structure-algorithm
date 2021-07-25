@@ -77,4 +77,32 @@ public class ArrayAlgorithmsTest {
         int ar[] = {3, 5, 2, 4, 6, 8};
         System.out.println(ArrayAlgorithms.findKthLargestBySorting(ar, 3));
     }
+
+    @Test
+    public void maxProductThreeNaive() {
+        int arr[] = {-10, -3, 5, 6, -20};
+        int n = arr.length;
+
+        int max = ArrayAlgorithms.maxProductThreeNaive(arr, n);
+
+        if (max == -1) {
+            System.out.println("No Triplet Exists");
+        } else {
+            System.out.println("Maximum product is " + max);
+        }
+    }
+
+    @Test
+    public void maxProductThreeBySorting() {
+        int arr[] = {-10, -3, 5, 6, -20};
+        int n = arr.length;
+
+        int max = ArrayAlgorithms.maxProductThreeBySorting(arr, n);
+
+        if (max == -1) {
+            System.out.println("No Triplet Exists");
+        } else {
+            System.out.println("Maximum product is " + max);
+        }
+    }
 }
