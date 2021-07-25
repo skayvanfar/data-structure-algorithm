@@ -72,13 +72,18 @@ public class ArrayAlgorithmsTest {
     public void witnesses() {
         int ar[] = {3, 6, 3, 4, 1};
         System.out.println(ArrayAlgorithms.witnesses(ar));
-
     }
 
     @Test
-    public void moveZeros() {
+    public void pushZerosToEnd() {
         int ar[] = {0, 1, 0, 3, 12};
         ArrayAlgorithms.pushZerosToEnd(ar);
         System.out.println(Arrays.toString(ar));
+    }
+
+    @Test
+    public void findKthLargestBySorting() {
+        int ar[] = {3, 5, 2, 4, 6, 8};
+        System.out.println(ArrayAlgorithms.findKthLargestBySorting(ar, 3));
     }
 }

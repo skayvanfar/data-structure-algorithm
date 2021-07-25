@@ -366,4 +366,19 @@ public class ArrayAlgorithms {
         while (count < array.length)
             array[count++] = 0;
     }
+
+    /**
+     * Given a list, find the k-th largest element in the list.
+     * Input: list = [3, 5, 2, 4, 6, 8], k = 3
+     * Output: 5
+     *
+     * @param arr
+     * @param k
+     * @return
+     */
+    @TimeComplexity("O(nlogn)")
+    public static int findKthLargestBySorting(int[] arr, int k) {
+        Arrays.sort(arr);
+        return arr[arr.length - k];
+    }
 }
