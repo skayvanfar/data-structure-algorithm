@@ -26,4 +26,18 @@ public class LinkIntersectionTest {
         SinglyLink<Integer> second = new SinglyLink<>(10, first.next.next);
         LinkIntersection.findIntersectionNaive(first, second).displayLink();
     }
+
+    @Test
+    public void findIntersectionByCache() {
+        SinglyLink<Integer> first = new SinglyLink<>(1, new SinglyLink(2, new SinglyLink(3, new SinglyLink(4, new SinglyLink(5)))));
+        SinglyLink<Integer> second = new SinglyLink<>(10, first.next.next);
+        LinkIntersection.findIntersectionByCache(first, second).displayLink();
+    }
+
+    @Test
+    public void findIntersectionByNodeCounts() {
+        SinglyLink<Integer> first = new SinglyLink<>(1, new SinglyLink(2, new SinglyLink(3, new SinglyLink(4, new SinglyLink(5)))));
+        SinglyLink<Integer> second = new SinglyLink<>(10, first.next.next);
+        LinkIntersection.findIntersectionByNodeCounts(first, second).displayLink();
+    }
 }

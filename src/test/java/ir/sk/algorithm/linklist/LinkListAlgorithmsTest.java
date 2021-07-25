@@ -63,10 +63,6 @@ public class LinkListAlgorithmsTest {
     }
 
     @Test
-    public void findIntersection() {
-    }
-
-    @Test
     public void reverseIterative() {
         SinglyLink head = getLinkList();
         head = LinkListAlgorithms.reverseIterative(head);
