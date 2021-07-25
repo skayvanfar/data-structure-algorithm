@@ -271,12 +271,12 @@ public class ArrayAlgorithms {
 
     /**
      * Given a list of numbers, where every number shows up twice except for one number, find that one number.
-     *
+     * <p>
      * Input: [4, 3, 2, 4, 1, 3, 2]
      * Output: 1
-     *
+     * <p>
      * One solution is to check every element if it appears once or not. Once an element with a single occurrence is found, return it. Time complexity of this solution is O(n2).
-     *
+     * <p>
      * A better solution is to use hashing.
      * 1) Traverse all elements and put them in a hash table. Element is used as key and the count of occurrences is used as the value in the hash table.
      * 2) Traverse the array again and print the element with count 1 in the hash table.
@@ -298,5 +298,40 @@ public class ArrayAlgorithms {
             res = res ^ array[i];
 
         return res;
+    }
+
+    /**
+     * There are n people lined up, and each have a height represented as an integer.
+     * A murder has happened right in front of them,
+     * and only people who are taller than everyone in front of them are able to see what has happened.
+     * How many witnesses are there?
+     *
+     * Example:
+     * Input: [3, 6, 3, 4, 1]
+     * Output: 3
+     * Explanation: Only [6, 4, 1] were able to see in front of them.
+     *  #
+     *  #
+     *  # #
+     * ####
+     * ####
+     * #####
+     * 36341                                 x (murder scene)
+     *
+     * @param array
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
+    public static int witnesses(int[] array) {
+        int count = 1;
+        int max = array[array.length - 1];
+        for (int i = array.length - 1; i >= 0; i--) {
+            if (array[i] > max) {
+                count++;
+                max = array[i];
+            }
+        }
+        return count;
     }
 }

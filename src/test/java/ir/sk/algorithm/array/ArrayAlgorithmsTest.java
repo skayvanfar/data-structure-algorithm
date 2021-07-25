@@ -67,4 +67,11 @@ public class ArrayAlgorithmsTest {
         int n = ar.length;
         System.out.println("Element occurring once is " + ArrayAlgorithms.findSingleNumber(ar) + " ");
     }
+
+    @Test
+    public void witnesses() {
+        int ar[] = {3, 6, 3, 4, 1};
+        System.out.println(ArrayAlgorithms.witnesses(ar));
+
+    }
 }

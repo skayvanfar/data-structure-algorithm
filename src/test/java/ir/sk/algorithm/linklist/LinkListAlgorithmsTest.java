@@ -201,6 +201,6 @@ public class LinkListAlgorithmsTest {
         head.next.next.next = new SinglyLink(4);
         head.next.next.next.next = new SinglyLink(5);
 
-        System.out.println(LinkListAlgorithms.removeKthFromLinkedList(head, 2));
+        LinkListAlgorithms.removeKthFromLinkedList(head, 2);
     }
 }
