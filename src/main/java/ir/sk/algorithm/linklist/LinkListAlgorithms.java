@@ -649,6 +649,7 @@ public class LinkListAlgorithms {
 
         // Map to store the sum and reference
         // of the Node
+        @HashingIndexPattern
         Map<Integer, SinglyLink<Integer>> umap = new HashMap<>();
 
         umap.put(0, root);
