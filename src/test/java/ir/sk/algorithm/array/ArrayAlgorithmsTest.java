@@ -74,4 +74,11 @@ public class ArrayAlgorithmsTest {
         System.out.println(ArrayAlgorithms.witnesses(ar));
 
     }
+
+    @Test
+    public void moveZeros() {
+        int ar[] = {0, 1, 0, 3, 12};
+        ArrayAlgorithms.pushZerosToEnd(ar);
+        System.out.println(Arrays.toString(ar));
+    }
 }

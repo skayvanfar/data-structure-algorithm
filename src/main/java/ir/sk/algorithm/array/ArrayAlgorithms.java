@@ -1,6 +1,8 @@
 package ir.sk.algorithm.array;
 
+import ir.sk.algorithm.basic.Utils;
 import ir.sk.helper.*;
+import ir.sk.helper.complexity.InPlace;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.MultiplePointerPattern;
@@ -305,14 +307,14 @@ public class ArrayAlgorithms {
      * A murder has happened right in front of them,
      * and only people who are taller than everyone in front of them are able to see what has happened.
      * How many witnesses are there?
-     *
+     * <p>
      * Example:
      * Input: [3, 6, 3, 4, 1]
      * Output: 3
      * Explanation: Only [6, 4, 1] were able to see in front of them.
-     *  #
-     *  #
-     *  # #
+     * #
+     * #
+     * # #
      * ####
      * ####
      * #####
@@ -334,5 +336,34 @@ public class ArrayAlgorithms {
             }
         }
         return count;
+    }
+
+    /**
+     * Given an array nums, write a function to move all 0's to the end of it while maintaining the relative order of the non-zero elements.
+     * Input: [0,1,0,3,12]
+     * Output: [1,3,12,0,0]
+     *
+     * @param array
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
+    @InPlace
+    @Difficulty(type = DifficultyType.EASY)
+    public static void pushZerosToEnd(int[] array) {
+        int count = 0;  // Count of non-zero elements
+
+        // Traverse the array. If element encountered is
+        // non-zero, then replace the element at index 'count'
+        // with this element
+        for (int i = 0; i < array.length; i++)
+            if (array[i] != 0)
+                array[count++] = array[i]; // here count is
+        // incremented
+
+        // Now all non-zero elements have been shifted to
+        // front and 'count' is set as index of first 0.
+        // Make all elements 0 from count to end.
+        while (count < array.length)
+            array[count++] = 0;
     }
 }
