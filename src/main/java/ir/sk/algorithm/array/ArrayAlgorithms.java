@@ -377,8 +377,9 @@ public class ArrayAlgorithms {
      * @return
      */
     @TimeComplexity("O(nlogn)")
+    @Difficulty(type = DifficultyType.MEDIUM)
     public static int findKthLargestBySorting(int[] arr, int k) {
-        Arrays.sort(arr);
+        Arrays.sort(arr); // or using optimization by QuickSelect
         return arr[arr.length - k];
     }
 }
