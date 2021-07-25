@@ -369,6 +369,9 @@ public class ArrayAlgorithms {
     }
 
     /**
+     * Sort the array using some efficient in-place sorting algorithm in ascending order.
+     * Return the maximum of product of last three elements of the array and product of first two elements and last element.
+     *
      * @param arr
      * @param n
      * @return
