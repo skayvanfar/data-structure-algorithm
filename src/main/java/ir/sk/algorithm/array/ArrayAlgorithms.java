@@ -323,6 +323,7 @@ public class ArrayAlgorithms {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
+    @Difficulty(type = DifficultyType.EASY)
     public static int witnesses(int[] array) {
         int count = 1;
         int max = array[array.length - 1];
