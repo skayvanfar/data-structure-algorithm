@@ -638,6 +638,7 @@ public class LinkListAlgorithms {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
+    @Difficulty(type = DifficultyType.HARD)
     public static SinglyLink<Integer> removeZeroSum(SinglyLink<Integer> head, int k) {
         // Root node initialise to 0
         SinglyLink<Integer> root = new SinglyLink<>(0);
