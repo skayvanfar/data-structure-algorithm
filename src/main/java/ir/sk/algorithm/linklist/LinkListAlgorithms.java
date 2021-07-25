@@ -14,9 +14,7 @@ import ir.sk.helper.pattern.MultiplePointerPattern;
 import ir.sk.helper.pattern.RunnerPattern;
 import ir.sk.helper.recursiontype.HeadRecursion;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * Created by sad.kayvanfar on 9/1/2020.
@@ -626,5 +624,80 @@ public class LinkListAlgorithms {
         }
 
         return slow;
+    }
+
+    /**
+     * Delete continuous nodes with sum K from a given linked list
+     *
+     * Input: Linked List: 1 -> 2 -> -3 -> 3 -> 1, K = 3
+     *
+     * Output: -3 -> 1
+     * @param head
+     * @param k
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
+    public static SinglyLink<Integer> removeZeroSum(SinglyLink<Integer> head, int k) {
+        // Root node initialise to 0
+        SinglyLink<Integer> root = new SinglyLink<>(0);
+
+        // Append at the front of the given
+        // Linked List
+        root.next = head;
+
+        // Map to store the sum and reference
+        // of the Node
+        Map<Integer, SinglyLink<Integer>> umap = new HashMap<>();
+
+        umap.put(0, root);
+
+        // To store the sum while traversing
+        int sum = 0;
+
+        // Traversing the Linked List
+        while (head != null) {
+
+            // Find sum
+            sum += head.data;
+
+            // If found value with (sum - K)
+            if (umap.containsKey(sum - k)) {
+
+                SinglyLink<Integer> prev = umap.get(sum - k);
+                SinglyLink<Integer> start = prev;
+
+                // Delete all the node
+                // traverse till current node
+                int aux = sum;
+
+                // Update sum
+                sum = sum - k;
+
+                // Traverse till current head
+                while (prev != head) {
+                    prev = prev.next;
+                    aux += prev.data;
+                    if (prev != head) {
+                        umap.remove(aux);
+                    }
+                }
+
+                // Update the start value to
+                // the next value of current head
+                start.next = head.next;
+            }
+
+            // If (sum - K) value not found
+            else if (!umap.containsKey(sum)) {
+                umap.put(sum, head);
+            }
+
+            head = head.next;
+        }
+
+        // Return the value of updated
+        // head node
+        return root.next;
     }
 }

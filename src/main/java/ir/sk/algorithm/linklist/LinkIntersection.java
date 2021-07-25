@@ -161,4 +161,5 @@ public class LinkIntersection {
         }
         return current;
     }
+
 }

@@ -181,4 +181,15 @@ public class LinkListAlgorithmsTest {
 
         LinkListAlgorithms.isPalindrome(head);
     }
+
+    @Test
+    public void removeZeroSum() {
+        SinglyLink<Integer> head = new SinglyLink<>(1);
+        head.next = new SinglyLink(2);
+        head.next.next = new SinglyLink(-3);
+        head.next.next.next = new SinglyLink(3);
+        head.next.next.next.next = new SinglyLink(1);
+
+        System.out.println(LinkListAlgorithms.removeZeroSum(head, 3));
+    }
 }
