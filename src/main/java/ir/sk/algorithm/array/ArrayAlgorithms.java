@@ -1,6 +1,7 @@
 package ir.sk.algorithm.array;
 
 import ir.sk.algorithm.basic.Utils;
+import ir.sk.algorithm.others.Sort;
 import ir.sk.helper.*;
 import ir.sk.helper.complexity.InPlace;
 import ir.sk.helper.complexity.SpaceComplexity;
@@ -11,9 +12,7 @@ import ir.sk.helper.pattern.XOR;
 import ir.sk.helper.recursiontype.TailRecursion;
 import ir.sk.helper.technique.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by sad.kayvanfar on 1/10/2021.
@@ -341,7 +340,7 @@ public class ArrayAlgorithms {
 
     /**
      * You are given an array of integers. Return the largest product that can be made by multiplying any 3 integers in the array.
-     *
+     * <p>
      * A simple solution is to check for every triplet using three nested loops.
      *
      * @param arr
@@ -395,4 +394,58 @@ public class ArrayAlgorithms {
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * You are given an array. Each element represents the price of a stock on that particular day. Calculate and return the maximum profit you can make from buying and selling that stock only once.
+     *
+     * For example: [9, 11, 8, 5, 7, 10]
+     *
+     * Here, the optimal trade is to buy when the price is 5, and sell when it is 10, so the return value should be 5 (profit = 10 - 5 = 5).
+     *
+     * (or )Given an array arr[] of integers, find out the maximum difference between any two elements such that larger element appears after the smaller number.
+     * See also {@link #maximumDifference(int[])} )}
+     * @param stock
+     * @return
+     */
+    @TimeComplexity("O(nlogn)")
+    @SpaceComplexity("O(n)")
+    @Difficulty(type = DifficultyType.MEDIUM)
+    public static int buySellStock(int[] stock) {
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>(Comparator.reverseOrder());
+        int max = Integer.MIN_VALUE;
+        for (int price : stock) {
+            priorityQueue.add(price);
+        }
+
+        for (int price : stock) {
+            max = Math.max(max, priorityQueue.peek() - price);
+            priorityQueue.remove(price);
+        }
+        return max;
+    }
+
+    /**
+     * Given an array arr[] of integers, find out the maximum difference between any two elements such that larger element appears after the smaller number.
+     *
+     * See also {@link #buySellStock(int[])}
+     *
+     * @param arr
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
+    @Difficulty(type = DifficultyType.MEDIUM)
+    public static int maximumDifference(int arr[]) {
+        int maxDiff = arr[1] - arr[0];
+        int minElement = arr[0];
+        int i;
+        for (i = 1; i < arr.length; i++) {
+            if (arr[i] - minElement > maxDiff)
+                maxDiff = arr[i] - minElement;
+            if (arr[i] < minElement)
+                minElement = arr[i];
+        }
+        return maxDiff;
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
 }

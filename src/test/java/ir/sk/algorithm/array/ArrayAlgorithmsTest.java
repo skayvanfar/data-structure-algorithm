@@ -105,4 +105,22 @@ public class ArrayAlgorithmsTest {
             System.out.println("Maximum product is " + max);
         }
     }
+
+    @Test
+    public void buySellStock() {
+        int arr[] = {9, 11, 8, 5, 7, 10};
+        int n = arr.length;
+
+        int max = ArrayAlgorithms.buySellStock(arr);
+        System.out.println(max);
+    }
+
+    @Test
+    public void maximumDifference() {
+        int arr[] = {9, 11, 8, 5, 7, 10};
+        int n = arr.length;
+
+        int max = ArrayAlgorithms.maximumDifference(arr);
+        System.out.println(max);
+    }
 }
