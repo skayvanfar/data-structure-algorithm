@@ -1,5 +1,11 @@
 package ir.sk.algorithm.others;
 
+import ir.sk.helper.Difficulty;
+import ir.sk.helper.DifficultyType;
+import ir.sk.helper.Implementation;
+import ir.sk.helper.ImplementationType;
+import ir.sk.helper.complexity.TimeComplexity;
+
 /**
  * Created by sad.kayvanfar on 9/6/2020.
  */
@@ -116,4 +122,46 @@ public class BitManipulation {
         int mask = ~(1 << i);
         return (num & mask) | (value << i);
     }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * count the number of 1s in the binary representation of an integer.
+     *
+     * @param n
+     * @return
+     */
+    @TimeComplexity("O(log n)")
+    @Difficulty(type = DifficultyType.MEDIUM)
+    @Implementation(type = ImplementationType.Iterative)
+    public static int countSetBits(int n) {
+        int count = 0;
+        while (n > 0) {
+            count += n & 1;
+            n >>= 1;
+        }
+        return count;
+    }
+
+    /**
+     * recursive function to count set bits
+     * @param n
+     * @return
+     */
+    @TimeComplexity("O(log n)")
+    @Difficulty(type = DifficultyType.MEDIUM)
+    @Implementation(type = ImplementationType.Recursive)
+    public static int countSetBitsRecursive(int n) {
+        // base case
+        if (n == 0)
+            return 0;
+
+        else
+
+            // if last bit set add 1 else add 0
+            return (n & 1) + countSetBits(n >> 1);
+    }
+
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
 }
