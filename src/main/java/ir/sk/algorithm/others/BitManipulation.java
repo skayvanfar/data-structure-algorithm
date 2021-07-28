@@ -166,24 +166,4 @@ public class BitManipulation {
 
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
-
-    // [ )
-    public static int maxSoFar(int[] array) {
-        int start = 0, end = 0;
-        int curMax = Integer.MIN_VALUE;
-        int maxSoFar = Integer.MIN_VALUE;
-
-        while (end < array.length) {
-            curMax += array[end];
-            end++;
-
-            if (curMax < maxSoFar) {
-                curMax -= array[start];
-                start++;
-            } else {
-                maxSoFar =curMax;
-            }
-        }
-        return maxSoFar;
-    }
 }
