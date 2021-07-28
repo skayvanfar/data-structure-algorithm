@@ -128,6 +128,8 @@ public class BitManipulation {
     /**
      * count the number of 1s in the binary representation of an integer.
      *
+     * Loop through all bits in an integer, check if a bit is set and if it is, then increment the set bit count.
+     *
      * @param n
      * @return
      */
