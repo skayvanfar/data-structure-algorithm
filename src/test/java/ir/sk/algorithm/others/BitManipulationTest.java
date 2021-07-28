@@ -47,4 +47,10 @@ public class BitManipulationTest {
     public void countSetBitsRecursive() {
         System.out.println(BitManipulation.countSetBitsRecursive(9));
     }
+
+    @Test
+    public void maxSoFar() {
+        int[] arr = new int[]{1, 5, 2, 4, 9, 7};
+        System.out.println(BitManipulation.maxSoFar(arr));
+    }
 }
