@@ -3,6 +3,7 @@ package ir.sk.algorithm.tree;
 import ir.sk.helper.Difficulty;
 import ir.sk.helper.DifficultyType;
 import ir.sk.helper.Point;
+import ir.sk.helper.RecurrenceRelation;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 
@@ -17,13 +18,14 @@ public class TreeAlgorithms {
      * @param array
      * @return
      */
-    public static TreeNode createMinimalBSTByOrderedArray(int array[]) {
-        return createMinimalBSTByOrderedArray(array, 0, array.length - 1);
+    public static TreeNode createBalancedBSTBySortedArray(int array[]) {
+        return createBalancedBSTBySortedArray(array, 0, array.length - 1);
     }
 
     /**
-     * Tree: Given a sorted (increasing order) array with unique integer elements, write an
-     * algorithm to create a binary search tree with minimal height.
+     * Given a sorted list of numbers, change it into a balanced binary search tree.
+     * You can assume there will be no duplicate numbers in the list.
+     *
      * <p>
      * The algorithm is as follows:
      * 1. Insert into the tree the middle element of the array.
@@ -36,14 +38,16 @@ public class TreeAlgorithms {
      * @param end
      * @return
      */
-    private static TreeNode createMinimalBSTByOrderedArray(int arr[], int start, int end) {
+    @TimeComplexity("O(n)")
+    @RecurrenceRelation("T(n) = 2T(n/2) + C")
+    private static TreeNode createBalancedBSTBySortedArray(int arr[], int start, int end) {
         if (end < start) {
             return null;
         }
         int mid = (start + end) / 2;
         TreeNode n = new TreeNode(arr[mid]);
-        n.left = createMinimalBSTByOrderedArray(arr, start, mid - 1);
-        n.right = createMinimalBSTByOrderedArray(arr, mid + 1, end);
+        n.left = createBalancedBSTBySortedArray(arr, start, mid - 1);
+        n.right = createBalancedBSTBySortedArray(arr, mid + 1, end);
         return n;
     }
 
@@ -527,4 +531,5 @@ public class TreeAlgorithms {
         // Recur for the right subtree
         fixBSTUtil(currentNode.right);
     }
+
 }

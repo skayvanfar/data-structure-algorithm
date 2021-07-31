@@ -141,4 +141,9 @@ public class TreeAlgorithmsTest {
         printInorder(node.right);
     }
 
+    @Test
+    public void createBST() {
+        TreeNode node = TreeAlgorithms.createBST(new int[] {1, 2, 3, 4, 5, 6, 7},0, 7);
+        System.out.println(node);
+    }
 }
