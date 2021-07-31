@@ -292,6 +292,7 @@ public class TreeAlgorithms {
      */
     @TimeComplexity("O(n^2)")
     @Difficulty(type = DifficultyType.MEDIUM)
+    @Point("In a Preorder sequence, the leftmost element is the root of the tree.")
     private static Node buildTreeByInOrderAndPreOrder(char[] preorder, char[] inorder, PreIndex preIndex, int inStart, int inEnd) {
         if (inStart > inEnd)
             return null;
@@ -595,4 +596,5 @@ public class TreeAlgorithms {
 
         return Math.max(leftHt, rightHt) + 1;
     }
+
 }
