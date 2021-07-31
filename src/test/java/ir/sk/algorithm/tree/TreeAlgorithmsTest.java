@@ -142,8 +142,12 @@ public class TreeAlgorithmsTest {
     }
 
     @Test
-    public void createBST() {
-        TreeNode node = TreeAlgorithms.createBST(new int[] {1, 2, 3, 4, 5, 6, 7},0, 7);
-        System.out.println(node);
+    public void deepestNodeInBinaryTree() {
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        TreeAlgorithms.deepestNodeInBinaryTree(root, 0);
+        System.out.println(TreeAlgorithms.maxLevel);
     }
 }

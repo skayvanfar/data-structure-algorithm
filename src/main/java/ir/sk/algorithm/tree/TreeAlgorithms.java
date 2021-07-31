@@ -6,6 +6,7 @@ import ir.sk.helper.Point;
 import ir.sk.helper.RecurrenceRelation;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
+import ir.sk.helper.technique.BacktrackingDFS;
 
 import java.util.*;
 
@@ -530,6 +531,27 @@ public class TreeAlgorithms {
 
         // Recur for the right subtree
         fixBSTUtil(currentNode.right);
+    }
+
+    static int maxLevel = -1;
+
+    /**
+     * The idea is to do Inorder traversal of given binary tree. While doing Inorder traversal,
+     * we pass level of current node also. We keep track of maximum level seen so far and value of deepest node seen so far.
+     *
+     * @param treeNode
+     * @param level depth
+     */
+    @Difficulty(type = DifficultyType.MEDIUM)
+    @BacktrackingDFS
+    @TimeComplexity("O(n)")
+    public static void deepestNodeInBinaryTree(Node treeNode, int level) {
+        if (treeNode != null)
+        {
+            deepestNodeInBinaryTree(treeNode.left, ++level);
+            maxLevel = Math.max(maxLevel, level);
+            deepestNodeInBinaryTree(treeNode.right, level);
+        }
     }
 
 }
