@@ -541,12 +541,15 @@ public class TreeAlgorithms {
      * The idea is to do Inorder traversal of given binary tree. While doing Inorder traversal,
      * we pass level of current node also. We keep track of maximum level seen so far and value of deepest node seen so far.
      *
+     * See also {@link #deepestNodeInBinaryTreeByReturn(Node)}
+     *
      * @param treeNode
      * @param level    depth
      */
     @Difficulty(type = DifficultyType.MEDIUM)
     @BacktrackingDFS
     @TimeComplexity("O(n)")
+    @Point("tree traversal and passing parameter")
     public static void deepestNodeInBinaryTreeBYParameter(Node treeNode, int level) {
         if (treeNode != null) {
             deepestNodeInBinaryTreeBYParameter(treeNode.left, ++level);
@@ -558,11 +561,13 @@ public class TreeAlgorithms {
     /**
      * The idea here is to find the height of the given tree
      *
+     * See also {@link #deepestNodeInBinaryTreeBYParameter(Node, int)}
      * @param treeNode
      * @return
      */
     @TimeComplexity("O(n)")
     @Difficulty(type = DifficultyType.MEDIUM)
+    @Point("tree traversal and returning")
     public static int deepestNodeInBinaryTreeByReturn(Node treeNode) {
         if (treeNode == null)
             return 0;
