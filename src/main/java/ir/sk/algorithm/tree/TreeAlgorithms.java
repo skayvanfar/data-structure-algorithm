@@ -503,7 +503,7 @@ public class TreeAlgorithms {
      *
      * @param currentNode
      */
-    public static void fixBSTUtil(Node<Integer> currentNode) {
+    private static void fixBSTUtil(Node<Integer> currentNode) {
         if (currentNode == null)
             return;
 
@@ -535,23 +535,43 @@ public class TreeAlgorithms {
 
     static int maxLevel = -1;
 
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     /**
      * The idea is to do Inorder traversal of given binary tree. While doing Inorder traversal,
      * we pass level of current node also. We keep track of maximum level seen so far and value of deepest node seen so far.
      *
      * @param treeNode
-     * @param level depth
+     * @param level    depth
      */
     @Difficulty(type = DifficultyType.MEDIUM)
     @BacktrackingDFS
     @TimeComplexity("O(n)")
-    public static void deepestNodeInBinaryTree(Node treeNode, int level) {
-        if (treeNode != null)
-        {
-            deepestNodeInBinaryTree(treeNode.left, ++level);
+    public static void deepestNodeInBinaryTreeBYParameter(Node treeNode, int level) {
+        if (treeNode != null) {
+            deepestNodeInBinaryTreeBYParameter(treeNode.left, ++level);
             maxLevel = Math.max(maxLevel, level);
-            deepestNodeInBinaryTree(treeNode.right, level);
+            deepestNodeInBinaryTreeBYParameter(treeNode.right, level);
         }
     }
 
+    /**
+     * The idea here is to find the height of the given tree
+     *
+     * @param treeNode
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @Difficulty(type = DifficultyType.MEDIUM)
+    public static int deepestNodeInBinaryTreeByReturn(Node treeNode) {
+        if (treeNode == null)
+            return 0;
+
+        int left = deepestNodeInBinaryTreeByReturn(treeNode.left) + 1;
+        int right = deepestNodeInBinaryTreeByReturn(treeNode.right) + 1;
+
+        return Math.max(left, right);
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }

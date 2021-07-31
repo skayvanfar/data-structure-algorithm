@@ -142,12 +142,22 @@ public class TreeAlgorithmsTest {
     }
 
     @Test
-    public void deepestNodeInBinaryTree() {
+    public void deepestNodeInBinaryTreeBYParameter() {
         Node root = new Node(1);
         root.left = new Node(2);
         root.right = new Node(3);
         root.left.left = new Node(4);
-        TreeAlgorithms.deepestNodeInBinaryTree(root, 0);
+        TreeAlgorithms.deepestNodeInBinaryTreeBYParameter(root, 0);
         System.out.println(TreeAlgorithms.maxLevel);
+    }
+
+    @Test
+    public void deepestNodeInBinaryTreeByReturn() {
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        int depth = TreeAlgorithms.deepestNodeInBinaryTreeByReturn(root);
+        System.out.println(depth);
     }
 }
