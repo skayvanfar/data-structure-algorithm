@@ -540,7 +540,7 @@ public class TreeAlgorithms {
     /**
      * The idea is to do Inorder traversal of given binary tree. While doing Inorder traversal,
      * we pass level of current node also. We keep track of maximum level seen so far and value of deepest node seen so far.
-     *
+     * <p>
      * See also {@link #deepestNodeInBinaryTreeByReturn(Node)}
      *
      * @param treeNode
@@ -560,8 +560,9 @@ public class TreeAlgorithms {
 
     /**
      * The idea here is to find the height of the given tree
-     *
+     * <p>
      * See also {@link #deepestNodeInBinaryTreeBYParameter(Node, int)}
+     *
      * @param treeNode
      * @return
      */
@@ -579,4 +580,21 @@ public class TreeAlgorithms {
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * find the height of the given tree
+     *
+     * @param root
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @Point("tree traversal and returning")
+    public static int heightOfBT(Node root) {
+        if (root == null) return 0;
+
+        int leftHt = heightOfBT(root.left);
+        int rightHt = heightOfBT(root.right);
+
+        return Math.max(leftHt, rightHt) + 1;
+    }
 }
