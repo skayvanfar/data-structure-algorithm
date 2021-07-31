@@ -60,35 +60,33 @@ public class TreeAlgorithms {
      * public int value;
      * }
      */
-    private static Integer lastPrinted = null;
 
-    /*
-     * Implement a function to check if a binary tree is a valid binary search tree.
-     * */
+    //////////////////////////////////////////////////////////////////////////////////////////////////////
+    private static Integer prevNode = null;
 
     /**
      * Implement a function to check if a binary tree is a valid binary search tree.
      * In-Order Traversal
      *
-     * @param n
+     * @param node
      * @return
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
-    public static boolean checkValidBSTByInorder(TreeNode n) {
-        if (n == null) return true;
+    public static boolean checkValidBSTByInorder(TreeNode node) {
+        if (node == null) return true;
 
         // II Check I recurse left
-        if (!checkValidBSTByInorder(n.left)) return false;
+        if (!checkValidBSTByInorder(node.left)) return false;
 
         // II Check current
-        if (lastPrinted != null && n.value <= lastPrinted) {
+        if (prevNode != null && node.value <= prevNode) {
             return false;
         }
-        lastPrinted = n.value;
+        prevNode = node.value;
 
         // Check I recurse right
-        if (!checkValidBSTByInorder(n.right)) return false;
+        if (!checkValidBSTByInorder(node.right)) return false;
 
         return true;
     }
