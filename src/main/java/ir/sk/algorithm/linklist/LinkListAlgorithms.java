@@ -14,9 +14,7 @@ import ir.sk.helper.pattern.MultiplePointerPattern;
 import ir.sk.helper.pattern.RunnerPattern;
 import ir.sk.helper.recursiontype.HeadRecursion;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * Created by sad.kayvanfar on 9/1/2020.
@@ -458,91 +456,7 @@ public class LinkListAlgorithms {
         return size;
     }
 
-    /**
-     * 1. Run through each linked list to get the lengths and the tails.
-     * 2. Compare the tails. If they are different (by reference, not by value), return immediately. There is no intersection.
-     * 3. Set two pointers to the start of each linked list.
-     * 4. On the longer linked list, advance its pointer by the difference in lengths.
-     * 5. Now, traverse on each linked list until the pointers are the same.
-     *
-     * @param listl
-     * @param list2
-     * @return
-     */
-    @TimeComplexity("O(A+B) where A and Bare the lengths of the two linked lists")
-    @SpaceComplexity("O(1)")
-    public static <T> SinglyLink<T> findIntersection(SinglyLink<T> listl, SinglyLink<T> list2) {
-        if (listl == null || list2 == null) return null;
 
-
-        /* Get tail and sizes. */
-        Result2 resultl = getTailAndSize(listl);
-        Result2 result2 = getTailAndSize(list2);
-
-        /* If different tail nodes, then there's no intersection. */
-        if (resultl.tail != result2.tail) {
-            return null;
-        }
-        /* Set pointers to the start of each linked list. */
-        SinglyLink<T> shorter = resultl.size < result2.size ? listl : list2;
-        SinglyLink<T> longer = resultl.size < result2.size ? list2 : listl;
-
-        /* Advance the pointer for the longer linked list by difference in lengths. */
-        longer = getKthNode(longer, Math.abs(resultl.size - result2.size));
-
-        /* Move both pointers until you have a collision. */
-        while (shorter != longer) {
-            shorter = shorter.next;
-            longer = longer.next;
-        }
-        /* Return either one. */
-        return longer;
-    }
-
-    /**
-     * a wrapper class
-     */
-    private static class Result2 {
-        public SinglyLink tail;
-        public int size;
-
-        public Result2(SinglyLink tail, int size) {
-            this.tail = tail;
-            this.size = size;
-        }
-    }
-
-    /**
-     * @param list
-     * @return
-     */
-    private static <T> Result2 getTailAndSize(SinglyLink<T> list) {
-        if (list == null) return null;
-
-        int size = 1;
-        SinglyLink<T> current = list;
-        while (current.next != null) {
-            size++;
-            current = current.next;
-        }
-        return new Result2(current, size);
-    }
-
-    /**
-     * return kth node.
-     *
-     * @param head
-     * @param k
-     * @return
-     */
-    private static <T> SinglyLink<T> getKthNode(SinglyLink<T> head, int k) {
-        SinglyLink<T> current = head;
-        while (k > 0 && current != null) {
-            current = current.next;
-            k--;
-        }
-        return current;
-    }
 
 
     /**
@@ -710,5 +624,115 @@ public class LinkListAlgorithms {
         }
 
         return slow;
+    }
+
+    /**
+     * Delete continuous nodes with sum K from a given linked list
+     *
+     * Input: Linked List: 1 -> 2 -> -3 -> 3 -> 1, K = 3
+     *
+     * Output: -3 -> 1
+     * @param head
+     * @param k
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
+    @Difficulty(type = DifficultyType.HARD)
+    public static SinglyLink<Integer> removeZeroSum(SinglyLink<Integer> head, int k) {
+        // Root node initialise to 0
+        SinglyLink<Integer> root = new SinglyLink<>(0);
+
+        // Append at the front of the given
+        // Linked List
+        root.next = head;
+
+        // Map to store the sum and reference
+        // of the Node
+        @HashingIndexPattern
+        Map<Integer, SinglyLink<Integer>> umap = new HashMap<>();
+
+        umap.put(0, root);
+
+        // To store the sum while traversing
+        int sum = 0;
+
+        // Traversing the Linked List
+        while (head != null) {
+
+            // Find sum
+            sum += head.data;
+
+            // If found value with (sum - K)
+            if (umap.containsKey(sum - k)) {
+
+                SinglyLink<Integer> prev = umap.get(sum - k);
+                SinglyLink<Integer> start = prev;
+
+                // Delete all the node
+                // traverse till current node
+                int aux = sum;
+
+                // Update sum
+                sum = sum - k;
+
+                // Traverse till current head
+                while (prev != head) {
+                    prev = prev.next;
+                    aux += prev.data;
+                    if (prev != head) {
+                        umap.remove(aux);
+                    }
+                }
+
+                // Update the start value to
+                // the next value of current head
+                start.next = head.next;
+            }
+
+            // If (sum - K) value not found
+            else if (!umap.containsKey(sum)) {
+                umap.put(sum, head);
+            }
+
+            head = head.next;
+        }
+
+        // Return the value of updated
+        // head node
+        return root.next;
+    }
+
+    /**
+     * You are given a singly linked list and an integer k. Return the linked list, removing the k-th last element from the list.
+     *
+     * @param head
+     * @param k
+     * @param <T>
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @RunnerPattern
+    @Difficulty(type = DifficultyType.MEDIUM)
+    public static <T> void removeKthFromLinkedList(SinglyLink<T> head, int k) {
+        SinglyLink<T> slowLink = head, fastLink = head;
+        for (int i = 0; i < k; i++) {
+            // If count of nodes in the given
+            // linked list is <= N
+            if (fastLink.next == null) {
+                // If count = N i.e. delete the head node
+                if (i == k - 1)
+                    head = head.next;
+                return;
+            }
+            fastLink = fastLink.next;
+        }
+
+        while (fastLink != null) {
+            fastLink = fastLink.next;
+            slowLink = slowLink.next;
+        }
+
+        slowLink.next = slowLink.next.next;
     }
 }

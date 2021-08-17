@@ -21,15 +21,6 @@ public class ArrayAlgorithmsTest {
     }
 
     @Test
-    public void findWord() {
-        boolean result = ArrayAlgorithms.findWord(new char[][]{{'F', 'A', 'C', 'I'},
-                {'O', 'B', 'Q', 'P'},
-                {'A', 'N', 'O', 'B'},
-                {'M', 'A', 'S', 'S'}}, "FOAM".toCharArray());
-        System.out.println(result);
-    }
-
-    @Test
     public void loopExistsInCircularArray() {
         System.out.println(ArrayAlgorithms.loopExistsInCircularArray(new int[]{1, 2, -1, 2, 2}));
         System.out.println(ArrayAlgorithms.loopExistsInCircularArray(new int[]{2, 2, -1, 2}));
@@ -66,6 +57,71 @@ public class ArrayAlgorithmsTest {
         int ar[] = {2, 3, 5, 4, 5, 3, 4};
         int n = ar.length;
         System.out.println("Element occurring once is " + ArrayAlgorithms.findSingleNumber(ar) + " ");
+    }
+
+    @Test
+    public void witnesses() {
+        int ar[] = {3, 6, 3, 4, 1};
+        System.out.println(ArrayAlgorithms.witnesses(ar));
+    }
+
+    @Test
+    public void pushZerosToEnd() {
+        int ar[] = {0, 1, 0, 3, 12};
+        ArrayAlgorithms.pushZerosToEnd(ar);
+        System.out.println(Arrays.toString(ar));
+    }
+
+    @Test
+    public void findKthLargestBySorting() {
+        int ar[] = {3, 5, 2, 4, 6, 8};
+        System.out.println(ArrayAlgorithms.findKthLargestBySorting(ar, 3));
+    }
+
+    @Test
+    public void maxProductThreeNaive() {
+        int arr[] = {-10, -3, 5, 6, -20};
+        int n = arr.length;
+
+        int max = ArrayAlgorithms.maxProductThreeNaive(arr, n);
+
+        if (max == -1) {
+            System.out.println("No Triplet Exists");
+        } else {
+            System.out.println("Maximum product is " + max);
+        }
+    }
+
+    @Test
+    public void maxProductThreeBySorting() {
+        int arr[] = {-10, -3, 5, 6, -20};
+        int n = arr.length;
+
+        int max = ArrayAlgorithms.maxProductThreeBySorting(arr, n);
+
+        if (max == -1) {
+            System.out.println("No Triplet Exists");
+        } else {
+            System.out.println("Maximum product is " + max);
+        }
+    }
+
+    @Test
+    public void buySellStock() {
+        int arr[] = {9, 11, 8, 5, 7, 10};
+        int n = arr.length;
+
+        int max = ArrayAlgorithms.buySellStock(arr);
+        System.out.println(max);
+    }
+
+    @Test
+    public void maximumDifference() {
+        int arr[] = {9, 11, 8, 5, 7, 10};
+        int n = arr.length;
+
+        int max = ArrayAlgorithms.maximumDifference(arr);
+        System.out.println(max);
     }
 
     @Test

@@ -8,6 +8,8 @@ import ir.sk.helper.pattern.MultipleLoopsPattern;
 import ir.sk.helper.pattern.SlidingWindowPattern;
 import ir.sk.helper.pattern.SlidingWindowPatternType;
 import ir.sk.helper.technique.BruteForce;
+import ir.sk.helper.technique.DynamicProgramming;
+import ir.sk.helper.technique.DynamicProgrammingType;
 
 import java.util.*;
 
@@ -63,6 +65,8 @@ public class ContinuesSubArray {
      * @return
      */
     @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
+    @DynamicProgramming(type = DynamicProgrammingType.DOWN_TOP_TABULATION)
     @SlidingWindowPattern(type = SlidingWindowPatternType.DYNAMICALLY_RESIZABLE)
     public static int maxSubArraySumKadanes(int[] arr) {
 
@@ -70,6 +74,7 @@ public class ContinuesSubArray {
         int start = 0;
         int end = 0;
 
+        // maxEndingHere: maximum subarray ending in current index
         int maxSoFar = 0, maxEndingHere = 0;
 
         for (int i = 0; i < size; i++) {
@@ -85,7 +90,7 @@ public class ContinuesSubArray {
             }
         }
 
-        System.out.printf("Found Maximum Subarray between %d and %d", start, end);
+        System.out.printf("Found Maximum Subarray between %d and %d \n", start, end);
         return maxSoFar;
     }
 

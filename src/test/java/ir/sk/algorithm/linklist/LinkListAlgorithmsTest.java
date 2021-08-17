@@ -63,10 +63,6 @@ public class LinkListAlgorithmsTest {
     }
 
     @Test
-    public void findIntersection() {
-    }
-
-    @Test
     public void reverseIterative() {
         SinglyLink head = getLinkList();
         head = LinkListAlgorithms.reverseIterative(head);
@@ -184,5 +180,27 @@ public class LinkListAlgorithmsTest {
         forth.previous = third;
 
         LinkListAlgorithms.isPalindrome(head);
+    }
+
+    @Test
+    public void removeZeroSum() {
+        SinglyLink<Integer> head = new SinglyLink<>(1);
+        head.next = new SinglyLink(2);
+        head.next.next = new SinglyLink(-3);
+        head.next.next.next = new SinglyLink(3);
+        head.next.next.next.next = new SinglyLink(1);
+
+        System.out.println(LinkListAlgorithms.removeZeroSum(head, 3));
+    }
+
+    @Test
+    public void removeKthFromLinkedList() {
+        SinglyLink<Integer> head = new SinglyLink<>(1);
+        head.next = new SinglyLink(2);
+        head.next.next = new SinglyLink(3);
+        head.next.next.next = new SinglyLink(4);
+        head.next.next.next.next = new SinglyLink(5);
+
+        LinkListAlgorithms.removeKthFromLinkedList(head, 2);
     }
 }

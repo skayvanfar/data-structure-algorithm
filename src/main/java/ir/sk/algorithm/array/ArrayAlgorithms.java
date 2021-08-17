@@ -1,6 +1,9 @@
 package ir.sk.algorithm.array;
 
+import ir.sk.algorithm.basic.Utils;
+import ir.sk.algorithm.others.Sort;
 import ir.sk.helper.*;
+import ir.sk.helper.complexity.InPlace;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.MultiplePointerPattern;
@@ -297,6 +300,200 @@ public class ArrayAlgorithms {
 
         return res;
     }
+
+    /**
+     * There are n people lined up, and each have a height represented as an integer.
+     * A murder has happened right in front of them,
+     * and only people who are taller than everyone in front of them are able to see what has happened.
+     * How many witnesses are there?
+     * <p>
+     * Example:
+     * Input: [3, 6, 3, 4, 1]
+     * Output: 3
+     * Explanation: Only [6, 4, 1] were able to see in front of them.
+     * #
+     * #
+     * # #
+     * ####
+     * ####
+     * #####
+     * 36341                                 x (murder scene)
+     *
+     * @param array
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
+    @Difficulty(type = DifficultyType.EASY)
+    public static int witnesses(int[] array) {
+        int count = 1;
+        int max = array[array.length - 1];
+        for (int i = array.length - 1; i >= 0; i--) {
+            if (array[i] > max) {
+                count++;
+                max = array[i];
+            }
+        }
+        return count;
+    }
+
+    /**
+     * Given an array nums, write a function to move all 0's to the end of it while maintaining the relative order of the non-zero elements.
+     * Input: [0,1,0,3,12]
+     * Output: [1,3,12,0,0]
+     *
+     * @param array
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
+    @InPlace
+    @Difficulty(type = DifficultyType.EASY)
+    public static void pushZerosToEnd(int[] array) {
+        int count = 0;  // Count of non-zero elements
+
+        // Traverse the array. If element encountered is
+        // non-zero, then replace the element at index 'count'
+        // with this element
+        for (int i = 0; i < array.length; i++)
+            if (array[i] != 0)
+                array[count++] = array[i]; // here count is
+        // incremented
+
+        // Now all non-zero elements have been shifted to
+        // front and 'count' is set as index of first 0.
+        // Make all elements 0 from count to end.
+        while (count < array.length)
+            array[count++] = 0;
+    }
+
+    /**
+     * Given a list, find the k-th largest element in the list.
+     * Input: list = [3, 5, 2, 4, 6, 8], k = 3
+     * Output: 5
+     *
+     * @param arr
+     * @param k
+     * @return
+     */
+    @TimeComplexity("O(nlogn)")
+    @Difficulty(type = DifficultyType.MEDIUM)
+    public static int findKthLargestBySorting(int[] arr, int k) {
+        Arrays.sort(arr); // or using optimization by QuickSelect
+        return arr[arr.length - k];
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * You are given an array of integers. Return the largest product that can be made by multiplying any 3 integers in the array.
+     * <p>
+     * A simple solution is to check for every triplet using three nested loops.
+     *
+     * @param arr
+     * @param n
+     * @return
+     */
+    @TimeComplexity("O(n^3)")
+    @SpaceComplexity("O(1)")
+    public static int maxProductThreeNaive(int[] arr, int n) {
+        // if size is less than
+        // 3, no triplet exists
+        if (n < 3)
+            return -1;
+
+        // will contain max product
+        int max_product = Integer.MIN_VALUE;
+
+        for (int i = 0; i < n - 2; i++)
+            for (int j = i + 1; j < n - 1; j++)
+                for (int k = j + 1; k < n; k++)
+                    max_product = Math.max(max_product,
+                            arr[i] * arr[j] * arr[k]);
+
+        return max_product;
+    }
+
+    /**
+     * Sort the array using some efficient in-place sorting algorithm in ascending order.
+     * Return the maximum of product of last three elements of the array and product of first two elements and last element.
+     *
+     * @param arr
+     * @param n
+     * @return
+     */
+    @TimeComplexity("nlogn")
+    @SpaceComplexity("O(1)")
+    public static int maxProductThreeBySorting(int arr[], int n) {
+        // if size is less than 3, no triplet exists
+        if (n < 3) {
+            return -1;
+        }
+
+        // Sort the array in ascending order
+        Arrays.sort(arr);
+
+        // Return the maximum of product of last three
+        // elements and product of first two elements
+        // and last element
+        return Math.max(arr[0] * arr[1] * arr[n - 1],
+                arr[n - 1] * arr[n - 2] * arr[n - 3]);
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * You are given an array. Each element represents the price of a stock on that particular day. Calculate and return the maximum profit you can make from buying and selling that stock only once.
+     *
+     * For example: [9, 11, 8, 5, 7, 10]
+     *
+     * Here, the optimal trade is to buy when the price is 5, and sell when it is 10, so the return value should be 5 (profit = 10 - 5 = 5).
+     *
+     * (or )Given an array arr[] of integers, find out the maximum difference between any two elements such that larger element appears after the smaller number.
+     * See also {@link #maximumDifference(int[])} )}
+     * @param stock
+     * @return
+     */
+    @TimeComplexity("O(nlogn)")
+    @SpaceComplexity("O(n)")
+    @Difficulty(type = DifficultyType.MEDIUM)
+    public static int buySellStock(int[] stock) {
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>(Comparator.reverseOrder());
+        int max = Integer.MIN_VALUE;
+        for (int price : stock) {
+            priorityQueue.add(price);
+        }
+
+        for (int price : stock) {
+            max = Math.max(max, priorityQueue.peek() - price);
+            priorityQueue.remove(price);
+        }
+        return max;
+    }
+
+    /**
+     * Given an array arr[] of integers, find out the maximum difference between any two elements such that larger element appears after the smaller number.
+     *
+     * See also {@link #buySellStock(int[])}
+     *
+     * @param arr
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
+    @Difficulty(type = DifficultyType.MEDIUM)
+    public static int maximumDifference(int arr[]) {
+        int maxDiff = arr[1] - arr[0];
+        int minElement = arr[0];
+        int i;
+        for (i = 1; i < arr.length; i++) {
+            if (arr[i] - minElement > maxDiff)
+                maxDiff = arr[i] - minElement;
+            if (arr[i] < minElement)
+                minElement = arr[i];
+        }
+        return maxDiff;
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
     /**

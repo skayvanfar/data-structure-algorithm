@@ -3,8 +3,10 @@ package ir.sk.algorithm.tree;
 import ir.sk.helper.Difficulty;
 import ir.sk.helper.DifficultyType;
 import ir.sk.helper.Point;
+import ir.sk.helper.RecurrenceRelation;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
+import ir.sk.helper.technique.BacktrackingDFS;
 
 import java.util.*;
 
@@ -17,13 +19,14 @@ public class TreeAlgorithms {
      * @param array
      * @return
      */
-    public static TreeNode createMinimalBSTByOrderedArray(int array[]) {
-        return createMinimalBSTByOrderedArray(array, 0, array.length - 1);
+    public static TreeNode createBalancedBSTBySortedArray(int array[]) {
+        return createBalancedBSTBySortedArray(array, 0, array.length - 1);
     }
 
     /**
-     * Tree: Given a sorted (increasing order) array with unique integer elements, write an
-     * algorithm to create a binary search tree with minimal height.
+     * Given a sorted list of numbers, change it into a balanced binary search tree.
+     * You can assume there will be no duplicate numbers in the list.
+     *
      * <p>
      * The algorithm is as follows:
      * 1. Insert into the tree the middle element of the array.
@@ -36,14 +39,16 @@ public class TreeAlgorithms {
      * @param end
      * @return
      */
-    private static TreeNode createMinimalBSTByOrderedArray(int arr[], int start, int end) {
+    @TimeComplexity("O(n)")
+    @RecurrenceRelation("T(n) = 2T(n/2) + C")
+    private static TreeNode createBalancedBSTBySortedArray(int arr[], int start, int end) {
         if (end < start) {
             return null;
         }
         int mid = (start + end) / 2;
         TreeNode n = new TreeNode(arr[mid]);
-        n.left = createMinimalBSTByOrderedArray(arr, start, mid - 1);
-        n.right = createMinimalBSTByOrderedArray(arr, mid + 1, end);
+        n.left = createBalancedBSTBySortedArray(arr, start, mid - 1);
+        n.right = createBalancedBSTBySortedArray(arr, mid + 1, end);
         return n;
     }
 
@@ -55,35 +60,33 @@ public class TreeAlgorithms {
      * public int value;
      * }
      */
-    private static Integer lastPrinted = null;
 
-    /*
-     * Implement a function to check if a binary tree is a valid binary search tree.
-     * */
+    //////////////////////////////////////////////////////////////////////////////////////////////////////
+    private static Integer prevNode = null;
 
     /**
      * Implement a function to check if a binary tree is a valid binary search tree.
      * In-Order Traversal
      *
-     * @param n
+     * @param node
      * @return
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
-    public static boolean checkValidBSTByInorder(TreeNode n) {
-        if (n == null) return true;
+    public static boolean checkValidBSTByInorder(TreeNode node) {
+        if (node == null) return true;
 
         // II Check I recurse left
-        if (!checkValidBSTByInorder(n.left)) return false;
+        if (!checkValidBSTByInorder(node.left)) return false;
 
         // II Check current
-        if (lastPrinted != null && n.value <= lastPrinted) {
+        if (prevNode != null && node.value <= prevNode) {
             return false;
         }
-        lastPrinted = n.value;
+        prevNode = node.value;
 
         // Check I recurse right
-        if (!checkValidBSTByInorder(n.right)) return false;
+        if (!checkValidBSTByInorder(node.right)) return false;
 
         return true;
     }
@@ -289,6 +292,7 @@ public class TreeAlgorithms {
      */
     @TimeComplexity("O(n^2)")
     @Difficulty(type = DifficultyType.MEDIUM)
+    @Point("In a Preorder sequence, the leftmost element is the root of the tree.")
     private static Node buildTreeByInOrderAndPreOrder(char[] preorder, char[] inorder, PreIndex preIndex, int inStart, int inEnd) {
         if (inStart > inEnd)
             return null;
@@ -498,7 +502,7 @@ public class TreeAlgorithms {
      *
      * @param currentNode
      */
-    public static void fixBSTUtil(Node<Integer> currentNode) {
+    private static void fixBSTUtil(Node<Integer> currentNode) {
         if (currentNode == null)
             return;
 
@@ -527,4 +531,70 @@ public class TreeAlgorithms {
         // Recur for the right subtree
         fixBSTUtil(currentNode.right);
     }
+
+    static int maxLevel = -1;
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * The idea is to do Inorder traversal of given binary tree. While doing Inorder traversal,
+     * we pass level of current node also. We keep track of maximum level seen so far and value of deepest node seen so far.
+     * <p>
+     * See also {@link #deepestNodeInBinaryTreeByReturn(Node)}
+     *
+     * @param treeNode
+     * @param level    depth
+     */
+    @Difficulty(type = DifficultyType.MEDIUM)
+    @BacktrackingDFS
+    @TimeComplexity("O(n)")
+    @Point("tree traversal and passing parameter")
+    public static void deepestNodeInBinaryTreeBYParameter(Node treeNode, int level) {
+        if (treeNode != null) {
+            deepestNodeInBinaryTreeBYParameter(treeNode.left, ++level);
+            maxLevel = Math.max(maxLevel, level);
+            deepestNodeInBinaryTreeBYParameter(treeNode.right, level);
+        }
+    }
+
+    /**
+     * The idea here is to find the height of the given tree
+     * <p>
+     * See also {@link #deepestNodeInBinaryTreeBYParameter(Node, int)}
+     *
+     * @param treeNode
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @Difficulty(type = DifficultyType.MEDIUM)
+    @Point("tree traversal and returning")
+    public static int deepestNodeInBinaryTreeByReturn(Node treeNode) {
+        if (treeNode == null)
+            return 0;
+
+        int left = deepestNodeInBinaryTreeByReturn(treeNode.left) + 1;
+        int right = deepestNodeInBinaryTreeByReturn(treeNode.right) + 1;
+
+        return Math.max(left, right);
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * find the height of the given tree
+     *
+     * @param root
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @Point("tree traversal and returning")
+    public static int heightOfBT(Node root) {
+        if (root == null) return 0;
+
+        int leftHt = heightOfBT(root.left);
+        int rightHt = heightOfBT(root.right);
+
+        return Math.max(leftHt, rightHt) + 1;
+    }
+
 }

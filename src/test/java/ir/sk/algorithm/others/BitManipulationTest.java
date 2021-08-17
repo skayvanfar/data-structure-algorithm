@@ -37,4 +37,15 @@ public class BitManipulationTest {
     public void setBit() {
         System.out.println(BitManipulation.setBit(40, 1));
     }
+
+    @Test
+    public void countSetBits() {
+        System.out.println(BitManipulation.countSetBits(9));
+    }
+
+    @Test
+    public void countSetBitsRecursive() {
+        System.out.println(BitManipulation.countSetBitsRecursive(9));
+    }
+
 }

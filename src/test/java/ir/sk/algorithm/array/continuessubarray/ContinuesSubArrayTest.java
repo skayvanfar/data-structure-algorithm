@@ -28,8 +28,8 @@ public class ContinuesSubArrayTest {
 
     @Test
     public void maxSubArraySumKadanes() {
-        int[] arr = new int[]{1, 5, 2, 4, 9, 7};
-        ContinuesSubArray.maxSubArraySumKadanes(arr);
+        int[] arr = new int[]{-2, -3, 4, -1, -2, 1, 5, -3};
+        System.out.println(ContinuesSubArray.maxSubArraySumKadanes(arr));
     }
 
     @Test

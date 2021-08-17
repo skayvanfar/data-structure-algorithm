@@ -1,0 +1,6 @@
+In a PreOrder sequence, the leftmost element is the root of the tree.
+
+int Binary Tree:
+ InOrder traversal is Left-Root-Right
+ PreOrder traversal is Root-Left-Right
+ PostOrder traversal is left-right-root
