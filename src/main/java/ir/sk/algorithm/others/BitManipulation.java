@@ -186,4 +186,40 @@ public class BitManipulation {
         return numBits;
     }
 
+    /**
+     * The parity of a binary word is 1 if the number of Is in the word is odd; otherwise,
+     * it is 0. For example, the parity of 1011 is 1, and the parity of 10001000 is 0. Parity
+     * checks are used to detect single bit errors in data storage and communication.
+     * <p>
+     * The brute-force algorithm iteratively tests the value of each bit while track¬
+     * ing the number of Is seen so far. Since we only care if the number of Is is even or
+     * odd, we can store the number modulo 2.
+     *
+     * @param x
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    public static short parity(long x) {
+        short result = 0;
+        while (x != 0) {
+            result ^= (x & 1);
+            x >>>= 1;
+        }
+        return result;
+    }
+
+    /**
+     * @param x
+     * @return
+     */
+    public static short parityBetter(long x) {
+        short result = 0;
+        while (x != 0) {
+            result ^= 1;
+            x &= (x - 1); // Drops the lowest set bit of x.
+        }
+        return result;
+    }
+
+
 }

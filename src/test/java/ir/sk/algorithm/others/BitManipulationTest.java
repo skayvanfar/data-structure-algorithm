@@ -54,4 +54,18 @@ public class BitManipulationTest {
         int intRepresentation = Integer.parseUnsignedInt(stringRepresentation, 2);
         System.out.println(BitManipulation.countBits(intRepresentation));
     }
+
+    @Test
+    public void parity() {
+        String stringRepresentation = "01000001010000010100000100000011";
+        int intRepresentation = Integer.parseUnsignedInt(stringRepresentation, 2);
+        System.out.println(BitManipulation.parity(intRepresentation));
+    }
+
+    @Test
+    public void parityBetter() {
+        String stringRepresentation = "01000001010000010100000100000011";
+        int intRepresentation = Integer.parseUnsignedInt(stringRepresentation, 2);
+        System.out.println(BitManipulation.parityBetter(intRepresentation));
+    }
 }
