@@ -443,13 +443,14 @@ public class ArrayAlgorithms {
 
     /**
      * You are given an array. Each element represents the price of a stock on that particular day. Calculate and return the maximum profit you can make from buying and selling that stock only once.
-     *
+     * <p>
      * For example: [9, 11, 8, 5, 7, 10]
-     *
+     * <p>
      * Here, the optimal trade is to buy when the price is 5, and sell when it is 10, so the return value should be 5 (profit = 10 - 5 = 5).
-     *
+     * <p>
      * (or )Given an array arr[] of integers, find out the maximum difference between any two elements such that larger element appears after the smaller number.
      * See also {@link #maximumDifference(int[])} )}
+     *
      * @param stock
      * @return
      */
@@ -472,7 +473,7 @@ public class ArrayAlgorithms {
 
     /**
      * Given an array arr[] of integers, find out the maximum difference between any two elements such that larger element appears after the smaller number.
-     *
+     * <p>
      * See also {@link #buySellStock(int[])}
      *
      * @param arr
@@ -499,7 +500,7 @@ public class ArrayAlgorithms {
 
     /**
      * Given string str, the task is to find the minimum count of characters that need to be deleted from the string such that the frequency of each character of the string is unique.
-     *
+     * <p>
      * Input: str = “ceabaacb”
      * Output: 2
      * Explanation:
@@ -509,7 +510,7 @@ public class ArrayAlgorithms {
      * a —> 3
      * b —> 2
      * Possible ways to make frequency of each character unique by minimum number of moves are:
-     *
+     * <p>
      * Removing both occurrences of ‘c’ modifies str to “eabaab”
      * Removing an occurrence of ‘c’ and ‘e’ modifies str to “abaacb”
      *
@@ -585,4 +586,32 @@ public class ArrayAlgorithms {
         return cntChar;
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Write a program which takes as input two strings s and t of bits encoding
+     * binary numbers Bs and B,, respectively, and returns a new string of bits representing
+     * the number Bs + Bt.
+     *
+     * @param array1
+     * @param array2
+     * @return
+     */
+    public static int[] addToArrayNumber(int[] array1, int[] array2) {
+        int extra = 0;
+
+        int size = Math.max(array1.length, array2.length);
+        int[] result = new int[size];
+
+        for (int i = 0; i < size; i++) {
+            int sum = array1[i] + array2[i] + extra;
+            if (sum > 9) {
+                result[i] = sum % 10;
+                extra = sum / 10;
+            } else {
+                result[i] = sum;
+                extra = 0;
+            }
+        }
+        return result;
+    }
 }

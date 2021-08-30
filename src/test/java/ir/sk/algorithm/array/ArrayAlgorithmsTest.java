@@ -129,4 +129,13 @@ public class ArrayAlgorithmsTest {
         String str = "abbbcccd";
         System.out.print(ArrayAlgorithms.minCntCharDeletionsfrequency(str.toCharArray()));
     }
+
+    @Test
+    public void addToArrayNumber() {
+        int arr[] = {9, 2, 3};
+        int arr2[] = {5, 1, 2};
+
+        int[] array = ArrayAlgorithms.addToArrayNumber(arr, arr2);
+        System.out.println(array);
+    }
 }
