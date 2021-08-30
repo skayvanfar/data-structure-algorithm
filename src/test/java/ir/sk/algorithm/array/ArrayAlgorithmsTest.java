@@ -1,6 +1,5 @@
 package ir.sk.algorithm.array;
 
-import ir.sk.helper.Stopwatch;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -131,11 +130,11 @@ public class ArrayAlgorithmsTest {
     }
 
     @Test
-    public void addToArrayNumber() {
+    public void addTwoArrayNumber() {
         int arr[] = {9, 2, 3};
         int arr2[] = {5, 1, 2};
 
-        int[] array = ArrayAlgorithms.addToArrayNumber(arr, arr2);
+        int[] array = ArrayAlgorithms.addTwoArrayNumber(arr, arr2);
         System.out.println(array);
     }
 }

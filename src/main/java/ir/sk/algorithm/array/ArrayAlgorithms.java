@@ -596,7 +596,7 @@ public class ArrayAlgorithms {
      * @param array2
      * @return
      */
-    public static int[] addToArrayNumber(int[] array1, int[] array2) {
+    public static int[] addTwoArrayNumber(int[] array1, int[] array2) {
         int extra = 0;
 
         int size = Math.max(array1.length, array2.length);
