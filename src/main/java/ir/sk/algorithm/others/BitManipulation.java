@@ -20,9 +20,9 @@ public class BitManipulation {
      * @return
      */
     public static int repeatedArithmeticShift(int x, int count) {
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < count; i++)
             x >>= 1; // Arithmetic shift by 1
-        }
+
         return x;
     }
 
@@ -34,9 +34,9 @@ public class BitManipulation {
      * @return
      */
     public static int repeatedLogicalShift(int x, int count) {
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < count; i++)
             x >>>= 1; // Logical shift by 1
-        }
+
         return x;
     }
 
@@ -127,7 +127,7 @@ public class BitManipulation {
 
     /**
      * count the number of 1s in the binary representation of an integer.
-     *
+     * <p>
      * Loop through all bits in an integer, check if a bit is set and if it is, then increment the set bit count.
      *
      * @param n
@@ -147,6 +147,7 @@ public class BitManipulation {
 
     /**
      * recursive function to count set bits
+     *
      * @param n
      * @return
      */
@@ -166,4 +167,23 @@ public class BitManipulation {
 
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Writing a program to count the number of bits that are set to 1 in an integer is a good
+     * way to get up to speed with primitive types. The following program tests bits one-
+     * at-a-time starting with the least-significant bit. It illustrates shifting and masking; it
+     * also shows how to avoid hard-coding the size of the integer word.
+     *
+     * @param x
+     * @return
+     */
+    public static short countBits(int x) {
+        short numBits = 0;
+        while (x != 0) {
+            numBits += (x & 1);
+            x >>>= 1;
+        }
+        return numBits;
+    }
+
 }

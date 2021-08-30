@@ -48,4 +48,10 @@ public class BitManipulationTest {
         System.out.println(BitManipulation.countSetBitsRecursive(9));
     }
 
+    @Test
+    public void countBits() {
+        String stringRepresentation = "01000001010000010100000100000011";
+        int intRepresentation = Integer.parseUnsignedInt(stringRepresentation, 2);
+        System.out.println(BitManipulation.countBits(intRepresentation));
+    }
 }
