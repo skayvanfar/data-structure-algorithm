@@ -1,10 +1,8 @@
-package ir.sk.algorithm.array.stringmatching;
+package ir.sk.algorithm.array.patternmatching;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class KMPTest {
 

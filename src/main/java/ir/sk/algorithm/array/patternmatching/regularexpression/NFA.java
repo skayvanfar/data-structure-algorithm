@@ -1,8 +1,7 @@
-package ir.sk.algorithm.array.stringmatching.regularexpression;
+package ir.sk.algorithm.array.patternmatching.regularexpression;
 
 import ir.sk.adt.bag.Bag;
 import ir.sk.adt.bag.LinkBag;
-import ir.sk.adt.stack.ResizingArrayStack;
 import ir.sk.algorithm.graph.Digraph;
 import ir.sk.algorithm.graph.DirectedDFS;
 

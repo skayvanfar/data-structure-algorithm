@@ -1,10 +1,8 @@
-package ir.sk.algorithm.array.stringmatching.regularexpression;
+package ir.sk.algorithm.array.patternmatching.regularexpression;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by sad.kayvanfar on 5/24/2021.

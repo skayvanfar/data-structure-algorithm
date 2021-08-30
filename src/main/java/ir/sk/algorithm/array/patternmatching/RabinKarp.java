@@ -1,4 +1,4 @@
-package ir.sk.algorithm.array.stringmatching;
+package ir.sk.algorithm.array.patternmatching;
 
 import java.math.BigInteger;
 import java.util.Random;
