@@ -212,6 +212,7 @@ public class BitManipulation {
      * @param x
      * @return
      */
+    @TimeComplexity("O(k), k be the number of bits set to 1 in a particular word")
     public static short parityBetter(long x) {
         short result = 0;
         while (x != 0) {
