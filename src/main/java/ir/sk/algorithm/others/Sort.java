@@ -651,6 +651,54 @@ public class Sort {
         return v.length() < w.length();
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /**
+     * Your input is an array of integers, and you have to reorder its entries so that the even entries appear first.
+     *
+     * @param array
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
+    @MultiplePointerPattern
+    public static void separateEvenOdd(int[] array) {
+        int pointer1 = 0, pointer2 = 1;
+
+        while (pointer2 < array.length) {
+            if (array[pointer2] % 2 == 0) {
+                int tmp = array[pointer1];
+                array[pointer1] = array[pointer2];
+                array[pointer2] = tmp;
+                pointer1++;
+            }
+            pointer2++;
+        }
+    }
+
+    /**
+     * For this problem, we can partition the array into
+     * three subarrays: Even, Unclassified, and Odd, appearing in that order. Initially
+     * Even and Odd are empty, and Unclassified is the entire array. We iterate through
+     * Unclassified, moving its elements to the boundaries of the Even and Odd subarrays
+     * via swaps, thereby expanding Even and Odd, and shrinking Unclassified.
+     *
+     * @param array
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
+    @MultiplePointerPattern
+    public static void separateEvenOdd2(int[] array) {
+        int nextEven = 0, nextOdd = array.length - 1;
+        while (nextEven < nextOdd) {
+            if (array[nextEven] % 2 == 0) {
+                nextEven++;
+            } else {
+                int temp = array[nextEven];
+                array[nextEven] = array[nextOdd];
+                array[nextOdd--] = temp;
+            }
+        }
+    }
+
     /**
      * Given an array containing 0s, 1s and 2s, sort the array in-place.
      * You should treat numbers of the array as objects, hence,
@@ -668,6 +716,14 @@ public class Sort {
      * Let’s say the two pointers are called low and high which are pointing to the first and the last element of the array respectively.
      * So while iterating, we will move all 0s before low and all 2s after high so that in the end, all 1s will be between low and high.
      *
+     * @see #quickSort(int[], int, int)
+     * @see #separateEvenOdd2(int[])
+     *
+     * Keep the following invariants during partitioning:
+     * unclassified group: A .subList (0 , array.size()).
+     * bottom group: A .subList (0 , low) .
+     * middle group: A .subList (low , high).
+     * top group: A .subList (high , array.size()) .
      * @param array
      */
     @TimeComplexity("O(n)")

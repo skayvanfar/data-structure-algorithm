@@ -584,53 +584,5 @@ public class ArrayAlgorithms {
 
         return cntChar;
     }
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /**
-     * Your input is an array of integers, and you have to reorder its entries so that the even entries appear first.
-     *
-     * @param array
-     */
-    @TimeComplexity("O(n)")
-    @SpaceComplexity("O(1)")
-    @MultiplePointerPattern
-    public static void separateEvenOdd(int[] array) {
-        int pointer1 = 0, pointer2 = 1;
-
-        while (pointer2 < array.length) {
-            if (array[pointer2] % 2 == 0) {
-                int tmp = array[pointer1];
-                array[pointer1] = array[pointer2];
-                array[pointer2] = tmp;
-                pointer1++;
-            }
-            pointer2++;
-        }
-    }
-
-    /**
-     * For this problem, we can partition the array into
-     * three subarrays: Even, Unclassified, and Odd, appearing in that order. Initially
-     * Even and Odd are empty, and Unclassified is the entire array. We iterate through
-     * Unclassified, moving its elements to the boundaries of the Even and Odd subarrays
-     * via swaps, thereby expanding Even and Odd, and shrinking Unclassified.
-     *
-     * @param array
-     */
-    @TimeComplexity("O(n)")
-    @SpaceComplexity("O(1)")
-    @MultiplePointerPattern
-    public static void separateEvenOdd2(int[] array) {
-        int nextEven = 0, nextOdd = array.length - 1;
-        while (nextEven < nextOdd) {
-            if (array[nextEven] % 2 == 0) {
-                nextEven++;
-            } else {
-                int temp = array[nextEven];
-                array[nextEven] = array[nextOdd];
-                array[nextOdd--] = temp;
-            }
-        }
-    }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }

@@ -1,5 +1,6 @@
 package ir.sk.algorithm.others;
 
+import ir.sk.algorithm.array.ArrayAlgorithms;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -140,6 +141,22 @@ public class SortTest {
 
     @Test
     public void quickSort() {
+    }
+
+    @Test
+    public void separateEvenOdd() {
+        int arr[] = {9, 11, 8, 5, 7, 10};
+
+        Sort.separateEvenOdd(arr);
+        System.out.println(arr);
+    }
+
+    @Test
+    public void separateEvenOdd2() {
+        int arr[] = {9, 11, 8, 5, 7, 10};
+
+        Sort.separateEvenOdd2(arr);
+        System.out.println(arr);
     }
 
     @Test
