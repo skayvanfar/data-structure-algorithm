@@ -22,7 +22,7 @@ public class Multiplication {
      * @param b
      * @return
      */
-    @TimeComplexity("O(n2) n: a array length")
+    @TimeComplexity("O(n*m) n: a array length, m: a array2 length")
     @SpaceComplexity("O(n+m) m: b array length")
     public static int[] nativeMultiply(int[] a, int[] b, int base) {
         int[] product = new int[a.length + b.length];

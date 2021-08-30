@@ -23,10 +23,10 @@ public class MultiplicationTest {
 
     @Test
     public void nativeMultiply() {
-        int[] a = new int[]{4, 3, 2, 1};
-        int[] b = new int[]{1, 2, 3, 4};
+        int[] a = new int[]{1, 3};
+        int[] b = new int[]{1, 2};
 
-        int[] expectedValue = new int[]{4, 1, 1, 2, 3, 3, 5, 0};
+        int[] expectedValue = new int[]{1, 5, 6};
         long startTime = System.nanoTime();
         int[] result = Multiplication.nativeMultiply(a, b, 10);
         long endTime = System.nanoTime();
