@@ -2,3 +2,16 @@ recursion rules:
 1. notice to base case and how get n from n-1
 2. tail recursion or head recursion
 3. backtracking
+
+Recursion is especially suitable when the input is expressed using recursive rules.
+Recursion is a good choice for search, enumeration, and divide-and-conquer.
+Use recursion as alternative to deeply nested iteration loops. For example,
+recursion is much better when you have an undefined number of levels, such
+as the IP address problem generalized to k substrings.
+If you are asked to remove recursion from a program, consider mimicking call
+stack with the stack data structure.
+Recursion can be easily removed from a tail-recursive program by using a while-
+loop —no stack is needed. (Optimizing compilers do this.)
+If a recursive function may end up being called with the same arguments
+more than once, cache the results— this is the idea behind Dynamic Program¬
+ming.
