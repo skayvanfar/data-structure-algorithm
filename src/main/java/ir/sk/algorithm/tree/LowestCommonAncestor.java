@@ -1,5 +1,7 @@
 package ir.sk.algorithm.tree;
 
+import ir.sk.adt.datastructure.linklist.SinglyLink;
+import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 
 /**
@@ -44,15 +46,17 @@ public class LowestCommonAncestor {
     }
 
     /**
-     * commonAncestor By using Parent For binary tree
+     * The lowest common ancestor (LCA) By using Parent For binary tree (BT)
      * like intersection of two linklist (findIntersection)
      *
      * @param p
      * @param q
      * @return
+     * @see ir.sk.algorithm.linklist.LinkIntersection#findIntersectionByNodeCounts(SinglyLink, SinglyLink)
      */
     @TimeComplexity("0(d) time, where d is the depth of the deeper node")
-    public static TreeNode commonAncestorByParentForBT(TreeNode p, TreeNode q) {
+    @SpaceComplexity("O(1)")
+    public static TreeNode lCAByParentForBT(TreeNode p, TreeNode q) {
         int delta = depth(p) - depth(q); // get difference in depths
         TreeNode first = delta > 0 ? q : p; // get shallower node
         TreeNode second = delta > 0 ? p : q; // get deeper node
@@ -81,5 +85,78 @@ public class LowestCommonAncestor {
             depth++;
         }
         return depth;
+    }
+
+
+    static int value;
+
+
+    /**
+     * The lowest common ancestor (LCA)
+     *
+     * @param node
+     * @param num1
+     * @param num2
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
+    public static boolean lCAForBT(TreeNode node, int num1, int num2) {
+        if (node == null)
+            return false;
+        if (node.value == num1 || node.value == num2)
+            return true;
+
+        boolean left = lCAForBT(node.left, num1, num2);
+        boolean right = lCAForBT(node.right, num1, num2);
+
+        if (left && right)
+            value = node.value;
+
+        if (left || right)
+            return true;
+        else
+            return false;
+    }
+
+    /**
+     * Alternatively, you could follow a chain in which p and q are on the same side. That is, if p and q are both on
+     * the left of the node, branch left to look for the common ancestor. If they are both on the right, branch right
+     * to look for the common ancestor. When p and q are no longer on the same side, you must have found the
+     * first common ancestor.
+     *
+     * @param root
+     * @param p
+     * @param q
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
+    public static TreeNode lCAForBTBySameSide(TreeNode root, TreeNode p, TreeNode q) {
+        /* Error check - one node is not in the tree. */
+        if (!covers(root, p) || !covers(root, q)) {
+            return null;
+        }
+        return ancestorHelper(root, p, q);
+    }
+
+    private static TreeNode ancestorHelper(TreeNode root, TreeNode p, TreeNode q) {
+        if (root == null || root == p || root == q) {
+            return root;
+        }
+
+        boolean plsOnleft = covers(root.left, p);
+        boolean qlsOnLeft = covers(root.left, q);
+        if (plsOnleft != qlsOnLeft) {//Nodes are on different side
+            return root;
+        }
+        TreeNode childSide = plsOnleft ? root.left : root.right;
+        return ancestorHelper(childSide, p, q);
+    }
+
+    private static boolean covers(TreeNode root, TreeNode p) {
+        if (root == null) return false;
+        if (root == p) return true;
+        return covers(root.left, p) || covers(root.right, p);
     }
 }

@@ -24,4 +24,21 @@ public class LowestCommonAncestorTest {
     @Test
     public void commonAncestorByParentForbt() {
     }
+
+    @Test
+    public void lCAForBT() {
+        TreeNode root = new TreeNode(1,
+                new TreeNode(2,
+                        new TreeNode(4),
+                        new TreeNode(5)),
+                new TreeNode(3,
+                        new TreeNode(6),
+                        new TreeNode(7)));
+        LowestCommonAncestor.lCAForBT(root, 4, 5);
+        System.out.println(LowestCommonAncestor.value);
+    }
+
+    @Test
+    public void lCAForBTBySameSide() {
+    }
 }
