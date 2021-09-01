@@ -4,7 +4,7 @@ package ir.sk.adt.datastructure.graph;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.technique.BFS;
-import ir.sk.helper.technique.BacktrackingDFS;
+import ir.sk.helper.technique.Backtracking;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
@@ -93,7 +93,7 @@ public class AdjacencyMatrixGraph {
      *
      */
     @TimeComplexity("O(|V|^2)")
-    @BacktrackingDFS
+    @Backtracking
     public void dfs() {
         Stack<Integer> theStack = new Stack<>();
         vertexList[0].wasVisited = true;

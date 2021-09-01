@@ -1,11 +1,9 @@
 package ir.sk.algorithm.others;
 
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.technique.BacktrackingDFS;
+import ir.sk.helper.technique.Backtracking;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * The N Queen is the problem of placing N chess queens on an N×N chessboard so that no two queens attack each other.
@@ -46,7 +44,7 @@ public class NQueenProblem {
         findAllNQueen(board, 0);
     }
 
-    @BacktrackingDFS
+    @Backtracking
     @TimeComplexity("O(2^n)")
     public void findAllNQueen(char board[][], int row) {
         // trigger the End Condition (the gaul) if `N` queens are placed successfully, print the solution

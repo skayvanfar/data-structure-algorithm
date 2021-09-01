@@ -6,7 +6,7 @@ import ir.sk.helper.Point;
 import ir.sk.helper.RecurrenceRelation;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.technique.BacktrackingDFS;
+import ir.sk.helper.technique.DFS;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +28,7 @@ public class RootToLeafPath {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
-    @BacktrackingDFS
+    @DFS
     @RecurrenceRelation("T(n) = 2 T(n/2) + O(1)")
     public static boolean hasPathByDFSWithSum(TreeNode node, int sum) {
         if (node == null)
@@ -62,7 +62,7 @@ public class RootToLeafPath {
      */
     @TimeComplexity("O(n^2)")
     @SpaceComplexity("O(n log n)")
-    @BacktrackingDFS
+    @DFS
     public static void allPathByDFSWithSum(TreeNode node, int sum, List<Integer> currentPath, List<List<Integer>> allPaths) {
         if (node == null)
             return;
@@ -98,7 +98,7 @@ public class RootToLeafPath {
      */
     @TimeComplexity("O(n^2)")
     @SpaceComplexity("O(n log n)")
-    @BacktrackingDFS
+    @DFS
     private static void allPathByDFS(TreeNode node, List<Integer> currentPath, List<List<Integer>> allPaths) {
         if (node == null)
             return;
@@ -129,7 +129,7 @@ public class RootToLeafPath {
      */
     @TimeComplexity("O(n^2)")
     @SpaceComplexity("O(n log n)")
-    @BacktrackingDFS
+    @DFS
     private static void findPathByDFSWithMaximumSum(TreeNode node, int sum, List<Integer> currentPath, List<Integer> maxPath) {
         if (node == null)
             return;
@@ -165,7 +165,7 @@ public class RootToLeafPath {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
-    @BacktrackingDFS
+    @DFS
     @Point("1 * 10 + 7 => 17")
     private static int findSumOfPathNumbers(TreeNode node, int pathSum) {
         if (node == null)
@@ -256,7 +256,7 @@ public class RootToLeafPath {
      */
     @TimeComplexity("O(n h), where h is the height of the tree")
     @SpaceComplexity("O(n)")
-    @BacktrackingDFS
+    @DFS
     public static int countAllPathSum(TreeNode currentNode, List<Integer> currentPath, int sum) {
         if (currentNode == null)
             return 0;
@@ -307,7 +307,7 @@ public class RootToLeafPath {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
-    @BacktrackingDFS
+    @DFS
     @Difficulty(type = DifficultyType.MEDIUM)
     private static int findDiameterRecursive(TreeNode currentNode) {
         if (currentNode == null)
@@ -348,7 +348,7 @@ public class RootToLeafPath {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
-    @BacktrackingDFS
+    @DFS
     @Difficulty(type = DifficultyType.MEDIUM)
     private static int findMaximumPathSumRecursive(TreeNode currentNode) {
         if (currentNode == null)

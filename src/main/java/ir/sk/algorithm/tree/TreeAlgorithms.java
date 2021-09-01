@@ -6,7 +6,7 @@ import ir.sk.helper.Point;
 import ir.sk.helper.RecurrenceRelation;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.technique.BacktrackingDFS;
+import ir.sk.helper.technique.Backtracking;
 
 import java.util.*;
 
@@ -546,7 +546,7 @@ public class TreeAlgorithms {
      * @param level    depth
      */
     @Difficulty(type = DifficultyType.MEDIUM)
-    @BacktrackingDFS
+    @Backtracking
     @TimeComplexity("O(n)")
     @Point("tree traversal and passing parameter")
     public static void deepestNodeInBinaryTreeBYParameter(Node treeNode, int level) {

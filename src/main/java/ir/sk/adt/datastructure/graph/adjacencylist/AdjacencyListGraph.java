@@ -6,7 +6,7 @@ import ir.sk.helper.ImplementationType;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.technique.BFS;
-import ir.sk.helper.technique.BacktrackingDFS;
+import ir.sk.helper.technique.Backtracking;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -161,7 +161,7 @@ public class AdjacencyListGraph<T> implements Graph<T> {
     @TimeComplexity("O(|V|+|E|) Linear Time")
     @SpaceComplexity("O(h) h is the maximum width of the tree")
     @Implementation(type = ImplementationType.Iterative)
-    @BacktrackingDFS
+    @Backtracking
     public Collection<T> depthFirstSearch(T start) {
         Collection<T> visited = new LinkedHashSet<>();
         Stack<T> stack = new Stack<>();
@@ -194,7 +194,7 @@ public class AdjacencyListGraph<T> implements Graph<T> {
      * @param visited
      */
     @Implementation(type = ImplementationType.Recursive)
-    @BacktrackingDFS
+    @Backtracking
     private void dfsVisit(T current, Collection<T> visited) {
         visited.add(current);
         for (T dest : getNeighborsFor(current)) {

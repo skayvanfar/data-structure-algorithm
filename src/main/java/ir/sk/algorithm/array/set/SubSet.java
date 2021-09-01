@@ -8,7 +8,7 @@ import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.recursiontype.HeadRecursion;
 import ir.sk.helper.technique.BFS;
-import ir.sk.helper.technique.BacktrackingDFS;
+import ir.sk.helper.technique.Backtracking;
 
 import java.util.*;
 
@@ -39,7 +39,7 @@ public class SubSet {
      * @return
      */
     @TimeComplexity("O(2^n)")
-    @BacktrackingDFS
+    @Backtracking
     @Difficulty(type = DifficultyType.MEDIUM)
     @Implementation(type = ImplementationType.Recursive)
     @HeadRecursion
@@ -97,7 +97,7 @@ public class SubSet {
      * @param result
      */
     @TimeComplexity("O(2^n)")
-    @BacktrackingDFS
+    @Backtracking
     private static void subSetByBacktracking(int[] nums, int start, LinkedList<Integer> track, List<List<Integer>> result) {
         // trigger the ending condition
         result.add(new LinkedList(track));

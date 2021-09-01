@@ -2,7 +2,6 @@ package ir.sk.algorithm.others;
 
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.pattern.MultipleLoopsPattern;
 import ir.sk.helper.technique.*;
 
 /**
@@ -34,7 +33,7 @@ public class Knapsack {
      */
     @SpaceComplexity("O(n)")
     @TimeComplexity("O(2^n), This space will be used to store the recursion stack.")
-    @BacktrackingDFS
+    @Backtracking
     @BruteForce
     private static int solve10knapsack(int[] profits, int[] weights, int capacity, int currentIndex) {
         // base checks

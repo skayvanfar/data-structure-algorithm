@@ -2,7 +2,7 @@ package ir.sk.algorithm.others;
 
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.technique.BacktrackingDFS;
+import ir.sk.helper.technique.Backtracking;
 
 /**
  * A Maze is given as N*N binary matrix of blocks where source block is the upper left most block i.e., maze[0][0] and destination block is lower rightmost block i.e.,
@@ -25,7 +25,7 @@ import ir.sk.helper.technique.BacktrackingDFS;
  * <p>
  * Created by sad.kayvanfar on 2/15/2021.
  */
-@BacktrackingDFS
+@Backtracking
 @TimeComplexity("O(2^(n^2))")
 @SpaceComplexity("O(n^2)")
 public class RatInMaze {

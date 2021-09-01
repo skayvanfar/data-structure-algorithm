@@ -12,7 +12,7 @@ import ir.sk.helper.complexity.Stability;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.CyclicSortPattern;
 import ir.sk.helper.pattern.MultiplePointerPattern;
-import ir.sk.helper.technique.BacktrackingDFS;
+import ir.sk.helper.technique.Backtracking;
 import ir.sk.helper.technique.DivideAndConquer;
 
 import java.util.Arrays;
@@ -213,7 +213,7 @@ public class Sort {
     @RecurrenceRelation("T(n) = 2 T(n/2) + O(n)")
     @Stability
     @DivideAndConquer
-    @BacktrackingDFS
+    @Backtracking
     public static void mergeSortRecursive(int[] a, int n) {
 
         // base case

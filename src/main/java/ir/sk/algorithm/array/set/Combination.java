@@ -2,7 +2,7 @@ package ir.sk.algorithm.array.set;
 
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.technique.BacktrackingDFS;
+import ir.sk.helper.technique.Backtracking;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -48,7 +48,7 @@ public class Combination {
      */
     @TimeComplexity("O(n! * n), T(n) = n * T(n-1) = n!")
     @SpaceComplexity("O(n)")
-    @BacktrackingDFS
+    @Backtracking
     private static void combinationByBacktracking(int n, int k, int start, LinkedList<Integer> track, List<List<Integer>> result) {
         // trigger the ending condition, reach the bottom of tree
         if (k == track.size()) {
