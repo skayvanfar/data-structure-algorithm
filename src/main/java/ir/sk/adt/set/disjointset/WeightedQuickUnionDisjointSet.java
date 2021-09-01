@@ -1,17 +1,17 @@
-package ir.sk.adt.set.unionfind;
+package ir.sk.adt.set.disjointset;
 
 /**
  * Union-find implementation (weighted quick-union)
  *
  * Created by sad.kayvanfar on 9/1/2021.
  */
-public class WeightedQuickUnionUF implements UF {
+public class WeightedQuickUnionDisjointSet implements DisjointSet {
 
     private int[] id; // parent link (site indexed)
     private int[] sz; // size of component for roots (site indexed)
     private int count; // number of components
 
-    public WeightedQuickUnionUF(int N) {
+    public WeightedQuickUnionDisjointSet(int N) {
         count = N;
         id = new int[N];
         for (int i = 0; i < N; i++) id[i] = i;

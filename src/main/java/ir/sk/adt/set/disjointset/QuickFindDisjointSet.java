@@ -1,4 +1,4 @@
-package ir.sk.adt.set.unionfind;
+package ir.sk.adt.set.disjointset;
 
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.HashingIndexPattern;
@@ -7,12 +7,12 @@ import ir.sk.helper.pattern.HashingIndexPattern;
  * Created by sad.kayvanfar on 5/1/2021.
  */
 @HashingIndexPattern
-public class QuickFindUF implements UF {
+public class QuickFindDisjointSet implements DisjointSet {
 
     private int[] id; // access to component id (site indexed)
     private int count; // number of components
 
-    public QuickFindUF(int count) {
+    public QuickFindDisjointSet(int count) {
         this.count = count;
         id = new int[count];
         for (int i = 0; i < count; i++)

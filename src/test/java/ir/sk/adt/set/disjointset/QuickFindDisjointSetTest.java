@@ -1,7 +1,5 @@
-package ir.sk.adt.set.unionfind;
+package ir.sk.adt.set.disjointset;
 
-import ir.sk.adt.set.unionfind.QuickFindUF;
-import ir.sk.adt.set.unionfind.UF;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,7 +7,7 @@ import org.junit.Test;
 /**
  * Created by sad.kayvanfar on 5/1/2021.
  */
-public class QuickFindUFTest {
+public class QuickFindDisjointSetTest {
 
     @Before
     public void setUp() throws Exception {
@@ -21,14 +19,14 @@ public class QuickFindUFTest {
 
     @Test
     public void union() {
-        UF uf = new QuickFindUF(10); // Initialize N components.
+        DisjointSet disjointSet = new QuickFindDisjointSet(10); // Initialize N components.
         int p = 2;
         int q = 3;
-        if (!uf.connected(p, q)) { // Ignore if connected.
-            uf.union(p, q); // Combine components
+        if (!disjointSet.connected(p, q)) { // Ignore if connected.
+            disjointSet.union(p, q); // Combine components
             System.out.println(p + " " + q); // and print connection.
         }
 
-        System.out.println(uf.count() + " components");
+        System.out.println(disjointSet.count() + " components");
     }
 }

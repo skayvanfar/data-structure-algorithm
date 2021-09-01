@@ -4,8 +4,8 @@ import ir.sk.adt.queue.LinkQueue;
 import ir.sk.adt.queue.Queue;
 import ir.sk.algorithm.graph.Edge;
 import ir.sk.algorithm.graph.EdgeWeightedGraph;
-import ir.sk.adt.set.unionfind.QuickUnionUF;
-import ir.sk.adt.set.unionfind.UF;
+import ir.sk.adt.set.disjointset.QuickUnionDisjointSet;
+import ir.sk.adt.set.disjointset.DisjointSet;
 import ir.sk.helper.technique.GreedyAlgorithm;
 
 import java.util.PriorityQueue;
@@ -112,20 +112,20 @@ public class LazyPrimMST implements MST {
         }
 
         // check that it is acyclic
-        UF uf = new QuickUnionUF(graph.vertexSize());
+        DisjointSet disjointSet = new QuickUnionDisjointSet(graph.vertexSize());
         for (Edge e : edges()) {
             int v = e.either(), w = e.other(v);
-            if (uf.find(v) == uf.find(w)) {
+            if (disjointSet.find(v) == disjointSet.find(w)) {
                 System.err.println("Not a forest");
                 return false;
             }
-            uf.union(v, w);
+            disjointSet.union(v, w);
         }
 
         // check that it is a spanning forest
         for (Edge e : graph.edges()) {
             int v = e.either(), w = e.other(v);
-            if (uf.find(v) != uf.find(w)) {
+            if (disjointSet.find(v) != disjointSet.find(w)) {
                 System.err.println("Not a spanning forest");
                 return false;
             }
@@ -135,16 +135,16 @@ public class LazyPrimMST implements MST {
         for (Edge e : edges()) {
 
             // all edges in MST except e
-            uf = new QuickUnionUF(graph.vertexSize());
+            disjointSet = new QuickUnionDisjointSet(graph.vertexSize());
             for (Edge f : mst) {
                 int x = f.either(), y = f.other(x);
-                if (f != e) uf.union(x, y);
+                if (f != e) disjointSet.union(x, y);
             }
 
             // check that e is min weight edge in crossing cut
             for (Edge f : graph.edges()) {
                 int x = f.either(), y = f.other(x);
-                if (uf.find(x) != uf.find(y)) {
+                if (disjointSet.find(x) != disjointSet.find(y)) {
                     if (f.weight() < e.weight()) {
                         System.err.println("Edge " + f + " violates cut optimality conditions");
                         return false;

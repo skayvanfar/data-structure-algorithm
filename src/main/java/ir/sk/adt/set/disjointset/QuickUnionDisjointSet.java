@@ -1,17 +1,17 @@
-package ir.sk.adt.set.unionfind;
+package ir.sk.adt.set.disjointset;
 
 import ir.sk.helper.complexity.TimeComplexity;
 
 /**
  * Created by sad.kayvanfar on 5/1/2021.
  */
-public class QuickUnionUF implements UF {
+public class QuickUnionDisjointSet implements DisjointSet {
 
     private int[] id; // access to component id (site indexed)
     private int count; // number of components
 
 
-    public QuickUnionUF(int count) {
+    public QuickUnionDisjointSet(int count) {
         this.count = count;
         id = new int[count];
         for (int i = 0; i < count; i++)

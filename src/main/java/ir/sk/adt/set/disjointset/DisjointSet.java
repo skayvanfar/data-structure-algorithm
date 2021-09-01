@@ -1,4 +1,4 @@
-package ir.sk.adt.set.unionfind;
+package ir.sk.adt.set.disjointset;
 
 import ir.sk.algorithm.graph.component.ConnectedComponents;
 
@@ -10,7 +10,7 @@ import ir.sk.algorithm.graph.component.ConnectedComponents;
  *
  * Created by sad.kayvanfar on 5/1/2021.
  */
-public interface UF {
+public interface DisjointSet {
 
     /**
      * add connection between p and q

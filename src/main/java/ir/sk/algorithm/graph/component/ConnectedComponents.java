@@ -1,7 +1,7 @@
 package ir.sk.algorithm.graph.component;
 
 import ir.sk.algorithm.graph.Graph;
-import ir.sk.adt.set.unionfind.UF;
+import ir.sk.adt.set.disjointset.DisjointSet;
 
 /**
  * direct application of depth-first search is to
@@ -9,7 +9,7 @@ import ir.sk.adt.set.unionfind.UF;
  *
  *
  * How does the DFS-based solution for graph connectivity in CC compare
- * with the {@link ir.sk.adt.set.unionfind.UF} In theory, DFS is faster than union-find
+ * with the {@link DisjointSet} In theory, DFS is faster than union-find
  * because it provides a constant-time guarantee, which union-find does not; in practice,
  * this difference is negligible, and union-find is faster because it does not have to build
  * a full representation of the graph. More important, union-find is an online algorithm
@@ -22,7 +22,7 @@ import ir.sk.adt.set.unionfind.UF;
  *
  * Created by sad.kayvanfar on 5/9/2021.
  */
-public class ConnectedComponents implements UF {
+public class ConnectedComponents implements DisjointSet {
 
     // Set
     private boolean[] marked;
