@@ -1,6 +1,7 @@
 package ir.sk.algorithm.graph.component;
 
 import ir.sk.algorithm.graph.Graph;
+import ir.sk.algorithm.others.unionfind.UF;
 
 /**
  * direct application of depth-first search is to
@@ -21,7 +22,7 @@ import ir.sk.algorithm.graph.Graph;
  *
  * Created by sad.kayvanfar on 5/9/2021.
  */
-public class ConnectedComponents {
+public class ConnectedComponents implements UF {
 
     // Set
     private boolean[] marked;
@@ -77,5 +78,16 @@ public class ConnectedComponents {
      */
     public int count() {
         return count;
+    }
+
+
+    @Override
+    public void union(int p, int q) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public int find(int p) {
+        throw new UnsupportedOperationException("Not implemented");
     }
 }

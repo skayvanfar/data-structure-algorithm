@@ -101,6 +101,7 @@ public class LowestCommonAncestor {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
+    // TODO: 9/1/2021 not work when two values are on the same branch
     public static boolean lCAForBT(TreeNode node, int num1, int num2) {
         if (node == null)
             return false;
