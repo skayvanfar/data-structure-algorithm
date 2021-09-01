@@ -1,4 +1,4 @@
-package ir.sk.algorithm.others.unionfind;
+package ir.sk.adt.set.unionfind;
 
 /**
  * Union-find implementation (weighted quick-union)

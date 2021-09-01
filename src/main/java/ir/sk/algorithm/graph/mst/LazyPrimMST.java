@@ -4,8 +4,8 @@ import ir.sk.adt.queue.LinkQueue;
 import ir.sk.adt.queue.Queue;
 import ir.sk.algorithm.graph.Edge;
 import ir.sk.algorithm.graph.EdgeWeightedGraph;
-import ir.sk.algorithm.others.unionfind.QuickUnionUF;
-import ir.sk.algorithm.others.unionfind.UF;
+import ir.sk.adt.set.unionfind.QuickUnionUF;
+import ir.sk.adt.set.unionfind.UF;
 import ir.sk.helper.technique.GreedyAlgorithm;
 
 import java.util.PriorityQueue;

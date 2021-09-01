@@ -1,8 +1,9 @@
-package ir.sk.algorithm.others.unionfind;
+package ir.sk.adt.set.unionfind;
 
 import ir.sk.algorithm.graph.component.ConnectedComponents;
 
 /**
+ * Disjoint-set (Union-Find) (merge–find) is a ADT that stores a collection of disjoint (non-overlapping) sets
  * an API that encapsulates the basic operations that: initialize, add a connection between two sites,
  * identify the component containing a site, determine whether two sites are in the same component, and count the number of components.
  * its another algorithm for ConnectedComponents. ({@link ConnectedComponents})
