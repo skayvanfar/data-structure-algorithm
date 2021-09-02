@@ -26,6 +26,8 @@ import java.util.*;
  */
 public class SubSet {
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     /**
      * The first solution is using the idea of <strong>mathematical induction</strong>
      * <p>
@@ -62,8 +64,6 @@ public class SubSet {
         }
         return sets;
     }
-
-    //////////////////////////////////////////////////////////////////////////////////////////
 
     /**
      * main function, input a unique set of numbers and return all subsets of them
@@ -181,6 +181,8 @@ public class SubSet {
         }
         return subsets;
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
      * Given a set of numbers that might contain duplicates, find all of its distinct subsets.
