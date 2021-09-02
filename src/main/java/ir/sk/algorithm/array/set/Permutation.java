@@ -31,6 +31,8 @@ public class Permutation {
 
     private final static int MAX_CHAR = 256;
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     /**
      * Generating permutation using Heap Algorithm (Heap’s Algorithm)
      *
@@ -122,7 +124,7 @@ public class Permutation {
      * End Condition: all elements in nums appear in track
      *
      * @param nums
-     * @param track
+     * @param track path
      * @param result
      */
     @TimeComplexity("O(n! * n), T(n) = n * T(n-1) = n!")
@@ -226,6 +228,7 @@ public class Permutation {
             }
         }
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
      * If n is big, we can generate a random permutation by shuffling the array
