@@ -25,8 +25,8 @@ public class RatInMazeTest {
                 {0, 1, 0, 0},
                 {1, 1, 1, 1}};
 
-        RatInMaze rat = new RatInMaze(maze.length);
+        RatInMaze rat = new RatInMaze(maze);
 
-        rat.solveMaze(maze);
+        rat.solveMaze();
     }
 }

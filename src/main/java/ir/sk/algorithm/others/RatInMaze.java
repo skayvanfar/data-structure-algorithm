@@ -30,24 +30,85 @@ import ir.sk.helper.technique.Backtracking;
 @SpaceComplexity("O(n^2)")
 public class RatInMaze {
 
+    private int[][] maze;
+    private int[][] result;
     // size of the maze
     private int size;
 
-    public RatInMaze(int size) {
-        this.size = size;
+    public RatInMaze(int[][] maze) {
+        this.maze = maze;
+        this.size = maze.length;
+        this.result = new int[size][size];
     }
 
     /**
-     * A utility function to print solution matrix sol[N][N]
+     * This function solves the Maze problem using Backtracking.
+     * It mainly uses recursive solveMaze function to solve the problem.
+     * It returns false if no path is possible, otherwise return true and
+     * prints the path in the form of 1s. there may be more than one solution,
+     * this function prints one of the feasible solutions.
      *
-     * @param sol
+     * @return
      */
-    public void printSolution(int sol[][]) {
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++)
-                System.out.print(" " + sol[i][j] + " ");
-            System.out.println();
+    public boolean solveMaze() {
+        if (solveMaze(maze, 0, 0, result) == false) {
+            System.out.print("Solution doesn't exist");
+            return false;
         }
+
+        printSolution(result);
+        return true;
+    }
+
+    /**
+     * @param maze
+     * @param x
+     * @param y
+     * @param result
+     * @return
+     */
+    private boolean solveMaze(int[][] maze, int x, int y, int[][] result) {
+        // if (x, y is goal) return  true
+        if (x == size - 1 && y == size - 1 && maze[x][y] == 1) {
+            result[x][y] = 1;
+            return true;
+        }
+
+        // check if maze[x][y] is valid
+        if (isSafe(maze, x, y)) {
+            // Check if the current block is already part of solution path.
+            if (result[x][y] == 1)
+                return false;
+
+            // mark x, y as part of the solution path
+            result[x][y] = 1;
+
+            /* Move forward in x direction */
+            if (solveMaze(maze, x + 1, y, result))
+                return true;
+
+            /* If moving in x direction doesn't give
+            solution then Move down in y direction */
+            if (solveMaze(maze, x, y + 1, result))
+                return true;
+
+            /* If moving in y direction doesn't give
+            solution then Move backwards in x direction */
+            if (solveMaze(maze, x - 1, y, result))
+                return true;
+
+            /* If moving backwards in x direction doesn't give
+            solution then Move upwards in y direction */
+            if (solveMaze(maze, x, y - 1, result))
+                return true;
+
+            /* If none of the above movements works then
+            BACKTRACK: unmark x, y as part of solution
+            path */
+            result[x][y] = 0;
+            return false;
+        }
+        return false;
     }
 
     /**
@@ -64,75 +125,15 @@ public class RatInMaze {
     }
 
     /**
-     * This function solves the Maze problem using Backtracking.
-     * It mainly uses recursive solveMaze function to solve the problem.
-     * It returns false if no path is possible, otherwise return true and
-     * prints the path in the form of 1s. there may be more than one solution,
-     * this function prints one of the feasible solutions.
+     * A utility function to print solution matrix sol[N][N]
      *
-     * @param maze
-     * @return
-     */
-    public boolean solveMaze(int maze[][]) {
-        int[][] sol = new int[size][size];
-
-        if (solveMaze(maze, 0, 0, sol) == false) {
-            System.out.print("Solution doesn't exist");
-            return false;
-        }
-
-        printSolution(sol);
-        return true;
-    }
-
-    /**
-     * @param maze
-     * @param x
-     * @param y
      * @param sol
-     * @return
      */
-    private boolean solveMaze(int[][] maze, int x, int y, int[][] sol) {
-        // if (x, y is goal) return  true
-        if (x == size - 1 && y == size - 1 && maze[x][y] == 1) {
-            sol[x][y] = 1;
-            return true;
+    public void printSolution(int sol[][]) {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++)
+                System.out.print(" " + sol[i][j] + " ");
+            System.out.println();
         }
-
-        // check if maze[x][y] is valid
-        if (isSafe(maze, x, y)) {
-            // Check if the current block is already part of solution path.
-            if (sol[x][y] == 1)
-                return false;
-
-            // mark x, y as part of the solution path
-            sol[x][y] = 1;
-
-            /* Move forward in x direction */
-            if (solveMaze(maze, x + 1, y, sol))
-                return true;
-
-            /* If moving in x direction doesn't give
-            solution then Move down in y direction */
-            if (solveMaze(maze, x, y + 1, sol))
-                return true;
-
-            /* If moving in y direction doesn't give
-            solution then Move backwards in x direction */
-            if (solveMaze(maze, x - 1, y, sol))
-                return true;
-
-            /* If moving backwards in x direction doesn't give
-            solution then Move upwards in y direction */
-            if (solveMaze(maze, x, y - 1, sol))
-                return true;
-
-            /* If none of the above movements works then
-            BACKTRACK: unmark x, y as part of solution
-            path */
-            sol[x][y] = 0;
-            return false;
-        }
-        return false;
     }
 }
