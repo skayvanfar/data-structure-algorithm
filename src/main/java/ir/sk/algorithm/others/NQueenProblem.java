@@ -33,23 +33,13 @@ public class NQueenProblem {
             Arrays.fill(board[i], '.');
     }
 
-    /**
-     * A utility function to print solution
-     */
-    private void printSolution() {
-        for (int i = 0; i < board.length; i++) {
-            System.out.println(Arrays.toString(board[i]).replaceAll(",", ""));
-        }
-        System.out.println();
-    }
-
     public void findAllNQueen() {
         findAllNQueen(0);
     }
 
     @Backtracking
     @TimeComplexity("O(2^n)")
-    public void findAllNQueen(int row) {
+    private void findAllNQueen(int row) {
         // trigger the End Condition (the gaul) if `N` queens are placed successfully, print the solution
         if (row == board.length) {
             printSolution();
@@ -60,7 +50,7 @@ public class NQueenProblem {
         for (int i = 0; i < board.length; i++) {
             // exclude illegal selections (constraints)
             // if no two queens threaten each other
-            if (isValid(row, i)) {
+            if (isSafe(row, i)) {
                 // select (choice) - place queen on the current square
                 board[row][i] = 'Q';
 
@@ -75,7 +65,7 @@ public class NQueenProblem {
 
 
     // Function to check if two queens threaten each other or not
-    private boolean isValid(int row, int col) {
+    private boolean isSafe(int row, int col) {
         // return false if two queens share the same column
         for (int i = 0; i < row; i++) {
             if (board[i][col] == 'Q') {
@@ -100,5 +90,13 @@ public class NQueenProblem {
         return true;
     }
 
-
+    /**
+     * A utility function to print solution
+     */
+    private void printSolution() {
+        for (int i = 0; i < board.length; i++) {
+            System.out.println(Arrays.toString(board[i]).replaceAll(",", ""));
+        }
+        System.out.println();
+    }
 }

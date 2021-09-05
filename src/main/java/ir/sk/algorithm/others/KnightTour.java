@@ -3,6 +3,8 @@ package ir.sk.algorithm.others;
 import ir.sk.helper.complexity.TimeComplexity;
 
 /**
+ * A knight's tour is a sequence of moves of a knight on a chessboard such that the knight visits every square exactly once.
+ * If the knight ends on a square that is one knight's move from the beginning square (so that it could tour the board again immediately, following the same path), the tour is closed; otherwise, it is open
  * Created by sad.kayvanfar on 9/5/2021.
  */
 @TimeComplexity("O(8^(n^2)), There are N2 Cells and for each, we have a maximum of 8 possible moves to choose from")
@@ -19,22 +21,6 @@ public class KnightTour {
         for (int x = 0; x < size; x++)
             for (int y = 0; y < size; y++)
                 board[x][y] = -1;
-    }
-
-    /* A utility function to check if i,j are
-           valid indexes for N*N chessboard */
-    public boolean isSafe(int x, int y, int sol[][]) {
-        return (x >= 0 && x < size && y >= 0 && y < size && sol[x][y] == -1);
-    }
-
-    /* A utility function to print solution
-       matrix sol[N][N] */
-    public void printSolution(int sol[][]) {
-        for (int x = 0; x < size; x++) {
-            for (int y = 0; y < size; y++)
-                System.out.print(sol[x][y] + " ");
-            System.out.println();
-        }
     }
 
     /* This function solves the Knight Tour problem
@@ -57,7 +43,7 @@ public class KnightTour {
 
         /* Start from 0,0 and explore all tours using
            solveKTUtil() */
-        if (!solveKTUtil(0, 0, 1, board, xMove, yMove)) {
+        if (!solveKT(0, 0, 1, board, xMove, yMove)) {
             System.out.println("Solution does not exist");
             return false;
         } else
@@ -68,9 +54,9 @@ public class KnightTour {
 
     /* A recursive utility function to solve Knight
        Tour problem */
-    public boolean solveKTUtil(int x, int y, int moveI,
-                               int board[][], int xMove[],
-                               int yMove[]) {
+    private boolean solveKT(int x, int y, int moveI,
+                           int board[][], int xMove[],
+                           int yMove[]) {
         int k, nextX, nextY;
         if (moveI == size * size)
             return true;
@@ -82,7 +68,7 @@ public class KnightTour {
             nextY = y + yMove[k];
             if (isSafe(nextX, nextY, board)) {
                 board[nextX][nextY] = moveI;
-                if (solveKTUtil(nextX, nextY, moveI + 1, board, xMove, yMove))
+                if (solveKT(nextX, nextY, moveI + 1, board, xMove, yMove))
                     return true;
                 else
                     board[nextX][nextY] = -1; // backtracking
@@ -92,4 +78,19 @@ public class KnightTour {
         return false;
     }
 
+    /* A utility function to check if i,j are
+       valid indexes for N*N chessboard */
+    private boolean isSafe(int x, int y, int sol[][]) {
+        return (x >= 0 && x < size && y >= 0 && y < size && sol[x][y] == -1);
+    }
+
+    /* A utility function to print solution
+       matrix sol[N][N] */
+    private void printSolution(int sol[][]) {
+        for (int x = 0; x < size; x++) {
+            for (int y = 0; y < size; y++)
+                System.out.print(sol[x][y] + " ");
+            System.out.println();
+        }
+    }
 }
