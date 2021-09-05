@@ -64,7 +64,13 @@ public class NQueenProblem {
     }
 
 
-    // Function to check if two queens threaten each other or not
+    /**
+     * Function to check if two queens threaten each other or not
+     *
+     * @param row
+     * @param col
+     * @return
+     */
     private boolean isSafe(int row, int col) {
         // return false if two queens share the same column
         for (int i = 0; i < row; i++) {

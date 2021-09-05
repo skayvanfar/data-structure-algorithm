@@ -27,7 +27,7 @@ public class KnightTour {
 
     /* This function solves the Knight Tour problem
        using Backtracking.  This  function mainly
-       uses solveKTUtil() to solve the problem. It
+       uses solveKT() to solve the problem. It
        returns false if no complete tour is possible,
        otherwise return true and prints the tour.
        Please note that there may be more than one
@@ -80,14 +80,19 @@ public class KnightTour {
         return false;
     }
 
-    /* A utility function to check if i,j are
-       valid indexes for N*N chessboard */
+    /**
+     * A utility function to check if i,j are
+     * valid indexes for N*N chessboard
+     *
+     * @param x
+     * @param y
+     * @param sol
+     * @return
+     */
     private boolean isSafe(int x, int y, int sol[][]) {
         return (x >= 0 && x < size && y >= 0 && y < size && sol[x][y] == -1);
     }
 
-    /* A utility function to print solution
-       matrix sol[N][N] */
     private void printSolution(int sol[][]) {
         for (int x = 0; x < size; x++) {
             for (int y = 0; y < size; y++)
