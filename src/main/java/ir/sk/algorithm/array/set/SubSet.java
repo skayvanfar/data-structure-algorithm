@@ -112,8 +112,6 @@ public class SubSet {
             track.removeLast();
         }
     }
-    //////////////////////////////////////////////////////////////////////////////////////////
-
 
     public static void findPowerSetRecursive2(int[] s) {
         Deque<Integer> set = new ArrayDeque<>();
@@ -182,8 +180,6 @@ public class SubSet {
         }
         return subsets;
     }
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
      * Given a set of numbers that might contain duplicates, find all of its distinct subsets.
@@ -259,4 +255,5 @@ public class SubSet {
         }
     }
 
+    //////////////////////////////////////////////////////////////////////////////////////////
 }
