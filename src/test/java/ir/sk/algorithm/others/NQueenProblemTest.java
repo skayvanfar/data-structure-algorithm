@@ -14,7 +14,7 @@ public class NQueenProblemTest {
 
     @Before
     public void setUp() throws Exception {
-        queen = new NQueenProblem();
+        queen = new NQueenProblem(4);
     }
 
     @After
@@ -23,7 +23,7 @@ public class NQueenProblemTest {
 
     @Test
     public void findAllNQueen() {
-        queen.findAllNQueen(4);
+        queen.findAllNQueen();
     }
 
 }

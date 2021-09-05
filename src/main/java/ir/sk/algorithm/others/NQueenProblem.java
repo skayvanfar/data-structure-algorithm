@@ -22,35 +22,37 @@ import java.util.Arrays;
 @TimeComplexity("(n!)")
 public class NQueenProblem {
 
+    private char[][] board;
+
+    public NQueenProblem(int n) {
+        // `mat[][]` keeps track of the position of queens in the current configuration
+        this.board = new char[n][n];
+
+        // '.' Means empty, and 'Q' means queen, initializing the empty board.
+        for (int i = 0; i < n; i++)
+            Arrays.fill(board[i], '.');
+    }
+
     /**
      * A utility function to print solution
-     *
-     * @param board
      */
-    private void printSolution(char board[][]) {
+    private void printSolution() {
         for (int i = 0; i < board.length; i++) {
             System.out.println(Arrays.toString(board[i]).replaceAll(",", ""));
         }
         System.out.println();
     }
 
-    public void findAllNQueen(int n) {
-        // `mat[][]` keeps track of the position of queens in the current configuration
-        char[][] board = new char[n][n];
-
-        // '.' Means empty, and 'Q' means queen, initializing the empty board.
-        for (int i = 0; i < n; i++)
-            Arrays.fill(board[i], '.');
-
-        findAllNQueen(board, 0);
+    public void findAllNQueen() {
+        findAllNQueen(0);
     }
 
     @Backtracking
     @TimeComplexity("O(2^n)")
-    public void findAllNQueen(char board[][], int row) {
+    public void findAllNQueen(int row) {
         // trigger the End Condition (the gaul) if `N` queens are placed successfully, print the solution
         if (row == board.length) {
-            printSolution(board);
+            printSolution();
             return;
         }
 
@@ -58,12 +60,12 @@ public class NQueenProblem {
         for (int i = 0; i < board.length; i++) {
             // exclude illegal selections (constraints)
             // if no two queens threaten each other
-            if (isValid(board, row, i)) {
+            if (isValid(row, i)) {
                 // select (choice) - place queen on the current square
                 board[row][i] = 'Q';
 
                 // enter next row decision
-                findAllNQueen(board, row + 1);
+                findAllNQueen(row + 1);
 
                 // deselect - backtrack and remove the queen from the current square
                 board[row][i] = '.';
@@ -73,7 +75,7 @@ public class NQueenProblem {
 
 
     // Function to check if two queens threaten each other or not
-    private boolean isValid(char board[][], int row, int col) {
+    private boolean isValid(int row, int col) {
         // return false if two queens share the same column
         for (int i = 0; i < row; i++) {
             if (board[i][col] == 'Q') {
