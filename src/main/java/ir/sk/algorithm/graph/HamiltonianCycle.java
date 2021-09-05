@@ -16,7 +16,7 @@ import ir.sk.helper.technique.Backtracking;
 @Backtracking
 public class HamiltonianCycle {
 
-    int vertexSize = 5;
+    int vertexSize;
     int[][] graph;
     int[] path;
 
