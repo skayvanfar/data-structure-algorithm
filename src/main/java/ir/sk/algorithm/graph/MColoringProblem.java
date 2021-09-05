@@ -1,4 +1,4 @@
-package ir.sk.algorithm.others;
+package ir.sk.algorithm.graph;
 
 import ir.sk.helper.Difficulty;
 import ir.sk.helper.DifficultyType;

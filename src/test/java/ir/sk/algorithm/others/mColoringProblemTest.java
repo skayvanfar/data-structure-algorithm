@@ -1,5 +1,6 @@
 package ir.sk.algorithm.others;
 
+import ir.sk.algorithm.graph.MColoringProblem;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
