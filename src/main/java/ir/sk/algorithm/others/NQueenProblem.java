@@ -80,7 +80,7 @@ public class NQueenProblem {
             }
         }
 
-        // return false if two queens share the same `` diagonal
+        // return false if two queens share the same `\` diagonal
         for (int i = row, j = col; i >= 0 && j >= 0; i--, j--) {
             if (board[i][j] == 'Q') {
                 return false;
