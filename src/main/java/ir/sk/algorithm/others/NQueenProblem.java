@@ -19,6 +19,7 @@ import java.util.Arrays;
  *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/14/2021.
  */
+@Backtracking
 @TimeComplexity("(n!)")
 public class NQueenProblem {
 
@@ -37,7 +38,6 @@ public class NQueenProblem {
         findAllNQueen(0);
     }
 
-    @Backtracking
     @TimeComplexity("O(2^n)")
     private void findAllNQueen(int row) {
         // trigger the End Condition (the gaul) if `N` queens are placed successfully, print the solution
