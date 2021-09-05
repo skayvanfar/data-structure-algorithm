@@ -11,6 +11,7 @@ import ir.sk.helper.technique.BFS;
 import ir.sk.helper.technique.Backtracking;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * A power set of set S is the set of all possible subsets of S, including the empty set and S itself.
@@ -99,7 +100,7 @@ public class SubSet {
     @TimeComplexity("O(2^n)")
     @Backtracking
     private static void subSetByBacktracking(int[] nums, int start, LinkedList<Integer> track, List<List<Integer>> result) {
-        // trigger the ending condition
+        // trigger the ending condition, create new collection in order not to replace the old one
         result.add(new LinkedList(track));
 
         for (int i = start; i < nums.length; i++) {
@@ -107,7 +108,7 @@ public class SubSet {
             track.add(nums[i]);
             // go to the next decision tree
             subSetByBacktracking(nums, i + 1, track, result);
-            // deselect
+            // deselect, use LinkedList to remove the last element in O(1)
             track.removeLast();
         }
     }
@@ -257,4 +258,5 @@ public class SubSet {
             System.out.println("}");
         }
     }
+
 }
