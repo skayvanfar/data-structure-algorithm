@@ -68,7 +68,7 @@ public class NQueenProblem {
                 findAllNQueen(row + 1);
 
                 // deselect - backtrack and remove the queen from the current square
-                board[row][i] = '.';
+                board[row][i] = '.'; // backtracking
             }
         }
     }
