@@ -1,5 +1,7 @@
 package ir.sk.algorithm.others;
 
+import ir.sk.helper.Difficulty;
+import ir.sk.helper.DifficultyType;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.technique.Backtracking;
@@ -25,6 +27,7 @@ import ir.sk.helper.technique.Backtracking;
  * <p>
  * Created by sad.kayvanfar on 2/15/2021.
  */
+@Difficulty(type = DifficultyType.MEDIUM)
 @Backtracking
 @TimeComplexity("O(2^(n^2))")
 @SpaceComplexity("O(n^2)")

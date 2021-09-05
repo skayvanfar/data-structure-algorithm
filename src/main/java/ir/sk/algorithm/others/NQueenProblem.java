@@ -1,5 +1,7 @@
 package ir.sk.algorithm.others;
 
+import ir.sk.helper.Difficulty;
+import ir.sk.helper.DifficultyType;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.technique.Backtracking;
 
@@ -19,6 +21,7 @@ import java.util.Arrays;
  *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/14/2021.
  */
+@Difficulty(type = DifficultyType.HARD)
 @Backtracking
 @TimeComplexity("(n!)")
 public class NQueenProblem {

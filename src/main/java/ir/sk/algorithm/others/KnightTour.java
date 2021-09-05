@@ -1,5 +1,7 @@
 package ir.sk.algorithm.others;
 
+import ir.sk.helper.Difficulty;
+import ir.sk.helper.DifficultyType;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.technique.Backtracking;
 
@@ -8,6 +10,7 @@ import ir.sk.helper.technique.Backtracking;
  * If the knight ends on a square that is one knight's move from the beginning square (so that it could tour the board again immediately, following the same path), the tour is closed; otherwise, it is open
  * Created by sad.kayvanfar on 9/5/2021.
  */
+@Difficulty(type = DifficultyType.HARD)
 @Backtracking
 @TimeComplexity("O(8^(n^2)), There are N2 Cells and for each, we have a maximum of 8 possible moves to choose from")
 public class KnightTour {
