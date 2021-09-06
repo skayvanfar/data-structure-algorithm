@@ -41,8 +41,8 @@ public class TwoDArray {
     }
 
     /**
-     *  observe that any number (say k) that we want to find, must exist within a row, including the first and last elements of the row (if it exists at all).
-     *  So we first find the row in which k must lie using binary search ( O(logn) ) and then use binary search again to search in that row( O(logm) ).
+     * observe that any number (say k) that we want to find, must exist within a row, including the first and last elements of the row (if it exists at all).
+     * So we first find the row in which k must lie using binary search ( O(logn) ) and then use binary search again to search in that row( O(logm) ).
      *
      * @param array
      * @param key
@@ -65,6 +65,34 @@ public class TwoDArray {
                 high = mid - 1;
             else if (key > array[mid][array[0].length - 1])
                 low = mid + 1;
+        }
+        return "not found";
+    }
+
+    /**
+     * Start from the top right corner: row = 0, col = m-1
+     *
+     * if matrix[row][col] is equal target, return true.
+     * if matrix[row][col] is less than the target, row = row + 1; indicates that this row can’t contain the target because this one in this line is the biggest one, counting from ‘row’.
+     * if matrix[row][col] is greater than the target, col = col — 1; indicate that this column can’t contain the target because this one in this column is the smallest one, counting from ‘col’.
+     *
+     * @param matrix
+     * @param target
+     * @return
+     */
+    @TimeComplexity("O(m + n")
+    @SpaceComplexity("O(1)")
+    public static String binarySearchByDirection(int[][] matrix, int target) {
+        int n = matrix.length;
+        int m = matrix[0].length;
+        int row = 0, col = m - 1;
+        while (row < n && col >=0){
+            if (matrix[row][col] == target)
+                return "(" + row + "," + col + ")";
+            else if (matrix[row][col] < target)
+                row = row + 1;
+            else
+                col = col - 1;
         }
         return "not found";
     }
