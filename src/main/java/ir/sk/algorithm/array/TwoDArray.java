@@ -15,7 +15,7 @@ import java.util.List;
  * 2D Array-Grid-Matrix algorithms
  * Created by sad.kayvanfar on 7/25/2021.
  */
-public class TwoDArrayGridMatrix {
+public class TwoDArray {
 
     /**
      * Given a 2D matrix of characters and a target word, write a function

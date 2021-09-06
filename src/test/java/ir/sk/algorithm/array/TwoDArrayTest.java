@@ -4,12 +4,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by sad.kayvanfar on 7/25/2021.
  */
-public class TwoDArrayGridMatrixTest {
+public class TwoDArrayTest {
 
     @Before
     public void setUp() throws Exception {
@@ -21,7 +19,7 @@ public class TwoDArrayGridMatrixTest {
 
     @Test
     public void findWord() {
-        boolean result = TwoDArrayGridMatrix.findWord(new char[][]{{'F', 'A', 'C', 'I'},
+        boolean result = TwoDArray.findWord(new char[][]{{'F', 'A', 'C', 'I'},
                 {'O', 'B', 'Q', 'P'},
                 {'A', 'N', 'O', 'B'},
                 {'M', 'A', 'S', 'S'}}, "FOAM".toCharArray());
@@ -35,7 +33,7 @@ public class TwoDArrayGridMatrixTest {
                 { 9, 10, 11, 12 },
                 { 13, 14, 15, 16 } };
 
-        System.out.println(TwoDArrayGridMatrix.spiralOrder(a));
+        System.out.println(TwoDArray.spiralOrder(a));
     }
 
     @Test
@@ -45,6 +43,6 @@ public class TwoDArrayGridMatrixTest {
                 { 9, 10, 11, 12 },
                 { 13, 14, 15, 16 } };
 
-        TwoDArrayGridMatrix.spiralOrderRecursive(a, 0, 0, 4, 4);
+        TwoDArray.spiralOrderRecursive(a, 0, 0, 4, 4);
     }
 }
