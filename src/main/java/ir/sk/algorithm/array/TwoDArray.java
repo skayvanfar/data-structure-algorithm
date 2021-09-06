@@ -9,6 +9,7 @@ import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.technique.BruteForce;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -17,12 +18,18 @@ import java.util.List;
  */
 public class TwoDArray {
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     /**
+     * A Simple Solution is to one by one compare x with every element of the matrix. If matches, then return position.
+     *
      * @param array
      * @param searchKey
      * @return
      */
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    @BruteForce
+    @TimeComplexity("O(m*n)")
+    @SpaceComplexity("O(1)")
     public static String linerSearch2D(int[][] array, int searchKey) {
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
@@ -32,6 +39,37 @@ public class TwoDArray {
         }
         return "not found";
     }
+
+    /**
+     *  observe that any number (say k) that we want to find, must exist within a row, including the first and last elements of the row (if it exists at all).
+     *  So we first find the row in which k must lie using binary search ( O(logn) ) and then use binary search again to search in that row( O(logm) ).
+     *
+     * @param array
+     * @param key
+     * @return
+     */
+    @TimeComplexity("O(log(m) + log(n))")
+    @SpaceComplexity("O(1)")
+    public static String binarySearchByLoop2D(int[][] array, int key) {
+        int low = 0, high = array.length - 1, mid;
+
+        while (low <= high) {
+            mid = (low + high) / 2;
+
+            // this means the element must be within this row
+            if (key > array[mid][0] && key < array[mid][array[0].length - 1]) {
+                int colIndex = Arrays.binarySearch(array[mid], key); // we'll apply binary
+                // search on this row
+                return "(" + mid + "," + colIndex + ")";
+            } else if (key < array[mid][0])
+                high = mid - 1;
+            else if (key > array[mid][array[0].length - 1])
+                low = mid + 1;
+        }
+        return "not found";
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
      * Given a 2D matrix of characters and a target word, write a function
@@ -83,14 +121,14 @@ public class TwoDArray {
 
     /**
      * You are given a 2D array of integers. Print out the clockwise spiral traversal of the matrix.
-     *
+     * <p>
      * grid = [[1,  2,  3,  4,  5],
-     *         [6,  7,  8,  9,  10],
-     *         [11, 12, 13, 14, 15],
-     *         [16, 17, 18, 19, 20]]
-     *
+     * [6,  7,  8,  9,  10],
+     * [11, 12, 13, 14, 15],
+     * [16, 17, 18, 19, 20]]
+     * <p>
      * The clockwise spiral traversal of this array is:
-     *
+     * <p>
      * 1, 2, 3, 4, 5, 10, 15, 20, 19, 18, 17, 16, 11, 6, 7, 8, 9, 14, 13, 12
      *
      * @param matrix
