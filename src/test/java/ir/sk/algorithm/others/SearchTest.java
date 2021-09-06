@@ -1,6 +1,6 @@
 package ir.sk.algorithm.others;
 
-import ir.sk.algorithm.others.Search;
+import ir.sk.algorithm.array.Search;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

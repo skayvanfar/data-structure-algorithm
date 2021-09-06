@@ -1,4 +1,4 @@
-package ir.sk.algorithm.others;
+package ir.sk.algorithm.array;
 
 import ir.sk.helper.Implementation;
 import ir.sk.helper.ImplementationType;

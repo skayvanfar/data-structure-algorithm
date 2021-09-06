@@ -20,52 +20,6 @@ import java.util.*;
 public class ArrayAlgorithms {
 
     /**
-     * Given a 2D matrix of characters and a target word, write a function
-     * that returns whether the word can be found in the matrix by going left-to-right, or up-to-down.
-     * <p>
-     * String str = 'FOAM'
-     * const matrix = [
-     * ['F', 'A', 'C', 'I'],
-     * ['O', 'B', 'Q', 'P'],
-     * ['A', 'N', 'O', 'B'],
-     * ['M', 'A', 'S', 'S']
-     * ]
-     *
-     * @param matrix
-     * @param world
-     * @return
-     */
-    @BruteForce
-    @TimeComplexity("O(n^2)")
-    public static boolean findWord(char[][] matrix, char[] world) {
-        for (int i = 0; i < matrix.length; i++) {
-            boolean founded = true;
-            for (int j = 0; j < matrix[0].length; j++) {
-                if (matrix[i][j] != world[j]) {
-                    founded = false;
-                    break;
-                }
-            }
-            if (founded)
-                return founded;
-        }
-
-        for (int j = 0; j < matrix[0].length; j++) {
-            boolean founded = true;
-            for (int i = 0; i < matrix.length; i++) {
-                if (matrix[i][j] != world[i]) {
-                    founded = false;
-                    break;
-                }
-            }
-            if (founded)
-                return founded;
-        }
-
-        return false;
-    }
-
-    /**
      * We are given an array containing positive and negative numbers. Suppose the array contains a number ‘M’ at a particular index. Now,
      * if ‘M’ is positive we will move forward ‘M’ indices and if ‘M’ is negative move backwards ‘M’ indices.
      * You should assume that the array is circular which means two things:

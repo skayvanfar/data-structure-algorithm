@@ -1,6 +1,5 @@
 package ir.sk.algorithm.mathematic;
 
-import ir.sk.algorithm.mathematic.Matrix;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
