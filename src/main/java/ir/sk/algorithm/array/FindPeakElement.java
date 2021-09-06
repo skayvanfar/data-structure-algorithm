@@ -1,10 +1,13 @@
-package ir.sk.algorithm.others;
+package ir.sk.algorithm.array;
 
+import ir.sk.helper.Difficulty;
+import ir.sk.helper.DifficultyType;
 import ir.sk.helper.Implementation;
 import ir.sk.helper.ImplementationType;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.technique.BinarySearch;
+import ir.sk.helper.technique.BruteForce;
 import ir.sk.helper.technique.DecreaseAndConquer;
 
 import java.util.Arrays;
@@ -18,15 +21,16 @@ public class FindPeakElement {
 
     /**
      * to find peak element by linear traverse and iterative
+     * The array can be traversed and the element whose neighbours are less than that element can be returned.
      *
      * @param array
-     * @param low
-     * @param high
      * @return
      */
+    @Difficulty(type = DifficultyType.MEDIUM)
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
-    public static boolean findPeakByLoop(int array[], int low, int high) {
+    @BruteForce
+    public static boolean findPeakByLoop(int array[]) {
         // first or last element is peak element
         if (array.length == 1)
             return true;
@@ -47,12 +51,19 @@ public class FindPeakElement {
     /**
      * to find peak element
      *
+     * Divide and Conquer can be used to find a peak in O(Logn) time.
+     * The idea is based on the technique of Binary Search to check if the middle element is the peak element or not.
+     * If the middle element is not the peak element, then check if the element on the right side is greater
+     * than the middle element then there is always a peak element on the right side.
+     * If the element on the left side is greater than the middle element then there is always a peak element on the left side.
+     *
      * @param array
      * @param low
      * @param high
      * @return
      */
-    @TimeComplexity("O(log n)")
+    @Difficulty(type = DifficultyType.MEDIUM)
+    @TimeComplexity("O(Log n)")
     @SpaceComplexity("O(1)")
     @BinarySearch
     @DecreaseAndConquer
@@ -71,12 +82,12 @@ public class FindPeakElement {
 
     /**
      * @param array
-     * @param low
-     * @param high
      * @return
      */
-    @TimeComplexity("O(mn)")
-    public static boolean findPeakIn2DArrayByLoop(int array[][], int low, int high) {
+    @Difficulty(type = DifficultyType.HARD)
+    @TimeComplexity("O(m*n)")
+    @SpaceComplexity("O(1)")
+    public static boolean findPeakIn2DArrayByLoop(int array[][]) {
         // first or last element is peak element
         if (array.length == 1)
             return true;

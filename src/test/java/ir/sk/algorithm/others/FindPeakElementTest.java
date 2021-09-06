@@ -1,6 +1,6 @@
 package ir.sk.algorithm.others;
 
-import ir.sk.algorithm.others.FindPeakElement;
+import ir.sk.algorithm.array.FindPeakElement;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -31,7 +31,7 @@ public class FindPeakElementTest {
     public void findPeakByLoop() {
         boolean expectedValue = true;
         long startTime = System.nanoTime();
-        boolean result = FindPeakElement.findPeakByLoop(array, 0, array.length);
+        boolean result = FindPeakElement.findPeakByLoop(array);
         long endTime = System.nanoTime();
         System.out.println("time duration for findPeakByLoop by array size: " + array.length + " = " + (endTime - startTime) + " nano");
         Assert.assertEquals(expectedValue, result);
@@ -51,7 +51,7 @@ public class FindPeakElementTest {
     public void findPeakIn2DArrayByLoop() {
         boolean expectedValue = true;
         long startTime = System.nanoTime();
-        boolean result = FindPeakElement.findPeakIn2DArrayByLoop(array2D, 0, array.length);
+        boolean result = FindPeakElement.findPeakIn2DArrayByLoop(array2D);
         long endTime = System.nanoTime();
         System.out.println("time duration for findPeakIn2DArrayByLoop by array size: " + array2D.length + " = " + (endTime - startTime) + " nano");
         Assert.assertEquals(expectedValue, result);
