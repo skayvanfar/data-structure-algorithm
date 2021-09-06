@@ -6,7 +6,7 @@ import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.technique.BruteForce;
 
 /**
- * Matrix library
+ * Matrix library (2D Array maths)
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 2/7/2020.
  */
 public class Matrix {
@@ -152,6 +152,19 @@ public class Matrix {
     }
 
     /**
+     * @param a
+     */
+    public static void transposeMatrix2(int a[][]) {
+        for (int i = 0; i < a.length; i++) {
+            for (int j = i; j < a[0].length; j++) {
+                int temp = a[i][j];
+                a[i][j] = a[j][i];
+                a[j][i] = temp;
+            }
+        }
+    }
+
+    /**
      * a method to rotate the image by 90 degrees
      * <p>
      * we're rotating the matrix by 90 degrees, the easiest way to do this is to implement the rotation in
@@ -186,5 +199,14 @@ public class Matrix {
         }
         return true;
 
+    }
+
+    public static void displayMatrix(int[][] matrix) {
+        System.out.print("Result matrix is \n");
+        for (int i = 0; i < Matrix.N; i++) {
+            for (int j = 0; j < Matrix.M; j++)
+                System.out.print(matrix[i][j] + " ");
+            System.out.print("\n");
+        }
     }
 }

@@ -31,48 +31,31 @@ public class MatrixTest {
     @Test
     public void addMatrix() {
         int C[][] = Matrix.addMatrix(A, B);
-
-        System.out.print("Result matrix is \n");
-        for (int i = 0; i < Matrix.N; i++) {
-            for (int j = 0; j < Matrix.M; j++)
-                System.out.print(C[i][j] + " ");
-            System.out.print("\n");
-        }
+        Matrix.displayMatrix(C);
     }
 
     @Test
     public void multiplyMatrix() {
-        int c[][] = Matrix.multiplyMatrix(A, B);
-
-        System.out.print("Result matrix is \n");
-        for (int i = 0; i < Matrix.N; i++) {
-            for (int j = 0; j < Matrix.M; j++)
-                System.out.print(c[i][j] + " ");
-            System.out.print("\n");
-        }
+        int C[][] = Matrix.multiplyMatrix(A, B);
+        Matrix.displayMatrix(C);
     }
 
     @Test
     public void transposeMatrix() {
         int C[][] = Matrix.transposeMatrix(A);
+        Matrix.displayMatrix(C);
+    }
 
-        System.out.print("Result matrix is \n");
-        for (int i = 0; i < Matrix.N; i++) {
-            for (int j = 0; j < Matrix.M; j++)
-                System.out.print(C[i][j] + " ");
-            System.out.print("\n");
-        }
+    @Test
+    public void transposeMatrix2() {
+        Matrix.transposeMatrix2(A);
+        Matrix.displayMatrix(A);
     }
 
     @Test
     public void rotateMatrix90Degree() {
         Matrix.rotateMatrix90Degree(A);
-
-        System.out.print("Result matrix is \n");
-        for (int i = 0; i < Matrix.N; i++) {
-            for (int j = 0; j < Matrix.M; j++)
-                System.out.print(A[i][j] + " ");
-            System.out.print("\n");
-        }
+        Matrix.displayMatrix(A);
     }
+
 }
