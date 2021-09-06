@@ -86,4 +86,15 @@ public class TwoDArrayTest {
         TwoDArray.setMatrixZeroesByCache(a);
         System.out.println();
     }
+
+    @Test
+    public void setMatrixZeroes() {
+        int a[][] = { { 0, 2, 3, 0 },
+                { 5, 6, 7, 8 },
+                { 9, 10, 11, 12 },
+                { 13, 14, 15, 16 } };
+
+        TwoDArray.setMatrixZeroes(a);
+        System.out.println();
+    }
 }
