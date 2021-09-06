@@ -107,4 +107,14 @@ public class TwoDArrayTest {
 
         TwoDArray.printZigZag(a);
     }
+
+    @Test
+    public void printMatrixDiagonal() {
+        int a[][] = { { 0, 2, 3, 0 },
+                { 5, 6, 7, 8 },
+                { 9, 10, 11, 12 },
+                { 13, 14, 15, 16 } };
+
+        TwoDArray.printMatrixDiagonal(a);
+    }
 }

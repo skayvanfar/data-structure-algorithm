@@ -241,6 +241,7 @@ public class TwoDArray {
 
     /**
      * Method to print matrix in zig-zag form
+     *
      * @param a
      */
     @TimeComplexity("O(m*n)")
@@ -267,6 +268,71 @@ public class TwoDArray {
 
             // Skipping next row so as to get the next oddRow
             oddRow = oddRow + 2;
+        }
+    }
+
+    /**
+     * Given a matrix of n*n size, the task is to print its elements in a diagonal pattern.
+     *
+     * Input : mat[3][3] = {{1, 2, 3},
+     *                      {4, 5, 6},
+     *                      {7, 8, 9}}
+     * Output : 1 2 4 7 5 3 6 8 9
+     *
+     * From the diagram it can be seen that every element is either printed diagonally upward or diagonally downward.
+     * Start from the index (0,0) and print the elements diagonally upward then change the direction, change the column and print diagonally downwards.
+     * This cycle continues until the last element is reached.
+     *
+     * @param mat
+     */
+    @Difficulty(type = DifficultyType.MEDIUM)
+    @TimeComplexity("O(n*m)")
+    @SpaceComplexity("O(1)")
+    public static void printMatrixDiagonal(int mat[][]) {
+        int n = mat.length;
+        // Initialize indexes of element to be printed next
+        int i = 0, j = 0;
+
+        // Direction is initially from down to up
+        boolean isUp = true;
+
+        // Traverse the matrix till all elements get traversed
+        for (int k = 0; k < n * n; ) {
+            // If isUp = true then traverse from downward
+            // to upward
+            if (isUp) {
+                for (; i >= 0 && j < n; j++, i--) {
+                    System.out.print(mat[i][j] + " ");
+                    k++;
+                }
+
+                // Set i and j according to direction
+                if (i < 0 && j <= n - 1)
+                    i = 0;
+                if (j == n) {
+                    i = i + 2;
+                    j--;
+                }
+            }
+
+            // If isUp = 0 then traverse up to down
+            else {
+                for (; j >= 0 && i < n; i++, j--) {
+                    System.out.print(mat[i][j] + " ");
+                    k++;
+                }
+
+                // Set i and j according to direction
+                if (j < 0 && i <= n - 1)
+                    j = 0;
+                if (i == n) {
+                    j = j + 2;
+                    i--;
+                }
+            }
+
+            // Revert the isUp to change the direction
+            isUp = !isUp;
         }
     }
 
