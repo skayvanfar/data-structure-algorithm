@@ -18,6 +18,22 @@ import java.util.List;
 public class TwoDArray {
 
     /**
+     * @param array
+     * @param searchKey
+     * @return
+     */
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public static String linerSearch2D(int[][] array, int searchKey) {
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                if (array[i][j] == searchKey)
+                    return "(" + i + "," + j + ")";
+            }
+        }
+        return "not found";
+    }
+
+    /**
      * Given a 2D matrix of characters and a target word, write a function
      * that returns whether the word can be found in the matrix by going left-to-right, or up-to-down.
      * <p>

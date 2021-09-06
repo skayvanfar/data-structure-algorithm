@@ -18,6 +18,16 @@ public class TwoDArrayTest {
     }
 
     @Test
+    public void linerSearch2D() {
+        int a[][] = { { 1, 2, 3, 4 },
+                { 5, 6, 7, 8 },
+                { 9, 10, 11, 12 },
+                { 13, 14, 15, 16 } };
+
+        System.out.println(TwoDArray.linerSearch2D(a, 11));
+    }
+
+    @Test
     public void findWord() {
         boolean result = TwoDArray.findWord(new char[][]{{'F', 'A', 'C', 'I'},
                 {'O', 'B', 'Q', 'P'},
@@ -45,4 +55,5 @@ public class TwoDArrayTest {
 
         TwoDArray.spiralOrderRecursive(a, 0, 0, 4, 4);
     }
+
 }
