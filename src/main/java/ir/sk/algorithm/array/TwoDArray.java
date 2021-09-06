@@ -8,9 +8,7 @@ import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.technique.BruteForce;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * 2D Array-Grid-Matrix algorithms
@@ -238,4 +236,38 @@ public class TwoDArray {
     }
 
     //////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * If any cell of the matrix has a zero we can record its row and column number.
+     * All the cells of this recorded row and column can be marked zero in the next iteration.
+     *
+     * @param matrix
+     */
+    @TimeComplexity("O(m*n)")
+    @SpaceComplexity("O(m+n)")
+    public static void setMatrixZeroesByCache(int[][] matrix) {
+        int R = matrix.length;
+        int C = matrix[0].length;
+        Set<Integer> rows = new HashSet<>();
+        Set<Integer> cols = new HashSet<>();
+
+        // Essentially, we mark the rows and columns that are to be made zero
+        for (int i = 0; i < R; i++) {
+            for (int j = 0; j < C; j++) {
+                if (matrix[i][j] == 0) {
+                    rows.add(i);
+                    cols.add(j);
+                }
+            }
+        }
+
+        // Iterate over the array once again and using the rows and cols sets, update the elements.
+        for (int i = 0; i < R; i++) {
+            for (int j = 0; j < C; j++) {
+                if (rows.contains(i) || cols.contains(j)) {
+                    matrix[i][j] = 0;
+                }
+            }
+        }
+    }
 }

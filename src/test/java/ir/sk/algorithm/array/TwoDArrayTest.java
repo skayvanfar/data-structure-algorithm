@@ -76,4 +76,14 @@ public class TwoDArrayTest {
         TwoDArray.spiralOrderRecursive(a, 0, 0, 4, 4);
     }
 
+    @Test
+    public void setMatrixZeroesByCache() {
+        int a[][] = { { 0, 2, 3, 0 },
+                { 5, 6, 7, 8 },
+                { 9, 10, 11, 12 },
+                { 13, 14, 15, 16 } };
+
+        TwoDArray.setMatrixZeroesByCache(a);
+        System.out.println();
+    }
 }
