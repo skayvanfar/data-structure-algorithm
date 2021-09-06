@@ -6,6 +6,7 @@ import ir.sk.helper.Implementation;
 import ir.sk.helper.ImplementationType;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
+import ir.sk.helper.technique.BinarySearch;
 import ir.sk.helper.technique.BruteForce;
 
 import java.util.*;
@@ -48,6 +49,7 @@ public class TwoDArray {
      */
     @TimeComplexity("O(log(m) + log(n))")
     @SpaceComplexity("O(1)")
+    @BinarySearch
     public static String binarySearchByLoop2D(int[][] array, int key) {
         int low = 0, high = array.length - 1, mid;
 
@@ -69,7 +71,7 @@ public class TwoDArray {
 
     /**
      * Start from the top right corner: row = 0, col = m-1
-     *
+     * <p>
      * if matrix[row][col] is equal target, return true.
      * if matrix[row][col] is less than the target, row = row + 1; indicates that this row can’t contain the target because this one in this line is the biggest one, counting from ‘row’.
      * if matrix[row][col] is greater than the target, col = col — 1; indicate that this column can’t contain the target because this one in this column is the smallest one, counting from ‘col’.
@@ -84,7 +86,7 @@ public class TwoDArray {
         int n = matrix.length;
         int m = matrix[0].length;
         int row = 0, col = m - 1;
-        while (row < n && col >=0){
+        while (row < n && col >= 0) {
             if (matrix[row][col] == target)
                 return "(" + row + "," + col + ")";
             else if (matrix[row][col] < target)
@@ -238,6 +240,37 @@ public class TwoDArray {
     //////////////////////////////////////////////////////////////////////////////////////
 
     /**
+     * Method to print matrix in zig-zag form
+     * @param a
+     */
+    @TimeComplexity("O(m*n)")
+    @Difficulty(type = DifficultyType.EASY)
+    public static void printZigZag(int a[][]) {
+        int evenRow = 0; // starts from the first row
+        int oddRow = 1; // starts from the next row
+
+        while (evenRow < a.length) {
+            for (int i = 0; i < a[0].length; i++) {
+                // evenRow will be printed in the same direction
+                System.out.print(a[evenRow][i] + " ");
+            }
+
+            // Skipping next row so as to get the next evenRow
+            evenRow = evenRow + 2;
+
+            if (oddRow < a.length) {
+                for (int i = a[0].length - 1; i >= 0; i--) {
+                    // oddRow will be printed in the opposite direction
+                    System.out.print(a[oddRow][i] + " ");
+                }
+            }
+
+            // Skipping next row so as to get the next oddRow
+            oddRow = oddRow + 2;
+        }
+    }
+
+    /**
      * If any cell of the matrix has a zero we can record its row and column number.
      * All the cells of this recorded row and column can be marked zero in the next iteration.
      *
@@ -275,13 +308,13 @@ public class TwoDArray {
      * Rather than using additional variables to keep track of rows and columns to be reset, we use the matrix itself as the indicators.
      * The idea is that we can use the first cell of every row and column as a flag. This flag would determine whether a row or column has been set to zero.
      * This means for every cell instead of going to M+NM+N cells and setting it to zero we just set the flag in two cells.
-     *
+     * <p>
      * Algorithm:
-     *
+     * <p>
      * We iterate over the matrix and we mark the first cell of a row i and first cell of a column j, if the condition in the pseudo code above is satisfied. i.e. if cell[i][j] == 0.
-     *
+     * <p>
      * The first cell of row and column for the first row and first column is the same i.e. cell[0][0]. Hence, we use an additional variable to tell us if the first column had been marked or not and the cell[0][0] would be used to tell the same for the first row.
-     *
+     * <p>
      * Now, we iterate over the original matrix starting from second row and second column i.e. matrix[1][1] onwards.
      * For every cell we check if the row r or column c had been marked earlier by checking the respective first row cell or first column cell.
      * If any of them was marked, we set the value in the cell to 0.

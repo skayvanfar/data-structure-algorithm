@@ -256,4 +256,21 @@ public class SubSet {
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////
+
+
+    public static void traversSpiral(int[][] matrix, int d) {
+        int col = matrix.length;
+        for (int i = d; i < matrix[d].length - 1 - d; i++) {
+            System.out.println(matrix[d][i]);
+        }
+        for (int i = d + 1; i < matrix.length - 1 - d; i++) {
+            System.out.println(matrix[i][d]);
+        }
+        for (int i = matrix[matrix.length - 1 - d].length - 1; i > matrix[d].length - 1 - d; i++) {
+            System.out.println(matrix[d][i]);
+        }
+        for (int i = d; i < matrix[d].length - 1 - d; i++) {
+            System.out.println(matrix[d][i]);
+        }
+    }
 }
