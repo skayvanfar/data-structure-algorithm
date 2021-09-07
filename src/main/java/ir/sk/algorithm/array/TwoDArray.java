@@ -13,11 +13,14 @@ import java.util.*;
 
 /**
  * 2D Array-Grid-Matrix algorithms
+ * the most important algorithms are traverse and search
+ *
  * Created by sad.kayvanfar on 7/25/2021.
  */
 public class TwoDArray {
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     /**
      * A Simple Solution is to one by one compare x with every element of the matrix. If matches, then return position.
      *
