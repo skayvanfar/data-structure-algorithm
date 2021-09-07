@@ -148,6 +148,20 @@ public class TwoDArray {
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
+     * row by row traverse
+     *
+     * @param matrix
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
+    public static void rowTraverse(int[][] matrix) {
+        for (int row = 0; row < matrix.length; row++) {
+            for (int col = 0; col < matrix[row].length; col++) {
+                System.out.println(matrix[row][col]);
+            }
+        }
+    }
+    /**
      * You are given a 2D array of integers. Print out the clockwise spiral traversal of the matrix.
      * <p>
      * grid = [[1,  2,  3,  4,  5],
