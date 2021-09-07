@@ -9,6 +9,11 @@ import org.junit.Test;
  */
 public class TwoDArrayTest {
 
+    int matrix[][] = { { 1, 2, 3, 4 },
+            { 5, 6, 7, 8 },
+            { 9, 10, 11, 12 },
+            { 13, 14, 15, 16 } };
+
     @Before
     public void setUp() throws Exception {
     }
@@ -120,10 +125,14 @@ public class TwoDArrayTest {
 
     @Test
     public void rowTraverse() {
-        int a[][] = { { 1, 2, 3, 4 },
-                { 5, 6, 7, 8 },
-                { 9, 10, 11, 12 },
-                { 13, 14, 15, 16 } };
-        TwoDArray.rowTraverse(a);
+
+        TwoDArray.rowTraverse(matrix);
     }
+
+    @Test
+    public void colTraverse() {
+        TwoDArray.colTraverse(matrix);
+    }
+
+
 }
