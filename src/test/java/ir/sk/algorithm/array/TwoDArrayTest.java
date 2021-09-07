@@ -132,4 +132,9 @@ public class TwoDArrayTest {
     public void halfTraverseDownLeft() {
         TwoDArray.halfTraverseDownLeft(matrix);
     }
+
+    @Test
+    public void halfTraverseTopLeft() {
+        TwoDArray.halfTraverseTopLeft(matrix);
+    }
 }
