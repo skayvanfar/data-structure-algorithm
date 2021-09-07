@@ -234,9 +234,28 @@ public class TwoDArray {
      */
     @TimeComplexity("O(n + (n-1) + (n-2) + ... + 2 + 1) = O(n(n+1) / 2) = O(n^2/2) = O(n^2)")
     public static void halfTraverseTopRight(int[][] matrix) {
-        for (int row = 0; row < matrix.length; row++)
+        for (int row = 0; row < matrix.length; row++) {
             for (int col = row; col < matrix[row].length; col++)
-                System.out.println(matrix[row][col]);
+                System.out.print(matrix[row][col]);
+            System.out.println();
+        }
+    }
+
+    /**
+     * 1  .  .  .
+     * 5  6  .  .
+     * 9  10 11 .
+     * 13 14 15 16
+     *
+     * @param matrix
+     */
+    @TimeComplexity("O(n + (n-1) + (n-2) + ... + 2 + 1) = O(n(n+1) / 2) = O(n^2/2) = O(n^2)")
+    public static void halfTraverseDownLeft(int[][] matrix) {
+        for (int row = 0; row < matrix.length; row++) {
+            for (int col = 0; col <= row; col++)
+                System.out.print(matrix[row][col]);
+            System.out.println();
+        }
     }
 
     /**
