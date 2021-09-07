@@ -147,6 +147,18 @@ public class TwoDArray {
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    /**
+     * just one Row Traverse
+     *
+     * @param matrix
+     * @param row
+     */
+    @TimeComplexity("O(m)")
+    @SpaceComplexity("O(1)")
+    public static void oneRowTraverse(int[][] matrix, int row) {
+        for (int col = 0; col < matrix[row].length; col++)
+            System.out.println(matrix[row][col]);
+    }
 
     /**
      * row by row traverse
@@ -156,11 +168,9 @@ public class TwoDArray {
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
     public static void rowTraverse(int[][] matrix) {
-        for (int row = 0; row < matrix.length; row++) {
-            for (int col = 0; col < matrix[row].length; col++) {
+        for (int row = 0; row < matrix.length; row++)
+            for (int col = 0; col < matrix[row].length; col++)
                 System.out.println(matrix[row][col]);
-            }
-        }
     }
 
     /**
@@ -169,11 +179,9 @@ public class TwoDArray {
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
     public static void colTraverse(int[][] matrix) {
-        for (int col = 0; col < matrix[0].length; col++) {
-            for (int row = 0; row < matrix.length; row++) {
+        for (int col = 0; col < matrix[0].length; col++)
+            for (int row = 0; row < matrix.length; row++)
                 System.out.println(matrix[row][col]);
-            }
-        }
     }
 
     /**

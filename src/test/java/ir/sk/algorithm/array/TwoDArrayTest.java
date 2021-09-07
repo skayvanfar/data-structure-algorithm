@@ -134,5 +134,8 @@ public class TwoDArrayTest {
         TwoDArray.colTraverse(matrix);
     }
 
-
+    @Test
+    public void oneRowTraverse() {
+        TwoDArray.oneRowTraverse(matrix, 1);
+    }
 }
