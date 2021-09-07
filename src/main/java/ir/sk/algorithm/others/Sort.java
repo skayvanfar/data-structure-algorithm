@@ -12,8 +12,8 @@ import ir.sk.helper.complexity.Stability;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.CyclicSortPattern;
 import ir.sk.helper.pattern.MultiplePointerPattern;
-import ir.sk.helper.technique.Backtracking;
-import ir.sk.helper.technique.DivideAndConquer;
+import ir.sk.helper.paradigm.Backtracking;
+import ir.sk.helper.paradigm.DivideAndConquer;
 
 import java.util.Arrays;
 import java.util.stream.IntStream;

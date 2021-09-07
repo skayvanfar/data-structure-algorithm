@@ -7,7 +7,7 @@ import ir.sk.algorithm.graph.Edge;
 import ir.sk.algorithm.graph.EdgeWeightedGraph;
 import ir.sk.adt.set.disjointset.QuickUnionDisjointSet;
 import ir.sk.adt.set.disjointset.DisjointSet;
-import ir.sk.helper.technique.GreedyAlgorithm;
+import ir.sk.helper.paradigm.GreedyAlgorithm;
 
 /**
  *  The {@code PrimMST} class represents a data type for computing a

@@ -1,4 +1,4 @@
-package ir.sk.helper.technique;
+package ir.sk.helper.paradigm;
 
 /**
  * Backtracking is a general algorithm for finding all (or some) solutions to some computational problems,

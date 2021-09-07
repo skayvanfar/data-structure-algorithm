@@ -5,8 +5,8 @@ import ir.sk.helper.ImplementationType;
 import ir.sk.helper.Point;
 import ir.sk.helper.RecurrenceRelation;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.technique.BinarySearch;
-import ir.sk.helper.technique.DecreaseAndConquer;
+import ir.sk.helper.paradigm.BinarySearch;
+import ir.sk.helper.paradigm.DecreaseAndConquer;
 
 /**
  * Searching Algorithms are designed to check for an element or retrieve an element from any data structure where it is stored.

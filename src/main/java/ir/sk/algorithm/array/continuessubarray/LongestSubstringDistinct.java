@@ -6,8 +6,8 @@ import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.HashingIndexPattern;
 import ir.sk.helper.pattern.SlidingWindowPattern;
 import ir.sk.helper.pattern.SlidingWindowPatternType;
-import ir.sk.helper.technique.BruteForce;
-import ir.sk.helper.technique.CompleteSearch;
+import ir.sk.helper.paradigm.BruteForce;
+import ir.sk.helper.paradigm.CompleteSearch;
 
 import java.util.HashSet;
 import java.util.Set;

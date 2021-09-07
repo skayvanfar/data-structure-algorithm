@@ -3,7 +3,7 @@ package ir.sk.algorithm.array;
 import ir.sk.helper.complexity.BCR;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.technique.BruteForce;
+import ir.sk.helper.paradigm.BruteForce;
 
 /**
  * Given an array of integers, write a function that returns true if there is a triplet (a, b, c) that satisfies a2 + b2 = c2.

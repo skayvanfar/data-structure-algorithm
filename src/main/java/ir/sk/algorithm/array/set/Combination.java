@@ -2,7 +2,7 @@ package ir.sk.algorithm.array.set;
 
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.technique.Backtracking;
+import ir.sk.helper.paradigm.Backtracking;
 
 import java.util.LinkedList;
 import java.util.List;

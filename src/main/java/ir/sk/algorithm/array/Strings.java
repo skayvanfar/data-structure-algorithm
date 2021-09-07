@@ -8,7 +8,7 @@ import ir.sk.helper.pattern.HashingIndexPattern;
 import ir.sk.helper.pattern.MultiplePointerPattern;
 import ir.sk.helper.pattern.SlidingWindowPattern;
 import ir.sk.helper.pattern.SlidingWindowPatternType;
-import ir.sk.helper.technique.BruteForce;
+import ir.sk.helper.paradigm.BruteForce;
 
 
 /**

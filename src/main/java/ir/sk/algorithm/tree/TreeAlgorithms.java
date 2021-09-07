@@ -6,7 +6,7 @@ import ir.sk.helper.Point;
 import ir.sk.helper.RecurrenceRelation;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.technique.Backtracking;
+import ir.sk.helper.paradigm.Backtracking;
 
 import java.util.*;
 

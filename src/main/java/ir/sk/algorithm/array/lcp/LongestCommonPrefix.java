@@ -3,7 +3,7 @@ package ir.sk.algorithm.array.lcp;
 import ir.sk.helper.RecurrenceRelation;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.technique.DivideAndConquer;
+import ir.sk.helper.paradigm.DivideAndConquer;
 
 import java.util.Arrays;
 

@@ -4,7 +4,7 @@ import ir.sk.helper.Difficulty;
 import ir.sk.helper.DifficultyType;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.technique.Backtracking;
+import ir.sk.helper.paradigm.Backtracking;
 
 /**
  * Given a partially filled 9×9 2D array ‘grid[9][9]’, the goal is to assign digits (from 1 to 9) to the empty cells so that every row, column,

@@ -4,7 +4,7 @@ import ir.sk.helper.Difficulty;
 import ir.sk.helper.DifficultyType;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.technique.Backtracking;
+import ir.sk.helper.paradigm.Backtracking;
 
 /**
  * A Maze is given as N*N binary matrix of blocks where source block is the upper left most block i.e., maze[0][0] and destination block is lower rightmost block i.e.,

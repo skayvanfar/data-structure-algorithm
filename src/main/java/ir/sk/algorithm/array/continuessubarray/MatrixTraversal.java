@@ -1,8 +1,8 @@
 package ir.sk.algorithm.array.continuessubarray;
 
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.technique.DynamicProgramming;
-import ir.sk.helper.technique.DynamicProgrammingType;
+import ir.sk.helper.paradigm.DynamicProgramming;
+import ir.sk.helper.paradigm.DynamicProgrammingType;
 
 /**
  * print all the possible paths from top left to bottom right of a mXn matrix with the constraints that from each cell you can either move only to right or down.

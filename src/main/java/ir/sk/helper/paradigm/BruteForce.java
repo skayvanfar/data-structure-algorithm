@@ -1,4 +1,4 @@
-package ir.sk.helper.technique;
+package ir.sk.helper.paradigm;
 
 /**
  * Created by sad.keyvanfar on 8/23/2020.

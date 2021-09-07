@@ -8,10 +8,10 @@ import ir.sk.helper.ImplementationType;
 import ir.sk.helper.complexity.BCR;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.technique.BFS;
+import ir.sk.helper.paradigm.BFS;
 import ir.sk.helper.pattern.HashingIndexPattern;
-import ir.sk.helper.technique.Backtracking;
-import ir.sk.helper.technique.DivideAndConquer;
+import ir.sk.helper.paradigm.Backtracking;
+import ir.sk.helper.paradigm.DivideAndConquer;
 
 import java.util.*;
 

@@ -7,9 +7,9 @@ import ir.sk.helper.pattern.HashingIndexPattern;
 import ir.sk.helper.pattern.MultipleLoopsPattern;
 import ir.sk.helper.pattern.SlidingWindowPattern;
 import ir.sk.helper.pattern.SlidingWindowPatternType;
-import ir.sk.helper.technique.BruteForce;
-import ir.sk.helper.technique.DynamicProgramming;
-import ir.sk.helper.technique.DynamicProgrammingType;
+import ir.sk.helper.paradigm.BruteForce;
+import ir.sk.helper.paradigm.DynamicProgramming;
+import ir.sk.helper.paradigm.DynamicProgrammingType;
 
 import java.util.*;
 

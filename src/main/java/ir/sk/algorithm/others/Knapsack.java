@@ -2,7 +2,7 @@ package ir.sk.algorithm.others;
 
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.technique.*;
+import ir.sk.helper.paradigm.*;
 
 /**
  * Given the weights and profits of ‘N’ items,

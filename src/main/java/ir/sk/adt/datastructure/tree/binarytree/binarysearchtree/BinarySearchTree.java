@@ -4,9 +4,9 @@ import ir.sk.helper.Point;
 import ir.sk.helper.RecurrenceRelation;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.technique.BFS;
-import ir.sk.helper.technique.BinarySearch;
-import ir.sk.helper.technique.DFS;
+import ir.sk.helper.paradigm.BFS;
+import ir.sk.helper.paradigm.BinarySearch;
+import ir.sk.helper.paradigm.DFS;
 
 import java.util.LinkedList;
 import java.util.Queue;

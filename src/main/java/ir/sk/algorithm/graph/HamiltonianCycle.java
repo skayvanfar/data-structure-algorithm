@@ -2,9 +2,7 @@ package ir.sk.algorithm.graph;
 
 import ir.sk.helper.Difficulty;
 import ir.sk.helper.DifficultyType;
-import ir.sk.helper.complexity.SpaceComplexity;
-import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.technique.Backtracking;
+import ir.sk.helper.paradigm.Backtracking;
 
 /**
  * Hamiltonian Path in an undirected graph is a path that visits each vertex exactly once.

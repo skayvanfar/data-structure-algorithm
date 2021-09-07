@@ -1,13 +1,9 @@
 package ir.sk.algorithm.mathematic;
 
-import ir.sk.helper.Implementation;
-import ir.sk.helper.ImplementationType;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.recursiontype.TailRecursion;
-import ir.sk.helper.technique.DecreaseAndConquer;
-import ir.sk.helper.technique.DynamicProgramming;
-import ir.sk.helper.technique.DynamicProgrammingType;
+import ir.sk.helper.paradigm.DynamicProgramming;
+import ir.sk.helper.paradigm.DynamicProgrammingType;
 
 import java.util.ArrayList;
 import java.util.Arrays;

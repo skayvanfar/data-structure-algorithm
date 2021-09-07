@@ -3,7 +3,7 @@ package ir.sk.algorithm.others;
 import ir.sk.helper.Difficulty;
 import ir.sk.helper.DifficultyType;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.technique.Backtracking;
+import ir.sk.helper.paradigm.Backtracking;
 
 /**
  * A knight's tour is a sequence of moves of a knight on a chessboard such that the knight visits every square exactly once.

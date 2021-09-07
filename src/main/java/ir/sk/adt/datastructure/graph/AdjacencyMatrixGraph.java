@@ -3,8 +3,8 @@ package ir.sk.adt.datastructure.graph;
 
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.technique.BFS;
-import ir.sk.helper.technique.Backtracking;
+import ir.sk.helper.paradigm.BFS;
+import ir.sk.helper.paradigm.Backtracking;
 
 import java.util.ArrayDeque;
 import java.util.Queue;

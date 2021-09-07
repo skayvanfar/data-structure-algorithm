@@ -2,8 +2,8 @@ package ir.sk.algorithm.tree;
 
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.technique.DynamicProgramming;
-import ir.sk.helper.technique.DynamicProgrammingType;
+import ir.sk.helper.paradigm.DynamicProgramming;
+import ir.sk.helper.paradigm.DynamicProgrammingType;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,7 +1,5 @@
 package ir.sk.algorithm.array;
 
-import ir.sk.algorithm.basic.Utils;
-import ir.sk.algorithm.others.Sort;
 import ir.sk.helper.*;
 import ir.sk.helper.complexity.InPlace;
 import ir.sk.helper.complexity.SpaceComplexity;
@@ -9,8 +7,7 @@ import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.MultiplePointerPattern;
 import ir.sk.helper.pattern.RunnerPattern;
 import ir.sk.helper.pattern.XOR;
-import ir.sk.helper.recursiontype.TailRecursion;
-import ir.sk.helper.technique.*;
+import ir.sk.helper.paradigm.*;
 
 import java.util.*;
 

@@ -1,4 +1,4 @@
-package ir.sk.helper.technique;
+package ir.sk.helper.paradigm;
 
 /**
  * Dynamic Programming (DP) is an algorithmic technique for solving an optimization problem

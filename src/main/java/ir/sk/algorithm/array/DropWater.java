@@ -2,9 +2,7 @@ package ir.sk.algorithm.array;
 
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.technique.BruteForce;
-
-import java.util.List;
+import ir.sk.helper.paradigm.BruteForce;
 
 /**
  * Given n non-negative integers representing an elevation map where the width of each bar is 1, compute

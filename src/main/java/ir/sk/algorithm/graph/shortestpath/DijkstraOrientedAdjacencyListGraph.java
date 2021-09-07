@@ -1,6 +1,6 @@
 package ir.sk.algorithm.graph.shortestpath;
 
-import ir.sk.helper.technique.GreedyAlgorithm;
+import ir.sk.helper.paradigm.GreedyAlgorithm;
 
 import java.util.*;
 

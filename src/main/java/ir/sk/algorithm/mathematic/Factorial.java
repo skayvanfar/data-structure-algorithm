@@ -3,7 +3,7 @@ package ir.sk.algorithm.mathematic;
 import ir.sk.helper.RecurrenceRelation;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.technique.BruteForce;
+import ir.sk.helper.paradigm.BruteForce;
 
 import java.math.BigInteger;
 

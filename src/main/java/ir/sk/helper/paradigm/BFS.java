@@ -1,6 +1,4 @@
-package ir.sk.helper.technique;
-
-import ir.sk.helper.technique.CompleteSearch;
+package ir.sk.helper.paradigm;
 
 /**
  * Breadth First Search (BFS) approach (Subsets)

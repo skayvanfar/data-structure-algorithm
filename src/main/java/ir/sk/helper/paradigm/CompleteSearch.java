@@ -1,4 +1,4 @@
-package ir.sk.helper.technique;
+package ir.sk.helper.paradigm;
 
 /**
  * CompleteSearch(Exhaustive search) refers to trying every possible solution to a problem in order to find one that works,

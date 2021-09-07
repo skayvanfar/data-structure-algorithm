@@ -7,11 +7,10 @@ import ir.sk.helper.ImplementationType;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.recursiontype.HeadRecursion;
-import ir.sk.helper.technique.BFS;
-import ir.sk.helper.technique.Backtracking;
+import ir.sk.helper.paradigm.BFS;
+import ir.sk.helper.paradigm.Backtracking;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * A power set of set S is the set of all possible subsets of S, including the empty set and S itself.

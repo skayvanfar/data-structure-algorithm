@@ -8,7 +8,7 @@ import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.HashingIndexPattern;
 import ir.sk.helper.pattern.MultipleLoopsPattern;
 import ir.sk.helper.pattern.MultiplePointerPattern;
-import ir.sk.helper.technique.BruteForce;
+import ir.sk.helper.paradigm.BruteForce;
 
 import java.util.ArrayList;
 import java.util.Arrays;

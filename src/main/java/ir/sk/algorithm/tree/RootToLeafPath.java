@@ -6,7 +6,7 @@ import ir.sk.helper.Point;
 import ir.sk.helper.RecurrenceRelation;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.technique.DFS;
+import ir.sk.helper.paradigm.DFS;
 
 import java.util.ArrayList;
 import java.util.List;

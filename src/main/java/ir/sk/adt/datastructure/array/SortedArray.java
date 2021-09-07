@@ -2,7 +2,7 @@ package ir.sk.adt.datastructure.array;
 
 import ir.sk.algorithm.basic.RotationShift;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.technique.BinarySearch;
+import ir.sk.helper.paradigm.BinarySearch;
 
 /**
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 12/7/2017.

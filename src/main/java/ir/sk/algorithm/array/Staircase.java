@@ -1,15 +1,14 @@
 package ir.sk.algorithm.array;
 
-import ir.sk.algorithm.others.Sort;
 import ir.sk.helper.Implementation;
 import ir.sk.helper.ImplementationType;
 import ir.sk.helper.RecurrenceRelation;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.recursiontype.TailRecursion;
-import ir.sk.helper.technique.BruteForce;
-import ir.sk.helper.technique.DynamicProgramming;
-import ir.sk.helper.technique.DynamicProgrammingType;
+import ir.sk.helper.paradigm.BruteForce;
+import ir.sk.helper.paradigm.DynamicProgramming;
+import ir.sk.helper.paradigm.DynamicProgrammingType;
 
 /**
  * See also {@link ir.sk.algorithm.mathematic.Fibonacci}

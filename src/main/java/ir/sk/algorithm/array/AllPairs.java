@@ -1,7 +1,7 @@
 package ir.sk.algorithm.array;
 
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.technique.CompleteSearch;
+import ir.sk.helper.paradigm.CompleteSearch;
 
 /**
  * usually we use this technique when we want a brute force algorithm.

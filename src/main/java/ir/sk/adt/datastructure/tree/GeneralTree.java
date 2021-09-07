@@ -2,10 +2,10 @@ package ir.sk.adt.datastructure.tree;
 
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.technique.BFS;
+import ir.sk.helper.paradigm.BFS;
 import ir.sk.helper.recursiontype.HeadRecursion;
 import ir.sk.helper.recursiontype.TailRecursion;
-import ir.sk.helper.technique.DFS;
+import ir.sk.helper.paradigm.DFS;
 
 import java.util.*;
 

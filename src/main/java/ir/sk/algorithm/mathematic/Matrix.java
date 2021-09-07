@@ -3,7 +3,7 @@ package ir.sk.algorithm.mathematic;
 import ir.sk.helper.complexity.BCR;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.technique.BruteForce;
+import ir.sk.helper.paradigm.BruteForce;
 
 /**
  * Matrix library (2D Array maths)

@@ -3,8 +3,8 @@ package ir.sk.algorithm.array;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.MultipleFinger;
-import ir.sk.helper.technique.BruteForce;
-import ir.sk.helper.technique.DivideAndConquer;
+import ir.sk.helper.paradigm.BruteForce;
+import ir.sk.helper.paradigm.DivideAndConquer;
 
 import java.util.Arrays;
 import java.util.Comparator;

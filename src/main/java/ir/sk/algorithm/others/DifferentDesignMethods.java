@@ -6,7 +6,7 @@ import ir.sk.helper.pattern.HashingIndexPattern;
 import ir.sk.helper.pattern.MultipleLoopsPattern;
 import ir.sk.helper.pattern.SlidingWindowPattern;
 import ir.sk.helper.pattern.SlidingWindowPatternType;
-import ir.sk.helper.technique.BruteForce;
+import ir.sk.helper.paradigm.BruteForce;
 
 import java.util.HashMap;
 import java.util.HashSet;

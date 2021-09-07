@@ -6,9 +6,9 @@ import ir.sk.helper.Implementation;
 import ir.sk.helper.ImplementationType;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.technique.BinarySearch;
-import ir.sk.helper.technique.BruteForce;
-import ir.sk.helper.technique.DecreaseAndConquer;
+import ir.sk.helper.paradigm.BinarySearch;
+import ir.sk.helper.paradigm.BruteForce;
+import ir.sk.helper.paradigm.DecreaseAndConquer;
 
 import java.util.Arrays;
 import java.util.List;

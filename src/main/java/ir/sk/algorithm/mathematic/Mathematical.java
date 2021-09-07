@@ -6,8 +6,8 @@ import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.RunnerPattern;
 import ir.sk.helper.recursiontype.TailRecursion;
-import ir.sk.helper.technique.BruteForce;
-import ir.sk.helper.technique.DecreaseAndConquer;
+import ir.sk.helper.paradigm.BruteForce;
+import ir.sk.helper.paradigm.DecreaseAndConquer;
 
 import java.util.HashSet;
 

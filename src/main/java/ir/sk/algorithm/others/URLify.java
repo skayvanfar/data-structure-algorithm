@@ -3,7 +3,7 @@ package ir.sk.algorithm.others;
 import ir.sk.helper.complexity.InPlace;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.technique.BruteForce;
+import ir.sk.helper.paradigm.BruteForce;
 
 /**
  * Created by sad.kayvanfar on 8/25/2020.

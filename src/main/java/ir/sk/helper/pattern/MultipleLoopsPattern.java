@@ -1,6 +1,6 @@
 package ir.sk.helper.pattern;
 
-import ir.sk.helper.technique.CompleteSearch;
+import ir.sk.helper.paradigm.CompleteSearch;
 
 /**
  * it is usually used as a Brute Force algorithm
