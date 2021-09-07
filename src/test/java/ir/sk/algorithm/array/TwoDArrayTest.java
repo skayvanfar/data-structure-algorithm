@@ -122,4 +122,9 @@ public class TwoDArrayTest {
     public void diagonalTraverse() {
         TwoDArray.diagonalTraverse(matrix);
     }
+
+    @Test
+    public void halfTraverseTopRight() {
+        TwoDArray.halfTraverseTopRight(matrix);
+    }
 }
