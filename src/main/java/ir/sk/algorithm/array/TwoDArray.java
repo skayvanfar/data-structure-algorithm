@@ -318,7 +318,7 @@ public class TwoDArray {
     @Implementation(type = ImplementationType.Recursive)
     @TimeComplexity("O(n*m)")
     @SpaceComplexity("O(1)")
-    public static void spiralOrderRecursive(int arr[][], int i, int j, int m, int n) {
+    public static void spiralTraverseRecursive(int arr[][], int i, int j, int m, int n) {
         // If i or j lies outside the matrix
         if (i >= m || j >= n) {
             return;
@@ -349,7 +349,7 @@ public class TwoDArray {
                 System.out.print(arr[p][j] + " ");
             }
         }
-        spiralOrderRecursive(arr, i + 1, j + 1, m - 1, n - 1);
+        spiralTraverseRecursive(arr, i + 1, j + 1, m - 1, n - 1);
     }
 
     //////////////////////////////////////////////////////////////////////////////////////
@@ -372,7 +372,7 @@ public class TwoDArray {
     @Difficulty(type = DifficultyType.MEDIUM)
     @TimeComplexity("O(n*m)")
     @SpaceComplexity("O(1)")
-    public static void printMatrixDiagonal(int mat[][]) {
+    public static void diagonalZigZagTraverse(int mat[][]) {
         int n = mat.length;
         // Initialize indexes of element to be printed next
         int i = 0, j = 0;

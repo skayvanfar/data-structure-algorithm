@@ -24,32 +24,17 @@ public class TwoDArrayTest {
 
     @Test
     public void linerSearch2D() {
-        int a[][] = { { 1, 2, 3, 4 },
-                { 5, 6, 7, 8 },
-                { 9, 10, 11, 12 },
-                { 13, 14, 15, 16 } };
-
-        System.out.println(TwoDArray.linerSearch2D(a, 11));
+        System.out.println(TwoDArray.linerSearch2D(matrix, 11));
     }
 
     @Test
     public void binarySearchByLoop2D() {
-        int a[][] = { { 1, 2, 3, 4 },
-                { 5, 6, 7, 8 },
-                { 9, 10, 11, 12 },
-                { 13, 14, 15, 16 } };
-
-        System.out.println(TwoDArray.binarySearchByLoop2D(a, 11));
+        System.out.println(TwoDArray.binarySearchByLoop2D(matrix, 11));
     }
 
     @Test
     public void binarySearchByDirection() {
-        int a[][] = { { 1, 2, 3, 4 },
-                { 5, 6, 7, 8 },
-                { 9, 10, 11, 12 },
-                { 13, 14, 15, 16 } };
-
-        System.out.println(TwoDArray.binarySearchByDirection(a, 11));
+        System.out.println(TwoDArray.binarySearchByDirection(matrix, 11));
     }
 
     @Test
@@ -63,22 +48,12 @@ public class TwoDArrayTest {
 
     @Test
     public void spiralTraverse() {
-        int a[][] = { { 1, 2, 3, 4 },
-                { 5, 6, 7, 8 },
-                { 9, 10, 11, 12 },
-                { 13, 14, 15, 16 } };
-
-        System.out.println(TwoDArray.spiralTraverse(a));
+        System.out.println(TwoDArray.spiralTraverse(matrix));
     }
 
     @Test
-    public void spiralOrderRecursive() {
-        int a[][] = { { 1, 2, 3, 4 },
-                { 5, 6, 7, 8 },
-                { 9, 10, 11, 12 },
-                { 13, 14, 15, 16 } };
-
-        TwoDArray.spiralOrderRecursive(a, 0, 0, 4, 4);
+    public void spiralTraverseRecursive() {
+        TwoDArray.spiralTraverseRecursive(matrix, 0, 0, 4, 4);
     }
 
     @Test
@@ -109,13 +84,8 @@ public class TwoDArrayTest {
     }
 
     @Test
-    public void printMatrixDiagonal() {
-        int a[][] = { { 0, 2, 3, 0 },
-                { 5, 6, 7, 8 },
-                { 9, 10, 11, 12 },
-                { 13, 14, 15, 16 } };
-
-        TwoDArray.printMatrixDiagonal(a);
+    public void diagonalZigZagTraverse() {
+        TwoDArray.diagonalZigZagTraverse(matrix);
     }
 
     @Test
