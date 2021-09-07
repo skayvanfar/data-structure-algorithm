@@ -208,6 +208,61 @@ public class TwoDArray {
     }
 
     /**
+     * @param matrix
+     */
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    @TimeComplexity("O(n*m)")
+    @SpaceComplexity("O(1)")
+    @Difficulty(type = DifficultyType.EASY)
+    public static void zigzagTraverse(int[][] matrix) {
+        boolean dir = true;
+        for (int row = 0; row < matrix.length; row++)
+            if (dir) {
+                for (int col = 0; col < matrix[row].length; col++)
+                    System.out.println(matrix[row][col]);
+                dir = false;
+            } else {
+                for (int col = matrix[row].length - 1; col >= 0; col--)
+                    System.out.println(matrix[row][col]);
+                dir = true;
+            }
+    }
+
+    /**
+     * Method to print matrix in zig-zag form
+     *
+     * @param a
+     */
+    @TimeComplexity("O(n*m)")
+    @SpaceComplexity("O(1)")
+    @Difficulty(type = DifficultyType.EASY)
+    public static void zigzagTraverse2(int a[][]) {
+        int evenRow = 0; // starts from the first row
+        int oddRow = 1; // starts from the next row
+
+        while (evenRow < a.length) {
+            for (int i = 0; i < a[0].length; i++) {
+                // evenRow will be printed in the same direction
+                System.out.print(a[evenRow][i] + " ");
+            }
+
+            // Skipping next row so as to get the next evenRow
+            evenRow = evenRow + 2;
+
+            if (oddRow < a.length) {
+                for (int i = a[0].length - 1; i >= 0; i--) {
+                    // oddRow will be printed in the opposite direction
+                    System.out.print(a[oddRow][i] + " ");
+                }
+            }
+
+            // Skipping next row so as to get the next oddRow
+            oddRow = oddRow + 2;
+        }
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
      * You are given a 2D array of integers. Print out the clockwise spiral traversal of the matrix.
      * <p>
      * grid = [[1,  2,  3,  4,  5],
@@ -299,46 +354,15 @@ public class TwoDArray {
 
     //////////////////////////////////////////////////////////////////////////////////////
 
-    /**
-     * Method to print matrix in zig-zag form
-     *
-     * @param a
-     */
-    @TimeComplexity("O(m*n)")
-    @Difficulty(type = DifficultyType.EASY)
-    public static void printZigZag(int a[][]) {
-        int evenRow = 0; // starts from the first row
-        int oddRow = 1; // starts from the next row
-
-        while (evenRow < a.length) {
-            for (int i = 0; i < a[0].length; i++) {
-                // evenRow will be printed in the same direction
-                System.out.print(a[evenRow][i] + " ");
-            }
-
-            // Skipping next row so as to get the next evenRow
-            evenRow = evenRow + 2;
-
-            if (oddRow < a.length) {
-                for (int i = a[0].length - 1; i >= 0; i--) {
-                    // oddRow will be printed in the opposite direction
-                    System.out.print(a[oddRow][i] + " ");
-                }
-            }
-
-            // Skipping next row so as to get the next oddRow
-            oddRow = oddRow + 2;
-        }
-    }
 
     /**
      * Given a matrix of n*n size, the task is to print its elements in a diagonal pattern.
-     *
+     * <p>
      * Input : mat[3][3] = {{1, 2, 3},
-     *                      {4, 5, 6},
-     *                      {7, 8, 9}}
+     * {4, 5, 6},
+     * {7, 8, 9}}
      * Output : 1 2 4 7 5 3 6 8 9
-     *
+     * <p>
      * From the diagram it can be seen that every element is either printed diagonally upward or diagonally downward.
      * Start from the index (0,0) and print the elements diagonally upward then change the direction, change the column and print diagonally downwards.
      * This cycle continues until the last element is reached.

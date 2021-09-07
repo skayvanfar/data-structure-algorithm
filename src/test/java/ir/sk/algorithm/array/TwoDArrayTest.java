@@ -104,13 +104,8 @@ public class TwoDArrayTest {
     }
 
     @Test
-    public void printZigZag() {
-        int a[][] = { { 0, 2, 3, 0 },
-                { 5, 6, 7, 8 },
-                { 9, 10, 11, 12 },
-                { 13, 14, 15, 16 } };
-
-        TwoDArray.printZigZag(a);
+    public void zigzagTraverse2() {
+        TwoDArray.zigzagTraverse2(matrix);
     }
 
     @Test
@@ -125,7 +120,6 @@ public class TwoDArrayTest {
 
     @Test
     public void rowTraverse() {
-
         TwoDArray.rowTraverse(matrix);
     }
 
@@ -147,5 +141,10 @@ public class TwoDArrayTest {
     @Test
     public void oneDiagonalTraverse() {
         TwoDArray.oneDiagonalTraverse(matrix,0, 1);
+    }
+
+    @Test
+    public void zigzagTraverse() {
+        TwoDArray.zigzagTraverse(matrix);
     }
 }
