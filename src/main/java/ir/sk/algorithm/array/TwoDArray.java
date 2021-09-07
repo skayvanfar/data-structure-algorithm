@@ -225,7 +225,7 @@ public class TwoDArray {
     @TimeComplexity("O(n*m)")
     @SpaceComplexity("O(n*m)")
     @Difficulty(type = DifficultyType.MEDIUM)
-    public static List<Integer> spiralOrder(int[][] matrix) {
+    public static List<Integer> spiralTraverse(int[][] matrix) {
         List ans = new ArrayList();
         if (matrix.length == 0) return ans;
         int R = matrix.length, C = matrix[0].length;

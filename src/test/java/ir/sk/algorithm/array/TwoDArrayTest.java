@@ -62,13 +62,13 @@ public class TwoDArrayTest {
     }
 
     @Test
-    public void spiralOrder() {
+    public void spiralTraverse() {
         int a[][] = { { 1, 2, 3, 4 },
                 { 5, 6, 7, 8 },
                 { 9, 10, 11, 12 },
                 { 13, 14, 15, 16 } };
 
-        System.out.println(TwoDArray.spiralOrder(a));
+        System.out.println(TwoDArray.spiralTraverse(a));
     }
 
     @Test
@@ -137,5 +137,15 @@ public class TwoDArrayTest {
     @Test
     public void oneRowTraverse() {
         TwoDArray.oneRowTraverse(matrix, 1);
+    }
+
+    @Test
+    public void oneColTraverse() {
+        TwoDArray.oneColTraverse(matrix, 1);
+    }
+
+    @Test
+    public void oneDiagonalTraverse() {
+        TwoDArray.oneDiagonalTraverse(matrix,0, 1);
     }
 }
