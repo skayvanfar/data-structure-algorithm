@@ -208,6 +208,23 @@ public class TwoDArray {
     }
 
     /**
+     * print all elements of the given matrix in diagonal order
+     *
+     * @param matrix
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
+    public static void diagonalTraverse(int[][] matrix) {
+        for (int i = 0; i < matrix[0].length; i++)
+            for (int row = i, col = 0; row >= 0 && col < matrix[0].length; row--, col++)
+                System.out.println(matrix[row][col]);
+
+        for (int j = 1; j < matrix[0].length; j++)
+            for (int row = matrix.length - 1, col = j; row >= 0 && col < matrix[0].length; row--, col++)
+                System.out.println(matrix[row][col]);
+    }
+
+    /**
      * @param matrix
      */
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

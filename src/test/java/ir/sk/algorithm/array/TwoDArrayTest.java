@@ -117,4 +117,9 @@ public class TwoDArrayTest {
     public void zigzagTraverse() {
         TwoDArray.zigzagTraverse(matrix);
     }
+
+    @Test
+    public void diagonalTraverse() {
+        TwoDArray.diagonalTraverse(matrix);
+    }
 }
