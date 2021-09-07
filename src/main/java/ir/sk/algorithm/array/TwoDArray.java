@@ -225,10 +225,10 @@ public class TwoDArray {
     }
 
     /**
-     * 1  2   3   4
-     * .  6   7   8
-     * .  .  11  12
-     * .  .   .  16
+     * 1  2  3  4
+     * .  6  7  8
+     * .  .  11 12
+     * .  .  .  16
      *
      * @param matrix
      */
@@ -270,6 +270,22 @@ public class TwoDArray {
     public static void halfTraverseTopLeft(int[][] matrix) {
         for (int row = 0; row < matrix.length; row++) {
             for (int col = 0; col < matrix.length - row; col++)
+                System.out.print(matrix[row][col]);
+            System.out.println();
+        }
+    }
+
+    /**
+     * .  .  .  8
+     * .  .  11 12
+     * .  10 11 12
+     * 13 14 15 16
+     *
+     * @param matrix
+     */
+    public static void halfTraverseDownRight(int[][] matrix) {
+        for (int row = 0; row < matrix.length; row++) {
+            for (int col = matrix.length - row; col < matrix.length; col++)
                 System.out.print(matrix[row][col]);
             System.out.println();
         }
