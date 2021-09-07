@@ -161,6 +161,29 @@ public class TwoDArray {
     }
 
     /**
+     * @param matrix
+     * @param col
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
+    public static void oneColTraverse(int[][] matrix, int col) {
+        for (int row = 0; col < matrix.length; row++)
+            System.out.println(matrix[row][col]);
+    }
+
+    /**
+     * @param matrix
+     * @param i
+     * @param j
+     */
+    @TimeComplexity("O(sqrt(n^2 + m^2))")
+    @SpaceComplexity("O(1)")
+    public static void oneDiagonalTraverse(int[][] matrix, int i, int j) {
+        for (int row = i, col = j; row < matrix.length && col < matrix[0].length; row++, col++)
+            System.out.println(matrix[row][col]);
+    }
+
+    /**
      * row by row traverse
      *
      * @param matrix
