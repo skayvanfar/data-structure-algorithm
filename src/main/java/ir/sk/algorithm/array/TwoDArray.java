@@ -1,9 +1,6 @@
 package ir.sk.algorithm.array;
 
-import ir.sk.helper.Difficulty;
-import ir.sk.helper.DifficultyType;
-import ir.sk.helper.Implementation;
-import ir.sk.helper.ImplementationType;
+import ir.sk.helper.*;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.paradigm.BinarySearch;
@@ -321,6 +318,7 @@ public class TwoDArray {
     @TimeComplexity("O(n*m)")
     @SpaceComplexity("O(1)")
     @Difficulty(type = DifficultyType.EASY)
+    @Point("You can traverse two rows together in one iteration")
     public static void zigzagTraverse2(int a[][]) {
         int evenRow = 0; // starts from the first row
         int oddRow = 1; // starts from the next row
