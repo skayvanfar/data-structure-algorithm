@@ -4,7 +4,7 @@ package ir.sk.adt;
  *  Compilation:  javac Alphabet.java
  *  Execution:    java Alphabet
  *  Dependencies: StdOut.java
- *
+ * (Character Set)
  *  A data type for alphabets, for use with string-processing code
  *  that must convert between an alphabet of size R and the integers
  *  0 through R-1.
