@@ -1,4 +1,4 @@
-package ir.sk.algorithm.array.patternmatching;
+package ir.sk.algorithm.array.string.patternmatching;
 
 import org.junit.After;
 import org.junit.Before;
