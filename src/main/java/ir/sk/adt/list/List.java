@@ -30,7 +30,7 @@ public interface List<T> extends Bag<T> {
      * @param pos  must be lower than size
      * @param item
      */
-    void add(int pos, T item);
+    void insert(int pos, T item);
 
     /**
      * @param pos must be lower than size

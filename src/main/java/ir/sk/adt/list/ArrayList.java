@@ -77,7 +77,7 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     @TimeComplexity("O(n)")
-    public void add(int pos, T item) {
+    public void insert(int pos, T item) {
         // check for bad pos and for full array
         if (pos < 0 || pos > size) {
             throw new IndexOutOfBoundsException();
