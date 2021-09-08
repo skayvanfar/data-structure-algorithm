@@ -4,7 +4,7 @@ import ir.sk.adt.bag.Bag;
 
 /**
  * List is ADT that access elements via index
- *
+ * <p>
  * an ordered collection of items of some element type E. Note that this doesn't mean that the objects are in sorted order,
  * it just means that each object has a position in the List, starting with position zero.
  * <p>
@@ -14,6 +14,8 @@ import ir.sk.adt.bag.Bag;
  * <p>
  * The main advantage of a List compared to an array is that, whereas the size of an array is fixed when it is created
  * <p>
+ * The list data structure typically has two very distinctive implementations — arraylist and linkedlist.
+ *
  * Created by sad.keyvanfar on 8/25/2020.
  */
 public interface List<T> extends Bag<T> {
