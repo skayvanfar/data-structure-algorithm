@@ -111,7 +111,7 @@ public class ArrayList<T> implements List<T> {
      */
     @TimeComplexity("O(n)")
     @Override
-    public T remove(int index) {
+    public T removeAt(int index) {
         if (index >= size || index < 0)
             throw new IndexOutOfBoundsException("Index: " + index + ", Size " + index);
         T object = items[index];

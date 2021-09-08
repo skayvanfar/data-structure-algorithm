@@ -44,5 +44,5 @@ public interface List<T> extends Bag<T> {
      * @param pos
      * @return
      */
-    T remove(int pos);
+    T removeAt(int pos);
 }
