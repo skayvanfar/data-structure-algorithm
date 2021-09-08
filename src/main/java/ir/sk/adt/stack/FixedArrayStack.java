@@ -16,6 +16,7 @@ public class FixedArrayStack<T> implements Stack<T>, Iterable<T> {
     private T[] stackArray;
     private int top;             // number of items in stack
 
+    @SuppressWarnings("unchecked")
     public FixedArrayStack(int s) {
         stackArray = (T[]) new Object[s]; // create array
         top = 0; // no items yet
@@ -35,7 +36,6 @@ public class FixedArrayStack<T> implements Stack<T>, Iterable<T> {
      * @return
      */
     @Override
-    @SuppressWarnings("unchecked")
     public T pop() {
         if (isEmpty())
             throw new NoSuchElementException("Underflow Exception");
@@ -46,7 +46,6 @@ public class FixedArrayStack<T> implements Stack<T>, Iterable<T> {
      * @return
      */
     @Override
-    @SuppressWarnings("unchecked")
     public T peek() {
         if (isEmpty())
             throw new NoSuchElementException("Underflow Exception");
