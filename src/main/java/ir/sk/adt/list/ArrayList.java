@@ -70,54 +70,54 @@ public class ArrayList<T> implements List<T> {
     }
 
     /**
-     * Add item to the List in position pos (moving items over to the right to make room).
+     * Add item to the List in position index (moving items over to the right to make room).
      * <p>
      * random access operation
      *
      */
     @Override
     @TimeComplexity("O(n)")
-    public void insert(int pos, T item) {
+    public void insert(int index, T item) {
         // check for bad pos and for full array
-        if (pos < 0 || pos > size) {
+        if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException();
         }
         if (items.length == size) {
             expandArray();
         }
 
-        // move items over and insert new item
-        for (int k = size; k > pos; k--) {
+        // move items over and insert new item (shift)
+        for (int k = size; k > index; k--)
             items[k] = items[k - 1];
-        }
-        items[pos] = item;
+
+        items[index] = item;
         size++;
     }
 
     @TimeComplexity("O(1)")
     @Override
-    public T get(int pos) {
-        if (pos >= size || pos < 0)
-            throw new IndexOutOfBoundsException("Index: " + pos + ", Size " + pos);
+    public T get(int index) {
+        if (index >= size || index < 0)
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size " + index);
 
-        return items[pos];
+        return items[index];
     }
 
     /**
-     * delete item from the List in position pos (moving items over to the left to shrink).
+     * delete item from the List in position index (moving items over to the left to shrink).
      * <p>
      * random access operation
      *
      */
     @TimeComplexity("O(n)")
     @Override
-    public T remove(int pos) {
-        if (pos >= size || pos < 0)
-            throw new IndexOutOfBoundsException("Index: " + pos + ", Size " + pos);
-        T object = items[pos];
-        items[pos] = null;
-        int tmp = pos;
-        // shrink
+    public T remove(int index) {
+        if (index >= size || index < 0)
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size " + index);
+        T object = items[index];
+        items[index] = null;
+        int tmp = index;
+        // shrink (shift)
         while (tmp < size) {
             items[tmp] = items[tmp + 1];
             items[tmp + 1] = null;
