@@ -49,6 +49,7 @@ public class LinkedList<T> implements List<T> {
         return 0;
     }
 
+    @TimeComplexity("O(n)")
     @Override
     public void insert(int index, T value) {
         SinglyLink<T> current = head;
@@ -84,6 +85,7 @@ public class LinkedList<T> implements List<T> {
         previous.next = newSinglyLink;
     }
 
+    @TimeComplexity("O(n)")
     @Override
     public T get(int index) {
         // index must be 1 or higher
@@ -103,6 +105,7 @@ public class LinkedList<T> implements List<T> {
         return crunchifyCurrent.data;
     }
 
+    @TimeComplexity("O(n)")
     @Override
     public T removeAt(int index) {
         // If linked list is empty
