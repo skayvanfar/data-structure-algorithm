@@ -50,14 +50,14 @@ public class LinkedList<T> implements List<T> {
     }
 
     @Override
-    public void insert(int pos, T value) {
+    public void insert(int index, T value) {
         SinglyLink<T> current = head;
         SinglyLink<T> previous = head;
         SinglyLink<T> newSinglyLink = new SinglyLink<>(value);
 
         if (current == null) {
             //if head is null and position is zero then exit.
-            if (pos != 0) {
+            if (index != 0) {
                 return;
             } else { //node set to the head.
                 this.head = newSinglyLink;
@@ -65,13 +65,13 @@ public class LinkedList<T> implements List<T> {
             }
         }
 
-        if (head != null && pos == 0) {
+        if (head != null && index == 0) {
             newSinglyLink.next = this.head;
             this.head = newSinglyLink;
             return;
         }
 
-        for (int i = 0; i < pos; i++) {
+        for (int i = 0; i < index; i++) {
             previous = current;
             current = current.next;
 
@@ -85,14 +85,14 @@ public class LinkedList<T> implements List<T> {
     }
 
     @Override
-    public T get(int pos) {
+    public T get(int index) {
         // index must be 1 or higher
-        if (pos < 0)
+        if (index < 0)
             return null;
         SinglyLink<T> crunchifyCurrent = null;
         if (head != null) {
             crunchifyCurrent = head.next;
-            for (int i = 0; i < pos; i++) {
+            for (int i = 0; i < index; i++) {
                 if (crunchifyCurrent.next == null)
                     return null;
 
@@ -104,7 +104,7 @@ public class LinkedList<T> implements List<T> {
     }
 
     @Override
-    public T removeAt(int pos) {
+    public T removeAt(int index) {
         // If linked list is empty
         if (head == null)
             return null;
@@ -113,13 +113,13 @@ public class LinkedList<T> implements List<T> {
         SinglyLink temp = head;
 
         // If head needs to be removed
-        if (pos == 0) {
+        if (index == 0) {
             head = temp.next;   // Change head
             return null;
         }
 
         // Find previous node of the node to be deleted
-        for (int i = 0; temp != null && i < pos - 1; i++)
+        for (int i = 0; temp != null && i < index - 1; i++)
             temp = temp.next;
 
         // If position is more than number of nodes
