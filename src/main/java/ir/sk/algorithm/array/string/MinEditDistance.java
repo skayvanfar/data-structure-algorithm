@@ -1,4 +1,4 @@
-package ir.sk.algorithm.array;
+package ir.sk.algorithm.array.string;
 
 import ir.sk.helper.complexity.TimeComplexity;
 
