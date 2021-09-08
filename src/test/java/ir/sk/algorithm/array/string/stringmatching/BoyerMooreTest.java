@@ -1,10 +1,10 @@
-package ir.sk.algorithm.array.string.patternmatching;
+package ir.sk.algorithm.array.string.stringmatching;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class KMPTest {
+public class BoyerMooreTest {
 
     @Before
     public void setUp() throws Exception {
@@ -21,11 +21,10 @@ public class KMPTest {
         char[] pattern = pat.toCharArray();
         char[] text    = txt.toCharArray();
 
-        KMP kmp1 = new KMP(pat);
-        int offset1 = kmp1.search(txt);
-
-        KMP kmp2 = new KMP(pattern, 256);
-        int offset2 = kmp2.search(text);
+        BoyerMoore boyermoore1 = new BoyerMoore(pat);
+        BoyerMoore boyermoore2 = new BoyerMoore(pattern, 256);
+        int offset1 = boyermoore1.search(txt);
+        int offset2 = boyermoore2.search(text);
 
         // print results
         System.out.println("text:    " + txt);

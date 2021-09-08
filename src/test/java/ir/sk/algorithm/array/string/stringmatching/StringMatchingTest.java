@@ -1,4 +1,4 @@
-package ir.sk.algorithm.array.string.patternmatching;
+package ir.sk.algorithm.array.string.stringmatching;
 
 import org.junit.After;
 import org.junit.Assert;
