@@ -18,7 +18,7 @@ public class ExpressionTreeTest {
     }
 
     @Test
-    public void calculateExpression() {
+    public void evaluateExpressionTree() {
         Node<Character> root =
                 new Node<>('*',
                         new Node<>('+',
@@ -27,6 +27,13 @@ public class ExpressionTreeTest {
                         new Node<>('+',
                                 new Node<>('4'),
                                 new Node<>('5')));
-        System.out.println(ExpressionTree.calculateExpression(root));
+        System.out.println(ExpressionTree.evaluateExpressionTree(root));
+    }
+
+    @Test
+    public void constructExpressionTree() {
+        String postfix = "ab+cde+××";
+        Node root = ExpressionTree.constructExpressionTree(postfix);
+        System.out.println();
     }
 }
