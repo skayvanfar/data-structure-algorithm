@@ -8,8 +8,11 @@ Circular
 Sorted
 
 main operations:
+0. Insert
 1. InsertLast
 2. InsertFirst
 3. Search
-4. delete
+4. Delete
+5. DeleteFirst
+6. DeleteLast
 
