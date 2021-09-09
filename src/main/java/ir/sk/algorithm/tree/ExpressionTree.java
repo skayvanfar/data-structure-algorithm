@@ -59,6 +59,46 @@ public class ExpressionTree {
     }
 
     /**
+     * Print the infix expression for an expression tree
+     *
+     * @param root
+     */
+    public static void inFix(Node<Character> root) {
+        if (root == null) {
+            return;
+        }
+
+        // if the current token is an operator, print open parenthesis
+        if (isOperator(root.value)) {
+            System.out.print("(");
+        }
+
+        inFix(root.left);
+        System.out.print(root.value);
+        inFix(root.right);
+
+        // if the current token is an operator, print close parenthesis
+        if (isOperator(root.value)) {
+            System.out.print(")");
+        }
+    }
+
+    /**
+     * Print the postfix expression for an expression tree
+     *
+     * @param root
+     */
+    public static void postFix(Node root)
+    {
+        if (root == null) {
+            return;
+        }
+        postFix(root.left);
+        postFix(root.right);
+        System.out.print(root.value);
+    }
+
+    /**
      * You are given a binary tree representation of an arithmetic expression. In this tree, each leaf is an integer value,
      * and a non-leaf node is one of the four operations: '+', '-', '*', or '/'.
      * Write a function that takes this tree and evaluates the expression.

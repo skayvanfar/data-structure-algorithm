@@ -34,6 +34,19 @@ public class ExpressionTreeTest {
     public void constructExpressionTree() {
         String postfix = "ab+cde+××";
         Node root = ExpressionTree.constructExpressionTree(postfix);
-        System.out.println();
+
+        System.out.print("\nInfix Expression  : ");
+        ExpressionTree.inFix(root);
+
+        System.out.print("\nPostfix Expression: ");
+        ExpressionTree.postFix(root);
+    }
+
+    @Test
+    public void inFix() {
+    }
+
+    @Test
+    public void postFix() {
     }
 }
