@@ -210,23 +210,6 @@ public class LinkListAlgorithms {
     }
 
     /**
-     * 1) Get the middle of the linked list.
-     * 2) Reverse the second half of the linked list.
-     * 3) Check if the first half and second half are identical.
-     *
-     * @param head
-     * @return
-     */
-    @TimeComplexity("O(n)")
-    @SpaceComplexity("O(1)")
-    @RunnerPattern
-    public static boolean isPalindromeByRunner(SinglyLink<Integer> head) {
-        SinglyLink<Integer> middleLink = findMiddleLink(head);
-        SinglyLink<Integer> reversed = reverseIterative(middleLink);
-        return isEqual(head, reversed);
-    }
-
-    /**
      * Given the head of a Singly LinkedList, write a method to modify the LinkedList such that the nodes
      * from the second half of the LinkedList are inserted alternately to the nodes from the first half in reverse order.
      * So if the LinkedList has nodes 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> null, your method should return 1 -> 6 -> 2 -> 5 -> 3 -> 4 -> null.
@@ -258,6 +241,7 @@ public class LinkListAlgorithms {
             head.next = null;
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
      * Given pointer to the head node of a linked list, the task is to reverse the linked list. We need to reverse the list by changing the links between nodes.
      * 1->2->3->4->null
@@ -303,6 +287,7 @@ public class LinkListAlgorithms {
         first.next = null;
         return rest;
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
      * @param node
@@ -329,6 +314,27 @@ public class LinkListAlgorithms {
         }
         return one == null && two == null;
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /**
+     * is a linklist palindrome
+     *
+     * 1) Get the middle of the linked list.
+     * 2) Reverse the second half of the linked list.
+     * 3) Check if the first half and second half are identical.
+     *
+     * @param head
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
+    @RunnerPattern
+    public static boolean isPalindromeByRunner(SinglyLink<Integer> head) {
+        SinglyLink<Integer> middleLink = findMiddleLink(head);
+        SinglyLink<Integer> reversed = reverseIterative(middleLink);
+        return isEqual(head, reversed);
+    }
+
 
     /**
      * We need to push the first half of the elements onto a stack
@@ -459,6 +465,7 @@ public class LinkListAlgorithms {
         }
         return true;
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private static <T> int lengthOfList(SinglyLink<T> n) {
         int size = 0;
@@ -469,9 +476,7 @@ public class LinkListAlgorithms {
         return size;
     }
 
-
-
-
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
      * Given the head of a Singly LinkedList, write a function to determine if the LinkedList has a cycle in it or not.
      * Traverse the list one by one and keep putting the node addresses in a Hash Table. At any point,
@@ -539,6 +544,7 @@ public class LinkListAlgorithms {
         }
         return false;
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
      * Given the head of a LinkedList with a cycle, find the length of the cycle.
