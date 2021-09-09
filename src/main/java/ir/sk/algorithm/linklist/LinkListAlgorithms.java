@@ -9,6 +9,7 @@ import ir.sk.helper.RecurrenceRelation;
 import ir.sk.helper.complexity.InPlace;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
+import ir.sk.helper.paradigm.BruteForce;
 import ir.sk.helper.pattern.HashingIndexPattern;
 import ir.sk.helper.pattern.MultiplePointerPattern;
 import ir.sk.helper.pattern.RunnerPattern;
@@ -21,7 +22,10 @@ import java.util.*;
  */
 public class LinkListAlgorithms {
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
+     * delete duplicates in a link list
+     *
      * iterate with two pointers: current which iterates through the linked list,
      * and runner which checks all subsequent nodes for duplicates.
      * <p>
@@ -32,6 +36,7 @@ public class LinkListAlgorithms {
     @TimeComplexity("O(n^2)")
     @SpaceComplexity("O(1)")
     @Point("Using two Loop")
+    @BruteForce
     public static void deleteDuplicatesByRunner(SinglyLink head) {
         SinglyLink current = head;
         while (current != null) {
@@ -69,15 +74,12 @@ public class LinkListAlgorithms {
             head = head.next;
         }
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
-     * wrap the counter value with simple class
-     */
-    static class Index {
-        public int value = 0;
-    }
-
-    /**
+     * Find the nth node from the end in the given linked list
+     *
      * @param head
      * @param k
      * @return
@@ -85,6 +87,14 @@ public class LinkListAlgorithms {
     public static <T> SinglyLink<T> kthToLastRecursive(SinglyLink<T> head, int k) {
         Index idx = new Index();
         return kthToLastRecursive(head, k, idx);
+    }
+
+    /**
+     * wrap the counter value with simple class
+     */
+    @Point("Wrapper of primitive type in order to pass as parameter in methods")
+    static class Index {
+        public int value = 0;
     }
 
     /**
@@ -97,6 +107,7 @@ public class LinkListAlgorithms {
      * @param idx
      * @return
      */
+    @Difficulty(type = DifficultyType.HARD)
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
     private static <T> SinglyLink<T> kthToLastRecursive(SinglyLink<T> head, int k, Index idx) {
@@ -123,25 +134,27 @@ public class LinkListAlgorithms {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
-    @MultiplePointerPattern
+    @RunnerPattern
+    @Difficulty(type = DifficultyType.HARD)
     private static <T> SinglyLink<T> nthToLastByRunner(SinglyLink<T> head, int k) {
-        SinglyLink<T> pl = head;
-        SinglyLink<T> p2 = head;
+        SinglyLink<T> current = head;
+        SinglyLink<T> runner = head;
 
         /* Move pl k nodes into the list.*/
         for (int i = 0; i < k; i++) {
-            if (pl == null)
+            if (runner == null)
                 return null; // Out of bounds
-            pl = pl.next;
+            runner = runner.next;
         }
 
-        /* Move them at the same pace. When pl hits the end, p2 will be at the right 12 * element. */
-        while (pl != null) {
-            pl = pl.next;
-            p2 = p2.next;
+        /* Move them at the same pace. When pl hits the end, runner will be at the right 12 * element. */
+        while (runner != null) {
+            runner = runner.next;
+            current = current.next;
         }
-        return p2;
+        return current;
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
      * delete a node in the middle (i.e., any node but
