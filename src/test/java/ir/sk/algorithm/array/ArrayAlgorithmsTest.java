@@ -78,6 +78,12 @@ public class ArrayAlgorithmsTest {
     }
 
     @Test
+    public void findKthLargest() {
+        int ar[] = {3, 5, 2, 4, 6, 8};
+        System.out.println(ArrayAlgorithms.findKthLargest(ar, 3));
+    }
+
+    @Test
     public void maxProductThreeNaive() {
         int arr[] = {-10, -3, 5, 6, -20};
         int n = arr.length;

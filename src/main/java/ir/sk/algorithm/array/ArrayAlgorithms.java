@@ -4,10 +4,7 @@ import ir.sk.helper.*;
 import ir.sk.helper.complexity.InPlace;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.pattern.ModifiedBinarySearchPattern;
-import ir.sk.helper.pattern.TwoPointerPattern;
-import ir.sk.helper.pattern.RunnerPattern;
-import ir.sk.helper.pattern.BitwiseXORPattern;
+import ir.sk.helper.pattern.*;
 import ir.sk.helper.paradigm.*;
 
 import java.util.*;
@@ -318,8 +315,13 @@ public class ArrayAlgorithms {
             array[count++] = 0;
     }
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+    // Kth Largest Element in an Array
     /**
      * Given a list, find the k-th largest element in the list.
+     *
+     * A brute-force solution is to simply sort the array and find out the element at the Kth place.
+     *
      * Input: list = [3, 5, 2, 4, 6, 8], k = 3
      * Output: 5
      *
@@ -329,9 +331,40 @@ public class ArrayAlgorithms {
      */
     @TimeComplexity("O(nlogn)")
     @Difficulty(type = DifficultyType.MEDIUM)
+    @BruteForce
     public static int findKthLargestBySorting(int[] arr, int k) {
         Arrays.sort(arr); // or using optimization by QuickSelect
         return arr[arr.length - k];
+    }
+
+    /**
+     * the algorithm process will be like:
+     *
+     * Traverse the array elements and put them into a K size min heap. If the heap size is larger than K, pop out the root element.
+     * Repeat this process until the end of the array.
+     *
+     * Return the root element of the min heap as it is the Kth largest element of the whole array.
+     *
+     * @param nums
+     * @param k
+     * @return
+     */
+    @TimeComplexity("O(NlogK)")
+    @TopKElementsPattern
+    public static int findKthLargest(int[] nums, int k) {
+        // Create a min heap
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>(Comparator.comparingInt(a -> a));
+
+        // Insert the array elements into the min heap.
+        for (int i = 0; i < nums.length; i++) {
+            minHeap.add(nums[i]);
+            // Pop out the root element if the min heap size is larger than k
+            if (minHeap.size() > k) {
+                minHeap.poll();
+            }
+        }
+
+        return minHeap.peek();
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////
