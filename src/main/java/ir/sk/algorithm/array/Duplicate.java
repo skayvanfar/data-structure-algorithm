@@ -8,7 +8,7 @@ import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.Stability;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.MultipleLoopsPattern;
-import ir.sk.helper.pattern.MultiplePointerPattern;
+import ir.sk.helper.pattern.TwoPointerPattern;
 import ir.sk.helper.paradigm.BruteForce;
 
 import java.util.*;
@@ -146,7 +146,7 @@ public class Duplicate {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
-    @MultiplePointerPattern
+    @TwoPointerPattern
     @Difficulty(type = DifficultyType.EASY)
     public static Set<Integer> deleteDuplicates(int[] arr) {
         int start = 0, end = 1;
@@ -184,7 +184,7 @@ public class Duplicate {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
-    @MultiplePointerPattern
+    @TwoPointerPattern
     @Difficulty(type = DifficultyType.EASY)
     @BCR
     public static void deleteDuplicatesAndShift(int[] arr) {
@@ -207,7 +207,7 @@ public class Duplicate {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
-    @MultiplePointerPattern
+    @TwoPointerPattern
     public static int deleteDuplicatesAll(int[] arr, int key) {
         int nextElement = 0;
         for (int i = 0; i < arr.length; i++) {

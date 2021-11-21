@@ -11,7 +11,7 @@ import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.Stability;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.CyclicSortPattern;
-import ir.sk.helper.pattern.MultiplePointerPattern;
+import ir.sk.helper.pattern.TwoPointerPattern;
 import ir.sk.helper.paradigm.Backtracking;
 import ir.sk.helper.paradigm.DivideAndConquer;
 
@@ -659,7 +659,7 @@ public class Sort {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
-    @MultiplePointerPattern
+    @TwoPointerPattern
     public static void separateEvenOdd(int[] array) {
         int pointer1 = 0, pointer2 = 1;
 
@@ -685,7 +685,7 @@ public class Sort {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
-    @MultiplePointerPattern
+    @TwoPointerPattern
     public static void separateEvenOdd2(int[] array) {
         int nextEven = 0, nextOdd = array.length - 1;
         while (nextEven < nextOdd) {
@@ -728,7 +728,7 @@ public class Sort {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
-    @MultiplePointerPattern
+    @TwoPointerPattern
     @Difficulty(type = DifficultyType.MEDIUM)
     @InPlace
     public static void sortJustThreeTypeNumber(int[] array) {
@@ -783,7 +783,7 @@ public class Sort {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
-    @MultiplePointerPattern
+    @TwoPointerPattern
     @Difficulty(type = DifficultyType.MEDIUM)
     public static int minimumWindowSort(int[] array) {
         int low = 0, high = array.length - 1;

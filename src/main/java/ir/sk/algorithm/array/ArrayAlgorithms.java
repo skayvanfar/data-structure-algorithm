@@ -4,7 +4,7 @@ import ir.sk.helper.*;
 import ir.sk.helper.complexity.InPlace;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.pattern.MultiplePointerPattern;
+import ir.sk.helper.pattern.TwoPointerPattern;
 import ir.sk.helper.pattern.RunnerPattern;
 import ir.sk.helper.pattern.XOR;
 import ir.sk.helper.paradigm.*;
@@ -78,7 +78,7 @@ public class ArrayAlgorithms {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
-    @MultiplePointerPattern
+    @TwoPointerPattern
     @Difficulty(type = DifficultyType.EASY)
     public static int[] makeSquaresSortedArray(int[] array) {
         int[] squares = new int[array.length];
