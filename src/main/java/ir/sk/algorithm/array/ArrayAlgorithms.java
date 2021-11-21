@@ -4,6 +4,7 @@ import ir.sk.helper.*;
 import ir.sk.helper.complexity.InPlace;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
+import ir.sk.helper.pattern.ModifiedBinarySearchPattern;
 import ir.sk.helper.pattern.TwoPointerPattern;
 import ir.sk.helper.pattern.RunnerPattern;
 import ir.sk.helper.pattern.XOR;
@@ -144,7 +145,7 @@ public class ArrayAlgorithms {
      */
     @TimeComplexity("O(Log n)")
     @SpaceComplexity("O(1)")
-    @BinarySearch
+    @ModifiedBinarySearchPattern
     @DecreaseAndConquer
     private static int magicIndexBinarySearch(int arr[], int low, int high) {
         if (high >= low) {

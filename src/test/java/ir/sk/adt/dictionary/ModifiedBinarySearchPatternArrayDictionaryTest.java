@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 /**
  * Created by sad.kayvanfar on 5/5/2021.
  */
-public class BinarySearchArrayDictionaryTest {
+public class ModifiedBinarySearchPatternArrayDictionaryTest {
 
     @Before
     public void setUp() throws Exception {
