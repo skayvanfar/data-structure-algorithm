@@ -7,7 +7,7 @@ import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.ModifiedBinarySearchPattern;
 import ir.sk.helper.pattern.TwoPointerPattern;
 import ir.sk.helper.pattern.RunnerPattern;
-import ir.sk.helper.pattern.XOR;
+import ir.sk.helper.pattern.BitwiseXORPattern;
 import ir.sk.helper.paradigm.*;
 
 import java.util.*;
@@ -243,7 +243,7 @@ public class ArrayAlgorithms {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
-    @XOR
+    @BitwiseXORPattern
     public static int findSingleNumber(int array[]) {
         // Do XOR of all elements and return
         int res = array[0];
