@@ -26,6 +26,7 @@ void traverse(Link head) {
     traverse(head.next)
 }
 ```
+Remember using previous, current, next pointers when is needed
 ##Binary tree traversal framework, typical nonlinear recursive traversal structure：
 ```
 /* Basic node of the binary tree */

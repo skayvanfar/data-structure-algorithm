@@ -1,4 +1,4 @@
-package ir.sk.algorithm.array.patternmatching;
+package ir.sk.algorithm.array.string.stringmatching;
 
 /**
  *  The {@code BoyerMoore} class finds the first occurrence of a pattern string

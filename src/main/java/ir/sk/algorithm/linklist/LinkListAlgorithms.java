@@ -9,6 +9,7 @@ import ir.sk.helper.RecurrenceRelation;
 import ir.sk.helper.complexity.InPlace;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
+import ir.sk.helper.paradigm.BruteForce;
 import ir.sk.helper.pattern.HashingIndexPattern;
 import ir.sk.helper.pattern.TwoPointerPattern;
 import ir.sk.helper.pattern.RunnerPattern;
@@ -21,7 +22,10 @@ import java.util.*;
  */
 public class LinkListAlgorithms {
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
+     * delete duplicates in a link list
+     *
      * iterate with two pointers: current which iterates through the linked list,
      * and runner which checks all subsequent nodes for duplicates.
      * <p>
@@ -32,6 +36,7 @@ public class LinkListAlgorithms {
     @TimeComplexity("O(n^2)")
     @SpaceComplexity("O(1)")
     @Point("Using two Loop")
+    @BruteForce
     public static void deleteDuplicatesByRunner(SinglyLink head) {
         SinglyLink current = head;
         while (current != null) {
@@ -69,15 +74,12 @@ public class LinkListAlgorithms {
             head = head.next;
         }
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
-     * wrap the counter value with simple class
-     */
-    static class Index {
-        public int value = 0;
-    }
-
-    /**
+     * Find the nth node from the end in the given linked list
+     *
      * @param head
      * @param k
      * @return
@@ -85,6 +87,14 @@ public class LinkListAlgorithms {
     public static <T> SinglyLink<T> kthToLastRecursive(SinglyLink<T> head, int k) {
         Index idx = new Index();
         return kthToLastRecursive(head, k, idx);
+    }
+
+    /**
+     * wrap the counter value with simple class
+     */
+    @Point("Wrapper of primitive type in order to pass as parameter in methods")
+    static class Index {
+        public int value = 0;
     }
 
     /**
@@ -97,6 +107,7 @@ public class LinkListAlgorithms {
      * @param idx
      * @return
      */
+    @Difficulty(type = DifficultyType.HARD)
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
     private static <T> SinglyLink<T> kthToLastRecursive(SinglyLink<T> head, int k, Index idx) {
@@ -123,25 +134,27 @@ public class LinkListAlgorithms {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
-    @TwoPointerPattern
+    @RunnerPattern
+    @Difficulty(type = DifficultyType.HARD)
     private static <T> SinglyLink<T> nthToLastByRunner(SinglyLink<T> head, int k) {
-        SinglyLink<T> pl = head;
-        SinglyLink<T> p2 = head;
+        SinglyLink<T> current = head;
+        SinglyLink<T> runner = head;
 
         /* Move pl k nodes into the list.*/
         for (int i = 0; i < k; i++) {
-            if (pl == null)
+            if (runner == null)
                 return null; // Out of bounds
-            pl = pl.next;
+            runner = runner.next;
         }
 
-        /* Move them at the same pace. When pl hits the end, p2 will be at the right 12 * element. */
-        while (pl != null) {
-            pl = pl.next;
-            p2 = p2.next;
+        /* Move them at the same pace. When pl hits the end, runner will be at the right 12 * element. */
+        while (runner != null) {
+            runner = runner.next;
+            current = current.next;
         }
-        return p2;
+        return current;
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
      * delete a node in the middle (i.e., any node but
@@ -197,23 +210,6 @@ public class LinkListAlgorithms {
     }
 
     /**
-     * 1) Get the middle of the linked list.
-     * 2) Reverse the second half of the linked list.
-     * 3) Check if the first half and second half are identical.
-     *
-     * @param head
-     * @return
-     */
-    @TimeComplexity("O(n)")
-    @SpaceComplexity("O(1)")
-    @RunnerPattern
-    public static boolean isPalindromeByRunner(SinglyLink<Integer> head) {
-        SinglyLink<Integer> middleLink = findMiddleLink(head);
-        SinglyLink<Integer> reversed = reverseIterative(middleLink);
-        return isEqual(head, reversed);
-    }
-
-    /**
      * Given the head of a Singly LinkedList, write a method to modify the LinkedList such that the nodes
      * from the second half of the LinkedList are inserted alternately to the nodes from the first half in reverse order.
      * So if the LinkedList has nodes 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> null, your method should return 1 -> 6 -> 2 -> 5 -> 3 -> 4 -> null.
@@ -245,6 +241,7 @@ public class LinkListAlgorithms {
             head.next = null;
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
      * Given pointer to the head node of a linked list, the task is to reverse the linked list. We need to reverse the list by changing the links between nodes.
      * 1->2->3->4->null
@@ -290,6 +287,7 @@ public class LinkListAlgorithms {
         first.next = null;
         return rest;
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
      * @param node
@@ -316,6 +314,27 @@ public class LinkListAlgorithms {
         }
         return one == null && two == null;
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /**
+     * is a linklist palindrome
+     *
+     * 1) Get the middle of the linked list.
+     * 2) Reverse the second half of the linked list.
+     * 3) Check if the first half and second half are identical.
+     *
+     * @param head
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
+    @RunnerPattern
+    public static boolean isPalindromeByRunner(SinglyLink<Integer> head) {
+        SinglyLink<Integer> middleLink = findMiddleLink(head);
+        SinglyLink<Integer> reversed = reverseIterative(middleLink);
+        return isEqual(head, reversed);
+    }
+
 
     /**
      * We need to push the first half of the elements onto a stack
@@ -446,6 +465,7 @@ public class LinkListAlgorithms {
         }
         return true;
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private static <T> int lengthOfList(SinglyLink<T> n) {
         int size = 0;
@@ -456,9 +476,7 @@ public class LinkListAlgorithms {
         return size;
     }
 
-
-
-
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
      * Given the head of a Singly LinkedList, write a function to determine if the LinkedList has a cycle in it or not.
      * Traverse the list one by one and keep putting the node addresses in a Hash Table. At any point,
@@ -526,6 +544,7 @@ public class LinkListAlgorithms {
         }
         return false;
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
      * Given the head of a LinkedList with a cycle, find the length of the cycle.

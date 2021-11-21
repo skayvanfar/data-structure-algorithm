@@ -1,4 +1,4 @@
-package ir.sk.algorithm.array.patternmatching.regularexpression;
+package ir.sk.algorithm.array.string.patternmatching.regularexpression;
 
 import ir.sk.adt.bag.Bag;
 import ir.sk.adt.bag.LinkBag;

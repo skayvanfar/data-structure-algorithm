@@ -143,4 +143,9 @@ public class ArrayAlgorithmsTest {
         int[] array = ArrayAlgorithms.addTwoArrayNumber(arr, arr2);
         System.out.println(array);
     }
+
+    @Test
+    public void sortArrayElementsByFrequency() {
+        ArrayAlgorithms.sortArrayElementsByFrequency(new int[] {7, 1, 3, 4, 7, 1, 7, 1, 4, 5, 1, 9, 3});
+    }
 }

@@ -1,4 +1,4 @@
-package ir.sk.algorithm.array.patternmatching;
+package ir.sk.algorithm.array.string.stringmatching;
 
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.MultipleLoopsPattern;

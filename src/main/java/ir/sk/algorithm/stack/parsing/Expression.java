@@ -12,6 +12,8 @@ import java.util.Stack;
  * Prefix Notation: Operators are written before the operands, e.g + 3 4
  * Postfix Notation: Operators are written after operands.
  *
+ * @see ir.sk.algorithm.tree.ExpressionTree
+ *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/2/2021.
  */
 public class Expression {
@@ -57,7 +59,7 @@ public class Expression {
     }
 
     /**
-     * A utility function to return precedence of a given operator
+     * A utility function to return precedence(prioritise) of a given operator
      * Higher returned value means higher precedence
      *
      * @param ch

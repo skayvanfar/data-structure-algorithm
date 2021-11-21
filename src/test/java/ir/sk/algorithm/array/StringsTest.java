@@ -1,5 +1,6 @@
 package ir.sk.algorithm.array;
 
+import ir.sk.algorithm.array.string.Strings;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
