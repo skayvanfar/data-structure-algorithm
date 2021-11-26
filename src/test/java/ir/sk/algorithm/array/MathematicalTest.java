@@ -96,4 +96,13 @@ public class MathematicalTest {
         System.out.println(Mathematical.isHappyNumberByRunner(23));
     }
 
+    @Test
+    public void factors() {
+        System.out.println(Mathematical.FindFactors(6));
+    }
+
+    @Test
+    public void findFactorsOptimized() {
+        System.out.println(Mathematical.findFactorsOptimized(6));
+    }
 }

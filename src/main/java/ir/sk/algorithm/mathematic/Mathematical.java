@@ -9,7 +9,9 @@ import ir.sk.helper.recursiontype.TailRecursion;
 import ir.sk.helper.paradigm.BruteForce;
 import ir.sk.helper.paradigm.DecreaseAndConquer;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 /**
  * Created by sad.kayvanfar on 1/20/2021.
@@ -346,5 +348,34 @@ public class Mathematical {
             temp *= 10;
         }
         return length;
+    }
+
+    /**
+     * For number 6, the factors are 1, 2, 3 and 6.
+     *
+     * @param num
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    public static List<Integer> FindFactors(int num) {
+        List<Integer> factors = new ArrayList<>();
+        for (int i = 1; i <= num; i++) {
+            if (num % i == 0) {
+                factors.add(i);
+            }
+        }
+        return factors;
+    }
+
+    @TimeComplexity("O(1)")
+    public static List<Integer> findFactorsOptimized(int n) {
+        List<Integer> factors = new ArrayList<>();
+        for(int i=1; i <= Math.sqrt(n); i++) {
+            if(n % i == 0) {
+                factors.add(i);
+                factors.add(n/i);
+            }
+        }
+        return factors;
     }
 }
