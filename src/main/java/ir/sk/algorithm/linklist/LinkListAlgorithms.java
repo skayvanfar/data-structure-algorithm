@@ -11,7 +11,7 @@ import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.paradigm.BruteForce;
 import ir.sk.helper.pattern.HashingIndexPattern;
-import ir.sk.helper.pattern.MultiplePointerPattern;
+import ir.sk.helper.pattern.TwoPointerPattern;
 import ir.sk.helper.pattern.RunnerPattern;
 import ir.sk.helper.recursiontype.HeadRecursion;
 
@@ -348,7 +348,7 @@ public class LinkListAlgorithms {
      * @param head
      * @return
      */
-    @MultiplePointerPattern
+    @TwoPointerPattern
     @TimeComplexity("O(n/2) = O(n)")
     @SpaceComplexity("O(n/2) = O(n)")
     public static boolean isPalindromeByStack(SinglyLink<Integer> head) {
@@ -446,7 +446,7 @@ public class LinkListAlgorithms {
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
     @Difficulty(type = DifficultyType.EASY)
-    @MultiplePointerPattern
+    @TwoPointerPattern
     public static <T> boolean isPalindrome(DoubledLink<T> left) {
         if (left == null)
             return true;

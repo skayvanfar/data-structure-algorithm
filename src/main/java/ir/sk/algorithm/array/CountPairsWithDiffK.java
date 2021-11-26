@@ -4,7 +4,7 @@ import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.HashingIndexPattern;
 import ir.sk.helper.pattern.MultipleLoopsPattern;
-import ir.sk.helper.paradigm.BinarySearch;
+import ir.sk.helper.pattern.ModifiedBinarySearchPattern;
 import ir.sk.helper.paradigm.BruteForce;
 
 import java.util.Arrays;
@@ -77,7 +77,7 @@ public class CountPairsWithDiffK {
         return count;
     }
 
-    @BinarySearch
+    @ModifiedBinarySearchPattern
     private static int binarySearch(int arr[], int low, int high, int x) {
         if (high >= low) {
             int mid = low + (high - low) / 2;

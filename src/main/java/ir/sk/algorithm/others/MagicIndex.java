@@ -1,7 +1,7 @@
 package ir.sk.algorithm.others;
 
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.paradigm.BinarySearch;
+import ir.sk.helper.pattern.ModifiedBinarySearchPattern;
 import ir.sk.helper.paradigm.BruteForce;
 
 /**
@@ -36,7 +36,7 @@ public class MagicIndex {
         return magicFast(array, 0, array.length - 1);
     }
 
-    @BinarySearch
+    @ModifiedBinarySearchPattern
     private static int magicFast(int[] array, int start, int end) {
         if (end < start)
             return -1;

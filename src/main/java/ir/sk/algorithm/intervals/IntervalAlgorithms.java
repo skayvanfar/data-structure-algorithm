@@ -5,6 +5,7 @@ import ir.sk.helper.DifficultyType;
 import ir.sk.helper.Point;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
+import ir.sk.helper.pattern.MergeIntervalsPattern;
 import ir.sk.helper.pattern.MultipleLoopsPattern;
 import ir.sk.helper.paradigm.BruteForce;
 
@@ -104,6 +105,7 @@ public class IntervalAlgorithms {
     @SpaceComplexity("O(n), O(N) as we need to return a list containing all the merged intervals. We will also need O(N) space for sorting.")
     @Point("For Java, depending on its version, Collection.sort() either uses Merge sort or Timsort, and both these algorithms need O(N)")
     @Difficulty(type = DifficultyType.MEDIUM)
+    @MergeIntervalsPattern
     public static List<Interval> mergeIntervals(List<Interval> intervals) {
         if (intervals.size() < 2)
             return intervals;

@@ -4,9 +4,7 @@ import ir.sk.helper.*;
 import ir.sk.helper.complexity.InPlace;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.pattern.MultiplePointerPattern;
-import ir.sk.helper.pattern.RunnerPattern;
-import ir.sk.helper.pattern.XOR;
+import ir.sk.helper.pattern.*;
 import ir.sk.helper.paradigm.*;
 
 import java.util.*;
@@ -78,7 +76,7 @@ public class ArrayAlgorithms {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
-    @MultiplePointerPattern
+    @TwoPointerPattern
     @Difficulty(type = DifficultyType.EASY)
     public static int[] makeSquaresSortedArray(int[] array) {
         int[] squares = new int[array.length];
@@ -144,7 +142,7 @@ public class ArrayAlgorithms {
      */
     @TimeComplexity("O(Log n)")
     @SpaceComplexity("O(1)")
-    @BinarySearch
+    @ModifiedBinarySearchPattern
     @DecreaseAndConquer
     private static int magicIndexBinarySearch(int arr[], int low, int high) {
         if (high >= low) {
@@ -242,7 +240,7 @@ public class ArrayAlgorithms {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
-    @XOR
+    @BitwiseXORPattern
     public static int findSingleNumber(int array[]) {
         // Do XOR of all elements and return
         int res = array[0];
@@ -317,8 +315,13 @@ public class ArrayAlgorithms {
             array[count++] = 0;
     }
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+    // Kth Largest Element in an Array
     /**
      * Given a list, find the k-th largest element in the list.
+     *
+     * A brute-force solution is to simply sort the array and find out the element at the Kth place.
+     *
      * Input: list = [3, 5, 2, 4, 6, 8], k = 3
      * Output: 5
      *
@@ -328,9 +331,40 @@ public class ArrayAlgorithms {
      */
     @TimeComplexity("O(nlogn)")
     @Difficulty(type = DifficultyType.MEDIUM)
+    @BruteForce
     public static int findKthLargestBySorting(int[] arr, int k) {
         Arrays.sort(arr); // or using optimization by QuickSelect
         return arr[arr.length - k];
+    }
+
+    /**
+     * the algorithm process will be like:
+     *
+     * Traverse the array elements and put them into a K size min heap. If the heap size is larger than K, pop out the root element.
+     * Repeat this process until the end of the array.
+     *
+     * Return the root element of the min heap as it is the Kth largest element of the whole array.
+     *
+     * @param nums
+     * @param k
+     * @return
+     */
+    @TimeComplexity("O(NlogK)")
+    @TopKElementsPattern
+    public static int findKthLargest(int[] nums, int k) {
+        // Create a min heap
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>(Comparator.comparingInt(a -> a));
+
+        // Insert the array elements into the min heap.
+        for (int i = 0; i < nums.length; i++) {
+            minHeap.add(nums[i]);
+            // Pop out the root element if the min heap size is larger than k
+            if (minHeap.size() > k) {
+                minHeap.poll();
+            }
+        }
+
+        return minHeap.peek();
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////

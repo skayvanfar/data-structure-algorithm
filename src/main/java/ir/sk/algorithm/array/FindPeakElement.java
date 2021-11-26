@@ -6,7 +6,7 @@ import ir.sk.helper.Implementation;
 import ir.sk.helper.ImplementationType;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.paradigm.BinarySearch;
+import ir.sk.helper.pattern.ModifiedBinarySearchPattern;
 import ir.sk.helper.paradigm.BruteForce;
 import ir.sk.helper.paradigm.DecreaseAndConquer;
 
@@ -65,7 +65,7 @@ public class FindPeakElement {
     @Difficulty(type = DifficultyType.MEDIUM)
     @TimeComplexity("O(Log n)")
     @SpaceComplexity("O(1)")
-    @BinarySearch
+    @ModifiedBinarySearchPattern
     @DecreaseAndConquer
     @Implementation(type = ImplementationType.Recursive)
     public static boolean findPeakByRecursive(int array[], int low, int high) {

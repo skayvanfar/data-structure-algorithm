@@ -5,7 +5,7 @@ import ir.sk.helper.ImplementationType;
 import ir.sk.helper.Point;
 import ir.sk.helper.RecurrenceRelation;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.paradigm.BinarySearch;
+import ir.sk.helper.pattern.ModifiedBinarySearchPattern;
 import ir.sk.helper.paradigm.DecreaseAndConquer;
 
 /**
@@ -90,7 +90,7 @@ public class Search {
      */
     @TimeComplexity("O(Log n)")
     @DecreaseAndConquer
-    @BinarySearch
+    @ModifiedBinarySearchPattern
     @Implementation(type = ImplementationType.Recursive)
     @RecurrenceRelation("T(n) = T(n/2) + O(1)")
     public static int binarySearchByRecursive(int array[], int key, int low, int high) {
@@ -123,7 +123,7 @@ public class Search {
      */
     @TimeComplexity("O(Log n)")
     @DecreaseAndConquer
-    @BinarySearch
+    @ModifiedBinarySearchPattern
     public static int leftBoundBinarySearch(int[] array, int target) {
         int left = 0, right = array.length - 1; // interval [left, right]
         // search interval is [left, right]
@@ -162,7 +162,7 @@ public class Search {
      */
     @TimeComplexity("O(Log n)")
     @DecreaseAndConquer
-    @BinarySearch
+    @ModifiedBinarySearchPattern
     public static int rightBoundBinarySearch(int[] array, int target) {
         int left = 0, right = array.length - 1; // interval [left, right]
         while (left <= right) {

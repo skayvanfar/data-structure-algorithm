@@ -83,7 +83,21 @@ def backtrack(Path, selection List):
 
 
 ##template for Sliding Window Algorithm algorithm:
-[window)
+###[window)
+####Static
+```
+int left = 0, right = k;
+for (int i = 0; i < k; i++)
+     currentSum += array[i];
+
+while (right < s.size()) {
+    window.add(s[right]);
+    right++;
+    window.remove(s[left]);
+    left++;
+}
+```
+####Dynamic
 ```
 int left = 0, right = 0;
 

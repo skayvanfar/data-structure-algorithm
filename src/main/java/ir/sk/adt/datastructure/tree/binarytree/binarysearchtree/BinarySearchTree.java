@@ -5,7 +5,7 @@ import ir.sk.helper.RecurrenceRelation;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.paradigm.BFS;
-import ir.sk.helper.paradigm.BinarySearch;
+import ir.sk.helper.pattern.ModifiedBinarySearchPattern;
 import ir.sk.helper.paradigm.DFS;
 
 import java.util.LinkedList;
@@ -69,7 +69,7 @@ public class BinarySearchTree {
      * @return
      */
     @TimeComplexity("O(h)")
-    @BinarySearch
+    @ModifiedBinarySearchPattern
     private BSTNode addRecursive(BSTNode current, int value) {
 
         if (current == null)
@@ -109,7 +109,7 @@ public class BinarySearchTree {
      * @return
      */
     @TimeComplexity("O(h)")
-    @BinarySearch
+    @ModifiedBinarySearchPattern
     private boolean containsNodeRecursive(BSTNode current, int value) {
         if (current == null)
             return false;

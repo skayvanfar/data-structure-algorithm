@@ -3,7 +3,7 @@ package ir.sk.algorithm.array;
 import ir.sk.helper.*;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-import ir.sk.helper.paradigm.BinarySearch;
+import ir.sk.helper.pattern.ModifiedBinarySearchPattern;
 import ir.sk.helper.paradigm.BruteForce;
 
 import java.util.*;
@@ -48,7 +48,7 @@ public class TwoDArray {
      */
     @TimeComplexity("O(log(m) + log(n))")
     @SpaceComplexity("O(1)")
-    @BinarySearch
+    @ModifiedBinarySearchPattern
     public static String binarySearchByLoop2D(int[][] array, int key) {
         int low = 0, high = array.length - 1, mid;
 

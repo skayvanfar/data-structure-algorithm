@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 /**
  * Created by sad.keyvanfar on 6/28/2020.
  */
-public class BinarySearchTreeTest {
+public class ModifiedBinarySearchPatternTreeTest {
 
     private BinarySearchTree binarySearchTree;
 

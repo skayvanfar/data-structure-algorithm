@@ -5,7 +5,7 @@ import ir.sk.helper.DifficultyType;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.HashingIndexPattern;
-import ir.sk.helper.pattern.MultiplePointerPattern;
+import ir.sk.helper.pattern.TwoPointerPattern;
 import ir.sk.helper.pattern.SlidingWindowPattern;
 import ir.sk.helper.pattern.SlidingWindowPatternType;
 import ir.sk.helper.paradigm.BruteForce;
@@ -125,7 +125,7 @@ public class Strings {
      */
     @TimeComplexity("O(m+n)")
     @SpaceComplexity("O(1)")
-    @MultiplePointerPattern
+    @TwoPointerPattern
     @Difficulty(type = DifficultyType.MEDIUM)
     public static boolean compareStringsContainingBackspaces(String str1, String str2) {
         // use two pointer approach to compare the strings

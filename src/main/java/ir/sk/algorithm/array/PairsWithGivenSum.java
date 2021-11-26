@@ -7,7 +7,7 @@ import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.HashingIndexPattern;
 import ir.sk.helper.pattern.MultipleLoopsPattern;
-import ir.sk.helper.pattern.MultiplePointerPattern;
+import ir.sk.helper.pattern.TwoPointerPattern;
 import ir.sk.helper.paradigm.BruteForce;
 
 import java.util.ArrayList;
@@ -74,7 +74,7 @@ public class PairsWithGivenSum {
      * @param targetValue
      * @return
      */
-    @MultiplePointerPattern
+    @TwoPointerPattern
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(1)")
     public static int countPairSumTwoPointers(int[] input, int targetValue) {
@@ -201,7 +201,7 @@ public class PairsWithGivenSum {
      */
     @TimeComplexity("O(nLogn + n^2) = O(n^2)")
     @SpaceComplexity("O(n)")
-    @MultiplePointerPattern
+    @TwoPointerPattern
     @Difficulty(type = DifficultyType.MEDIUM)
     public static List<List<Integer>> searchTripletsSumZero(int[] array) {
         Arrays.sort(array);
@@ -251,7 +251,7 @@ public class PairsWithGivenSum {
      */
     @TimeComplexity("O(nLogn + n^2) = O(n^2)")
     @SpaceComplexity("O(n)")
-    @MultiplePointerPattern
+    @TwoPointerPattern
     @Difficulty(type = DifficultyType.MEDIUM)
     public static int searchTripletsSumNearNumber(int[] array, int targetSum) {
         Arrays.sort(array);
@@ -304,7 +304,7 @@ public class PairsWithGivenSum {
      */
     @TimeComplexity("O(nLogn + n^2) = O(n^2)")
     @SpaceComplexity("O(n) which is required for sorting if we are not using an in-place sorting algorithm.")
-    @MultiplePointerPattern
+    @TwoPointerPattern
     @Difficulty(type = DifficultyType.MEDIUM)
     public static int searchTripletsSumSmallerThanNumber(int[] array, int target) {
         Arrays.sort(array);
@@ -344,7 +344,7 @@ public class PairsWithGivenSum {
      */
     @TimeComplexity("O(nLogn + n^3) = O(n^3)")
     @SpaceComplexity("O(n) which is required for sorting if we are not using an in-place sorting algorithm.")
-    @MultiplePointerPattern
+    @TwoPointerPattern
     @Difficulty(type = DifficultyType.MEDIUM)
     public static List<List<Integer>> returnTripletsSumSmallerThanNumber(int[] array, int target) {
         Arrays.sort(array);
@@ -391,7 +391,7 @@ public class PairsWithGivenSum {
      */
     @TimeComplexity("O(nLogn + n^3) = O(n^3)")
     @SpaceComplexity("O(n) which is required for sorting if we are not using an in-place sorting algorithm.")
-    @MultiplePointerPattern
+    @TwoPointerPattern
     @Difficulty(type = DifficultyType.MEDIUM)
     public static List<List<Integer>> searchQuadrupletsSumNumber(int[] array, int target) {
         Arrays.sort(array);
