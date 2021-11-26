@@ -1,6 +1,8 @@
 package ir.sk.algorithm;
 
 import ir.sk.helper.complexity.TimeComplexity;
+import ir.sk.helper.paradigm.DynamicProgramming;
+import ir.sk.helper.paradigm.DynamicProgrammingType;
 
 /**
  * Important rules:
@@ -68,7 +70,8 @@ public class TimeComplexitySamples {
         return array[r][c] + Math.min(findMinPath(array, r + 1, c), findMinPath(array, r, c + 1));
     }
 
-    @TimeComplexity("O(r+c)")
+    @TimeComplexity("O(r*c)")
+    @DynamicProgramming(type = DynamicProgrammingType.TOP_DAWN_MEMOIZATION)
     public static int findMinPathByDP(int[][] array, int r, int c, int[][] memo) {
         int R = array.length;
         int C = array[0].length;
