@@ -82,4 +82,15 @@ public class TimeComplexitySamples {
         return memo[r][c];
     }
 
+    @TimeComplexity("O(n)")
+    public static void sample3(int[] array) {
+        int n = array.length;
+        int j = 0;
+        for(int i = 0; i < array.length; ++i) {
+            while(j < n && array[i] < array[j]) {
+                j++;
+            }
+        }
+    }
+
 }
