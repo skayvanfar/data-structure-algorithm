@@ -247,6 +247,7 @@ public class Algorithms {
         return allSubsets;
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////////////
     /**
      * Imagine a robot sitting on the upper left corner of grid with r rows and c columns.
      * The robot can only move in two directions, right and down, but certain cells are "off limits" such that
@@ -332,6 +333,26 @@ public class Algorithms {
 
         failedPoints.add(p); // Cache result
         return false;
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    @TimeComplexity("O(2^(r+c))")
+    public static int findMinPath(int[][] array, int r, int c) {
+        int R = array.length;
+        int C = array[0].length;
+        if (r >= R || c >= C) return 100000000; // Infinity
+        if (r == R - 1 && c == C - 1) return 0;
+        return array[r][c] + Math.min(findMinPath(array, r + 1, c), findMinPath(array, r, c + 1));
+    }
+
+    @TimeComplexity("O(r+c)")
+    public static int findMinPathByDP(int[][] array, int r, int c, int[][] memo) {
+        int R = array.length;
+        int C = array[0].length;
+        if (r >= R || c >= C) return 100000000; // Infinity
+        if (r == R - 1 && c == C - 1) return 0;
+        if (memo[r][c] != -1) return memo[r][c];
+        memo[r][c] = array[r][c] + Math.min(findMinPathByDP(array, r + 1, c, memo), findMinPathByDP(array, r, c + 1, memo));
+        return memo[r][c];
     }
 
 }
