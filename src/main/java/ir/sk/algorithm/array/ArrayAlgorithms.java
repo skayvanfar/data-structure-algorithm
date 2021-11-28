@@ -634,4 +634,38 @@ public class ArrayAlgorithms {
 
         System.out.println(sortedElements);
     }
+    /*
+
+    *   A = [1, 4, 2, 3]
+        B = [2, 5, 1, 6]
+
+    * */
+
+
+    /**
+     * Given two integers arrays A and B of size N each.
+     * Find the maximum N elements from the sum combinations (Ai + Bj) formed from elements in array A and B.
+     *
+     *  A = [1, 4, 2, 3]
+     *  B = [2, 5, 1, 6]
+     *  result = [10, 9, 9, 8]
+     */
+    @TimeComplexity("O(n^2)")
+    public static int[] kMaxCombinations(int[] first, int[] second) {
+        int n = first.length;
+        int[] result = new int[n];
+        PriorityQueue<Integer> prioriyQueue = new PriorityQueue<>(Comparator.reverseOrder());
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n;j++) {
+                prioriyQueue.add(first[i] + second[j]);
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            result[i] = prioriyQueue.poll();
+        }
+
+        return result;
+    }
 }

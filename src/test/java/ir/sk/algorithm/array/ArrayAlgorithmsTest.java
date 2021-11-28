@@ -148,4 +148,12 @@ public class ArrayAlgorithmsTest {
     public void sortArrayElementsByFrequency() {
         ArrayAlgorithms.sortArrayElementsByFrequency(new int[] {7, 1, 3, 4, 7, 1, 7, 1, 4, 5, 1, 9, 3});
     }
+
+    @Test
+    public void kMaxCombinations() {
+        int[] a = new int[]{1, 4, 2, 3};
+        int[] b = new int[]{2, 5, 1, 6};
+        int[] result = ArrayAlgorithms.kMaxCombinations(a, b);
+        System.out.println(Arrays.toString(result));
+    }
 }
