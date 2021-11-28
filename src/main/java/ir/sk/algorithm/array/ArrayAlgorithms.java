@@ -760,4 +760,50 @@ public class ArrayAlgorithms {
     }
 
     ////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Design a data structure to efficiently handle Q queries.
+     * 1 S K: Insert a string S with key K.
+     *
+     * 2 S K: find the count of strings having S as prefix and key greater than or equal to K.
+     *
+     * A = [1, 1, 2, 1, 2]
+     * B = ["abc", "bac", "ab", "abc", "ab"]
+     * C = [5, 1, 4, 4, 4]
+     * result: [1, 2]
+     *
+     * @param A is an integer array A of size Q denoting type of query.
+     * @param B is a string array B of size Q denoting string S for each query.
+     * @param C is an integer array C of size Q denoting key K for each query.
+     * @return an integer array containing all the answer to query 2 in the same order they were asked.
+     */
+    @TimeComplexity("O(1) for search")
+    @SpaceComplexity("O(n * length of string)")
+    public static List<Integer> prefixWithKeyGreaterThanX(List<Integer> A, List<String> B, List<Integer> C) {
+        int n = A.size();
+        List<Integer> result = new ArrayList();
+        Map<String, List<Integer>> map = new HashMap<>();
+        for (int i = 0; i < n; i++) {
+            if (A.get(i) == 1) {
+                String pref = "";
+                for (char ch : B.get(i).toCharArray()) {
+                    pref += ch;
+                    List<Integer> list = map.getOrDefault(pref, new ArrayList<>());
+                    list.add(C.get(i));
+                    map.put(pref, list);
+                }
+            } else if (A.get(i) == 2) {
+                List<Integer> counters = map.get(B.get(i));
+                int counter = 0;
+                for(Integer count : counters) {
+                    if (count >= C.get(i)) {
+                        counter++;
+                    }
+                }
+                result.add(counter);
+            }
+
+        }
+        return result;
+    }
 }

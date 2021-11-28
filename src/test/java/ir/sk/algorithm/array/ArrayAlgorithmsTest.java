@@ -165,4 +165,13 @@ public class ArrayAlgorithmsTest {
         List<Integer> result = ArrayAlgorithms.kMaxCombinationsBetter(a, b);
         System.out.println(result);
     }
+
+    @Test
+    public void prefixWithKeyGreaterThanX() {
+        List<Integer> a = Arrays.asList(1, 1, 2, 1, 2);
+        List<String> b = Arrays.asList("abc", "bac", "ab", "abc", "ab");
+        List<Integer> c = Arrays.asList(5, 1, 4, 4, 4);
+        List<Integer> result = ArrayAlgorithms.prefixWithKeyGreaterThanX(a, b, c);
+        System.out.println(result);
+    }
 }
