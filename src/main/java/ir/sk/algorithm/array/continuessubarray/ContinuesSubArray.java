@@ -75,7 +75,7 @@ public class ContinuesSubArray {
         int end = 0;
 
         // maxEndingHere: maximum subarray ending in current index
-        int maxSoFar = 0, maxEndingHere = 0;
+        int maxSoFar = arr[0], maxEndingHere = arr[0];
 
         for (int i = 0; i < size; i++) {
             if (arr[i] > maxEndingHere + arr[i]) {
