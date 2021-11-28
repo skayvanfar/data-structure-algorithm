@@ -8,6 +8,7 @@ import ir.sk.helper.pattern.*;
 import ir.sk.helper.paradigm.*;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by sad.kayvanfar on 1/10/2021.
@@ -764,9 +765,9 @@ public class ArrayAlgorithms {
     /**
      * Design a data structure to efficiently handle Q queries.
      * 1 S K: Insert a string S with key K.
-     *
+     * <p>
      * 2 S K: find the count of strings having S as prefix and key greater than or equal to K.
-     *
+     * <p>
      * A = [1, 1, 2, 1, 2]
      * B = ["abc", "bac", "ab", "abc", "ab"]
      * C = [5, 1, 4, 4, 4]
@@ -779,6 +780,7 @@ public class ArrayAlgorithms {
      */
     @TimeComplexity("O(1) for search")
     @SpaceComplexity("O(n * length of string)")
+    @Point("Using hashtable instead of trie")
     public static List<Integer> prefixWithKeyGreaterThanX(List<Integer> A, List<String> B, List<Integer> C) {
         int n = A.size();
         List<Integer> result = new ArrayList();
@@ -794,8 +796,10 @@ public class ArrayAlgorithms {
                 }
             } else if (A.get(i) == 2) {
                 List<Integer> counters = map.get(B.get(i));
+                if (counters == null)
+                    counters = new ArrayList<>();
                 int counter = 0;
-                for(Integer count : counters) {
+                for (Integer count : counters) {
                     if (count >= C.get(i)) {
                         counter++;
                     }
@@ -803,6 +807,80 @@ public class ArrayAlgorithms {
                 result.add(counter);
             }
 
+        }
+        return result;
+    }
+
+    private static class Trie {
+
+        private TrieNode root = new TrieNode();
+
+        public void insert(String str, Integer value) {
+            insert(root, str.toCharArray(), value, 0);
+        }
+
+        private void insert(TrieNode curNode, char[] strArray, Integer value, int index) {
+            if (index == strArray.length - 1)
+                return;
+            char ch = strArray[index];
+            TrieNode trieNode = curNode.getTrieNode(ch);
+            if (trieNode == null) {
+                trieNode = new TrieNode();
+            }
+            trieNode.add(value);
+            curNode.setTrieNode(ch, trieNode);
+            insert(trieNode, strArray, value, ++index);
+        }
+
+        public Long count(String prefix, int value) {
+            return count(root, prefix.toCharArray(), value, 0);
+        }
+
+        private Long count(TrieNode curTrieNode, char[] prefixArray, int value, int index) {
+            if (curTrieNode == null)
+                return 0L;
+            char ch = prefixArray[index];
+            if (index == prefixArray.length - 1) {
+                return curTrieNode.getCounts().stream().filter(integer -> integer >= value).count();
+            }
+
+            TrieNode trieNode = curTrieNode.getTrieNode(ch);
+            return count(trieNode, prefixArray, value, ++index);
+        }
+    }
+
+    private static class TrieNode {
+        private TrieNode[] trieNodes = new TrieNode[26];
+        private List<Integer> counts = new ArrayList<>();
+
+        public TrieNode getTrieNode(char ch) {
+            return trieNodes[ch - 'a'];
+        }
+
+        public void setTrieNode(char ch, TrieNode trieNode) {
+            trieNodes[ch - 'a'] = trieNode;
+        }
+
+        public void add(Integer num) {
+            counts.add(num);
+        }
+
+        public List<Integer> getCounts() {
+            return counts;
+        }
+    }
+
+    /**
+     */
+    public static List<Integer> prefixWithKeyGreaterThanXByTrie(List<Integer> A, List<String> B, List<Integer> C) {
+        Trie trie = new Trie();
+        List<Integer> result = new ArrayList<>();
+        for (int i = 0; i < A.size(); i++) {
+            if (A.get(i) == 1) {
+                trie.insert(B.get(i), C.get(i));
+            } else if (A.get(i) == 2) {
+                result.add(trie.count(B.get(i), C.get(i)).intValue());
+            }
         }
         return result;
     }
