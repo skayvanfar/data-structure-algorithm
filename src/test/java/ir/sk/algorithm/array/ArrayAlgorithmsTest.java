@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by sad.kayvanfar on 1/10/2021.
@@ -155,5 +156,13 @@ public class ArrayAlgorithmsTest {
         int[] b = new int[]{2, 5, 1, 6};
         int[] result = ArrayAlgorithms.kMaxCombinations(a, b);
         System.out.println(Arrays.toString(result));
+    }
+
+    @Test
+    public void kMaxCombinationsBetter() {
+        List<Integer> a = Arrays.asList(1, 4, 2, 3);
+        List<Integer> b = Arrays.asList(2, 5, 1, 6);
+        List<Integer> result = ArrayAlgorithms.kMaxCombinationsBetter(a, b);
+        System.out.println(result);
     }
 }

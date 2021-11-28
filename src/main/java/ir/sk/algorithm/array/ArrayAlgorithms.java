@@ -317,11 +317,12 @@ public class ArrayAlgorithms {
 
     //////////////////////////////////////////////////////////////////////////////////////////////////
     // Kth Largest Element in an Array
+
     /**
      * Given a list, find the k-th largest element in the list.
-     *
+     * <p>
      * A brute-force solution is to simply sort the array and find out the element at the Kth place.
-     *
+     * <p>
      * Input: list = [3, 5, 2, 4, 6, 8], k = 3
      * Output: 5
      *
@@ -339,10 +340,10 @@ public class ArrayAlgorithms {
 
     /**
      * the algorithm process will be like:
-     *
+     * <p>
      * Traverse the array elements and put them into a K size min heap. If the heap size is larger than K, pop out the root element.
      * Repeat this process until the end of the array.
-     *
+     * <p>
      * Return the root element of the min heap as it is the Kth largest element of the whole array.
      *
      * @param nums
@@ -641,14 +642,15 @@ public class ArrayAlgorithms {
 
     * */
 
+    ////////////////////////////////////////////////////////////////////////////////
 
     /**
      * Given two integers arrays A and B of size N each.
      * Find the maximum N elements from the sum combinations (Ai + Bj) formed from elements in array A and B.
-     *
-     *  A = [1, 4, 2, 3]
-     *  B = [2, 5, 1, 6]
-     *  result = [10, 9, 9, 8]
+     * <p>
+     * A = [1, 4, 2, 3]
+     * B = [2, 5, 1, 6]
+     * result = [10, 9, 9, 8]
      */
     @TimeComplexity("O(n^2)")
     public static int[] kMaxCombinations(int[] first, int[] second) {
@@ -657,7 +659,7 @@ public class ArrayAlgorithms {
         PriorityQueue<Integer> prioriyQueue = new PriorityQueue<>(Comparator.reverseOrder());
 
         for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n;j++) {
+            for (int j = 0; j < n; j++) {
                 prioriyQueue.add(first[i] + second[j]);
             }
         }
@@ -668,4 +670,25 @@ public class ArrayAlgorithms {
 
         return result;
     }
+
+    @TimeComplexity("O(nlogn)")
+    @Difficulty(type = DifficultyType.HARD)
+    public static List<Integer> kMaxCombinationsBetter(List<Integer> A, List<Integer> B) {
+        List<Integer> result = new ArrayList<>();
+        Collections.sort(A, Collections.reverseOrder());
+        Collections.sort(B, Collections.reverseOrder());
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        for (int a : A) {
+            for (int b : B) {
+                if (pq.size() < A.size()) pq.add(a + b);
+                else if (a + b > pq.peek()) pq.add(a + b);
+                else break;
+                if (pq.size() > A.size()) pq.remove();
+            }
+        }
+        while (pq.size() > 0) result.add(0, pq.poll());
+        return result;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////
 }
