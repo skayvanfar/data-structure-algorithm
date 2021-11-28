@@ -671,22 +671,91 @@ public class ArrayAlgorithms {
         return result;
     }
 
+    private static class Pair {
+
+        public Pair(int i1, int i2) {
+            this.i1 = i1;
+            this.i2 = i2;
+        }
+
+        int i1;
+        int i2;
+
+        @Override
+        public boolean equals(Object o) {
+            if (o == null) {
+                return false;
+            }
+            if (!(o instanceof Pair)) {
+                return false;
+            }
+            Pair obj = (Pair) o;
+            return (i1 == obj.i1 && i2 == obj.i2);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(i1, i2);
+        }
+    }
+
+    private static class PairSum implements Comparable<PairSum> {
+
+        public PairSum(int sum, int i1, int i2) {
+            this.sum = sum;
+            this.i1 = i1;
+            this.i2 = i2;
+        }
+
+        int sum;
+        int i1;
+        int i2;
+
+        @Override
+        public int compareTo(PairSum o) {
+            return Integer.compare(o.sum, sum);
+        }
+    }
+
     @TimeComplexity("O(nlogn)")
     @Difficulty(type = DifficultyType.HARD)
     public static List<Integer> kMaxCombinationsBetter(List<Integer> A, List<Integer> B) {
+
         List<Integer> result = new ArrayList<>();
-        Collections.sort(A, Collections.reverseOrder());
-        Collections.sort(B, Collections.reverseOrder());
-        PriorityQueue<Integer> pq = new PriorityQueue<>();
-        for (int a : A) {
-            for (int b : B) {
-                if (pq.size() < A.size()) pq.add(a + b);
-                else if (a + b > pq.peek()) pq.add(a + b);
-                else break;
-                if (pq.size() > A.size()) pq.remove();
+
+        Collections.sort(A);
+        Collections.sort(B);
+
+        PriorityQueue<PairSum> sums = new PriorityQueue<>();
+        HashSet<Pair> pairs = new HashSet<>();
+
+        int i1 = A.size() - 1;
+        int i2 = B.size() - 1;
+        pairs.add(new Pair(i1, i2));
+        sums.add(new PairSum(A.get(i1) + B.get(i2), i1, i2));
+
+        for (int i = 0; i < A.size(); i++) {
+            PairSum max = sums.poll();
+            result.add(max.sum);
+
+            i1 = max.i1 - 1;
+            i2 = max.i2;
+
+            if (i1 >= 0 && i2 >= 0 && !pairs.contains(new Pair(i1, i2))) {
+                sums.add(new PairSum(A.get(i1) + B.get(i2), i1, i2));
+                pairs.add(new Pair(i1, i2));
             }
+
+            i1 = max.i1;
+            i2 = max.i2 - 1;
+
+            if (i1 >= 0 && i2 >= 0 && !pairs.contains(new Pair(i1, i2))) {
+                sums.add(new PairSum(A.get(i1) + B.get(i2), i1, i2));
+                pairs.add(new Pair(i1, i2));
+            }
+
         }
-        while (pq.size() > 0) result.add(0, pq.poll());
+
         return result;
     }
 
