@@ -908,4 +908,42 @@ public class ArrayAlgorithms {
         }
         return max;
     }
+
+    /**
+     * You are in an infinite 2D grid where you can move in any of the 8 directions
+     *
+     *  (x,y) to
+     *     (x-1, y-1),
+     *     (x-1, y)  ,
+     *     (x-1, y+1),
+     *     (x  , y-1),
+     *     (x  , y+1),
+     *     (x+1, y-1),
+     *     (x+1, y)  ,
+     *     (x+1, y+1)
+     * You are given a sequence of points and the order in which you need to cover the points.. Give the minimum number of steps in which you can achieve it. You start from the first point.
+     * Input 1:
+     *
+     *  A = [0, 1, 1]
+     *  B = [0, 1, 2]
+     *  Output 1:
+     *
+     *  2
+     * @param A
+     * @param B
+     * @return
+     */
+    public static int coverPoints(List<Integer> A, List<Integer> B) {
+        int sum = 0;
+        for (int i = 0; i < A.size(); i++) {
+            if (i+1 >= A.size()) {
+                return sum;
+            }
+
+            int xDis = Math.abs(A.get(i) - A.get(i+1));
+            int yDis = Math.abs(B.get(i) - B.get(i+1));
+            sum += Math.max(xDis, yDis);
+        }
+        return sum;
+    }
 }

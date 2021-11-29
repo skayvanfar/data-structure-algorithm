@@ -190,4 +190,11 @@ public class ArrayAlgorithmsTest {
         int result = ArrayAlgorithms.pickFromBothSides(a, 3);
         System.out.println(result);
     }
+
+    @Test
+    public void coverPoints() {
+        List<Integer> a = Arrays.asList(4, 8, -7, -5, -13, 9, -7, 8);
+        List<Integer> b = Arrays.asList(4, -15, -10, -3, -13, 12, 8, -8 );
+        System.out.println(ArrayAlgorithms.coverPoints(a, b));
+    }
 }
