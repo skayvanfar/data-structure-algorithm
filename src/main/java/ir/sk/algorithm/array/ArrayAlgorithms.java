@@ -887,6 +887,16 @@ public class ArrayAlgorithms {
     }
 
     /**
+     * Given an integer array A of size N.
+     *
+     * You can pick B elements from either left or right end of the array A to get maximum sum.
+     *
+     * Find and return this maximum possible sum.
+     * A = [5, -2, 3 , 1, 2]
+     *  B = 3
+     *  Output 1:
+     *
+     *  8
      * @param A
      * @param B
      * @return
