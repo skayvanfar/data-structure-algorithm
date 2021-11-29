@@ -871,6 +871,7 @@ public class ArrayAlgorithms {
     }
 
     /**
+     *
      */
     public static List<Integer> prefixWithKeyGreaterThanXByTrie(List<Integer> A, List<String> B, List<Integer> C) {
         Trie trie = new Trie();
@@ -883,5 +884,28 @@ public class ArrayAlgorithms {
             }
         }
         return result;
+    }
+
+    /**
+     * @param A
+     * @param B
+     * @return
+     */
+    public static int pickFromBothSides(List<Integer> A, int B) {
+        int max;
+        int maxSoFar = 0;
+        int start = 0;
+        int end = A.size() - 1;
+        for (; start < B; start++) {
+            maxSoFar += A.get(start);
+        }
+        max = maxSoFar;
+        start--;
+        for (int i = 0; i < B; i++) {
+            maxSoFar += A.get(end - i);
+            maxSoFar -= A.get(start - i);
+            max = Math.max(max, maxSoFar);
+        }
+        return max;
     }
 }

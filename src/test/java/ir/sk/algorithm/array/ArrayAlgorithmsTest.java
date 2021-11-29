@@ -183,4 +183,11 @@ public class ArrayAlgorithmsTest {
         List<Integer> result = ArrayAlgorithms.prefixWithKeyGreaterThanXByTrie(a, b, c);
         System.out.println(result);
     }
+
+    @Test
+    public void pickFromBothSides() {
+        List<Integer> a = Arrays.asList(5, -2, 3 , 1, 2);
+        int result = ArrayAlgorithms.pickFromBothSides(a, 3);
+        System.out.println(result);
+    }
 }
