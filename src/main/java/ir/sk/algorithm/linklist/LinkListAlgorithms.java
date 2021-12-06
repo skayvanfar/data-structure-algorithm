@@ -23,9 +23,10 @@ import java.util.*;
 public class LinkListAlgorithms {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     /**
      * delete duplicates in a link list
-     *
+     * <p>
      * iterate with two pointers: current which iterates through the linked list,
      * and runner which checks all subsequent nodes for duplicates.
      * <p>
@@ -77,6 +78,7 @@ public class LinkListAlgorithms {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     /**
      * Find the nth node from the end in the given linked list
      *
@@ -242,6 +244,23 @@ public class LinkListAlgorithms {
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // o(n) 1 -> 2 -> 3 -> 4
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
+    private static SinglyLink<Integer> reverseNewSpace(SinglyLink<Integer> head) {
+        SinglyLink<Integer> newHead = null;
+        SinglyLink<Integer> prev = null;
+        SinglyLink<Integer> curr = head;
+        while (curr != null) {
+            SinglyLink<Integer> newLink = new SinglyLink<>(curr.data);
+            newLink.next = prev;
+            newHead = prev = newLink;
+            curr = curr.next;
+        }
+        return newHead;
+    }
+
     /**
      * Given pointer to the head node of a linked list, the task is to reverse the linked list. We need to reverse the list by changing the links between nodes.
      * 1->2->3->4->null
@@ -316,9 +335,10 @@ public class LinkListAlgorithms {
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     /**
      * is a linklist palindrome
-     *
+     * <p>
      * 1) Get the middle of the linked list.
      * 2) Reverse the second half of the linked list.
      * 3) Check if the first half and second half are identical.
@@ -477,6 +497,7 @@ public class LinkListAlgorithms {
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     /**
      * Given the head of a Singly LinkedList, write a function to determine if the LinkedList has a cycle in it or not.
      * Traverse the list one by one and keep putting the node addresses in a Hash Table. At any point,
@@ -647,10 +668,11 @@ public class LinkListAlgorithms {
 
     /**
      * Delete continuous nodes with sum K from a given linked list
-     *
+     * <p>
      * Input: Linked List: 1 -> 2 -> -3 -> 3 -> 1, K = 3
-     *
+     * <p>
      * Output: -3 -> 1
+     *
      * @param head
      * @param k
      * @return
@@ -754,4 +776,35 @@ public class LinkListAlgorithms {
 
         slowLink.next = slowLink.next.next;
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    static class ListNode {
+        public int val;
+        public ListNode next;
+
+        ListNode(int x) {
+            val = x;
+            next = null;
+        }
+    }
+
+
+
+    public static SinglyLink<Integer> subtractFormMiddle(SinglyLink<Integer> A) {
+        SinglyLink<Integer> middleNode = findMiddleLink(A);
+        SinglyLink<Integer> reverseNode = reverseNewSpace(middleNode.next);
+        return computeSum(A, reverseNode);
+    }
+
+    //
+    private static SinglyLink<Integer> computeSum(SinglyLink<Integer> first, SinglyLink<Integer> second) {
+        SinglyLink<Integer> firstTmp = first;
+        while (firstTmp != null && second != null) {
+            firstTmp.data = second.data - firstTmp.data;
+            firstTmp = firstTmp.next;
+            second = second.next;
+        }
+        return first;
+    }
+
 }
