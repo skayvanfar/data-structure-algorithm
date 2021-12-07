@@ -203,4 +203,16 @@ public class ArrayAlgorithmsTest {
         int[] array = new int[] {100, 4, 200, 1, 3, 2};
         System.out.println(ArrayAlgorithms.longestConsecutive(array));
     }
+
+    @Test
+    public void countInversions() {
+        int[] array = new int[] {2, 4, 1, 3, 5};
+        System.out.println(ArrayAlgorithms.countInversions(array));
+    }
+
+    @Test
+    public void countInversionsByMergeSort() {
+        int[] array = new int[] {2, 4, 1, 3, 5};
+        System.out.println(ArrayAlgorithms.countInversionsByMergeSort(array, 0, array.length - 1));
+    }
 }

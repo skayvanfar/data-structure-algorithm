@@ -8,7 +8,6 @@ import ir.sk.helper.pattern.*;
 import ir.sk.helper.paradigm.*;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * Created by sad.kayvanfar on 1/10/2021.
@@ -959,27 +958,6 @@ public class ArrayAlgorithms {
         return sum;
     }
 
-    public static int longestConsecutive1(final List<Integer> A) {
-        Set<Integer> cache = new HashSet<>();
-        int max = 0;
-
-
-        for (Integer value : A) {
-            cache.add(value);
-        }
-        for (int i = 0; i < A.size(); i++) {
-            int count = 1;
-            for (int j = A.get(i) + 1; ; j++) {
-                if (cache.contains(j)) {
-                    count++;
-                } else
-                    break;
-            }
-            max = Math.max(max, count);
-        }
-        return max;
-    }
-
     /**
      * Given an unsorted array of integers, find the length of the longest consecutive elements sequence.
      * Given [100, 4, 200, 1, 3, 2]
@@ -1019,4 +997,85 @@ public class ArrayAlgorithms {
         }
         return ans;
     }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    @TimeComplexity("O(n^2)")
+    @SpaceComplexity("O(1)")
+    @BruteForce
+    public static int countInversions(int[] arr) {
+        int n = arr.length;
+        int inv_count = 0;
+        for (int i = 0; i < n - 1; i++)
+            for (int j = i + 1; j < n; j++)
+                if (arr[i] > arr[j])
+                    inv_count++;
+
+        return inv_count;
+    }
+
+    /**
+     * Given an array A, count the number of inversions in the array.
+     * <p>
+     * Formally speaking, two elements A[i] and A[j] form an inversion if A[i] > A[j] and i < j
+     * <p>
+     * Example:
+     * <p>
+     * A : [2, 4, 1, 3, 5]
+     * Output : 3
+     * as the 3 inversions are (2, 1), (4, 1), (4, 3).
+     */
+    @TimeComplexity("O(n log n)")
+    @SpaceComplexity("O(n)")
+    @MergeSortPattern
+    public static int countInversionsByMergeSort(int[] arr, int l, int r) {
+
+        // Keeps track of the inversion count at a
+        // particular node of the recursion tree
+        int count = 0;
+
+        if (l < r) {
+            int m = (l + r) / 2;
+
+            // Total inversion count = left subarray count
+            // + right subarray count + merge count
+
+            // Left subarray count
+            count += countInversionsByMergeSort(arr, l, m);
+
+            // Right subarray count
+            count += countInversionsByMergeSort(arr, m + 1, r);
+
+            // Merge count
+            count += mergeSortAndCount(arr, l, m, r);
+        }
+
+        return count;
+    }
+
+
+
+    private static int mergeSortAndCount(int[] arr, int l, int m, int r) {
+        // Left subarray
+        int[] left = Arrays.copyOfRange(arr, l, m + 1);
+
+        // Right subarray
+        int[] right = Arrays.copyOfRange(arr, m + 1, r + 1);
+
+        int i = 0, j = 0, k = l, swaps = 0;
+
+        while (i < left.length && j < right.length) {
+            if (left[i] <= right[j])
+                arr[k++] = left[i++];
+            else {
+                arr[k++] = right[j++];
+                swaps += (m + 1) - (l + i);
+            }
+        }
+        while (i < left.length)
+            arr[k++] = left[i++];
+        while (j < right.length)
+            arr[k++] = right[j++];
+        return swaps;
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
