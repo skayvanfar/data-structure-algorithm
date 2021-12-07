@@ -197,4 +197,10 @@ public class ArrayAlgorithmsTest {
         List<Integer> b = Arrays.asList(4, -15, -10, -3, -13, 12, 8, -8 );
         System.out.println(ArrayAlgorithms.coverPoints(a, b));
     }
+
+    @Test
+    public void longestConsecutive() {
+        int[] array = new int[] {100, 4, 200, 1, 3, 2};
+        System.out.println(ArrayAlgorithms.longestConsecutive(array));
+    }
 }

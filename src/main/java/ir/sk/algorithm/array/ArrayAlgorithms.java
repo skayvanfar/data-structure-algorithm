@@ -888,15 +888,16 @@ public class ArrayAlgorithms {
 
     /**
      * Given an integer array A of size N.
-     *
+     * <p>
      * You can pick B elements from either left or right end of the array A to get maximum sum.
-     *
+     * <p>
      * Find and return this maximum possible sum.
      * A = [5, -2, 3 , 1, 2]
-     *  B = 3
-     *  Output 1:
+     * B = 3
+     * Output 1:
+     * <p>
+     * 8
      *
-     *  8
      * @param A
      * @param B
      * @return
@@ -921,24 +922,25 @@ public class ArrayAlgorithms {
 
     /**
      * You are in an infinite 2D grid where you can move in any of the 8 directions
-     *
-     *  (x,y) to
-     *     (x-1, y-1),
-     *     (x-1, y)  ,
-     *     (x-1, y+1),
-     *     (x  , y-1),
-     *     (x  , y+1),
-     *     (x+1, y-1),
-     *     (x+1, y)  ,
-     *     (x+1, y+1)
+     * <p>
+     * (x,y) to
+     * (x-1, y-1),
+     * (x-1, y)  ,
+     * (x-1, y+1),
+     * (x  , y-1),
+     * (x  , y+1),
+     * (x+1, y-1),
+     * (x+1, y)  ,
+     * (x+1, y+1)
      * You are given a sequence of points and the order in which you need to cover the points.. Give the minimum number of steps in which you can achieve it. You start from the first point.
      * Input 1:
+     * <p>
+     * A = [0, 1, 1]
+     * B = [0, 1, 2]
+     * Output 1:
+     * <p>
+     * 2
      *
-     *  A = [0, 1, 1]
-     *  B = [0, 1, 2]
-     *  Output 1:
-     *
-     *  2
      * @param A
      * @param B
      * @return
@@ -946,14 +948,75 @@ public class ArrayAlgorithms {
     public static int coverPoints(List<Integer> A, List<Integer> B) {
         int sum = 0;
         for (int i = 0; i < A.size(); i++) {
-            if (i+1 >= A.size()) {
+            if (i + 1 >= A.size()) {
                 return sum;
             }
 
-            int xDis = Math.abs(A.get(i) - A.get(i+1));
-            int yDis = Math.abs(B.get(i) - B.get(i+1));
+            int xDis = Math.abs(A.get(i) - A.get(i + 1));
+            int yDis = Math.abs(B.get(i) - B.get(i + 1));
             sum += Math.max(xDis, yDis);
         }
         return sum;
+    }
+
+    public static int longestConsecutive1(final List<Integer> A) {
+        Set<Integer> cache = new HashSet<>();
+        int max = 0;
+
+
+        for (Integer value : A) {
+            cache.add(value);
+        }
+        for (int i = 0; i < A.size(); i++) {
+            int count = 1;
+            for (int j = A.get(i) + 1; ; j++) {
+                if (cache.contains(j)) {
+                    count++;
+                } else
+                    break;
+            }
+            max = Math.max(max, count);
+        }
+        return max;
+    }
+
+    /**
+     * Given an unsorted array of integers, find the length of the longest consecutive elements sequence.
+     * Given [100, 4, 200, 1, 3, 2]
+     * The longest consecutive elements sequence is [1, 2, 3, 4]. Return its length: 4.
+     *
+     * @param array
+     * @return
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
+    public static int longestConsecutive(final int[] array) {
+        int n = array.length;
+        HashSet<Integer> cache = new HashSet<Integer>();
+        int ans = 0;
+
+        // Hash all the array elements
+        for (int i = 0; i < n; ++i)
+            cache.add(array[i]);
+
+        // check each possible sequence from the start
+        // then update optimal length
+        for (int i = 0; i < n; ++i) {
+            // if current element is the starting
+            // element of a sequence
+            if (!cache.contains(array[i] - 1)) {
+                // Then check for next elements
+                // in the sequence
+                int j = array[i];
+                while (cache.contains(j))
+                    j++;
+
+                // update  optimal length if this
+                // length is more
+                if (ans < j - array[i])
+                    ans = j - array[i];
+            }
+        }
+        return ans;
     }
 }
