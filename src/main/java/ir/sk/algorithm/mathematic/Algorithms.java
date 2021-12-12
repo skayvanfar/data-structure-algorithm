@@ -89,54 +89,6 @@ public class Algorithms {
     }
 
     /**
-     * @param a
-     * @return
-     */
-    @TimeComplexity("O(n)")
-    public static double mean(int a[]) {
-        int sum = 0;
-        for (int i = 0; i < a.length; i++)
-            sum += a[i];
-
-        return (double) sum / (double) a.length;
-    }
-
-    /**
-     * @param array
-     * @return
-     */
-    @TimeComplexity("O(n + p) = O(n)")
-    @SpaceComplexity("O(p) where P is the size of auxiliary array")
-    public static double meanUsingCountingSort(int array[]) {
-        int n = array.length;
-
-        int max = Arrays.stream(array).max().getAsInt();
-
-        // Frequency Array
-        int[] counting = new int[max + 1];
-
-        // store count of each character
-        for (int i = 0; i < n; i++) {
-            counting[array[i]]++;
-        }
-
-        // mode is the index with maximum count
-        int mode = 0;
-        int k = counting[0];
-        int t = max + 1;
-        for (int i = 1; i < t; i++) {
-            if (counting[i] > k) {
-                k = counting[i];
-                mode = i;
-            }
-        }
-        return mode;
-    }
-
-
-
-
-    /**
      * sums the digits in a number
      * <p>
      * The runtime will be the number of digits in the number. A number with d digits can have a

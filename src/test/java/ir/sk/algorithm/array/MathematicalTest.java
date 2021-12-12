@@ -108,6 +108,21 @@ public class MathematicalTest {
     }
 
     @Test
+    public void mean() {
+        int a[] = {1, 3, 4, 2, 7, 5, 8, 6};
+        String expectedValue = "4.6";
+        Assert.assertEquals(expectedValue, Mathematical.mean(a) + "");
+    }
+
+    @Test
+    public void meanUsingCountingSort() {
+        int a[] = {1, 3, 4, 2, 7, 5, 8, 6};
+        String expectedValue = "4.6";
+        Assert.assertEquals(expectedValue, Mathematical.meanUsingCountingSort(a) + "");
+    }
+
+
+    @Test
     public void median() {
         int a[] = {1, 3, 4, 2, 7, 5, 8, 6};
         String expectedValue = "4.5";
