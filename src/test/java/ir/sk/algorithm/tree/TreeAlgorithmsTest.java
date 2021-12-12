@@ -4,6 +4,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
+
 /**
  * Created by sad.kayvanfar on 9/15/2020.
  */
@@ -169,5 +171,11 @@ public class TreeAlgorithmsTest {
         root.left.left = new Node(4);
         int depth = TreeAlgorithms.heightOfBT(root);
         System.out.println(depth);
+    }
+
+    @Test
+    public void generateAllBSTs() {
+        List<TreeNode> result = TreeAlgorithms.generateAllBSTs(3);
+        System.out.println(result);
     }
 }

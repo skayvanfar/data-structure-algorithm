@@ -9,6 +9,8 @@ import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.paradigm.Backtracking;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * Created by sad.kayvanfar on 9/15/2020.
@@ -595,6 +597,51 @@ public class TreeAlgorithms {
         int rightHt = heightOfBT(root.right);
 
         return Math.max(leftHt, rightHt) + 1;
+    }
+
+    public static List<TreeNode> generateAllBSTs(int a) { // TODO: 12/12/2021  
+        List<Integer> selectionList = IntStream.rangeClosed(1, a).boxed().collect(Collectors.toList());
+        List<TreeNode> result = new ArrayList<>();
+        TreeNode root = new TreeNode(0);
+        generateTrees(result, root, root, selectionList, selectionList.size(), 0);
+        return result;
+    }
+
+    private static void printTree(TreeNode treeNode) {
+        if (treeNode == null)
+            return;
+        System.out.println(treeNode.value);
+        printTree(treeNode.left);
+        printTree(treeNode.right);
+    }
+
+    @Backtracking
+    private static void generateTrees(List<TreeNode> result, TreeNode root, TreeNode path, List<Integer> selectionList, int size, int count) {
+        if (count == size) {
+           // result.add(root);
+            printTree(root);
+            return;
+        }
+
+        for (int i = 0; i < selectionList.size(); i++) {
+            Integer item = selectionList.get(i);
+            TreeNode currTreeNode = new TreeNode(item);
+            if (item < path.value) {
+                path.left = currTreeNode;
+            } else {
+                path.right = currTreeNode;
+            }
+
+            selectionList.remove(item);
+            generateTrees(result, root, currTreeNode, selectionList, size, count + 1);
+            if (item < path.value) {
+                path.left = null;
+            } else {
+                path.right = null;
+            }
+            selectionList.add(item);
+        }
+
     }
 
 }
