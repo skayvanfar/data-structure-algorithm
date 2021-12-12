@@ -1,5 +1,7 @@
 package ir.sk.adt.median;
 
+import ir.sk.helper.complexity.TimeComplexity;
+
 import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Queue;
@@ -20,6 +22,7 @@ public class TwoHeapMedian implements MedianADT {
         maxHeap = new PriorityQueue<>(Comparator.reverseOrder());
     }
 
+    @TimeComplexity("O(log n)")
     @Override
     public void add(int num) {
         if (minHeap.size() == maxHeap.size()) {
@@ -31,6 +34,7 @@ public class TwoHeapMedian implements MedianADT {
         }
     }
 
+    @TimeComplexity("O(1)")
     @Override
     public int getMedian() {
         int median;
