@@ -1,5 +1,6 @@
 package ir.sk.algorithm.array;
 
+import ir.sk.algorithm.mathematic.Algorithms;
 import ir.sk.algorithm.mathematic.Mathematical;
 import org.junit.After;
 import org.junit.Assert;
@@ -104,5 +105,19 @@ public class MathematicalTest {
     @Test
     public void findFactorsOptimized() {
         System.out.println(Mathematical.findFactorsOptimized(6));
+    }
+
+    @Test
+    public void median() {
+        int a[] = {1, 3, 4, 2, 7, 5, 8, 6};
+        String expectedValue = "4.5";
+        Assert.assertEquals(expectedValue, Mathematical.median(a) + "");
+    }
+
+    @Test
+    public void medianUsingCountingSort() {
+        int a[] = {1, 3, 4, 2, 7, 5, 8, 6};
+        String expectedValue = "4.5";
+        Assert.assertEquals(expectedValue, Mathematical.medianUsingCountingSort(a) + "");
     }
 }

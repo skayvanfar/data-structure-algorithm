@@ -52,20 +52,6 @@ public class AlgorithmsTest {
     }
 
     @Test
-    public void median() {
-        int a[] = {1, 3, 4, 2, 7, 5, 8, 6};
-        String expectedValue = "4.5";
-        Assert.assertEquals(expectedValue, Algorithms.median(a) + "");
-    }
-
-    @Test
-    public void medianUsingCountingSort() {
-        int a[] = {1, 3, 4, 2, 7, 5, 8, 6};
-        String expectedValue = "4.5";
-        Assert.assertEquals(expectedValue, Algorithms.medianUsingCountingSort(a) + "");
-    }
-
-    @Test
     public void sumDigits() {
         String expectedValue = "27";
         Assert.assertEquals(expectedValue, Algorithms.sumDigits(999) + "");
