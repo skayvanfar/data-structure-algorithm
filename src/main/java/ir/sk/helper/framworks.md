@@ -1,4 +1,15 @@
 #Frameworks:
+## method:
+1. clarification: constraints
+2. ideas: ( 1. brute force algorithm 2. ...)
+     1. simplify the task
+     2. Try a few examples
+     3. think a data structure
+     4. Think related problems
+3. implementation
+4. test
+   
+
 ##Array traversal framework, typical linear iterative structure：
 ```
 void traverse(int[] arr) {
