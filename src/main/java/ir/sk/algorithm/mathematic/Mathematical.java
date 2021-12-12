@@ -9,10 +9,7 @@ import ir.sk.helper.recursiontype.TailRecursion;
 import ir.sk.helper.paradigm.BruteForce;
 import ir.sk.helper.paradigm.DecreaseAndConquer;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by sad.kayvanfar on 1/20/2021.
@@ -382,7 +379,7 @@ public class Mathematical {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
-     * the "average"
+     * mean = the "average"
      */
     @TimeComplexity("O(n)")
     public static double mean(int a[]) {
@@ -423,7 +420,7 @@ public class Mathematical {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
-     * "the middle" value
+     * median = "the middle" value
      */
     @TimeComplexity("O(n Log n) as we need to sort the array first")
     public static double median(int a[]) {
@@ -479,6 +476,35 @@ public class Mathematical {
             }
         }
         return median;
+    }
+
+    /**
+     * Mode = frequently occurring element in an array
+     */
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public static int mode(int []array) {
+        Map<Integer,Integer> hm = new HashMap<Integer,Integer>();
+        int max  = 1;
+        int temp = 0;
+
+        for(int i = 0; i < array.length; i++) {
+
+            if (hm.get(array[i]) != null) {
+
+                int count = hm.get(array[i]);
+                count++;
+                hm.put(array[i], count);
+
+                if(count > max) {
+                    max  = count;
+                    temp = array[i];
+                }
+            }
+
+            else
+                hm.put(array[i],1);
+        }
+        return temp;
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
