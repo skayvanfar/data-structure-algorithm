@@ -21,26 +21,20 @@ public class TwoHeapMedian implements MedianADT {
     }
 
     @Override
-    public void add(int item) {
-        if (!minHeap.isEmpty() && item < minHeap.peek()) {
-            maxHeap.offer(item);
-            if (maxHeap.size() > minHeap.size() + 1) {
-                minHeap.offer(maxHeap.poll());
-            }
+    public void add(int num) {
+        if (minHeap.size() == maxHeap.size()) {
+            maxHeap.offer(num);
+            minHeap.offer(maxHeap.poll());
         } else {
-            minHeap.offer(item);
-            if (minHeap.size() > maxHeap.size() + 1) {
-                maxHeap.offer(minHeap.poll());
-            }
+            minHeap.offer(num);
+            maxHeap.offer(minHeap.poll());
         }
     }
 
     @Override
     public int getMedian() {
         int median;
-        if (minHeap.size() < maxHeap.size()) {
-            median = maxHeap.peek();
-        } else if (minHeap.size() > maxHeap.size()) {
+        if (minHeap.size() > maxHeap.size()) {
             median = minHeap.peek();
         } else {
             median = (minHeap.peek() + maxHeap.peek()) / 2;
