@@ -3,6 +3,7 @@ package ir.sk.algorithm.mathematic;
 import ir.sk.helper.Implementation;
 import ir.sk.helper.ImplementationType;
 import ir.sk.helper.Point;
+import ir.sk.helper.complexity.BCR;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.RunnerPattern;
@@ -540,8 +541,9 @@ public class Mathematical {
      * @param max
      * @return
      */
-    @TimeComplexity("O(nloglogn)")
+    @TimeComplexity("n/2 + n/3 + n/4 +... = O(n log log n)")
     @Point("math: n = a * b (two factors,one is before Sqrt(n) and another after that)")
+    @BCR
     public static boolean[] sieveOfEratosthenesFindPrimes(int max) {
         boolean[] primes = new boolean[max + 1];
 
