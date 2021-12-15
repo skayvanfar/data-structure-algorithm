@@ -7,7 +7,13 @@
      3. think a data structure
      4. Think related problems
 3. implementation
+    1. clean code
+    2. review before running
 4. test
+    1. functional test
+    2. edge tests
+    3. no solution test
+    3. load test
    
 
 ##Array traversal framework, typical linear iterative structure：

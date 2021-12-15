@@ -997,6 +997,7 @@ public class ArrayAlgorithms {
         }
         return ans;
     }
+
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     @TimeComplexity("O(n^2)")
     @SpaceComplexity("O(1)")
@@ -1052,7 +1053,6 @@ public class ArrayAlgorithms {
     }
 
 
-
     private static int mergeSortAndCount(int[] arr, int l, int m, int r) {
         // Left subarray
         int[] left = Arrays.copyOfRange(arr, l, m + 1);
@@ -1077,7 +1077,33 @@ public class ArrayAlgorithms {
         return swaps;
     }
 
+    /**
+     * find length of the longest subsequence of given sequence such that all elements of this are alternating.
+     */
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public static int longestZigZagSequence(int[] array) {
+        int lastSign = 0;
+        int length = 1;
+        for (int i = 1; i < array.length; ++i) {
+            int Sign = signum(array[i] - array[i - 1]);
+
+            if (Sign != 0
+                    && Sign != lastSign) // it qualifies
+            {
+                lastSign = Sign; // updating lastSign
+                length++;
+            }
+        }
+        return length;
+    }
+
+    private static int signum(int n) {
+        if (n != 0) {
+            return n > 0 ? 1 : -1;
+        } else {
+            return 0;
+        }
+    }
     public static int exelColumnToNumber(String str) {
         char[] chars = str.toCharArray();
         int result = 0;
