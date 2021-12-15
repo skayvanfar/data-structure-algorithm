@@ -2,6 +2,7 @@ package ir.sk.algorithm.mathematic;
 
 import ir.sk.helper.Implementation;
 import ir.sk.helper.ImplementationType;
+import ir.sk.helper.Point;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.RunnerPattern;
@@ -507,4 +508,55 @@ public class Mathematical {
         return temp;
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * checks if a number is prime by checking for divisibility on numbers less than it. It only
+     * needs to go up to the square root of n because if n is divisible by a number greater than its square root then
+     * it's divisible by something smaller than it.
+     *
+     * @param n
+     * @return
+     */
+    @TimeComplexity("O(sqrt(n))=O(n)")
+    @SpaceComplexity("O(1)")
+    @Point("math: n = a * b (two factors,one is before Sqrt(n) and another after that)")
+    public static boolean isPrime(int n) {
+        for (int i = 2; i * i <= n; i++) { // i * i <= n ==> sqrt
+            if (n % i == 0)
+                return false;
+        }
+        return true;
+    }
+
+    /**
+     * The Sieve of Eratosthenes is a highly efficient way to generate a list of primes. It works by recognizing that
+     * all non-prime numbers are divisible by a prime number.
+     * <p>
+     * We start with a list of all the numbers up through some value max. First, we cross off all numbers divisible by
+     * 2. Then, we look for the next prime (the next non-crossed off number) and cross off all numbers divisible by
+     * it. By crossing off all numbers divisible by 2, 3, 5, 7, 11, and so on, we wind up with a list of prime numbers
+     * from 2 through max.
+     *
+     * @param max
+     * @return
+     */
+    @TimeComplexity("O(nloglogn)")
+    @Point("math: n = a * b (two factors,one is before Sqrt(n) and another after that)")
+    public static boolean[] sieveOfEratosthenesFindPrimes(int max) {
+        boolean[] primes = new boolean[max + 1];
+
+        // Set all flags to true other than 0 and 1
+        for (int i = 2; i < primes.length; i++)
+            primes[i] = true;
+
+        for (int i = 0; i <= Math.sqrt(max); i++) {
+            if (primes[i]) {
+                for (int j = 2; i * j <= max; j++) {
+                    primes[i * j] = false;
+                }
+            }
+        }
+
+        return primes;
+    }
 }

@@ -1,11 +1,14 @@
 package ir.sk.algorithm.array;
 
+import ir.sk.algorithm.basic.Utils;
 import ir.sk.algorithm.mathematic.Algorithms;
 import ir.sk.algorithm.mathematic.Mathematical;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.Arrays;
 
 /**
  * Created by sad.kayvanfar on 1/20/2021.
@@ -134,5 +137,17 @@ public class MathematicalTest {
         int a[] = {1, 3, 4, 2, 7, 5, 8, 6};
         String expectedValue = "4.5";
         Assert.assertEquals(expectedValue, Mathematical.medianUsingCountingSort(a) + "");
+    }
+
+    @Test
+    public void isPrime() {
+        boolean expectedValue = true;
+        boolean actual = Mathematical.isPrime(7);
+        Assert.assertEquals(expectedValue, actual);
+    }
+
+    @Test
+    public void sieveOfEratosthenes() {
+        System.out.println(Arrays.toString(Mathematical.sieveOfEratosthenesFindPrimes(100)));
     }
 }
