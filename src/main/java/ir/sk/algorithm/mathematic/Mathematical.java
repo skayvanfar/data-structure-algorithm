@@ -370,10 +370,10 @@ public class Mathematical {
     @TimeComplexity("O(Sqrt(n))")
     public static List<Integer> findFactorsOptimized(int n) {
         List<Integer> factors = new ArrayList<>();
-        for(int i=1; i <= Math.sqrt(n); i++) {
-            if(n % i == 0) {
+        for (int i = 1; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) {
                 factors.add(i);
-                factors.add(n/i);
+                factors.add(n / i);
             }
         }
         return factors;
@@ -432,7 +432,34 @@ public class Mathematical {
         return primes;
     }
 
+    // A function to print all prime factors
+    // of a given number n
+    @TimeComplexity("O(Sqrt(n))")
+    public static void primeFactors(int n) {
+        // Print the number of 2s that divide n
+        while (n % 2 == 0) {
+            System.out.print(2 + " ");
+            n /= 2;
+        }
+
+        // n must be odd at this point.  So we can
+        // skip one element (Note i = i +2)
+        for (int i = 3; i <= Math.sqrt(n); i += 2) {
+            // While i divides n, print i and divide n
+            while (n % i == 0) {
+                System.out.print(i + " ");
+                n /= i;
+            }
+        }
+
+        // This condition is to handle the case when
+        // n is a prime number greater than 2
+        if (n > 2)
+            System.out.print(n);
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     /**
      * mean = the "average"
      */
@@ -474,6 +501,7 @@ public class Mathematical {
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     /**
      * median = "the middle" value
      */
@@ -537,12 +565,12 @@ public class Mathematical {
      * Mode = frequently occurring element in an array
      */
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public static int mode(int []array) {
-        Map<Integer,Integer> hm = new HashMap<Integer,Integer>();
-        int max  = 1;
+    public static int mode(int[] array) {
+        Map<Integer, Integer> hm = new HashMap<Integer, Integer>();
+        int max = 1;
         int temp = 0;
 
-        for(int i = 0; i < array.length; i++) {
+        for (int i = 0; i < array.length; i++) {
 
             if (hm.get(array[i]) != null) {
 
@@ -550,14 +578,12 @@ public class Mathematical {
                 count++;
                 hm.put(array[i], count);
 
-                if(count > max) {
-                    max  = count;
+                if (count > max) {
+                    max = count;
                     temp = array[i];
                 }
-            }
-
-            else
-                hm.put(array[i],1);
+            } else
+                hm.put(array[i], 1);
         }
         return temp;
     }
