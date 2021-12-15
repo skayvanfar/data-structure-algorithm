@@ -215,4 +215,13 @@ public class ArrayAlgorithmsTest {
         int[] array = new int[] {2, 4, 1, 3, 5};
         System.out.println(ArrayAlgorithms.countInversionsByMergeSort(array, 0, array.length - 1));
     }
+
+    @Test
+    public void exelColumnToNumber() {
+        System.out.println(ArrayAlgorithms.exelColumnToNumber("A"));
+    }
+
+    public static void main(String[] args) {
+        System.out.println(ArrayAlgorithms.exelColumnToNumber("AB"));
+    }
 }

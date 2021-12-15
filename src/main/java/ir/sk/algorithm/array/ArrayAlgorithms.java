@@ -1078,4 +1078,14 @@ public class ArrayAlgorithms {
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public static int exelColumnToNumber(String str) {
+        char[] chars = str.toCharArray();
+        int result = 0;
+        int j = 0;
+        for (int i = chars.length - 1; i >= 0; i--) {
+            int num = chars[i] - 'A' + 1;
+            result += num * (Math.pow(26, j++));
+        }
+        return result;
+    }
 }
