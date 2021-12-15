@@ -1114,4 +1114,15 @@ public class ArrayAlgorithms {
         }
         return result;
     }
+
+    public static String convertToTitleExel(int a) {
+        StringBuilder sb = new StringBuilder();
+        while(a>0){
+            a--;
+            int rem = a%26;
+            sb.insert(0,(char)('A' + rem));
+            a/=26;
+        }
+        return sb.toString();
+    }
 }

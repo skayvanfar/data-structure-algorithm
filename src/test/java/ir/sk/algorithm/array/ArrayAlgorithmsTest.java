@@ -221,7 +221,8 @@ public class ArrayAlgorithmsTest {
         System.out.println(ArrayAlgorithms.exelColumnToNumber("A"));
     }
 
-    public static void main(String[] args) {
-        System.out.println(ArrayAlgorithms.exelColumnToNumber("AB"));
+    @Test
+    public void convertToTitleExel() {
+        System.out.println(ArrayAlgorithms.convertToTitleExel(26));
     }
 }
