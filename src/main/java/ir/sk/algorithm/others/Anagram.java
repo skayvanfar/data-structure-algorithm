@@ -7,6 +7,8 @@ import ir.sk.helper.pattern.SlidingWindowPattern;
 import ir.sk.helper.pattern.SlidingWindowPatternType;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * an anagram of a string is another string with exactly the same quantity of each character in it, in any order
@@ -279,6 +281,7 @@ public class Anagram {
      * Input: strs = ["eat","tea","tan","ate","nat","bat"]
      * Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
      */
+    @TimeComplexity("O(n × m × log(m)), n size of words, m max size of each word")
     public List<List<String>> groupAnagrams(String[] strs) {
         Map<String, List<String>> map = new HashMap<>();
 
@@ -289,7 +292,6 @@ public class Anagram {
         }
         return new ArrayList<>(map.values());
     }
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
      * input
@@ -307,7 +309,7 @@ public class Anagram {
      * @return
      */
     // Function to group anagrams from a given list of words
-    @TimeComplexity("O(N × M × log(M))")
+    @TimeComplexity("O(n × m × log(m)), n size of words, m max size of each word")
     public static Set<Set<String>> groupAnagrams(List<String> words) {
         // a set to store anagrams
         Set<Set<String>> anagrams = new HashSet<>();
@@ -344,4 +346,29 @@ public class Anagram {
 
         return anagrams;
     }
+
+    public List<List<String>> groupAnagramsByHashtable(String[] strs) {
+        Map<String, List<String>> map = new HashMap<String, List<String>>();
+        for (String str : strs) {
+            int[] counts = new int[26];
+            int length = str.length();
+            for (int i = 0; i < length; i++) {
+                counts[str.charAt(i) - 'a']++;
+            }
+
+            StringBuffer sb = new StringBuffer();
+            for (int i = 0; i < 26; i++) {
+                if (counts[i] != 0) {
+                    sb.append((char) ('a' + i));
+                    sb.append(counts[i]);
+                }
+            }
+            String key = sb.toString();
+            List<String> list = map.getOrDefault(key, new ArrayList<String>());
+            list.add(str);
+            map.put(key, list);
+        }
+        return new ArrayList<List<String>>(map.values());
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
