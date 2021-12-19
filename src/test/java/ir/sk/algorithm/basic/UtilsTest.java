@@ -51,18 +51,6 @@ public class UtilsTest {
     }
 
     @Test
-    public void isPrime() {
-        boolean expectedValue = true;
-        boolean actual = Utils.isPrime(7);
-        Assert.assertEquals(expectedValue, actual);
-    }
-
-    @Test
-    public void sieveOfEratosthenes() {
-        System.out.println(Arrays.toString(Utils.sieveOfEratosthenesFindPrimes(100)));
-    }
-
-    @Test
     public void shuffleByFisherYates() {
         System.out.println(Arrays.toString(Utils.shuffleByFisherYates(new int[]{1, 5, 2})));
     }

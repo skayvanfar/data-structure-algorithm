@@ -2,6 +2,8 @@ package ir.sk.algorithm.mathematic;
 
 import ir.sk.helper.Implementation;
 import ir.sk.helper.ImplementationType;
+import ir.sk.helper.Point;
+import ir.sk.helper.complexity.BCR;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.RunnerPattern;
@@ -365,19 +367,99 @@ public class Mathematical {
         return factors;
     }
 
-    @TimeComplexity("O(1)")
+    @TimeComplexity("O(Sqrt(n))")
     public static List<Integer> findFactorsOptimized(int n) {
         List<Integer> factors = new ArrayList<>();
-        for(int i=1; i <= Math.sqrt(n); i++) {
-            if(n % i == 0) {
+        for (int i = 1; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) {
                 factors.add(i);
-                factors.add(n/i);
+                factors.add(n / i);
             }
         }
         return factors;
     }
 
+
+    /**
+     * checks if a number is prime by checking for divisibility on numbers less than it. It only
+     * needs to go up to the square root of n because if n is divisible by a number greater than its square root then
+     * it's divisible by something smaller than it.
+     *
+     * @param n
+     * @return
+     */
+    @TimeComplexity("O(sqrt(n))")
+    @SpaceComplexity("O(1)")
+    @Point("math: n = a * b (two factors,one is before Sqrt(n) and another after that)")
+    public static boolean isPrime(int n) {
+        for (int i = 2; i * i <= n; i++) { // i * i <= n ==> sqrt
+            if (n % i == 0)
+                return false;
+        }
+        return true;
+    }
+
+    /**
+     * The Sieve of Eratosthenes is a highly efficient way to generate a list of primes. It works by recognizing that
+     * all non-prime numbers are divisible by a prime number.
+     * <p>
+     * We start with a list of all the numbers up through some value max. First, we cross off all numbers divisible by
+     * 2. Then, we look for the next prime (the next non-crossed off number) and cross off all numbers divisible by
+     * it. By crossing off all numbers divisible by 2, 3, 5, 7, 11, and so on, we wind up with a list of prime numbers
+     * from 2 through max.
+     *
+     * @param n
+     * @return
+     */
+    @TimeComplexity("n/2 + n/3 + n/4 +... = O(n log log n)")
+    @Point("math: n = a * b (two factors,one is before Sqrt(n) and another after that)")
+    @BCR
+    public static boolean[] sieveOfEratosthenesFindPrimes(int n) {
+        boolean[] primes = new boolean[n + 1];
+
+        // Set all flags to true other than 0 and 1
+        for (int i = 2; i < primes.length; i++)
+            primes[i] = true;
+
+        for (int i = 0; i <= Math.sqrt(n); i++) {
+            if (primes[i]) {
+                for (int j = 2; i * j <= n; j++) {
+                    primes[i * j] = false;
+                }
+            }
+        }
+
+        return primes;
+    }
+
+    // A function to print all prime factors
+    // of a given number n
+    @TimeComplexity("O(Sqrt(n))")
+    public static void primeFactors(int n) {
+        // Print the number of 2s that divide n
+        while (n % 2 == 0) {
+            System.out.print(2 + " ");
+            n /= 2;
+        }
+
+        // n must be odd at this point.  So we can
+        // skip one element (Note i = i +2)
+        for (int i = 3; i <= Math.sqrt(n); i += 2) {
+            // While i divides n, print i and divide n
+            while (n % i == 0) {
+                System.out.print(i + " ");
+                n /= i;
+            }
+        }
+
+        // This condition is to handle the case when
+        // n is a prime number greater than 2
+        if (n > 2)
+            System.out.print(n);
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     /**
      * mean = the "average"
      */
@@ -419,6 +501,7 @@ public class Mathematical {
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     /**
      * median = "the middle" value
      */
@@ -482,12 +565,12 @@ public class Mathematical {
      * Mode = frequently occurring element in an array
      */
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public static int mode(int []array) {
-        Map<Integer,Integer> hm = new HashMap<Integer,Integer>();
-        int max  = 1;
+    public static int mode(int[] array) {
+        Map<Integer, Integer> hm = new HashMap<Integer, Integer>();
+        int max = 1;
         int temp = 0;
 
-        for(int i = 0; i < array.length; i++) {
+        for (int i = 0; i < array.length; i++) {
 
             if (hm.get(array[i]) != null) {
 
@@ -495,16 +578,15 @@ public class Mathematical {
                 count++;
                 hm.put(array[i], count);
 
-                if(count > max) {
-                    max  = count;
+                if (count > max) {
+                    max = count;
                     temp = array[i];
                 }
-            }
-
-            else
-                hm.put(array[i],1);
+            } else
+                hm.put(array[i], 1);
         }
         return temp;
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 }
