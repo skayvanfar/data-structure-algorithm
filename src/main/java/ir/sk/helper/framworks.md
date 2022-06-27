@@ -1,4 +1,4 @@
-#Frameworks:
+#Frameworks: are used in paradigms and patterns
 ## method:
 1. clarification: constraints
 2. ideas: ( 1. brute force algorithm 2. ...)
