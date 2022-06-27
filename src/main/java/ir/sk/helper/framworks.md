@@ -4,7 +4,7 @@
 2. ideas: ( 1. brute force algorithm 2. ...)
      1. simplify the task
      2. Try a few examples
-     3. think a data structure
+     3. think a data structure, patterns, paradigms
      4. Think related problems
 3. implementation
     1. clean code
