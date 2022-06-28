@@ -366,6 +366,22 @@ public class BinarySearchTree {
         return current;
     }
 
+    public BSTNode binarySearchRecursive(int key) {
+        return binarySearchRecursive(root, key);
+    }
+
+    public BSTNode binarySearchRecursive(BSTNode current, int key) {
+            if (current.value == key) {
+                return current;
+            } else {
+                if (current.value > key) {
+                    current = current.left;
+                } else {
+                    current = current.right;
+                }
+                return binarySearchRecursive(current, key);
+            }
+    }
 }
 
 /**
