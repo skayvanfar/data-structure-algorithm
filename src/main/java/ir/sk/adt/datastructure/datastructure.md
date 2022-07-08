@@ -1,2 +1,3 @@
 remember, when you think about data structure vs adt, we just think about container not operations, ot all operations,
 for example the main feature of array is random access so binary search and the main feature of linked list is easy add and delete an node so operations like first delete or last delete are good, or BST binary search and easy add and delete nodes.
+GeneralTree is used for decision tree
