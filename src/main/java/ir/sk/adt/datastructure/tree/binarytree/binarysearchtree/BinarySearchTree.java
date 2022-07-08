@@ -1,5 +1,6 @@
 package ir.sk.adt.datastructure.tree.binarytree.binarysearchtree;
 
+import ir.sk.algorithm.array.string.patternmatching.regularexpression.NFA;
 import ir.sk.helper.Point;
 import ir.sk.helper.RecurrenceRelation;
 import ir.sk.helper.complexity.SpaceComplexity;
@@ -82,6 +83,29 @@ public class BinarySearchTree {
 
         return current;
     }
+
+    public void add2(int value) {
+        addRecursive2(root, value);
+    }
+
+    public void addRecursive2(BSTNode node, int value) {
+        if (value < node.value) {
+             if (node.left != null) { addRecursive2(node.left, value); } 
+            else { 
+                System.out.println(" Inserted " + value + " to left of " + node.value); 
+                node.left = new BSTNode(value); 
+            } 
+        } 
+        else if (value > node.value) {
+            if (node.right != null) {
+                insert(node.right, value);
+            } else {
+                System.out.println("  Inserted " + value + " to right of " + node.value);
+                node.right = new BSTNode(value);
+            }
+        }
+      }
+
 
     public boolean isEmpty() {
         return root == null;

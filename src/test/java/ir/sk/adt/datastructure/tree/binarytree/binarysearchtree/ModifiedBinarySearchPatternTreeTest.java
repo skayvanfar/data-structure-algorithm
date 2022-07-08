@@ -17,17 +17,33 @@ public class ModifiedBinarySearchPatternTreeTest {
     public void setUp() throws Exception {
         binarySearchTree = new BinarySearchTree();
 
-        binarySearchTree.add(6);
+        binarySearchTree.root = new BSTNode(4);
+
         binarySearchTree.add(4);
-        binarySearchTree.add(8);
+        binarySearchTree.add(2);
+        binarySearchTree.add(6);
+        binarySearchTree.add(1);
         binarySearchTree.add(3);
         binarySearchTree.add(5);
         binarySearchTree.add(7);
-        binarySearchTree.add(9);
+
     }
 
     @After
     public void tearDown() throws Exception {
+    }
+
+    public void add() {
+        binarySearchTree = new BinarySearchTree();
+
+        binarySearchTree.root = new BSTNode(4);
+
+        binarySearchTree.add2(2);
+        binarySearchTree.add2(6);
+        binarySearchTree.add2(1);
+        binarySearchTree.add2(3);
+        binarySearchTree.add2(5);
+        binarySearchTree.add2(7);
     }
 
     @Test
