@@ -98,7 +98,7 @@ public class BinarySearchTree {
         } 
         else if (value > node.value) {
             if (node.right != null) {
-                insert(node.right, value);
+                addRecursive2(node.right, value);
             } else {
                 System.out.println("  Inserted " + value + " to right of " + node.value);
                 node.right = new BSTNode(value);
