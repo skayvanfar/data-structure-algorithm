@@ -17,7 +17,7 @@ public interface Dictionary<K, V> {
     @AmortizedTimeComplexity("O(1)")
     void put(K key, V value);
 
-    @TimeComplexity("O(1)")
+    @TimeComplexity("O(1) in average case, which is most of the times")
     @Point("the best time complexity for search, others: linear:O(n), Binary:O(log n)")
     V get(K key);
 
