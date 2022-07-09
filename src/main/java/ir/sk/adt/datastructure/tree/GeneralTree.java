@@ -19,6 +19,7 @@ import java.util.*;
  * A tree is an acyclic connected graph.
  * <p>
  * Tree can be: Balanced- Unbalanced, Complete, Full, Perfect(Full+Complete)
+ * Tree is used in hierarchy models and decision tree
  * <p>
  * Created by sad.keyvanfar on 7/1/2020.
  */
