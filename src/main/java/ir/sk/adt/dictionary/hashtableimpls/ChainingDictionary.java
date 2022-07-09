@@ -12,13 +12,6 @@ import ir.sk.helper.complexity.TimeComplexity;
  * looking in the kth position of the array. This is called direct addressing.
  * Direct addressing is applicable when we can afford to allocate an array with one position for
  * every possible key.
- * <p>
- * Hash table or hash map is a data structure that
- * stores the keys and their associated values, and hash table uses a hash function to map keys to
- * their associated values.
- * <p>
- * There are only three basic operations on Dictionary: searching, inserting, and deleting.
- * <p>
  * deals with collisions by Chaining
  * <p>
  * Created by sad.keyvanfar on 7/6/2020.
@@ -30,7 +23,6 @@ public class ChainingDictionary<K, V> implements Dictionary<K, V> {
     private static final int DEFAULT_CAPACITY = 10;
 
     // bucketArray is used to store array of chains
-
     // instead of linklist we can use different data structure like array bst
     private ChainingHashNode<K, V>[] bucketArray;
 
