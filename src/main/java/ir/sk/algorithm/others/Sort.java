@@ -35,6 +35,7 @@ public class Sort {
      * compare: O(n-1) + O(n - 2) + ... + 2 + 1 = n(n-1)/2 ~ n^2/2 = o(n^2)
      * swap: O(n-1) + O(n - 2) + ... + 2 + 1 = n(n-1)/2 ~ n^2/2 = o(n^2)
      *
+     * when the array is sorted in a question think about binary search and two pointers patterns
      * @param array
      */
     @TimeComplexity("O(n^2) + O(n^2) = O(n^2)")
