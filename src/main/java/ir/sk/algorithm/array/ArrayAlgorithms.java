@@ -1125,4 +1125,29 @@ public class ArrayAlgorithms {
         }
         return sb.toString();
     }
+
+    //////////////////////////////////////////////////////////////////
+    /*
+     * Given two non-empty integer arrays, write a function the determine if the second array
+     * is a subsequence of the first one.
+      */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
+    public static boolean isValidSubsequence(List<Integer> array, List<Integer> sequence) {
+        int index = -1;
+        for (int i = 0; i < sequence.size(); i++) {
+            boolean found = false;
+            for (int j = index +1; j < array.size(); j++) {
+              if (sequence.get(i) == array.get(j) && j > index) {
+                  found = true;
+                  index = j;
+                  break;
+              }
+            }
+            if (!found)
+              return false;
+        }
+    
+        return true;
+      }
 }
