@@ -13,7 +13,7 @@ import java.util.Stack;
  */
 public class DepthFirstPaths implements Paths {
     @Point("First think about adt and the implementation, if you can use data structure like hear")
-    private boolean[] marked; // Has dfs() been called for this vertex? // instead of Set adt, use hashtable data structure
+    private boolean[] visited; // Has dfs() been called for this vertex? // instead of Set adt, use hashtable data structure
     @HashingIndexPattern
     private int[] edgeTo; // last vertex on known path to this vertex // instead of Map adt, use hashtable data structure
     private final int sourceVertex; // source
@@ -29,16 +29,16 @@ public class DepthFirstPaths implements Paths {
     public DepthFirstPaths(Graph graph, int sourceVertex) {
         this.sourceVertex = sourceVertex;
         edgeTo = new int[graph.vertexSize()];
-        marked = new boolean[graph.vertexSize()];
+        visited = new boolean[graph.vertexSize()];
         validateVertex(sourceVertex);
         dfs(graph, sourceVertex);
     }
 
     // depth first search from v
     private void dfs(Graph graph, int vertex) {
-        marked[vertex] = true;
+        visited[vertex] = true;
         for (int w : graph.getNeighborsFor(vertex)) {
-            if (!marked[w]) {
+            if (!visited[w]) {
                 edgeTo[w] = vertex;
                 dfs(graph, w);
             }
@@ -54,7 +54,7 @@ public class DepthFirstPaths implements Paths {
     @Override
     public boolean hasPathTo(int v) {
         validateVertex(v);
-        return marked[v];
+        return visited[v];
     }
 
     /**
@@ -80,7 +80,7 @@ public class DepthFirstPaths implements Paths {
 
     // throw an IllegalArgumentException unless {@code 0 <= v < V}
     private void validateVertex(int v) {
-        int V = marked.length;
+        int V = visited.length;
         if (v < 0 || v >= V)
             throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
     }

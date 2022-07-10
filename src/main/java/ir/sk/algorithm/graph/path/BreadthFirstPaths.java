@@ -14,7 +14,7 @@ import java.util.Stack;
 public class BreadthFirstPaths implements Paths {
 
     private static final int INFINITY = Integer.MAX_VALUE;
-    private boolean[] marked;  // marked[v] = is there an s-v path
+    private boolean[] visited;  // marked[v] = is there an s-v path
     private int[] edgeTo;      // edgeTo[v] = previous edge on shortest s-v path
     private int[] distTo;      // distTo[v] = number of edges shortest s-v path
 
@@ -26,7 +26,7 @@ public class BreadthFirstPaths implements Paths {
      * @throws IllegalArgumentException unless {@code 0 <= s < vertexSize}
      */
     public BreadthFirstPaths(Graph G, int s) {
-        marked = new boolean[G.vertexSize()];
+        visited = new boolean[G.vertexSize()];
         distTo = new int[G.vertexSize()];
         edgeTo = new int[G.vertexSize()];
         validateVertex(s);
@@ -45,7 +45,7 @@ public class BreadthFirstPaths implements Paths {
      *         {@code s} in {@code sources}
      */
     public BreadthFirstPaths(Graph G, Iterable<Integer> sources) {
-        marked = new boolean[G.vertexSize()];
+        visited = new boolean[G.vertexSize()];
         distTo = new int[G.vertexSize()];
         edgeTo = new int[G.vertexSize()];
         for (int v = 0; v < G.vertexSize(); v++)
@@ -61,16 +61,16 @@ public class BreadthFirstPaths implements Paths {
         for (int v = 0; v < G.vertexSize(); v++)
             distTo[v] = INFINITY;
         distTo[s] = 0;
-        marked[s] = true;
+        visited[s] = true;
         q.add(s);
 
         while (!q.isEmpty()) {
             int v = q.poll();
             for (int w : G.getNeighborsFor(v)) {
-                if (!marked[w]) {
+                if (!visited[w]) {
                     edgeTo[w] = v;
                     distTo[w] = distTo[v] + 1;
-                    marked[w] = true;
+                    visited[w] = true;
                     q.add(w);
                 }
             }
@@ -81,17 +81,17 @@ public class BreadthFirstPaths implements Paths {
     private void bfs(Graph G, Iterable<Integer> sources) {
         Queue<Integer> q = new ArrayDeque<>();
         for (int s : sources) {
-            marked[s] = true;
+            visited[s] = true;
             distTo[s] = 0;
             q.add(s);
         }
         while (!q.isEmpty()) {
             int v = q.poll();
             for (int w : G.getNeighborsFor(v)) {
-                if (!marked[w]) {
+                if (!visited[w]) {
                     edgeTo[w] = v;
                     distTo[w] = distTo[v] + 1;
-                    marked[w] = true;
+                    visited[w] = true;
                     q.add(w);
                 }
             }
@@ -107,7 +107,7 @@ public class BreadthFirstPaths implements Paths {
     @Override
     public boolean hasPathTo(int v) {
         validateVertex(v);
-        return marked[v];
+        return visited[v];
     }
 
     /**
@@ -191,7 +191,7 @@ public class BreadthFirstPaths implements Paths {
 
     // throw an IllegalArgumentException unless {@code 0 <= v < vertexSize}
     private void validateVertex(int v) {
-        int vertexSize = marked.length;
+        int vertexSize = visited.length;
         if (v < 0 || v >= vertexSize)
             throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (vertexSize-1));
     }
@@ -202,7 +202,7 @@ public class BreadthFirstPaths implements Paths {
         if (vertices == null) {
             throw new IllegalArgumentException("argument is null");
         }
-        int vertexSize = marked.length;
+        int vertexSize = visited.length;
         int count = 0;
         for (Integer v : vertices) {
             count++;
