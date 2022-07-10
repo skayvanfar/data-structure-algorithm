@@ -16,8 +16,6 @@ import java.util.Stack;
  * Adjacency matrix for undirected graph is always symmetric. Adjacency Matrix is also used to represent weighted graphs.
  * If adj[i][j] = w, then there is an edge from vertex i to vertex j with weight w.
  * <p>
- * If the graph is undirected (i.e. all of its edges are bidirectional), the adjacency matrix is symmetric.
- * <p>
  * For a dense graph (one in which most pairs of vertices are connected by edges) is appropriate
  * <p>
  * This representation makes use of VxV matrix, so space required in worst case is O(|V|^2).

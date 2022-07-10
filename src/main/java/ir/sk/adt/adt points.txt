@@ -1,7 +1,7 @@
 Wrapper adts:
 Data-structure   --->   Wrapper-adt
 Array            --->   List
-LinkedList       --->   Deque
+LinkedList       --->   Qeque, Deque
 HeapTree         --->   PriorityQueue
 Hashtable        --->   Dictionary
 

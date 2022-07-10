@@ -23,7 +23,9 @@ import java.util.stream.Collectors;
  * <p>
  * The main operation performed by the adjacency list data structure is to report a list of the neighbors of a given vertex.  this can be performed in constant time per neighbor.
  * <p>
- * For a sparse graph (one in which most pairs of vertices are not connected by edges) an adjacency list is significantly more space-efficient than an adjacency matrix (stored as a two-dimensional array): the space usage of the adjacency list is proportional to the number of edges and vertices in the graph,
+ * For a sparse graph (one in which most pairs of vertices are not connected by edges)
+ * an adjacency list is significantly more space-efficient than an adjacency matrix (stored as a two-dimensional array):
+ * the space usage of the adjacency list is proportional to the number of edges and vertices in the graph,
  * while for an adjacency matrix stored in this way the space is proportional to the square of the number of vertices.
  * <p>
  * Created by sad.keyvanfar on 7/1/2020.

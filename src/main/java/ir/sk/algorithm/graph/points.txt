@@ -1,6 +1,8 @@
 Graph can be:
 1. Directed or Undirected
 2. weighted or Unweighted
+3. Cyclic or Acyclic
+4. Connected or Disconnected
 
 Main Algorithms:
 1. getNeighborsFor
