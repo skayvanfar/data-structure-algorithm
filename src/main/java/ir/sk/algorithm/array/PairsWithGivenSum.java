@@ -12,7 +12,9 @@ import ir.sk.helper.paradigm.BruteForce;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Given a sorted array of integers, we need to see if there are two numbers in it such that their sum is equal to a specific value.
@@ -41,6 +43,24 @@ public class PairsWithGivenSum {
                     count++;
 
         return count;
+    }
+
+    // array is bot sorted.
+    public static int[] twoNumberSum(int[] array, int targetSum) {
+        Set<Integer> hashtable = new HashSet<>();
+        // O(n)
+        for (int i = 0; i < array.length; i++)
+          hashtable.add(array[i]);
+    
+        // O(n)
+        for (int i = 0; i < array.length; i++) {
+          int diff = targetSum - array[i];
+          if (hashtable.contains(diff) && array[i] != diff)
+            return new int[]{array[i], diff};
+        }
+    
+        // Write your code here.
+        return new int[0];
     }
 
     /**
