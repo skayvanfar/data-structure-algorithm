@@ -1,5 +1,8 @@
 package ir.sk.algorithm.array.string;
 
+import java.util.Arrays;
+import java.util.Stack;
+
 import ir.sk.helper.Difficulty;
 import ir.sk.helper.DifficultyType;
 import ir.sk.helper.complexity.SpaceComplexity;
@@ -180,5 +183,31 @@ public class Strings {
     public static boolean areRotation(String str1, String str2) {
         String tmp = str1 + str1;
         return tmp.contains(str2);
+    }
+
+
+    //////////////////////////////////////////////////////////////////////////
+    public static int lengthOfStringRecursive(char[] chars) {
+        if (chars.length == 1)
+            return 1;
+        
+        return 1 + lengthOfStringRecursive(Arrays.copyOf(chars, chars.length - 1));
+    }
+
+    public static int countOfStringByStack(char[] chars) {
+        Stack<char[]> stack = new Stack<>();
+        stack.push(chars);
+        int result = 0;
+        while(!stack.isEmpty()) {
+            char[] arr = stack.pop();
+            if (arr.length == 1)
+                result++;
+            else {
+                stack.push(Arrays.copyOf(arr, arr.length - 1));
+                result++;
+            }
+                
+        }
+        return result;
     }
 }
