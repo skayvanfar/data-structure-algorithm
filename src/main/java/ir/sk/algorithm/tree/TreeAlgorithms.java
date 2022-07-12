@@ -686,6 +686,12 @@ public class TreeAlgorithms {
          branchSumsRecursive(node.right, result, sum);
      }
 
+     /**
+      * sum of depth of all nodes in a binary tree
+      
+      * @param root
+      * @return
+      */
     public static int nodeDepths(TreeNode root) {
         return nodeDepthsRecursive(root, 0);
     }
