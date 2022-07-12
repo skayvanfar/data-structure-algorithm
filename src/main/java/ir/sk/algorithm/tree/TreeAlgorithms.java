@@ -671,6 +671,8 @@ public class TreeAlgorithms {
      * @param result
      * @param sum
      */
+    @TimeComplexity("O(n) on average")
+    @SpaceComplexity("O(n)")
     private static void branchSumsRecursive(TreeNode node, List<Integer> result, int sum) {
         if (node.left == null && node.right == null)  {
           result.add(sum + node.value);
@@ -684,4 +686,15 @@ public class TreeAlgorithms {
          branchSumsRecursive(node.right, result, sum);
      }
 
+    public static int nodeDepths(TreeNode root) {
+        return nodeDepthsRecursive(root, 0);
+    }
+    
+    public static int nodeDepthsRecursive(TreeNode node, int sum) {
+        if (node == null)
+          return 0;
+    
+        return nodeDepthsRecursive(node.left, sum + 1) + sum +
+          nodeDepthsRecursive(node.right, sum + 1);
+    }
 }
