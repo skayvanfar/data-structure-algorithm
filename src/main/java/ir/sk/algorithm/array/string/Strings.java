@@ -187,14 +187,28 @@ public class Strings {
 
 
     //////////////////////////////////////////////////////////////////////////
-    public static int lengthOfStringRecursive(char[] chars) {
+    public static int lengthOfStringRecursiveHead(char[] chars) { // pop from call stack
         if (chars.length == 1)
             return 1;
         
-        return 1 + lengthOfStringRecursive(Arrays.copyOf(chars, chars.length - 1));
+        return 1 + lengthOfStringRecursiveHead(Arrays.copyOf(chars, chars.length - 1)); // push to call stack
     }
 
-    public static int countOfStringByStack(char[] chars) {
+    public static int countOfStringByStackHead(char[] chars) {
+        Stack<char[]> stack = new Stack<>();
+        stack.push(chars);
+        int result = 0;
+        while(!stack.isEmpty()) {
+            char[] arr = stack.pop();
+            if (arr.length != 1){
+                stack.push(Arrays.copyOf(arr, arr.length - 1));
+            }
+            result++;
+        }
+        return result;
+    }
+
+    public static int countOfStringByStackTail(char[] chars) {
         Stack<char[]> stack = new Stack<>();
         stack.push(chars);
         int result = 0;
