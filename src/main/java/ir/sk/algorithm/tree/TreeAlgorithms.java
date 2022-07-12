@@ -653,6 +653,35 @@ public class TreeAlgorithms {
         int value = Math.abs(node.value - target);
     
         return Math.min(Math.min(left, right), value);
-      }
+    }
+
+    public static List<Integer> branchSums(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        branchSumsRecursive(root, result, 0);
+        return result;
+    }
+
+    /**
+     * Given a Binary Tree, we are asked to compute all of the branch sums of the tree and
+     *  return them in an array, ordered from leftmost branch sum to rightmost branch sum.
+     *  In a tree, a branch is a path that starts at the root node and ends at one of the leaf nodes.
+     *  A branch sum means the sum of all values in a branch.
+     * 
+     * @param node
+     * @param result
+     * @param sum
+     */
+    private static void branchSumsRecursive(TreeNode node, List<Integer> result, int sum) {
+        if (node.left == null && node.right == null)  {
+          result.add(sum + node.value);
+          return;
+        }
+   
+       sum += node.value;
+       if (node.left != null)
+         branchSumsRecursive(node.left, result, sum);
+       if (node.right != null)
+         branchSumsRecursive(node.right, result, sum);
+     }
 
 }
