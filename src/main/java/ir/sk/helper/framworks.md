@@ -62,6 +62,12 @@ void DFSTraverse(Node root) {
 }
 ```
 
+##the framework for almost all BT resolve
+1. base case
+2. recursive on left;
+3. recursive on right;
+4. join
+
 ##The binary tree framework can be extended to the n-tree traversal framework：
 ```
 /* Basic node of the N-tree */
