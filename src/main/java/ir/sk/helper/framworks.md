@@ -52,6 +52,7 @@ int val;
 Node left, right;
 }
 
+// each node is a stack frame and in each frame. the state is different
 void DFSTraverse(Node root) {
     // pre order traverse
     traverse(root.left)
@@ -60,6 +61,7 @@ void DFSTraverse(Node root) {
     // post order traverse
 }
 ```
+
 ##The binary tree framework can be extended to the n-tree traversal framework：
 ```
 /* Basic node of the N-tree */

@@ -178,4 +178,22 @@ public class TreeAlgorithmsTest {
         List<TreeNode> result = TreeAlgorithms.generateAllBSTs(3);
         System.out.println(result);
     }
+
+    @Test
+    public void findClosestValueInBst() {
+
+        TreeNode root = new TreeNode(10);
+        root.left = new TreeNode(5);
+        root.right = new TreeNode(15);
+        root.left.left = new TreeNode(2);
+        root.left.right = new TreeNode(5);
+        root.left.left.left = new TreeNode(1);
+        root.right.left = new TreeNode(13);
+        root.right.left.right = new TreeNode(14);
+        root.right.right = new TreeNode(22);
+
+        int result = TreeAlgorithms.findClosestValueInBst(root, 12);
+
+        System.out.println(result);
+    }
 }

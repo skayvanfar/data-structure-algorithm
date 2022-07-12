@@ -644,4 +644,15 @@ public class TreeAlgorithms {
 
     }
 
+    public static int findClosestValueInBst(TreeNode node, int target) {
+        if (node == null)
+          return Integer.MAX_VALUE;
+    
+        int left = findClosestValueInBst(node.left, target);
+        int right = findClosestValueInBst(node.right, target);
+        int value = Math.abs(node.value - target);
+    
+        return Math.min(Math.min(left, right), value);
+      }
+
 }
