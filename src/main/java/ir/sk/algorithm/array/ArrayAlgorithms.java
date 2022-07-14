@@ -1150,4 +1150,23 @@ public class ArrayAlgorithms {
     
         return true;
       }
+
+      public int tandemBicycle(int[] redShirtSpeeds, int[] blueShirtSpeeds, boolean fastest) {
+        Arrays.sort(redShirtSpeeds);
+        Arrays.sort(blueShirtSpeeds);
+        if (fastest) {
+          for(int i = 0; i < blueShirtSpeeds.length / 2; i++)
+            {
+                int temp = blueShirtSpeeds[i];
+                blueShirtSpeeds[i] = blueShirtSpeeds[blueShirtSpeeds.length - i - 1];
+                blueShirtSpeeds[blueShirtSpeeds.length - i - 1] = temp;
+            }
+        }
+    
+        int sum = 0;
+        for (int i = 0; i < redShirtSpeeds.length; i++) {
+          sum += Math.max(redShirtSpeeds[i], blueShirtSpeeds[i]);
+        }
+        return sum;
+      }
 }
