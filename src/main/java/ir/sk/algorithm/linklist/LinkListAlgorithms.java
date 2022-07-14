@@ -807,4 +807,20 @@ public class LinkListAlgorithms {
         return first;
     }
 
+    public SinglyLink<Integer> removeDuplicatesFromLinkedList(SinglyLink<Integer> linkedList) {
+        SinglyLink<Integer> curr, prev;;
+        prev = linkedList;
+        if (linkedList == null)
+          return null;
+        curr = linkedList.next;
+        while (curr != null) {
+          if (prev.data == curr.data) {
+            prev.next = curr.next;  
+          } else
+          prev = curr;
+          curr = curr.next;
+          
+        }
+        return linkedList;
+    }
 }
