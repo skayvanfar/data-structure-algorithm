@@ -48,4 +48,15 @@ public class Palindrome {
         return true;
     }
 
+    public static boolean isPalindromeRecursive(char[] chars) {
+        return isPalindromeRecursive(chars, 0);
+    }
+
+    public static boolean isPalindromeRecursive(char[] chars, int i) {
+        int j = chars.length - 1 - i;
+        return i >= j ? true : chars[i] == chars[j] && isPalindromeRecursive(chars, i + 1);
+
+    }
+
+
 }
