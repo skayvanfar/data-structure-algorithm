@@ -76,12 +76,12 @@ public class Sort {
         // One by one move boundary of unsorted subarray
         for (int i = 0; i < array.length - 1; i++) {
             // Find the minimum element in unsorted array
-            int min = i;
+            int minIndex = i;
             for (int j = i + 1; j < array.length; j++)
-                if (array[j] < array[min])
-                    min = j;
+                if (array[j] < array[minIndex])
+                    minIndex = j;
             // Swap the found minimum element with the first element
-            array[i] = Utils.gSwap(array[min], array[min] = array[i]); // swap them
+            array[i] = Utils.gSwap(array[minIndex], array[minIndex] = array[i]); // swap them
         }
     }
 
@@ -111,18 +111,17 @@ public class Sort {
     @Stability
     public static void insertionSort(int[] array) {
         for (int i = 1; i < array.length; ++i) {
-            int key = array[i];
             int j = i - 1;
 
             /* Move elements of arr[0..i-1], that are
                greater than key, to one position ahead
                of their current position */
-            while (j >= 0 && array[j] > key) {
+            while (j >= 0 && array[j] > array[i]) {
                 // using rotate by condition(array[j] > key), no swap, since shifting has better performance than swap
                 array[j + 1] = array[j];
                 j = j - 1;
             }
-            array[j + 1] = key;
+            array[j + 1] = array[i];
         }
     }
 
