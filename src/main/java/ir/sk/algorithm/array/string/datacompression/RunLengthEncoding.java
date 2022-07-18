@@ -1,5 +1,8 @@
 package ir.sk.algorithm.array.string.datacompression;
 
+import ir.sk.helper.complexity.SpaceComplexity;
+import ir.sk.helper.complexity.TimeComplexity;
+
 /**
  * Run–length encoding (RLE) is a simple form of lossless data compression
  * that runs on sequences with the same value occurring many consecutive times.
@@ -10,6 +13,8 @@ package ir.sk.algorithm.array.string.datacompression;
  */
 public class RunLengthEncoding {
 
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
     public static void expand(String src) {
         StringBuffer dest = new StringBuffer();
 		
@@ -23,6 +28,8 @@ public class RunLengthEncoding {
 		System.out.println(dest.toString());
     }
 
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(n)")
     public static String compress(String text) {
         String encodedString = "";
 
