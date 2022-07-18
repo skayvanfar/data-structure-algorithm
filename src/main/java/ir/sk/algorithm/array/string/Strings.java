@@ -238,4 +238,31 @@ public class Strings {
         int newLetterCode = letter + key;
         return newLetterCode <= 122 ? (char) newLetterCode : (char) (96 + newLetterCode % 122);
       }
+
+      public static String runLengthEncoding(String string) {
+        //init
+        int first = 0;
+        StringBuffer result = new StringBuffer("");
+        // first loop
+        while (first < string.length()) {
+          int counter = 0;
+          // second loop
+          while (first + counter < string.length() 
+                 && string.charAt(first) == string.charAt(first + counter)) {
+            counter++;
+            if (counter >= 10) {
+              result.append(9 + "" + string.charAt(first));
+              first += counter;
+            }
+          }
+          result.append(counter + "" + string.charAt(first + counter)); 
+          first += counter;    
+        }
+        return result.toString();
+  }
+
+
+    public static void main(String[] args) {
+        System.out.println(runLengthEncoding("aabb"));
+    }
 }
