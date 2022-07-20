@@ -1151,6 +1151,7 @@ public class ArrayAlgorithms {
         return true;
       }
 
+      @GreedyAlgorithm
       public int tandemBicycle(int[] redShirtSpeeds, int[] blueShirtSpeeds, boolean fastest) {
         Arrays.sort(redShirtSpeeds);
         Arrays.sort(blueShirtSpeeds);
