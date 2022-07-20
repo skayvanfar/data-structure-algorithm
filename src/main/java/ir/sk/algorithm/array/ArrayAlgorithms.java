@@ -1170,6 +1170,7 @@ public class ArrayAlgorithms {
         return sum;
       }
 
+      @GreedyAlgorithm
       @TimeComplexity("O(nlogn)")
       @SpaceComplexity("O(1)")
       public int minimumWaitingTime(int[] queries) {
