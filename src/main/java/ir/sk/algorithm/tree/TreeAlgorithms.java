@@ -113,6 +113,24 @@ public class TreeAlgorithms {
             return false;
     }
 
+    public static boolean validateBst(TreeNode tree) {
+        return validateBst(tree, Integer.MIN_VALUE, Integer.MAX_VALUE);
+      }
+    
+      @Point("In BST each node has a minimum and maximum value")
+    public static boolean validateBst(TreeNode tree, int minValue, int maxValue) {
+        if (tree.value < minValue || tree.value >= maxValue)
+          return false;
+    
+        if (tree.left != null && !validateBst(tree.left, minValue, tree.value))
+          return false;
+    
+        if (tree.right != null && !validateBst(tree.right, tree.value, maxValue))
+          return false;
+    
+        return true;
+    }
+
     /////////////////////////////////////////////////////////////////
 
     /**
