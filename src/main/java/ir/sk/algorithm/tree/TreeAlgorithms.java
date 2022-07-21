@@ -75,11 +75,11 @@ public class TreeAlgorithms {
      */
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
-    public static boolean checkValidBSTByInorder(TreeNode node) {
+    public static boolean validateBstByInorder(TreeNode node) {
         if (node == null) return true;
 
         // II Check I recurse left
-        if (!checkValidBSTByInorder(node.left)) return false;
+        if (!validateBstByInorder(node.left)) return false;
 
         // II Check current
         if (prevNode != null && node.value <= prevNode) {
@@ -88,37 +88,19 @@ public class TreeAlgorithms {
         prevNode = node.value;
 
         // Check I recurse right
-        if (!checkValidBSTByInorder(node.right)) return false;
+        if (!validateBstByInorder(node.right)) return false;
 
         return true;
     }
 
-    /**
-     * @param n
-     * @param low  bound
-     * @param high bound
-     * @return
-     */
     @TimeComplexity("O(n)")
-    @SpaceComplexity("O(n)")
-    public static boolean checkValidBSTByBoundaries(TreeNode n, int low, int high) {
-        if (n == null) return true;
-
-        int value = n.value;
-        if (value >= low && value <= high
-                && checkValidBSTByBoundaries(n.left, low, value)
-                && checkValidBSTByBoundaries(n.right, value, high))
-            return true;
-        else
-            return false;
-    }
-
+    @SpaceComplexity("O(h), h is hight of tree")
     public static boolean validateBst(TreeNode tree) {
         return validateBst(tree, Integer.MIN_VALUE, Integer.MAX_VALUE);
       }
     
       @Point("In BST each node has a minimum and maximum value")
-    public static boolean validateBst(TreeNode tree, int minValue, int maxValue) {
+    private static boolean validateBst(TreeNode tree, int minValue, int maxValue) {
         if (tree.value < minValue || tree.value >= maxValue)
           return false;
     
