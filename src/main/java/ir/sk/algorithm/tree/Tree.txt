@@ -1,9 +1,12 @@
-In a PreOrder sequence, the leftmost element is the root of the tree.
+in Binary Tree (BT):
+ InOrder traversal is Left-Root-Right (LVR)
+ PreOrder traversal is Root-Left-Right (VLR)
+ PostOrder traversal is left-right-root (LRV)
 
-int Binary Tree:
- InOrder traversal is Left-Root-Right
- PreOrder traversal is Root-Left-Right
- PostOrder traversal is left-right-root
+In BST:
+PreOrder traverse is sorted.
+In a PreOrder sequence, the leftmost element is the root of the tree.
+In BST each node has a minimum and maximum value
 
 
  Recursive algorithms are well-suited to problems on trees. Remember to include
