@@ -1,6 +1,7 @@
 package ir.sk.adt.queue.circularqueue;
 
 import ir.sk.adt.queue.Queue;
+import ir.sk.helper.Default;
 import ir.sk.helper.Remainder;
 
 import java.util.Iterator;
@@ -12,18 +13,19 @@ import java.util.NoSuchElementException;
  * empty, the consumer waits until data is deposited; when the buffer is full, the producer waits
  * to deposit data. Develop an API for a RingBuffer and an implementation that uses an array
  * representation (with circular wrap-around).
- *
+ * <p>
  * The useful property of a circular buffer is that it does not need to have its elements shuffled around when one is consumed.
  * (If a non-circular buffer were used then it would be necessary to shift all elements when one is consumed.)
  * In other words, the circular buffer is well-suited as a FIFO (First In, First Out) buffer while a standard, non-circular buffer is well suited as a LIFO (Last In, First Out) buffer.
- *
+ * <p>
  * Circular buffering makes a good implementation strategy for a queue that has fixed maximum size. Should a maximum size be adopted for a queue, then a circular buffer is a completely ideal implementation;
  * all queue operations are constant time. However, expanding a circular buffer requires shifting memory, which is comparatively costly.
  * For arbitrarily expanding queues, a linked list approach may be preferred instead.
  *
  * @param <T>
  */
-    public class ArrayCircularQueue<T> implements Queue<T>, Iterable<T> {
+@Default
+public class ArrayCircularQueue<T> implements Queue<T>, Iterable<T> {
 
     private T[] items;
     private int capacity;
