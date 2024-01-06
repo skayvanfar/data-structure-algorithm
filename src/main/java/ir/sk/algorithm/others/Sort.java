@@ -100,8 +100,8 @@ public class Sort {
      * Insertion sort is an efficient method for partially sorted arrays; selection sort is not. Indeed, when
      * the number of inversions is low, insertion sort is likely to be faster than any sorting method
      * <p>
-     * compare: O(n-1) + O(n - 2) + ... + 2 + 1 = n(n-1)/2 ~ n^2/2 = o(n^2)
-     * swap: O(n-1) + O(n - 2) + ... + 2 + 1 = n(n-1)/2 ~ n^2/2 = o(n^2)
+     * compare: 1 + 2 + + ... + O(n - 2) + O(n-1) = n(n-1)/2 ~ n^2/2 = o(n^2)
+     * swap: 1 + 2 + + ... + O(n - 2) + O(n-1) = n(n-1)/2 ~ n^2/2 = o(n^2)
      *
      * @param array
      */
@@ -150,6 +150,7 @@ public class Sort {
             array[i] = array[i - 1];
         }
     }
+    ////////////////////// Insertion sort ////////////////////////
 
     /**
      * better performance when comparing is costly for example for record data
