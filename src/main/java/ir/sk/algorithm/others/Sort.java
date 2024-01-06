@@ -125,6 +125,32 @@ public class Sort {
         }
     }
 
+    ////////////////////// Insertion sort ////////////////////////
+    public static void modularInsertionSort(int[] array) {
+        for (int k = 1; k <= array.length - 1; k++) {
+            int value = array[k];
+            int index = searchFromStart(array, k);
+            shift(array, index, k);
+            array[index] = value;
+        }
+    }
+
+    private static int searchFromStart(int[] array, int k) {
+        int i = 0;
+        while (i < k) {
+            if (array[k] < array[i])
+                break;
+            i++;
+        }
+        return i;
+    }
+
+    private static void shift(int[] array, int from, int to) {
+        for (int i = to; i > from; i--) {
+            array[i] = array[i - 1];
+        }
+    }
+
     /**
      * better performance when comparing is costly for example for record data
      * using binary search instead of comparing fro finding the place of an item

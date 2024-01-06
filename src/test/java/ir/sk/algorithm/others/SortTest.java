@@ -57,6 +57,15 @@ public class SortTest {
     }
 
     @Test
+    public void ModularInsertionSortTest() {
+        long start = System.currentTimeMillis();
+        Sort.modularInsertionSort(actual);
+        long end = System.currentTimeMillis();
+        System.out.println("Logic ModularInsertionSort took" + (end - start) + "MilliSeconds");
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
     public void binaryInsertionSort() {
         long start = System.currentTimeMillis();
         Sort.binaryInsertionSort(actual);
