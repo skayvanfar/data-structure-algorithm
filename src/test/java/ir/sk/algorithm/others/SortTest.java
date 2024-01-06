@@ -57,7 +57,7 @@ public class SortTest {
     }
 
     @Test
-    public void ModularInsertionSortTest() {
+    public void modularInsertionSortTest() {
         long start = System.currentTimeMillis();
         Sort.modularInsertionSort(actual);
         long end = System.currentTimeMillis();
@@ -108,6 +108,15 @@ public class SortTest {
         Sort.mergeSortIterative(actual);
         long end = System.currentTimeMillis();
         System.out.println("Logic mergeSortIterative took " + (end - start) + " MilliSeconds");
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void modularMergeSortTest() {
+        long start = System.currentTimeMillis();
+        actual = Sort.modularMergeSort(actual);
+        long end = System.currentTimeMillis();
+        System.out.println("Logic modularMergeSort took: " + (end - start) + "milliseconds");
         assertArrayEquals(expected, actual);
     }
 

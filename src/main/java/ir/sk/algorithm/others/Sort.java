@@ -115,7 +115,8 @@ public class Sort {
 
             /* Move elements of arr[0..i-1], that are
                greater than key, to one position ahead
-               of their current position */
+               of their current position
+               searching and shift at once */
             while (j >= 0 && array[j] > array[i]) {
                 // using rotate by condition(array[j] > key), no swap, since shifting has better performance than swap
                 array[j + 1] = array[j];
@@ -330,6 +331,49 @@ public class Sort {
                 a[k] = aux[i++];
     }
 
+
+    ////////////////////////////// Merge Sort ////////////////////////
+    public static int[] modularMergeSort(int[] array) {
+        return modularMergeSort(array, 0, array.length - 1);
+    }
+    private static int[] modularMergeSort(int[] array, int start, int end) {
+        if (start == end)
+            return new int[] {array[start]};
+        int mid = start + (end - start) / 2;
+        int[] leftArray = modularMergeSort(array, start, mid);
+        int[] rightArray = modularMergeSort(array, mid + 1, end);
+        return myMerge(leftArray, rightArray);
+    }
+
+    private static int[] myMerge(int[] leftArray, int[] rightArray) {
+        int length = leftArray.length + rightArray.length;
+        int[] mergedArray = new int[length];
+
+        int i = 0,  j = 0, k = 0;
+        for (; k < length - 1 && i < leftArray.length && j < rightArray.length; k++) {
+            if (leftArray[i] <= rightArray[j]) {
+                mergedArray[k] = leftArray[i];
+                i++;
+            } else {
+                mergedArray[k] = rightArray[j];
+                j++;
+            }
+        }
+
+        if (i == leftArray.length) {
+            for (; j < rightArray.length; j++) {
+                mergedArray[k] = rightArray[j];
+                k++;
+            }
+        } else if (j == rightArray.length) {
+            for (; i < leftArray.length; i++) {
+                mergedArray[k] = leftArray[i];
+                k++;
+            }
+        }
+        return mergedArray;
+    }
+    ////////////////////////////// Merge Sort ////////////////////////
 
     /**
      * In quick sort we pick a random element and partition the array, such that all numbers that are less than the
