@@ -4,13 +4,16 @@ import ir.sk.helper.RecurrenceRelation;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.paradigm.BruteForce;
+import ir.sk.helper.paradigm.DivideAndConquer;
 
 import java.math.BigInteger;
 
 /**
- * f(n) =
- * 1             n = 1
- * n * f(n-1)    n > 1
+ * Divide-and-conquer algorithm
+ * 
+ * T(n) =
+ *      1             n = 1
+ *      n * T(n-1)    n > 1
  *
  * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
@@ -27,6 +30,7 @@ public class Factorial {
     @RecurrenceRelation("T(n) = T(n-1) + O(1)")
     @TimeComplexity("O(n)")
     @SpaceComplexity("O(n)")
+    @DivideAndConquer
     public static int factorialByRecursive(int n) {
         if (n == 0)
             return 1;

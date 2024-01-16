@@ -3,10 +3,15 @@ package ir.sk.algorithm.mathematic;
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.paradigm.BruteForce;
+import ir.sk.helper.paradigm.DivideAndConquer;
 import ir.sk.helper.paradigm.DynamicProgramming;
 import ir.sk.helper.paradigm.DynamicProgrammingType;
 
 /**
+ * Divide-and-conquer algorithm
+ * T(n)=
+ *      1               n = 1, n = 2
+ *      T(n-1) + T(n-2)
  * Created by sad.keyvanfar on 6/25/2020.
  */
 public class Fibonacci {
@@ -20,6 +25,7 @@ public class Fibonacci {
     @BruteForce
     @TimeComplexity("T(n-1) + T(n-2) which is exponential. t(n) = 2 ^ (n/2). O(2^n) exponential. O(branches ^ depth)")
     @SpaceComplexity(" O(n) if we consider the function call stack size, otherwise O(1)")
+    @DivideAndConquer
     public static long naiveFibonacciByRecursive(long n) {
         if (n == 0 || n == 1)
             return n;

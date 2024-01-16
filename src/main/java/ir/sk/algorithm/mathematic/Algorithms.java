@@ -2,6 +2,7 @@ package ir.sk.algorithm.mathematic;
 
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
+import ir.sk.helper.paradigm.DivideAndConquer;
 import ir.sk.helper.paradigm.DynamicProgramming;
 import ir.sk.helper.paradigm.DynamicProgrammingType;
 
@@ -22,6 +23,10 @@ public class Algorithms {
      * (1) Only one disk can be moved at a time.
      * (2) A disk is slid off the top of one tower onto another tower.
      * (3) A disk cannot be placed on top of a smaller disk.
+     * 
+     * T(n):
+     *    1             n = 1
+     *    2*T(n-1) + 1  n > 1
      *
      * @param n      the number of disks
      * @param src    the name of the source rod
@@ -30,6 +35,7 @@ public class Algorithms {
      */
     @TimeComplexity("O(2^n)")
     @SpaceComplexity("O(n)")
+    @DivideAndConquer
     public static void towerOfHanoi(int n, char src, char buffer, char dest) {
         if (n == 1)
             System.out.println("Disk 1 from " + src + " to " + dest);
