@@ -110,6 +110,7 @@ public class Sort {
     @InPlace
     @Stability
     public static void insertionSort(int[] array) {
+        // i is pivot for separation of sorted and unsorted sections
         for (int i = 1; i < array.length; i++) {
             int key = array[i];
             int j = i - 1;
