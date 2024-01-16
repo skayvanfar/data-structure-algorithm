@@ -110,7 +110,7 @@ public class Sort {
     @InPlace
     @Stability
     public static void insertionSort(int[] array) {
-        for (int i = 1; i < array.length; ++i) {
+        for (int i = 1; i < array.length; i++) {
             int j = i - 1;
 
             /* Move elements of arr[0..i-1], that are
