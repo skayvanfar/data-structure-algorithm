@@ -111,18 +111,19 @@ public class Sort {
     @Stability
     public static void insertionSort(int[] array) {
         for (int i = 1; i < array.length; i++) {
+            int key = array[i];
             int j = i - 1;
 
             /* Move elements of arr[0..i-1], that are
                greater than key, to one position ahead
                of their current position
                searching and shift at once */
-            while (j >= 0 && array[j] > array[i]) {
+            while (j >= 0 && array[j] > key) {
                 // using rotate by condition(array[j] > key), no swap, since shifting has better performance than swap
                 array[j + 1] = array[j];
-                j = j - 1;
+                j -= 1;
             }
-            array[j + 1] = array[i];
+            array[j + 1] = key;
         }
     }
 
