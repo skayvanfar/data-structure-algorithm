@@ -141,6 +141,7 @@ public class MaxBinaryHeap {
         heapifyUpIterative();
     }
 
+    @TimeComplexity("O(Log n)")
     private void heapifyUp(int index) {
         int current = size;
         int parentIndex = getParentIndex(index);
