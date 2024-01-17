@@ -402,9 +402,9 @@ public class Sort {
     @DivideAndConquer
     public static void quickSort(int[] array, int start, int end) {
         if (end <= start) return; // base case
-        int pi  = partition(array, start, end);
-        quickSort(array, start, pi - 1);
-        quickSort(array, pi + 1, end);
+        int pivotIndex  = partition(array, start, end);
+        quickSort(array, start, pivotIndex - 1);
+        quickSort(array, pivotIndex + 1, end);
     }
 
     /**
@@ -412,9 +412,13 @@ public class Sort {
      */
     public static int partition(int[] array, int start, int end) {
         int pivot = array[end]; // Pick pivot point
+
+        // Index of smaller element and indicates
+        // the right position of pivot found so far
         int i = start - 1;
         
         for (int j = start; j <= end - 1; j++) {
+            // If current element is smaller than the pivot
             if (array[j] < pivot) {
                 i++;
                 array[j] = Utils.gSwap(array[i], array[i] = array[j]);
