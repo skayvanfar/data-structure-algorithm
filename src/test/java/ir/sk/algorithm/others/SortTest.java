@@ -159,6 +159,11 @@ public class SortTest {
 
     @Test
     public void quickSort() {
+        long start = System.currentTimeMillis();
+        Sort.quickSort(actual, 0, actual.length - 1);
+        long end = System.currentTimeMillis();
+        System.out.println("Logic quickSort took " + (end - start) + " MilliSeconds");
+        assertArrayEquals(expected, actual);
     }
 
     @Test

@@ -391,42 +391,39 @@ public class Sort {
      * recursive calls after working on the whole array. For mergesort, the array is divided in
      * half; for quicksort, the position of the partition depends on the contents of the array.
      *
-     * @param arr
-     * @param left
-     * @param right
+     * @param array
+     * @param start
+     * @param end
      */
     @TimeComplexity("O(n * Log n)")
     @SpaceComplexity("O(1)")
     @InPlace
     @Stability(false)
     @DivideAndConquer
-    public static void quickSort(int[] arr, int left, int right) {
-        if (left <= right) return;
-        int index = partition(arr, left, right);
-        quickSort(arr, left, index - 1);
-        quickSort(arr, index, right);
+    public static void quickSort(int[] array, int start, int end) {
+        if (end <= start) return; // base case
+        int pi  = partition(array, start, end);
+        quickSort(array, start, pi - 1);
+        quickSort(array, pi + 1, end);
     }
 
     /**
      * @return index of pivot
      */
-    public static int partition(int[] arr, int left, int right) {
-        int pivot = arr[(left + right) / 2]; // Pick pivot point
-        while (left <= right) {
-            // Find element on left that should be on right
-            while (arr[left] < pivot) left++;
-
-            // Find element on right that should be on left
-            while (arr[right] > pivot) right--;
-
-            // Swap elements, and move left and right indices
-            if (left <= right) {
-                Utils.gSwap(arr[left], arr[left] = arr[right]); // swaps elements
-                left++;
-                right--;
+    public static int partition(int[] array, int start, int end) {
+        int pivot = array[end]; // Pick pivot point
+        int i = start - 1;
+        
+        for (int j = start; j <= end - 1; j++) {
+            if (array[j] < pivot) {
+                i++;
+                array[j] = Utils.gSwap(array[i], array[i] = array[j]);
             }
         }
-        return left;
+        i++;
+        array[end] = Utils.gSwap(array[i], array[i] = array[end]);
+
+        return i;
     }
 
     /**
