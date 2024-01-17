@@ -91,7 +91,7 @@ public class MaxBinaryHeap {
     @TimeComplexity("O(Log n)")
     public int extractMax() {
         int max = array[0];
-        swap(0, size - 1);
+        swapWithIndex(0, size - 1);
         array[size - 1] = 0; // Avoid loitering.
 
         heapifyDown(0);
@@ -119,7 +119,7 @@ public class MaxBinaryHeap {
             maxIndex = right;
 
         if (maxIndex != index) {
-            swap(index, maxIndex);
+            swapWithIndex(index, maxIndex);
             heapifyDown(maxIndex);
         }
     }
@@ -149,12 +149,12 @@ public class MaxBinaryHeap {
         int current = size;
 
         while (array[current] > array[getParentIndex(current)]) {
-            swap(current, getParentIndex(current));
+            swapWithIndex(current, getParentIndex(current));
             current = getParentIndex(current);
         }
     }
 
-    private void swap(int index1, int index2) {
+    private void swapWithIndex(int index1, int index2) {
         int tmp = array[index1];
         array[index1] = array[index2];
         array[index2] = tmp;
