@@ -108,19 +108,19 @@ public class MaxBinaryHeap {
     public void heapifyDown(int index) {
         int left = getLeftChildIndex(index);
         int right = getRightChildIndex(index);
-        int max;
+        int maxIndex;
 
         if (left <= size && array[left] > array[index])
-            max = left;
+            maxIndex = left;
         else
-            max = index;
+            maxIndex = index;
 
-        if (right <= size && array[right] > array[max])
-            max = right;
+        if (right <= size && array[right] > array[maxIndex])
+            maxIndex = right;
 
-        if (max != index) {
-            swap(index, max);
-            heapifyDown(max);
+        if (maxIndex != index) {
+            swap(index, maxIndex);
+            heapifyDown(maxIndex);
         }
     }
 
