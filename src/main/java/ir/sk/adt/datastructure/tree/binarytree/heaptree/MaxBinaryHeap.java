@@ -138,14 +138,23 @@ public class MaxBinaryHeap {
             return;
 
         array[++size] = element;
-        heapifyUp();
+        heapifyUpIterative();
+    }
+
+    private void heapifyUp(int index) {
+        int current = size;
+        int parentIndex = getParentIndex(index);
+        if (array[index] > array[parentIndex]) {
+            swapWithIndex(index, parentIndex);
+            heapifyUp(parentIndex);
+        }
     }
 
     /**
      *
      */
     @TimeComplexity("O(Log n)")
-    private void heapifyUp() {
+    private void heapifyUpIterative() {
         int current = size;
 
         while (array[current] > array[getParentIndex(current)]) {
