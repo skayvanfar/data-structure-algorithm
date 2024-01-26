@@ -70,7 +70,11 @@ public class SelectionProblem {
         return median;
     }
 
-
+    @TimeComplexity("O(n log n)")
+    public int kthSmallest(int[] array, int k) {
+        Arrays.sort(array);
+        return array[k];
+    }
 
     // partition function similar to quick sort 
     // Considers last element as pivot and adds 
