@@ -508,7 +508,7 @@ public class Sort {
      */
     @TimeComplexity("O(n + k) + O(n) = O(2n + k) = O(n + k) where n is the number of elements in input array and k is the range of input.")
     @SpaceComplexity("nO(n + k)")
-    public static void countSort(int[] input) {
+    public static void basicCountSort(int[] input) {
         int max = Arrays.stream(input).max().getAsInt();
 
         // create buckets
@@ -527,6 +527,26 @@ public class Sort {
         }
     }
 
+    @TimeComplexity("O(n + k) + O(n) = O(2n + k) = O(n + k) where n is the number of elements in input array and k is the range of input.")
+    @SpaceComplexity("nO(n + k)")
+    public static void basicCountingSortWithNegative(int[] array) {
+        int min = Arrays.stream(array).min().getAsInt();
+        int max = Arrays.stream(array).max().getAsInt();
+
+        int range = max - min + 1;
+        int[] counter = new int[range];
+
+        for (int i = 0 ; i < array.length; i++) {
+            counter[array[i] - min]++;
+        }
+
+        int index = 0;
+        for (int i = 0; i < counter.length; i++) {
+            for (int j = 0; j < counter[i]; j++) {
+                array[index++] = i + min;
+            }
+        }
+    }
 
     /**
      * Counting sort which takes negative numbers as well

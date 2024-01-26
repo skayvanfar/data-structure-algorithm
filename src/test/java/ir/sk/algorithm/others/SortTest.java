@@ -140,7 +140,7 @@ public class SortTest {
     @Test
     public void countingSort() {
         long start = System.currentTimeMillis();
-        Sort.countSort(actual);
+        Sort.basicCountSort(actual);
         long end = System.currentTimeMillis();
         System.out.println("Logic countingSort took " + (end - start) + " MilliSeconds");
         assertArrayEquals(expected, actual);
@@ -152,6 +152,17 @@ public class SortTest {
         int[] expected = new int[]{-3, 1, 2, 5, 5, 6};
         long start = System.currentTimeMillis();
         Sort.countingSortWithNegative(arr);
+        long end = System.currentTimeMillis();
+        System.out.println("Logic countingSortWithNegative took " + (end - start) + " MilliSeconds");
+        assertArrayEquals(expected, arr);
+    }
+
+    @Test
+    public void basicCountingSort() {
+        int[] arr = new int[]{9, 2, 1, 5, 5, 6, -2};
+        int[] expected = new int[]{-2, 1, 2, 5, 5, 6, 9};
+        long start = System.currentTimeMillis();
+        Sort.basicCountingSortWithNegative(arr);
         long end = System.currentTimeMillis();
         System.out.println("Logic countingSortWithNegative took " + (end - start) + " MilliSeconds");
         assertArrayEquals(expected, arr);
