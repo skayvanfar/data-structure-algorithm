@@ -4,7 +4,11 @@ import java.util.*;
 
 import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
-
+/**
+ * a selection algorithm is an algorithm for finding the 
+ * kth smallest value in a collection of ordered values, such as numbers
+ * Selection includes as special cases the problems of finding the minimum, median, and maximum element in the collection
+*/
 public class SelectionProblem {
     
     /**
