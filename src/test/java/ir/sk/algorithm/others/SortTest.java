@@ -224,5 +224,12 @@ public class SortTest {
         String[] array = new String[]{"asd", "aafefe", "hyh", "f", "grgrg", "wwqq", "nbm", "fghhhgfhgf"};
         Sort.radixSortMSD(array);
         System.out.println(Arrays.toString(array));
+    }   
+    
+    @Test
+    public void bucketSort() {
+        float[] array = new float[]{0.23f, 0.34f, 0.54f, 0.12f, 0.33f};
+        Sort.bucketSort(array, array.length);
+        System.out.println(Arrays.toString(array));
     }
 }

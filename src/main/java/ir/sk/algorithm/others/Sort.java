@@ -1,6 +1,8 @@
 package ir.sk.algorithm.others;
 
 import ir.sk.adt.datastructure.tree.binarytree.heaptree.MaxBinaryHeap;
+import ir.sk.adt.list.ArrayList;
+import ir.sk.adt.list.List;
 import ir.sk.adt.datastructure.tree.binarytree.binarysearchtree.BinarySearchTree;
 import ir.sk.algorithm.array.Merge;
 import ir.sk.algorithm.basic.RotationShift;
@@ -16,6 +18,7 @@ import ir.sk.helper.paradigm.Backtracking;
 import ir.sk.helper.paradigm.DivideAndConquer;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.stream.IntStream;
 
 /**
@@ -743,6 +746,37 @@ public class Sort {
             if (v.charAt(i) > w.charAt(i)) return false;
         }
         return v.length() < w.length();
+    }
+
+
+    public static void bucketSort(float[] arr, int n) {
+        if (n <= 0)
+            return;
+        @SuppressWarnings("unchecked")
+        List<Float>[] buckets = new ArrayList[n];
+
+        // Create empty buckets
+        for (int i = 0; i < n; i++)
+            buckets[i] = new ArrayList<Float>();
+
+        // Add elements into the buckets
+        for (int i = 0; i < n; i++) {
+            int bucketIndex = (int) arr[i] * n;
+            buckets[bucketIndex].add(arr[i]);
+        }
+
+        // Sort the elements of each bucket
+        for (int i = 0; i < n; i++) {
+            Collections.sort(buckets[i]);
+        }
+
+        // Get the sorted array
+        int index = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0, size = buckets[i].size(); j < size; j++) {
+                arr[index++] = buckets[i].get(j);
+            }
+        }
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
