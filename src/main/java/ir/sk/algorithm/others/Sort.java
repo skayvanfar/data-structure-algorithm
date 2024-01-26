@@ -1,8 +1,6 @@
 package ir.sk.algorithm.others;
 
 import ir.sk.adt.datastructure.tree.binarytree.heaptree.MaxBinaryHeap;
-import ir.sk.adt.list.ArrayList;
-import ir.sk.adt.list.List;
 import ir.sk.adt.datastructure.tree.binarytree.binarysearchtree.BinarySearchTree;
 import ir.sk.algorithm.array.Merge;
 import ir.sk.algorithm.basic.RotationShift;
@@ -17,8 +15,10 @@ import ir.sk.helper.pattern.TwoPointerPattern;
 import ir.sk.helper.paradigm.Backtracking;
 import ir.sk.helper.paradigm.DivideAndConquer;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 import java.util.stream.IntStream;
 
 /**
@@ -778,6 +778,38 @@ public class Sort {
             }
         }
     }
+
+    private static void bucketSortForInteger(int[] intArr, int noOfBuckets){
+        // Create bucket array
+        List<Integer>[] buckets = new java.util.List[noOfBuckets];
+        // Associate a list with each index 
+        // in the bucket array         
+        for(int i = 0; i < noOfBuckets; i++){
+          buckets[i] = new java.util.LinkedList<>();
+        }
+        // Assign numbers from array to the proper bucket
+        // by using hashing function
+        for(int num : intArr){
+          //System.out.println("hash- " + hash(num));
+          buckets[hash(num)].add(num);
+        }
+        // sort buckets
+        for(List<Integer> bucket : buckets){
+          Collections.sort(bucket);
+        }
+        int i = 0;
+        // Merge buckets to get sorted array
+        for(List<Integer> bucket : buckets){
+          for(int num : bucket){
+            intArr[i++] = num;
+          }
+        }
+      }
+        
+      // A very simple hash function
+      private static int hash(int num){
+        return num/10;
+      }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
