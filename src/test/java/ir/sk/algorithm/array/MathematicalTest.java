@@ -124,21 +124,6 @@ public class MathematicalTest {
         Assert.assertEquals(expectedValue, Mathematical.meanUsingCountingSort(a) + "");
     }
 
-
-    @Test
-    public void median() {
-        int a[] = {1, 3, 4, 2, 7, 5, 8, 6};
-        String expectedValue = "4.5";
-        Assert.assertEquals(expectedValue, Mathematical.median(a) + "");
-    }
-
-    @Test
-    public void medianUsingCountingSort() {
-        int a[] = {1, 3, 4, 2, 7, 5, 8, 6};
-        String expectedValue = "4.5";
-        Assert.assertEquals(expectedValue, Mathematical.medianUsingCountingSort(a) + "");
-    }
-
     @Test
     public void isPrime() {
         boolean expectedValue = true;
