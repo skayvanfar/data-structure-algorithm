@@ -749,6 +749,13 @@ public class Sort {
     }
 
 
+    /**
+     * it works by distributing the elements of an array into a number of buckets.
+     * Each bucket is then sorted individually
+     * Bucket sort can be seen as a generalization of counting sort;
+     * in fact, if each bucket has size 1 then bucket sort degenerates to counting sort
+    */
+    @TimeComplexity("O(n)")
     public static void bucketSort(float[] arr, int n) {
         if (n <= 0)
             return;
