@@ -108,6 +108,14 @@ public class SelectionProblem {
     /**
      * QuickSelect is a selection algorithm to find the k-th smallest element in an unordered list.
      * It is related to the quick sort sorting algorithm.
+     * 
+     * The algorithm is similar to QuickSort.
+     * The difference is, instead of recurring for both sides (after finding pivot),
+     * it recurs only for the part that contains the k-th smallest element. The logic is simple,
+     * if index of the partitioned element is more than k, then we recur for the left part.
+     * If index is the same as k, we have found the k-th smallest element and we return.
+     * If index is less than k, then we recur for the right part.
+     * This reduces the expected complexity from O(n log n) to O(n), with a worst-case of O(n^2).
     */
     // finds the kth position (of the sorted array) 
     // in a given unsorted array i.e this function 
