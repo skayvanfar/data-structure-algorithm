@@ -38,7 +38,7 @@ public class LinkListAlgorithms {
     @SpaceComplexity("O(1)")
     @Point("Using two Loop")
     @BruteForce
-    public static void deleteDuplicatesByRunner(SinglyLink head) {
+    public static void deleteDuplicates(SinglyLink head) {
         SinglyLink current = head;
         while (current != null) {
             SinglyLink runner = head;

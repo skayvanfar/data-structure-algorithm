@@ -33,6 +33,7 @@ public class ArrayCircularQueue<T> implements Queue<T>, Iterable<T> {
     // there are another way to calculate front and rear.
     // 1. front = start, rear = start + size
     // 2. to how two pointer, front, rear
+    // in this implementation, use [inclusive] for both front and rear
     // front
     private int start;
     private int size;
@@ -98,6 +99,7 @@ public class ArrayCircularQueue<T> implements Queue<T>, Iterable<T> {
         return s;
     }
 
+    @Override
     public Iterator<T> iterator() {
         return new CircularQueueIterator();
     }

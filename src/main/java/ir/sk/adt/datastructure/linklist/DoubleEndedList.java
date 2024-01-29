@@ -104,7 +104,7 @@ public class DoubleEndedList<T> implements Iterable<T> {
 
     public void displayList() {
         System.out.print("List (first-->last): ");
-        SinglyLink current = head;          // start at beginning
+        SinglyLink<T> current = head;          // start at beginning
         while (current != null)         // until end of list,
         {
             current.displayLink();      // print data
