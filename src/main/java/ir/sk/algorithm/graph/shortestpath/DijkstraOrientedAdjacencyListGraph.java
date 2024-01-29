@@ -5,7 +5,7 @@ import ir.sk.helper.paradigm.GreedyAlgorithm;
 import java.util.*;
 
 /**
- * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 7/18/2020.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 7/18/2020.
  */
 @GreedyAlgorithm
 public class DijkstraOrientedAdjacencyListGraph {

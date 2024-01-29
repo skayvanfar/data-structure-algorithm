@@ -1,7 +1,7 @@
 package ir.sk.algorithm.intervals;
 
 /**
- * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 2/5/2021.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 2/5/2021.
  */
 public class Interval {
     public int start;

@@ -20,7 +20,7 @@ import ir.sk.helper.paradigm.DecreaseAndConquer;
  * Many people like to talk about integer overflow bugs, but the real pit of binary search is not the detail problem at all,
  * but whether to add one to or subtract one from mid, whether to use<=in while <.
  *
- * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
 public class Search {
 

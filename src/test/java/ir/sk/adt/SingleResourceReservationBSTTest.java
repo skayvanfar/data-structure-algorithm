@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 7/3/2020.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 7/3/2020.
  */
 public class SingleResourceReservationBSTTest {
 

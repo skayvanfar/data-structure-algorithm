@@ -1,7 +1,7 @@
 package ir.sk.adt.dictionary.hashtableimpls;
 
 /**
- * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 8/24/2020.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 8/24/2020.
  */
 class OpenAddressingHashNode<K, V> {
 

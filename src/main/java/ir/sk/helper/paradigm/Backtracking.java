@@ -34,7 +34,7 @@ package ir.sk.helper.paradigm;
  *         backtrack(Path, selection List)
  *         deselect (Path.remove(selection), Add the selection to the Selection List)
  *
- * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 12/29/2020.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 12/29/2020.
  */
 @CompleteSearch
 public @interface Backtracking {

@@ -6,7 +6,7 @@ import ir.sk.helper.complexity.TimeComplexity;
 /**
  * 1 1 2 5 14 42 132 429 1430 4862
  *
- * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 7/10/2020.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 7/10/2020.
  */
 public class CatalanNumber {
 

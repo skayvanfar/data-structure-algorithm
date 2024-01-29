@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/2/2021.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 1/2/2021.
  */
 public class LongestCommonPrefixByTrieTest {
 

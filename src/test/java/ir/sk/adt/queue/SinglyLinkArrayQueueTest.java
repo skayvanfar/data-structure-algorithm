@@ -7,7 +7,7 @@ import org.junit.Test;
 /**
  * demonstrates queue implemented as double-ended list
  *
- * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
 public class SinglyLinkArrayQueueTest {
 

@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 12/10/2017.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 12/10/2017.
  */
 public class ArrayQueue<T> implements Queue<T>, Iterable<T> {
 

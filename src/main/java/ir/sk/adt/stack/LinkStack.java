@@ -7,7 +7,7 @@ import java.util.Iterator;
 /**
  * Stack Implemented by a Linked List
  *
- * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
 public class LinkStack<T> implements Stack<T>, Iterable<T> {
 

@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 
 /**
- * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 2/7/2020.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 2/7/2020.
  */
 public class Algorithms {
 

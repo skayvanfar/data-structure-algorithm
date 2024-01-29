@@ -12,7 +12,7 @@ import ir.sk.helper.recursiontype.TailRecursion;
  * <p>
  * Unordered arrays offer fast insertion but slow searching and deletion.
  *
- * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 12/7/2017.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 12/7/2017.
  */
 public class Array {
 

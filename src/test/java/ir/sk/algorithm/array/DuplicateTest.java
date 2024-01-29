@@ -11,7 +11,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 /**
- * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 2/10/2021.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 2/10/2021.
  */
 public class DuplicateTest {
 

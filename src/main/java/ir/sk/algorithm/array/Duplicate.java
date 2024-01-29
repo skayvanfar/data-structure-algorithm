@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 /**
  * Remove duplicates from an array
  *
- * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 2/10/2021.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 2/10/2021.
  */
 public class Duplicate {
 

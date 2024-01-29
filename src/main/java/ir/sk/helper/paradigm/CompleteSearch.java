@@ -7,7 +7,7 @@ package ir.sk.helper.paradigm;
  * Both BFS and backtracking are forms of exhaustive search and even linear search.
  * They explore the set of potential solutions in different ways.
  *
- * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 2/15/2021.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 2/15/2021.
  */
 public @interface CompleteSearch {
 }

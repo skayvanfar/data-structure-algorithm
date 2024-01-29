@@ -16,7 +16,7 @@ import java.util.Arrays;
  * <p>
  * Optimize & Solve Technique: 1. Bottlenecks
  *
- * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 8/22/2020.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 8/22/2020.
  */
 public class CountPairsWithDiffK {
 

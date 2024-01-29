@@ -1,7 +1,7 @@
 package ir.sk.helper.pattern;
 
 /**
- * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 11/1/2020.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 11/1/2020.
  */
 public enum SlidingWindowPatternType {
     // Fixed window length k: the length of the window is fixed and it asks you to find something in the window such as

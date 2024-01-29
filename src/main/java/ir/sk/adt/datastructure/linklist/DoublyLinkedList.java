@@ -14,7 +14,7 @@ import java.util.NoSuchElementException;
  *
  * First-Last Pointer
  * Doubled
- * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
 public class DoublyLinkedList<T> implements Iterable<T> {
 

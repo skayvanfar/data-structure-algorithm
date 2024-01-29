@@ -6,7 +6,7 @@ import ir.sk.adt.datastructure.linklist.SinglyLinkList;
 import java.util.Iterator;
 
 /**
- * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
  */
 public class ListIterator<T> implements Iterator<T> {
 

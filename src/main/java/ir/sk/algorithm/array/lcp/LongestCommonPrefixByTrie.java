@@ -22,7 +22,7 @@ import java.util.ArrayList;
  * 4. The traversal described in step 3 is implemented using function walkTrie(), this function traverses the trie and looks for the longest common prefix path and returns the corresponding longest common prefix.
  * 5. In the end, we use a driver function longestCommonPrefix() that combines all the functions mentioned above and returns the longest common prefix among the given array of strings.
  *
- * @author <a href="kayvanfar.sj@gmail.com">Saeed Kayvanfar</a> on 1/2/2021.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 1/2/2021.
  */
 public class LongestCommonPrefixByTrie {
 
