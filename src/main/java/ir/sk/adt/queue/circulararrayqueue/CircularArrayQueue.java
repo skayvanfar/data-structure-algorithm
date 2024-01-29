@@ -1,4 +1,4 @@
-package ir.sk.adt.queue.circularqueue;
+package ir.sk.adt.queue.circulararrayqueue;
 
 import ir.sk.adt.queue.Queue;
 import ir.sk.helper.Default;
@@ -25,7 +25,7 @@ import java.util.NoSuchElementException;
  * @param <T>
  */
 @Default
-public class ArrayCircularQueue<T> implements Queue<T>, Iterable<T> {
+public class CircularArrayQueue<T> implements Queue<T>, Iterable<T> {
 
     private T[] items;
     private int capacity;
@@ -38,7 +38,7 @@ public class ArrayCircularQueue<T> implements Queue<T>, Iterable<T> {
     private int start;
     private int size;
 
-    public ArrayCircularQueue(int m) {
+    public CircularArrayQueue(int m) {
         capacity = m;
         items = (T[]) new Object[capacity];
         start = 0;
