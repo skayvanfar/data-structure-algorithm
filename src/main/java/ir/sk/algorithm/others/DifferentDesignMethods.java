@@ -16,7 +16,7 @@ import java.util.Set;
 /**
  * different Design Method: Twoloop, hash
  *
- * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 7/5/2020.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeid Keyvanfar</a> on 7/5/2020.
  */
 public class DifferentDesignMethods {
 

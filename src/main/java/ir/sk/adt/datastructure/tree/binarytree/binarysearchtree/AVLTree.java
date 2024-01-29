@@ -11,7 +11,7 @@ import ir.sk.helper.complexity.TimeComplexity;
  * <p>
  * Time Complexity: O(Log n)
  *
- * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 7/3/2020.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeid Keyvanfar</a> on 7/3/2020.
  */
 public class AVLTree {
 

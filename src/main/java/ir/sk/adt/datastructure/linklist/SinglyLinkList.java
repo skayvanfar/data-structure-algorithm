@@ -10,7 +10,7 @@ import ir.sk.helper.recursiontype.TailRecursion;
  * in which the elements are not stored at contiguous memory locations.
  * The elements in a linked list are linked using pointers
  *
- * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeid Keyvanfar</a> on 1/31/2020.
  */
 public class SinglyLinkList<T> implements Iterable<T> {
 

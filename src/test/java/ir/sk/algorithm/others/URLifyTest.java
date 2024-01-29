@@ -20,13 +20,13 @@ public class URLifyTest {
 
     @Test
     public void replaceSpacesBruteForce() {
-        char[] str = "Saeed Kayvanfar    ".toCharArray();
+        char[] str = "Saeid Keyvanfar    ".toCharArray();
         System.out.println(URLify.replaceSpacesBruteForce(str));
     }
 
     @Test
     public void replaceSpaces() {
-        char[] str = "Saeed Kayvanfar    ".toCharArray();
+        char[] str = "Saeid Keyvanfar    ".toCharArray();
 
         str = URLify.replaceSpaces(str);
 

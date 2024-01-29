@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 12/7/2017.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeid Keyvanfar</a> on 12/7/2017.
  */
 public class ArrayTest {
 

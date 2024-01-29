@@ -8,7 +8,7 @@ import ir.sk.helper.paradigm.DivideAndConquer;
 import java.util.Arrays;
 
 /**
- * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 1/3/2021.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeid Keyvanfar</a> on 1/3/2021.
  */
 public class LongestCommonPrefix {
 

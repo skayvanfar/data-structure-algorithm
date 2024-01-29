@@ -14,7 +14,7 @@ import java.util.Arrays;
  * simpler and is appropriate when the number of items isn’t high or insertion speed
  * isn’t critical.
  *
- * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeid Keyvanfar</a> on 1/31/2020.
  */
 public class OrderedArrayMaxPriorityQueue<T extends Comparable<T>> implements MaxPriorityQueue<T> {
 

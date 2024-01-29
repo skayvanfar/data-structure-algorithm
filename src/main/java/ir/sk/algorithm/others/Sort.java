@@ -24,7 +24,7 @@ import java.util.stream.IntStream;
 /**
  * main operations are compare and swap
  *
- * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 12/7/2017.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeid Keyvanfar</a> on 12/7/2017.
  */
 public class Sort {
 

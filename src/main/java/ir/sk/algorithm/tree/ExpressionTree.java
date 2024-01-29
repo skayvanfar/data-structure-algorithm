@@ -13,7 +13,7 @@ import java.util.Stack;
  * Inorder traversal of expression tree produces infix version of given postfix expression
  * (same with postorder traversal it gives prefix expression)
  *
- * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 1/2/2021.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeid Keyvanfar</a> on 1/2/2021.
  */
 public class ExpressionTree {
 

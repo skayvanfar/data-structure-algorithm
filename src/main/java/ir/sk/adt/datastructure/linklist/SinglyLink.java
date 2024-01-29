@@ -1,7 +1,7 @@
 package ir.sk.adt.datastructure.linklist;
 
 /**
- * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeid Keyvanfar</a> on 1/31/2020.
  */
 public class SinglyLink<T> {
 

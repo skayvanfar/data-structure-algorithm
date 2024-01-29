@@ -15,7 +15,7 @@ import ir.sk.helper.complexity.TimeComplexity;
  * It's usually implemented by Arrays because a binary heap is always a complete binary tree
  * A binary heap must be a complete tree,children are added at each level from left to right,and usually implemented as arrays.(putting the nodes in level order)
  *
- * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 7/2/2020.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeid Keyvanfar</a> on 7/2/2020.
  */
 public class MaxBinaryHeap {
 

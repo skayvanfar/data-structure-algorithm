@@ -13,7 +13,7 @@ package ir.sk.helper.pattern;
  * we can iterate the array to find all indices that are missing the correct numbers.
  * These will be our required numbers.
  *
- * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 2/15/2021.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeid Keyvanfar</a> on 2/15/2021.
  */
 public @interface CyclicSortPattern {
 }

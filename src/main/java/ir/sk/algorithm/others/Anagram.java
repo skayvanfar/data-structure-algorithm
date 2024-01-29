@@ -14,7 +14,7 @@ import java.util.stream.Stream;
  * an anagram of a string is another string with exactly the same quantity of each character in it, in any order
  * "Listen = Silent"
  *
- * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeid Keyvanfar</a> on 1/31/2020.
  */
 public class Anagram {
 

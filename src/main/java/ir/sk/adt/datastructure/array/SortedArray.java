@@ -5,7 +5,7 @@ import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.ModifiedBinarySearchPattern;
 
 /**
- * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 12/7/2017.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeid Keyvanfar</a> on 12/7/2017.
  */
 public class SortedArray {
 

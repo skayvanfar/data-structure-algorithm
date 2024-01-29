@@ -11,7 +11,7 @@ import java.util.Collection;
  * 4. cross edge: between two none-ancestor-related subtrees (just in  weighted graph)
  * Graph has cycle <=> dfs of graph has a backward edge
  *
- * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 7/11/2020.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeid Keyvanfar</a> on 7/11/2020.
  */
 public interface Graph<T> {
     boolean contains(T item);

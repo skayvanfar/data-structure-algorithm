@@ -8,7 +8,7 @@ import java.util.List;
 import static org.junit.Assert.assertTrue;
 
 /**
- * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 7/18/2020.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeid Keyvanfar</a> on 7/18/2020.
  */
 public class DijkstraOrientedAdjacencyListGraphTest {
 

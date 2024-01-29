@@ -8,7 +8,7 @@ import java.util.NoSuchElementException;
 /**
  * Generic stack implementation with a fixed-size array.
  *
- * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 12/10/2017.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeid Keyvanfar</a> on 12/10/2017.
  */
 @Default
 public class FixedArrayStack<T> implements Stack<T>, Iterable<T> {

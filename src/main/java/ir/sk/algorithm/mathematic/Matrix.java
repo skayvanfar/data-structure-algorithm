@@ -7,7 +7,7 @@ import ir.sk.helper.paradigm.BruteForce;
 
 /**
  * Matrix library (2D Array maths)
- * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 2/7/2020.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeid Keyvanfar</a> on 2/7/2020.
  */
 public class Matrix {
 

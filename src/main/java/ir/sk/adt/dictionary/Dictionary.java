@@ -10,7 +10,7 @@ import ir.sk.helper.complexity.TimeComplexity;
  * <p>
  * There are only three basic operations on Dictionary: searching, inserting, and deleting.
  *
- * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 8/24/2020.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeid Keyvanfar</a> on 8/24/2020.
  */
 public interface Dictionary<K, V> {
 

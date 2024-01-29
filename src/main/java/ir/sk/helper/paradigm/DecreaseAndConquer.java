@@ -6,7 +6,7 @@ package ir.sk.helper.paradigm;
  *
  * @DivideAndConquer
  *
- * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 2/11/2021.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeid Keyvanfar</a> on 2/11/2021.
  */
 @DivideAndConquer
 public @interface DecreaseAndConquer {

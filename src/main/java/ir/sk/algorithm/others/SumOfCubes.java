@@ -12,7 +12,7 @@ import java.util.Map;
  * Print all positive integer solutions to the equation a3 + b3
  * and d are integers between 1 and 1000
  *
- * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 8/22/2020.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeid Keyvanfar</a> on 8/22/2020.
  */
 public class SumOfCubes {
 

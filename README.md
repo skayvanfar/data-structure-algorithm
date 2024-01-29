@@ -85,5 +85,5 @@ This repository is released under the [MIT license](https://opensource.org/licen
 
 ### Credits
 
-**Saeed Kayvanfar**
+**Saeid Keyvanfar**
 [GitHub](https://github.com/skayvanfar) | [E-mail](mailto:sad.keyvanfar@gmail.com)

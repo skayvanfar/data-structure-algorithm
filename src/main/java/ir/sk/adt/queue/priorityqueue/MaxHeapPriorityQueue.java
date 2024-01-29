@@ -6,7 +6,7 @@ import ir.sk.helper.complexity.TimeComplexity;
 /**
  * It's just a wrapper for BinaryHeap
  *
- * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 7/2/2020.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeid Keyvanfar</a> on 7/2/2020.
  */
 public class MaxHeapPriorityQueue<T extends Integer> implements MaxPriorityQueue<T> {
 

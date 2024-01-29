@@ -8,7 +8,7 @@ import ir.sk.helper.paradigm.BruteForce;
  * string-searching algorithms, sometimes called string-matching algorithms, are an important class of string algorithms
  * that try to find a place where one or several strings (also called patterns) are found within a larger string or text.
  *
- * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 7/6/2020.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeid Keyvanfar</a> on 7/6/2020.
  */
 public class StringMatching {
 

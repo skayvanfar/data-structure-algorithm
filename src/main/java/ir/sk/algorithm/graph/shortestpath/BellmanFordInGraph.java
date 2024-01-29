@@ -1,7 +1,7 @@
 package ir.sk.algorithm.graph.shortestpath;
 
 /**
- * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 7/27/2020.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeid Keyvanfar</a> on 7/27/2020.
  */
 public class BellmanFordInGraph {
 

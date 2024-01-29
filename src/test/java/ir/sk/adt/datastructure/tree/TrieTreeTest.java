@@ -11,7 +11,7 @@ import org.junit.Test;
  * <p>
  * All descendants of a node have a common prefix of a String associated with that node, whereas the root is associated with an empty String.
  *
- * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 9/3/2020.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeid Keyvanfar</a> on 9/3/2020.
  */
 public class TrieTreeTest {
 

@@ -1,7 +1,7 @@
 package ir.sk.algorithm.others;
 
 /**
- * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 8/24/2020.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeid Keyvanfar</a> on 8/24/2020.
  */
 public class NumeralSystem {
 

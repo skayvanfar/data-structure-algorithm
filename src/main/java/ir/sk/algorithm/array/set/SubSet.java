@@ -22,7 +22,7 @@ import java.util.*;
  * <p>
  * all the combinations of all the different sizes, then you actually end up with the Power Set of that original set.
  *
- * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 1/14/2021.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeid Keyvanfar</a> on 1/14/2021.
  */
 public class SubSet {
 

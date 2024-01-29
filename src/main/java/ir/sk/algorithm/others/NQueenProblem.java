@@ -19,7 +19,7 @@ import java.util.Arrays;
  * In the current column, if we find a row for which there is no clash, we mark this row and column as part of the solution.
  * If we do not find such a row due to clashes then we backtrack and return false.
  *
- * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 1/14/2021.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeid Keyvanfar</a> on 1/14/2021.
  */
 @Difficulty(type = DifficultyType.HARD)
 @Backtracking

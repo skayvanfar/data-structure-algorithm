@@ -15,7 +15,7 @@ import java.math.BigInteger;
  *      1             n = 1
  *      n * T(n-1)    n > 1
  *
- * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeid Keyvanfar</a> on 1/31/2020.
  */
 public class Factorial {
 

@@ -9,7 +9,7 @@ import ir.sk.helper.complexity.TimeComplexity;
  * In Open Addressing, all elements are stored in the hash table itself.
  * So at any point, size of table must be greater than or equal to total number of keys (M>=n)
  *
- * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 7/7/2020.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeid Keyvanfar</a> on 7/7/2020.
  */
 public class LinearProbingDictionary<K, V> implements Dictionary<K, V> {
 

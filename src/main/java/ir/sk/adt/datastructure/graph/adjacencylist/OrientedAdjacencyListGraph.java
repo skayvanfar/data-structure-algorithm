@@ -18,7 +18,7 @@ import java.util.*;
  * <p>
  * It represents Directed Wighted graph
  *
- * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 7/11/2020.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeid Keyvanfar</a> on 7/11/2020.
  */
 public class OrientedAdjacencyListGraph<T> implements Graph<T> {
 

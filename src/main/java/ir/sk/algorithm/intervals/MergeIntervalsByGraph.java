@@ -9,7 +9,7 @@ import ir.sk.helper.paradigm.BruteForce;
 import java.util.*;
 
 /**
- * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 2/5/2021.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeid Keyvanfar</a> on 2/5/2021.
  */
 public class MergeIntervalsByGraph {
     private Map<Interval, List<Interval>> graph;

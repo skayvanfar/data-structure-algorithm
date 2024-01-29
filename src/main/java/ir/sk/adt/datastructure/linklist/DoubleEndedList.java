@@ -19,7 +19,7 @@ import java.util.NoSuchElementException;
  * suitable for certain situations that a single-ended list can’t handle efficiently. One
  * such situation is implementing a queue;
  *
- * @author <a href="sad.keyvanfar@gmail.com">Saeed Kayvanfar</a> on 1/31/2020.
+ * @author <a href="sad.keyvanfar@gmail.com">Saeid Keyvanfar</a> on 1/31/2020.
  */
 public class DoubleEndedList<T> implements Iterable<T> {
 
