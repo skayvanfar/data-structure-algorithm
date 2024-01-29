@@ -53,8 +53,9 @@ public class RotationShift {
             array[i] = array[i + unit];
     }
 
+    // another way of rotation is Circular Array
     /**
-     * shifting - left rotation just one unit
+     * rotation - left rotation just one unit
      *
      * @param array      the source array.
      * @param startIndex starting position
@@ -69,7 +70,7 @@ public class RotationShift {
     }
 
     /**
-     * shifting - right rotation unit number
+     * rotation - right rotation unit number
      *
      * @param array      the source array.
      * @param startEndex starting position
@@ -98,7 +99,7 @@ public class RotationShift {
     }
 
     /**
-     * shifting - left rotation unit number
+     * rotation - left rotation unit number
      *
      * @param array      the source array.
      * @param startIndex starting position

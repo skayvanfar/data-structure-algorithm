@@ -1,5 +1,6 @@
 package ir.sk.adt.datastructure.array;
 
+import ir.sk.helper.Point;
 import ir.sk.helper.Remainder;
 
 import java.util.Iterator;
@@ -15,6 +16,7 @@ public class CircularArray<T> implements Iterable<T> {
 
     private T[] items;
 
+    @Point("Important part of circular Array compare to normal array is head of array is not always 0")
     // create a member variable head which points to what should be conceptually viewed
     // as the start of the circular array. Rather than shifting around the elements in the array, we just increment
     // head by shift Right.
@@ -39,6 +41,9 @@ public class CircularArray<T> implements Iterable<T> {
         return (head + index) % items.length;
     }
 
+    /**
+     * one of the best way for rotation
+    */
     public void rotate(int shiftRight) {
         head = convert(shiftRight);
     }

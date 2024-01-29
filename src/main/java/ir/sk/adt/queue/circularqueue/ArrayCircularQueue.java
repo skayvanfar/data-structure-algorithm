@@ -30,7 +30,9 @@ public class ArrayCircularQueue<T> implements Queue<T>, Iterable<T> {
     private T[] items;
     private int capacity;
 
-    // there are another way to calculate front and rear. 1.front = start, rear = start + size
+    // there are another way to calculate front and rear.
+    // 1. front = start, rear = start + size
+    // 2. to how two pointer, front, rear
     // front
     private int start;
     private int size;
@@ -69,7 +71,7 @@ public class ArrayCircularQueue<T> implements Queue<T>, Iterable<T> {
             throw new UnsupportedOperationException("Queue is full");
         }
         // calculate rear
-        items[(start + size) % capacity] = item;
+        items[(start + size) % capacity] = item; // or if (start + size == capacity) start = 0
         size++;
     }
 
@@ -85,7 +87,7 @@ public class ArrayCircularQueue<T> implements Queue<T>, Iterable<T> {
 
     @Override
     public T peek() {
-        return null;
+        throw new UnsupportedOperationException("Not implemented");
     }
 
     public String toString() {
