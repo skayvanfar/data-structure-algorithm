@@ -109,7 +109,7 @@ def backtrack(Path, selection List):
 ```
 
 
-##template for Sliding Window Algorithm algorithm:
+##template for Sliding Window Algorithm pattern:
 ###[window)
 ####Static
 ```

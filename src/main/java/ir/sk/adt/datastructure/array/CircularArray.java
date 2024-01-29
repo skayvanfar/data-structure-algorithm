@@ -7,6 +7,7 @@ import java.util.Iterator;
 /**
  * CircularArray class that supports an array-like data structure which
  * can be efficiently rotated.
+ * CircularArray makes a good implementation strategy for a queue that has fixed maximum size.
  * <p>
  * Created by sad.kayvanfar on 9/20/2020.
  */
