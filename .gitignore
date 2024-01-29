@@ -12,6 +12,8 @@
 *.iws
 .idea/
 
+.vscode/
+
 .DS_Store/
 /target
 
