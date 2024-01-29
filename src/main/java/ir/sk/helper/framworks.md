@@ -33,8 +33,10 @@ class Link {
 }
 
 void traverse(Link head) {
-    for (Link p = head; p != null; p = p.next) {
-        // iteratively p.val
+    Link current = head;
+    while (current != null) {
+        // iteratively current.val
+        current = current.next;
     }
 }
 
