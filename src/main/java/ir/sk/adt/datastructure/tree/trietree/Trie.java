@@ -6,6 +6,11 @@ import ir.sk.helper.complexity.TimeComplexity;
 import ir.sk.helper.pattern.HashingIndexPattern;
 
 /**
+ * Trie also called digital tree or prefix tree,[1] is a type of k-ary search tree, a tree data structure used for locating specific keys from within a set.
+ * Unlike a binary search tree, nodes in the trie do not store their associated key.
+ * Instead, a node's position in the trie defines the key with which it is associated.
+ * usage: Replacement for hash table
+ * 
  * Created by sad.kayvanfar on 5/18/2021.
  */
 public class Trie {
