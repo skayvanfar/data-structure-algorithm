@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
  * The list at a specific index of the array represents the adjacent vertices of the vertex represented by that array index.
  * <p>
  * An implementation suggested by Guido van Rossum uses a hash table to associate each vertex in a graph with an array of adjacent vertices.
- * In this representation, a vertex may be represented by any hashable object.
+ * In this representation, a vertex may be represented by any hashtable object.
  * There is no explicit representation of edges as objects.
  * <p>
  * it can represent a weighted and directed graph
