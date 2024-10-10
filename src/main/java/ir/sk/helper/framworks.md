@@ -1,4 +1,4 @@
-#Frameworks: are used in paradigms and patterns
+# Frameworks: are used in paradigms and patterns
 ## method:
 1. clarification: constraints
 2. ideas: ( 1. brute force algorithm 2. ...)
@@ -16,7 +16,7 @@
     3. load test
    
 
-##Array traversal framework, typical linear iterative structure：
+## Array traversal framework, typical linear iterative structure：
 ```
 void traverse(int[] arr) {
     for (int i = 0; i < arr.length; i++) {
@@ -24,7 +24,7 @@ void traverse(int[] arr) {
     }
 }
 ```
-##Linked list traversal framework has both iterative and recursive structure：
+## Linked list traversal framework has both iterative and recursive structure：
 ```
 /* Basic node of the single linked list */
 class Link {
@@ -46,7 +46,7 @@ void traverse(Link head) {
 }
 ```
 Remember using previous, current, next pointers when is needed
-##Binary tree traversal framework, typical nonlinear recursive traversal structure：
+## Binary tree traversal framework, typical nonlinear recursive traversal structure：
 ```
 /* Basic node of the binary tree */
 class TreeNode {
@@ -64,7 +64,7 @@ void DFSTraverse(Node root) {
 }
 ```
 
-##the framework for almost all BT resolve
+## the framework for almost all BT resolve
 1. base case
 2. recursive on left;
 3. recursive on right;
@@ -94,7 +94,7 @@ void BFSTraverse(Node root) {
 }
 ```
 
-##There is a template for backtracking algorithms:
+## There is a template for backtracking algorithms:
 ```
 result = []
 def backtrack(Path, selection List):
@@ -109,9 +109,9 @@ def backtrack(Path, selection List):
 ```
 
 
-##template for Sliding Window Algorithm pattern:
-###[window)
-####Static
+## template for Sliding Window Algorithm pattern:
+### [window)
+#### Static
 ```
 int left = 0, right = k;
 for (int i = 0; i < k; i++)
@@ -124,7 +124,7 @@ while (right < s.size()) {
     left++;
 }
 ```
-####Dynamic
+#### Dynamic
 ```
 int left = 0, right = 0;
 
@@ -139,7 +139,7 @@ while (right < s.size()) {
 }
 ```
 
-##template for recurtion by sample:
+## template for recurtion by sample:
 How many hairs does Monkey King have? Answer: One plus the rest.
 
 How old are you this year? Answer: One year plus my age of last year, I was born in 1999.
