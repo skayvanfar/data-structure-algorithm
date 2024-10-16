@@ -77,7 +77,7 @@ public class CircularArray<T> implements Iterable<T> {
         @Override
         public T next() {
             _current++;
-            return (T) items[convert(_current)];
+            return items[convert(_current)];
         }
 
         @Override
